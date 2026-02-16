@@ -1,0 +1,22 @@
+{
+  "name": "mc-designs-website",
+  "version": "1.0.0",
+  "description": "MC Designs - Design. Build. Automate. A brutalist portfolio website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "portfolio",
+    "design",
+    "brutalist",
+    "glassmorphism"
+  ],
+  "author": "MC Designs",
+  "license": "MIT"
+}
