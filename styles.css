@@ -169,3 +169,25 @@
         }
     }
 }
+
+/* Safe Hero Grid (Background Image Only) */
+.hero-grid-bg {
+    --grid-y: 0px;
+    --grid-alpha: 0.06;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, var(--grid-alpha)) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, var(--grid-alpha)) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 var(--grid-y);
+    background-repeat: repeat;
+    will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-grid-bg {
+        --grid-y: 0px !important;
+        --grid-alpha: 0.06 !important;
+        background-position: 0 0 !important;
+        will-change: auto;
+    }
+}
