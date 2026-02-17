@@ -101,9 +101,11 @@
 <body class="bg-black text-white px-6 md:px-12 lg:px-24 bg-grid-pattern">
 
     <!-- BEGIN: Navigation -->
-    <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50"
+    <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50 transition-all duration-300"
         data-purpose="main-navigation">
-        <div class="heading-condensed text-4xl tracking-tighter">MC DESIGNS</div>
+        <div class="heading-condensed text-2xl md:text-4xl tracking-tighter z-50 relative">MC DESIGNS</div>
+
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest uppercase items-center">
             <a class="hover:opacity-60 transition-opacity" href="work.html">Work</a>
             <a class="hover:opacity-60 transition-opacity" href="services.html">Services</a>
@@ -111,7 +113,34 @@
         </div>
         <a class="hidden md:flex bg-accent-gradient font-black px-8 py-3 rounded-lg hover:opacity-90 transition-opacity items-center justify-center text-sm"
             href="tools.html" data-gradient-button style="color: #FFFFFF;">TOOL HUB</a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden z-50 relative p-2 text-white focus:outline-none">
+            <!-- Hamburger Icon -->
+            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Close Icon -->
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center space-y-8">
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="work.html">Work</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="services.html">Services</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="contact.html">Contact</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors text-accent"
+            href="tools.html">Tool Hub</a>
+    </div>
     <!-- END: Navigation -->
 
     <!-- BEGIN: Hero -->
@@ -123,7 +152,7 @@
             STUDIO</p>
 
         <!-- Main Headline -->
-        <h1 class="heading-condensed text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] mb-6">
+        <h1 class="heading-condensed text-[13vw] md:text-8xl lg:text-[10rem] leading-[0.9] mb-6 md:mb-8">
             DESIGN<br />
             BUILD<br />
             AUTOMATE<span style="color: #2D5BFF; font-family: 'Inter', sans-serif; font-weight: 700;">.</span>
@@ -165,7 +194,7 @@
 
     <!-- BEGIN: System Architecture -->
     <section class="section-border" data-purpose="system-architecture" id="architecture">
-        <div class="mb-24 md:mb-32">
+        <div class="mb-16 md:mb-32">
             <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
                 DIGITAL SYSTEM FRAMEWORK
             </div>
@@ -177,7 +206,7 @@
         </div>
 
         <!-- SECTION 1: AUTOMATION SYSTEMS™ -->
-        <div class="mb-32 md:mb-40">
+        <div class="mb-20 md:mb-40">
             <div
                 class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
                 AUTOMATION LAYER
@@ -270,7 +299,7 @@
         </div>
 
         <!-- DIAGRAM 1: SYSTEM FLOW (Vertical) -->
-        <div class="py-24 md:py-32 flex flex-col items-center border-t border-white/10">
+        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10">
             <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium">
                 SYSTEM FLOW
             </div>
@@ -307,7 +336,7 @@
         </div>
 
         <!-- SECTION 1.5: SYSTEM MONITORING -->
-        <div class="py-24 md:py-32 border-y border-white/10 mb-32 md:mb-40">
+        <div class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Text Column -->
                 <div>
@@ -349,7 +378,7 @@
         </div>
 
         <!-- SECTION 2: DIGITAL PRESENCE SYSTEMS™ -->
-        <div class="mb-32 md:mb-40">
+        <div class="mb-20 md:mb-40">
             <div
                 class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
                 INFRASTRUCTURE LAYER
@@ -442,7 +471,7 @@
         </div>
 
         <!-- DIAGRAM 2: INFRASTRUCTURE FLOW (Horizontal) -->
-        <div class="py-24 md:py-32 flex flex-col items-center border-t border-white/10">
+        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10">
             <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-16 font-medium">
                 INFRASTRUCTURE FLOW
             </div>
@@ -485,7 +514,7 @@
     <!-- END: System Architecture -->
 
     <!-- BEGIN: System Integration -->
-    <section class="py-24 md:py-32 border-t border-subtle flex flex-col items-center text-center"
+    <section class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center"
         data-purpose="system-integration">
         <h2 class="heading-condensed text-3xl md:text-5xl mb-6">SYSTEM INTEGRATION</h2>
         <p class="text-lg opacity-70 max-w-xl leading-relaxed mb-12">
@@ -515,6 +544,9 @@
     <!-- Gradient Animation Script -->
     <script type="module" src="gradient-animation.js"></script>
 
+</html>
+<!-- Mobile Menu Script -->
+<script type="module" src="mobile-menu.js"></script>
 </body>
 
 </html>

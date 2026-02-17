@@ -101,10 +101,13 @@
 <body class="bg-black text-white px-6 md:px-12 lg:px-24 bg-grid-pattern">
 
     <!-- BEGIN: Navigation -->
-    <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50"
+    <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50 transition-all duration-300"
         data-purpose="main-navigation">
-        <a href="index.html" class="heading-condensed text-4xl tracking-tighter hover:opacity-80 transition-opacity">MC
+        <a href="index.html"
+            class="heading-condensed text-2xl md:text-4xl tracking-tighter hover:opacity-80 transition-opacity z-50 relative">MC
             DESIGNS</a>
+
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest uppercase items-center">
             <a class="text-accent underline underline-offset-4" href="work.html">Work</a>
             <a class="hover:opacity-60 transition-opacity" href="services.html">Services</a>
@@ -112,7 +115,34 @@
         </div>
         <a class="hidden md:flex bg-accent-gradient font-black px-8 py-3 rounded-lg hover:opacity-90 transition-opacity items-center justify-center text-sm"
             href="tools.html" data-gradient-button style="color: #FFFFFF;">TOOL HUB</a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden z-50 relative p-2 text-white focus:outline-none">
+            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center space-y-8">
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="index.html">Home</a>
+        <a class="text-2xl font-bold tracking-widest uppercase text-accent underline underline-offset-4"
+            href="work.html">Work</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="services.html">Services</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="contact.html">Contact</a>
+        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+            href="tools.html">Tool Hub</a>
+    </div>
     <!-- END: Navigation -->
 
     <!-- BEGIN: Featured Work -->
@@ -241,6 +271,8 @@
     <!-- Gradient Animation Script -->
     <script type="module" src="gradient-animation.js"></script>
 
+    <!-- Mobile Menu Script -->
+    <script type="module" src="mobile-menu.js"></script>
 </body>
 
 </html>
