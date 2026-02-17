@@ -99,7 +99,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white bg-grid-pattern">
     <div class="site-container">
 
         <!-- BEGIN: Navigation -->
@@ -146,446 +146,464 @@
         <!-- END: Navigation -->
 
         <!-- BEGIN: Hero -->
-        BUILD<br />
-        <span class="text-gradient glow-text">AUTOMATE.</span>
-        </h1>
-    </div>
+        <section
+            class="min-h-[88vh] md:min-h-[85vh] max-h-[90vh] flex flex-col justify-center py-8 md:py-12 relative z-10"
+            data-purpose="hero-section" id="hero">
 
-    <!-- Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-        <div class="max-w-md">
-            <p class="text-base md:text-lg opacity-70 leading-relaxed mb-8 max-w-[90%]">
-                We build structured digital systems powered by automation and AI.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <button
-                    class="tool-hub-btn-3d group relative px-8 py-3 bg-[#0a0a0a] rounded overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5"
-                    onclick="window.location.href='tools.html'">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-r from-[#1a3a8a] to-[#2D5BFF] opacity-30 group-hover:opacity-40 transition-opacity duration-300">
-                    </div>
-                    <span class="relative z-10 font-bold tracking-wider text-sm">TOOL HUB</span>
-                </button>
-                <button
-                    class="px-8 py-3 border border-white/20 hover:bg-white/5 rounded transition-colors duration-300 glow-box-hover"
-                    onclick="window.location.href='contact.html'">
-                    <span class="font-bold tracking-wider text-sm">START PROJECT</span>
-                </button>
+            <!-- Descriptor -->
+            <p class="text-xs md:text-sm tracking-[0.25em] font-medium text-white/50 mb-3 md:mb-4 ml-1 relative z-10">
+                DIGITAL SYSTEMS
+                STUDIO</p>
+
+            <!-- Main Headline -->
+            <div class="relative">
+                <div class="hero-glow"></div>
+                <h1
+                    class="heading-condensed text-[13vw] md:text-8xl lg:text-[10rem] leading-[0.9] mb-6 md:mb-8 relative z-10">
+                    DESIGN<br />
+                    BUILD<br />
+                    <span class="text-gradient glow-text">AUTOMATE.</span>
+                </h1>
             </div>
-        </div>
-        <div class="flex flex-col gap-4 text-right hidden md:flex">
-            <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
-                href="work.html">FEATURED
-                WORK →</a>
-            <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
-                href="tools.html">EXPLORE
-                TOOLS →</a>
-        </div>
-    </div>
-    </section>
-    <!-- END: Hero -->
 
-    <!-- BEGIN: System Architecture -->
-    <section class="section-border" data-purpose="system-architecture" id="architecture">
-        <div class="mb-16 md:mb-32">
-            <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                DIGITAL SYSTEM FRAMEWORK
-            </div>
-            <h2 class="heading-condensed text-5xl md:text-7xl mb-8 text-gradient glow-text">SYSTEM ARCHITECTURE</h2>
-            <p class="text-lg opacity-70 max-w-2xl leading-relaxed">
-                We design modular digital systems composed of automation layers and infrastructure layers.<br>
-                Each system operates independently or integrates into a larger scalable architecture.
-            </p>
-        </div>
-
-        <!-- SECTION 1: AUTOMATION SYSTEMS™ -->
-        <div class="mb-20 md:mb-40">
-            <div
-                class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
-                AUTOMATION LAYER
-            </div>
-            <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">AUTOMATION
-                SYSTEMS™</h3>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-                <!-- Left Column: Products -->
-                <div class="lg:col-span-7">
-                    <!-- PRODUCT 1: AI Lead Engine™ -->
-                    <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
-                        <div class="md:col-span-4">
-                            <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">AI Lead
-                                Engine™
-                            </h4>
-                            <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                AI-powered lead capture, classification, and follow-up automation.
-                            </p>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
-                            </div>
-                            <ul class="space-y-2 text-sm opacity-80">
-                                <li>• Multi-source lead intake (forms, Meta)</li>
-                                <li>• AI classification (intent, priority, fit score)</li>
-                                <li>• CRM synchronization (Google Sheets)</li>
-                                <li>• Automated follow-up logic</li>
-                                <li>• Reporting layer</li>
-                            </ul>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
-                            </div>
-                            <p class="text-sm opacity-70 leading-relaxed">
-                                Centralizes fragmented lead flows into a structured AI-driven intake system.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- PRODUCT 2: Smart Operations System™ -->
-                    <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
-                        <div class="md:col-span-4">
-                            <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Smart
-                                Operations
-                                System™</h4>
-                            <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                Operational task routing and automation orchestration layer.
-                            </p>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
-                            </div>
-                            <ul class="space-y-2 text-sm opacity-80">
-                                <li>• Multi-channel task ingestion</li>
-                                <li>• AI categorization & routing</li>
-                                <li>• Automated task creation</li>
-                                <li>• Weekly performance digest</li>
-                                <li>• Event logging & monitoring</li>
-                            </ul>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
-                            </div>
-                            <p class="text-sm opacity-70 leading-relaxed">
-                                Replaces manual coordination with structured operational automation.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- PRODUCT 3: Intelligent Booking & Sales Flow™ -->
-                    <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
-                        <div class="md:col-span-4">
-                            <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
-                                Intelligent
-                                Booking
-                                & Sales Flow™</h4>
-                            <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                AI-enhanced intake and booking automation system.
-                            </p>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
-                            </div>
-                            <ul class="space-y-2 text-sm opacity-80">
-                                <li>• Pre-qualification intake</li>
-                                <li>• Google Calendar integration</li>
-                                <li>• Confirmation & reminder automation</li>
-                                <li>• Post-call AI summary</li>
-                                <li>• CRM update</li>
-                            </ul>
-                        </div>
-                        <div class="md:col-span-4">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
-                            </div>
-                            <p class="text-sm opacity-70 leading-relaxed">
-                                Transforms booking processes into structured, automated sales workflows.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: System Flow Diagram -->
-                <div class="lg:col-span-5 flex flex-col items-center border border-white/10 rounded-2xl p-8 lg:p-12 bg-secondary"
-                    data-diagram-container>
-                    <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium">
-                        SYSTEM FLOW
-                    </div>
-
-                    <div class="flex flex-col items-center gap-6 md:gap-8">
-                        <!-- Node 1 -->
-                        <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
-                            LEADS
-                        </div>
-                        <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
-
-                        <!-- Node 2 -->
-                        <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
-                            SMART
-                            PROCESSING</div>
-                        <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
-
-                        <!-- Node 3 -->
-                        <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
-                            ORGANIZED
-                            DATA</div>
-                        <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
-
-                        <!-- Node 4 -->
-                        <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
-                            AUTOMATED
-                            FOLLOW-UP
-                        </div>
-                        <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
-
-                        <!-- Node 5 -->
-                        <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
-                            BOOKINGS /
-                            ACTIONS
-                        </div>
-                    </div>
-
-                    <p class="text-sm opacity-60 mt-12 text-center leading-relaxed w-full">
-                        Leads come in.<br>
-                        The system processes and organizes them.<br>
-                        Follow-ups happen automatically.<br>
-                        Actions are triggered without manual work.
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+                <div class="max-w-md">
+                    <p class="text-base md:text-lg opacity-70 leading-relaxed mb-8 max-w-[90%]">
+                        We build structured digital systems powered by automation and AI.
                     </p>
-                </div>
-            </div>
-
-            <!-- SECTION 1.5: SYSTEM MONITORING -->
-            <div class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40 system-card bg-secondary">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <!-- Text Column -->
-                    <div>
-                        <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                            SYSTEM MONITORING
-                        </div>
-                        <h3
-                            class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight text-gradient glow-text">
-                            OPERATIONAL VISIBILITY LAYER
-                        </h3>
-                        <p class="text-sm md:text-base opacity-70 leading-relaxed max-w-md">
-                            All automation systems include structured event logging, performance tracking, and
-                            operational
-                            health monitoring.<br><br>
-                            This ensures reliability, transparency, and scalable system oversight.
-                        </p>
-                    </div>
-
-                    <!-- Bullets Column -->
-                    <div class="md:pl-12">
-                        <ul class="space-y-4">
-                            <li class="flex items-center space-x-3 opacity-60">
-                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-                                <span class="text-sm md:text-base">Event-based logging structure</span>
-                            </li>
-                            <li class="flex items-center space-x-3 opacity-60">
-                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-                                <span class="text-sm md:text-base">Performance tracking (7/30-day activity)</span>
-                            </li>
-                            <li class="flex items-center space-x-3 opacity-60">
-                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-                                <span class="text-sm md:text-base">Error visibility & system health status</span>
-                            </li>
-                            <li class="flex items-center space-x-3 opacity-60">
-                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-                                <span class="text-sm md:text-base">Multi-client monitoring capability</span>
-                            </li>
-                        </ul>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button
+                            class="tool-hub-btn-3d group relative px-8 py-3 bg-[#0a0a0a] rounded overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5"
+                            onclick="window.location.href='tools.html'">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-[#1a3a8a] to-[#2D5BFF] opacity-30 group-hover:opacity-40 transition-opacity duration-300">
+                            </div>
+                            <span class="relative z-10 font-bold tracking-wider text-sm">TOOL HUB</span>
+                        </button>
+                        <button
+                            class="px-8 py-3 border border-white/20 hover:bg-white/5 rounded transition-colors duration-300 glow-box-hover"
+                            onclick="window.location.href='contact.html'">
+                            <span class="font-bold tracking-wider text-sm">START PROJECT</span>
+                        </button>
                     </div>
                 </div>
+                <div class="flex flex-col gap-4 text-right hidden md:flex">
+                    <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
+                        href="work.html">FEATURED
+                        WORK →</a>
+                    <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
+                        href="tools.html">EXPLORE
+                        TOOLS →</a>
+                </div>
+            </div>
+        </section>
+        <!-- END: Hero -->
+
+        <!-- BEGIN: System Architecture -->
+        <section class="section-border" data-purpose="system-architecture" id="architecture">
+            <div class="mb-16 md:mb-32">
+                <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
+                    DIGITAL SYSTEM FRAMEWORK
+                </div>
+                <h2 class="heading-condensed text-5xl md:text-7xl mb-8 text-gradient glow-text">SYSTEM ARCHITECTURE</h2>
+                <p class="text-lg opacity-70 max-w-2xl leading-relaxed">
+                    We design modular digital systems composed of automation layers and infrastructure layers.<br>
+                    Each system operates independently or integrates into a larger scalable architecture.
+                </p>
             </div>
 
-            <!-- SECTION 2: DIGITAL PRESENCE SYSTEMS™ -->
+            <!-- SECTION 1: AUTOMATION SYSTEMS™ -->
             <div class="mb-20 md:mb-40">
                 <div
                     class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
-                    INFRASTRUCTURE LAYER
+                    AUTOMATION LAYER
                 </div>
-                <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">DIGITAL
-                    PRESENCE SYSTEMS™</h3>
+                <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">AUTOMATION
+                    SYSTEMS™</h3>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
                     <!-- Left Column: Products -->
                     <div class="lg:col-span-7">
-                        <!-- PRODUCT 4: Foundation Website™ -->
+                        <!-- PRODUCT 1: AI Lead Engine™ -->
                         <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                             <div class="md:col-span-4">
-                                <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
-                                    Foundation
-                                    Website™
+                                <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">AI Lead
+                                    Engine™
                                 </h4>
                                 <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                    Structured responsive digital presence.
+                                    AI-powered lead capture, classification, and follow-up automation.
                                 </p>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
+                                </div>
                                 <ul class="space-y-2 text-sm opacity-80">
-                                    <li>• 1–5 page system build</li>
-                                    <li>• Clean architecture</li>
-                                    <li>• Basic SEO</li>
-                                    <li>• Analytics integration</li>
-                                    <li>• Performance optimization</li>
+                                    <li>• Multi-source lead intake (forms, Meta)</li>
+                                    <li>• AI classification (intent, priority, fit score)</li>
+                                    <li>• CRM synchronization (Google Sheets)</li>
+                                    <li>• Automated follow-up logic</li>
+                                    <li>• Reporting layer</li>
                                 </ul>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
                                 </div>
                                 <p class="text-sm opacity-70 leading-relaxed">
-                                    Establishes structured digital presence for growing brands.
+                                    Centralizes fragmented lead flows into a structured AI-driven intake system.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- PRODUCT 5: Conversion Website System™ -->
+                        <!-- PRODUCT 2: Smart Operations System™ -->
                         <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                             <div class="md:col-span-4">
-                                <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
-                                    Conversion
-                                    Website
+                                <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Smart
+                                    Operations
                                     System™</h4>
                                 <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                    Conversion-focused infrastructure build.
+                                    Operational task routing and automation orchestration layer.
                                 </p>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
+                                </div>
                                 <ul class="space-y-2 text-sm opacity-80">
-                                    <li>• Strategic conversion architecture</li>
-                                    <li>• Optimized lead capture</li>
-                                    <li>• CMS integration</li>
-                                    <li>• Speed optimizations</li>
-                                    <li>• A/B testing ready</li>
+                                    <li>• Multi-channel task ingestion</li>
+                                    <li>• AI categorization & routing</li>
+                                    <li>• Automated task creation</li>
+                                    <li>• Weekly performance digest</li>
+                                    <li>• Event logging & monitoring</li>
                                 </ul>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
                                 </div>
                                 <p class="text-sm opacity-70 leading-relaxed">
-                                    Maximizes visitor value through engineered user flows.
+                                    Replaces manual coordination with structured operational automation.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- PRODUCT 6: Digital Infrastructure Build™ -->
+                        <!-- PRODUCT 3: Intelligent Booking & Sales Flow™ -->
                         <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                             <div class="md:col-span-4">
                                 <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
-                                    Digital
-                                    Infrastructure Build™</h4>
+                                    Intelligent
+                                    Booking
+                                    & Sales Flow™</h4>
                                 <p class="text-sm opacity-60 leading-relaxed max-w-xs">
-                                    Full-scale digital infrastructure deployment.
+                                    AI-enhanced intake and booking automation system.
                                 </p>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">CORE FUNCTIONS
+                                </div>
                                 <ul class="space-y-2 text-sm opacity-80">
-                                    <li>• Advanced architecture</li>
-                                    <li>• Lead automation system</li>
-                                    <li>• Booking automation system</li>
-                                    <li>• n8n integration</li>
-                                    <li>• Operational dashboard</li>
+                                    <li>• Pre-qualification intake</li>
+                                    <li>• Google Calendar integration</li>
+                                    <li>• Confirmation & reminder automation</li>
+                                    <li>• Post-call AI summary</li>
+                                    <li>• CRM update</li>
                                 </ul>
                             </div>
                             <div class="md:col-span-4">
-                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM IMPACT
                                 </div>
                                 <p class="text-sm opacity-70 leading-relaxed">
-                                    Deploys a scalable, automation-ready digital ecosystem.
+                                    Transforms booking processes into structured, automated sales workflows.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Infrastructure Flow Diagram -->
+                    <!-- Right Column: System Flow Diagram -->
                     <div class="lg:col-span-5 flex flex-col items-center border border-white/10 rounded-2xl p-8 lg:p-12 bg-secondary"
                         data-diagram-container>
                         <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium">
-                            INFRASTRUCTURE FLOW
+                            SYSTEM FLOW
                         </div>
 
-                        <div class="flex flex-col items-center gap-6 md:gap-8 w-full">
+                        <div class="flex flex-col items-center gap-6 md:gap-8">
                             <!-- Node 1 -->
                             <div
-                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
-                                TRAFFIC SOURCE</div>
+                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
+                                LEADS
+                            </div>
                             <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                             <!-- Node 2 -->
                             <div
-                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
-                                WEBSITE</div>
+                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
+                                SMART
+                                PROCESSING</div>
                             <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                             <!-- Node 3 -->
                             <div
-                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
-                                AUTOMATION</div>
+                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
+                                ORGANIZED
+                                DATA</div>
                             <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                             <!-- Node 4 -->
                             <div
-                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
-                                VISIBILITY
+                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
+                                AUTOMATED
+                                FOLLOW-UP
+                            </div>
+                            <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
+
+                            <!-- Node 5 -->
+                            <div
+                                class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">
+                                BOOKINGS /
+                                ACTIONS
                             </div>
                         </div>
 
                         <p class="text-sm opacity-60 mt-12 text-center leading-relaxed w-full">
-                            Your website captures interest.<br>
-                            Data is structured automatically.<br>
-                            Automations handle responses.<br>
-                            You gain visibility into activity.
+                            Leads come in.<br>
+                            The system processes and organizes them.<br>
+                            Follow-ups happen automatically.<br>
+                            Actions are triggered without manual work.
                         </p>
                     </div>
                 </div>
-                <!-- END: System Architecture -->
 
-                <!-- BEGIN: System Integration -->
-                <section
-                    class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center bg-secondary rounded-2xl mb-12"
-                    data-purpose="system-integration">
-                    <h2 class="heading-condensed text-3xl md:text-5xl mb-6 text-gradient glow-text">SYSTEM
-                        INTEGRATION</h2>
-                    <p class="text-lg opacity-70 max-w-xl leading-relaxed mb-12">
-                        All systems are modular.<br>
-                        They can operate independently or integrate into a unified digital architecture tailored to
-                        your
-                        business.
-                    </p>
-                    <a href="contact.html"
-                        class="inline-block px-8 py-4 border border-white/20 hover:bg-white/5 transition-colors duration-300 rounded font-bold tracking-widest text-sm glow-box-hover">
-                        REQUEST SYSTEM CONSULTATION
-                    </a>
-                </section>
-                <!-- END: System Integration -->
+                <!-- SECTION 1.5: SYSTEM MONITORING -->
+                <div class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40 system-card bg-secondary">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <!-- Text Column -->
+                        <div>
+                            <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
+                                SYSTEM MONITORING
+                            </div>
+                            <h3
+                                class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight text-gradient glow-text">
+                                OPERATIONAL VISIBILITY LAYER
+                            </h3>
+                            <p class="text-sm md:text-base opacity-70 leading-relaxed max-w-md">
+                                All automation systems include structured event logging, performance tracking, and
+                                operational
+                                health monitoring.<br><br>
+                                This ensures reliability, transparency, and scalable system oversight.
+                            </p>
+                        </div>
 
-                <!-- BEGIN: Footer -->
-                <footer
-                    class="border-t border-subtle py-12 flex flex-col md:flex-row justify-between items-center gap-6"
-                    data-purpose="site-footer">
-                    <div class="heading-condensed text-xl">MC DESIGNS</div>
-                    <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
-                        © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
+                        <!-- Bullets Column -->
+                        <div class="md:pl-12">
+                            <ul class="space-y-4">
+                                <li class="flex items-center space-x-3 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                    <span class="text-sm md:text-base">Event-based logging structure</span>
+                                </li>
+                                <li class="flex items-center space-x-3 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                    <span class="text-sm md:text-base">Performance tracking (7/30-day activity)</span>
+                                </li>
+                                <li class="flex items-center space-x-3 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                    <span class="text-sm md:text-base">Error visibility & system health status</span>
+                                </li>
+                                <li class="flex items-center space-x-3 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                    <span class="text-sm md:text-base">Multi-client monitoring capability</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </footer>
-                <!-- END: Footer -->
+                </div>
 
-            </div> <!-- Close site-container -->
+                <!-- SECTION 2: DIGITAL PRESENCE SYSTEMS™ -->
+                <div class="mb-20 md:mb-40">
+                    <div
+                        class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
+                        INFRASTRUCTURE LAYER
+                    </div>
+                    <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">DIGITAL
+                        PRESENCE SYSTEMS™</h3>
 
-            <!-- Three.js Library -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <!-- Left Column: Products -->
+                        <div class="lg:col-span-7">
+                            <!-- PRODUCT 4: Foundation Website™ -->
+                            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
+                                <div class="md:col-span-4">
+                                    <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
+                                        Foundation
+                                        Website™
+                                    </h4>
+                                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                                        Structured responsive digital presence.
+                                    </p>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                    <ul class="space-y-2 text-sm opacity-80">
+                                        <li>• 1–5 page system build</li>
+                                        <li>• Clean architecture</li>
+                                        <li>• Basic SEO</li>
+                                        <li>• Analytics integration</li>
+                                        <li>• Performance optimization</li>
+                                    </ul>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                    </div>
+                                    <p class="text-sm opacity-70 leading-relaxed">
+                                        Establishes structured digital presence for growing brands.
+                                    </p>
+                                </div>
+                            </div>
 
-            <!-- Gradient Animation Script -->
-            <script type="module" src="gradient-animation.js"></script>
+                            <!-- PRODUCT 5: Conversion Website System™ -->
+                            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
+                                <div class="md:col-span-4">
+                                    <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
+                                        Conversion
+                                        Website
+                                        System™</h4>
+                                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                                        Conversion-focused infrastructure build.
+                                    </p>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                    <ul class="space-y-2 text-sm opacity-80">
+                                        <li>• Strategic conversion architecture</li>
+                                        <li>• Optimized lead capture</li>
+                                        <li>• CMS integration</li>
+                                        <li>• Speed optimizations</li>
+                                        <li>• A/B testing ready</li>
+                                    </ul>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                    </div>
+                                    <p class="text-sm opacity-70 leading-relaxed">
+                                        Maximizes visitor value through engineered user flows.
+                                    </p>
+                                </div>
+                            </div>
 
-            <!-- Mobile Menu Script -->
-            <script type="module" src="mobile-menu.js"></script>
+                            <!-- PRODUCT 6: Digital Infrastructure Build™ -->
+                            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
+                                <div class="md:col-span-4">
+                                    <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">
+                                        Digital
+                                        Infrastructure Build™</h4>
+                                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                                        Full-scale digital infrastructure deployment.
+                                    </p>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">INCLUDES</div>
+                                    <ul class="space-y-2 text-sm opacity-80">
+                                        <li>• Advanced architecture</li>
+                                        <li>• Lead automation system</li>
+                                        <li>• Booking automation system</li>
+                                        <li>• n8n integration</li>
+                                        <li>• Operational dashboard</li>
+                                    </ul>
+                                </div>
+                                <div class="md:col-span-4">
+                                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-2">SYSTEM ROLE
+                                    </div>
+                                    <p class="text-sm opacity-70 leading-relaxed">
+                                        Deploys a scalable, automation-ready digital ecosystem.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- Visual Embellishments Script -->
-            <script type="module" src="visual-embellishments.js"></script>
+                        <!-- Right Column: Infrastructure Flow Diagram -->
+                        <div class="lg:col-span-5 flex flex-col items-center border border-white/10 rounded-2xl p-8 lg:p-12 bg-secondary"
+                            data-diagram-container>
+                            <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium">
+                                INFRASTRUCTURE FLOW
+                            </div>
 
-            <!-- Hero Grid Animation Script -->
-            <script type="module" src="assets/hero-animation.js"></script>
+                            <div class="flex flex-col items-center gap-6 md:gap-8 w-full">
+                                <!-- Node 1 -->
+                                <div
+                                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                                    TRAFFIC SOURCE</div>
+                                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
+
+                                <!-- Node 2 -->
+                                <div
+                                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                                    WEBSITE</div>
+                                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
+
+                                <!-- Node 3 -->
+                                <div
+                                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                                    AUTOMATION</div>
+                                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
+
+                                <!-- Node 4 -->
+                                <div
+                                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                                    VISIBILITY
+                                </div>
+                            </div>
+
+                            <p class="text-sm opacity-60 mt-12 text-center leading-relaxed w-full">
+                                Your website captures interest.<br>
+                                Data is structured automatically.<br>
+                                Automations handle responses.<br>
+                                You gain visibility into activity.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- END: System Architecture -->
+
+                    <!-- BEGIN: System Integration -->
+                    <section
+                        class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center bg-secondary rounded-2xl mb-12"
+                        data-purpose="system-integration">
+                        <h2 class="heading-condensed text-3xl md:text-5xl mb-6 text-gradient glow-text">SYSTEM
+                            INTEGRATION</h2>
+                        <p class="text-lg opacity-70 max-w-xl leading-relaxed mb-12">
+                            All systems are modular.<br>
+                            They can operate independently or integrate into a unified digital architecture tailored to
+                            your
+                            business.
+                        </p>
+                        <a href="contact.html"
+                            class="inline-block px-8 py-4 border border-white/20 hover:bg-white/5 transition-colors duration-300 rounded font-bold tracking-widest text-sm glow-box-hover">
+                            REQUEST SYSTEM CONSULTATION
+                        </a>
+                    </section>
+                    <!-- END: System Integration -->
+
+                    <!-- BEGIN: Footer -->
+                    <footer
+                        class="border-t border-subtle py-12 flex flex-col md:flex-row justify-between items-center gap-6"
+                        data-purpose="site-footer">
+                        <div class="heading-condensed text-xl">MC DESIGNS</div>
+                        <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
+                            © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
+                        </div>
+                    </footer>
+                    <!-- END: Footer -->
+
+                </div> <!-- Close site-container -->
+
+                <!-- Three.js Library -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+                <!-- Gradient Animation Script -->
+                <script type="module" src="gradient-animation.js"></script>
+
+                <!-- Mobile Menu Script -->
+                <script type="module" src="mobile-menu.js"></script>
+
+                <!-- Visual Embellishments Script -->
+                <script type="module" src="visual-embellishments.js"></script>
+
 </body>
 
 </html>

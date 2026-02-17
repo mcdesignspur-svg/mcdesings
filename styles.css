@@ -154,23 +154,7 @@
     }
 }
 
-/* Hero Grid Overlay (Replaces global body grid) */
-.hero-grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.6;
-    /* Starting opacity, adjusted by JS */
-    pointer-events: none;
-    z-index: 0;
-    /* Behind content */
-    will-change: transform, opacity;
-}
+
 
 /* Vertical draw for mobile flow */
 @media (max-width: 768px) {
