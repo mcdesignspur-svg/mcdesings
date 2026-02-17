@@ -100,113 +100,83 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-black text-white px-6 md:px-12 lg:px-24 bg-grid-pattern">
+<body class="bg-black text-white bg-grid-pattern">
+    <div class="site-container">
 
-    <!-- BEGIN: Navigation -->
-    <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50 transition-all duration-300"
-        data-purpose="main-navigation">
-        <a href="index.html"
-            class="heading-condensed text-2xl md:text-4xl tracking-tighter hover:opacity-80 transition-opacity z-50 relative">MC
-            DESIGNS</a>
+        <!-- BEGIN: Navigation -->
+        <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50 transition-all duration-300 w-full"
+            data-purpose="main-navigation">
+            <a href="index.html"
+                class="heading-condensed text-2xl md:text-4xl tracking-tighter hover:opacity-80 transition-opacity z-50 relative">MC
+                DESIGNS</a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest uppercase items-center">
-            <a class="text-accent underline underline-offset-4" href="work.html">Work</a>
-            <a class="hover:opacity-60 transition-opacity" href="services.html">Services</a>
-            <a class="hover:opacity-60 transition-opacity" href="contact.html">Contact</a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest uppercase items-center">
+                <a class="text-accent underline underline-offset-4" href="work.html">Work</a>
+                <a class="hover:opacity-60 transition-opacity" href="services.html">Services</a>
+                <a class="hover:opacity-60 transition-opacity" href="contact.html">Contact</a>
+            </div>
+            <a class="hidden md:flex bg-accent-gradient font-black px-8 py-3 rounded-lg hover:opacity-90 transition-opacity items-center justify-center text-sm"
+                href="tools.html" data-gradient-button style="color: #FFFFFF;">TOOL HUB</a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden z-50 relative p-2 text-white focus:outline-none">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center space-y-8">
+            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+                href="index.html">Home</a>
+            <a class="text-2xl font-bold tracking-widest uppercase text-accent underline underline-offset-4"
+                href="work.html">Work</a>
+            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+                href="services.html">Services</a>
+            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+                href="contact.html">Contact</a>
+            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
+                href="tools.html">Tool Hub</a>
         </div>
-        <a class="hidden md:flex bg-accent-gradient font-black px-8 py-3 rounded-lg hover:opacity-90 transition-opacity items-center justify-center text-sm"
-            href="tools.html" data-gradient-button style="color: #FFFFFF;">TOOL HUB</a>
+        <!-- END: Navigation -->
 
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden z-50 relative p-2 text-white focus:outline-none">
-            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center space-y-8">
-        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-            href="index.html">Home</a>
-        <a class="text-2xl font-bold tracking-widest uppercase text-accent underline underline-offset-4"
-            href="work.html">Work</a>
-        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-            href="services.html">Services</a>
-        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-            href="contact.html">Contact</a>
-        <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-            href="tools.html">Tool Hub</a>
-    </div>
-    <!-- END: Navigation -->
-
-    <!-- BEGIN: Featured Work -->
-    <section class="min-h-screen pt-12 md:pt-20" data-purpose="featured-work" id="work">
-        <div class="mb-12">
-            <h1 class="heading-condensed text-6xl md:text-8xl mb-6">WORK</h1>
-            <p class="text-lg opacity-70 max-w-2xl">Selected projects and case studies showcasing digital systems and
-                automation.</p>
-        </div>
-
-        <!-- Hero Project: Client Workflow Orchestrator -->
-        <div class="mb-12 md:mb-16 w-full block">
-            <!-- Generous spacing (approx 48-64px) -> total with padding ~96-128px -->
-            <!-- PROJECT TYPE -->
-            <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                <!-- Muted gray, spacing -->
-                AUTOMATION INFRASTRUCTURE
+        <!-- BEGIN: Featured Work -->
+        <section class="min-h-screen pt-12 md:pt-20" data-purpose="featured-work" id="work">
+            <div class="mb-12">
+                <h1 class="heading-condensed text-6xl md:text-8xl mb-6 text-gradient glow-text">WORK</h1>
+                <p class="text-lg opacity-70 max-w-2xl">Selected projects and case studies showcasing digital systems
+                    and
+                    automation.</p>
             </div>
 
-            <!-- Title -->
-            <h3 class="heading-condensed text-5xl md:text-7xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
-                <!-- Strong, condensed -->
-                CLIENT WORKFLOW ORCHESTRATOR
-            </h3>
-
-            <!-- Technical Stack -->
-            <div class="text-sm md:text-base text-white/50 mb-8 font-mono tracking-wide"> <!-- Neutral tone, smaller -->
-                n8n • AI Routing • Telegram Integration
-            </div>
-
-            <!-- Impact Block (32px below stack) -->
-            <div class="mt-8 border-l border-white/20 pl-6">
-                <div class="text-[10px] text-white/40 uppercase tracking-widest mb-3">SYSTEM IMPACT</div>
-                <div class="text-base text-white/70 space-y-1 font-light leading-relaxed"> <!-- Muted, short lines -->
-                    <p>Manual routing eliminated across multiple platforms.</p>
-                    <p>Lead intake centralized into a unified automation layer.</p>
-                    <p>AI-driven task dispatch implemented for faster response cycles.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Secondary Projects List -->
-        <div class="space-y-0 border-t border-white/10">
-            <!-- Project Row 1: Mission Control Platform -->
-            <div class="pt-12 md:pt-16 pb-12 md:pb-16 w-full block border-b border-white/10"> <!-- Spacing + Divider -->
+            <!-- Hero Project: Client Workflow Orchestrator -->
+            <div class="mb-12 md:mb-16 w-full block">
+                <!-- Generous spacing (approx 48-64px) -> total with padding ~96-128px -->
                 <!-- PROJECT TYPE -->
                 <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
                     <!-- Muted gray, spacing -->
-                    WEB SYSTEM
+                    AUTOMATION INFRASTRUCTURE
                 </div>
 
                 <!-- Title -->
                 <h3
                     class="heading-condensed text-5xl md:text-7xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
                     <!-- Strong, condensed -->
-                    MISSION CONTROL PLATFORM
+                    CLIENT WORKFLOW ORCHESTRATOR
                 </h3>
 
                 <!-- Technical Stack -->
                 <div class="text-sm md:text-base text-white/50 mb-8 font-mono tracking-wide">
-                    <!-- Neutral color, smaller -->
-                    Next.js • Structured CMS • Vercel Deployment
+                    <!-- Neutral tone, smaller -->
+                    n8n • AI Routing • Telegram Integration
                 </div>
 
                 <!-- Impact Block (32px below stack) -->
@@ -214,67 +184,108 @@
                     <div class="text-[10px] text-white/40 uppercase tracking-widest mb-3">SYSTEM IMPACT</div>
                     <div class="text-base text-white/70 space-y-1 font-light leading-relaxed">
                         <!-- Muted, short lines -->
-                        <p>Replaced static marketing pages with structured digital infrastructure.</p>
-                        <p>Integrated automation-ready architecture for scalable growth.</p>
-                        <p>Optimized performance and deployment through modular system design.</p>
+                        <p>Manual routing eliminated across multiple platforms.</p>
+                        <p>Lead intake centralized into a unified automation layer.</p>
+                        <p>AI-driven task dispatch implemented for faster response cycles.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project Row 2: Brand Architecture & Identity Framework -->
-            <div class="pt-12 md:pt-16 pb-12 md:pb-16 w-full block border-b border-white/10"> <!-- Spacing + Divider -->
-                <!-- PROJECT TYPE -->
-                <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                    <!-- Muted gray, spacing -->
-                    VISUAL SYSTEM
+            <!-- Secondary Projects List -->
+            <div class="space-y-0 border-t border-white/10">
+                <!-- Project Row 1: Mission Control Platform -->
+                <div class="pt-12 md:pt-16 pb-12 md:pb-16 w-full block border-b border-white/10">
+                    <!-- Spacing + Divider -->
+                    <!-- PROJECT TYPE -->
+                    <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
+                        <!-- Muted gray, spacing -->
+                        WEB SYSTEM
+                    </div>
+
+                    <!-- Title -->
+                    <h3
+                        class="heading-condensed text-5xl md:text-7xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
+                        <!-- Strong, condensed -->
+                        MISSION CONTROL PLATFORM
+                    </h3>
+
+                    <!-- Technical Stack -->
+                    <div class="text-sm md:text-base text-white/50 mb-8 font-mono tracking-wide">
+                        <!-- Neutral color, smaller -->
+                        Next.js • Structured CMS • Vercel Deployment
+                    </div>
+
+                    <!-- Impact Block (32px below stack) -->
+                    <div class="mt-8 border-l border-white/20 pl-6">
+                        <div class="text-[10px] text-white/40 uppercase tracking-widest mb-3">SYSTEM IMPACT</div>
+                        <div class="text-base text-white/70 space-y-1 font-light leading-relaxed">
+                            <!-- Muted, short lines -->
+                            <p>Replaced static marketing pages with structured digital infrastructure.</p>
+                            <p>Integrated automation-ready architecture for scalable growth.</p>
+                            <p>Optimized performance and deployment through modular system design.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Title -->
-                <h3
-                    class="heading-condensed text-5xl md:text-7xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
-                    <!-- Strong, condensed -->
-                    BRAND ARCHITECTURE & IDENTITY FRAMEWORK
-                </h3>
+                <!-- Project Row 2: Brand Architecture & Identity Framework -->
+                <div class="pt-12 md:pt-16 pb-12 md:pb-16 w-full block border-b border-white/10">
+                    <!-- Spacing + Divider -->
+                    <!-- PROJECT TYPE -->
+                    <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
+                        <!-- Muted gray, spacing -->
+                        VISUAL SYSTEM
+                    </div>
 
-                <!-- Technical Stack -->
-                <div class="text-sm md:text-base text-white/50 mb-8 font-mono tracking-wide">
-                    <!-- Neutral color, smaller -->
-                    Design System • Typography Structure • Visual Grid Logic
-                </div>
+                    <!-- Title -->
+                    <h3
+                        class="heading-condensed text-5xl md:text-7xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
+                        <!-- Strong, condensed -->
+                        BRAND ARCHITECTURE & IDENTITY FRAMEWORK
+                    </h3>
 
-                <!-- Impact Block (32px below stack) -->
-                <div class="mt-8 border-l border-white/20 pl-6">
-                    <div class="text-[10px] text-white/40 uppercase tracking-widest mb-3">SYSTEM IMPACT</div>
-                    <div class="text-base text-white/70 space-y-1 font-light leading-relaxed">
-                        <!-- Muted, short lines -->
-                        <p>Established a structured visual identity aligned with system architecture.</p>
-                        <p>Created scalable brand components across digital touchpoints.</p>
-                        <p>Unified interface, automation, and identity under one coherent framework.</p>
+                    <!-- Technical Stack -->
+                    <div class="text-sm md:text-base text-white/50 mb-8 font-mono tracking-wide">
+                        <!-- Neutral color, smaller -->
+                        Design System • Typography Structure • Visual Grid Logic
+                    </div>
+
+                    <!-- Impact Block (32px below stack) -->
+                    <div class="mt-8 border-l border-white/20 pl-6">
+                        <div class="text-[10px] text-white/40 uppercase tracking-widest mb-3">SYSTEM IMPACT</div>
+                        <div class="text-base text-white/70 space-y-1 font-light leading-relaxed">
+                            <!-- Muted, short lines -->
+                            <p>Established a structured visual identity aligned with system architecture.</p>
+                            <p>Created scalable brand components across digital touchpoints.</p>
+                            <p>Unified interface, automation, and identity under one coherent framework.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- END: Featured Work -->
+        </section>
+        <!-- END: Featured Work -->
 
-    <!-- BEGIN: Footer -->
-    <footer class="border-t border-subtle py-12 flex flex-col md:flex-row justify-between items-center gap-6 mt-20"
-        data-purpose="site-footer">
-        <div class="heading-condensed text-xl">MC DESIGNS</div>
-        <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
-            © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
-        </div>
-    </footer>
-    <!-- END: Footer -->
+        <!-- BEGIN: Footer -->
+        <footer class="border-t border-subtle py-12 flex flex-col md:flex-row justify-between items-center gap-6 mt-20"
+            data-purpose="site-footer">
+            <div class="heading-condensed text-xl">MC DESIGNS</div>
+            <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
+                © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
+            </div>
+        </footer>
+        <!-- END: Footer -->
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- Three.js Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Gradient Animation Script -->
-    <script type="module" src="gradient-animation.js"></script>
+        <!-- Gradient Animation Script -->
+        <script type="module" src="gradient-animation.js"></script>
 
-    <!-- Mobile Menu Script -->
-    <script type="module" src="mobile-menu.js"></script>
+        <!-- Mobile Menu Script -->
+        <script type="module" src="mobile-menu.js"></script>
+
+        <!-- Visual Embellishments Script -->
+        <script type="module" src="visual-embellishments.js"></script>
+    </div> <!-- Close site-container -->
 </body>
 
 </html>

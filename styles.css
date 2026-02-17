@@ -12,12 +12,67 @@
 }
 
 /* Background Utilities */
-.bg-primary { background-color: var(--bg-primary); }
-.bg-secondary { background-color: var(--bg-secondary); }
-.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-primary {
+    background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--bg-tertiary);
+}
 
 .section-bg-alt:nth-child(even) {
     background-color: var(--bg-secondary);
+}
+
+/* Premium Layout Container */
+.site-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+    .site-container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-container {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+}
+
+/* Typography Enhancements */
+.text-gradient {
+    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    /* Often needed for gradient text to render correctly */
+}
+
+.glow-text {
+    text-shadow: 0 0 28px rgba(45, 91, 255, 0.14),
+        0 0 24px rgba(108, 92, 231, 0.10);
+}
+
+.glow-box-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glow-box-hover:hover {
+    box-shadow: 0 0 26px rgba(45, 91, 255, 0.16);
+    transform: translateY(-1px);
 }
 
 /* System Card */
@@ -25,7 +80,8 @@
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-light);
     border-radius: 16px;
-    padding: 24px 20px; /* Mobile padding */
+    padding: 24px 20px;
+    /* Mobile padding */
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     margin-bottom: 2rem;
@@ -33,7 +89,8 @@
 
 @media (min-width: 768px) {
     .system-card {
-        padding: 36px 32px; /* Desktop padding */
+        padding: 36px 32px;
+        /* Desktop padding */
     }
 }
 
@@ -65,7 +122,8 @@
 
 /* Diagram Animations */
 .reveal-line {
-    opacity: 0; /* Hidden initially */
+    opacity: 0;
+    /* Hidden initially */
     transition: opacity 0.3s ease;
 }
 
@@ -87,8 +145,10 @@
 
 @keyframes drawLine {
     from {
-        clip-path: inset(0 100% 0 0); /* Horizontal draw */
+        clip-path: inset(0 100% 0 0);
+        /* Horizontal draw */
     }
+
     to {
         clip-path: inset(0 0 0 0);
     }
@@ -98,8 +158,10 @@
 @media (max-width: 768px) {
     @keyframes drawLine {
         from {
-            clip-path: inset(0 0 100% 0); /* Vertical draw */
+            clip-path: inset(0 0 100% 0);
+            /* Vertical draw */
         }
+
         to {
             clip-path: inset(0 0 0 0);
         }
