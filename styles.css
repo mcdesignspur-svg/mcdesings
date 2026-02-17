@@ -1,0 +1,107 @@
+:root {
+    --bg-primary: #000000;
+    --bg-secondary: #0A0A0F;
+    --bg-tertiary: #0D0F18;
+    --accent-blue: #2D5BFF;
+    --accent-violet: #6C5CE7;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.30);
+    --glow-blue: 0 0 22px rgba(45, 91, 255, 0.15);
+    --glow-violet: 0 0 18px rgba(108, 92, 231, 0.10);
+}
+
+/* Background Utilities */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+
+.section-bg-alt:nth-child(even) {
+    background-color: var(--bg-secondary);
+}
+
+/* System Card */
+.system-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 24px 20px; /* Mobile padding */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .system-card {
+        padding: 36px 32px; /* Desktop padding */
+    }
+}
+
+.system-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover);
+    box-shadow: var(--card-shadow);
+}
+
+/* Remove default borders inside cards since the card itself is the container */
+.system-card .border-b {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Hero Radial Glow */
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(45, 91, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Diagram Animations */
+.reveal-line {
+    opacity: 0; /* Hidden initially */
+    transition: opacity 0.3s ease;
+}
+
+.reveal-line.active {
+    opacity: 1;
+    animation: drawLine 0.8s ease-out forwards;
+}
+
+.reveal-node {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-node.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes drawLine {
+    from {
+        clip-path: inset(0 100% 0 0); /* Horizontal draw */
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Vertical draw for mobile flow */
+@media (max-width: 768px) {
+    @keyframes drawLine {
+        from {
+            clip-path: inset(0 0 100% 0); /* Vertical draw */
+        }
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+}

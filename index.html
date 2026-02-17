@@ -90,12 +90,13 @@
             background-color: #000000;
         }
 
-        /* Remove any blue vignette or glow effects */
         body::before,
         body::after {
             display: none !important;
         }
     </style>
+    <!-- Custom Premium Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-black text-white px-6 md:px-12 lg:px-24 bg-grid-pattern">
@@ -148,15 +149,20 @@
         data-purpose="hero-section" id="hero">
 
         <!-- Descriptor -->
-        <p class="text-xs md:text-sm tracking-[0.25em] font-medium text-white/50 mb-3 md:mb-4 ml-1">DIGITAL SYSTEMS
+        <p class="text-xs md:text-sm tracking-[0.25em] font-medium text-white/50 mb-3 md:mb-4 ml-1 relative z-10">
+            DIGITAL SYSTEMS
             STUDIO</p>
 
         <!-- Main Headline -->
-        <h1 class="heading-condensed text-[13vw] md:text-8xl lg:text-[10rem] leading-[0.9] mb-6 md:mb-8">
-            DESIGN<br />
-            BUILD<br />
-            AUTOMATE<span style="color: #2D5BFF; font-family: 'Inter', sans-serif; font-weight: 700;">.</span>
-        </h1>
+        <div class="relative">
+            <div class="hero-glow"></div>
+            <h1
+                class="heading-condensed text-[13vw] md:text-8xl lg:text-[10rem] leading-[0.9] mb-6 md:mb-8 relative z-10">
+                DESIGN<br />
+                BUILD<br />
+                AUTOMATE<span style="color: #2D5BFF; font-family: 'Inter', sans-serif; font-weight: 700;">.</span>
+            </h1>
+        </div>
 
         <!-- Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
@@ -214,8 +220,7 @@
             <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white">AUTOMATION SYSTEMS™</h3>
 
             <!-- PRODUCT 1: AI Lead Engine™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">AI Lead Engine™
                     </h4>
@@ -242,8 +247,7 @@
             </div>
 
             <!-- PRODUCT 2: Smart Operations System™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Smart Operations
                         System™</h4>
@@ -270,8 +274,7 @@
             </div>
 
             <!-- PRODUCT 3: Intelligent Booking & Sales Flow™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Intelligent Booking
                         & Sales Flow™</h4>
@@ -299,31 +302,35 @@
         </div>
 
         <!-- DIAGRAM 1: SYSTEM FLOW (Vertical) -->
-        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10">
+        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10" data-diagram-container>
             <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium">
                 SYSTEM FLOW
             </div>
 
             <div class="flex flex-col items-center gap-6 md:gap-8">
                 <!-- Node 1 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base">LEADS</div>
-                <div class="h-8 md:h-12 w-px bg-white/20"></div>
+                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">LEADS</div>
+                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                 <!-- Node 2 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base">SMART PROCESSING</div>
-                <div class="h-8 md:h-12 w-px bg-white/20"></div>
+                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">SMART
+                    PROCESSING</div>
+                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                 <!-- Node 3 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base">ORGANIZED DATA</div>
-                <div class="h-8 md:h-12 w-px bg-white/20"></div>
+                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">ORGANIZED
+                    DATA</div>
+                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                 <!-- Node 4 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base">AUTOMATED FOLLOW-UP
+                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">AUTOMATED
+                    FOLLOW-UP
                 </div>
-                <div class="h-8 md:h-12 w-px bg-white/20"></div>
+                <div class="h-8 md:h-12 w-px bg-white/20 reveal-line"></div>
 
                 <!-- Node 5 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base">BOOKINGS / ACTIONS
+                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base reveal-node">BOOKINGS /
+                    ACTIONS
                 </div>
             </div>
 
@@ -336,7 +343,7 @@
         </div>
 
         <!-- SECTION 1.5: SYSTEM MONITORING -->
-        <div class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40">
+        <div class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40 system-card bg-secondary">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Text Column -->
                 <div>
@@ -386,8 +393,7 @@
             <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white">DIGITAL PRESENCE SYSTEMS™</h3>
 
             <!-- PRODUCT 4: Foundation Website™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Foundation Website™
                     </h4>
@@ -414,8 +420,7 @@
             </div>
 
             <!-- PRODUCT 5: Conversion Website System™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Conversion Website
                         System™</h4>
@@ -442,8 +447,7 @@
             </div>
 
             <!-- PRODUCT 6: Digital Infrastructure Build™ -->
-            <div
-                class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 border-b border-white/10 pb-16 mb-16 md:pb-24 md:mb-24">
+            <div class="system-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-8">
                 <div class="md:col-span-4">
                     <h4 class="heading-condensed text-2xl md:text-3xl text-white mb-2 leading-tight">Digital
                         Infrastructure Build™</h4>
@@ -471,35 +475,43 @@
         </div>
 
         <!-- DIAGRAM 2: INFRASTRUCTURE FLOW (Horizontal) -->
-        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10">
+        <div class="py-16 md:py-32 flex flex-col items-center border-t border-white/10" data-diagram-container>
             <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-16 font-medium">
                 INFRASTRUCTURE FLOW
             </div>
 
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-0 w-full max-w-4xl justify-center">
                 <!-- Node 1 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center">WEBSITE
+                <div
+                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                    WEBSITE
                 </div>
 
                 <!-- Line 1 -->
-                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0"></div>
+                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0 reveal-line"></div>
 
                 <!-- Node 2 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center">DATA
+                <div
+                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                    DATA
                     CAPTURE</div>
 
                 <!-- Line 2 -->
-                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0"></div>
+                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0 reveal-line"></div>
 
                 <!-- Node 3 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center">AUTOMATION
+                <div
+                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                    AUTOMATION
                 </div>
 
                 <!-- Line 3 -->
-                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0"></div>
+                <div class="h-8 w-px md:h-px md:w-24 bg-white/20 my-2 md:my-0 reveal-line"></div>
 
                 <!-- Node 4 -->
-                <div class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center">VISIBILITY
+                <div
+                    class="text-white font-bold tracking-widest uppercase text-sm md:text-base text-center reveal-node">
+                    VISIBILITY
                 </div>
             </div>
 
@@ -514,7 +526,8 @@
     <!-- END: System Architecture -->
 
     <!-- BEGIN: System Integration -->
-    <section class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center"
+    <section
+        class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center bg-secondary rounded-2xl mb-12"
         data-purpose="system-integration">
         <h2 class="heading-condensed text-3xl md:text-5xl mb-6">SYSTEM INTEGRATION</h2>
         <p class="text-lg opacity-70 max-w-xl leading-relaxed mb-12">
@@ -544,9 +557,11 @@
     <!-- Gradient Animation Script -->
     <script type="module" src="gradient-animation.js"></script>
 
-</html>
-<!-- Mobile Menu Script -->
-<script type="module" src="mobile-menu.js"></script>
+    <!-- Mobile Menu Script -->
+    <script type="module" src="mobile-menu.js"></script>
+
+    <!-- Visual Embellishments Script -->
+    <script type="module" src="visual-embellishments.js"></script>
 </body>
 
 </html>
