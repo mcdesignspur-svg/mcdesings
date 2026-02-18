@@ -102,290 +102,583 @@
 <body class="bg-black text-white bg-grid-pattern">
     <div class="site-container">
 
-        <!-- BEGIN: Navigation -->
-        <nav class="flex justify-between items-center py-4 border-b border-subtle glass-panel px-6 rounded-2xl mt-4 sticky top-4 z-50 transition-all duration-300 w-full"
-            data-purpose="main-navigation">
-            <div class="heading-condensed text-2xl md:text-4xl tracking-tighter z-50 relative">MC DESIGNS</div>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest uppercase items-center">
-                <a class="hover:opacity-60 transition-opacity" href="work.html">Work</a>
-                <a class="hover:opacity-60 transition-opacity" href="services.html">Services</a>
-                <a class="hover:opacity-60 transition-opacity" href="contact.html">Contact</a>
-            </div>
-            <a class="hidden md:flex bg-accent-gradient font-black px-8 py-3 rounded-lg hover:opacity-90 transition-opacity items-center justify-center text-sm"
-                href="tools.html" data-gradient-button style="color: #FFFFFF;">TOOL HUB</a>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden z-50 relative p-2 text-white focus:outline-none">
-                <!-- Hamburger Icon -->
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <!-- Close Icon -->
-                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </nav>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center space-y-8">
-            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-                href="work.html">Work</a>
-            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-                href="services.html">Services</a>
-            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors"
-                href="contact.html">Contact</a>
-            <a class="text-2xl font-bold tracking-widest uppercase hover:text-accent transition-colors text-accent"
-                href="tools.html">Tool Hub</a>
-        </div>
-        <!-- END: Navigation -->
+        <!-- BEGIN: Header -->
+        <header class="flex justify-center items-center py-8 mt-4 z-50 w-full" data-purpose="main-header">
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs"
+                class="h-10 md:h-12 w-auto z-50 relative mix-blend-difference" />
+        </header>
+        <!-- END: Header -->
 
         <!-- BEGIN: Hero -->
-        <section
-            class="min-h-[50vh] md:min-h-[85vh] max-h-[90vh] flex flex-col justify-center py-0 md:py-12 relative z-10 hero-grid-bg"
+        <section class="min-h-[40vh] md:min-h-[60vh] flex flex-col justify-center py-8 relative z-10 hero-grid-bg"
             data-purpose="hero-section" id="hero">
 
-            <!-- Descriptor -->
-            <p class="text-xs md:text-sm tracking-[0.25em] font-medium text-white/50 mb-3 md:mb-4 ml-1 relative z-10">
-                DIGITAL SYSTEMS
-                STUDIO</p>
+            <!-- Center Content Wrapper -->
+            <div class="flex flex-col items-center justify-center text-center max-w-5xl mx-auto px-4 z-20 relative">
 
-            <!-- Main Headline -->
-            <div class="relative">
-                <div class="hero-glow"></div>
+                <!-- Main Headline -->
                 <h1
-                    class="heading-condensed text-[13vw] md:text-8xl lg:text-[10rem] leading-[0.9] mb-6 md:mb-8 relative z-10">
-                    DESIGN<br />
-                    BUILD<br />
-                    <span class="text-gradient glow-text">AUTOMATE.</span>
+                    class="heading-condensed text-[12vw] md:text-8xl lg:text-9xl leading-[0.9] mb-6 text-white tracking-tight">
+                    Scale with
+                    <span class="animate-gradient-text">AI
+                        Systems</span>
                 </h1>
+
+                <!-- Subtext -->
+                <p
+                    class="text-white/80 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed mb-8 font-medium">
+                    Structured automation, connected infrastructure, and operational visibility — built as one unified
+                    system.
+                </p>
+
+                <!-- Primary CTA Button -->
+                <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
+                    class="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:brightness-110 transition-all duration-300 shadow-lg shadow-blue-500/20">
+                    Start to Scale My Business
+                </button>
+
             </div>
 
-            <!-- Content Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-                <div class="max-w-md">
-                    We build digital systems that attract clients and organize your business. We help your company run
-                    with structure, clarity, and consistent growth.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button
-                            class="tool-hub-btn-3d group relative px-8 py-3 bg-[#0a0a0a] rounded overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5"
-                            onclick="window.location.href='tools.html'">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-r from-[#1a3a8a] to-[#2D5BFF] opacity-30 group-hover:opacity-40 transition-opacity duration-300">
-                            </div>
-                            <span class="relative z-10 font-bold tracking-wider text-sm">TOOL HUB</span>
-                        </button>
-                        <button
-                            class="px-8 py-3 border border-white/20 hover:bg-white/5 rounded transition-colors duration-300 glow-box-hover"
-                            onclick="window.location.href='contact.html'">
-                            <span class="font-bold tracking-wider text-sm">START PROJECT</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-4 text-right hidden md:flex">
-                    <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
-                        href="work.html">FEATURED
-                        WORK →</a>
-                    <a class="text-sm font-bold tracking-widest hover:text-[#2D5BFF] transition-colors"
-                        href="tools.html">EXPLORE
-                        TOOLS →</a>
-                </div>
-            </div>
         </section>
         <!-- END: Hero -->
 
-        <!-- BEGIN: System Architecture -->
-        <section class="section-border" data-purpose="system-architecture" id="architecture">
-            <div class="mb-16 md:mb-32">
-                <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                    DIGITAL SYSTEM FRAMEWORK
-                </div>
-                <h2 class="heading-condensed text-5xl md:text-7xl mb-8 text-gradient glow-text">SYSTEM ARCHITECTURE</h2>
-                <p class="text-lg opacity-70 max-w-2xl leading-relaxed">
-                    We design modular digital systems composed of automation layers and infrastructure layers.<br>
-                    Each system operates independently or integrates into a larger scalable architecture.
-                </p>
-            </div>
+        <!-- BEGIN: Section 2 - Identification -->
+        <section class="section-border py-16 md:py-24 relative" data-purpose="identification" id="identification">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-            <!-- SECTION 1: AUTOMATION SYSTEMS™ -->
-            <div class="mb-20 md:mb-40">
-                <div
-                    class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
-                    AUTOMATION LAYER
-                </div>
-                <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">AUTOMATION
-                    SYSTEMS™</h3>
-
-                <div class="w-full">
-                    <!-- Product Grid: 2 Columns -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                        <!-- PRODUCT 1: AI Lead Engine™ -->
-                        <!-- PRODUCT 1: AI Lead Engine™ -->
-                        <div class="system-card flex flex-col items-center text-center p-8 mb-8">
-                            <h4 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">AI Lead
-                                Engine™</h4>
-                            <p class="text-base md:text-lg opacity-70 leading-relaxed max-w-2xl">
-                                We turn your messages and forms into real clients without you having to respond manually
-                                to everything.
-                            </p>
-                        </div>
-
-
-
-                        <!-- PRODUCT 3: Intelligent Booking & Sales Flow™ -->
-                        <!-- PRODUCT 3: Intelligent Booking & Sales Flow™ -->
-                        <div class="system-card flex flex-col items-center text-center p-8 mb-8">
-                            <h4 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">Intelligent
-                                Booking & Sales Flow™</h4>
-                            <p class="text-base md:text-lg opacity-70 leading-relaxed max-w-2xl">
-                                We organize your appointments and filter prospects so you only speak with people ready
-                                to buy.
-                            </p>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <!-- SECTION 1.5: SYSTEM MONITORING -->
-                <div
-                    class="py-16 md:py-32 border-y border-white/10 mb-20 md:mb-40 system-card bg-secondary flex flex-col items-center text-center">
-                    <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-4 font-medium">
-                        SYSTEM MONITORING
-                    </div>
-                    <h3
-                        class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight text-gradient glow-text">
-                        OPERATIONAL VISIBILITY LAYER
-                    </h3>
-                    <p class="text-sm md:text-base opacity-70 leading-relaxed max-w-md">
-                        We give you full visibility into what’s happening inside your business. You see how many
-                        leads come in, how many are handled, and how many convert — without asking for manual
-                        reports.
+                <!-- Left: Headline & Subhead -->
+                <div>
+                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
+                        Scaling Without <span class="text-white/40">Systems</span> Creates <span
+                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Instability</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-md">
+                        If any of these sound familiar, your business is ready for structured automation.
                     </p>
                 </div>
 
-                <!-- SECTION 2: DIGITAL PRESENCE SYSTEMS™ -->
-                <div class="mb-20 md:mb-40">
-                    <div
-                        class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-12 font-medium border-b border-white/10 pb-4">
-                        INFRASTRUCTURE LAYER
+                <!-- Right: Pain Points List -->
+                <div class="flex flex-col gap-6">
+                    <!-- Item 1 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">Leads are coming in — but <span
+                                class="text-white/50">follow-ups aren’t consistent</span></p>
                     </div>
-                    <h3 class="heading-condensed text-4xl md:text-5xl mb-20 text-white text-gradient glow-text">DIGITAL
-                        PRESENCE SYSTEMS™</h3>
 
-                    <div class="w-full">
-                        <!-- Product Grid: 3 Columns -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                            <!-- PRODUCT 4: Foundation Website™ -->
-                            <!-- PRODUCT 4: Foundation Website™ -->
-                            <div class="system-card flex flex-col items-center text-center p-8 mb-8">
-                                <h4 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">
-                                    Foundation Website™</h4>
-                                <p class="text-base md:text-lg opacity-70 leading-relaxed max-w-2xl">
-                                    We build a professional website that makes your business look serious, trustworthy,
-                                    and ready to compete.
-                                </p>
+                    <!-- Item 2 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">Your team is overwhelmed with <span
+                                class="text-white/50">repetitive tasks</span></p>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">Important processes depend on <span
+                                class="text-white/50">memory instead of structure</span></p>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">Growth is increasing <span
+                                class="text-white/50">complexity instead of clarity</span></p>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">You don’t have <span
+                                class="text-white/50">real-time operational visibility</span></p>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="flex gap-4 items-start group">
+                        <div
+                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-full h-full">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <p class="text-white/90 text-lg leading-snug">You’re hiring to <span class="text-white/50">fix
+                                inefficiencies</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Section 2 - Identification -->
+
+        <!-- BEGIN: System Architecture -->
+        <section class="section-border" data-purpose="system-architecture" id="architecture">
+            <div class="mb-10 md:mb-16">
+                <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-3 font-medium">
+                    DIGITAL SYSTEM FRAMEWORK
+                </div>
+                <h2 class="heading-condensed text-4xl md:text-6xl mb-5 text-white leading-tight">
+                    We design business systems across <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">three core
+                        layers</span>
+                </h2>
+                <p class="text-lg text-white/80 max-w-3xl leading-snug">
+                    Automation drives growth. Infrastructure supports scale. Visibility ensures control.
+                </p>
+            </div>
+
+            <!-- Main Content Grid (2 Columns on Desktop) -->
+            <div class="relative grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-8 items-center">
+
+                <!-- Vertical Divider (Desktop Only) -->
+                <!-- Positioned between col-3 and col-4 (approx 60%) -->
+                <div
+                    class="hidden lg:block absolute left-[60%] top-0 bottom-0 w-[1px] bg-white opacity-[0.08] -translate-x-1/2">
+                </div>
+
+                <!-- Left Column: Layer Cards (Compact Text Block) -->
+                <div class="lg:col-span-3 flex flex-col gap-5 md:gap-6 pl-4 md:pl-0">
+                    <!-- Layer 1 -->
+                    <div class="relative">
+                        <!-- Subtle left border line for visual hierarchy -->
+                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
+                            Automation Layer™
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
+                            We design automated flows that capture leads, qualify opportunities, and follow up
+                            instantly. Your business stops depending on manual responses and starts converting
+                            consistently.
+                        </p>
+                    </div>
+
+                    <!-- Layer 2 -->
+                    <div class="relative">
+                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
+                            Infrastructure Layer™
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
+                            We build the digital foundation that supports growth. Your website, systems, and internal
+                            processes work together instead of operating individually.
+                        </p>
+                    </div>
+
+                    <!-- Layer 3 -->
+                    <div class="relative">
+                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
+                            Operational Visibility Layer™
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
+                            We give you clarity over your operations in real time. You always know what’s happening
+                            inside your business — without guessing or chasing reports.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Unified Vertical System Spine -->
+                <div class="lg:col-span-2 flex justify-center w-full relative h-full min-h-[400px]">
+                    <div
+                        class="w-full max-w-[320px] h-full flex items-center justify-center relative rounded-2xl overflow-hidden">
+
+                        <!-- Content Wrapper (Relative for Spine Positioning) -->
+                        <div class="relative flex flex-col items-center gap-24">
+
+                            <!-- Central Spine Line (Positioned relative to this column) -->
+                            <!-- top-[26px] matches exact center of 52px height card (p-4=32 + text=20) -->
+                            <div
+                                class="absolute left-1/2 top-[26px] bottom-[26px] w-[2px] -translate-x-1/2 overflow-hidden z-0">
+                                <div
+                                    class="w-full h-full bg-gradient-to-b from-blue-600 to-violet-600 animate-spine-grow origin-top">
+                                </div>
                             </div>
 
-                            <!-- PRODUCT 5: Conversion Website System™ -->
-                            <!-- PRODUCT 5: Conversion Website System™ -->
-                            <div class="system-card flex flex-col items-center text-center p-8 mb-8">
-                                <h4 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">
-                                    Conversion Website System™</h4>
-                                <p class="text-base md:text-lg opacity-70 leading-relaxed max-w-2xl">
-                                    We design a website built to generate clients, not just traffic. Your site stops
-                                    being a digital brochure and starts producing real opportunities.
-                                </p>
+                            <!-- Block 1: Automation -->
+                            <div class="relative w-48 md:w-56 p-4 text-center z-10 animate-card-reveal group hover:scale-105 transition-transform duration-300 cursor-default"
+                                style="animation-delay: 0.2s;">
+                                <!-- Gradient Glow Outer -->
+                                <div
+                                    class="absolute -inset-px bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-500 z-0">
+                                </div>
+                                <!-- Card Background -->
+                                <div
+                                    class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
+                                </div>
+                                <!-- Inner Glow -->
+                                <div
+                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
+                                </div>
+                                <!-- Text -->
+                                <span
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Automation
+                                    Layer™</span>
                             </div>
 
-                            <!-- PRODUCT 6: Digital Infrastructure Build™ -->
-                            <!-- PRODUCT 6: Digital Infrastructure Build™ -->
-                            <div class="system-card flex flex-col items-center text-center p-8 mb-8">
-                                <h4 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">Digital
-                                    Infrastructure Build™</h4>
-                                <p class="text-base md:text-lg opacity-70 leading-relaxed max-w-2xl">
-                                    We build your entire digital system so it captures, organizes, and helps close
-                                    clients automatically. Less improvisation, more structure and growth.
-                                </p>
+                            <!-- Block 2: Infrastructure -->
+                            <div class="relative w-48 md:w-56 p-4 text-center z-10 animate-card-reveal group hover:scale-105 transition-transform duration-300 cursor-default"
+                                style="animation-delay: 0.6s;">
+                                <div
+                                    class="absolute -inset-px bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-500 z-0">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
+                                </div>
+                                <div
+                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
+                                </div>
+                                <span
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Infrastructure
+                                    Layer™</span>
                             </div>
+
+                            <!-- Block 3: Operational Visibility -->
+                            <div class="relative w-48 md:w-56 p-4 text-center z-10 animate-card-reveal group hover:scale-105 transition-transform duration-300 cursor-default"
+                                style="animation-delay: 1.0s;">
+                                <div
+                                    class="absolute -inset-px bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-500 z-0">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
+                                </div>
+                                <div
+                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
+                                </div>
+                                <span
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Visibility
+                                    Layer™</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: System Architecture -->
+
+            <!-- BEGIN: Section 4 - Scale Without Expanding -->
+            <section class="section-border py-16 md:py-24 relative" data-purpose="scale-without-expanding" id="scale">
+                <div class="text-center mb-16">
+                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
+                        Scale Without <span
+                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Expanding
+                            Your Team</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
+                        Increase capacity, improve response times, and convert more opportunities — without increasing
+                        payroll pressure.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Card 1 -->
+                    <div
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        <div
+                            class="mb-6 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Automate Repetition</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Eliminate manual follow-ups and admin bottlenecks. Let systems handle the routine work.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        <div
+                            class="mb-6 w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500 group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-violet-400 transition-colors">
+                            Standardize Execution</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Replace memory-based processes with structured workflows. Ensure consistency every time.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        <div
+                            class="mb-6 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Centralize Visibility</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Know exactly what’s happening inside your business at all times. Real-time control.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Section 4 -->
+
+            <!-- BEGIN: Section 5 - How It Works -->
+            <section class="section-border py-16 md:py-24 relative" data-purpose="how-it-works" id="how-it-works">
+                <div class="text-center mb-16">
+                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
+                        How We <span
+                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Deploy
+                            Your System</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
+                        A structured deployment process built for growing businesses and professional firms.
+                    </p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative max-w-6xl mx-auto">
+                    <!-- Connection Line (Desktop) -->
+                    <div
+                        class="hidden md:block absolute top-[24px] left-0 right-0 h-[2px] bg-gradient-to-r from-blue-600 to-violet-600 opacity-30">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-12 h-12 rounded-full bg-black border border-blue-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform z-20">
+                                1</div>
+                            <h3 class="text-lg font-bold text-white mb-2">Diagnose</h3>
+                            <p class="text-sm text-white/60 px-4">Identify operational gaps and bottlenecks in your
+                                current workflow.</p>
                         </div>
 
+                        <!-- Step 2 -->
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-12 h-12 rounded-full bg-black border border-blue-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform z-20">
+                                2</div>
+                            <h3 class="text-lg font-bold text-white mb-2">Design</h3>
+                            <p class="text-sm text-white/60 px-4">Architect the custom system layers needed for your
+                                specific goals.</p>
+                        </div>
 
-                    </div>
-                    <!-- END: System Architecture -->
+                        <!-- Step 3 -->
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-12 h-12 rounded-full bg-black border border-violet-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(139,92,246,0.2)] group-hover:scale-110 transition-transform z-20">
+                                3</div>
+                            <h3 class="text-lg font-bold text-white mb-2">Implement</h3>
+                            <p class="text-sm text-white/60 px-4">Build, integrate, and deploy your new automation
+                                infrastructure.</p>
+                        </div>
 
-                    <!-- BEGIN: Booking Section -->
-                    <!-- BEGIN: Booking Section -->
-                    <div class="w-full flex flex-col items-center mt-24 mb-24" data-purpose="booking-section">
-                        <!-- Separator -->
-                        <div class="w-full h-px bg-white/10 mb-16 md:mb-24"></div>
-
-                        <!-- Header & Subtext (Outside Card) -->
-                        <div class="text-center mb-12">
-                            <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white text-shadow-sm">BOOK YOUR
-                                <span class="text-gradient glow-text">AUTOMATION CALL</span>
-                            </h2>
-                            <p class="text-lg md:text-xl opacity-70 max-w-xl mx-auto leading-relaxed">
-                                Stop losing opportunities. Start scaling with structure.
+                        <!-- Step 4 -->
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-12 h-12 rounded-full bg-black border border-violet-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(139,92,246,0.2)] group-hover:scale-110 transition-transform z-20">
+                                4</div>
+                            <h3 class="text-lg font-bold text-white mb-2">Optimize</h3>
+                            <p class="text-sm text-white/60 px-4">Refine performance and scale the system as you grow.
                             </p>
                         </div>
-
-                        <!-- Cal Embed Card -->
-                        <section
-                            class="w-full max-w-5xl bg-secondary border border-white/10 rounded-2xl overflow-hidden h-[600px] md:h-[750px] relative shadow-2xl">
-                            <!-- Cal inline embed code begins -->
-                            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
-                            <script type="text/javascript">
-                                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                                Cal("init", "30min", { origin: "https://app.cal.com" });
-
-                                Cal.ns["30min"]("inline", {
-                                    elementOrSelector: "#my-cal-inline-30min",
-                                    config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
-                                    calLink: "mcdesignspr/30min",
-                                });
-
-                                Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
-                            </script>
-                            <!-- Cal inline embed code ends -->
-                        </section>
                     </div>
-                    <!-- END: Booking Section -->
-                    <!-- END: Booking Section -->
+                </div>
+            </section>
+            <!-- END: Section 5 -->
 
-                    <!-- BEGIN: Footer -->
-                    <footer
-                        class="border-t border-subtle py-12 flex flex-col md:flex-row justify-between items-center gap-6"
-                        data-purpose="site-footer">
-                        <div class="heading-condensed text-xl">MC DESIGNS</div>
-                        <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
-                            © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
+            <!-- BEGIN: Section 6 - Differentiation -->
+            <section class="section-border py-16 md:py-24 relative" data-purpose="differentiation" id="differentiation">
+                <!-- Subtle Grid Background for this section -->
+                <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <!-- Text Content -->
+                    <div class="pr-0 lg:pr-12">
+                        <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
+                            Not Marketing. <br />
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500">Infrastructure.</span>
+                        </h2>
+                        <p class="text-lg md:text-xl text-white/70 leading-relaxed mb-8">
+                            We don’t run ads. We design the system that converts the demand you already generate.
+                        </p>
+
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-white/90">
+                                <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                We centralize fragmented tools
+                            </li>
+                            <li class="flex items-center gap-3 text-white/90">
+                                <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                We standardize operational workflows
+                            </li>
+                            <li class="flex items-center gap-3 text-white/90">
+                                <div class="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
+                                We connect your lead flow to execution
+                            </li>
+                            <li class="flex items-center gap-3 text-white/90">
+                                <div class="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
+                                We build scalable digital architecture
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Visual: Abstract Layout -->
+                    <div
+                        class="relative h-[400px] w-full bg-black/50 border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center group">
+                        <!-- Abstract blocks simulating structure -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-violet-900/10"></div>
+
+                        <!-- Central Hub -->
+                        <div
+                            class="relative w-32 h-32 border border-white/20 bg-black rounded-lg flex items-center justify-center z-20 shadow-2xl">
+                            <div class="text-white/80 font-bold tracking-widest text-xs uppercase">Core</div>
                         </div>
-                    </footer>
-                    <!-- END: Footer -->
 
-                </div> <!-- Close site-container -->
+                        <!-- Connecting Lines -->
+                        <div class="absolute w-full h-[1px] bg-white/10 top-1/2 left-0 z-10"></div>
+                        <div class="absolute h-full w-[1px] bg-white/10 left-1/2 top-0 z-10"></div>
 
-                <!-- Three.js Library -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+                        <!-- Satellite Nodes -->
+                        <div
+                            class="absolute top-1/4 left-1/4 w-12 h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-blue-500/50 transition-colors">
+                        </div>
+                        <div
+                            class="absolute bottom-1/4 right-1/4 w-12 h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-violet-500/50 transition-colors">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Section 6 -->
 
-                <!-- Gradient Animation Script -->
-                <script type="module" src="gradient-animation.js"></script>
+            <!-- BEGIN: Booking Section -->
+            <!-- BEGIN: Start The Process -->
+            <section class="section-border mb-16" data-purpose="start-process-form" id="start-process">
+                <div class="mb-8">
+                    <h2 class="heading-condensed text-6xl md:text-8xl mb-3">START THE <span
+                            class="text-gradient glow-text">PROCESS</span></h2>
+                    <p class="opacity-60 text-lg max-w-2xl">Provide a few details so we can understand your
+                        business and
+                        prepare accordingly.</p>
+                </div>
 
-                <!-- Mobile Menu Script -->
-                <script type="module" src="mobile-menu.js"></script>
+                <div class="glass-panel p-1 rounded-xl w-full">
+                    <div style="width:100%;height:500px;" data-fillout-id="5Neg9Em29uus"
+                        data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize>
+                    </div>
+                    <script src="https://server.fillout.com/embed/v1/"></script>
+                </div>
+            </section>
+            <!-- END: Start The Process -->
 
-                <!-- Visual Embellishments Script -->
-                <script type="module" src="visual-embellishments.js"></script>
+            <!-- BEGIN: Booking Section -->
+            <div class="w-full flex flex-col items-center mt-16 mb-16" data-purpose="booking-section" id="booking">
+                <!-- Separator -->
+                <div class="w-full h-px bg-white/10 mb-10 md:mb-16"></div>
 
-                <!-- Safe Hero Scroll Script -->
-                <script type="module" src="assets/hero-safe-scroll.js"></script>
+                <!-- Header & Subtext (Outside Card) -->
+                <div class="text-center mb-8">
+                    <h2 class="heading-condensed text-4xl md:text-6xl mb-3 text-white text-shadow-sm">BOOK YOUR
+                        <span class="text-gradient glow-text">AUTOMATION CALL</span>
+                    </h2>
+                    <p class="text-lg md:text-xl opacity-70 max-w-xl mx-auto leading-relaxed">
+                        Stop losing opportunities. Start scaling with structure.
+                    </p>
+                </div>
+
+                <!-- Cal Embed Card -->
+                <section
+                    class="w-full max-w-5xl bg-secondary border border-white/10 rounded-2xl overflow-hidden h-[500px] md:h-[600px] relative shadow-2xl">
+                    <!-- Cal inline embed code begins -->
+                    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+                    <script type="text/javascript">
+                            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                        Cal("init", "30min", { origin: "https://app.cal.com" });
+
+                        Cal.ns["30min"]("inline", {
+                            elementOrSelector: "#my-cal-inline-30min",
+                            config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
+                            calLink: "mcdesignspr/30min",
+                        });
+
+                        Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
+                    </script>
+                    <!-- Cal inline embed code ends -->
+                </section>
+            </div>
+            <!-- END: Booking Section -->
+            <!-- END: Booking Section -->
+
+            <!-- BEGIN: Footer -->
+            <footer class="border-t border-subtle py-8 flex flex-col md:flex-row justify-between items-center gap-6"
+                data-purpose="site-footer">
+                <div class="heading-condensed text-xl">MC DESIGNS</div>
+                <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right">
+                    © 2024 MC DESIGNS. Serving clients in Puerto Rico and remotely. All systems nominal.
+                </div>
+            </footer>
+            <!-- END: Footer -->
+
+    </div> <!-- Close site-container -->
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Gradient Animation Script -->
+    <script type="module" src="gradient-animation.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script type="module" src="mobile-menu.js"></script>
+
+    <!-- Visual Embellishments Script -->
+    <script type="module" src="visual-embellishments.js"></script>
+
+    <!-- Safe Hero Scroll Script -->
+    <script type="module" src="assets/hero-safe-scroll.js"></script>
 </body>
 
 </html>

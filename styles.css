@@ -191,3 +191,94 @@
         will-change: auto;
     }
 }
+
+/* Vertical System Spine Animations */
+.animate-spine-grow {
+    animation: growHeight 2.5s ease-out both;
+}
+
+.animate-card-reveal {
+    animation: fadeUp 0.8s ease-out both;
+}
+
+.animate-node-pulse {
+    animation: fadeInPulse 0.5s ease-out both;
+}
+
+@keyframes growHeight {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInPulse {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-spine-grow {
+        height: 100% !important;
+        animation: none !important;
+    }
+
+    .animate-card-reveal,
+    .animate-node-pulse {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .animate-gradient-text {
+        background-position: 100% 50% !important;
+        animation: none !important;
+    }
+}
+
+/* Hero Gradient Reveal Animation */
+.animate-gradient-text {
+    background-image: linear-gradient(90deg,
+            #FFFFFF 0%,
+            #FFFFFF 45%,
+            #3b82f6 75%,
+            #8b5cf6 100%);
+    background-size: 300% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientReveal 1.2s ease-out 0.2s forwards;
+    /* Added small delay to ensure render before slide */
+}
+
+@keyframes gradientReveal {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
