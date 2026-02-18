@@ -320,24 +320,34 @@
                     </div>
                     <!-- END: System Architecture -->
 
-                    <!-- BEGIN: System Integration -->
+                    <!-- BEGIN: Booking Section -->
                     <section
                         class="py-16 md:py-32 border-t border-subtle flex flex-col items-center text-center bg-secondary rounded-2xl mb-12"
-                        data-purpose="system-integration">
-                        <h2 class="heading-condensed text-3xl md:text-5xl mb-6 text-gradient glow-text">SYSTEM
-                            INTEGRATION</h2>
-                        <p class="text-lg opacity-70 max-w-xl leading-relaxed mb-12">
-                            All systems are modular.<br>
-                            They can operate independently or integrate into a unified digital architecture tailored to
-                            your
-                            business.
+                        data-purpose="booking-section">
+                        <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-gradient glow-text">BOOK A 30 MIN
+                            CALL</h2>
+                        <p class="text-lg md:text-xl opacity-70 max-w-xl leading-relaxed mb-12">
+                            Stop losing opportunities. Start scaling with structure.
                         </p>
-                        <a href="contact.html"
-                            class="inline-block px-8 py-4 border border-white/20 hover:bg-white/5 transition-colors duration-300 rounded font-bold tracking-widest text-sm glow-box-hover">
-                            REQUEST SYSTEM CONSULTATION
-                        </a>
+
+                        <!-- Cal inline embed code begins -->
+                        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+                        <script type="text/javascript">
+                                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                            Cal("init", "30min", { origin: "https://app.cal.com" });
+
+                            Cal.ns["30min"]("inline", {
+                                elementOrSelector: "#my-cal-inline-30min",
+                                config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
+                                calLink: "mcdesignspr/30min",
+                            });
+
+                            Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
+                        </script>
+                        <!-- Cal inline embed code ends -->
+
                     </section>
-                    <!-- END: System Integration -->
+                    <!-- END: Booking Section -->
 
                     <!-- BEGIN: Footer -->
                     <footer
