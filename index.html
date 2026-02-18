@@ -321,32 +321,41 @@
                     <!-- END: System Architecture -->
 
                     <!-- BEGIN: Booking Section -->
-                    <section
-                        class="py-12 md:py-24 border-t border-subtle flex flex-col items-center text-center bg-secondary rounded-2xl mb-12 mt-12"
-                        data-purpose="booking-section">
-                        <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white text-shadow-sm">BOOK YOUR
-                            <span class="text-gradient glow-text">AUTOMATION CALL</span></h2>
-                        <p class="text-lg md:text-xl opacity-70 max-w-xl leading-relaxed mb-12">
-                            Stop losing opportunities. Start scaling with structure.
-                        </p>
+                    <!-- BEGIN: Booking Section -->
+                    <div class="w-full flex flex-col items-center mt-24 mb-24" data-purpose="booking-section">
+                        <!-- Separator -->
+                        <div class="w-full h-px bg-white/10 mb-16 md:mb-24"></div>
 
-                        <!-- Cal inline embed code begins -->
-                        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
-                        <script type="text/javascript">
-                                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                            Cal("init", "30min", { origin: "https://app.cal.com" });
+                        <!-- Header & Subtext (Outside Card) -->
+                        <div class="text-center mb-12">
+                            <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white text-shadow-sm">BOOK YOUR
+                                <span class="text-gradient glow-text">AUTOMATION CALL</span></h2>
+                            <p class="text-lg md:text-xl opacity-70 max-w-xl mx-auto leading-relaxed">
+                                Stop losing opportunities. Start scaling with structure.
+                            </p>
+                        </div>
 
-                            Cal.ns["30min"]("inline", {
-                                elementOrSelector: "#my-cal-inline-30min",
-                                config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
-                                calLink: "mcdesignspr/30min",
-                            });
+                        <!-- Cal Embed Card -->
+                        <section
+                            class="w-full max-w-5xl bg-secondary border border-white/10 rounded-2xl overflow-hidden h-[600px] md:h-[750px] relative shadow-2xl">
+                            <!-- Cal inline embed code begins -->
+                            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+                            <script type="text/javascript">
+                                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                                Cal("init", "30min", { origin: "https://app.cal.com" });
 
-                            Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
-                        </script>
-                        <!-- Cal inline embed code ends -->
+                                Cal.ns["30min"]("inline", {
+                                    elementOrSelector: "#my-cal-inline-30min",
+                                    config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
+                                    calLink: "mcdesignspr/30min",
+                                });
 
-                    </section>
+                                Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
+                            </script>
+                            <!-- Cal inline embed code ends -->
+                        </section>
+                    </div>
+                    <!-- END: Booking Section -->
                     <!-- END: Booking Section -->
 
                     <!-- BEGIN: Footer -->
