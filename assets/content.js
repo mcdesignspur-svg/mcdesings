@@ -64,14 +64,14 @@ export const translations = {
             headline: "Cómo desplegamos tu sistema",
             subtext: "Un proceso estructurado diseñado para negocios en crecimiento y firmas profesionales.",
             steps: [
-                { title: "Diagnóstico de Gaps Operacionales", desc: "Identificamos oportunidades y brechas." }, // Simplified desc for layout if needed, or stick to provided? User didn't provide desc for ES steps in prompt list, only titles.  WAIT. User provided titles only for steps in prompt Section 5. Let's infer or use placeholder if not strictly valid. Use just titles if that's what was asked.  Actually, looking at Section 5 ES: "Steps: 1) ... 2) ...".  The EN section also just lists steps.  However, the current HTML has descriptions. I will assume we should keep descriptions but maybe I don't have the translation for them? I will use generic or leave English for now? No, user said "BILINGUAL REQUIREMENT". I will improvise minimal descriptions based on context or just use the titles if the design allows.  Actually, let's look at the implementation plan again.  "Steps: 1) Diagnóstico...".  I'll add descriptions matching the intent.
+                { title: "Diagnóstico de Gaps Operacionales", desc: "Identificamos oportunidades y brechas." },
                 { title: "Diseño de Arquitectura", desc: "Creamos el plano de tu infraestructura digital." },
                 { title: "Implementación e Integración", desc: "Construimos y conectamos tus sistemas." },
                 { title: "Optimización y Escala", desc: "Mejoramos el rendimiento continuamente." }
             ]
         },
         differentiation: {
-            headline: "No es marketing. Es infraestructura.",
+            headline: "NO ES MARKETING<br>ES INFRAESTRUCTURA",
             subheadline: "No corremos anuncios. Diseñamos el sistema que convierte la demanda que ya generas.",
             points: [
                 "Centralizamos herramientas fragmentadas",
@@ -93,25 +93,25 @@ export const translations = {
         hero: {
             headlinePrefix: "Scale with ",
             headlineHighlight: "AI Systems",
-            subtext: "Discover your bottlenecks, deploy high ROI systems, and convert demand into results with structured digital infrastructure.",
+            subtext: "Identify bottlenecks, deploy high-ROI systems, and turn demand into actual results using digital infrastructure.",
             ctaPrimary: "Start the Process",
-            ctaSecondary: "Book the Call"
+            ctaSecondary: "Book a Call"
         },
         identification: {
-            headline: "Scaling Without Systems Creates Instability",
-            subheadline: "If any of these sound familiar, your business is ready for structured automation.",
+            headline: "Scaling without systems creates instability",
+            subheadline: "If this sounds familiar, your business is ready for structured automation.",
             bullets: [
-                "Leads are coming in — but follow-ups aren’t consistent",
-                "Your team is overwhelmed with repetitive tasks",
-                "Important processes depend on memory instead of structure",
-                "Growth is increasing complexity instead of clarity",
-                "You don’t have real-time operational visibility",
-                "You’re hiring to fix inefficiencies"
+                "Leads come in, but follow-up is inconsistent",
+                "Your team is bogged down by repetitive tasks",
+                "Important processes rely on memory, not structure",
+                "Growth is increasing complexity, not clarity",
+                "You lack real-time operational visibility",
+                "You are hiring headcount to fix inefficiencies"
             ]
         },
         layers: {
-            title: "We design business systems across three core layers",
-            subtext: "Each layer connects so your operation runs with clarity — not as separate services.",
+            title: "We design business systems in three layers",
+            subtext: "Every layer connects so your operation runs with absolute clarity — not as isolated services.",
             cards: [
                 {
                     title: "Automation Layer",
@@ -119,11 +119,11 @@ export const translations = {
                 },
                 {
                     title: "Infrastructure Layer",
-                    text: "Your website system and internal processes work together instead of operating individually."
+                    text: "Your website and internal processes work together as a single unified system, instead of operating individually."
                 },
                 {
                     title: "Operational Visibility Layer",
-                    text: "Monitor what’s happening and make decisions with data — not guesses."
+                    text: "Monitor the status of your processes and make decisions based on data, not assumptions."
                 }
             ],
             diagram: {
@@ -133,25 +133,25 @@ export const translations = {
             }
         },
         scale: {
-            headline: "Scale Without Expanding Your Team",
-            subheadline: "Increase capacity, improve response times, and convert more opportunities — without increasing payroll pressure.",
+            headline: "Scale without expanding your payroll",
+            subheadline: "Increase capacity, improve response times, and convert more opportunities — without the pressure of added headcount.",
             cards: [
                 {
                     title: "Automate Repetition",
-                    text: "Eliminate manual follow-ups and admin bottlenecks."
+                    text: "Eliminate manual follow-ups and administrative bottlenecks."
                 },
                 {
                     title: "Standardize Execution",
-                    text: "Replace memory-based processes with structured workflows."
+                    text: "Replace memory-based processes with structured, reliable workflows."
                 },
                 {
                     title: "Centralize Visibility",
-                    text: "Know exactly what’s happening inside your business at all times."
+                    text: "Know exactly what is happening inside your business, at all times."
                 }
             ]
         },
         howItWorks: {
-            headline: "How We Deploy Your System",
+            headline: "How we deploy your system",
             subtext: "A structured deployment process built for growing businesses and professional firms.",
             steps: [
                 { title: "Diagnose Operational Gaps", desc: "Identify operational gaps and bottlenecks in your current workflow." },
@@ -161,7 +161,7 @@ export const translations = {
             ]
         },
         differentiation: {
-            headline: "Not Marketing. Infrastructure.",
+            headline: "NOT MARKETING<br>INFRASTRUCTURE",
             subheadline: "We don’t run ads. We design the system that converts the demand you already generate.",
             points: [
                 "We centralize fragmented tools",
@@ -171,11 +171,11 @@ export const translations = {
             ]
         },
         startProcess: {
-            headline: "Start with a fast diagnosis",
-            subtext: "We identify opportunities, define the system, and give you a clear deployment plan."
+            headline: "Start with a quick diagnosis",
+            subtext: "We identify opportunities, define the system architecture, and give you a clear deployment plan."
         },
         bookCall: {
-            headline: "Book the Call",
+            headline: "Book your call",
             subtext: "Stop losing opportunities. Start scaling with structure."
         }
     }
