@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MC DESIGNS — Próximamente</title>
+    <meta name="description"
+        content="MC Designs Digital Systems Studio — Lanzamiento próximo. Agenda una llamada estratégica." />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0B0B0B;
+            --fg: #FFFFFF;
+            --muted: rgba(255, 255, 255, 0.45);
+            --border: rgba(255, 255, 255, 0.10);
+            --glass: rgba(255, 255, 255, 0.03);
+            --blue: #2563EB;
+            --violet: #7C3AED;
+            --glow: rgba(37, 99, 235, 0.18);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* Subtle grid overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(128, 128, 128, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(128, 128, 128, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Layout Shell ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 1.25rem;
+        }
+
+        .inner {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* ── Header bar ── */
+        .site-header {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0 1.5rem;
+        }
+
+        .site-logo {
+            height: 36px;
+            width: auto;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            color: var(--fg);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--blue);
+            display: inline-block;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            padding: 3.5rem 0 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .micro-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .hero-h1 {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--fg);
+        }
+
+        /* Gradient on part of the headline */
+        .grad {
+            background: linear-gradient(90deg, var(--blue), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtext {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 540px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 2.2rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--blue), var(--violet));
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 24px var(--glow);
+            transition: filter 0.2s, transform 0.15s;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            filter: brightness(1.12);
+            transform: translateY(-1px);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0);
+        }
+
+        .lang-link {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .lang-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ── Terminal Module ── */
+        .terminal-wrap {
+            width: 100%;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .terminal-box {
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            overflow: hidden;
+        }
+
+        /* Subtle glow halo */
+        .terminal-box::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 21px;
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.08);
+            pointer-events: none;
+        }
+
+        .terminal-wrap {
+            position: relative;
+        }
+
+        .term-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .term-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .term-dot.red {
+            background: rgba(255, 95, 87, 0.55);
+        }
+
+        .term-dot.yellow {
+            background: rgba(255, 189, 46, 0.55);
+        }
+
+        .term-dot.green {
+            background: rgba(40, 200, 64, 0.55);
+        }
+
+        .term-title {
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.06em;
+        }
+
+        .term-body {
+            padding: 1.1rem 1.25rem 1.25rem;
+            height: 220px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .term-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 0.28rem;
+            flex: 1;
+        }
+
+        .term-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.75);
+            white-space: pre;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .term-line.fading {
+            opacity: 0;
+        }
+
+        .term-line .prompt {
+            color: var(--blue);
+        }
+
+        .term-cursor {
+            display: inline-block;
+            width: 7px;
+            height: 0.85em;
+            background: rgba(255, 255, 255, 0.7);
+            vertical-align: text-bottom;
+            animation: blink 700ms step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Reduced motion: static display, no typewriter */
+        @media (prefers-reduced-motion: reduce) {
+            .term-cursor {
+                animation: none;
+                opacity: 0.6;
+            }
+        }
+
+        /* ── Divider ── */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 1rem 0 2.5rem;
+        }
+
+        /* ── Booking Section ── */
+        .booking-section {
+            width: 100%;
+            padding-bottom: 4rem;
+        }
+
+        .booking-label {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-label h2 {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.4rem;
+        }
+
+        .booking-label p {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .booking-shell {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+            height: 580px;
+        }
+
+        #my-cal-inline-30min-uc {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            width: 100%;
+            max-width: 900px;
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-brand {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        /* ── Mobile adjustments ── */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2.5rem 0 1.5rem;
+            }
+
+            .term-body {
+                height: 200px;
+            }
+
+            .term-line {
+                font-size: 0.65rem;
+            }
+
+            .booking-shell {
+                height: 520px;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-copy {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- ── Header ── -->
+        <header class="site-header">
+            <img src="../assets/MC-Designs-Logo.svg" alt="MC Designs" class="site-logo" />
+            <button class="lang-btn" id="lang-toggle" aria-label="Toggle language">
+                <span class="lang-dot"></span>
+                <span id="lang-text">ES</span>
+            </button>
+        </header>
+
+        <div class="inner">
+
+            <!-- ── Hero ── -->
+            <section class="hero" aria-label="Under construction hero">
+                <p class="micro-label">MC DESIGNS • Digital Systems Studio</p>
+
+                <h1 class="hero-h1" id="hero-h1">
+                    Estamos <span class="grad">construyendo</span> el sistema.
+                </h1>
+
+                <p class="hero-subtext" id="hero-subtext">
+                    Lanzamiento pronto. Mientras tanto, agenda una llamada estratégica.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="cta-btn" id="cta-btn" href="#booking-section">
+                        Agendar Llamada
+                    </a>
+                    <button class="lang-link" id="lang-link">View in English</button>
+                </div>
+            </section>
+
+            <!-- ── Terminal Module ── -->
+            <div class="terminal-wrap" aria-label="System build log">
+                <div class="terminal-box">
+                    <div class="term-header">
+                        <span class="term-dot red" aria-hidden="true"></span>
+                        <span class="term-dot yellow" aria-hidden="true"></span>
+                        <span class="term-dot green" aria-hidden="true"></span>
+                        <span class="term-title">mc_designs.core — build.log</span>
+                    </div>
+                    <div class="term-body">
+                        <div class="term-lines" id="term-lines" aria-live="polite" aria-atomic="false"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Booking Section ── -->
+            <div class="section-divider"></div>
+
+            <section class="booking-section" id="booking-section" aria-label="Book a strategy call">
+                <div class="booking-label">
+                    <h2 id="booking-h2">Agenda tu llamada</h2>
+                    <p id="booking-subtext">Selecciona un horario que funcione para ti.</p>
+                </div>
+
+                <div class="booking-shell">
+                    <div id="my-cal-inline-30min-uc"></div>
+                    <script type="text/javascript">
+                        (function (C, A, L) {
+                            let p = function (a, ar) { a.q.push(ar); };
+                            let d = C.document;
+                            C.Cal = C.Cal || function () {
+                                let cal = C.Cal; let ar = arguments;
+                                if (!cal.loaded) {
+                                    cal.ns = {}; cal.q = cal.q || [];
+                                    d.head.appendChild(d.createElement("script")).src = A;
+                                    cal.loaded = true;
+                                }
+                                if (ar[0] === L) {
+                                    const api = function () { p(api, arguments); };
+                                    const namespace = ar[1];
+                                    api.q = api.q || [];
+                                    if (typeof namespace === "string") {
+                                        cal.ns[namespace] = cal.ns[namespace] || api;
+                                        p(cal.ns[namespace], ar);
+                                        p(cal, ["initNamespace", namespace]);
+                                    } else p(cal, ar);
+                                    return;
+                                }
+                                p(cal, ar);
+                            };
+                        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+                        Cal("init", "30min-uc", { origin: "https://app.cal.com" });
+
+                        Cal.ns["30min-uc"]("inline", {
+                            elementOrSelector: "#my-cal-inline-30min-uc",
+                            config: {
+                                "layout": "month_view",
+                                "useSlotsViewOnSmallScreen": "true",
+                                "theme": "dark"
+                            },
+                            calLink: "mcdesignspr/30min",
+                        });
+
+                        Cal.ns["30min-uc"]("ui", {
+                            "theme": "dark",
+                            "hideEventTypeDetails": false,
+                            "layout": "month_view"
+                        });
+                    </script>
+                </div>
+            </section>
+
+        </div><!-- /inner -->
+
+        <!-- ── Footer ── -->
+        <footer class="site-footer">
+            <div class="footer-brand">MC DESIGNS</div>
+            <div class="footer-copy">© 2024 MC Designs. All systems nominal.</div>
+        </footer>
+
+    </div><!-- /page -->
+
+    <!-- ── ES/EN Toggle Script ── -->
+    <script>
+        (function () {
+            const copy = {
+                es: {
+                    h1: 'Estamos <span class="grad">construyendo</span> el sistema.',
+                    subtext: 'Lanzamiento pronto. Mientras tanto, agenda una llamada estratégica.',
+                    cta: 'Agendar Llamada',
+                    langLink: 'View in English',
+                    langLabel: 'ES',
+                    bookingH2: 'Agenda tu llamada',
+                    bookingP: 'Selecciona un horario que funcione para ti.',
+                },
+                en: {
+                    h1: "We're <span class=\"grad\">building</span> the system.",
+                    subtext: 'Launching soon. In the meantime, book a strategy call.',
+                    cta: 'Book a Call',
+                    langLink: 'Ver en Español',
+                    langLabel: 'EN',
+                    bookingH2: 'Book your call',
+                    bookingP: 'Pick a time that works for you.',
+                },
+            };
+
+            let lang = 'es';
+
+            function applyLang(l) {
+                const c = copy[l];
+                document.getElementById('hero-h1').innerHTML = c.h1;
+                document.getElementById('hero-subtext').textContent = c.subtext;
+                document.getElementById('cta-btn').textContent = c.cta;
+                document.getElementById('lang-link').textContent = c.langLink;
+                document.getElementById('lang-text').textContent = c.langLabel;
+                document.getElementById('booking-h2').textContent = c.bookingH2;
+                document.getElementById('booking-subtext').textContent = c.bookingP;
+                document.documentElement.lang = l;
+            }
+
+            function toggle() {
+                lang = lang === 'es' ? 'en' : 'es';
+                applyLang(lang);
+            }
+
+            document.getElementById('lang-toggle').addEventListener('click', toggle);
+            document.getElementById('lang-link').addEventListener('click', toggle);
+        })();
+    </script>
+
+    <!-- ── Terminal Animation Script ── -->
+    <script>
+        (function () {
+            const LINES = [
+                '> initializing mc_designs.core',
+                '> loading automation modules...',
+                '> linking infrastructure layer...',
+                '> provisioning visibility signals...',
+                '> compiling UI shell...',
+                '> optimizing deployment pipeline...',
+                '> connecting cal.com booking endpoint...',
+                '> status: BUILDING \u2014 ETA: soon',
+                '> waiting for launch trigger...',
+            ];
+
+            const CHAR_DELAY = 28;   // ms per character
+            const LINE_PAUSE = 320;  // ms after each line before next
+            const FADE_WAIT = 1800; // ms idle before fading and restarting
+            const FADE_LINES = 4;    // how many trailing lines to fade before restart
+
+            const container = document.getElementById('term-lines');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // ── Reduced motion: static display ──
+            if (reduceMotion) {
+                LINES.forEach(text => {
+                    const el = document.createElement('div');
+                    el.className = 'term-line';
+                    el.innerHTML = `<span class="prompt">${escHtml(text)}</span>`;
+                    container.appendChild(el);
+                });
+                // Add static cursor at end
+                const cur = document.createElement('span');
+                cur.className = 'term-cursor';
+                container.lastChild.appendChild(cur);
+                return;
+            }
+
+            // ── Full animation ──
+            let lineEls = [];
+            let aborted = false;
+
+            function escHtml(s) {
+                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            function wait(ms) {
+                return new Promise(res => setTimeout(res, ms));
+            }
+
+            function typeText(el, text) {
+                return new Promise(async (resolve) => {
+                    let i = 0;
+                    const cursor = document.createElement('span');
+                    cursor.className = 'term-cursor';
+
+                    el.innerHTML = '';
+                    el.appendChild(cursor);
+
+                    async function tick() {
+                        if (aborted) { resolve(); return; }
+                        if (i < text.length) {
+                            // Insert character before cursor
+                            const char = document.createTextNode(text[i]);
+                            el.insertBefore(char, cursor);
+                            i++;
+                            setTimeout(tick, CHAR_DELAY);
+                        } else {
+                            cursor.remove();
+                            resolve();
+                        }
+                    }
+                    tick();
+                });
+            }
+
+            async function runLoop() {
+                while (true) {
+                    // Clear terminal
+                    container.innerHTML = '';
+                    lineEls = [];
+
+                    // Type each line
+                    for (let i = 0; i < LINES.length; i++) {
+                        if (aborted) return;
+                        const el = document.createElement('div');
+                        el.className = 'term-line';
+                        container.appendChild(el);
+                        lineEls.push(el);
+                        await typeText(el, LINES[i]);
+                        await wait(LINE_PAUSE);
+                    }
+
+                    // Add blinking cursor at end
+                    const endCursor = document.createElement('span');
+                    endCursor.className = 'term-cursor';
+                    const lastLine = lineEls[lineEls.length - 1];
+                    lastLine.appendChild(endCursor);
+
+                    // Idle
+                    await wait(FADE_WAIT);
+
+                    // Fade out last N lines
+                    const toFade = lineEls.slice(-FADE_LINES);
+                    toFade.forEach(el => el.classList.add('fading'));
+                    await wait(500);
+
+                    // Brief pause, then restart
+                    await wait(300);
+                }
+            }
+
+            function escHtml(s) {
+                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            // Kick off
+            runLoop();
+        })();
+    </script>
+
+</body>
+
+</html>
