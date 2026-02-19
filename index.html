@@ -103,9 +103,16 @@
     <div class="site-container">
 
         <!-- BEGIN: Header -->
-        <header class="flex justify-center items-center py-8 mt-4 z-50 w-full" data-purpose="main-header">
+        <header class="flex justify-between items-center py-8 mt-4 z-50 w-full max-w-7xl mx-auto px-6"
+            data-purpose="main-header">
             <img src="assets/MC-Designs-Logo.svg" alt="MC Designs"
-                class="h-10 md:h-12 w-auto z-50 relative mix-blend-difference" />
+                class="h-10 md:h-14 w-auto z-50 relative mix-blend-difference" />
+
+            <button id="lang-toggle"
+                class="z-50 relative flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                <span id="lang-text" class="text-xs font-bold tracking-widest text-white">ES</span>
+            </button>
         </header>
         <!-- END: Header -->
 
@@ -119,23 +126,31 @@
                 <!-- Main Headline -->
                 <h1
                     class="heading-condensed text-[12vw] md:text-8xl lg:text-9xl leading-[0.9] mb-6 text-white tracking-tight">
-                    Scale with
-                    <span class="animate-gradient-text">AI
-                        Systems</span>
+                    <span data-i18n="hero.headlinePrefix">Escala con </span>
+                    <span class="animate-gradient-text" data-i18n="hero.headlineHighlight">Sistemas de IA</span>
                 </h1>
 
                 <!-- Subtext -->
-                <p
-                    class="text-white/80 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed mb-8 font-medium">
-                    Structured automation, connected infrastructure, and operational visibility — built as one unified
-                    system.
+                <p class="text-white/80 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed mb-8 font-medium"
+                    data-i18n="hero.subtext">
+                    Descubre tus cuellos de botella, despliega sistemas de alto retorno y convierte demanda en
+                    resultados con infraestructura digital.
                 </p>
 
                 <!-- Primary CTA Button -->
-                <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
-                    class="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:brightness-110 transition-all duration-300 shadow-lg shadow-blue-500/20">
-                    Start to Scale My Business
-                </button>
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                        class="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-4 rounded-lg font-bold text-sm tracking-wider uppercase hover:brightness-110 transition-all duration-300 shadow-lg shadow-blue-500/20"
+                        data-i18n="hero.ctaPrimary">
+                        Comenzar el Proceso
+                    </button>
+
+                    <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
+                        class="px-6 py-3 text-white/60 hover:text-white text-sm font-medium tracking-wide border-b border-transparent hover:border-white/30 transition-all"
+                        data-i18n="hero.ctaSecondary">
+                        Agendar Llamada
+                    </button>
+                </div>
 
             </div>
 
@@ -143,104 +158,109 @@
         <!-- END: Hero -->
 
         <!-- BEGIN: Section 2 - Identification -->
-        <section class="section-border py-16 md:py-24 relative" data-purpose="identification" id="identification">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <section class="section-border py-12 md:py-16 relative" data-purpose="identification" id="identification">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-7xl mx-auto px-6">
 
                 <!-- Left: Headline & Subhead -->
                 <div>
-                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
-                        Scaling Without <span class="text-white/40">Systems</span> Creates <span
-                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Instability</span>
+                    <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white leading-tight"
+                        data-i18n="identification.headline">
+                        Escalar sin sistemas crea inestabilidad
                     </h2>
-                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-md">
-                        If any of these sound familiar, your business is ready for structured automation.
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-md"
+                        data-i18n="identification.subheadline">
+                        Si esto te suena familiar, tu negocio está listo para automatización estructurada.
                     </p>
                 </div>
 
                 <!-- Right: Pain Points List -->
-                <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-4">
+                    <!-- Dynamic List Items will be handled via simple multiple elements or a loop if using a framework, but here we hardcode the 6 items with data-i18n indices -->
+
                     <!-- Item 1 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">Leads are coming in — but <span
-                                class="text-white/50">follow-ups aren’t consistent</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.0">
+                            Llegan leads, pero el seguimiento no es consistente
+                        </p>
                     </div>
 
                     <!-- Item 2 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">Your team is overwhelmed with <span
-                                class="text-white/50">repetitive tasks</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.1">
+                            Tu equipo está saturado con tareas repetitivas
+                        </p>
                     </div>
 
                     <!-- Item 3 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">Important processes depend on <span
-                                class="text-white/50">memory instead of structure</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.2">
+                            Procesos importantes dependen de memoria, no de estructura
+                        </p>
                     </div>
 
                     <!-- Item 4 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">Growth is increasing <span
-                                class="text-white/50">complexity instead of clarity</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.3">
+                            El crecimiento aumenta la complejidad, no la claridad
+                        </p>
                     </div>
 
                     <!-- Item 5 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">You don’t have <span
-                                class="text-white/50">real-time operational visibility</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.4">
+                            No tienes visibilidad operativa en tiempo real
+                        </p>
                     </div>
 
                     <!-- Item 6 -->
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="mt-1 w-6 h-6 flex-shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    <div class="flex gap-4 items-start group p-3 hover:bg-white/5 rounded-lg transition-colors">
+                        <div class="mt-1 w-5 h-5 flex-shrink-0 text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-full h-full">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                             </svg>
                         </div>
-                        <p class="text-white/90 text-lg leading-snug">You’re hiring to <span class="text-white/50">fix
-                                inefficiencies</span></p>
+                        <p class="text-white/90 text-base md:text-lg leading-snug" data-i18n="identification.bullets.5">
+                            Estás contratando para corregir ineficiencias
+                        </p>
                     </div>
                 </div>
             </div>
@@ -248,26 +268,23 @@
         <!-- END: Section 2 - Identification -->
 
         <!-- BEGIN: System Architecture -->
-        <section class="section-border" data-purpose="system-architecture" id="architecture">
-            <div class="mb-10 md:mb-16">
+        <section class="section-border py-12 md:py-16" data-purpose="system-architecture" id="architecture">
+            <div class="mb-10 md:mb-12 max-w-7xl mx-auto px-6">
                 <div class="text-xs md:text-sm text-white/40 uppercase tracking-[0.08em] mb-3 font-medium">
                     DIGITAL SYSTEM FRAMEWORK
                 </div>
-                <h2 class="heading-condensed text-4xl md:text-6xl mb-5 text-white leading-tight">
-                    We design business systems across <span
-                        class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">three core
-                        layers</span>
+                <h2 class="heading-condensed text-4xl md:text-5xl mb-5 text-white leading-tight">
+                    <span data-i18n="layers.title">Diseñamos sistemas de negocio en tres capas</span>
                 </h2>
-                <p class="text-lg text-white/80 max-w-3xl leading-snug">
-                    Automation drives growth. Infrastructure supports scale. Visibility ensures control.
+                <p class="text-lg text-white/80 max-w-3xl leading-snug" data-i18n="layers.subtext">
+                    Cada capa se conecta para que tu operación funcione con claridad — no como servicios separados.
                 </p>
             </div>
 
             <!-- Main Content Grid (2 Columns on Desktop) -->
-            <div class="relative grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-8 items-center">
+            <div class="relative grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-8 items-center max-w-7xl mx-auto px-6">
 
                 <!-- Vertical Divider (Desktop Only) -->
-                <!-- Positioned between col-3 and col-4 (approx 60%) -->
                 <div
                     class="hidden lg:block absolute left-[60%] top-0 bottom-0 w-[1px] bg-white opacity-[0.08] -translate-x-1/2">
                 </div>
@@ -275,40 +292,46 @@
                 <!-- Left Column: Layer Cards (Compact Text Block) -->
                 <div class="lg:col-span-3 flex flex-col gap-5 md:gap-6 pl-4 md:pl-0">
                     <!-- Layer 1 -->
-                    <div class="relative">
-                        <!-- Subtle left border line for visual hierarchy -->
-                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
-                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
-                            Automation Layer™
+                    <div class="relative group">
+                        <div
+                            class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20 group-hover:bg-blue-500 transition-colors">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white" data-i18n="layers.cards.0.title">
+                            Capa de Automatización
                         </h3>
-                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
-                            We design automated flows that capture leads, qualify opportunities, and follow up
-                            instantly. Your business stops depending on manual responses and starts converting
-                            consistently.
+                        <p class="text-white/60 leading-relaxed text-sm md:text-base max-w-xl"
+                            data-i18n="layers.cards.0.text">
+                            Automatizamos seguimiento, tareas y flujos repetitivos para aumentar velocidad y
+                            consistencia.
                         </p>
                     </div>
 
                     <!-- Layer 2 -->
-                    <div class="relative">
-                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
-                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
-                            Infrastructure Layer™
+                    <div class="relative group">
+                        <div
+                            class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20 group-hover:bg-blue-500 transition-colors">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white" data-i18n="layers.cards.1.title">
+                            Capa de Infraestructura
                         </h3>
-                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
-                            We build the digital foundation that supports growth. Your website, systems, and internal
-                            processes work together instead of operating individually.
+                        <p class="text-white/60 leading-relaxed text-sm md:text-base max-w-xl"
+                            data-i18n="layers.cards.1.text">
+                            Tu website y tus procesos internos trabajan como un solo sistema, en lugar de operar
+                            individualmente.
                         </p>
                     </div>
 
                     <!-- Layer 3 -->
-                    <div class="relative">
-                        <div class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20"></div>
-                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">
-                            Operational Visibility Layer™
+                    <div class="relative group">
+                        <div
+                            class="absolute left-[-16px] top-2 bottom-2 w-[2px] bg-blue-500/20 group-hover:bg-blue-500 transition-colors">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 text-white" data-i18n="layers.cards.2.title">
+                            Capa de Visibilidad Operacional
                         </h3>
-                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-xl">
-                            We give you clarity over your operations in real time. You always know what’s happening
-                            inside your business — without guessing or chasing reports.
+                        <p class="text-white/60 leading-relaxed text-sm md:text-base max-w-xl"
+                            data-i18n="layers.cards.2.text">
+                            Monitorea el estado de tus procesos y toma decisiones con datos, no suposiciones.
                         </p>
                     </div>
                 </div>
@@ -318,11 +341,10 @@
                     <div
                         class="w-full max-w-[320px] h-full flex items-center justify-center relative rounded-2xl overflow-hidden">
 
-                        <!-- Content Wrapper (Relative for Spine Positioning) -->
-                        <div class="relative flex flex-col items-center gap-24">
+                        <!-- Content Wrapper -->
+                        <div class="relative flex flex-col items-center gap-16 md:gap-20">
 
-                            <!-- Central Spine Line (Positioned relative to this column) -->
-                            <!-- top-[26px] matches exact center of 52px height card (p-4=32 + text=20) -->
+                            <!-- Central Spine Line -->
                             <div
                                 class="absolute left-1/2 top-[26px] bottom-[26px] w-[2px] -translate-x-1/2 overflow-hidden z-0">
                                 <div
@@ -333,22 +355,15 @@
                             <!-- Block 1: Automation -->
                             <div class="relative w-48 md:w-56 p-4 text-center z-10 animate-card-reveal group hover:scale-105 transition-transform duration-300 cursor-default"
                                 style="animation-delay: 0.2s;">
-                                <!-- Gradient Glow Outer -->
                                 <div
                                     class="absolute -inset-px bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-500 z-0">
                                 </div>
-                                <!-- Card Background -->
                                 <div
                                     class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
                                 </div>
-                                <!-- Inner Glow -->
-                                <div
-                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
-                                </div>
-                                <!-- Text -->
                                 <span
-                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Automation
-                                    Layer™</span>
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white"
+                                    data-i18n="layers.diagram.automation">Capa de Automatización</span>
                             </div>
 
                             <!-- Block 2: Infrastructure -->
@@ -360,12 +375,9 @@
                                 <div
                                     class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
                                 </div>
-                                <div
-                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
-                                </div>
                                 <span
-                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Infrastructure
-                                    Layer™</span>
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white"
+                                    data-i18n="layers.diagram.infrastructure">Capa de Infraestructura</span>
                             </div>
 
                             <!-- Block 3: Operational Visibility -->
@@ -377,12 +389,9 @@
                                 <div
                                     class="absolute inset-0 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg z-10">
                                 </div>
-                                <div
-                                    class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/10 to-violet-500/10 z-10 pointer-events-none">
-                                </div>
                                 <span
-                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white">Visibility
-                                    Layer™</span>
+                                    class="relative z-20 text-xs md:text-sm font-bold tracking-wider uppercase text-white"
+                                    data-i18n="layers.diagram.visibility">Capa de Visibilidad</span>
                             </div>
 
                         </div>
@@ -392,73 +401,62 @@
             <!-- END: System Architecture -->
 
             <!-- BEGIN: Section 4 - Scale Without Expanding -->
-            <section class="section-border py-16 md:py-24 relative" data-purpose="scale-without-expanding" id="scale">
-                <div class="text-center mb-16">
-                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
-                        Scale Without <span
-                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Expanding
-                            Your Team</span>
+            <section class="section-border py-12 md:py-16 relative" data-purpose="scale-without-expanding" id="scale">
+                <div class="text-center mb-12 max-w-7xl mx-auto px-6">
+                    <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white leading-tight"
+                        data-i18n="scale.headline">
+                        Escala sin aumentar tu nómina
                     </h2>
-                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
-                        Increase capacity, improve response times, and convert more opportunities — without increasing
-                        payroll pressure.
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto"
+                        data-i18n="scale.subheadline">
+                        Aumenta capacidad, mejora tiempos de respuesta y convierte más oportunidades — sin presión de
+                        payroll.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-6">
                     <!-- Card 1 -->
                     <div
-                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group flex flex-col items-start relative overflow-hidden">
                         <div
-                            class="mb-6 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                            </svg>
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
-                            Automate Repetition</h3>
-                        <p class="text-white/60 text-sm leading-relaxed">
-                            Eliminate manual follow-ups and admin bottlenecks. Let systems handle the routine work.
+                        <h3 class="relative z-10 text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors"
+                            data-i18n="scale.cards.0.title">
+                            Automatiza la repetición
+                        </h3>
+                        <p class="relative z-10 text-white/60 text-sm leading-relaxed" data-i18n="scale.cards.0.text">
+                            Elimina seguimientos manuales y cuellos de botella administrativos.
                         </p>
                     </div>
 
                     <!-- Card 2 -->
                     <div
-                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group flex flex-col items-start relative overflow-hidden">
                         <div
-                            class="mb-6 w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                            </svg>
+                            class="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-violet-400 transition-colors">
-                            Standardize Execution</h3>
-                        <p class="text-white/60 text-sm leading-relaxed">
-                            Replace memory-based processes with structured workflows. Ensure consistency every time.
+                        <h3 class="relative z-10 text-xl font-bold mb-3 text-white group-hover:text-violet-400 transition-colors"
+                            data-i18n="scale.cards.1.title">
+                            Estandariza la ejecución
+                        </h3>
+                        <p class="relative z-10 text-white/60 text-sm leading-relaxed" data-i18n="scale.cards.1.text">
+                            Cambia procesos basados en memoria por flujos estructurados.
                         </p>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group">
+                        class="p-8 border border-white/10 rounded-xl bg-black/40 hover:bg-white/5 transition-colors duration-300 group flex flex-col items-start relative overflow-hidden">
                         <div
-                            class="mb-6 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
-                            Centralize Visibility</h3>
-                        <p class="text-white/60 text-sm leading-relaxed">
-                            Know exactly what’s happening inside your business at all times. Real-time control.
+                        <h3 class="relative z-10 text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors"
+                            data-i18n="scale.cards.2.title">
+                            Centraliza la visibilidad
+                        </h3>
+                        <p class="relative z-10 text-white/60 text-sm leading-relaxed" data-i18n="scale.cards.2.text">
+                            Sabe qué está pasando dentro del negocio, en todo momento.
                         </p>
                     </div>
                 </div>
@@ -466,23 +464,23 @@
             <!-- END: Section 4 -->
 
             <!-- BEGIN: Section 5 - How It Works -->
-            <section class="section-border py-16 md:py-24 relative" data-purpose="how-it-works" id="how-it-works">
-                <div class="text-center mb-16">
-                    <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
-                        How We <span
-                            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500">Deploy
-                            Your System</span>
+            <section class="section-border py-12 md:py-16 relative" data-purpose="how-it-works" id="how-it-works">
+                <div class="text-center mb-16 max-w-7xl mx-auto px-6">
+                    <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white leading-tight"
+                        data-i18n="howItWorks.headline">
+                        Cómo desplegamos tu sistema
                     </h2>
-                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
-                        A structured deployment process built for growing businesses and professional firms.
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
+                        data-i18n="howItWorks.subtext">
+                        Un proceso estructurado diseñado para negocios en crecimiento y firmas profesionales.
                     </p>
                 </div>
 
                 <!-- Timeline Container -->
-                <div class="relative max-w-6xl mx-auto">
+                <div class="relative max-w-6xl mx-auto px-6">
                     <!-- Connection Line (Desktop) -->
                     <div
-                        class="hidden md:block absolute top-[24px] left-0 right-0 h-[2px] bg-gradient-to-r from-blue-600 to-violet-600 opacity-30">
+                        class="hidden md:block absolute top-[24px] left-6 right-6 h-[1px] bg-gradient-to-r from-blue-600 to-violet-600 opacity-30">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
@@ -491,9 +489,10 @@
                             <div
                                 class="w-12 h-12 rounded-full bg-black border border-blue-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform z-20">
                                 1</div>
-                            <h3 class="text-lg font-bold text-white mb-2">Diagnose</h3>
-                            <p class="text-sm text-white/60 px-4">Identify operational gaps and bottlenecks in your
-                                current workflow.</p>
+                            <h3 class="text-lg font-bold text-white mb-2" data-i18n="howItWorks.steps.0.title">
+                                Diagnóstico de Gaps Operacionales</h3>
+                            <p class="text-sm text-white/60" data-i18n="howItWorks.steps.0.desc">Identificamos
+                                oportunidades y brechas.</p>
                         </div>
 
                         <!-- Step 2 -->
@@ -501,9 +500,10 @@
                             <div
                                 class="w-12 h-12 rounded-full bg-black border border-blue-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform z-20">
                                 2</div>
-                            <h3 class="text-lg font-bold text-white mb-2">Design</h3>
-                            <p class="text-sm text-white/60 px-4">Architect the custom system layers needed for your
-                                specific goals.</p>
+                            <h3 class="text-lg font-bold text-white mb-2" data-i18n="howItWorks.steps.1.title">Diseño de
+                                Arquitectura</h3>
+                            <p class="text-sm text-white/60" data-i18n="howItWorks.steps.1.desc">Creamos el plano de tu
+                                infraestructura digital.</p>
                         </div>
 
                         <!-- Step 3 -->
@@ -511,9 +511,10 @@
                             <div
                                 class="w-12 h-12 rounded-full bg-black border border-violet-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(139,92,246,0.2)] group-hover:scale-110 transition-transform z-20">
                                 3</div>
-                            <h3 class="text-lg font-bold text-white mb-2">Implement</h3>
-                            <p class="text-sm text-white/60 px-4">Build, integrate, and deploy your new automation
-                                infrastructure.</p>
+                            <h3 class="text-lg font-bold text-white mb-2" data-i18n="howItWorks.steps.2.title">
+                                Implementación e Integración</h3>
+                            <p class="text-sm text-white/60" data-i18n="howItWorks.steps.2.desc">Construimos y
+                                conectamos tus sistemas.</p>
                         </div>
 
                         <!-- Step 4 -->
@@ -521,9 +522,10 @@
                             <div
                                 class="w-12 h-12 rounded-full bg-black border border-violet-500/30 flex items-center justify-center text-white font-bold text-lg mb-6 shadow-[0_0_15px_rgba(139,92,246,0.2)] group-hover:scale-110 transition-transform z-20">
                                 4</div>
-                            <h3 class="text-lg font-bold text-white mb-2">Optimize</h3>
-                            <p class="text-sm text-white/60 px-4">Refine performance and scale the system as you grow.
-                            </p>
+                            <h3 class="text-lg font-bold text-white mb-2" data-i18n="howItWorks.steps.3.title">
+                                Optimización y Escala</h3>
+                            <p class="text-sm text-white/60" data-i18n="howItWorks.steps.3.desc">Mejoramos el
+                                rendimiento continuamente.</p>
                         </div>
                     </div>
                 </div>
@@ -531,52 +533,55 @@
             <!-- END: Section 5 -->
 
             <!-- BEGIN: Section 6 - Differentiation -->
-            <section class="section-border py-16 md:py-24 relative" data-purpose="differentiation" id="differentiation">
+            <section class="section-border py-12 md:py-16 relative" data-purpose="differentiation" id="differentiation">
                 <!-- Subtle Grid Background for this section -->
                 <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 max-w-7xl mx-auto px-6">
                     <!-- Text Content -->
                     <div class="pr-0 lg:pr-12">
-                        <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight">
-                            Not Marketing. <br />
-                            <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500">Infrastructure.</span>
+                        <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white leading-tight"
+                            data-i18n="differentiation.headline">
+                            No es marketing. Es infraestructura.
                         </h2>
-                        <p class="text-lg md:text-xl text-white/70 leading-relaxed mb-8">
-                            We don’t run ads. We design the system that converts the demand you already generate.
+                        <p class="text-lg md:text-xl text-white/70 leading-relaxed mb-8"
+                            data-i18n="differentiation.subheadline">
+                            No corremos anuncios. Diseñamos el sistema que convierte la demanda que ya generas.
                         </p>
 
                         <ul class="space-y-4">
                             <li class="flex items-center gap-3 text-white/90">
                                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                                We centralize fragmented tools
+                                <span data-i18n="differentiation.points.0">Centralizamos herramientas
+                                    fragmentadas</span>
                             </li>
                             <li class="flex items-center gap-3 text-white/90">
                                 <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                                We standardize operational workflows
+                                <span data-i18n="differentiation.points.1">Estandarizamos flujos operacionales</span>
                             </li>
                             <li class="flex items-center gap-3 text-white/90">
                                 <div class="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
-                                We connect your lead flow to execution
+                                <span data-i18n="differentiation.points.2">Conectamos leads con ejecución</span>
                             </li>
                             <li class="flex items-center gap-3 text-white/90">
                                 <div class="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
-                                We build scalable digital architecture
+                                <span data-i18n="differentiation.points.3">Construimos arquitectura digital
+                                    escalable</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Right Visual: Abstract Layout -->
                     <div
-                        class="relative h-[400px] w-full bg-black/50 border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center group">
+                        class="relative h-[300px] md:h-[400px] w-full bg-black/50 border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center group">
                         <!-- Abstract blocks simulating structure -->
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-violet-900/10"></div>
 
                         <!-- Central Hub -->
                         <div
-                            class="relative w-32 h-32 border border-white/20 bg-black rounded-lg flex items-center justify-center z-20 shadow-2xl">
-                            <div class="text-white/80 font-bold tracking-widest text-xs uppercase">Core</div>
+                            class="relative w-24 h-24 md:w-32 md:h-32 border border-white/20 bg-black rounded-lg flex items-center justify-center z-20 shadow-2xl">
+                            <div class="text-white/80 font-bold tracking-widest text-[10px] md:text-xs uppercase">Core
+                            </div>
                         </div>
 
                         <!-- Connecting Lines -->
@@ -585,10 +590,10 @@
 
                         <!-- Satellite Nodes -->
                         <div
-                            class="absolute top-1/4 left-1/4 w-12 h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-blue-500/50 transition-colors">
+                            class="absolute top-1/4 left-1/4 w-10 h-10 md:w-12 md:h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-blue-500/50 transition-colors">
                         </div>
                         <div
-                            class="absolute bottom-1/4 right-1/4 w-12 h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-violet-500/50 transition-colors">
+                            class="absolute bottom-1/4 right-1/4 w-10 h-10 md:w-12 md:h-12 border border-white/10 bg-black rounded flex items-center justify-center z-10 group-hover:border-violet-500/50 transition-colors">
                         </div>
                     </div>
                 </div>
@@ -597,13 +602,16 @@
 
             <!-- BEGIN: Booking Section -->
             <!-- BEGIN: Start The Process -->
-            <section class="section-border mb-16" data-purpose="start-process-form" id="start-process">
+            <section class="section-border mb-16 max-w-7xl mx-auto px-6" data-purpose="start-process-form"
+                id="start-process">
                 <div class="mb-8">
-                    <h2 class="heading-condensed text-6xl md:text-8xl mb-3">START THE <span
-                            class="text-gradient glow-text">PROCESS</span></h2>
-                    <p class="opacity-60 text-lg max-w-2xl">Provide a few details so we can understand your
-                        business and
-                        prepare accordingly.</p>
+                    <h2 class="heading-condensed text-5xl md:text-7xl mb-3 text-white uppercase leading-none"
+                        data-i18n="startProcess.headline">
+                        Comienza con un diagnóstico rápido
+                    </h2>
+                    <p class="opacity-60 text-lg max-w-2xl" data-i18n="startProcess.subtext">
+                        Identificamos oportunidades, definimos el sistema y te damos un plan claro de despliegue.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-1 rounded-xl w-full">
@@ -621,12 +629,14 @@
                 <div class="w-full h-px bg-white/10 mb-10 md:mb-16"></div>
 
                 <!-- Header & Subtext (Outside Card) -->
-                <div class="text-center mb-8">
-                    <h2 class="heading-condensed text-4xl md:text-6xl mb-3 text-white text-shadow-sm">BOOK YOUR
-                        <span class="text-gradient glow-text">AUTOMATION CALL</span>
+                <div class="text-center mb-8 max-w-7xl mx-auto px-6">
+                    <h2 class="heading-condensed text-4xl md:text-6xl mb-3 text-white text-shadow-sm uppercase"
+                        data-i18n="bookCall.headline">
+                        Agenda tu llamada
                     </h2>
-                    <p class="text-lg md:text-xl opacity-70 max-w-xl mx-auto leading-relaxed">
-                        Stop losing opportunities. Start scaling with structure.
+                    <p class="text-lg md:text-xl opacity-70 max-w-xl mx-auto leading-relaxed"
+                        data-i18n="bookCall.subtext">
+                        Deja de perder oportunidades. Comienza a escalar con estructura.
                     </p>
                 </div>
 
@@ -679,6 +689,9 @@
 
     <!-- Safe Hero Scroll Script -->
     <script type="module" src="assets/hero-safe-scroll.js"></script>
+
+    <!-- Language Toggle Script -->
+    <script type="module" src="assets/language-toggle.js"></script>
 </body>
 
 </html>
