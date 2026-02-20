@@ -161,7 +161,7 @@ export const translations = {
             ]
         },
         differentiation: {
-            headline: "NOT MARKETING<br>INFRASTRUCTURE",
+            headline: "NOT MARKETING<br>IT'S INFRASTRUCTURE",
             subheadline: "We don’t run ads. We design the system that converts the demand you already generate.",
             points: [
                 "We centralize fragmented tools",

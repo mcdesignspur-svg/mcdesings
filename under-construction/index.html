@@ -2,12 +2,23 @@
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQT1FRM3QC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CQT1FRM3QC');
+    </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MC DESIGNS — Próximamente</title>
     <meta name="description"
         content="MC Designs Digital Systems Studio — Lanzamiento próximo. Agenda una llamada estratégica." />
     <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -445,6 +456,16 @@
             }
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQT1FRM3QC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CQT1FRM3QC');
+    </script>
 </head>
 
 <body>
@@ -470,89 +491,30 @@
                 </h1>
 
                 <p class="hero-subtext" id="hero-subtext">
-                    Lanzamiento pronto. Mientras tanto, agenda una llamada estratégica.
+                    Lanzamiento pronto.
                 </p>
 
+                <!-- ── Terminal Module ── -->
+                <div class="terminal-wrap" aria-label="System build log">
+                    <div class="terminal-box">
+                        <div class="term-header">
+                            <span class="term-dot red" aria-hidden="true"></span>
+                            <span class="term-dot yellow" aria-hidden="true"></span>
+                            <span class="term-dot green" aria-hidden="true"></span>
+                            <span class="term-title">mc_designs.core — build.log</span>
+                        </div>
+                        <div class="term-body">
+                            <div class="term-lines" id="term-lines" aria-live="polite" aria-atomic="false"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="hero-actions">
-                    <a class="cta-btn" id="cta-btn" href="#booking-section">
-                        Agendar Llamada
-                    </a>
                     <button class="lang-link" id="lang-link">View in English</button>
                 </div>
             </section>
 
-            <!-- ── Terminal Module ── -->
-            <div class="terminal-wrap" aria-label="System build log">
-                <div class="terminal-box">
-                    <div class="term-header">
-                        <span class="term-dot red" aria-hidden="true"></span>
-                        <span class="term-dot yellow" aria-hidden="true"></span>
-                        <span class="term-dot green" aria-hidden="true"></span>
-                        <span class="term-title">mc_designs.core — build.log</span>
-                    </div>
-                    <div class="term-body">
-                        <div class="term-lines" id="term-lines" aria-live="polite" aria-atomic="false"></div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- ── Booking Section ── -->
-            <div class="section-divider"></div>
-
-            <section class="booking-section" id="booking-section" aria-label="Book a strategy call">
-                <div class="booking-label">
-                    <h2 id="booking-h2">Agenda tu llamada</h2>
-                    <p id="booking-subtext">Selecciona un horario que funcione para ti.</p>
-                </div>
-
-                <div class="booking-shell">
-                    <div id="my-cal-inline-30min-uc"></div>
-                    <script type="text/javascript">
-                        (function (C, A, L) {
-                            let p = function (a, ar) { a.q.push(ar); };
-                            let d = C.document;
-                            C.Cal = C.Cal || function () {
-                                let cal = C.Cal; let ar = arguments;
-                                if (!cal.loaded) {
-                                    cal.ns = {}; cal.q = cal.q || [];
-                                    d.head.appendChild(d.createElement("script")).src = A;
-                                    cal.loaded = true;
-                                }
-                                if (ar[0] === L) {
-                                    const api = function () { p(api, arguments); };
-                                    const namespace = ar[1];
-                                    api.q = api.q || [];
-                                    if (typeof namespace === "string") {
-                                        cal.ns[namespace] = cal.ns[namespace] || api;
-                                        p(cal.ns[namespace], ar);
-                                        p(cal, ["initNamespace", namespace]);
-                                    } else p(cal, ar);
-                                    return;
-                                }
-                                p(cal, ar);
-                            };
-                        })(window, "https://app.cal.com/embed/embed.js", "init");
-
-                        Cal("init", "30min-uc", { origin: "https://app.cal.com" });
-
-                        Cal.ns["30min-uc"]("inline", {
-                            elementOrSelector: "#my-cal-inline-30min-uc",
-                            config: {
-                                "layout": "month_view",
-                                "useSlotsViewOnSmallScreen": "true",
-                                "theme": "dark"
-                            },
-                            calLink: "mcdesignspr/30min",
-                        });
-
-                        Cal.ns["30min-uc"]("ui", {
-                            "theme": "dark",
-                            "hideEventTypeDetails": false,
-                            "layout": "month_view"
-                        });
-                    </script>
-                </div>
-            </section>
 
         </div><!-- /inner -->
 
@@ -570,21 +532,15 @@
             const copy = {
                 es: {
                     h1: 'Estamos <span class="grad">construyendo</span> el sistema.',
-                    subtext: 'Lanzamiento pronto. Mientras tanto, agenda una llamada estratégica.',
-                    cta: 'Agendar Llamada',
+                    subtext: 'Lanzamiento pronto.',
                     langLink: 'View in English',
-                    langLabel: 'ES',
-                    bookingH2: 'Agenda tu llamada',
-                    bookingP: 'Selecciona un horario que funcione para ti.',
+                    langLabel: 'ES'
                 },
                 en: {
                     h1: "We're <span class=\"grad\">building</span> the system.",
-                    subtext: 'Launching soon. In the meantime, book a strategy call.',
-                    cta: 'Book a Call',
+                    subtext: 'Launching soon.',
                     langLink: 'Ver en Español',
-                    langLabel: 'EN',
-                    bookingH2: 'Book your call',
-                    bookingP: 'Pick a time that works for you.',
+                    langLabel: 'EN'
                 },
             };
 
@@ -594,11 +550,8 @@
                 const c = copy[l];
                 document.getElementById('hero-h1').innerHTML = c.h1;
                 document.getElementById('hero-subtext').textContent = c.subtext;
-                document.getElementById('cta-btn').textContent = c.cta;
                 document.getElementById('lang-link').textContent = c.langLink;
                 document.getElementById('lang-text').textContent = c.langLabel;
-                document.getElementById('booking-h2').textContent = c.bookingH2;
-                document.getElementById('booking-subtext').textContent = c.bookingP;
                 document.documentElement.lang = l;
             }
 
@@ -622,7 +575,6 @@
                 '> provisioning visibility signals...',
                 '> compiling UI shell...',
                 '> optimizing deployment pipeline...',
-                '> connecting cal.com booking endpoint...',
                 '> status: BUILDING \u2014 ETA: soon',
                 '> waiting for launch trigger...',
             ];

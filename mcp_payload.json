@@ -1,0 +1,16 @@
+{
+  "owner": "mcdesignspur-svg",
+  "repo": "mcdesings",
+  "branch": "main",
+  "message": "Updates from MCP automation",
+  "files": [
+    {
+      "path": "under-construction/index.html",
+      "content": $(cat under-construction/index.html)
+    },
+    {
+      "path": "index.html",
+      "content": $(cat index.html)
+    }
+  ]
+}
