@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mcdesignspr.com/sitemap.xml
