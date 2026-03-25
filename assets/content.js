@@ -26,17 +26,17 @@ export const translations = {
             cards: [
                 {
                     title: "Presencia",
-                    tag: "$800 – $1,200",
+                    tag: "",
                     desc: "Un sitio web limpio y rápido para que tu negocio exista con credibilidad en línea. 4–5 páginas, optimizado para móvil, formulario de contacto incluido."
                 },
                 {
                     title: "Rendimiento",
-                    tag: "$1,500 – $2,500",
+                    tag: "",
                     desc: "Un sitio enfocado en conversión, diseñado para generar clientes. Incluye base SEO, dirección de copy y flujos de contacto integrados."
                 },
                 {
                     title: "Paquete Crecimiento",
-                    tag: "$2,800 – $4,000",
+                    tag: "",
                     desc: "Sitio de rendimiento + asistente de chat con IA + herramienta GPT personalizada. Todo lo que un negocio en crecimiento necesita para captar clientes en línea.",
                     badge: "Más popular"
                 }
@@ -51,17 +51,17 @@ export const translations = {
                 {
                     title: "Chat con IA",
                     desc: "Responde preguntas, comparte precios y captura datos de contacto — todo el día, sin que tengas que hacer nada.",
-                    tag: "+ $350–$600"
+                    tag: ""
                 },
                 {
                     title: "Calificador de Clientes",
                     desc: "Filtra tus consultas automáticamente. Los mejores prospectos te llegan de inmediato. Los demás reciben una respuesta útil.",
-                    tag: "+ $400–$700"
+                    tag: ""
                 },
                 {
                     title: "Herramienta GPT",
                     desc: "Una IA entrenada para tu negocio — redacta tus publicaciones, correos y maneja tareas repetitivas en segundos.",
-                    tag: "+ $600–$1,200"
+                    tag: ""
                 }
             ]
         },
@@ -121,17 +121,17 @@ export const translations = {
             cards: [
                 {
                     title: "Presence",
-                    tag: "$800 – $1,200",
+                    tag: "",
                     desc: "A clean, fast website so your business exists credibly online. 4–5 pages, mobile-first, contact form included."
                 },
                 {
                     title: "Performance",
-                    tag: "$1,500 – $2,500",
+                    tag: " ",
                     desc: "A conversion-focused site built to generate leads. SEO foundation, copy direction, and integrated contact flows."
                 },
                 {
                     title: "Growth Package",
-                    tag: "$2,800 – $4,000",
+                    tag: "",
                     desc: "Performance site + AI chat widget + custom GPT tool. Everything a growing business needs to acquire clients online.",
                     badge: "Most popular"
                 }
@@ -146,17 +146,17 @@ export const translations = {
                 {
                     title: "AI Chat Assistant",
                     desc: "Answers questions, shares pricing, and captures contact info — 24 hours a day, without you lifting a finger.",
-                    tag: "+ $350–$600"
+                    tag: ""
                 },
                 {
                     title: "Smart Lead Qualifier",
                     desc: "Filters your inquiries automatically. Hot leads reach you immediately. Everyone else gets a helpful response.",
-                    tag: "+ $400–$700"
+                    tag: ""
                 },
                 {
                     title: "Custom GPT Tool",
                     desc: "An AI trained on your business — writes your posts, emails, and handles repetitive tasks in seconds.",
-                    tag: "+ $600–$1,200"
+                    tag: ""
                 }
             ]
         },
