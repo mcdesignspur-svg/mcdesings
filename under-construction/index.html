@@ -479,6 +479,118 @@
                 text-align: left;
             }
         }
+        /* ── Password Gate ── */
+        #password-gate-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 13, 20, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #password-gate-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .password-modal {
+            background: #0d1520;
+            border: 1px solid #111d2e;
+            border-radius: 12px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .modal-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .password-input {
+            width: 100%;
+            background: #080d14;
+            border: 1px solid #111d2e;
+            border-radius: 6px;
+            color: white;
+            padding: 12px 16px;
+            font-size: 14px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .password-input:focus {
+            border-color: #4DA6FF;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #4DA6FF;
+            color: #080d14;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.88;
+        }
+
+        #password-error {
+            color: #ff4976;
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .preview-btn {
+            font-size: 12px;
+            color: #4DA6FF;
+            border: 1px solid rgba(77, 166, 255, 0.25);
+            border-radius: 4px;
+            padding: 4px 12px;
+            background: transparent;
+            text-decoration: none;
+            transition: background 0.2s;
+            display: none;
+            margin-right: auto;
+        }
+
+        .preview-btn:hover {
+            background: rgba(77, 166, 255, 0.08);
+        }
+
+        .show-preview .preview-btn {
+            display: block;
+        }
     </style>
 
 </head>
@@ -488,6 +600,7 @@
 
         <!-- ── Header ── -->
         <header class="site-header">
+            <a href="/index.html" class="preview-btn" id="preview-btn">Preview site →</a>
             <img src="../assets/MC-Designs-Logo.svg" alt="MC Designs" class="site-logo" />
             <button class="lang-btn" id="lang-toggle" aria-label="Toggle language">
                 <span class="lang-dot"></span>
@@ -567,6 +680,63 @@
 
 
 
+    <!-- ── Password Gate Modal ── -->
+    <div id="password-gate-overlay">
+        <div class="password-modal">
+            <div class="modal-logo">MC DESIGNS</div>
+            <span class="modal-label">PREVIEW ACCESS</span>
+            <input type="password" id="password-field" class="password-input" placeholder="Enter password" />
+            <button id="submit-password" class="submit-btn">ACCESS SITE</button>
+            <div id="password-error">Incorrect password.</div>
+        </div>
+    </div>
+
+    <!-- ── Password Logic ── -->
+    <script>
+        (function() {
+            const overlay = document.getElementById('password-gate-overlay');
+            const field = document.getElementById('password-field');
+            const submit = document.getElementById('submit-password');
+            const error = document.getElementById('password-error');
+            const previewBtn = document.getElementById('preview-btn');
+            const AUTH_KEY = "mc_preview_auth";
+            const AUTH_VALUE = "granted_2025";
+            const CORRECT_PW = "mcdesigns2025";
+
+            function checkAuth() {
+                if (localStorage.getItem(AUTH_KEY) === AUTH_VALUE) {
+                    document.body.classList.add('show-preview');
+                    overlay.classList.remove('active');
+                } else {
+                    overlay.classList.add('active');
+                    field.focus();
+                }
+            }
+
+            function handleAuth() {
+                if (field.value === CORRECT_PW) {
+                    localStorage.setItem(AUTH_KEY, AUTH_VALUE);
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                        document.body.classList.add('show-preview');
+                    }, 300);
+                } else {
+                    error.style.display = 'block';
+                    field.value = '';
+                    field.focus();
+                }
+            }
+
+            submit.addEventListener('click', handleAuth);
+            field.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleAuth();
+            });
+
+            // Initial delay as requested (0.3s)
+            setTimeout(checkAuth, 300);
+        })();
+    </script>
 </body>
 
 </html>
