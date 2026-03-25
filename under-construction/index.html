@@ -14,26 +14,26 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MC DESIGNS — Próximamente</title>
+    <title>MC DESIGNS — Web Design Studio | Puerto Rico</title>
     <meta name="description"
-        content="We design AI-powered automation and digital infrastructure systems that help businesses scale without expanding payroll." />
+        content="MC Designs builds websites for Puerto Rico businesses — sharp design, fast performance, AI built in." />
     <link rel="canonical" href="https://mcdesignspr.com/" />
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mcdesignspr.com/" />
-    <meta property="og:title" content="MC Designs | Automation & AI Infrastructure" />
+    <meta property="og:title" content="MC Designs | Web Design Studio — Puerto Rico" />
     <meta property="og:description"
-        content="Scale with AI systems. Structured automation, infrastructure, and operational visibility for growing businesses." />
+        content="Web design for Puerto Rico businesses. Sharp sites, fast performance, AI built in." />
     <meta property="og:image" content="https://mcdesignspr.com/og-image.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://mcdesignspr.com/" />
-    <meta property="twitter:title" content="MC Designs | Automation & AI Infrastructure" />
+    <meta property="twitter:title" content="MC Designs | Web Design Studio — Puerto Rico" />
     <meta property="twitter:description"
-        content="Scale with AI systems. Structured automation for growing businesses." />
+        content="Web design for Puerto Rico businesses. Sharp sites, fast performance, AI built in." />
     <meta property="twitter:image" content="https://mcdesignspr.com/og-image.jpg" />
 
     <!-- JSON-LD Structured Data -->
@@ -71,8 +71,7 @@
             --muted: rgba(255, 255, 255, 0.45);
             --border: rgba(255, 255, 255, 0.10);
             --glass: rgba(255, 255, 255, 0.03);
-            --blue: #2563EB;
-            --violet: #7C3AED;
+            --blue: #4DA6FF;
             --glow: rgba(37, 99, 235, 0.18);
         }
 
@@ -190,10 +189,7 @@
 
         /* Gradient on part of the headline */
         .grad {
-            background: linear-gradient(90deg, var(--blue), var(--violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #4DA6FF;
         }
 
         .hero-subtext {
@@ -503,30 +499,15 @@
 
             <!-- ── Hero ── -->
             <section class="hero" aria-label="Under construction hero">
-                <p class="micro-label">MC DESIGNS • Digital Systems Studio</p>
+                <p class="micro-label">MC DESIGNS • WEB DESIGN STUDIO</p>
 
                 <h1 class="hero-h1" id="hero-h1">
-                    Estamos <span class="grad">construyendo</span> el sistema.
+                    Tu negocio,<br>diseñado para <span style="color:#4DA6FF">crecer.</span>
                 </h1>
 
                 <p class="hero-subtext" id="hero-subtext">
-                    Lanzamiento pronto.
+                    Diseño web para negocios listos para crecer. Próximamente.
                 </p>
-
-                <!-- ── Terminal Module ── -->
-                <div class="terminal-wrap" aria-label="System build log">
-                    <div class="terminal-box">
-                        <div class="term-header">
-                            <span class="term-dot red" aria-hidden="true"></span>
-                            <span class="term-dot yellow" aria-hidden="true"></span>
-                            <span class="term-dot green" aria-hidden="true"></span>
-                            <span class="term-title">mc_designs.core — build.log</span>
-                        </div>
-                        <div class="term-body">
-                            <div class="term-lines" id="term-lines" aria-live="polite" aria-atomic="false"></div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="hero-actions">
                     <button class="lang-link" id="lang-link">View in English</button>
@@ -540,7 +521,7 @@
         <!-- ── Footer ── -->
         <footer class="site-footer">
             <div class="footer-brand">MC DESIGNS</div>
-            <div class="footer-copy">© 2024 MC Designs. All systems nominal.</div>
+            <div class="footer-copy">© 2025 MC Designs. Built in Puerto Rico.</div>
         </footer>
 
     </div><!-- /page -->
@@ -550,14 +531,14 @@
         (function () {
             const copy = {
                 es: {
-                    h1: 'Estamos <span class="grad">construyendo</span> el sistema.',
-                    subtext: 'Lanzamiento pronto.',
+                    h1: 'Tu negocio,<br>diseñado para <span style="color:#4DA6FF">crecer.</span>',
+                    subtext: 'Diseño web para negocios listos para crecer. Próximamente.',
                     langLink: 'View in English',
                     langLabel: 'ES'
                 },
                 en: {
-                    h1: "We're <span class=\"grad\">building</span> the system.",
-                    subtext: 'Launching soon.',
+                    h1: 'Your business,<br>built to be <span style="color:#4DA6FF">found.</span>',
+                    subtext: 'Web design for businesses ready to grow. Launching soon.',
                     langLink: 'Ver en Español',
                     langLabel: 'EN'
                 },
@@ -584,125 +565,7 @@
         })();
     </script>
 
-    <!-- ── Terminal Animation Script ── -->
-    <script>
-        (function () {
-            const LINES = [
-                '> initializing mc_designs.core',
-                '> loading automation modules...',
-                '> linking infrastructure layer...',
-                '> provisioning visibility signals...',
-                '> compiling UI shell...',
-                '> optimizing deployment pipeline...',
-                '> status: BUILDING \u2014 ETA: soon',
-                '> waiting for launch trigger...',
-            ];
 
-            const CHAR_DELAY = 28;   // ms per character
-            const LINE_PAUSE = 320;  // ms after each line before next
-            const FADE_WAIT = 1800; // ms idle before fading and restarting
-            const FADE_LINES = 4;    // how many trailing lines to fade before restart
-
-            const container = document.getElementById('term-lines');
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            // ── Reduced motion: static display ──
-            if (reduceMotion) {
-                LINES.forEach(text => {
-                    const el = document.createElement('div');
-                    el.className = 'term-line';
-                    el.innerHTML = `<span class="prompt">${escHtml(text)}</span>`;
-                    container.appendChild(el);
-                });
-                // Add static cursor at end
-                const cur = document.createElement('span');
-                cur.className = 'term-cursor';
-                container.lastChild.appendChild(cur);
-                return;
-            }
-
-            // ── Full animation ──
-            let lineEls = [];
-            let aborted = false;
-
-            function escHtml(s) {
-                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            }
-
-            function wait(ms) {
-                return new Promise(res => setTimeout(res, ms));
-            }
-
-            function typeText(el, text) {
-                return new Promise(async (resolve) => {
-                    let i = 0;
-                    const cursor = document.createElement('span');
-                    cursor.className = 'term-cursor';
-
-                    el.innerHTML = '';
-                    el.appendChild(cursor);
-
-                    async function tick() {
-                        if (aborted) { resolve(); return; }
-                        if (i < text.length) {
-                            // Insert character before cursor
-                            const char = document.createTextNode(text[i]);
-                            el.insertBefore(char, cursor);
-                            i++;
-                            setTimeout(tick, CHAR_DELAY);
-                        } else {
-                            cursor.remove();
-                            resolve();
-                        }
-                    }
-                    tick();
-                });
-            }
-
-            async function runLoop() {
-                while (true) {
-                    // Clear terminal
-                    container.innerHTML = '';
-                    lineEls = [];
-
-                    // Type each line
-                    for (let i = 0; i < LINES.length; i++) {
-                        if (aborted) return;
-                        const el = document.createElement('div');
-                        el.className = 'term-line';
-                        container.appendChild(el);
-                        lineEls.push(el);
-                        await typeText(el, LINES[i]);
-                        await wait(LINE_PAUSE);
-                    }
-
-                    // Add blinking cursor at end
-                    const endCursor = document.createElement('span');
-                    endCursor.className = 'term-cursor';
-                    const lastLine = lineEls[lineEls.length - 1];
-                    lastLine.appendChild(endCursor);
-
-                    // Idle
-                    await wait(FADE_WAIT);
-
-                    // Fade out last N lines
-                    const toFade = lineEls.slice(-FADE_LINES);
-                    toFade.forEach(el => el.classList.add('fading'));
-                    await wait(500);
-
-                    // Brief pause, then restart
-                    await wait(300);
-                }
-            }
-
-            function escHtml(s) {
-                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            }
-
-            // Kick off
-            runLoop();
-        })();
-    </script>
 
 </body>
 
