@@ -1,12 +1,8 @@
 {
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "outputDirectory": "dist",
-    "redirects": [
-        {
-            "source": "/",
-            "destination": "/under-construction",
-            "permanent": false
-        }
-    ]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/", "destination": "/under-construction/index.html" }
+  ]
 }

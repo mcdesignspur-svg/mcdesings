@@ -717,10 +717,7 @@
                 if (field.value === CORRECT_PW) {
                     localStorage.setItem(AUTH_KEY, AUTH_VALUE);
                     overlay.style.opacity = '0';
-                    setTimeout(() => {
-                        overlay.classList.remove('active');
-                        document.body.classList.add('show-preview');
-                    }, 300);
+                    setTimeout(() => { window.location.href = '/index.html'; }, 300);
                 } else {
                     error.style.display = 'block';
                     field.value = '';
