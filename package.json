@@ -1,7 +1,7 @@
 {
   "name": "mc-designs-website",
   "version": "1.0.0",
-  "description": "MC Designs - Design. Build. Automate. A brutalist portfolio website",
+  "description": "MC Designs - Web Design Studio | Puerto Rico",
   "type": "module",
   "scripts": {
     "dev": "vite",

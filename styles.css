@@ -2,13 +2,11 @@
     --bg-primary: #000000;
     --bg-secondary: #0A0A0F;
     --bg-tertiary: #0D0F18;
-    --accent-blue: #2D5BFF;
-    --accent-violet: #6C5CE7;
+    --accent-blue: #4DA6FF;
     --border-light: rgba(255, 255, 255, 0.08);
     --border-hover: rgba(255, 255, 255, 0.15);
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.30);
     --glow-blue: 0 0 22px rgba(45, 91, 255, 0.15);
-    --glow-violet: 0 0 18px rgba(108, 92, 231, 0.10);
 }
 
 /* Background Utilities */
@@ -53,12 +51,7 @@
 
 /* Typography Enhancements */
 .text-gradient {
-    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
-    /* Often needed for gradient text to render correctly */
+    color: var(--accent-blue);
 }
 
 .glow-text {

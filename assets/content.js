@@ -1,73 +1,78 @@
 export const translations = {
     es: {
         hero: {
-            headlinePrefix: "Escala con ",
-            headlineHighlight: "Sistemas de IA",
-            subtext: "Descubre tus cuellos de botella, despliega sistemas de alto retorno y convierte demanda en resultados con infraestructura digital.",
-            ctaPrimary: "Comenzar el Proceso",
-            ctaSecondary: "Agendar Llamada"
+            headlinePrefix: "Tu negocio,",
+            headlineHighlight: "diseñado para crecer.",
+            subtext: "Diseñamos sitios web para negocios en Puerto Rico — rápidos, modernos, y construidos para atraer clientes.",
+            ctaPrimary: "Empieza aquí",
+            ctaSecondary: "Agenda una llamada"
         },
         identification: {
-            headline: "Escalar sin sistemas crea inestabilidad",
-            subheadline: "Si esto te suena familiar, tu negocio está listo para automatización estructurada.",
+            headline: "Tu negocio merece más que una página básica.",
+            subheadline: "Si reconoces alguno de estos problemas, es momento de cambiar eso.",
             bullets: [
-                "Llegan leads, pero el seguimiento no es consistente",
-                "Tu equipo está saturado con tareas repetitivas",
-                "Procesos importantes dependen de memoria, no de estructura",
-                "El crecimiento aumenta la complejidad, no la claridad",
-                "No tienes visibilidad operativa en tiempo real",
-                "Estás contratando para corregir ineficiencias"
+                "Mi página web se ve desactualizada",
+                "Los clientes no me encuentran en Google",
+                "Mi página no genera llamadas ni mensajes",
+                "No tengo presencia profesional en línea",
+                "Mi competencia tiene mejor página que yo",
+                "No sé cómo mejorar lo que tengo"
             ]
         },
-        layers: {
-            title: "Diseñamos sistemas de negocio en tres capas",
-            subtext: "Cada capa se conecta para que tu operación funcione con claridad — no como servicios separados.",
+        services: {
+            label: "LO QUE CONSTRUIMOS",
+            title: "Tres servicios. Un solo objetivo: hacer crecer tu negocio.",
+            subtext: "Desde tu primera página web hasta herramientas con inteligencia artificial — construimos lo que tu negocio necesita.",
             cards: [
                 {
-                    title: "Capa de Automatización",
-                    text: "Automatizamos seguimiento, tareas y flujos repetitivos para aumentar velocidad y consistencia."
+                    title: "Presencia",
+                    tag: "$800 – $1,200",
+                    desc: "Un sitio web limpio y rápido para que tu negocio exista con credibilidad en línea. 4–5 páginas, optimizado para móvil, formulario de contacto incluido."
                 },
                 {
-                    title: "Capa de Infraestructura",
-                    text: "Tu website y tus procesos internos trabajan como un solo sistema, en lugar de operar individualmente."
+                    title: "Rendimiento",
+                    tag: "$1,500 – $2,500",
+                    desc: "Un sitio enfocado en conversión, diseñado para generar clientes. Incluye base SEO, dirección de copy y flujos de contacto integrados."
                 },
                 {
-                    title: "Capa de Visibilidad Operacional",
-                    text: "Monitorea el estado de tus procesos y toma decisiones con datos, no suposiciones."
+                    title: "Paquete Crecimiento",
+                    tag: "$2,800 – $4,000",
+                    desc: "Sitio de rendimiento + asistente de chat con IA + herramienta GPT personalizada. Todo lo que un negocio en crecimiento necesita para captar clientes en línea.",
+                    badge: "Más popular"
                 }
-            ],
-            diagram: {
-                automation: "Capa de Automatización",
-                infrastructure: "Capa de Infraestructura",
-                visibility: "Capa de Visibilidad"
-            }
+            ]
         },
-        scale: {
-            headline: "Escala sin aumentar tu nómina",
-            subheadline: "Aumenta capacidad, mejora tiempos de respuesta y convierte más oportunidades — sin presión de payroll.",
+        ai: {
+            label: "IA INCLUIDA",
+            headline: "Tu página trabaja. Aunque tú no estés.",
+            subtext: "Cada sitio que construimos puede incluir capacidades de inteligencia artificial — para que tu negocio responda, capture y convierta las 24 horas.",
+            tagline: "Sin conocimientos técnicos. Lo construimos, entrenamos y entregamos listo para usar.",
             cards: [
                 {
-                    title: "Automatiza la repetición",
-                    text: "Elimina seguimientos manuales y cuellos de botella administrativos."
+                    title: "Chat con IA",
+                    desc: "Responde preguntas, comparte precios y captura datos de contacto — todo el día, sin que tengas que hacer nada.",
+                    tag: "+ $350–$600"
                 },
                 {
-                    title: "Estandariza la ejecución",
-                    text: "Cambia procesos basados en memoria por flujos estructurados."
+                    title: "Calificador de Clientes",
+                    desc: "Filtra tus consultas automáticamente. Los mejores prospectos te llegan de inmediato. Los demás reciben una respuesta útil.",
+                    tag: "+ $400–$700"
                 },
                 {
-                    title: "Centraliza la visibilidad",
-                    text: "Sabe qué está pasando dentro del negocio, en todo momento."
+                    title: "Herramienta GPT",
+                    desc: "Una IA entrenada para tu negocio — redacta tus publicaciones, correos y maneja tareas repetitivas en segundos.",
+                    tag: "+ $600–$1,200"
                 }
             ]
         },
         howItWorks: {
-            headline: "Cómo desplegamos tu sistema",
-            subtext: "Un proceso estructurado diseñado para negocios en crecimiento y firmas profesionales.",
+            headline: "Cómo funciona",
+            subtext: "Un proceso claro, diseñado para negocios ocupados.",
             steps: [
-                { title: "Diagnóstico de Gaps Operacionales", desc: "Identificamos oportunidades y brechas." },
-                { title: "Diseño de Arquitectura", desc: "Creamos el plano de tu infraestructura digital." },
-                { title: "Implementación e Integración", desc: "Construimos y conectamos tus sistemas." },
-                { title: "Optimización y Escala", desc: "Mejoramos el rendimiento continuamente." }
+                { title: "Conversación inicial", desc: "Hablamos 30 minutos sobre tu negocio, tus metas y lo que necesitas. Sin compromiso." },
+                { title: "Propuesta y plan", desc: "Te enviamos una propuesta clara con alcance, tiempo y precio. Sin letra pequeña." },
+                { title: "Diseño y construcción", desc: "Construimos tu sitio con revisiones incluidas. Tú apruebas antes de publicar." },
+                { title: "Lanzamiento y soporte", desc: "Tu sitio sale en vivo. Ofrecemos mantenimiento mensual para que nunca se quede atrás." }
             ]
         },
         differentiation: {
@@ -91,73 +96,78 @@ export const translations = {
     },
     en: {
         hero: {
-            headlinePrefix: "Scale with ",
-            headlineHighlight: "AI Systems",
-            subtext: "Identify bottlenecks, deploy high-ROI systems, and turn demand into actual results using digital infrastructure.",
-            ctaPrimary: "Start the Process",
-            ctaSecondary: "Book a Call"
+            headlinePrefix: "Your business,",
+            headlineHighlight: "built to be found.",
+            subtext: "We build websites for Puerto Rico businesses — fast, sharp, and designed to bring in clients.",
+            ctaPrimary: "Get started",
+            ctaSecondary: "Book a call"
         },
         identification: {
-            headline: "Scaling without systems creates instability",
-            subheadline: "If this sounds familiar, your business is ready for structured automation.",
+            headline: "Your business deserves more than a basic website.",
+            subheadline: "If any of these sound familiar, it's time to fix that.",
             bullets: [
-                "Leads come in, but follow-up is inconsistent",
-                "Your team is bogged down by repetitive tasks",
-                "Important processes rely on memory, not structure",
-                "Growth is increasing complexity, not clarity",
-                "You lack real-time operational visibility",
-                "You are hiring headcount to fix inefficiencies"
+                "My website looks outdated",
+                "Clients can't find me on Google",
+                "My site doesn't generate calls or messages",
+                "I don't have a professional online presence",
+                "My competitors have better websites",
+                "I don't know how to improve what I have"
             ]
         },
-        layers: {
-            title: "We design business systems in three layers",
-            subtext: "Every layer connects so your operation runs with absolute clarity — not as isolated services.",
+        services: {
+            label: "WHAT WE BUILD",
+            title: "Three services. One goal: grow your business.",
+            subtext: "From your first website to AI-powered tools — we build what your business needs.",
             cards: [
                 {
-                    title: "Automation Layer",
-                    text: "We automate follow-ups, tasks, and repetitive workflows to increase speed and consistency."
+                    title: "Presence",
+                    tag: "$800 – $1,200",
+                    desc: "A clean, fast website so your business exists credibly online. 4–5 pages, mobile-first, contact form included."
                 },
                 {
-                    title: "Infrastructure Layer",
-                    text: "Your website and internal processes work together as a single unified system, instead of operating individually."
+                    title: "Performance",
+                    tag: "$1,500 – $2,500",
+                    desc: "A conversion-focused site built to generate leads. SEO foundation, copy direction, and integrated contact flows."
                 },
                 {
-                    title: "Operational Visibility Layer",
-                    text: "Monitor the status of your processes and make decisions based on data, not assumptions."
+                    title: "Growth Package",
+                    tag: "$2,800 – $4,000",
+                    desc: "Performance site + AI chat widget + custom GPT tool. Everything a growing business needs to acquire clients online.",
+                    badge: "Most popular"
                 }
-            ],
-            diagram: {
-                automation: "Automation Layer",
-                infrastructure: "Infrastructure Layer",
-                visibility: "Visibility Layer"
-            }
+            ]
         },
-        scale: {
-            headline: "Scale without expanding your payroll",
-            subheadline: "Increase capacity, improve response times, and convert more opportunities — without the pressure of added headcount.",
+        ai: {
+            label: "AI BUILT IN",
+            headline: "Your website works. Even when you don't.",
+            subtext: "Every site we build can include AI capabilities — so your business responds, captures, and converts around the clock.",
+            tagline: "No technical knowledge required. We build it, train it, and hand it off ready to use.",
             cards: [
                 {
-                    title: "Automate Repetition",
-                    text: "Eliminate manual follow-ups and administrative bottlenecks."
+                    title: "AI Chat Assistant",
+                    desc: "Answers questions, shares pricing, and captures contact info — 24 hours a day, without you lifting a finger.",
+                    tag: "+ $350–$600"
                 },
                 {
-                    title: "Standardize Execution",
-                    text: "Replace memory-based processes with structured, reliable workflows."
+                    title: "Smart Lead Qualifier",
+                    desc: "Filters your inquiries automatically. Hot leads reach you immediately. Everyone else gets a helpful response.",
+                    tag: "+ $400–$700"
                 },
                 {
-                    title: "Centralize Visibility",
-                    text: "Know exactly what is happening inside your business, at all times."
+                    title: "Custom GPT Tool",
+                    desc: "An AI trained on your business — writes your posts, emails, and handles repetitive tasks in seconds.",
+                    tag: "+ $600–$1,200"
                 }
             ]
         },
         howItWorks: {
-            headline: "How we deploy your system",
-            subtext: "A structured deployment process built for growing businesses and professional firms.",
+            headline: "How it works",
+            subtext: "A clear process, designed for busy business owners.",
             steps: [
-                { title: "Diagnose Operational Gaps", desc: "Identify operational gaps and bottlenecks in your current workflow." },
-                { title: "Design the Architecture", desc: "Architect the custom system layers needed for your specific goals." },
-                { title: "Implement & Integrate", desc: "Build, integrate, and deploy your new automation infrastructure." },
-                { title: "Optimize & Scale", desc: "Refine performance and scale the system as you grow." }
+                { title: "Discovery call", desc: "We talk for 30 minutes about your business, your goals, and what you need. No commitment." },
+                { title: "Proposal & plan", desc: "We send a clear proposal with scope, timeline, and price. No fine print." },
+                { title: "Design & build", desc: "We build your site with revisions included. You approve before it goes live." },
+                { title: "Launch & support", desc: "Your site goes live. We offer monthly maintenance so it never falls behind." }
             ]
         },
         differentiation: {

@@ -91,4 +91,4 @@ MIT
 
 ---
 
-**MC DESIGNS** - Design. Build. Automate.
+**MC DESIGNS** - Web Design Studio | Puerto Rico

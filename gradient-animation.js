@@ -108,8 +108,8 @@ class ButtonGradientAnimation {
         this.isAnimating = false;
         this.mouse = { x: 0.5, y: 0.5 };
 
-        // Subtle electric blue gradient with #2D5BFF base and white accent
-        this.color1 = new THREE.Vector3(0.176, 0.357, 1.0); // #2D5BFF - base color
+        // Subtle electric blue gradient with #4DA6FF base and white accent
+        this.color1 = new THREE.Vector3(0.302, 0.651, 1.0); // #4DA6FF - base color
         this.color2 = new THREE.Vector3(1.0, 1.0, 1.0); // White - accent
         this.color3 = new THREE.Vector3(0.2, 0.4, 0.95); // Brighter electric blue - shadow
 
