@@ -12,35 +12,16 @@
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>MC DESIGNS | Web Design Studio — Puerto Rico</title>
-    <meta name="description" content="MC Designs builds websites for Puerto Rico businesses — sharp design, fast performance, AI built in." />
+    <title>MC DESIGNS | System-Driven Web Platform</title>
+    <meta name="description" content="Websites that convert and systems that run your business." />
     <link rel="canonical" href="https://mcdesignspr.com/" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mcdesignspr.com/" />
-    <meta property="og:title" content="MC Designs | Web Design Studio — Puerto Rico" />
-    <meta property="og:description" content="Web design for Puerto Rico businesses. Sharp sites, fast performance, AI built in." />
-    <meta property="og:image" content="https://mcdesignspr.com/og-image.jpg" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://mcdesignspr.com/" />
-    <meta property="twitter:title" content="MC Designs | Web Design Studio — Puerto Rico" />
-    <meta property="twitter:description" content="Web design for Puerto Rico businesses. Sharp sites, fast performance, AI built in." />
-    <meta property="twitter:image" content="https://mcdesignspr.com/og-image.jpg" />
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "MC Designs",
-      "url": "https://mcdesignspr.com"
-    }
-    </script>
-
+    <meta property="og:title" content="MC Designs | System-Driven Web Platform" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Tailwind CSS v3 CDN -->
@@ -52,12 +33,12 @@
                     colors: {
                         black: '#000000',
                         slate: {
-                            900: '#0F1115',
-                            800: '#1A1D24',
-                            700: '#2A2E39',
+                            900: '#0B0D12',
+                            800: '#14171E',
+                            700: '#1A1E27',
                         },
                         accentsBlue: '#4DA6FF',
-                        darkPanel: '#0A0A0F',
+                        darkPanel: '#07080B',
                         offWhite: '#F3F4F6'
                     },
                     fontFamily: {
@@ -70,7 +51,7 @@
     </script>
 
     <style data-purpose="typography">
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
         body {
             background-color: #000000;
@@ -85,154 +66,217 @@
             letter-spacing: 0.05em;
         }
 
+        .system-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         .border-subtle {
-            border-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Hero node flow animation */
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(77,166,255,0.2); border-color: rgba(77,166,255,0.4); }
-            50% { box-shadow: 0 0 30px rgba(77,166,255,0.6); border-color: rgba(77,166,255,1); }
+        /* Smooth fade transitions */
+        .system-card-hover {
+            transition: all 0.3s ease-out;
+            will-change: transform, box-shadow, border-color;
         }
-
-        .node-active {
-            animation: pulseGlow 3s infinite;
-        }
-
-        @keyframes flowLine {
-            0% { transform: scaleX(0); transform-origin: left; }
-            50% { transform: scaleX(1); transform-origin: left; }
-            50.1% { transform: scaleX(1); transform-origin: right; }
-            100% { transform: scaleX(0); transform-origin: right; }
-        }
-
-        .flow-line::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(77,166,255,0.8), transparent);
-            animation: flowLine 3s infinite linear;
+        .system-card-hover:hover {
+            transform: translateY(-2px);
+            border-color: rgba(77,166,255,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(77,166,255,0.1);
         }
 
         /* Background Grid */
         .bg-grid-pattern {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 40px 40px;
-            background-position: center;
+            background-position: center top;
         }
 
-        .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
+        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
 
-        .system-card-hover {
-            transition: all 0.3s ease;
+        /* HERO DIAGRAM ANIMATIONS */
+        .node-active {
+            box-shadow: 0 0 15px rgba(77,166,255,0.2);
+            border-color: rgba(77,166,255,0.5);
+            animation: pulseActive 2s infinite alternate ease-in-out;
         }
-        .system-card-hover:hover {
-            transform: translateY(-4px);
-            border-color: rgba(77,166,255,0.3);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 20px rgba(77,166,255,0.1);
+
+        @keyframes pulseActive {
+            0% { box-shadow: 0 0 10px rgba(77,166,255,0.2); border-color: rgba(77,166,255,0.3); }
+            100% { box-shadow: 0 0 25px rgba(77,166,255,0.6); border-color: rgba(77,166,255,1); }
         }
+
+        /* Flow Lines */
+        .connector-line {
+            position: absolute;
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .connector-dot {
+            position: absolute;
+            width: 4px; height: 4px;
+            background-color: #4DA6FF;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #4DA6FF;
+        }
+
+        /* Dot animation (Mobile - Vertical) */
+        @keyframes flowDotY {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .flow-dot-y {
+            animation: flowDotY 3s infinite linear;
+            left: 50%; transform: translateX(-50%);
+        }
+
+        /* Dot animation (Desktop - Horizontal) */
+        @keyframes flowDotX {
+            0% { left: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+        .flow-dot-x {
+            animation: flowDotX 3s infinite linear;
+            top: 50%; transform: translateY(-50%);
+        }
+
     </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-black text-offWhite bg-grid-pattern overflow-x-hidden">
     <!-- Header -->
-    <header class="flex justify-between items-center py-6 mt-4 z-50 w-full max-w-7xl mx-auto px-6" data-purpose="main-header">
+    <header class="flex justify-between items-center py-6 mt-4 z-50 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-black/80 backdrop-blur-md border-b-0">
         <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto z-50 relative mix-blend-difference" />
-        <button id="lang-toggle" class="z-50 relative flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
-            <span class="w-2 h-2 rounded-full bg-accentsBlue"></span>
-            <span id="lang-text" class="text-xs font-bold tracking-widest text-white">ES</span>
+        <button id="lang-toggle" class="z-50 relative flex items-center gap-2 px-4 py-2 rounded-full border border-subtle bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-accentsBlue shadow-[0_0_5px_#4DA6FF]"></span>
+            <span id="lang-text" class="text-xs font-bold tracking-widest text-white system-font">ES</span>
         </button>
     </header>
 
     <main class="w-full">
         <!-- 1. Hero Section -->
-        <section class="section-padding relative z-10 pt-16 md:pt-24" id="hero">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section class="section-padding relative z-10 pt-16 md:pt-24 min-h-[85vh] flex items-center" id="hero">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center w-full">
                 <!-- Left: Content -->
                 <div class="flex flex-col items-start text-left">
-                    <h1 class="heading-condensed text-[12vw] md:text-[6rem] lg:text-[7.5rem] leading-[0.9] mb-6 tracking-tight text-white drop-shadow-lg">
-                        <span data-i18n="hero.prefix" class="block">Tu negocio,</span>
-                        <span class="text-accentsBlue block" data-i18n="hero.highlight">sistematizado.</span>
+                    <h1 class="heading-condensed text-5xl md:text-[5.5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] mb-6 tracking-tight text-white">
+                        <span data-i18n="hero.prefix" class="block">Websites Que Convierten</span>
+                        <span class="text-accentsBlue block" data-i18n="hero.highlight">— y Sistemas Que Corren Tu Negocio</span>
                     </h1>
-                    <p class="text-white/70 text-lg md:text-xl lg:text-2xl max-w-lg leading-relaxed mb-10 font-medium" data-i18n="hero.subtext">
-                        Diseñamos sistemas web enfocados en conversión. Menos ruido, más prospectos calificados automáticos.
+                    <p class="text-white/70 text-lg md:text-xl max-w-lg leading-relaxed mb-4 font-medium" data-i18n="hero.subtext">
+                        Construimos sitios web conectados con IA y sistemas de flujo de trabajo para que generes más leads, respondas más rápido y reduzcas el trabajo manual.
+                    </p>
+                    <p class="text-accentsBlue/80 text-sm mb-10 system-font font-bold uppercase tracking-wider" data-i18n="hero.tag">
+                        Construido para empresas de servicios que dependen de leads y respuestas rápidas.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-auto">
+                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
                         <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                            class="w-full sm:w-auto bg-accentsBlue text-black px-8 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-lg shadow-accentsBlue/20"
+                            class="w-full sm:w-auto bg-accentsBlue text-black px-6 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
                             data-i18n="hero.cta1">
-                            Empieza el proceso
+                            Obtener Auditoría de Web + IA
                         </button>
-                        <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
-                            class="w-full sm:w-auto px-8 py-4 text-white/80 hover:text-white border border-white/20 hover:border-white/50 rounded font-medium text-sm tracking-wide transition-all"
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                            class="w-full sm:w-auto px-5 py-4 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
                             data-i18n="hero.cta2">
-                            Agendar auditoría
+                            Ve Dónde Tu Sistema Te Frena
                         </button>
                     </div>
-                    <p class="text-white/40 text-xs mt-4 tracking-widest uppercase font-medium" data-i18n="hero.tag">Arquitectura web para negocios en serio</p>
                 </div>
 
-                <!-- Right: Visual Diagram -->
-                <div class="hidden lg:flex flex-col gap-6 relative p-10 border border-white/5 rounded-2xl bg-darkPanel/80 backdrop-blur-sm shadow-2xl">
-                    <!-- Diagram Flow -->
-                    <div class="flex flex-col gap-8 w-full relative">
-                        <!-- Connecting vertical line -->
-                        <div class="absolute left-1/2 top-4 bottom-4 w-px bg-white/10 -translate-x-1/2 flow-line overflow-hidden"></div>
-                        
-                        <div class="relative z-10 flex flex-col items-center gap-2">
-                            <div class="bg-black border border-white/20 px-6 py-3 rounded-full text-sm font-medium tracking-wide shadow-lg" data-i18n="hero.node1">Tráfico (Redes / Búsqueda)</div>
+                <!-- Right: Visual System Diagram -->
+                <div class="flex flex-col relative p-8 md:p-10 border border-white/5 rounded-xl bg-darkPanel/90 backdrop-blur-sm shadow-2xl">
+                    <div class="text-xs uppercase tracking-widest text-white/30 mb-8 system-font text-center">System Architecture</div>
+                    
+                    <!-- Diagram Container -->
+                    <div class="flex flex-col lg:flex-row justify-between items-center w-full relative gap-6 lg:gap-0">
+                        <!-- Desktop Horizontal Line -->
+                        <div class="hidden lg:block connector-line h-px left-10 right-10 top-1/2 -translate-y-1/2 z-0">
+                            <!-- Flowing dots X -->
+                            <div class="connector-dot flow-dot-x" style="animation-delay: 0s;"></div>
+                            <div class="connector-dot flow-dot-x" style="animation-delay: 1.5s;"></div>
+                            <div class="connector-dot flow-dot-x" style="animation-delay: 2.2s;"></div>
                         </div>
-                        <div class="relative z-10 flex flex-col items-center gap-2">
-                            <div class="bg-slate-900 border border-accentsBlue text-accentsBlue px-8 py-4 rounded-lg text-lg font-bold tracking-wide shadow-[0_0_30px_rgba(77,166,255,0.15)] node-active" data-i18n="hero.node2">Sitio Web Optimizado</div>
+
+                        <!-- Mobile Vertical Line -->
+                        <div class="lg:hidden connector-line w-px top-10 bottom-10 left-1/2 -translate-x-1/2 z-0">
+                            <!-- Flowing dots Y -->
+                            <div class="connector-dot flow-dot-y" style="animation-delay: 0s;"></div>
+                            <div class="connector-dot flow-dot-y" style="animation-delay: 1s;"></div>
                         </div>
-                        <div class="relative z-10 flex flex-col items-center gap-2">
-                            <div class="bg-black border border-white/20 px-6 py-3 rounded-full text-sm font-medium tracking-wide shadow-lg" data-i18n="hero.node3">Captura Automática (IA / CRM)</div>
+
+                        <!-- Node 1: Leads -->
+                        <div class="relative z-10 w-full lg:w-32 bg-slate-900 border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node1">LEADS</div>
+                            <div class="w-2 h-2 rounded-full bg-white/20 mt-2"></div>
+                        </div>
+
+                        <!-- Node 2: Website / Central Node -->
+                        <div class="relative z-10 w-full lg:w-40 bg-slate-800 node-active p-5 rounded-lg text-center flex flex-col items-center justify-center min-h-[100px] border">
+                            <div class="text-[11px] text-accentsBlue font-bold uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node2">SITIO WEB</div>
+                            <div class="w-3 h-3 rounded-full bg-accentsBlue shadow-[0_0_10px_#4DA6FF] mt-2"></div>
+                        </div>
+
+                        <!-- Node 3: AI + Logic -->
+                        <div class="relative z-10 w-full lg:w-32 bg-slate-900 border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
+                            <div class="text-[10px] text-white/60 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node3">IA + LÓGICA</div>
+                            <div class="w-2 h-2 rounded-full bg-white/50 mt-2"></div>
+                        </div>
+
+                        <!-- Node 4: Actions -->
+                        <div class="relative z-10 w-full lg:w-28 bg-black border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node4">ACCIONES</div>
+                            <div class="w-2 h-2 rounded-full bg-white/20 mt-2"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
         <!-- 2. Problem Section -->
-        <section class="section-padding bg-darkPanel/50 border-y border-white/5 relative" id="problem">
+        <section class="section-padding bg-darkPanel/30 border-y border-white/5 relative" id="problem">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
                 <div class="lg:col-span-2">
                     <h2 class="heading-condensed text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
                         Tráfico que no convierte es dinero tirado.
                     </h2>
-                    <p class="text-white/60 text-lg leading-relaxed" data-i18n="problem.subtext">
+                    <p class="text-white/50 text-base md:text-lg leading-relaxed" data-i18n="problem.subtext">
                         Si tu página es un simple folleto digital, estás perdiendo clientes todos los días frente a competidores con mejores sistemas.
                     </p>
                 </div>
                 
                 <div class="lg:col-span-3 flex flex-col gap-4">
-                    <div class="bg-slate-900/50 border border-white/5 p-6 rounded-lg flex items-start gap-4">
-                        <div class="text-red-400 mt-1">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </div>
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
+                        <div class="text-white/20 mt-1 system-font text-xs">01</div>
                         <div>
-                            <h4 class="text-white font-medium mb-1" data-i18n="problem.cards.0.title">Sin captación clara</h4>
+                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.0.title">Sin captación clara</h4>
                             <p class="text-white/50 text-sm" data-i18n="problem.cards.0.desc">Los usuarios entran, miran y se van sin dejar un contacto ni agendar una llamada.</p>
                         </div>
                     </div>
-                    <div class="bg-slate-900/50 border border-white/5 p-6 rounded-lg flex items-start gap-4">
-                        <div class="text-red-400 mt-1">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </div>
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
+                        <div class="text-white/20 mt-1 system-font text-xs">02</div>
                         <div>
-                            <h4 class="text-white font-medium mb-1" data-i18n="problem.cards.1.title">Procesos manuales</h4>
+                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.1.title">Procesos manuales</h4>
                             <p class="text-white/50 text-sm" data-i18n="problem.cards.1.desc">Contestas las mismas preguntas repetitivas o persigues clientes que no están calificados.</p>
                         </div>
                     </div>
-                    <div class="bg-slate-900/50 border border-white/5 p-6 rounded-lg flex items-start gap-4">
-                        <div class="text-red-400 mt-1">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </div>
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
+                        <div class="text-white/20 mt-1 system-font text-xs">03</div>
                         <div>
-                            <h4 class="text-white font-medium mb-1" data-i18n="problem.cards.2.title">Mala experiencia móvil</h4>
+                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.2.title">Mala experiencia móvil</h4>
                             <p class="text-white/50 text-sm" data-i18n="problem.cards.2.desc">Tu sitio fue diseñado en 2018 y tarda más de 4 segundos en cargar en celular.</p>
                         </div>
                     </div>
@@ -240,126 +284,187 @@
             </div>
         </section>
 
-        <!-- 3. System Explanation -->
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
+        <!-- 3. System Components -->
         <section class="section-padding relative">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <div class="text-xs text-accentsBlue uppercase tracking-[0.15em] mb-4 font-bold" data-i18n="system.tag">Nuestra Solución</div>
+                <div class="text-[10px] text-accentsBlue uppercase tracking-[0.2em] mb-4 font-bold system-font" data-i18n="system.tag">Nuestra Solución</div>
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="system.title">La Arquitectura de un Sitio que Convierte</h2>
                 
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 max-w-5xl mx-auto border border-white/10 p-8 md:p-12 rounded-2xl bg-darkPanel/30 relative">
-                    <!-- Desktop horizontal line -->
-                    <div class="hidden md:block absolute top-1/2 left-20 right-20 h-px bg-white/10 -translate-y-1/2"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
+                    <!-- Desktop horizontal line behind cards -->
+                    <div class="hidden md:block absolute top-[40%] left-10 right-10 h-px bg-white/10 -z-10"></div>
                     
-                    <div class="bg-black border border-white/20 p-6 rounded-xl relative z-10 w-full md:w-1/3 system-card-hover">
-                        <h4 class="text-white font-bold mb-2" data-i18n="system.nodes.0.title">1. Atracción</h4>
-                        <p class="text-white/50 text-sm" data-i18n="system.nodes.0.desc">SEO y diseño ultra ràpido para no perder la atenciòn inicial.</p>
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.0.label">Website</div>
+                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.0.title">Atraer</h4>
+                            <p class="text-white/50 text-sm" data-i18n="system.nodes.0.desc">SEO y diseño ultra ràpido para no perder la atenciòn inicial.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-accentsBlue font-medium system-font" data-i18n="system.nodes.0.sub">Website → Atraer</div>
                     </div>
                     
-                    <div class="hidden md:block w-8 h-8 text-accentsBlue"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
-                    <div class="block md:hidden h-8 w-8 rotate-90 text-accentsBlue"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
-                    
-                    <div class="bg-slate-900 border border-accentsBlue/50 p-6 rounded-xl relative z-10 w-full md:w-1/3 shadow-[0_0_20px_rgba(77,166,255,0.1)] system-card-hover">
-                        <h4 class="text-accentsBlue font-bold mb-2" data-i18n="system.nodes.1.title">2. Interacción</h4>
-                        <p class="text-white/60 text-sm" data-i18n="system.nodes.1.desc">Estructura persuasiva enfocada en beneficios y CTAs claros.</p>
+                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between shadow-[0_0_20px_rgba(77,166,255,0.08)]">
+                        <div>
+                            <div class="text-[10px] text-accentsBlue uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.1.label">Interaction</div>
+                            <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.1.title">Responder</h4>
+                            <p class="text-white/70 text-sm" data-i18n="system.nodes.1.desc">Estructura persuasiva enfocada en beneficios y CTAs claros.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10 text-xs text-accentsBlue/80 font-medium system-font" data-i18n="system.nodes.1.sub">Interaction → Responder</div>
                     </div>
-                    
-                    <div class="hidden md:block w-8 h-8 text-accentsBlue"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
-                    <div class="block md:hidden h-8 w-8 rotate-90 text-accentsBlue"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-                    <div class="bg-black border border-white/20 p-6 rounded-xl relative z-10 w-full md:w-1/3 system-card-hover">
-                        <h4 class="text-white font-bold mb-2" data-i18n="system.nodes.2.title">3. Flujo (IA)</h4>
-                        <p class="text-white/50 text-sm" data-i18n="system.nodes.2.desc">Formularios inteligentes y chatbots que capturan al usuario.</p>
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.2.label">Workflow</div>
+                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.2.title">Ejecutar</h4>
+                            <p class="text-white/50 text-sm" data-i18n="system.nodes.2.desc">Formularios inteligentes y automatizaciones que capturan al usuario.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-accentsBlue font-medium system-font" data-i18n="system.nodes.2.sub">Workflow → Ejecutar</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-accentsBlue absolute top-1/2 -translate-y-1/2 -left-[2.5px] shadow-[0_0_8px_#4DA6FF]"></div>
+            </div>
+        </div>
+
         <!-- 4. Services / Offer Ladder (Integrated) -->
-        <section class="section-padding bg-slate-900/30 border-y border-white/5">
+        <section class="section-padding bg-darkPanel/50 border-y border-white/5">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="heading-condensed text-4xl md:text-5xl mb-4 text-white" data-i18n="ladder.title">Escala tu Presencia</h2>
-                    <p class="text-white/60 text-lg max-w-2xl mx-auto" data-i18n="ladder.subtext">Nuestros servicios están estructurados en una escalera. Construye la fundación, y optimiza después.</p>
+                    <p class="text-white/50 text-lg max-w-2xl mx-auto" data-i18n="ladder.subtext">Nuestros servicios están estructurados en una escalera. Construye la fundación, y optimiza después.</p>
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-6 items-end justify-center">
                     
                     <!-- Tier 1 -->
-                    <div class="w-full lg:w-1/3 bg-black border border-white/10 rounded-xl p-8 lg:min-h-[350px] flex flex-col justify-between system-card-hover hover:bg-white/5">
+                    <div class="w-full lg:w-1/3 bg-slate-900 border border-subtle rounded-xl p-8 lg:min-h-[350px] flex flex-col justify-between system-card-hover hover:bg-white/5">
                         <div>
-                            <div class="text-xs uppercase tracking-widest text-white/40 mb-2" data-i18n="ladder.t1.tag">Fundación</div>
+                            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-2 system-font" data-i18n="ladder.t1.tag">Fundación</div>
                             <h3 class="heading-condensed text-2xl text-white mb-4" data-i18n="ladder.t1.title">Presencia</h3>
-                            <p class="text-white/60 text-sm mb-6" data-i18n="ladder.t1.desc">Un sitio web limpio, profesional y de carga hiper-rápida. Establece la confianza mínima viable.</p>
+                            <p class="text-white/60 text-sm mb-6 max-w-sm" data-i18n="ladder.t1.desc">Un sitio web limpio, profesional y de carga hiper-rápida. Establece la confianza mínima viable.</p>
                         </div>
-                        <ul class="text-sm text-white/50 space-y-2 mb-8">
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t1.list.0">4-5 Páginas</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t1.list.1">Responsive Seguro</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t1.list.2">Form de Contacto</span></li>
+                        <ul class="text-sm text-white/50 space-y-3 mb-4">
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t1.list.0">4-5 Páginas</span></li>
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t1.list.1">Responsive Seguro</span></li>
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t1.list.2">Form de Contacto</span></li>
                         </ul>
                     </div>
 
                     <!-- Tier 2 -->
-                    <div class="w-full lg:w-1/3 bg-slate-900 border border-accentsBlue/40 rounded-xl p-8 lg:min-h-[400px] flex flex-col justify-between shadow-[0_0_30px_rgba(77,166,255,0.1)] relative transform lg:-translate-y-4">
-                        <div class="absolute top-0 right-0 bg-accentsBlue text-black font-bold text-[10px] tracking-widest px-3 py-1 rounded-bl-lg uppercase" data-i18n="ladder.t2.tag">Recomendado</div>
+                    <div class="w-full lg:w-1/3 bg-[#0B0F1A] border border-accentsBlue/60 rounded-xl p-8 lg:min-h-[420px] flex flex-col justify-between shadow-[0_0_30px_rgba(77,166,255,0.15)] relative transform lg:-translate-y-4 system-card-hover">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accentsBlue text-black font-bold text-[9px] tracking-widest px-4 py-1.5 rounded-full uppercase whitespace-nowrap shadow-[0_0_15px_rgba(77,166,255,0.5)] border border-white" data-i18n="ladder.t2.badge">La mayoría pasa aquí después de auditar</div>
                         <div>
-                            <div class="text-xs uppercase tracking-widest text-accentsBlue mb-2" data-i18n="ladder.t2.tag2">Sistematización</div>
-                            <h3 class="heading-condensed text-3xl text-accentsBlue mb-4" data-i18n="ladder.t2.title">Rendimiento</h3>
+                            <div class="text-[10px] uppercase tracking-widest text-accentsBlue mb-2 mt-2 system-font" data-i18n="ladder.t2.tag2">Sistematización</div>
+                            <h3 class="heading-condensed text-3xl text-accentsBlue mb-4 glow-text" data-i18n="ladder.t2.title">Rendimiento (Build)</h3>
                             <p class="text-white/80 text-sm mb-6" data-i18n="ladder.t2.desc">Diseñado para generar negocio. Copy persuasivo, y flujos de captura de leads avanzados.</p>
                         </div>
-                        <ul class="text-sm text-white/70 space-y-2 mb-8 font-medium">
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t2.list.0">Todo en Presencia</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t2.list.1">Estrategia de Copy</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t2.list.2">Optimización SEO Base</span></li>
+                        <ul class="text-sm text-white/80 space-y-3 mb-4 font-medium">
+                            <li class="flex items-start gap-3"><span class="text-accentsBlue text-[10px] mt-1">&block;</span> <span data-i18n="ladder.t2.list.0">Todo en Presencia</span></li>
+                            <li class="flex items-start gap-3"><span class="text-accentsBlue text-[10px] mt-1">&block;</span> <span data-i18n="ladder.t2.list.1">Estrategia de Copy</span></li>
+                            <li class="flex items-start gap-3"><span class="text-accentsBlue text-[10px] mt-1">&block;</span> <span data-i18n="ladder.t2.list.2">Optimización SEO Base</span></li>
                         </ul>
                     </div>
 
                     <!-- Tier 3 -->
-                    <div class="w-full lg:w-1/3 bg-black border border-white/10 rounded-xl p-8 lg:min-h-[350px] flex flex-col justify-between system-card-hover hover:bg-white/5">
+                    <div class="w-full lg:w-1/3 bg-slate-900 border border-subtle rounded-xl p-8 lg:min-h-[350px] flex flex-col justify-between system-card-hover hover:bg-white/5">
                         <div>
-                            <div class="text-xs uppercase tracking-widest text-white/40 mb-2" data-i18n="ladder.t3.tag">Automatización</div>
+                            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-2 system-font" data-i18n="ladder.t3.tag">Automatización</div>
                             <h3 class="heading-condensed text-2xl text-white mb-4" data-i18n="ladder.t3.title">Paquete IA</h3>
-                            <p class="text-white/60 text-sm mb-6" data-i18n="ladder.t3.desc">Responde a clientes 24/7 y automatiza tareas repetitivas con herramientas de inteligencia artificial a la medida.</p>
+                            <p class="text-white/60 text-sm mb-6 max-w-sm" data-i18n="ladder.t3.desc">Responde a clientes 24/7 y automatiza tareas repetitivas con herramientas de inteligencia artificial a la medida.</p>
                         </div>
-                        <ul class="text-sm text-white/50 space-y-2 mb-8">
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t3.list.0">Asistente Chat AI</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t3.list.1">Calificación Automática</span></li>
-                            <li class="flex items-center gap-2"><span class="text-accentsBlue">✓</span> <span data-i18n="ladder.t3.list.2">Integración CRM</span></li>
+                        <ul class="text-sm text-white/50 space-y-3 mb-4">
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t3.list.0">Asistente Chat AI</span></li>
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t3.list.1">Calificación Automática</span></li>
+                            <li class="flex items-center gap-3"><span class="text-accentsBlue text-[10px]">&block;</span> <span data-i18n="ladder.t3.list.2">Integración CRM</span></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="mt-16 text-center">
                     <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                            class="bg-white text-black px-8 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-accentsBlue transition-all" data-i18n="ladder.cta">
-                        Habla con Nosotros sobre Precio
+                            class="bg-white text-black px-8 py-4 rounded font-bold text-xs tracking-widest uppercase hover:bg-accentsBlue transition-all" data-i18n="ladder.cta">
+                        Obtener un desglose claro de qué arreglar primero
                     </button>
                 </div>
             </div>
         </section>
 
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
         <!-- 5. Why it matters -->
         <section class="section-padding">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="metrics.title">El Costo de No Tener un Sistema</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-y border-white/10 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-y border-subtle py-12 bg-darkPanel/50">
                     <div>
                         <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m1.val">24/7</div>
-                        <div class="text-white/80 font-medium" data-i18n="metrics.m1.title">Captura de Prospectos</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto" data-i18n="metrics.m1.desc">No pierdas otro lead porque escribieron fuera de horas laborables.</div>
+                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m1.title">Captura de Prospectos</div>
+                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m1.desc">No pierdas otro lead porque escribieron fuera de horas laborables.</div>
                     </div>
-                    <div class="border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0">
+                    <div class="border-y md:border-y-0 md:border-x border-subtle py-8 md:py-0">
                         <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m2.val">0</div>
-                        <div class="text-white/80 font-medium" data-i18n="metrics.m2.title">Fricción al Comprar</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto" data-i18n="metrics.m2.desc">Flujos limpios que llevan al visitante exactamente a donde quieres.</div>
+                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m2.title">Fricción al Comprar</div>
+                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m2.desc">Flujos limpios que llevan al visitante exactamente a donde quieres.</div>
                     </div>
                     <div>
                         <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m3.val">100%</div>
-                        <div class="text-white/80 font-medium" data-i18n="metrics.m3.title">Propiedad Digital</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto" data-i18n="metrics.m3.desc">No dependas de los algoritmos de redes sociales para tener negocio.</div>
+                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m3.title">Propiedad Digital</div>
+                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m3.desc">No dependas de los algoritmos de redes sociales para tener negocio.</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- 5.5 Outcomes (New Section) -->
+        <section class="section-padding pt-0">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-[10px] text-center text-white/40 uppercase tracking-widest system-font mb-4">System Outcomes</div>
+                <h2 class="heading-condensed text-center text-3xl md:text-4xl mb-12 text-white" data-i18n="outcomes.title">Qué Cambia Cuando Tu Sistema Funciona</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
+                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
+                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.0.title">Más leads calificados</h4>
+                    </div>
+                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
+                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
+                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.1.title">Tiempos de respuesta súper rápidos</h4>
+                    </div>
+                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
+                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
+                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.2.title">Menos trabajo manual</h4>
+                    </div>
+                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
+                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
+                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.3.title">Operaciones más claras</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
 
         <!-- 6. Process -->
         <section class="section-padding bg-darkPanel/80 border-t border-white/5" id="process">
@@ -372,8 +477,8 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left md:text-center relative">
                         <!-- Step 1 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center">
-                            <div class="w-14 h-14 md:mb-6 rounded bg-black border border-white/20 flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.0.num">01</div>
+                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
+                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-900 border border-subtle flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.0.num">01</div>
                             <div>
                                 <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.0.title">Auditoría Cero BS</h3>
                                 <p class="text-white/50 text-sm" data-i18n="process.steps.0.desc">Hablamos sobre tu negocio actual. Si no podemos ayudarte a hacer más dinero, te lo decimos.</p>
@@ -381,11 +486,11 @@
                         </div>
                         
                         <!-- Step 2 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center">
+                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
                             <!-- Desktop line piece -->
                             <div class="hidden md:block absolute right-[50%] left-[-50%] top-7 h-px bg-white/10 -z-0"></div>
                             
-                            <div class="w-14 h-14 md:mb-6 rounded bg-black border border-white/20 flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.1.num">02</div>
+                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-900 border border-subtle flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.1.num">02</div>
                             <div>
                                 <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.1.title">Ingeniería & Copy</h3>
                                 <p class="text-white/50 text-sm" data-i18n="process.steps.1.desc">Diseñamos no sólo cómo se ve, sino los textos exactos que provocarán las acciones de venta.</p>
@@ -393,11 +498,11 @@
                         </div>
 
                         <!-- Step 3 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center">
+                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
                             <!-- Desktop line piece -->
                             <div class="hidden md:block absolute right-[50%] left-[-50%] top-7 h-px bg-white/10 -z-0"></div>
                             
-                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-900 border border-accentsBlue flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-[0_0_15px_rgba(77,166,255,0.2)]" data-i18n="process.steps.2.num">03</div>
+                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-800 border border-accentsBlue/50 flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-[0_0_15px_rgba(77,166,255,0.2)]" data-i18n="process.steps.2.num">03</div>
                             <div>
                                 <h3 class="font-bold text-accentsBlue text-lg mb-2" data-i18n="process.steps.2.title">Despliegue</h3>
                                 <p class="text-white/60 text-sm" data-i18n="process.steps.2.desc">Sale a vivo optimizado para móvil y navegadores rápidos. Soporte activo desde el día uno.</p>
@@ -409,63 +514,70 @@
         </section>
 
         <!-- 8. Differentiation -->
-        <section class="section-padding py-20" id="differentiation">
+        <section class="section-padding py-20 bg-slate-900/40 border-t border-subtle" id="differentiation">
              <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-12 border-b border-white/10 pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
+                <div class="mb-12 border-b border-subtle pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
                     <h2 class="heading-condensed text-4xl md:text-5xl text-white" data-i18n="diff.title">Por qué somos diferentes</h2>
-                    <p class="text-white/50 text-sm uppercase tracking-widest font-medium text-right max-w-[200px]" data-i18n="diff.tag">Ingeniería sobre Estética</p>
+                    <p class="text-white/40 text-xs uppercase tracking-widest system-font font-medium text-right" data-i18n="diff.tag">Ingeniería sobre Estética</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                    <div>
+                    <div class="system-card-hover p-4 -m-4 rounded-lg">
                         <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="w-2 h-2 rounded-full bg-accentsBlue block"></span> <span data-i18n="diff.items.0.title">No somos "Artistas"</span>
+                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.0.title">No somos "Artistas"</span>
                         </h4>
-                        <p class="text-white/60" data-i18n="diff.items.0.desc">El arte es subjetivo y decorativo. Nosotros somos ingenieros de interfaces comerciales. Construimos herramientas para ventas, no pósters digitales.</p>
+                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.0.desc">El arte es subjetivo y decorativo. Nosotros somos ingenieros de interfaces comerciales. Construimos herramientas para ventas, no pósters digitales.</p>
                     </div>
-                    <div>
+                    <div class="system-card-hover p-4 -m-4 rounded-lg">
                         <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="w-2 h-2 rounded-full bg-accentsBlue block"></span> <span data-i18n="diff.items.1.title">Pensamos en el Negocio, no en Pixeles</span>
+                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.1.title">Pensamos en el Negocio, no en Pixeles</span>
                         </h4>
-                        <p class="text-white/60" data-i18n="diff.items.1.desc">No nos importa ganar premios de diseño web. Nos importa reducir tus tiempos de carga, clarificar tu mensaje y subir tasas de conversión.</p>
+                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.1.desc">No nos importa ganar premios de diseño web. Nos importa reducir tus tiempos de carga, clarificar tu mensaje y subir tasas de conversión.</p>
                     </div>
-                    <div>
+                    <div class="system-card-hover p-4 -m-4 rounded-lg">
                         <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="w-2 h-2 rounded-full bg-accentsBlue block"></span> <span data-i18n="diff.items.2.title">Integración IA Real</span>
+                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.2.title">Integración IA Real</span>
                         </h4>
-                        <p class="text-white/60" data-i18n="diff.items.2.desc">Mucha agencia habla de IA. Nosotros la configuramos e integramos dentro de tus operaciones web para automatizar captación y servicio.</p>
+                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.2.desc">Mucha agencia habla de IA. Nosotros la configuramos e integramos dentro de tus operaciones web para automatizar captación y servicio.</p>
                     </div>
-                    <div>
+                    <div class="system-card-hover p-4 -m-4 rounded-lg">
                         <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="w-2 h-2 rounded-full bg-accentsBlue block"></span> <span data-i18n="diff.items.3.title">Minimalismo Funcional</span>
+                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.3.title">Minimalismo Funcional</span>
                         </h4>
-                        <p class="text-white/60" data-i18n="diff.items.3.desc">Quitamos elementos que causan fricción. Diseños pesados mueren en móvil. Usamos fondos oscuros, tipografía potente y contraste alto.</p>
+                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.3.desc">Quitamos elementos que causan fricción. Diseños pesados mueren en móvil. Usamos fondos oscuros, tipografía potente y contraste alto.</p>
                     </div>
                 </div>
              </div>
         </section>
 
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
         <!-- 9. CTA - Start The Process / Booking -->
-        <section class="section-padding bg-slate-900 border-t border-white/10" id="start-process">
+        <section class="section-padding bg-slate-900 border-y border-subtle" id="start-process">
             <div class="max-w-5xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">
                     Construye Tu Sistema Hoy
                 </h2>
-                <p class="opacity-70 text-lg max-w-2xl mx-auto mb-10" data-i18n="cta.subtext">
-                    Deja de tener una página web que nadie visita ni usa. Pasa al próximo nivel.
+                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">
+                    Obtén un desglose claro de dónde tu sitio web y flujo de trabajo están frenando tu crecimiento — y qué arreglar primero.
                 </p>
 
                 <!-- High contrast primary button opening booking -->
                 <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
-                    class="bg-accentsBlue text-black px-12 py-5 rounded font-bold text-lg tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_40px_rgba(77,166,255,0.3)] mb-8" data-i18n="cta.btn">
+                    class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_30px_rgba(77,166,255,0.25)] system-card-hover mb-6" data-i18n="cta.btn">
                     Agendar Auditoría Gratuita
                 </button>
-                <div class="text-white/40 text-xs font-medium uppercase tracking-widest" data-i18n="cta.tag">Garantía de Claridad en 30 Minutos</div>
+                <div class="text-white/40 text-[10px] uppercase tracking-widest system-font" data-i18n="cta.tag">Garantía de Claridad en 30 Minutos</div>
             </div>
             
             <div class="w-full flex flex-col items-center mt-20" id="booking">
                 <!-- Cal Embed Card -->
-                <div class="w-full max-w-4xl bg-black border border-white/10 rounded-xl overflow-hidden h-[600px] relative shadow-2xl p-2">
+                <div class="w-full max-w-4xl bg-black border border-subtle rounded-xl overflow-hidden h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
                     <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
                     <script type="text/javascript">
                             (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -484,13 +596,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 bg-black py-10" data-purpose="site-footer">
+    <footer class="bg-black py-10" data-purpose="site-footer">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
                 <div class="heading-condensed text-2xl text-white tracking-widest" data-i18n="footer.brand">MC DESIGNS</div>
-                <div class="text-white/30 text-xs mt-1" data-i18n="footer.desc">Sistemas de Alta Conversión</div>
+                <div class="text-white/30 text-xs mt-1 system-font uppercase tracking-wider" data-i18n="footer.desc">Sistemas de Alta Conversión</div>
             </div>
-            <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right" data-i18n="footer.copyright">
+            <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right system-font" data-i18n="footer.copyright">
                 © 2026 MC DESIGNS. Built in Puerto Rico.
             </div>
         </div>
