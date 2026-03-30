@@ -163,78 +163,30 @@
     <main class="w-full">
         <!-- 1. Hero Section -->
         <section class="section-padding relative z-10 pt-16 md:pt-24 min-h-[85vh] flex items-center" id="hero">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center w-full">
-                <!-- Left: Content -->
-                <div class="flex flex-col items-start text-left">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <!-- Full Width Content -->
+                <div class="flex flex-col items-center text-center max-w-5xl mx-auto">
                     <h1 class="heading-condensed text-5xl md:text-[5.5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] mb-6 tracking-tight text-white">
-                        <span data-i18n="hero.prefix" class="block">Websites Que Convierten</span>
-                        <span class="text-accentsBlue block" data-i18n="hero.highlight">— y Sistemas Que Corren Tu Negocio</span>
+                        <span data-i18n="hero.prefix" class="block">Tu negocio, diseñado para crecer.</span>
                     </h1>
-                    <p class="text-white/70 text-lg md:text-xl max-w-lg leading-relaxed mb-4 font-medium" data-i18n="hero.subtext">
+                    <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-4 font-medium" data-i18n="hero.subtext">
                         Construimos sitios web conectados con IA y sistemas de flujo de trabajo para que generes más leads, respondas más rápido y reduzcas el trabajo manual.
                     </p>
                     <p class="text-accentsBlue/80 text-sm mb-10 system-font font-bold uppercase tracking-wider" data-i18n="hero.tag">
-                        Construido para empresas de servicios que dependen de leads y respuestas rápidas.
+                        Designed Here. Built for Growth.
                     </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
+
+                    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
                         <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
                             class="w-full sm:w-auto bg-accentsBlue text-black px-6 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
                             data-i18n="hero.cta1">
-                            Obtener Auditoría de Web + IA
+                            Get started
                         </button>
-                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                        <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
                             class="w-full sm:w-auto px-5 py-4 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
                             data-i18n="hero.cta2">
-                            Ve Dónde Tu Sistema Te Frena
+                            Book a call
                         </button>
-                    </div>
-                </div>
-
-                <!-- Right: Visual System Diagram -->
-                <div class="flex flex-col relative p-8 md:p-10 border border-white/5 rounded-xl bg-darkPanel/90 backdrop-blur-sm shadow-2xl">
-                    <div class="text-xs uppercase tracking-widest text-white/30 mb-8 system-font text-center">System Architecture</div>
-                    
-                    <!-- Diagram Container -->
-                    <div class="flex flex-col lg:flex-row justify-between items-center w-full relative gap-6 lg:gap-0">
-                        <!-- Desktop Horizontal Line -->
-                        <div class="hidden lg:block connector-line h-px left-10 right-10 top-1/2 -translate-y-1/2 z-0">
-                            <!-- Flowing dots X -->
-                            <div class="connector-dot flow-dot-x" style="animation-delay: 0s;"></div>
-                            <div class="connector-dot flow-dot-x" style="animation-delay: 1.5s;"></div>
-                            <div class="connector-dot flow-dot-x" style="animation-delay: 2.2s;"></div>
-                        </div>
-
-                        <!-- Mobile Vertical Line -->
-                        <div class="lg:hidden connector-line w-px top-10 bottom-10 left-1/2 -translate-x-1/2 z-0">
-                            <!-- Flowing dots Y -->
-                            <div class="connector-dot flow-dot-y" style="animation-delay: 0s;"></div>
-                            <div class="connector-dot flow-dot-y" style="animation-delay: 1s;"></div>
-                        </div>
-
-                        <!-- Node 1: Leads -->
-                        <div class="relative z-10 w-full lg:w-32 bg-slate-900 border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node1">LEADS</div>
-                            <div class="w-2 h-2 rounded-full bg-white/20 mt-2"></div>
-                        </div>
-
-                        <!-- Node 2: Website / Central Node -->
-                        <div class="relative z-10 w-full lg:w-40 bg-slate-800 node-active p-5 rounded-lg text-center flex flex-col items-center justify-center min-h-[100px] border">
-                            <div class="text-[11px] text-accentsBlue font-bold uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node2">SITIO WEB</div>
-                            <div class="w-3 h-3 rounded-full bg-accentsBlue shadow-[0_0_10px_#4DA6FF] mt-2"></div>
-                        </div>
-
-                        <!-- Node 3: AI + Logic -->
-                        <div class="relative z-10 w-full lg:w-32 bg-slate-900 border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
-                            <div class="text-[10px] text-white/60 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node3">IA + LÓGICA</div>
-                            <div class="w-2 h-2 rounded-full bg-white/50 mt-2"></div>
-                        </div>
-
-                        <!-- Node 4: Actions -->
-                        <div class="relative z-10 w-full lg:w-28 bg-black border border-white/10 p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[80px]">
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-1 line-clamp-1 truncate w-full" data-i18n="hero.node4">ACCIONES</div>
-                            <div class="w-2 h-2 rounded-full bg-white/20 mt-2"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -252,7 +204,7 @@
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
                 <div class="lg:col-span-2">
                     <h2 class="heading-condensed text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
-                        Tráfico que no convierte es dinero tirado.
+                        Tu negocio merece más que una página básica.
                     </h2>
                     <p class="text-white/50 text-base md:text-lg leading-relaxed" data-i18n="problem.subtext">
                         Si tu página es un simple folleto digital, estás perdiendo clientes todos los días frente a competidores con mejores sistemas.
@@ -292,41 +244,46 @@
             </div>
         </div>
 
-        <!-- 3. System Components -->
+        <!-- 3. Services Section -->
         <section class="section-padding relative">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <div class="text-[10px] text-accentsBlue uppercase tracking-[0.2em] mb-4 font-bold system-font" data-i18n="system.tag">Nuestra Solución</div>
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="system.title">La Arquitectura de un Sitio que Convierte</h2>
-                
+                <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="services.title">Tres servicios. Un solo objetivo.</h2>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
                     <!-- Desktop horizontal line behind cards -->
                     <div class="hidden md:block absolute top-[40%] left-10 right-10 h-px bg-white/10 -z-10"></div>
-                    
+
                     <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
                         <div>
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.0.label">Website</div>
-                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.0.title">Atraer</h4>
-                            <p class="text-white/50 text-sm" data-i18n="system.nodes.0.desc">SEO y diseño ultra ràpido para no perder la atenciòn inicial.</p>
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="services.cards.0.label">Service 01</div>
+                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.0.title">Website Design</h4>
+                            <p class="text-white/50 text-sm mb-6" data-i18n="services.cards.0.desc">Professional websites built for speed, SEO, and conversions. Mobile-first design that actually generates leads.</p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-accentsBlue font-medium system-font" data-i18n="system.nodes.0.sub">Website → Atraer</div>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.0.cta">
+                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </button>
                     </div>
-                    
+
                     <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between shadow-[0_0_20px_rgba(77,166,255,0.08)]">
                         <div>
-                            <div class="text-[10px] text-accentsBlue uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.1.label">Interaction</div>
-                            <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.1.title">Responder</h4>
-                            <p class="text-white/70 text-sm" data-i18n="system.nodes.1.desc">Estructura persuasiva enfocada en beneficios y CTAs claros.</p>
+                            <div class="text-[10px] text-accentsBlue uppercase tracking-widest system-font mb-3" data-i18n="services.cards.1.label">Service 02</div>
+                            <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.1.title">AI Integration</h4>
+                            <p class="text-white/70 text-sm mb-6" data-i18n="services.cards.1.desc">Custom AI tools that automate lead capture, customer support, and business workflows that drain your time.</p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-white/10 text-xs text-accentsBlue/80 font-medium system-font" data-i18n="system.nodes.1.sub">Interaction → Responder</div>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.1.cta">
+                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </button>
                     </div>
 
                     <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
                         <div>
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="system.nodes.2.label">Workflow</div>
-                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="system.nodes.2.title">Ejecutar</h4>
-                            <p class="text-white/50 text-sm" data-i18n="system.nodes.2.desc">Formularios inteligentes y automatizaciones que capturan al usuario.</p>
+                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="services.cards.2.label">Service 03</div>
+                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.2.title">System Optimization</h4>
+                            <p class="text-white/50 text-sm mb-6" data-i18n="services.cards.2.desc">Audit and optimize your existing site and workflows to fix bottlenecks and improve conversion rates.</p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-accentsBlue font-medium system-font" data-i18n="system.nodes.2.sub">Workflow → Ejecutar</div>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.2.cta">
+                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -339,156 +296,99 @@
             </div>
         </div>
 
-        <!-- 4. Custom Solutions Section -->
+        <!-- 4. AI Add-ons Section -->
         <section class="section-padding bg-darkPanel/50 border-y border-white/5">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <div class="text-[10px] text-center text-white/40 uppercase tracking-widest system-font mb-4">Soluciones Personalizadas</div>
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="quote.title">Cada Negocio Es Diferente</h2>
-                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed" data-i18n="quote.subtext">
-                    No trabajamos con paquetes fijos. Cada proyecto empieza con una auditoría para entender exactamente qué necesitas y diseñar una solución a tu medida.
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="ai-addons.title">Tu página trabaja. Aunque tú no estés.</h2>
+                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-addons.subtext">
+                    Add AI-powered tools that handle customer questions, qualify leads, and automate repetitive tasks while you focus on growing your business.
                 </p>
 
-                <!-- Service Tier Indicators (Subtle) -->
-                <div class="flex flex-wrap justify-center gap-3 mb-12 text-white/40 text-xs system-font">
-                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.0">Essential</span>
-                    <span class="text-white/20">→</span>
-                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.1">Growth</span>
-                    <span class="text-white/20">→</span>
-                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.2">Enterprise</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
+                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 01</div>
+                        <h4 class="text-white font-bold text-xl mb-2">AI Chat Support</h4>
+                        <p class="text-white/50 text-sm">24/7 customer support that answers questions and books appointments automatically.</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
+                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 02</div>
+                        <h4 class="text-white font-bold text-xl mb-2">Lead Qualification</h4>
+                        <p class="text-white/50 text-sm">AI that pre-qualifies leads before they reach your inbox, saving you time.</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
+                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 03</div>
+                        <h4 class="text-white font-bold text-xl mb-2">Automated Follow-ups</h4>
+                        <p class="text-white/50 text-sm">Smart email and SMS sequences that nurture leads without manual effort.</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
+                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 04</div>
+                        <h4 class="text-white font-bold text-xl mb-2">Workflow Automation</h4>
+                        <p class="text-white/50 text-sm">Connect your tools and automate repetitive tasks across your business.</p>
+                    </div>
                 </div>
 
-                <div class="bg-[#0B0F1A] border border-accentsBlue/40 rounded-xl p-12 shadow-[0_0_30px_rgba(77,166,255,0.1)] mb-12">
-                    <div class="text-accentsBlue text-6xl md:text-7xl font-heading mb-6 glow-text">?</div>
-                    <h3 class="heading-condensed text-2xl md:text-3xl text-white mb-4" data-i18n="quote.card.title">¿Cuánto Cuesta?</h3>
-                    <p class="text-white/70 text-base max-w-xl mx-auto mb-8 leading-relaxed" data-i18n="quote.card.desc">
-                        Depende de tu situación actual, tus objetivos, y la complejidad del sistema que necesitas. La mejor forma de saberlo es agendar una auditoría gratuita.
-                    </p>
+                <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                        class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover" data-i18n="ai-addons.cta">
+                    Tell us what you need →
+                </button>
+            </div>
+        </section>
+
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
+        <!-- 5. AI Setup Section -->
+        <section class="section-padding bg-darkPanel/30">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-6" data-i18n="ai-setup.title">Construimos la IA que tu negocio necesita.</h2>
+                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-setup.subtext">
+                    Not interested in off-the-shelf chatbots. We build custom AI systems tailored to your specific business needs, integrated directly into your operations.
+                </p>
+
+                <div class="bg-slate-900/80 border border-accentsBlue/30 rounded-xl p-10 mb-12 shadow-[0_0_30px_rgba(77,166,255,0.1)]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Custom Training</h4>
+                                <p class="text-white/50 text-sm">AI trained on your services, pricing, and how you actually work.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Direct Integration</h4>
+                                <p class="text-white/50 text-sm">Connected to your CRM, calendar, and existing tools.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Real-time Updates</h4>
+                                <p class="text-white/50 text-sm">We keep your AI current as your business evolves.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Full Transparency</h4>
+                                <p class="text-white/50 text-sm">You own your data and understand exactly what the AI does.</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                            class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover" data-i18n="quote.card.cta">
-                        Obtener Presupuesto Personalizado
+                            class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover" data-i18n="ai-setup.cta">
+                        Get AI Intake Form →
                     </button>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/50">
-                    <div class="flex flex-col items-center gap-3">
-                        <div class="w-2 h-2 bg-accentsBlue rounded-full shadow-[0_0_8px_#4DA6FF]"></div>
-                        <p data-i18n="quote.benefits.0">Transparencia total desde el día uno</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-3">
-                        <div class="w-2 h-2 bg-accentsBlue rounded-full shadow-[0_0_8px_#4DA6FF]"></div>
-                        <p data-i18n="quote.benefits.1">Sin costos ocultos o sorpresas</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-3">
-                        <div class="w-2 h-2 bg-accentsBlue rounded-full shadow-[0_0_8px_#4DA6FF]"></div>
-                        <p data-i18n="quote.benefits.2">Soluciones escalables para tu presupuesto</p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- System Connector -->
-        <div class="w-full flex justify-center py-4 relative z-0">
-            <div class="w-px h-16 bg-white/10 relative">
-                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
-            </div>
-        </div>
-
-        <!-- 4.5 Industries We Serve -->
-        <section class="section-padding bg-darkPanel/30">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <div class="text-[10px] text-accentsBlue uppercase tracking-[0.2em] mb-4 font-bold system-font" data-i18n="industries.tag">Puerto Rico Businesses</div>
-                    <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-4" data-i18n="industries.title">Construido Para Negocios Locales</h2>
-                    <p class="text-white/60 text-lg max-w-2xl mx-auto" data-i18n="industries.subtext">Trabajamos con empresas puertorriqueñas que dependen de su presencia digital para generar clientes.</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
-                        <div class="text-3xl mb-3">🍽️</div>
-                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.0.title">Restaurantes</h4>
-                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.0.desc">Menús online + reservas automáticas</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
-                        <div class="text-3xl mb-3">⚕️</div>
-                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.1.title">Salud</h4>
-                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.1.desc">Citas online + recordatorios AI</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
-                        <div class="text-3xl mb-3">⚖️</div>
-                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.2.title">Bufetes</h4>
-                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.2.desc">Consultas calificadas automáticamente</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
-                        <div class="text-3xl mb-3">🏘️</div>
-                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.3.title">Bienes Raíces</h4>
-                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.3.desc">Tours virtuales + captación 24/7</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px] col-span-2 md:col-span-1">
-                        <div class="text-3xl mb-3">🛍️</div>
-                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.4.title">Retail</h4>
-                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.4.desc">E-commerce + gestión de inventario</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- System Connector -->
-        <div class="w-full flex justify-center py-4 relative z-0">
-            <div class="w-px h-16 bg-white/10 relative">
-                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
-            </div>
-        </div>
-
-        <!-- 5. Why it matters -->
-        <section class="section-padding">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="metrics.title">El Costo de No Tener un Sistema</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-y border-subtle py-12 bg-darkPanel/50">
-                    <div>
-                        <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m1.val">24/7</div>
-                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m1.title">Captura de Prospectos</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m1.desc">No pierdas otro lead porque escribieron fuera de horas laborables.</div>
-                    </div>
-                    <div class="border-y md:border-y-0 md:border-x border-subtle py-8 md:py-0">
-                        <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m2.val">0</div>
-                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m2.title">Fricción al Comprar</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m2.desc">Flujos limpios que llevan al visitante exactamente a donde quieres.</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl md:text-6xl font-heading mb-2 text-accentsBlue" data-i18n="metrics.m3.val">100%</div>
-                        <div class="text-white/80 font-bold tracking-wide uppercase text-sm system-font mb-2" data-i18n="metrics.m3.title">Propiedad Digital</div>
-                        <div class="text-white/40 text-sm mt-2 max-w-xs mx-auto leading-relaxed" data-i18n="metrics.m3.desc">No dependas de los algoritmos de redes sociales para tener negocio.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5.5 Outcomes (New Section) -->
-        <section class="section-padding pt-0">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-[10px] text-center text-white/40 uppercase tracking-widest system-font mb-4">System Outcomes</div>
-                <h2 class="heading-condensed text-center text-3xl md:text-4xl mb-12 text-white" data-i18n="outcomes.title">Qué Cambia Cuando Tu Sistema Funciona</h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
-                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
-                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.0.title">Más leads calificados</h4>
-                    </div>
-                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
-                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
-                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.1.title">Tiempos de respuesta súper rápidos</h4>
-                    </div>
-                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
-                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
-                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.2.title">Menos trabajo manual</h4>
-                    </div>
-                    <div class="bg-darkPanel border border-subtle p-6 rounded-lg flex items-center gap-4 system-card-hover">
-                        <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full shadow-[0_0_5px_#4DA6FF]"></div>
-                        <h4 class="text-white/90 font-medium tracking-wide" data-i18n="outcomes.cards.3.title">Operaciones más claras</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- System Connector -->
         <div class="w-full flex justify-center py-4 relative z-0">
@@ -500,7 +400,7 @@
         <!-- 6. Process -->
         <section class="section-padding bg-darkPanel/80 border-t border-white/5" id="process">
             <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-16 text-white" data-i18n="process.title">Proceso Militarmente Simple</h2>
+                <h2 class="heading-condensed text-4xl md:text-5xl mb-16 text-white" data-i18n="process.title">Cómo funciona</h2>
                 
                 <div class="relative">
                     <!-- Vertical Line Mobile -->
@@ -544,41 +444,24 @@
             </div>
         </section>
 
-        <!-- 8. Differentiation -->
-        <section class="section-padding py-20 bg-slate-900/40 border-t border-subtle" id="differentiation">
-             <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-12 border-b border-subtle pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
-                    <h2 class="heading-condensed text-4xl md:text-5xl text-white" data-i18n="diff.title">Por qué somos diferentes</h2>
-                    <p class="text-white/40 text-xs uppercase tracking-widest system-font font-medium text-right" data-i18n="diff.tag">Ingeniería sobre Estética</p>
+
+        <!-- 7. Start The Process -->
+        <section class="section-padding bg-slate-900 border-y border-subtle" id="start-process">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">
+                    Empieza con una revisión gratis.
+                </h2>
+                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">
+                    Tell us about your business and we'll show you exactly where you're losing leads and how to fix it.
+                </p>
+
+                <!-- Fillout Form Embed -->
+                <div class="w-full max-w-4xl mx-auto bg-black border border-subtle rounded-xl overflow-hidden min-h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
+                    <div data-fillout-id="5Neg9Em29uus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;min-height:600px;"></div>
+                    <script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                    <div class="system-card-hover p-4 -m-4 rounded-lg">
-                        <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.0.title">No somos "Artistas"</span>
-                        </h4>
-                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.0.desc">El arte es subjetivo y decorativo. Nosotros somos ingenieros de interfaces comerciales. Construimos herramientas para ventas, no pósters digitales.</p>
-                    </div>
-                    <div class="system-card-hover p-4 -m-4 rounded-lg">
-                        <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.1.title">Pensamos en el Negocio, no en Pixeles</span>
-                        </h4>
-                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.1.desc">No nos importa ganar premios de diseño web. Nos importa reducir tus tiempos de carga, clarificar tu mensaje y subir tasas de conversión.</p>
-                    </div>
-                    <div class="system-card-hover p-4 -m-4 rounded-lg">
-                        <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.2.title">Integración IA Real</span>
-                        </h4>
-                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.2.desc">Mucha agencia habla de IA. Nosotros la configuramos e integramos dentro de tus operaciones web para automatizar captación y servicio.</p>
-                    </div>
-                    <div class="system-card-hover p-4 -m-4 rounded-lg">
-                        <h4 class="text-white font-bold text-xl mb-3 flex items-center gap-3">
-                            <span class="text-accentsBlue font-heading text-2xl tracking-widest opacity-80">/</span > <span data-i18n="diff.items.3.title">Minimalismo Funcional</span>
-                        </h4>
-                        <p class="text-white/50 leading-relaxed text-sm" data-i18n="diff.items.3.desc">Quitamos elementos que causan fricción. Diseños pesados mueren en móvil. Usamos fondos oscuros, tipografía potente y contraste alto.</p>
-                    </div>
-                </div>
-             </div>
+                <div class="text-white/40 text-xs mt-6 uppercase tracking-widest system-font" data-i18n="cta.tag">Takes 2 minutes · Get results in 24 hours</div>
+            </div>
         </section>
 
         <!-- System Connector -->
@@ -588,27 +471,18 @@
             </div>
         </div>
 
-        <!-- 9. CTA - Start The Process / Booking -->
-        <section class="section-padding bg-slate-900 border-y border-subtle" id="start-process">
+        <!-- 8. Book a Call -->
+        <section class="section-padding bg-darkPanel/50 border-y border-white/5" id="booking">
             <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">
-                    Construye Tu Sistema Hoy
+                <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="booking.title">
+                    Agenda una llamada.
                 </h2>
-                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">
-                    Obtén un desglose claro de dónde tu sitio web y flujo de trabajo están frenando tu crecimiento — y qué arreglar primero.
+                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="booking.subtext">
+                    Prefer to talk first? Book a 30-minute call to discuss your business needs.
                 </p>
 
-                <!-- High contrast primary button opening booking -->
-                <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
-                    class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_30px_rgba(77,166,255,0.25)] system-card-hover mb-6" data-i18n="cta.btn">
-                    Agendar Auditoría Gratuita
-                </button>
-                <div class="text-white/40 text-[10px] uppercase tracking-widest system-font" data-i18n="cta.tag">Garantía de Claridad en 30 Minutos</div>
-            </div>
-            
-            <div class="w-full flex flex-col items-center mt-20" id="booking">
                 <!-- Cal Embed Card -->
-                <div class="w-full max-w-4xl bg-black border border-subtle rounded-xl overflow-hidden h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
+                <div class="w-full max-w-4xl mx-auto bg-black border border-subtle rounded-xl overflow-hidden h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
                     <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
                     <script type="text/javascript">
                             (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
