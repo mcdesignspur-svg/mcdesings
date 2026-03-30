@@ -1,12 +1,12 @@
 export const translations = {
     es: {
         hero: {
-            prefix: "Websites Que Convierten",
-            highlight: "— y Sistemas Que Corren Tu Negocio",
-            subtext: "Construimos sitios web conectados con IA y sistemas de flujo de trabajo para que generes más leads, respondas más rápido y reduzcas el trabajo manual.",
-            tag: "Construido para empresas de servicios que dependen de leads y respuestas rápidas.",
+            prefix: "Diseñado Aquí.",
+            highlight: "Construido Para Crecer.",
+            subtext: "Estudio de diseño web y AI en Puerto Rico. Creamos sitios profesionales que generan leads y herramientas de inteligencia artificial que te ayudan a crecer.",
+            tag: "Diseño web y AI para negocios puertorriqueños.",
             cta1: "Obtener Auditoría de Web + IA",
-            cta2: "Ve Dónde Tu Sistema Te Frena",
+            cta2: "Ver Cómo Podemos Ayudarte",
             node1: "LEADS",
             node2: "SITIO WEB",
             node3: "IA + LÓGICA",
@@ -27,16 +27,22 @@ export const translations = {
             nodes: [
                 { label: "Website", title: "Atraer", desc: "SEO y diseño ultra rápido para captar la atención inicial.", sub: "Website → Atraer" },
                 { label: "Interaction", title: "Responder", desc: "Estructura persuasiva enfocada en beneficios y CTAs claros.", sub: "Interaction → Responder" },
-                { label: "Workflow", title: "Ejecutar", desc: "Formularios inteligentes y automatizaciones que capturan al usuario.", sub: "Workflow → Ejecutar" }
+                { label: "AI Tools", title: "Ejecutar", desc: "Formularios inteligentes y asistentes AI que capturan al usuario.", sub: "AI Tools → Ejecutar" }
             ]
         },
-        ladder: {
-            title: "Escala tu Presencia",
-            subtext: "Nuestros servicios están estructurados en una escalera. Construye la fundación, y optimiza después.",
-            t1: { tag: "Fundación", title: "Presencia", desc: "Un sitio web limpio, profesional y de carga hiper-rápida. Establece la confianza mínima viable.", list: ["4-5 Páginas", "Responsive Seguro", "Form de Contacto"] },
-            t2: { tag: "Recomendado", badge: "La mayoría pasa aquí después de auditar", tag2: "Sistematización", title: "Rendimiento (Build)", desc: "Diseñado para generar negocio. Copy persuasivo, y flujos de captura de leads avanzados.", list: ["Todo en Presencia", "Estrategia de Copy", "Optimización SEO Base"] },
-            t3: { tag: "Automatización", title: "Paquete IA", desc: "Responde a clientes 24/7 y automatiza tareas repetitivas con herramientas de inteligencia artificial a la medida.", list: ["Asistente Chat AI", "Calificación Automática", "Integración CRM"] },
-            cta: "Obtener un desglose claro de qué arreglar primero"
+        quote: {
+            title: "Cada Negocio Es Diferente",
+            subtext: "No trabajamos con paquetes fijos. Cada proyecto empieza con una auditoría para entender exactamente qué necesitas y diseñar una solución a tu medida.",
+            card: {
+                title: "¿Cuánto Cuesta?",
+                desc: "Depende de tu situación actual, tus objetivos, y la complejidad del sistema que necesitas. La mejor forma de saberlo es agendar una auditoría gratuita.",
+                cta: "Obtener Presupuesto Personalizado"
+            },
+            benefits: [
+                "Transparencia total desde el día uno",
+                "Sin costos ocultos o sorpresas",
+                "Soluciones escalables para tu presupuesto"
+            ]
         },
         metrics: {
             title: "El Costo de No Tener un Sistema",
@@ -67,30 +73,30 @@ export const translations = {
             items: [
                 { title: "No somos \"Artistas\"", desc: "El arte es subjetivo y decorativo. Nosotros somos ingenieros de interfaces comerciales. Construimos herramientas para ventas, no pósters digitales." },
                 { title: "Pensamos en el Negocio, no en Pixeles", desc: "No nos importa ganar premios de diseño web. Nos importa reducir tus tiempos de carga, clarificar tu mensaje y subir tasas de conversión." },
-                { title: "Integración IA Real", desc: "Mucha agencia habla de IA. Nosotros la configuramos e integramos dentro de tus operaciones web para automatizar captación y servicio." },
+                { title: "Integración IA Real", desc: "Mucha agencia habla de IA. Nosotros la configuramos e integramos dentro de tus operaciones web para captar leads y servir clientes." },
                 { title: "Minimalismo Funcional", desc: "Quitamos elementos que causan fricción. Diseños pesados mueren en móvil. Usamos fondos oscuros, tipografía potente y contraste alto." }
             ]
         },
         cta: {
-            title: "Construye Tu Sistema Hoy",
-            subtext: "Obtén un desglose claro de dónde tu sitio web y flujo de trabajo están frenando tu crecimiento — y qué arreglar primero.",
+            title: "Empieza Tu Proyecto Hoy",
+            subtext: "Obtén un desglose claro de dónde tu sitio web está frenando tu crecimiento — y qué arreglar primero.",
             btn: "Agendar Auditoría Gratuita",
             tag: "Garantía de Claridad en 30 Minutos"
         },
         footer: {
             brand: "MC DESIGNS",
-            desc: "Sistemas de Alta Conversión",
+            desc: "Diseño Web + AI Studio",
             copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
         }
     },
     en: {
         hero: {
-            prefix: "Websites That Convert",
-            highlight: "— and Systems That Run Your Business",
-            subtext: "We build websites connected with AI and workflow systems so you can generate more leads, respond faster, and reduce manual work.",
-            tag: "Built for service businesses that rely on leads and fast response.",
+            prefix: "Designed Here.",
+            highlight: "Built for Growth.",
+            subtext: "Web design and AI studio in Puerto Rico. We create professional websites that generate leads and AI tools that help you grow.",
+            tag: "Web design + AI for Puerto Rico businesses.",
             cta1: "Get a Website + AI Audit",
-            cta2: "See Where Your System Is Slowing You Down",
+            cta2: "See How We Can Help",
             node1: "LEADS",
             node2: "WEBSITE",
             node3: "AI + LOGIC",
@@ -111,16 +117,22 @@ export const translations = {
             nodes: [
                 { label: "Website", title: "Attract", desc: "SEO and ultra-fast design so you don't lose initial attention.", sub: "Website → Attract" },
                 { label: "Interaction", title: "Respond", desc: "Persuasive structure focused on benefits and clear CTAs.", sub: "Interaction → Respond" },
-                { label: "Workflow", title: "Execute", desc: "Smart forms and chatbots that capture the user.", sub: "Workflow → Execute" }
+                { label: "AI Tools", title: "Execute", desc: "Smart forms and AI assistants that capture the user.", sub: "AI Tools → Execute" }
             ]
         },
-        ladder: {
-            title: "Scale Your Presence",
-            subtext: "Our services are structured as a ladder. Build the foundation, and optimize later.",
-            t1: { tag: "Foundation", title: "Presence", desc: "A clean, professional, hyper-fast loading website. Establishes minimum viable trust.", list: ["4-5 Pages", "Bulletproof Responsive", "Contact Form"] },
-            t2: { tag: "Recommended", badge: "Most businesses move here after audit", tag2: "Systematization", title: "Build (Performance)", desc: "Designed to generate business. Persuasive copy, and advanced lead capture flows.", list: ["Everything in Presence", "Copywriting Strategy", "Base SEO Optimization"] },
-            t3: { tag: "Automation", title: "AI Package", desc: "Respond to clients 24/7 and automate repetitive tasks with custom artificial intelligence tools.", list: ["AI Chat Assistant", "Automatic Qualification", "CRM Integration"] },
-            cta: "Get a clear breakdown of what to fix first"
+        quote: {
+            title: "Every Business Is Different",
+            subtext: "We don't work with fixed packages. Every project starts with an audit to understand exactly what you need and design a custom solution.",
+            card: {
+                title: "How Much Does It Cost?",
+                desc: "It depends on your current situation, your goals, and the complexity of the system you need. The best way to find out is to schedule a free audit.",
+                cta: "Get Custom Quote"
+            },
+            benefits: [
+                "Total transparency from day one",
+                "No hidden costs or surprises",
+                "Scalable solutions for your budget"
+            ]
         },
         metrics: {
             title: "The Cost of Not Having a System",
@@ -151,19 +163,19 @@ export const translations = {
             items: [
                 { title: "We are not \"Artists\"", desc: "Art is subjective and decorative. We are engineers of commercial interfaces. We build tools for sales, not digital posters." },
                 { title: "We Think Business, Not Pixels", desc: "We don't care about winning web design awards. We care about reducing your load times, clarifying your message, and raising conversion rates." },
-                { title: "Real AI Integration", desc: "Many agencies talk about AI. We configure and integrate it into your web operations to automate capturing and service." },
+                { title: "Real AI Integration", desc: "Many agencies talk about AI. We configure and integrate it into your web operations to capture leads and serve clients." },
                 { title: "Functional Minimalism", desc: "We remove elements that cause friction. Heavy designs die on mobile. We use dark backgrounds, powerful typography, and high contrast." }
             ]
         },
         cta: {
-            title: "Build Your System Today",
-            subtext: "Get a clear breakdown of where your website and workflow are slowing growth — and what to fix first.",
+            title: "Start Your Project Today",
+            subtext: "Get a clear breakdown of where your website is slowing growth — and what to fix first.",
             btn: "Book Free Audit",
             tag: "Clarity Guarantee in 30 Minutes"
         },
         footer: {
             brand: "MC DESIGNS",
-            desc: "High Conversion Systems",
+            desc: "Web Design + AI Studio",
             copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
         }
     }

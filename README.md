@@ -64,8 +64,11 @@ npm run preview
 ### Colors
 
 - **Black**: `#000000` - Primary background
+- **Dark**: `#0A0A0F` - Secondary background
 - **White**: `#FFFFFF` - Primary text
-- **Accent Gradient**: `#e0f2fe` to `#3b82f6` - Call-to-action elements
+- **Brand Blue**: `#4DA6FF` - Primary accent
+- **Deep Blue**: `#2D5BFF` - Secondary accent
+- **Accent Gradient**: `#FFFFFF` to `#4DA6FF` to `#2D5BFF` - Hero and CTA elements
 
 ### Typography
 
