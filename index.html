@@ -55,7 +55,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
         body {
-            background-color: #000000;
+            background-color: #080d14;
             color: #F3F4F6;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -93,16 +93,13 @@
             background-size: 40px 40px;
             background-position: center top;
         }
-
-        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
-
-        </style>
+    </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-black text-offWhite bg-grid-pattern overflow-x-hidden">
+<body class="bg-[#080d14] text-offWhite bg-grid-pattern overflow-x-hidden">
     <!-- Header -->
-    <header class="flex justify-between items-center py-6 mt-4 z-50 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-black/80 backdrop-blur-md border-b-0">
+    <header class="flex justify-between items-center py-6 mt-4 z-50 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-[#080d14]/80 backdrop-blur-md border-b-0">
         <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto z-50 relative mix-blend-difference" />
         <button id="lang-toggle" class="z-50 relative flex items-center gap-2 px-4 py-2 rounded-full border border-subtle bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
             <span class="w-1.5 h-1.5 rounded-full bg-accentsBlue shadow-[0_0_5px_#4DA6FF]"></span>
@@ -112,15 +109,23 @@
 
     <main class="w-full">
         <!-- 1. Hero Section -->
-        <section class="py-20 md:py-32 relative z-10 min-h-screen flex items-center justify-center text-center bg-[#080d14]" id="hero">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center w-full">
-                <h1 class="heading-condensed text-[clamp(3rem,9vw,7rem)] leading-[0.9] mb-8 tracking-tight text-white max-w-5xl">
+        <section class="py-24 min-h-[90vh] flex items-center justify-center text-center relative z-10" id="hero">
+            <div class="max-w-[800px] mx-auto px-6 flex flex-col items-center justify-center w-full">
+                <!-- Eyebrow Pill -->
+                <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 28px;" data-i18n="hero.tag">
+                    ✦ DISEÑO WEB + IA EN PR
+                </div>
+                
+                <h1 class="heading-condensed text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.9] mb-6 tracking-tight text-white w-full">
                     <span data-i18n="hero.prefix" class="block">Websites Que Convierten</span>
-                    <span class="text-accentsBlue block" data-i18n="hero.highlight">— y Sistemas Que Corren Tu Negocio</span>
+                    <span class="text-accentsBlue block" data-i18n="hero.highlight">— y Sistemas Inteligentes</span>
                 </h1>
-                <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-6 font-medium" data-i18n="hero.subtext">
-                    Construimos sitios web para automatizar y escalar el crecimiento de tu negocio.
+                
+                <!-- Subtext: 1 sentence, max 15 words. -->
+                <p class="text-white/70 text-lg md:text-xl max-w-[600px] leading-relaxed mb-10 font-medium mx-auto" data-i18n="hero.subtext">
+                    Construimos sitios web profesionales con automatización integrada para escalar negocios.
                 </p>
+                
                 <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
                     <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
                         class="w-full sm:w-auto bg-accentsBlue text-black px-8 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
@@ -130,7 +135,7 @@
                     <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
                         class="w-full sm:w-auto px-6 py-5 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
                         data-i18n="hero.cta2">
-                        Ve Dónde Tu Sistema Te Frena
+                        Ver Cómo Ayudamos
                     </button>
                 </div>
             </div>
@@ -144,35 +149,36 @@
         </div>
 
         <!-- 2. Problem Section -->
-        <section class="py-20 md:py-24 bg-darkPanel/30 border-y border-white/5 relative" id="problem">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
-                <div class="lg:col-span-2">
-                    <h2 class="heading-condensed text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
-                        Tu negocio merece más que una página básica.
-                    </h2>
-                    <p class="text-white/50 text-base md:text-lg leading-relaxed" data-i18n="problem.subtext">Si tu sitio es un simple folleto digital, estás perdiendo clientes diariamente.</p>
-                </div>
+        <section class="py-24 bg-darkPanel/30 border-y border-white/5 relative" id="problem">
+            <div class="max-w-[800px] mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
+                    Tu negocio merece más que una página básica.
+                </h2>
+                <p class="text-white/60 text-base md:text-lg leading-relaxed max-w-[600px] mx-auto mb-16" data-i18n="problem.subtext">
+                    Si tu sitio es un folleto digital, hoy pierdes clientes ante competidores.
+                </p>
                 
-                <div class="lg:col-span-3 flex flex-col gap-4">
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
-                        <div class="text-white/20 mt-1 system-font text-xs">01</div>
+                <!-- Left-aligned content inside center container -->
+                <div class="flex flex-col gap-4 text-left max-w-[700px] mx-auto">
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
+                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">01</div>
                         <div>
-                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.0.title">Sin captación clara</h4>
-                            <p class="text-white/50 text-sm" data-i18n="problem.cards.0.desc">Los usuarios entran, miran y se van sin dejar un contacto ni agendar una llamada.</p>
+                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.0.title">Sin captación clara</h4>
+                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.0.desc">Los prospectos entran al sitio y se van sin contactarte fácilmente.</p>
                         </div>
                     </div>
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
-                        <div class="text-white/20 mt-1 system-font text-xs">02</div>
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
+                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">02</div>
                         <div>
-                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.1.title">Procesos manuales</h4>
-                            <p class="text-white/50 text-sm" data-i18n="problem.cards.1.desc">Contestas las mismas preguntas repetitivas o persigues clientes que no están calificados.</p>
+                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.1.title">Procesos manuales</h4>
+                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.1.desc">Contestas preguntas repetitivas y haces todo el seguimiento a mano.</p>
                         </div>
                     </div>
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start gap-4 system-card-hover">
-                        <div class="text-white/20 mt-1 system-font text-xs">03</div>
+                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
+                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">03</div>
                         <div>
-                            <h4 class="text-white font-bold mb-1" data-i18n="problem.cards.2.title">Mala experiencia móvil</h4>
-                            <p class="text-white/50 text-sm" data-i18n="problem.cards.2.desc">Tu sitio fue diseñado en 2018 y tarda más de 4 segundos en cargar en celular.</p>
+                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.2.title">Mala experiencia móvil</h4>
+                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.2.desc">Tu diseño es viejo y frustra al visitante usando celular móvil.</p>
                         </div>
                     </div>
                 </div>
@@ -187,44 +193,47 @@
         </div>
 
         <!-- 3. Services Section -->
-        <section class="py-20 md:py-24 relative">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="services.title">Tres servicios. Un solo objetivo.</h2>
+        <section class="py-24 relative">
+            <div class="max-w-[700px] mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="services.title">Tres servicios clave.</h2>
+                <p class="text-white/60 text-lg mb-16 max-w-[500px] mx-auto" data-i18n="services.subtext">Construimos plataformas digitales completas enfocadas en facturar más y trabajar menos.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
-                    <!-- Desktop horizontal line behind cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative text-left w-[110%] -ml-[5%] max-w-[1000px]">
                     <div class="hidden md:block absolute top-[40%] left-10 right-10 h-px bg-white/10 -z-10"></div>
 
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
-                        <div>
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="services.cards.0.label">Service 01</div>
+                    <!-- Card 1 -->
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">01</div>
+                        <div class="relative z-10">
                             <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.0.title">Website Design</h4>
-                            <p class="text-white/50 text-sm mb-6" data-i18n="services.cards.0.desc">Professional websites built for speed, SEO, and conversions. Mobile-first design that actually generates leads.</p>
+                            <p class="text-white/60 text-sm mb-6 leading-relaxed" data-i18n="services.cards.0.desc">Páginas modernas diseñadas para vender rápido tu oferta.</p>
                         </div>
-                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.0.cta">
-                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.0.cta">
+                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
 
-                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between shadow-[0_0_20px_rgba(77,166,255,0.08)]">
-                        <div>
-                            <div class="text-[10px] text-accentsBlue uppercase tracking-widest system-font mb-3" data-i18n="services.cards.1.label">Service 02</div>
+                    <!-- Card 2 -->
+                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(77,166,255,0.08)]">
+                        <div class="absolute top-4 right-4 text-accentsBlue/5 font-heading text-8xl z-0 tracking-tighter">02</div>
+                        <div class="relative z-10">
                             <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.1.title">AI Integration</h4>
-                            <p class="text-white/70 text-sm mb-6" data-i18n="services.cards.1.desc">Custom AI tools that automate lead capture, customer support, and business workflows that drain your time.</p>
+                            <p class="text-white/70 text-sm mb-6 leading-relaxed" data-i18n="services.cards.1.desc">Automatizaciones con IA que atrapan ventas a toda hora.</p>
                         </div>
-                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.1.cta">
-                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.1.cta">
+                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
 
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full text-left system-card-hover flex flex-col justify-between">
-                        <div>
-                            <div class="text-[10px] text-white/40 uppercase tracking-widest system-font mb-3" data-i18n="services.cards.2.label">Service 03</div>
-                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.2.title">System Optimization</h4>
-                            <p class="text-white/50 text-sm mb-6" data-i18n="services.cards.2.desc">Audit and optimize your existing site and workflows to fix bottlenecks and improve conversion rates.</p>
+                    <!-- Card 3 -->
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">03</div>
+                        <div class="relative z-10">
+                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.2.title">Optimización</h4>
+                            <p class="text-white/60 text-sm mb-6 leading-relaxed" data-i18n="services.cards.2.desc">Mejoramos la velocidad de tu web y ajustamos cada proceso.</p>
                         </div>
-                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors" data-i18n="services.cards.2.cta">
-                            Learn more <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.2.cta">
+                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
                 </div>
@@ -239,40 +248,44 @@
         </div>
 
         <!-- 4. AI Add-ons Section -->
-        <section class="py-20 md:py-24 bg-darkPanel/50 border-y border-white/5">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="ai-addons.title">Tu página trabaja. Aunque tú no estés.</h2>
-                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-addons.subtext">
-                    Add AI-powered tools that handle customer questions, qualify leads, and automate repetitive tasks while you focus on growing your business.
+        <section class="py-24 bg-darkPanel/50 border-y border-white/5">
+            <div class="max-w-[800px] mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="ai-addons.title">IA Que Trabaja Sin Ti.</h2>
+                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed max-w-[600px]" data-i18n="ai-addons.subtext">
+                    Integra herramientas de Inteligencia Artificial que atienden y aseguran al cliente automáticamente.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
-                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 01</div>
-                        <h4 class="text-white font-bold text-xl mb-2">AI Chat Support</h4>
-                        <p class="text-white/50 text-sm">24/7 customer support that answers questions and books appointments automatically.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">01</div>
+                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.0.title">Soporte y Citas AI</h4>
+                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.0.desc">Chatbot que responde dudas del cliente y agenda reuniones solo.</p>
                     </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
-                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 02</div>
-                        <h4 class="text-white font-bold text-xl mb-2">Lead Qualification</h4>
-                        <p class="text-white/50 text-sm">AI that pre-qualifies leads before they reach your inbox, saving you time.</p>
+                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">02</div>
+                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.1.title">Filtro de Leads</h4>
+                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.1.desc">Formularios inteligentes que evalúan al prospecto y descartan basura inmediatamente.</p>
                     </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
-                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 03</div>
-                        <h4 class="text-white font-bold text-xl mb-2">Automated Follow-ups</h4>
-                        <p class="text-white/50 text-sm">Smart email and SMS sequences that nurture leads without manual effort.</p>
+                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">03</div>
+                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.2.title">Secuencias Mágicas</h4>
+                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.2.desc">Correos generados que nutren tus oportunidades pasadas de forma natural.</p>
                     </div>
-                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-left system-card-hover">
-                        <div class="text-xs text-accentsBlue uppercase tracking-widest system-font mb-3">Add-on 04</div>
-                        <h4 class="text-white font-bold text-xl mb-2">Workflow Automation</h4>
-                        <p class="text-white/50 text-sm">Connect your tools and automate repetitive tasks across your business.</p>
+                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">04</div>
+                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.3.title">Bases de Datos</h4>
+                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.3.desc">Tus sistemas y apps internas sincronizadas para operar veloz y sin errores.</p>
                     </div>
                 </div>
 
-                <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                        class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover" data-i18n="ai-addons.cta">
-                    Tell us what you need →
-                </button>
+                <div class="w-full flex justify-center">
+                    <div class="max-w-[400px]">
+                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                                class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover w-full" data-i18n="ai-addons.cta">
+                            Crear Mi Sistema AI
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -283,122 +296,67 @@
             </div>
         </div>
 
-        <!-- 5. AI Setup Section -->
-        <section class="py-20 md:py-24 bg-darkPanel/30">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-6" data-i18n="ai-setup.title">Construimos la IA que tu negocio necesita.</h2>
-                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-setup.subtext">
-                    Not interested in off-the-shelf chatbots. We build custom AI systems tailored to your specific business needs, integrated directly into your operations.
+        <!-- 5. Process / How it works -->
+        <section class="py-24 bg-[#0d1520] border-t border-white/5" id="process">
+            <div class="max-w-[900px] mx-auto px-6 text-center">
+                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="process.title">Cómo Trabajamos</h2>
+                <!-- 1 sentence subtext max 15 words -->
+                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed max-w-[600px]" data-i18n="process.subtext">
+                    Nuestra metodología está diseñada para ser ultra eficiente y completamente transparente.
                 </p>
-
-                <div class="bg-slate-900/80 border border-accentsBlue/30 rounded-xl p-10 mb-12 shadow-[0_0_30px_rgba(77,166,255,0.1)]">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">
-                        <div class="flex items-start gap-4">
-                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
-                            <div>
-                                <h4 class="text-white font-bold mb-1">Custom Training</h4>
-                                <p class="text-white/50 text-sm">AI trained on your services, pricing, and how you actually work.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
-                            <div>
-                                <h4 class="text-white font-bold mb-1">Direct Integration</h4>
-                                <p class="text-white/50 text-sm">Connected to your CRM, calendar, and existing tools.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
-                            <div>
-                                <h4 class="text-white font-bold mb-1">Real-time Updates</h4>
-                                <p class="text-white/50 text-sm">We keep your AI current as your business evolves.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-1.5 h-1.5 bg-accentsBlue rounded-full mt-2 shadow-[0_0_5px_#4DA6FF]"></div>
-                            <div>
-                                <h4 class="text-white font-bold mb-1">Full Transparency</h4>
-                                <p class="text-white/50 text-sm">You own your data and understand exactly what the AI does.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                            class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover" data-i18n="ai-setup.cta">
-                        Get AI Intake Form →
-                    </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- System Connector -->
-        <div class="w-full flex justify-center py-4 relative z-0">
-            <div class="w-px h-16 bg-white/10 relative">
-                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
-            </div>
-        </div>
-
-        <!-- 6. Process -->
-        <section class="py-20 md:py-24 bg-darkPanel/80 border-t border-white/5" id="process">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-5xl mb-16 text-white" data-i18n="process.title">Cómo funciona</h2>
                 
-                <div class="relative">
-                    <!-- Vertical Line Mobile -->
-                    <div class="absolute left-[39px] top-4 bottom-4 w-px bg-white/10 md:hidden block"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left relative z-10">
+                    <!-- Step 1 -->
+                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
+                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.0.num">01</div>
+                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.0.title">Auditoría Cero BS</h3>
+                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.0.desc">Analizamos tu empresa a fondo y decimos verdades claras.</p>
+                    </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left md:text-center relative">
-                        <!-- Step 1 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
-                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-900 border border-subtle flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.0.num">01</div>
-                            <div>
-                                <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.0.title">Auditoría Cero BS</h3>
-                                <p class="text-white/50 text-sm" data-i18n="process.steps.0.desc">Hablamos sobre tu negocio actual. Si no podemos ayudarte a hacer más dinero, te lo decimos.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 2 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
-                            <!-- Desktop line piece -->
-                            <div class="hidden md:block absolute right-[50%] left-[-50%] top-7 h-px bg-white/10 -z-0"></div>
-                            
-                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-900 border border-subtle flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-lg" data-i18n="process.steps.1.num">02</div>
-                            <div>
-                                <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.1.title">Ingeniería & Copy</h3>
-                                <p class="text-white/50 text-sm" data-i18n="process.steps.1.desc">Diseñamos no sólo cómo se ve, sino los textos exactos que provocarán las acciones de venta.</p>
-                            </div>
-                        </div>
+                    <!-- Step 2 -->
+                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
+                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.1.num">02</div>
+                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.1.title">Prototipo</h3>
+                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.1.desc">Mapeamos la web para enfocar el flujo a tus metas.</p>
+                    </div>
 
-                        <!-- Step 3 -->
-                        <div class="relative flex md:flex-col gap-6 md:gap-0 items-start md:items-center system-card-hover">
-                            <!-- Desktop line piece -->
-                            <div class="hidden md:block absolute right-[50%] left-[-50%] top-7 h-px bg-white/10 -z-0"></div>
-                            
-                            <div class="w-14 h-14 md:mb-6 rounded bg-slate-800 border border-accentsBlue/50 flex items-center justify-center text-xl font-heading text-accentsBlue z-10 shrink-0 shadow-[0_0_15px_rgba(77,166,255,0.2)]" data-i18n="process.steps.2.num">03</div>
-                            <div>
-                                <h3 class="font-bold text-accentsBlue text-lg mb-2" data-i18n="process.steps.2.title">Despliegue</h3>
-                                <p class="text-white/60 text-sm" data-i18n="process.steps.2.desc">Sale a vivo optimizado para móvil y navegadores rápidos. Soporte activo desde el día uno.</p>
-                            </div>
-                        </div>
+                    <!-- Step 3 -->
+                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
+                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.2.num">03</div>
+                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.2.title">Desarrollo AI</h3>
+                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.2.desc">Programamos una base sólida con integraciones súper potentes.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-accentsBlue/30 shadow-[0_0_15px_rgba(77,166,255,0.1)]">
+                        <div class="text-accentsBlue/40 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.3.num">04</div>
+                        <h3 class="font-bold text-accentsBlue text-lg mb-2" data-i18n="process.steps.3.title">Lanzamiento</h3>
+                        <p class="text-white/60 text-sm leading-relaxed" data-i18n="process.steps.3.desc">Publicamos veloz en puerto y brindamos soporte para crecer.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
 
-        <!-- 7. Start The Process -->
-        <section class="py-20 md:py-24 bg-slate-900 border-y border-subtle" id="start-process">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">Inicia Tu Nuevo Sistema Hoy</h2>
-                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">Descubre con claridad dónde escalar tu negocio optimizando tu web.</p>
+        <!-- 6. Start The Process Form/CTA -->
+        <section class="py-24 bg-slate-900 border-y border-subtle relative" id="start-process">
+            <div class="max-w-[800px] mx-auto px-6 text-center">
+                <!-- Headline max 6 words -->
+                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none" data-i18n="cta.title">Inicia Tu Sistema Hoy Mismo</h2>
+                <!-- 1 sentence subtext -->
+                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed" data-i18n="cta.subtext">Descubre dónde la web frena tus ventas llenando el cuestionario.</p>
 
                 <!-- Fillout Form Embed -->
                 <div class="w-full max-w-4xl mx-auto bg-black border border-subtle rounded-xl overflow-hidden min-h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
                     <div data-fillout-id="5Neg9Em29uus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;min-height:600px;"></div>
                     <script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
-                <div class="text-white/40 text-xs mt-6 uppercase tracking-widest system-font" data-i18n="cta.tag">Takes 2 minutes · Get results in 24 hours</div>
             </div>
         </section>
 
@@ -409,14 +367,14 @@
             </div>
         </div>
 
-        <!-- 8. Book a Call -->
-        <section class="py-20 md:py-24 bg-darkPanel/50 border-y border-white/5" id="booking">
-            <div class="max-w-5xl mx-auto px-6 text-center">
+        <!-- 7. Book a Call -->
+        <section class="py-24 border-y border-white/5" id="booking">
+            <div class="max-w-[800px] mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="booking.title">
                     Agenda una llamada.
                 </h2>
-                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="booking.subtext">
-                    Prefer to talk first? Book a 30-minute call to discuss your business needs.
+                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed" data-i18n="booking.subtext">
+                    Si te urge dialogarlo, separa un espacio de 30 minutos sin compromiso.
                 </p>
 
                 <!-- Cal Embed Card -->
@@ -440,10 +398,10 @@
 
     <!-- Footer -->
     <footer class="bg-black py-10" data-purpose="site-footer">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div class="flex flex-col items-center md:items-start text-center md:text-left">
                 <div class="heading-condensed text-2xl text-white tracking-widest" data-i18n="footer.brand">MC DESIGNS</div>
-                <div class="text-white/30 text-xs mt-1 system-font uppercase tracking-wider" data-i18n="footer.desc">Sistemas de Alta Conversión</div>
+                <div class="text-white/30 text-xs mt-1 system-font uppercase tracking-wider" data-i18n="footer.desc">Sistemas Inteligentes en PR</div>
             </div>
             <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right system-font" data-i18n="footer.copyright">
                 © 2026 MC DESIGNS. Built in Puerto Rico.
@@ -451,18 +409,10 @@
         </div>
     </footer>
 
-    
-
-    <!-- Mobile Menu Script -->
+    <!-- Scripts -->
     <script type="module" src="mobile-menu.js"></script>
-
-    <!-- Visual Embellishments Script -->
     <script type="module" src="visual-embellishments.js"></script>
-
-    <!-- Safe Hero Scroll Script -->
     <script type="module" src="assets/hero-safe-scroll.js"></script>
-
-    <!-- Language Toggle Script -->
     <script type="module" src="assets/language-toggle.js"></script>
 </body>
 </html>
