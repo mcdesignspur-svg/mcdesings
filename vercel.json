@@ -4,7 +4,8 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/", "destination": "/under-construction/index.html" },
-    { "source": "/servicios", "destination": "/servicios.html" }
+    { "source": "/servicios", "destination": "/servicios.html" },
+    { "source": "/contacto", "destination": "/contacto.html" }
   ],
   "headers": [
     {

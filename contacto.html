@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-H9G7W9K8T9');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contacto | MC DESIGNS — Web Design + IA para PR</title>
+    <meta name="description" content="Agenda una llamada con MC Designs. Diseño web, inteligencia artificial y sistemas digitales para negocios en Puerto Rico." />
+    <link rel="canonical" href="https://mcdesignspr.com/contacto.html" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/" />
+    <meta property="og:title" content="Contacto | MC DESIGNS — Web Design + IA para PR" />
+    <meta property="og:description" content="Agenda una llamada con MC Designs. Diseño web, inteligencia artificial y sistemas digitales para negocios en Puerto Rico." />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        slate: {
+                            900: '#0B0D12',
+                            800: '#14171E',
+                            700: '#1A1E27',
+                        },
+                        accentsBlue: '#4DA6FF',
+                        darkPanel: '#07080B',
+                        offWhite: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Anton', 'Impact', 'sans-serif-condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style data-purpose="typography">
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            background-color: #080d14;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .heading-condensed {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .system-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .border-subtle {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Smooth fade transitions */
+        .system-card-hover {
+            transition: all 0.3s ease-out;
+            will-change: transform, box-shadow, border-color;
+        }
+        .system-card-hover:hover {
+            transform: translateY(-2px);
+            border-color: rgba(77,166,255,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(77,166,255,0.1);
+        }
+
+        /* Background Grid */
+        .bg-grid-pattern {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-[#080d14] text-offWhite bg-grid-pattern overflow-x-hidden relative flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="flex justify-between items-center py-6 mt-4 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-[#080d14]/80 backdrop-blur-md border-b-0" style="z-index: 9999;">
+        <a href="/index.html" class="flex-shrink-0 z-50">
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto mix-blend-difference" />
+        </a>
+        
+        <!-- Center Nav -->
+        <nav class="hidden md:flex flex-1 justify-center gap-8 items-center text-sm font-medium z-50">
+            <a href="/index.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.home">Inicio</a>
+            <a href="/servicios.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.services">Servicios</a>
+            <a href="/contacto.html" class="text-[#4DA6FF] font-bold" data-i18n="nav.contact">Contacto</a>
+        </nav>
+
+        <!-- Right side CTA & Lang Toggle -->
+        <div class="flex items-center gap-4 flex-shrink-0 z-50">
+            <button id="lang-toggle" class="relative flex items-center gap-2 px-4 py-2 rounded-full border border-subtle bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-accentsBlue shadow-[0_0_5px_#4DA6FF]"></span>
+                <span id="lang-text" class="text-xs font-bold tracking-widest text-white system-font">ES</span>
+            </button>
+            <a href="/contacto.html" class="hidden sm:inline-block bg-[#4DA6FF] text-[#080d14] font-bold text-[0.8rem] tracking-[0.06em] uppercase px-[22px] py-[10px] rounded-[8px] transition-transform hover:scale-105" data-i18n="nav.cta">
+                Agenda una llamada
+            </a>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow flex items-center justify-center">
+        <!-- Book a Call Section -->
+        <section class="py-16 md:py-24 w-full relative z-10" id="booking">
+            <div class="max-w-[800px] mx-auto px-6 text-center">
+                <h1 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="booking.title">
+                    Agenda una llamada.
+                </h1>
+                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed" data-i18n="booking.subtext">
+                    Si te urge dialogarlo, separa un espacio de 30 minutos sin compromiso.
+                </p>
+
+                <!-- Cal Embed Card -->
+                <div class="w-full max-w-4xl mx-auto bg-black border border-subtle rounded-xl overflow-hidden h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
+                    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+                    <script type="text/javascript">
+                            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                        Cal("init", "30min", { origin: "https://app.cal.com" });
+                        Cal.ns["30min"]("inline", {
+                            elementOrSelector: "#my-cal-inline-30min",
+                            config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true", "theme": "dark" },
+                            calLink: "mcdesignspr/30min",
+                        });
+                        Cal.ns["30min"]("ui", { "theme": "dark", "hideEventTypeDetails": false, "layout": "month_view" });
+                    </script>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10" data-purpose="site-footer" style="position: relative; z-index: 10;">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="heading-condensed text-2xl text-white tracking-widest" data-i18n="footer.brand">MC DESIGNS</div>
+                <div class="text-white/30 text-xs mt-1 system-font uppercase tracking-wider" data-i18n="footer.desc">Sistemas Inteligentes en PR</div>
+            </div>
+            <div class="text-[10px] tracking-widest uppercase opacity-40 text-center md:text-right system-font" data-i18n="footer.copyright">
+                © 2026 MC DESIGNS. Built in Puerto Rico.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="assets/language-toggle.js"></script>
+    <script>
+        // Set active link color explicitly if desired
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeLink = document.querySelector('nav [href="/contacto.html"]');
+            if(activeLink) {
+                activeLink.style.setProperty('color', '#4DA6FF');
+            }
+        });
+    </script>
+</body>
+</html>
