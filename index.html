@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>MC DESIGNS | Web Design + AI Studio | Puerto Rico</title>
-    <meta name="description" content="DESIGNED HERE. BUILT FOR GROWTH. Web design and AI studio in Puerto Rico creating professional websites and AI tools for local businesses." />
+    <meta name="description" content="Puerto Rico web design and AI studio serving restaurants, healthcare, law firms, real estate, and retail. Professional websites and AI tools that generate leads for local businesses." />
     <link rel="canonical" href="https://mcdesignspr.com/" />
     <meta name="robots" content="index, follow" />
 
@@ -21,7 +21,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mcdesignspr.com/" />
     <meta property="og:title" content="MC Designs | Web Design + AI Studio | Puerto Rico" />
-    
+    <meta property="og:description" content="Puerto Rico web design and AI studio serving restaurants, healthcare, law firms, real estate, and retail. Professional websites and AI tools that generate leads." />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Tailwind CSS v3 CDN -->
@@ -343,9 +344,18 @@
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <div class="text-[10px] text-center text-white/40 uppercase tracking-widest system-font mb-4">Soluciones Personalizadas</div>
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="quote.title">Cada Negocio Es Diferente</h2>
-                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="quote.subtext">
+                <p class="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed" data-i18n="quote.subtext">
                     No trabajamos con paquetes fijos. Cada proyecto empieza con una auditoría para entender exactamente qué necesitas y diseñar una solución a tu medida.
                 </p>
+
+                <!-- Service Tier Indicators (Subtle) -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12 text-white/40 text-xs system-font">
+                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.0">Essential</span>
+                    <span class="text-white/20">→</span>
+                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.1">Growth</span>
+                    <span class="text-white/20">→</span>
+                    <span class="px-3 py-1 border border-white/10 rounded-full" data-i18n="quote.tiers.2">Enterprise</span>
+                </div>
 
                 <div class="bg-[#0B0F1A] border border-accentsBlue/40 rounded-xl p-12 shadow-[0_0_30px_rgba(77,166,255,0.1)] mb-12">
                     <div class="text-accentsBlue text-6xl md:text-7xl font-heading mb-6 glow-text">?</div>
@@ -371,6 +381,52 @@
                     <div class="flex flex-col items-center gap-3">
                         <div class="w-2 h-2 bg-accentsBlue rounded-full shadow-[0_0_8px_#4DA6FF]"></div>
                         <p data-i18n="quote.benefits.2">Soluciones escalables para tu presupuesto</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Connector -->
+        <div class="w-full flex justify-center py-4 relative z-0">
+            <div class="w-px h-16 bg-white/10 relative">
+                <div class="w-1.5 h-1.5 rounded-full bg-white/20 absolute top-1/2 -translate-y-1/2 -left-[2.5px]"></div>
+            </div>
+        </div>
+
+        <!-- 4.5 Industries We Serve -->
+        <section class="section-padding bg-darkPanel/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <div class="text-[10px] text-accentsBlue uppercase tracking-[0.2em] mb-4 font-bold system-font" data-i18n="industries.tag">Puerto Rico Businesses</div>
+                    <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-4" data-i18n="industries.title">Construido Para Negocios Locales</h2>
+                    <p class="text-white/60 text-lg max-w-2xl mx-auto" data-i18n="industries.subtext">Trabajamos con empresas puertorriqueñas que dependen de su presencia digital para generar clientes.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
+                        <div class="text-3xl mb-3">🍽️</div>
+                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.0.title">Restaurantes</h4>
+                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.0.desc">Menús online + reservas automáticas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
+                        <div class="text-3xl mb-3">⚕️</div>
+                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.1.title">Salud</h4>
+                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.1.desc">Citas online + recordatorios AI</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
+                        <div class="text-3xl mb-3">⚖️</div>
+                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.2.title">Bufetes</h4>
+                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.2.desc">Consultas calificadas automáticamente</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px]">
+                        <div class="text-3xl mb-3">🏘️</div>
+                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.3.title">Bienes Raíces</h4>
+                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.3.desc">Tours virtuales + captación 24/7</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-subtle p-6 rounded-lg text-center system-card-hover flex flex-col items-center justify-center min-h-[140px] col-span-2 md:col-span-1">
+                        <div class="text-3xl mb-3">🛍️</div>
+                        <h4 class="text-white font-bold text-sm mb-2" data-i18n="industries.cards.4.title">Retail</h4>
+                        <p class="text-white/40 text-xs leading-relaxed" data-i18n="industries.cards.4.desc">E-commerce + gestión de inventario</p>
                     </div>
                 </div>
             </div>

@@ -3,8 +3,8 @@ export const translations = {
         hero: {
             prefix: "Diseñado Aquí.",
             highlight: "Construido Para Crecer.",
-            subtext: "Estudio de diseño web y AI en Puerto Rico. Creamos sitios profesionales que generan leads y herramientas de inteligencia artificial que te ayudan a crecer.",
-            tag: "Diseño web y AI para negocios puertorriqueños.",
+            subtext: "Estudio de diseño web y AI 100% puertorriqueño. Creamos sitios profesionales que generan leads y herramientas de inteligencia artificial que ayudan a negocios locales a crecer.",
+            tag: "Hecho en Puerto Rico. Para Puerto Rico.",
             cta1: "Obtener Auditoría de Web + IA",
             cta2: "Ver Cómo Podemos Ayudarte",
             node1: "LEADS",
@@ -33,6 +33,7 @@ export const translations = {
         quote: {
             title: "Cada Negocio Es Diferente",
             subtext: "No trabajamos con paquetes fijos. Cada proyecto empieza con una auditoría para entender exactamente qué necesitas y diseñar una solución a tu medida.",
+            tiers: ["Esencial", "Crecimiento", "Enterprise"],
             card: {
                 title: "¿Cuánto Cuesta?",
                 desc: "Depende de tu situación actual, tus objetivos, y la complejidad del sistema que necesitas. La mejor forma de saberlo es agendar una auditoría gratuita.",
@@ -42,6 +43,18 @@ export const translations = {
                 "Transparencia total desde el día uno",
                 "Sin costos ocultos o sorpresas",
                 "Soluciones escalables para tu presupuesto"
+            ]
+        },
+        industries: {
+            tag: "Negocios de Puerto Rico",
+            title: "Construido Para Negocios Locales",
+            subtext: "Trabajamos con empresas puertorriqueñas que dependen de su presencia digital para generar clientes.",
+            cards: [
+                { title: "Restaurantes", desc: "Menús online + reservas automáticas" },
+                { title: "Salud", desc: "Citas online + recordatorios AI" },
+                { title: "Bufetes", desc: "Consultas calificadas automáticamente" },
+                { title: "Bienes Raíces", desc: "Tours virtuales + captación 24/7" },
+                { title: "Retail", desc: "E-commerce + gestión de inventario" }
             ]
         },
         metrics: {
@@ -85,16 +98,16 @@ export const translations = {
         },
         footer: {
             brand: "MC DESIGNS",
-            desc: "Diseño Web + AI Studio",
-            copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
+            desc: "Diseño Web + AI Studio — Puerto Rico",
+            copyright: "© 2026 MC DESIGNS. Hecho con orgullo en Puerto Rico 🇵🇷"
         }
     },
     en: {
         hero: {
             prefix: "Designed Here.",
             highlight: "Built for Growth.",
-            subtext: "Web design and AI studio in Puerto Rico. We create professional websites that generate leads and AI tools that help you grow.",
-            tag: "Web design + AI for Puerto Rico businesses.",
+            subtext: "100% Puerto Rican web design and AI studio. We create professional websites that generate leads and AI tools that help local businesses grow.",
+            tag: "Made in Puerto Rico. For Puerto Rico.",
             cta1: "Get a Website + AI Audit",
             cta2: "See How We Can Help",
             node1: "LEADS",
@@ -123,6 +136,7 @@ export const translations = {
         quote: {
             title: "Every Business Is Different",
             subtext: "We don't work with fixed packages. Every project starts with an audit to understand exactly what you need and design a custom solution.",
+            tiers: ["Essential", "Growth", "Enterprise"],
             card: {
                 title: "How Much Does It Cost?",
                 desc: "It depends on your current situation, your goals, and the complexity of the system you need. The best way to find out is to schedule a free audit.",
@@ -132,6 +146,18 @@ export const translations = {
                 "Total transparency from day one",
                 "No hidden costs or surprises",
                 "Scalable solutions for your budget"
+            ]
+        },
+        industries: {
+            tag: "Puerto Rico Businesses",
+            title: "Built for Local Businesses",
+            subtext: "We work with Puerto Rico businesses that depend on their digital presence to generate clients.",
+            cards: [
+                { title: "Restaurants", desc: "Online menus + automated reservations" },
+                { title: "Healthcare", desc: "Online appointments + AI reminders" },
+                { title: "Law Firms", desc: "Auto-qualified consultations" },
+                { title: "Real Estate", desc: "Virtual tours + 24/7 lead capture" },
+                { title: "Retail", desc: "E-commerce + inventory management" }
             ]
         },
         metrics: {
@@ -175,8 +201,8 @@ export const translations = {
         },
         footer: {
             brand: "MC DESIGNS",
-            desc: "Web Design + AI Studio",
-            copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
+            desc: "Web Design + AI Studio — Puerto Rico",
+            copyright: "© 2026 MC DESIGNS. Proudly built in Puerto Rico 🇵🇷"
         }
     }
 };
