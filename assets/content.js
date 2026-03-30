@@ -1,5 +1,11 @@
 export const translations = {
     es: {
+        nav: {
+            home: "Inicio",
+            services: "Servicios",
+            contact: "Contacto",
+            cta: "Agenda una llamada"
+        },
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
             prefix: "Websites Que Convierten",
@@ -7,6 +13,78 @@ export const translations = {
             subtext: "Construimos sitios web profesionales con automatización integrada para escalar negocios.",
             cta1: "Obtener Auditoría de Web + IA",
             cta2: "Ver Cómo Ayudamos",
+        },
+        servicios_page: {
+            hero: {
+                tag: "✦ DISEÑO WEB + IA PARA NEGOCIOS EN PR",
+                line1: "PRESENCIA.",
+                line2: "RENDIMIENTO.",
+                line3: "CRECIMIENTO.",
+                subtext: "Todo lo que tu negocio necesita, en un solo estudio.",
+                cta1: "Empieza aquí →",
+                cta2: "Agenda una llamada"
+            },
+            intro: {
+                title: "De invisible a imparable.",
+                subtext: "Seis servicios. Una sola dirección: hacer crecer tu negocio."
+            },
+            cards: [
+                {
+                    title: "PRESENCIA WEB",
+                    desc: "Tu negocio existe en línea con credibilidad. Sitio limpio, rápido y optimizado para móvil — construido para ser encontrado.",
+                    link: "→ Sitio web de presencia"
+                },
+                {
+                    title: "CONVERSIÓN",
+                    desc: "Un sitio que no convierte es un anuncio que nadie lee. Construimos páginas que convierten visitas en llamadas y mensajes.",
+                    link: "→ Sitio web de rendimiento"
+                },
+                {
+                    title: "INTELIGENCIA ARTIFICIAL",
+                    desc: "Tu sitio trabaja mientras duermes. Chat IA, calificación de leads y formularios inteligentes integrados directamente en la experiencia.",
+                    link: "→ Chat IA + Calificador"
+                },
+                {
+                    title: "SISTEMAS DE IA",
+                    desc: "Desde el primer contacto hasta la cita agendada — automatizado. Sin seguimientos manuales, sin leads perdidos.",
+                    link: "→ Sistema de agentes IA"
+                },
+                {
+                    title: "PRESENCIA EN REDES",
+                    desc: "Saber qué funciona en redes — y qué publicar después — no debería tomar horas. Construimos el sistema que te dice ambas cosas.",
+                    link: "→ Social Manager"
+                },
+                {
+                    title: "CRECIMIENTO CONTINUO",
+                    desc: "El trabajo no termina en el lanzamiento. Optimización mensual, ajuste de IA y revisiones de rendimiento para seguir mejorando.",
+                    link: "→ Retainer mensual"
+                }
+            ],
+            how_it_works: {
+                title: "Cómo funciona",
+                steps: [
+                    { title: "DIAGNÓSTICO", desc: "Auditamos tu situación actual — sitio, proceso de leads y cuellos de botella." },
+                    { title: "DISEÑO", desc: "Mapeamos la solución ideal y te la presentamos antes de construir nada." },
+                    { title: "CONSTRUCCIÓN", desc: "Construimos con revisiones incluidas. Apruebas antes de que salga en vivo." },
+                    { title: "OPTIMIZACIÓN", desc: "Después del lanzamiento medimos, mejoramos e iteramos cada mes." }
+                ]
+            },
+            industries: {
+                tag: "INDUSTRIAS QUE SERVIMOS",
+                names: [
+                    "Restaurantes",
+                    "Clínicas médicas",
+                    "Bufetes de abogados",
+                    "Contabilidad",
+                    "Bienes raíces",
+                    "Boutiques y Retail"
+                ]
+            },
+            bottom_cta: {
+                title: "¿LISTO PARA CRECER?",
+                subtext: "Hablemos 30 minutos. Sin presión. Solo una conversación honesta.",
+                btn: "Agenda una llamada →"
+            }
         },
         problem: {
             title: "Tu negocio merece más que una página básica.",
@@ -62,6 +140,12 @@ export const translations = {
         }
     },
     en: {
+        nav: {
+            home: "Home",
+            services: "Services",
+            contact: "Contact",
+            cta: "Book a call"
+        },
         hero: {
             tag: "✦ WEB DESIGN + AI IN PR",
             prefix: "Websites That Convert",
@@ -69,6 +153,78 @@ export const translations = {
             subtext: "We build professional websites with integrated automation to scale businesses.",
             cta1: "Get a Web + AI Audit",
             cta2: "See How We Help",
+        },
+        servicios_page: {
+            hero: {
+                tag: "✦ WEB DESIGN + AI FOR PR BUSINESSES",
+                line1: "PRESENCE.",
+                line2: "PERFORMANCE.",
+                line3: "GROWTH.",
+                subtext: "Everything your business needs, in one studio.",
+                cta1: "Get started →",
+                cta2: "Book a call"
+            },
+            intro: {
+                title: "From invisible to unstoppable.",
+                subtext: "Six services. One direction: grow your business."
+            },
+            cards: [
+                {
+                    title: "WEB PRESENCE",
+                    desc: "Your business exists online with credibility. Clean, fast, mobile-first — built to be found.",
+                    link: "→ Presence website"
+                },
+                {
+                    title: "CONVERSION",
+                    desc: "A site that doesn't convert is a billboard no one reads. We build pages that turn visitors into calls and messages.",
+                    link: "→ Performance website"
+                },
+                {
+                    title: "AI INTEGRATION",
+                    desc: "Your site works while you sleep. AI chat, lead qualification, and smart intake built directly into the experience.",
+                    link: "→ AI Chat + Qualifier"
+                },
+                {
+                    title: "AI SYSTEMS",
+                    desc: "From first contact to booked appointment — automated. No manual follow-ups, no leads falling through.",
+                    link: "→ AI agent system"
+                },
+                {
+                    title: "SOCIAL PRESENCE",
+                    desc: "Knowing what works on social — and what to post next — shouldn't take hours. We build the system that tells you both.",
+                    link: "→ Social Manager"
+                },
+                {
+                    title: "ONGOING GROWTH",
+                    desc: "The work doesn't stop at launch. Monthly optimization, AI tuning, and performance reviews to keep improving.",
+                    link: "→ Monthly retainer"
+                }
+            ],
+            how_it_works: {
+                title: "How it works",
+                steps: [
+                    { title: "DIAGNOSE", desc: "We audit your current situation — site, lead process, and bottlenecks." },
+                    { title: "DESIGN", desc: "We map the ideal solution and present it before building anything." },
+                    { title: "BUILD", desc: "We build with revisions included. You approve before it goes live." },
+                    { title: "OPTIMIZE", desc: "After launch we measure, improve, and iterate every month." }
+                ]
+            },
+            industries: {
+                tag: "INDUSTRIES WE SERVE",
+                names: [
+                    "Restaurants",
+                    "Medical & Dental",
+                    "Law Firms",
+                    "Accounting",
+                    "Real Estate",
+                    "Retail & Boutiques"
+                ]
+            },
+            bottom_cta: {
+                title: "READY TO GROW?",
+                subtext: "30 minutes. No pressure. Just an honest conversation.",
+                btn: "Book a call →"
+            }
         },
         problem: {
             title: "Your business deserves more than a basic page.",
