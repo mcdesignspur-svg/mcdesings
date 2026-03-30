@@ -96,57 +96,7 @@
 
         .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
 
-        /* HERO DIAGRAM ANIMATIONS */
-        .node-active {
-            box-shadow: 0 0 15px rgba(77,166,255,0.2);
-            border-color: rgba(77,166,255,0.5);
-            animation: pulseActive 2s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseActive {
-            0% { box-shadow: 0 0 10px rgba(77,166,255,0.2); border-color: rgba(77,166,255,0.3); }
-            100% { box-shadow: 0 0 25px rgba(77,166,255,0.6); border-color: rgba(77,166,255,1); }
-        }
-
-        /* Flow Lines */
-        .connector-line {
-            position: absolute;
-            background-color: rgba(255,255,255,0.1);
-        }
-        
-        .connector-dot {
-            position: absolute;
-            width: 4px; height: 4px;
-            background-color: #4DA6FF;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #4DA6FF;
-        }
-
-        /* Dot animation (Mobile - Vertical) */
-        @keyframes flowDotY {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-        .flow-dot-y {
-            animation: flowDotY 3s infinite linear;
-            left: 50%; transform: translateX(-50%);
-        }
-
-        /* Dot animation (Desktop - Horizontal) */
-        @keyframes flowDotX {
-            0% { left: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
-        }
-        .flow-dot-x {
-            animation: flowDotX 3s infinite linear;
-            top: 50%; transform: translateY(-50%);
-        }
-
-    </style>
+        </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -162,32 +112,26 @@
 
     <main class="w-full">
         <!-- 1. Hero Section -->
-        <section class="section-padding relative z-10 pt-16 md:pt-24 min-h-[85vh] flex items-center" id="hero">
-            <div class="max-w-7xl mx-auto px-6 w-full">
-                <!-- Full Width Content -->
-                <div class="flex flex-col items-center text-center max-w-5xl mx-auto">
-                    <h1 class="heading-condensed text-5xl md:text-[5.5rem] lg:text-[6rem] xl:text-[7rem] leading-[0.9] mb-6 tracking-tight text-white">
-                        <span data-i18n="hero.prefix" class="block">Tu negocio, diseñado para crecer.</span>
-                    </h1>
-                    <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-4 font-medium" data-i18n="hero.subtext">
-                        Construimos sitios web conectados con IA y sistemas de flujo de trabajo para que generes más leads, respondas más rápido y reduzcas el trabajo manual.
-                    </p>
-                    <p class="text-accentsBlue/80 text-sm mb-10 system-font font-bold uppercase tracking-wider" data-i18n="hero.tag">
-                        Designed Here. Built for Growth.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
-                        <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
-                            class="w-full sm:w-auto bg-accentsBlue text-black px-6 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
-                            data-i18n="hero.cta1">
-                            Get started
-                        </button>
-                        <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"
-                            class="w-full sm:w-auto px-5 py-4 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
-                            data-i18n="hero.cta2">
-                            Book a call
-                        </button>
-                    </div>
+        <section class="py-20 md:py-32 relative z-10 min-h-screen flex items-center justify-center text-center bg-[#080d14]" id="hero">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center w-full">
+                <h1 class="heading-condensed text-[clamp(3rem,9vw,7rem)] leading-[0.9] mb-8 tracking-tight text-white max-w-5xl">
+                    <span data-i18n="hero.prefix" class="block">Websites Que Convierten</span>
+                    <span class="text-accentsBlue block" data-i18n="hero.highlight">— y Sistemas Que Corren Tu Negocio</span>
+                </h1>
+                <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-6 font-medium" data-i18n="hero.subtext">
+                    Construimos sitios web para automatizar y escalar el crecimiento de tu negocio.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
+                    <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                        class="w-full sm:w-auto bg-accentsBlue text-black px-8 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
+                        data-i18n="hero.cta1">
+                        Obtener Auditoría de Web + IA
+                    </button>
+                    <button onclick="document.getElementById('start-process').scrollIntoView({ behavior: 'smooth' });"
+                        class="w-full sm:w-auto px-6 py-5 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
+                        data-i18n="hero.cta2">
+                        Ve Dónde Tu Sistema Te Frena
+                    </button>
                 </div>
             </div>
         </section>
@@ -200,15 +144,13 @@
         </div>
 
         <!-- 2. Problem Section -->
-        <section class="section-padding bg-darkPanel/30 border-y border-white/5 relative" id="problem">
+        <section class="py-20 md:py-24 bg-darkPanel/30 border-y border-white/5 relative" id="problem">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
                 <div class="lg:col-span-2">
                     <h2 class="heading-condensed text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
                         Tu negocio merece más que una página básica.
                     </h2>
-                    <p class="text-white/50 text-base md:text-lg leading-relaxed" data-i18n="problem.subtext">
-                        Si tu página es un simple folleto digital, estás perdiendo clientes todos los días frente a competidores con mejores sistemas.
-                    </p>
+                    <p class="text-white/50 text-base md:text-lg leading-relaxed" data-i18n="problem.subtext">Si tu sitio es un simple folleto digital, estás perdiendo clientes diariamente.</p>
                 </div>
                 
                 <div class="lg:col-span-3 flex flex-col gap-4">
@@ -245,7 +187,7 @@
         </div>
 
         <!-- 3. Services Section -->
-        <section class="section-padding relative">
+        <section class="py-20 md:py-24 relative">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-12 text-white" data-i18n="services.title">Tres servicios. Un solo objetivo.</h2>
 
@@ -297,7 +239,7 @@
         </div>
 
         <!-- 4. AI Add-ons Section -->
-        <section class="section-padding bg-darkPanel/50 border-y border-white/5">
+        <section class="py-20 md:py-24 bg-darkPanel/50 border-y border-white/5">
             <div class="max-w-5xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="ai-addons.title">Tu página trabaja. Aunque tú no estés.</h2>
                 <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-addons.subtext">
@@ -342,7 +284,7 @@
         </div>
 
         <!-- 5. AI Setup Section -->
-        <section class="section-padding bg-darkPanel/30">
+        <section class="py-20 md:py-24 bg-darkPanel/30">
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-6" data-i18n="ai-setup.title">Construimos la IA que tu negocio necesita.</h2>
                 <p class="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed" data-i18n="ai-setup.subtext">
@@ -398,7 +340,7 @@
         </div>
 
         <!-- 6. Process -->
-        <section class="section-padding bg-darkPanel/80 border-t border-white/5" id="process">
+        <section class="py-20 md:py-24 bg-darkPanel/80 border-t border-white/5" id="process">
             <div class="max-w-5xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-16 text-white" data-i18n="process.title">Cómo funciona</h2>
                 
@@ -446,14 +388,10 @@
 
 
         <!-- 7. Start The Process -->
-        <section class="section-padding bg-slate-900 border-y border-subtle" id="start-process">
+        <section class="py-20 md:py-24 bg-slate-900 border-y border-subtle" id="start-process">
             <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">
-                    Empieza con una revisión gratis.
-                </h2>
-                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">
-                    Tell us about your business and we'll show you exactly where you're losing leads and how to fix it.
-                </p>
+                <h2 class="heading-condensed text-5xl md:text-7xl mb-6 text-white uppercase leading-none text-shadow-lg" data-i18n="cta.title">Inicia Tu Nuevo Sistema Hoy</h2>
+                <p class="opacity-60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="cta.subtext">Descubre con claridad dónde escalar tu negocio optimizando tu web.</p>
 
                 <!-- Fillout Form Embed -->
                 <div class="w-full max-w-4xl mx-auto bg-black border border-subtle rounded-xl overflow-hidden min-h-[600px] relative shadow-2xl p-1 md:p-2 system-card-hover">
@@ -472,7 +410,7 @@
         </div>
 
         <!-- 8. Book a Call -->
-        <section class="section-padding bg-darkPanel/50 border-y border-white/5" id="booking">
+        <section class="py-20 md:py-24 bg-darkPanel/50 border-y border-white/5" id="booking">
             <div class="max-w-5xl mx-auto px-6 text-center">
                 <h2 class="heading-condensed text-4xl md:text-5xl mb-6 text-white" data-i18n="booking.title">
                     Agenda una llamada.
@@ -513,11 +451,7 @@
         </div>
     </footer>
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Gradient Animation Script -->
-    <script type="module" src="gradient-animation.js"></script>
+    
 
     <!-- Mobile Menu Script -->
     <script type="module" src="mobile-menu.js"></script>
