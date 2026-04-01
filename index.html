@@ -84,8 +84,12 @@
 
     <main class="w-full">
         <!-- 1. Hero Section -->
-        <section class="pt-20 md:pt-32 pb-12 md:pb-24 flex flex-col items-center text-center relative z-10" id="hero">
-            <div class="max-w-[800px] mx-auto px-6 flex flex-col items-center justify-center w-full">
+        <section class="pt-20 md:pt-32 pb-12 md:pb-24 flex flex-col items-center text-center relative z-10 overflow-hidden" id="hero">
+            <!-- Animated gradient blobs -->
+            <div class="hero-blob absolute w-[600px] h-[600px] bg-[#4DA6FF] opacity-[0.06] -left-[200px] -top-[200px]" style="animation: blob-float-1 14s ease-in-out infinite;"></div>
+            <div class="hero-blob absolute w-[500px] h-[500px] bg-[#4DA6FF] opacity-[0.04] -right-[150px] bottom-0" style="animation: blob-float-2 18s ease-in-out infinite;"></div>
+            <div class="hero-blob absolute w-[350px] h-[350px] bg-[#818CF8] opacity-[0.05] left-[40%] top-[10%]" style="animation: blob-float-3 11s ease-in-out infinite;"></div>
+            <div class="max-w-[800px] mx-auto px-6 flex flex-col items-center justify-center w-full relative z-10">
                 <!-- Eyebrow Pill -->
                 <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 28px;" data-i18n="hero.tag">
                     ✦ DISEÑO WEB + IA EN PR
@@ -167,7 +171,7 @@
                     <div class="hidden md:block absolute top-[40%] left-10 right-10 h-px bg-white/10 -z-10"></div>
 
                     <!-- Card 1 -->
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden">
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden">
                         <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">01</div>
                         <div class="relative z-10">
                             <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.0.title">Website Design</h4>
@@ -179,7 +183,7 @@
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(77,166,255,0.08)]">
+                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(77,166,255,0.08)]">
                         <div class="absolute top-4 right-4 text-accentsBlue/5 font-heading text-8xl z-0 tracking-tighter">02</div>
                         <div class="relative z-10">
                             <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.1.title">AI Integration</h4>
@@ -191,7 +195,7 @@
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover flex flex-col justify-between overflow-hidden">
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden">
                         <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">03</div>
                         <div class="relative z-10">
                             <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.2.title">Optimización</h4>
@@ -340,89 +344,100 @@
                 <h2 class="heading-condensed text-4xl md:text-6xl text-white mb-4">PROYECTOS.</h2>
                 <p class="text-white/60 text-lg mb-16 max-w-[500px] mx-auto">Sitios que construimos. Sistemas que automatizan. Negocios que crecen.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                    <!-- Project 1 -->
-                    <a href="/case-study-teamdrita.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden system-card-hover block">
-                        <div class="h-40 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5">
-                            <span class="text-white/20 heading-condensed text-4xl">DT</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Shopify · Wellness</div>
-                            <h3 class="text-white font-bold text-lg mb-2">Team Drita Ymely</h3>
-                            <p class="text-white/50 text-sm leading-relaxed">Tienda Shopify de productos wellness con diseño moderno y experiencia de compra optimizada.</p>
-                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                        </div>
-                    </a>
+                <!-- Bento grid — asymmetric layout inspired by 21st.dev bento patterns -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
 
-                    <!-- Project 2 -->
-                    <a href="/case-study-mcpromo.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden system-card-hover block">
-                        <div class="h-40 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5">
-                            <span class="text-white/20 heading-condensed text-4xl">MCP</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Custom Dev · Sports</div>
-                            <h3 class="text-white font-bold text-lg mb-2">Miguel Cotto Promotions</h3>
-                            <p class="text-white/50 text-sm leading-relaxed">Sitio personalizado para la empresa promotora de boxeo #1 en PR, con panel de administración propio.</p>
-                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                        </div>
-                    </a>
-
-                    <!-- Project 3 - BE Boutique -->
-                    <a href="/case-study-beboutique.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden system-card-hover relative block">
-                        <div class="h-40 bg-gradient-to-br from-slate-800 to-[#0d1a2d] flex items-center justify-center border-b border-accentsBlue/10">
-                            <span class="text-accentsBlue/20 heading-condensed text-4xl">BE</span>
+                    <!-- BE Boutique: Featured (col-span-2) -->
+                    <a href="/case-study-beboutique.html" class="group bg-[#0a1220] border border-accentsBlue/20 rounded-xl overflow-hidden spotlight-card system-card-hover relative block md:col-span-2">
+                        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accentsBlue/40 to-transparent"></div>
+                        <div class="h-52 bg-gradient-to-br from-[#0d1a2d] to-[#080d14] flex items-center justify-center border-b border-accentsBlue/10 relative overflow-hidden">
+                            <span class="text-accentsBlue/8 heading-condensed text-[10rem] absolute select-none">BE</span>
+                            <div class="relative z-10 flex flex-col items-center gap-3">
+                                <span class="text-[10px] system-font uppercase tracking-[0.2em] text-accentsBlue/60 px-3 py-1 border border-accentsBlue/20 rounded-full">En Progreso</span>
+                                <div class="flex items-center gap-2 text-xs system-font text-white/30">
+                                    <span class="px-2 py-0.5 rounded bg-white/5">Shopify</span>
+                                    <span class="text-white/10">+</span>
+                                    <span class="px-2 py-0.5 rounded bg-accentsBlue/10 text-accentsBlue/60">Claude AI</span>
+                                    <span class="text-white/10">+</span>
+                                    <span class="px-2 py-0.5 rounded bg-white/5">N8N</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="p-6">
                             <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Shopify · AI · Fashion</div>
-                            <h3 class="text-white font-bold text-lg mb-2">BE Boutique</h3>
+                            <h3 class="text-white font-bold text-xl mb-2">BE Boutique</h3>
                             <p class="text-white/50 text-sm leading-relaxed">Tienda Shopify + generador de contenido con IA para boutique de moda en Puerto Rico.</p>
                             <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
                         </div>
                     </a>
-                </div>
 
-                <!-- Automation Feature Card -->
-                <a href="/automation-content-generator.html" class="group mt-6 block w-full bg-[#0a1220] border border-[#4DA6FF]/20 rounded-xl overflow-hidden system-card-hover relative" style="text-decoration:none;">
-                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4DA6FF]/40 to-transparent"></div>
-                    <div class="p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start md:items-center">
-                        <!-- Left: Label + title -->
-                        <div class="flex-1">
-                            <div class="text-[#4DA6FF] text-xs system-font uppercase tracking-widest mb-3">✦ Automatización IA</div>
-                            <h3 class="heading-condensed text-2xl md:text-3xl text-white mb-3">AI Content Generator</h3>
-                            <p class="text-white/50 text-sm leading-relaxed max-w-md">Foto de producto en Google Drive → descripción de Shopify + caption de Instagram generados por Claude AI → borrador creado → WhatsApp enviado. Todo solo. Cero clics.</p>
-                            <div class="flex flex-wrap gap-2 mt-4">
+                    <!-- Team Drita (col-span-1) -->
+                    <a href="/case-study-teamdrita.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden spotlight-card system-card-hover block">
+                        <div class="h-52 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5 relative overflow-hidden">
+                            <span class="text-white/10 heading-condensed text-[7rem] absolute select-none">DT</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Shopify · Wellness</div>
+                            <h3 class="text-white font-bold text-lg mb-2">Team Drita Ymely</h3>
+                            <p class="text-white/50 text-sm leading-relaxed">Tienda Shopify de productos wellness con experiencia de compra optimizada.</p>
+                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
+                        </div>
+                    </a>
+
+                    <!-- Miguel Cotto Promotions (col-span-1) -->
+                    <a href="/case-study-mcpromo.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden spotlight-card system-card-hover block">
+                        <div class="h-40 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5 relative overflow-hidden">
+                            <span class="text-white/10 heading-condensed text-6xl absolute select-none">MCP</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Custom Dev · Sports</div>
+                            <h3 class="text-white font-bold text-lg mb-2">Miguel Cotto Promotions</h3>
+                            <p class="text-white/50 text-sm leading-relaxed">Sitio para la empresa promotora de boxeo #1 en PR, con panel admin propio.</p>
+                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
+                        </div>
+                    </a>
+
+                    <!-- Automation card (col-span-2) -->
+                    <a href="/automation-content-generator.html" class="group bg-[#0a1220] border border-[#4DA6FF]/20 rounded-xl overflow-hidden spotlight-card system-card-hover relative block md:col-span-2" style="text-decoration:none;">
+                        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4DA6FF]/40 to-transparent"></div>
+                        <div class="p-7 flex flex-col gap-5 h-full">
+                            <div>
+                                <div class="text-[#4DA6FF] text-xs system-font uppercase tracking-widest mb-3">✦ Automatización IA</div>
+                                <h3 class="heading-condensed text-2xl md:text-3xl text-white mb-3">AI Content Generator</h3>
+                                <p class="text-white/50 text-sm leading-relaxed max-w-md">Foto en Drive → descripción Shopify + caption IG generados por Claude AI → publicado → WhatsApp. Todo solo. Cero clics.</p>
+                            </div>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <div class="flex flex-col items-center gap-1 text-xs system-font">
+                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">📁</div>
+                                    <span class="text-white/20 text-[9px] uppercase">Drive</span>
+                                </div>
+                                <span class="text-[#4DA6FF]/30 text-xs">→</span>
+                                <div class="flex flex-col items-center gap-1 text-xs system-font">
+                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">🤖</div>
+                                    <span class="text-white/20 text-[9px] uppercase">Claude</span>
+                                </div>
+                                <span class="text-[#4DA6FF]/30 text-xs">→</span>
+                                <div class="flex flex-col items-center gap-1 text-xs system-font">
+                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">🛍️</div>
+                                    <span class="text-white/20 text-[9px] uppercase">Shopify</span>
+                                </div>
+                                <span class="text-[#4DA6FF]/30 text-xs">+</span>
+                                <div class="flex flex-col items-center gap-1 text-xs system-font">
+                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">💬</div>
+                                    <span class="text-white/20 text-[9px] uppercase">WhatsApp</span>
+                                </div>
+                                <div class="ml-auto hidden md:flex items-center gap-2 text-accentsBlue text-xs system-font uppercase tracking-widest group-hover:gap-3 transition-all">Ver detalles <span class="group-hover:translate-x-1 transition-transform">→</span></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
                                 <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">N8N</span>
                                 <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">Claude Vision</span>
                                 <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">Shopify API</span>
                                 <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">WhatsApp</span>
                             </div>
                         </div>
-                        <!-- Right: Pipeline preview -->
-                        <div class="flex items-center gap-2 flex-shrink-0 text-xs system-font">
-                            <div class="flex flex-col items-center gap-1">
-                                <div class="w-10 h-10 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center text-base">📁</div>
-                                <span class="text-white/20 text-[9px] uppercase tracking-wider">Drive</span>
-                            </div>
-                            <div class="text-[#4DA6FF]/30 text-xs">→</div>
-                            <div class="flex flex-col items-center gap-1">
-                                <div class="w-10 h-10 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center text-base">🤖</div>
-                                <span class="text-white/20 text-[9px] uppercase tracking-wider">Claude</span>
-                            </div>
-                            <div class="text-[#4DA6FF]/30 text-xs">→</div>
-                            <div class="flex flex-col items-center gap-1">
-                                <div class="w-10 h-10 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center text-base">🛍️</div>
-                                <span class="text-white/20 text-[9px] uppercase tracking-wider">Shopify</span>
-                            </div>
-                            <div class="text-[#4DA6FF]/30 text-xs">+</div>
-                            <div class="flex flex-col items-center gap-1">
-                                <div class="w-10 h-10 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center text-base">💬</div>
-                                <span class="text-white/20 text-[9px] uppercase tracking-wider">WhatsApp</span>
-                            </div>
-                        </div>
-                        <!-- Arrow -->
-                        <div class="hidden md:block text-[#4DA6FF]/40 group-hover:text-[#4DA6FF] transition-colors text-xl group-hover:translate-x-1 transform transition-transform">→</div>
-                    </div>
-                </a>
+                    </a>
+
+                </div>
 
             </div>
         </section>
@@ -611,8 +626,8 @@
                 </div>
                 <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-16">CLIENTES.</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl system-card-hover">
-                        <p class="text-white/70 text-base leading-relaxed mb-6 italic">"Miguel entendió exactamente lo que necesitábamos. El resultado fue un sitio profesional que realmente representa nuestra marca."</p>
+                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl spotlight-card system-card-hover">
+                        <p class="text-white/70 text-base leading-relaxed mb-6 italic" data-word-blur>"Miguel entendió exactamente lo que necesitábamos. El resultado fue un sitio profesional que realmente representa nuestra marca."</p>
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-accentsBlue/20 flex items-center justify-center text-accentsBlue text-sm font-bold">DY</div>
                             <div>
@@ -671,5 +686,6 @@
     <!-- Scripts -->
     <script type="module" src="assets/hero-safe-scroll.js"></script>
     <script type="module" src="assets/language-toggle.js"></script>
+    <script type="module" src="assets/effects.js"></script>
 </body>
 </html>

@@ -325,3 +325,76 @@
         background-position: 100% 50%;
     }
 }
+
+/* ---- Hero gradient blobs ---- */
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    will-change: transform;
+}
+
+@keyframes blob-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -30px) scale(1.08); }
+}
+
+@keyframes blob-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 40px) scale(0.93); }
+}
+
+@keyframes blob-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(25px, 20px) scale(1.05); }
+    66% { transform: translate(-20px, -15px) scale(0.97); }
+}
+
+/* ---- Card spotlight (Aceternity card-spotlight pattern) ---- */
+.spotlight-card {
+    isolation: isolate;
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        500px circle at var(--spotlight-x, -500px) var(--spotlight-y, -500px),
+        rgba(77, 166, 255, 0.09),
+        transparent 40%
+    );
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+/* ---- Word blur reveal (Aceternity animated-testimonials pattern) ---- */
+@keyframes word-reveal {
+    from { filter: blur(8px); opacity: 0; transform: translateY(5px); }
+    to   { filter: blur(0px); opacity: 1; transform: translateY(0); }
+}
+
+.word-blur-item {
+    display: inline-block;
+    opacity: 0;
+    animation: word-reveal 0.4s ease forwards;
+    animation-play-state: paused;
+}
+
+.word-blur-active .word-blur-item {
+    animation-play-state: running;
+}
+
+/* ---- Reduced motion overrides ---- */
+@media (prefers-reduced-motion: reduce) {
+    .hero-blob { animation: none !important; }
+    .word-blur-item { animation: none !important; opacity: 1; filter: none; }
+}
