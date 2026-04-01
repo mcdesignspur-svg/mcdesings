@@ -330,7 +330,7 @@
 .hero-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(60px);
     pointer-events: none;
     will-change: transform;
 }
