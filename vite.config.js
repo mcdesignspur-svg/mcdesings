@@ -11,6 +11,7 @@ export default defineConfig({
                 'case-study-teamdrita': resolve(__dirname, 'case-study-teamdrita.html'),
                 'case-study-mcpromo': resolve(__dirname, 'case-study-mcpromo.html'),
                 'case-study-beboutique': resolve(__dirname, 'case-study-beboutique.html'),
+                'automation-content-generator': resolve(__dirname, 'automation-content-generator.html'),
             },
         },
     },
