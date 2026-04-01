@@ -1,3 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background-color: #080d14;
+        color: #F3F4F6;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+@layer components {
+    .heading-condensed {
+        font-family: 'Anton', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .system-font {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .border-subtle {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .system-card-hover {
+        transition: all 0.3s ease-out;
+        will-change: transform, box-shadow, border-color;
+    }
+
+    .system-card-hover:hover {
+        transform: translateY(-2px);
+        border-color: rgba(77, 166, 255, 0.4);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(77, 166, 255, 0.1);
+    }
+
+    .bg-grid-pattern {
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center top;
+    }
+}
+
 :root {
     --bg-primary: #000000;
     --bg-secondary: #0A0A0F;
