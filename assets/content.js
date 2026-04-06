@@ -147,7 +147,8 @@ export const translations = {
                 }
             ],
             how_it_works: {
-                title: "Cómo funciona",
+                label: "El Proceso",
+                title: "Cómo funciona.",
                 steps: [
                     { title: "DIAGNÓSTICO", desc: "Auditamos tu situación actual — sitio, proceso de leads y cuellos de botella." },
                     { title: "DISEÑO", desc: "Mapeamos la solución ideal y te la presentamos antes de construir nada." },
@@ -341,12 +342,13 @@ export const translations = {
                 }
             ],
             how_it_works: {
-                title: "How it works",
+                label: "The Process",
+                title: "How it works.",
                 steps: [
-                    { title: "DIAGNOSE", desc: "We audit your current situation — site, lead process, and bottlenecks." },
-                    { title: "DESIGN", desc: "We map the ideal solution and present it before building anything." },
-                    { title: "BUILD", desc: "We build with revisions included. You approve before it goes live." },
-                    { title: "OPTIMIZE", desc: "After launch we measure, improve, and iterate every month." }
+                    { title: "Diagnose", desc: "We audit your current situation — site, lead process, and bottlenecks." },
+                    { title: "Design", desc: "We map the ideal solution and present it before building anything." },
+                    { title: "Build", desc: "We build with revisions included. You approve before it goes live." },
+                    { title: "Optimize", desc: "After launch we measure, improve, and iterate every month to maximize ROI." }
                 ]
             },
             industries: {
