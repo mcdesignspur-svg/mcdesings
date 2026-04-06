@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="light" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Servicios | MC DESIGNS — Web Design + IA para PR</title>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
     <script>
@@ -10,14 +14,8 @@
         gtag('config', 'G-H9G7W9K8T9');
     </script>
 
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Servicios | MC DESIGNS — Web Design + IA para PR</title>
     <meta name="description" content="Diseño web, inteligencia artificial y sistemas digitales para negocios en Puerto Rico." />
     <link rel="canonical" href="https://mcdesignspr.com/servicios" />
-    <link rel="alternate" hreflang="es" href="https://mcdesignspr.com/servicios" />
-    <link rel="alternate" hreflang="en" href="https://mcdesignspr.com/servicios" />
-    <link rel="alternate" hreflang="x-default" href="https://mcdesignspr.com/servicios" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
@@ -25,273 +23,289 @@
     <meta property="og:url" content="https://mcdesignspr.com/servicios" />
     <meta property="og:title" content="Servicios | MC DESIGNS — Web Design + IA para PR" />
     <meta property="og:description" content="Diseño web, inteligencia artificial y sistemas digitales para negocios en Puerto Rico." />
-    <meta property="og:image" content="https://mcdesignspr.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://mcdesignspr.com/og-image.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <link rel="stylesheet" href="styles.css">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "MC Designs",
-  "url": "https://mcdesignspr.com",
-  "logo": "https://mcdesignspr.com/assets/MC-Designs-Logo.svg",
-  "description": "Web design and AI integration studio serving businesses in Puerto Rico.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "PR",
-    "addressCountry": "US"
-  },
-  "areaServed": "Puerto Rico",
-  "serviceType": ["Web Design", "AI Integration", "Digital Marketing"],
-  "email": "miguel@mcdesignspr.com",
-  "sameAs": []
-}
-</script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#3b0900",
+                        "inverse-primary": "#b0c6ff",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-fixed-variant": "#00429c",
+                        "primary-fixed": "#d9e2ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e5e2e1",
+                        "tertiary": "#5d5c5b",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-container": "#fffcfb",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "secondary-fixed-dim": "#ffb5a0",
+                        "secondary-container": "#fe8b6a",
+                        "on-background": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#0058cb",
+                        "tertiary-container": "#757474",
+                        "on-secondary-container": "#74240b",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-high": "#e8e8e8",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f1",
+                        "secondary-fixed": "#ffdbd1",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#7e2b12",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "secondary": "#9e4227",
+                        "primary-container": "#006df8",
+                        "outline": "#727787",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "on-primary-fixed": "#001945",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6"
+                },
+                "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                },
+                "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                }
+              },
+            },
+          }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-overlay {
+            background-image: linear-gradient(to right, #0056c608 1px, transparent 1px), linear-gradient(to bottom, #0056c608 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
+        }
+    </style>
 </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+    <!-- Subtle Grid Overlay -->
+    <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
-<body class="bg-[#080d14] text-offWhite bg-grid-pattern overflow-x-hidden relative">
-    <!-- Header -->
-    <header class="flex justify-between items-center py-6 mt-4 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-[#080d14]/80 backdrop-blur-md border-b-0" style="z-index: 9999;">
-        <a href="/index.html" class="flex-shrink-0 z-50">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto mix-blend-difference" />
-        </a>
-        
-        <!-- Center Nav -->
-        <nav class="hidden md:flex flex-1 justify-center gap-8 items-center text-sm font-medium z-50">
-            <a href="/index.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.home">Inicio</a>
-            <a href="/servicios.html" class="text-[#4DA6FF] font-bold" data-i18n="nav.services">Servicios</a>
-            <a href="/#portfolio" class="text-white/60 hover:text-white transition-colors">Trabajos</a>
-            <a href="/contacto.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.contact">Contacto</a>
-        </nav>
-
-        <!-- Right side CTA & Lang Toggle -->
-        <div class="flex items-center gap-4 flex-shrink-0 z-50">
-            <button id="lang-toggle" class="relative flex items-center gap-2 px-4 py-2 rounded-full border border-subtle bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-accentsBlue shadow-[0_0_5px_#4DA6FF]"></span>
-                <span id="lang-text" class="text-xs font-bold tracking-widest text-white system-font">ES</span>
-            </button>
-            <a href="/contacto.html" class="hidden sm:inline-block bg-[#4DA6FF] text-[#080d14] font-bold text-[0.8rem] tracking-[0.06em] uppercase px-[22px] py-[10px] rounded-[8px] transition-transform hover:scale-105" data-i18n="nav.cta">
-                Agenda una llamada
+    <!-- TopAppBar Shell -->
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-outline-variant/10">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <a href="/index.html" class="flex-shrink-0 z-50">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
             </a>
+            <div class="hidden md:flex items-center gap-10 font-sans text-xs font-bold uppercase tracking-widest">
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Home</a>
+                <a class="text-primary font-black border-b-2 border-primary" href="/servicios.html" data-i18n="nav.services">Services</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contact</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Lang Toggle Integration -->
+                <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    <span id="lang-text" class="text-[10px] font-black tracking-tighter text-on-surface">ES</span>
+                </button>
+                <a href="/contacto.html" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-widest active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20" data-i18n="nav.cta">
+                    Get Started
+                </a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="w-full">
-        <!-- SECTION 1 — HERO -->
-        <section class="min-h-[100vh] flex flex-col justify-center items-center text-center px-6 relative z-10 -mt-[100px]">
-            <!-- Eyebrow Pill -->
-            <div style="background: rgba(77,166,255,0.10); color: #4DA6FF; font-family: Inter; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.20); margin-bottom: 28px; display: inline-block;" data-i18n="servicios_page.hero.tag">
-                ✦ DISEÑO WEB + IA PARA NEGOCIOS EN PR
+    <main class="relative z-10 pt-40">
+        <!-- Hero Section -->
+        <header class="max-w-7xl mx-auto px-8 mb-40 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+                <div class="md:col-span-8">
+                    <span class="label-md uppercase tracking-[0.2em] text-primary font-bold mb-6 block" data-i18n="servicios_page.hero.tag">✦ Web Design + AI for PR Businesses</span>
+                    <h1 class="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-on-surface mb-8">
+                        <span class="block" data-i18n="servicios_page.hero.line1">PRESENCE.</span>
+                        <span class="block" data-i18n="servicios_page.hero.line2">PERFORMANCE.</span>
+                        <span class="block opacity-30" data-i18n="servicios_page.hero.line3">GROWTH.</span>
+                    </h1>
+                </div>
+                <div class="md:col-span-4 pb-4">
+                    <p class="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-sm mb-8" data-i18n="servicios_page.hero.subtext">
+                        Everything your business needs, in one studio. We transform technical complexity into tangible commercial results.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="/contacto.html" class="hero-gradient text-on-primary px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all" data-i18n="servicios_page.hero.cta1">Start Here →</a>
+                        <a href="/contacto.html" class="text-on-surface-variant font-bold text-sm uppercase tracking-widest px-8 py-4 border border-outline-variant rounded-xl hover:bg-surface-container transition-all" data-i18n="servicios_page.hero.cta2">Book a call</a>
+                    </div>
+                </div>
             </div>
+        </header>
 
-            <!-- Headline -->
-            <h1 class="heading-condensed text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.92] tracking-[0.03em] uppercase text-white mb-6">
-                <span style="display:block" data-i18n="servicios_page.hero.line1">PRESENCIA.</span>
-                <span style="display:block" data-i18n="servicios_page.hero.line2">RENDIMIENTO.</span>
-                <span style="display:block" data-i18n="servicios_page.hero.line3">CRECIMIENTO.</span>
-            </h1>
-
-            <!-- Subtext -->
-            <p style="font-family: Inter; font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.55); max-width: 460px; margin: 0 auto 40px; line-height: 1.6;" data-i18n="servicios_page.hero.subtext">
-                Todo lo que tu negocio necesita, en un solo estudio.
-            </p>
-
-            <!-- Two CTAs -->
-            <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-direction: row; flex-wrap: wrap;">
-                <a href="/contacto.html" style="background: #4DA6FF; color: #080d14; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-block;" data-i18n="servicios_page.hero.cta1" class="transition-transform hover:scale-105">
-                    Empieza aquí →
-                </a>
-                <a href="/contacto.html" style="background: transparent; color: rgba(255,255,255,0.60); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; border: none; cursor: pointer; text-decoration: none; padding: 14px 20px; display: inline-block; transition: color 0.2s;" data-i18n="servicios_page.hero.cta2" class="hover:text-white">
-                    Agenda una llamada
-                </a>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div style="color: rgba(255,255,255,0.25); font-size: 20px; margin-top: 60px;">
-                ↓
+        <!-- Intro Section -->
+        <section class="max-w-7xl mx-auto px-8 mb-24">
+            <div class="border-t border-outline-variant pt-12 flex flex-col md:flex-row justify-between items-start gap-8">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter max-w-lg" data-i18n="servicios_page.intro.title">From invisible to unstoppable.</h2>
+                <p class="text-on-surface-variant text-lg max-w-md" data-i18n="servicios_page.intro.subtext">Six services. One direction: grow your business. We don't just build websites; we build high-performance digital assets.</p>
             </div>
         </section>
 
-        <!-- SECTION 2 — SECTION INTRO -->
-        <section style="background: #080d14; padding: 80px 24px 40px; text-align: center; position: relative; z-index: 10;" class="border-t border-white/5">
-            <h2 class="heading-condensed" style="font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; color: #ffffff; margin-bottom: 16px;" data-i18n="servicios_page.intro.title">
-                De invisible a imparable.
-            </h2>
-            <p style="font-family: Inter; font-size: 1rem; color: rgba(255,255,255,0.50); max-width: 440px; margin: 0 auto;" data-i18n="servicios_page.intro.subtext">
-                Seis servicios. Una sola dirección: hacer crecer tu negocio.
-            </p>
-        </section>
-
-        <!-- SECTION 3 — NUMBERED SERVICES GRID -->
-        <section style="background: #080d14; padding: 40px 24px 80px; position: relative; z-index: 10;">
-            <div style="max-width: 1100px; margin: 0 auto; display: grid; gap: 16px;" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                
-                <!-- CARD 01 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">01</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.0.title">PRESENCIA WEB</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.0.desc">Tu negocio existe en línea con credibilidad. Sitio limpio, rápido y optimizado para móvil — construido para ser encontrado.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.0.link" class="group-hover:gap-[10px]">→ Sitio web de presencia</a>
-                    </div>
+        <!-- Services Grid -->
+        <section class="max-w-7xl mx-auto px-8 mb-40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Cards will be injected/hydrated, but kept here for fallback -->
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">01</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.0.title">WEB PRESENCE</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.0.desc">Your business exists online with credibility. Clean, fast, mobile-first — built to be found. The first impression is what closes the deal.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.0.link">→ Presence website</a>
                 </div>
 
-                <!-- CARD 02 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">02</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.1.title">CONVERSIÓN</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.1.desc">Un sitio que no convierte es un anuncio que nadie lee. Construimos páginas que convierten visitas en llamadas y mensajes.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.1.link" class="group-hover:gap-[10px]">→ Sitio web de rendimiento</a>
-                    </div>
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">02</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.1.title">CONVERSION</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.1.desc">A site that doesn't convert is a billboard no one reads. We build pages that turn visitors into calls and WhatsApp messages.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.1.link">→ Performance website</a>
                 </div>
 
-                <!-- CARD 03 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">03</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.2.title">INTELIGENCIA ARTIFICIAL</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.2.desc">Tu sitio trabaja mientras duermes. Chat IA, calificación de leads y formularios inteligentes integrados directamente en la experiencia.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.2.link" class="group-hover:gap-[10px]">→ Chat IA + Calificador</a>
-                    </div>
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">03</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.2.title">ARTIFICIAL INTELLIGENCE</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.2.desc">Your site works while you sleep. AI chat, lead qualification, and smart intake that understand your client better than ever.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.2.link">→ AI Chat + Qualifier</a>
                 </div>
 
-                <!-- CARD 04 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">04</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.3.title">SISTEMAS DE IA</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.3.desc">Desde el primer contacto hasta la cita agendada — automatizado. Sin seguimientos manuales, sin leads perdidos.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.3.link" class="group-hover:gap-[10px]">→ Sistema de agentes IA</a>
-                    </div>
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">04</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.3.title">AI SYSTEMS</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.3.desc">From first contact to booked appointment — automated. We eliminate repetitive tasks so you can focus on selling.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.3.link">→ AI agent system</a>
                 </div>
 
-                <!-- CARD 05 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">05</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.4.title">PRESENCIA EN REDES</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.4.desc">Saber qué funciona en redes — y qué publicar después — no debería tomar horas. Construimos el sistema que te dice ambas cosas.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.4.link" class="group-hover:gap-[10px]">→ Social Manager</a>
-                    </div>
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">05</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.4.title">SOCIAL PRESENCE</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.4.desc">Knowing what works on social — and what to post next — shouldn't take hours. We build the system that tells you both.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.4.link">→ Social Manager</a>
                 </div>
 
-                <!-- CARD 06 -->
-                <div style="background: #0d1520; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px 24px; position: relative; overflow: hidden; transition: border-color 0.2s ease;" class="hover:border-[rgba(77,166,255,0.30)] group">
-                    <div style="position: absolute; top: 16px; right: 20px; font-family: Anton; font-size: 5rem; line-height: 1; color: rgba(77,166,255,0.08); pointer-events: none; user-select: none; letter-spacing: 0.02em;">06</div>
-                    <div class="relative z-10">
-                        <h3 style="font-family: Anton; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 12px;" data-i18n="servicios_page.cards.5.title">CRECIMIENTO CONTINUO</h3>
-                        <p style="font-family: Inter; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px;" data-i18n="servicios_page.cards.5.desc">El trabajo no termina en el lanzamiento. Optimización mensual, ajuste de IA y revisiones de rendimiento para seguir mejorando.</p>
-                        <a href="/contacto.html" style="font-size: 0.8rem; color: #4DA6FF; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.15s ease;" data-i18n="servicios_page.cards.5.link" class="group-hover:gap-[10px]">→ Retainer mensual</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 4 — DARK CONTRAST: HOW IT WORKS -->
-        <section style="background: #000000; padding: 80px 24px; position: relative; z-index: 20;" class="border-y border-white/5 relative">
-            <h2 class="heading-condensed" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); text-transform: uppercase; color: #ffffff; text-align: center; margin-bottom: 64px;" data-i18n="servicios_page.how_it_works.title">
-                Cómo funciona
-            </h2>
-
-            <div style="max-width: 1000px; margin: 0 auto; display: grid; gap: 32px;" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                
-                <div>
-                    <span style="font-family: Anton; font-size: 3.5rem; line-height: 1; color: rgba(77,166,255,0.15); margin-bottom: 12px; display: block;">01</span>
-                    <h3 style="font-family: Anton; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 8px;" data-i18n="servicios_page.how_it_works.steps.0.title">DIAGNÓSTICO</h3>
-                    <p style="font-family: Inter; font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6;" data-i18n="servicios_page.how_it_works.steps.0.desc">Auditamos tu situación actual — sitio, proceso de leads y cuellos de botella.</p>
-                </div>
-
-                <div>
-                    <span style="font-family: Anton; font-size: 3.5rem; line-height: 1; color: rgba(77,166,255,0.15); margin-bottom: 12px; display: block;">02</span>
-                    <h3 style="font-family: Anton; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 8px;" data-i18n="servicios_page.how_it_works.steps.1.title">DISEÑO</h3>
-                    <p style="font-family: Inter; font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6;" data-i18n="servicios_page.how_it_works.steps.1.desc">Mapeamos la solución ideal y te la presentamos antes de construir nada.</p>
-                </div>
-
-                <div>
-                    <span style="font-family: Anton; font-size: 3.5rem; line-height: 1; color: rgba(77,166,255,0.15); margin-bottom: 12px; display: block;">03</span>
-                    <h3 style="font-family: Anton; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 8px;" data-i18n="servicios_page.how_it_works.steps.2.title">CONSTRUCCIÓN</h3>
-                    <p style="font-family: Inter; font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6;" data-i18n="servicios_page.how_it_works.steps.2.desc">Construimos con revisiones incluidas. Apruebas antes de que salga en vivo.</p>
-                </div>
-
-                <div>
-                    <span style="font-family: Anton; font-size: 3.5rem; line-height: 1; color: rgba(77,166,255,0.15); margin-bottom: 12px; display: block;">04</span>
-                    <h3 style="font-family: Anton; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 8px;" data-i18n="servicios_page.how_it_works.steps.3.title">OPTIMIZACIÓN</h3>
-                    <p style="font-family: Inter; font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6;" data-i18n="servicios_page.how_it_works.steps.3.desc">Después del lanzamiento medimos, mejoramos e iteramos cada mes.</p>
+                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
+                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">06</span>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.5.title">ONGOING GROWTH</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.5.desc">Launch isn't the finish line. Monthly optimization, AI tuning, and performance reviews to ensure you continue to lead your industry.</p>
+                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.5.link">→ Monthly retainer</a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 5 — INDUSTRIES STRIP -->
-        <section style="background: #0d1520; padding: 64px 24px; text-align: center; position: relative; z-index: 10;">
-            <div style="background: rgba(255,255,255,0.04); color: #4DA6FF; font-family: Inter; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.10); margin-bottom: 32px; display: inline-block;" data-i18n="servicios_page.industries.tag">
-                INDUSTRIAS QUE SERVIMOS
-            </div>
-
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 800px; margin: 0 auto;">
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.0">Restaurantes</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.1">Clínicas médicas</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.2">Bufetes de abogados</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.3">Contabilidad</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.4">Bienes raíces</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 20px; font-family: Inter; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.60);" data-i18n="servicios_page.industries.names.5">Boutiques y Retail</span>
+        <!-- Process Section -->
+        <section class="bg-surface-container-low py-32 mb-40 relative">
+            <div class="max-w-7xl mx-auto px-8 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-20 text-center" data-i18n="servicios_page.how_it_works.title">How it works.</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div class="space-y-6">
+                        <span class="text-4xl font-black text-primary/20 block">01</span>
+                        <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.0.title">Diagnose</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.0.desc">We audit your current situation — site, lead process, and bottlenecks.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <span class="text-4xl font-black text-primary/20 block">02</span>
+                        <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.1.title">Design</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.1.desc">We map the ideal solution and present it before building anything.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <span class="text-4xl font-black text-primary/20 block">03</span>
+                        <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.2.title">Build</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.2.desc">We build with revisions included. You approve before it goes live.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <span class="text-4xl font-black text-primary/20 block">04</span>
+                        <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.3.title">Optimize</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.3.desc">After launch we measure, improve, and iterate every month to maximize ROI.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SECTION 6 — BOTTOM CTA -->
-        <section style="background: #080d14; padding: 100px 24px; text-align: center; position: relative; z-index: 10;">
-            <h2 class="heading-condensed" style="font-size: clamp(2.8rem, 7vw, 6rem); line-height: 0.92; text-transform: uppercase; color: #ffffff; margin-bottom: 20px;" data-i18n="servicios_page.bottom_cta.title">
-                ¿LISTO PARA CRECER?
-            </h2>
-            <p style="font-family: Inter; font-size: 1rem; color: rgba(255,255,255,0.50); margin-bottom: 36px;" data-i18n="servicios_page.bottom_cta.subtext">
-                Hablemos 30 minutos. Sin presión. Solo una conversación honesta.
-            </p>
-            <a href="/contacto.html" style="background: #4DA6FF; color: #080d14; font-family: Inter; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 36px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s ease;" class="hover:opacity-[0.88] hover:-translate-y-[1px]" data-i18n="servicios_page.bottom_cta.btn">
-                Agenda una llamada →
-            </a>
+        <!-- Industries Strip -->
+        <section class="max-w-7xl mx-auto px-8 mb-40 text-center">
+            <span class="label-md uppercase tracking-[0.2em] text-primary font-bold mb-10 block" data-i18n="servicios_page.industries.tag">Industries We Serve</span>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.0">Restaurants</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.1">Medical & Dental</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.2">Law Firms</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.3">Accounting</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.4">Real Estate</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.5">Retail & Boutiques</span>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="max-w-7xl mx-auto px-8 py-32 bg-surface-container-highest rounded-[40px] text-center mb-40 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-tight" data-i18n="servicios_page.bottom_cta.title">READY TO GROW?</h2>
+            <p class="text-xl text-on-surface-variant max-w-xl mx-auto mb-12" data-i18n="servicios_page.bottom_cta.subtext">Hablemos 30 minutos. Sin presión. Solo una conversación honesta sobre el potencial de tu negocio.</p>
+            <a href="/contacto.html" class="bg-primary text-on-primary px-12 py-5 rounded-2xl text-md font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/40 block md:inline-block" data-i18n="servicios_page.bottom_cta.btn">Book a call →</a>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/5 py-16" data-purpose="site-footer" style="position: relative; z-index: 10;">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-                <!-- Brand -->
+    <!-- Footer Shell -->
+    <footer class="bg-white border-t border-outline-variant py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-2xl font-black tracking-tighter text-on-surface mb-6 uppercase" data-i18n="footer.brand">MC DESIGNS</div>
+                    <p class="text-on-surface-variant text-lg max-w-sm leading-relaxed" data-i18n="footer.desc">Web design and AI integration studio. Built for entrepreneurs in Puerto Rico who demand results.</p>
+                </div>
                 <div>
-                    <div class="heading-condensed text-2xl text-white tracking-widest mb-2" data-i18n="footer.brand">MC DESIGNS</div>
-                    <div class="text-white/30 text-xs system-font uppercase tracking-wider mb-4" data-i18n="footer.desc">Sistemas Inteligentes en PR</div>
-                    <p class="text-white/40 text-sm leading-relaxed max-w-[220px]">Web design and AI integration studio. Built in Puerto Rico.</p>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Pages</h4>
+                    <div class="flex flex-col gap-4 text-sm font-medium">
+                        <a href="/" class="text-on-surface hover:text-primary transition-all">Home</a>
+                        <a href="/servicios.html" class="text-on-surface hover:text-primary transition-all">Services</a>
+                        <a href="/portfolio.html" class="text-on-surface hover:text-primary transition-all">Portfolio</a>
+                        <a href="/contacto.html" class="text-on-surface hover:text-primary transition-all">Contact</a>
+                    </div>
                 </div>
-                <!-- Nav Links -->
-                <div class="flex flex-col gap-3">
-                    <div class="text-white/20 text-xs system-font uppercase tracking-widest mb-1">Páginas</div>
-                    <a href="/index.html" class="text-white/50 hover:text-white text-sm transition-colors">Inicio</a>
-                    <a href="/servicios.html" class="text-white/50 hover:text-white text-sm transition-colors">Servicios</a>
-                    <a href="/contacto.html" class="text-white/50 hover:text-white text-sm transition-colors">Contacto</a>
-                </div>
-                <!-- Contact & Social -->
-                <div class="flex flex-col gap-3">
-                    <div class="text-white/20 text-xs system-font uppercase tracking-widest mb-1">Contacto</div>
-                    <a href="mailto:miguel@mcdesignspr.com" class="text-white/50 hover:text-white text-sm transition-colors">miguel@mcdesignspr.com</a>
-                    <a href="https://mcdesignspr.com" class="text-white/50 hover:text-white text-sm transition-colors">mcdesignspr.com</a>
-                    <!-- Social links -->
-                    <div class="flex gap-4 mt-2">
-                        <a href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener" class="text-white/30 hover:text-[#4DA6FF] transition-colors text-sm system-font uppercase tracking-widest">IG</a>
-                        <a href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener" class="text-white/30 hover:text-[#4DA6FF] transition-colors text-sm system-font uppercase tracking-widest">LI</a>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Contact</h4>
+                    <div class="flex flex-col gap-4 text-sm font-medium">
+                        <a href="mailto:miguel@mcdesignspr.com" class="text-on-surface hover:text-primary transition-all">miguel@mcdesignspr.com</a>
+                        <div class="flex gap-4 mt-2">
+                            <a href="https://instagram.com/mcdesignspr" class="text-on-surface-variant hover:text-primary transition-colors">IG</a>
+                            <a href="https://linkedin.com/company/mcdesignspr" class="text-on-surface-variant hover:text-primary transition-colors">LI</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-                <div class="text-[10px] tracking-widest uppercase opacity-30 system-font" data-i18n="footer.copyright">© 2026 MC DESIGNS. Built in Puerto Rico.</div>
-                <div class="text-[10px] tracking-widest uppercase opacity-20 system-font">Puerto Rico Web Studio</div>
+            <div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant" data-i18n="footer.copyright">© 2026 MC DESIGNS. Built in Puerto Rico.</p>
+                <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-primary">
+                    <span>Precision</span>
+                    <span>Performance</span>
+                    <span>Growth</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -299,12 +313,14 @@
     <!-- Scripts -->
     <script type="module" src="assets/language-toggle.js"></script>
     <script>
-        // Set active link color
+        // Ensure the services link is highlighted if client-side logic is needed
         document.addEventListener('DOMContentLoaded', () => {
-            const activeLink = document.querySelector('nav [href="/servicios.html"]');
-            if(activeLink) {
-                activeLink.style.setProperty('color', '#4DA6FF');
-            }
+            const currentPath = window.location.pathname;
+            document.querySelectorAll('nav a').forEach(link => {
+                if(link.getAttribute('href') === '/servicios.html' || link.getAttribute('href') === currentPath) {
+                    link.classList.add('text-primary', 'font-black');
+                }
+            });
         });
     </script>
 </body>
