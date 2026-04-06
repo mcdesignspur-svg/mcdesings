@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="light" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MC DESIGNS | Web Design + AI Studio | Puerto Rico</title>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
     <script>
@@ -10,14 +14,8 @@
         gtag('config', 'G-H9G7W9K8T9');
     </script>
 
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>MC DESIGNS | Web Design + AI Studio | Puerto Rico</title>
     <meta name="description" content="Puerto Rico web design and AI studio serving restaurants, healthcare, law firms, real estate, and retail. Professional websites and AI tools that generate leads for local businesses." />
     <link rel="canonical" href="https://mcdesignspr.com/" />
-    <link rel="alternate" hreflang="es" href="https://mcdesignspr.com/" />
-    <link rel="alternate" hreflang="en" href="https://mcdesignspr.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://mcdesignspr.com/" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
@@ -25,667 +23,319 @@
     <meta property="og:url" content="https://mcdesignspr.com/" />
     <meta property="og:title" content="MC Designs | Web Design + AI Studio | Puerto Rico" />
     <meta property="og:description" content="Puerto Rico web design and AI studio serving restaurants, healthcare, law firms, real estate, and retail. Professional websites and AI tools that generate leads." />
-    <meta property="og:image" content="https://mcdesignspr.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://mcdesignspr.com/og-image.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <link rel="stylesheet" href="styles.css">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "MC Designs",
-  "url": "https://mcdesignspr.com",
-  "logo": "https://mcdesignspr.com/assets/MC-Designs-Logo.svg",
-  "description": "Web design and AI integration studio serving businesses in Puerto Rico.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "PR",
-    "addressCountry": "US"
-  },
-  "areaServed": "Puerto Rico",
-  "serviceType": ["Web Design", "AI Integration", "Digital Marketing"],
-  "email": "miguel@mcdesignspr.com",
-  "sameAs": []
-}
-</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9f9",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-container-highest": "#e2e2e2",
+                    "background": "#f9f9f9",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeeee",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#3b0900",
+                    "inverse-primary": "#b0c6ff",
+                    "on-surface": "#1a1c1c",
+                    "on-primary-fixed-variant": "#00429c",
+                    "primary-fixed": "#d9e2ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#e5e2e1",
+                    "tertiary": "#5d5c5b",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9f9",
+                    "on-tertiary-container": "#fffcfb",
+                    "on-surface-variant": "#424655",
+                    "outline-variant": "#c2c6d8",
+                    "secondary-fixed-dim": "#ffb5a0",
+                    "secondary-container": "#fe8b6a",
+                    "on-background": "#1a1c1c",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#0058cb",
+                    "tertiary-container": "#757474",
+                    "on-secondary-container": "#74240b",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-high": "#e8e8e8",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f0f1f1",
+                    "secondary-fixed": "#ffdbd1",
+                    "on-primary-container": "#fefcff",
+                    "on-secondary-fixed-variant": "#7e2b12",
+                    "surface-dim": "#dadada",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-variant": "#e2e2e2",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "secondary": "#9e4227",
+                    "primary-container": "#006df8",
+                    "outline": "#727787",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-primary-fixed": "#001945",
+                    "on-primary": "#ffffff",
+                    "primary": "#0056c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-module {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at top left, rgba(0, 86, 198, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
+        }
+    </style>
 </head>
-
-<body class="bg-[#080d14] text-offWhite bg-grid-pattern overflow-x-hidden">
-    <!-- Header -->
-    <header class="flex justify-between items-center py-6 mt-4 z-50 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-[#080d14]/80 backdrop-blur-md border-b-0" style="z-index: 9999;">
-        <a href="/index.html" class="flex-shrink-0 z-50">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto mix-blend-difference" />
-        </a>
-        
-        <!-- Center Nav -->
-        <nav class="hidden md:flex flex-1 justify-center gap-8 items-center text-sm font-medium z-50">
-            <a href="/index.html" class="text-[#4DA6FF] font-bold" data-i18n="nav.home">Inicio</a>
-            <a href="/servicios.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.services">Servicios</a>
-            <a href="/#portfolio" class="text-white/60 hover:text-white transition-colors">Trabajos</a>
-            <a href="/contacto.html" class="text-white/60 hover:text-white transition-colors" data-i18n="nav.contact">Contacto</a>
-        </nav>
-
-        <!-- Right side CTA & Lang Toggle -->
-        <div class="flex items-center gap-4 flex-shrink-0 z-50">
-            <button id="lang-toggle" class="relative flex items-center gap-2 px-4 py-2 rounded-full border border-subtle bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-accentsBlue shadow-[0_0_5px_#4DA6FF]"></span>
-                <span id="lang-text" class="text-xs font-bold tracking-widest text-white system-font">ES</span>
-            </button>
-            <a href="/contacto.html" class="hidden sm:inline-block bg-[#4DA6FF] text-[#080d14] font-bold text-[0.8rem] tracking-[0.06em] uppercase px-[22px] py-[10px] rounded-[8px] transition-transform hover:scale-105" data-i18n="nav.cta">
-                Agenda una llamada
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed"><div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- TopAppBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl relative z-10">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+<a href="/index.html" class="flex-shrink-0 z-50"><img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" /></a>
+<div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/">Home</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/servicios.html">Services</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/portfolio.html">Portfolio</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/contacto.html">Contact</a>
+</div>
+<a href="/contacto.html" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150">
+                Get Started
             </a>
-        </div>
-    </header>
-
-    <main class="w-full">
-        <!-- 1. Hero Section -->
-        <section class="pt-20 md:pt-32 pb-12 md:pb-24 flex flex-col items-center text-center relative z-10 overflow-hidden" id="hero">
-            <!-- Animated gradient blobs -->
-            <div class="hero-blob absolute w-[600px] h-[600px] bg-[#4DA6FF] opacity-[0.18] -left-[200px] -top-[200px]" style="animation: blob-float-1 14s ease-in-out infinite;"></div>
-            <div class="hero-blob absolute w-[500px] h-[500px] bg-[#4DA6FF] opacity-[0.12] -right-[150px] bottom-0" style="animation: blob-float-2 18s ease-in-out infinite;"></div>
-            <div class="hero-blob absolute w-[350px] h-[350px] bg-[#818CF8] opacity-[0.14] left-[40%] top-[10%]" style="animation: blob-float-3 11s ease-in-out infinite;"></div>
-            <div class="max-w-[800px] mx-auto px-6 flex flex-col items-center justify-center w-full relative z-10">
-                <!-- Eyebrow Pill -->
-                <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 28px;" data-i18n="hero.tag">
-                    ✦ DISEÑO WEB + IA EN PR
-                </div>
-                
-                <h1 class="heading-condensed text-[clamp(4rem,11vw,9rem)] leading-[0.88] tracking-[0.03em] uppercase mb-6 text-white w-full">
-                    <span data-i18n="hero.prefix" class="block">CRECIMIENTO</span>
-                    <span class="text-accentsBlue block" data-i18n="hero.highlight">INTELIGENTE.</span>
-                </h1>
-                
-                <!-- Subtext: 1 sentence, max 15 words. -->
-                <p class="text-white/70 text-lg md:text-xl max-w-[600px] leading-relaxed mb-10 font-medium mx-auto" data-i18n="hero.subtext">
-                    Diseño web e IA para negocios en Puerto Rico listos para crecer.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
-                    <a href="/contacto.html"
-                        class="w-full sm:w-auto bg-accentsBlue text-black px-8 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.2)] system-card-hover"
-                        data-i18n="hero.cta1">
-                        Obtener Auditoría de Web + IA
-                    </a>
-                    <a href="/contacto.html"
-                        class="w-full sm:w-auto px-6 py-5 text-white/60 hover:text-white border border-white/10 hover:border-white/30 rounded font-medium text-xs tracking-widest uppercase transition-all system-card-hover"
-                        data-i18n="hero.cta2">
-                        Ver Cómo Ayudamos
-                    </a>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- 2. Problem Section -->
-        <section class="py-12 bg-darkPanel/30 border-y border-white/5 relative" id="problem">
-            <div class="max-w-[800px] mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white leading-tight" data-i18n="problem.title">
-                    Tu negocio merece más que una página básica.
-                </h2>
-                <p class="text-white/60 text-base md:text-lg leading-relaxed max-w-[600px] mx-auto mb-16" data-i18n="problem.subtext">
-                    Si tu sitio es un folleto digital, hoy pierdes clientes ante competidores.
-                </p>
-                
-                <!-- Left-aligned content inside center container -->
-                <div class="flex flex-col gap-4 text-left max-w-[700px] mx-auto">
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
-                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">01</div>
-                        <div>
-                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.0.title">Sin captación clara</h4>
-                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.0.desc">Los prospectos entran al sitio y se van sin contactarte fácilmente.</p>
-                        </div>
-                    </div>
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
-                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">02</div>
-                        <div>
-                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.1.title">Procesos manuales</h4>
-                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.1.desc">Contestas preguntas repetitivas y haces todo el seguimiento a mano.</p>
-                        </div>
-                    </div>
-                    <div class="bg-slate-900 border border-subtle p-6 rounded-lg flex items-start md:items-center gap-6 system-card-hover">
-                        <div class="text-white/10 font-heading text-5xl tracking-tighter w-12 text-center shrink-0">03</div>
-                        <div>
-                            <h4 class="text-white font-bold text-lg mb-1" data-i18n="problem.cards.2.title">Mala experiencia móvil</h4>
-                            <p class="text-white/50 text-sm leading-relaxed" data-i18n="problem.cards.2.desc">Tu diseño es viejo y frustra al visitante usando celular móvil.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- 3. Services Section -->
-        <section class="py-12 relative">
-            <div class="max-w-[700px] mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="services.title">Tres servicios clave.</h2>
-                <p class="text-white/60 text-lg mb-16 max-w-[500px] mx-auto" data-i18n="services.subtext">Construimos plataformas digitales completas enfocadas en facturar más y trabajar menos.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative text-left w-[110%] -ml-[5%] max-w-[1000px]">
-                    <div class="hidden md:block absolute top-[40%] left-10 right-10 h-px bg-white/10 -z-10"></div>
-
-                    <!-- Card 1 -->
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">01</div>
-                        <div class="relative z-10">
-                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.0.title">Website Design</h4>
-                            <p class="text-white/60 text-sm mb-6 leading-relaxed" data-i18n="services.cards.0.desc">Páginas modernas diseñadas para vender rápido tu oferta.</p>
-                        </div>
-                        <a href="/contacto.html" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.0.cta">
-                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </a>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-slate-800 border border-accentsBlue/40 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden shadow-[0_0_20px_rgba(77,166,255,0.08)]">
-                        <div class="absolute top-4 right-4 text-accentsBlue/5 font-heading text-8xl z-0 tracking-tighter">02</div>
-                        <div class="relative z-10">
-                            <h4 class="text-accentsBlue font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.1.title">AI Integration</h4>
-                            <p class="text-white/70 text-sm mb-6 leading-relaxed" data-i18n="services.cards.1.desc">Automatizaciones con IA que atrapan ventas a toda hora.</p>
-                        </div>
-                        <a href="/contacto.html" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.1.cta">
-                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </a>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl relative z-10 w-full system-card-hover spotlight-card flex flex-col justify-between overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">03</div>
-                        <div class="relative z-10">
-                            <h4 class="text-white font-bold text-2xl mb-3 font-heading tracking-wide" data-i18n="services.cards.2.title">Optimización</h4>
-                            <p class="text-white/60 text-sm mb-6 leading-relaxed" data-i18n="services.cards.2.desc">Mejoramos la velocidad de tu web y ajustamos cada proceso.</p>
-                        </div>
-                        <a href="/contacto.html" class="mt-4 text-xs text-accentsBlue hover:text-white font-medium system-font flex items-center gap-2 group transition-colors uppercase relative z-10" data-i18n="services.cards.2.cta">
-                            Explorar <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- 4. AI Add-ons Section -->
-        <section class="py-12 bg-darkPanel/50 border-y border-white/5">
-            <div class="max-w-[800px] mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="ai-addons.title">IA Que Trabaja Sin Ti.</h2>
-                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed max-w-[600px]" data-i18n="ai-addons.subtext">
-                    Integra herramientas de Inteligencia Artificial que atienden y aseguran al cliente automáticamente.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">01</div>
-                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.0.title">Soporte y Citas AI</h4>
-                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.0.desc">Chatbot que responde dudas del cliente y agenda reuniones solo.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">02</div>
-                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.1.title">Filtro de Leads</h4>
-                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.1.desc">Formularios inteligentes que evalúan al prospecto y descartan basura inmediatamente.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">03</div>
-                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.2.title">Secuencias Mágicas</h4>
-                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.2.desc">Correos generados que nutren tus oportunidades pasadas de forma natural.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-subtle p-8 rounded-lg text-left system-card-hover relative overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/5 font-heading text-8xl z-0 tracking-tighter">04</div>
-                        <h4 class="text-white font-bold text-xl mb-2 relative z-10" data-i18n="ai-addons.cards.3.title">Bases de Datos</h4>
-                        <p class="text-white/50 text-sm relative z-10" data-i18n="ai-addons.cards.3.desc">Tus sistemas y apps internas sincronizadas para operar veloz y sin errores.</p>
-                    </div>
-                </div>
-
-                <div class="w-full flex justify-center">
-                    <div class="max-w-[400px]">
-                        <a href="/contacto.html"
-                                class="bg-accentsBlue text-black px-10 py-5 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all shadow-[0_0_20px_rgba(77,166,255,0.3)] system-card-hover w-full" data-i18n="ai-addons.cta">
-                            Crear Mi Sistema AI
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- 5. Process / How it works -->
-        <section class="py-12 bg-[#0d1520] border-t border-white/5" id="process">
-            <div class="max-w-[900px] mx-auto px-6 text-center">
-                <h2 class="heading-condensed text-4xl md:text-6xl mb-6 text-white" data-i18n="process.title">Cómo Trabajamos</h2>
-                <!-- 1 sentence subtext max 15 words -->
-                <p class="text-white/60 text-lg mx-auto mb-16 leading-relaxed max-w-[600px]" data-i18n="process.subtext">
-                    Nuestra metodología está diseñada para ser ultra eficiente y completamente transparente.
-                </p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left relative z-10">
-                    <!-- Step 1 -->
-                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
-                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.0.num">01</div>
-                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.0.title">Auditoría Cero BS</h3>
-                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.0.desc">Analizamos tu empresa a fondo y decimos verdades claras.</p>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
-                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.1.num">02</div>
-                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.1.title">Prototipo</h3>
-                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.1.desc">Mapeamos la web para enfocar el flujo a tus metas.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-white/5">
-                        <div class="text-white/20 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.2.num">03</div>
-                        <h3 class="font-bold text-white text-lg mb-2" data-i18n="process.steps.2.title">Desarrollo AI</h3>
-                        <p class="text-white/50 text-sm leading-relaxed" data-i18n="process.steps.2.desc">Programamos una base sólida con integraciones súper potentes.</p>
-                    </div>
-                    
-                    <!-- Step 4 -->
-                    <div class="relative system-card-hover bg-black/20 p-6 rounded-xl border border-accentsBlue/30 shadow-[0_0_15px_rgba(77,166,255,0.1)]">
-                        <div class="text-accentsBlue/40 font-heading text-5xl mb-4 tracking-tighter" data-i18n="process.steps.3.num">04</div>
-                        <h3 class="font-bold text-accentsBlue text-lg mb-2" data-i18n="process.steps.3.title">Lanzamiento</h3>
-                        <p class="text-white/60 text-sm leading-relaxed" data-i18n="process.steps.3.desc">Publicamos veloz en puerto y brindamos soporte para crecer.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. About Section -->
-        <section class="py-20 border-t border-white/5" id="about">
-            <div class="max-w-[900px] mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 24px; display: inline-block;">
-                            ✦ SOBRE MC DESIGNS
-                        </div>
-                        <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-6 leading-tight">
-                            UN ESTUDIO.<br>UN FUNDADOR.<br><span class="text-accentsBlue">RESULTADOS REALES.</span>
-                        </h2>
-                        <p class="text-white/60 text-base leading-relaxed mb-4">
-                            MC Designs es el estudio web + IA de Miguel Cotto, diseñador gráfico con años de experiencia construyendo presencias digitales para negocios en Puerto Rico.
+</div>
+</nav>
+<main class="pt-24 relative z-10">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 py-32 md:py-56 flex flex-col items-center text-center relative z-10">
+<div class="max-w-4xl space-y-8">
+<div class="space-y-4">
+<span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded">The Everything Studio</span>
+<h1 class="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-on-surface">
+                THE EVERYTHING STUDIO
+            </h1>
+</div>
+<p class="text-lg md:text-2xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+            Design-led, AI-powered solutions for building a powerful online presence. We bridge the gap between creative excellence and technical intelligence.
+        </p>
+<div class="flex items-center justify-center gap-6 pt-4">
+<a class="inline-block hero-gradient text-on-primary px-10 py-5 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all" href="/contacto.html">
+                Get Started
+            </a>
+<a class="inline-block text-on-surface font-label text-sm uppercase tracking-widest font-bold group" href="/portfolio.html">
+                Our Portfolio
+                <span class="block h-0.5 w-full bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+</a>
+</div>
+</div>
+</section>
+<!-- Purpose Section -->
+<section class="bg-surface-container-low py-32 relative z-10">
+<div class="max-w-7xl mx-auto px-8 flex items-center justify-center">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center"><div class="col-span-12 flex flex-col items-center text-center max-w-4xl mx-auto">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-8">The Mission</h2>
+<p class="text-3xl md:text-5xl font-medium tracking-tight text-on-surface leading-tight">
+    Help businesses <span class="text-primary font-bold">grow</span> by building their <span class="italic text-secondary">digital presence</span> and integrating <span class="bg-white px-4 py-1 rounded-full shadow-sm border border-outline-variant/20 inline-flex items-center gap-2"><span class="material-symbols-outlined text-primary" data-icon="neurology">neurology</span>AI</span> into the way they work; so they can <span class="text-primary">compete</span>, sell, and operate smarter.
+  </p>
+</div></div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-32 max-w-7xl mx-auto px-8 relative z-10">
+<div class="mb-24">
+<h2 class="text-4xl font-bold tracking-tighter mb-4">Core Ecosystem</h2>
+<div class="h-1 w-24 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Design Card -->
+<div class="bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright transition-colors group">
+<div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="palette">palette</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Design</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Identity construction for the modern era. From bespoke logos to cohesive brand and social kits.</p>
+<ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Logos</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Brand Kits</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Social Media Kits</li>
+</ul>
+</div>
+<!-- Web Design Card -->
+<div class="bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright transition-colors group">
+<div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="web">web</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Web Architecture</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">High-conversion digital storefronts and bespoke custom platforms built for scale.</p>
+<ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Shopify Stores</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Custom React Apps</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Performance Audit</li>
+</ul>
+</div>
+<!-- AI Integration Card (Glassmorphism) -->
+<div class="glass-module p-10 rounded-xl border border-white/50 group">
+<div class="w-12 h-12 mb-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">AI Integration</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Automate the mundane. We build custom neural workflows to reclaim your time.</p>
+<ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Custom LLM Workflows</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Task Automation</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Predictive Data</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-32 max-w-7xl mx-auto px-8 relative z-10">
+<div class="text-center mb-20">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">The Stack</h2>
+<h3 class="text-4xl font-bold tracking-tighter">Tools We Master</h3>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<!-- Text Tags for Tech Stack -->
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">N8N</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Anthropic</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Open AI</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Deepmind</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Shopify</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Notion</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Vercel</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Github</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Supabase</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Google Workspace</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Adobe</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Affinity</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Figma</span>
+<span class="px-6 py-3 bg-surface-container-lowest rounded-lg font-label text-sm uppercase tracking-widest text-on-surface-variant border border-outline-variant/10 hover:border-primary/40 transition-colors">Canva</span>
+</div>
+</section>
+<!-- Pricing Section: Choose Your Build -->
+<section class="py-32 bg-surface-container-low relative z-10">
+<div class="max-w-4xl mx-auto px-8 text-center">
+<div class="glass-module p-12 md:p-20 rounded-[2rem] border border-white/20">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6">Investment</h2>
+<h3 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface mb-6">
+                Custom Pricing for Every Project
+            </h3>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-10">
+                Every project is different. Reach out and we'll put together a package built around your goals.
+            </p>
+<a class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all" href="#contact">
+                Get a Quote
+            </a>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 bg-on-surface text-surface relative z-10" id="contact">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">Ready to <span class="text-primary-fixed">Scale</span>?</h2>
+<p class="text-xl text-surface-container mb-12 leading-relaxed">Join the brands moving at the speed of intelligence. Let's build your everything.</p>
+<div class="space-y-4 font-label text-sm uppercase tracking-[0.2em]">
+<p class="flex items-center gap-4 text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="mail">mail</span> miguel@mcdesignspr.com
                         </p>
-                        <p class="text-white/60 text-base leading-relaxed mb-8">
-                            Combinamos diseño de alto nivel con automatización inteligente — no solo sitios bonitos, sino sistemas que trabajan para ti las 24 horas.
+<p class="flex items-center gap-4 text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span> Global Operations
                         </p>
-                        <a href="/contacto.html" class="inline-block bg-accentsBlue text-black px-8 py-4 rounded font-bold text-sm tracking-widest uppercase hover:bg-white transition-all">
-                            Hablemos →
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-4">
-                        <div class="bg-slate-900 border border-white/10 p-6 rounded-xl system-card-hover">
-                            <div class="text-accentsBlue text-2xl font-bold heading-condensed mb-1">3+</div>
-                            <div class="text-white/60 text-sm">Proyectos completados en Puerto Rico</div>
-                        </div>
-                        <div class="bg-slate-900 border border-white/10 p-6 rounded-xl system-card-hover">
-                            <div class="text-accentsBlue text-2xl font-bold heading-condensed mb-1">Web + IA</div>
-                            <div class="text-white/60 text-sm">Diseño web combinado con automatización inteligente</div>
-                        </div>
-                        <div class="bg-slate-900 border border-white/10 p-6 rounded-xl system-card-hover">
-                            <div class="text-accentsBlue text-2xl font-bold heading-condensed mb-1">PR First</div>
-                            <div class="text-white/60 text-sm">Enfocados en negocios locales de Puerto Rico</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Portfolio / Work Section -->
-        <section class="py-20 bg-darkPanel/30 border-y border-white/5" id="portfolio">
-            <div class="max-w-[900px] mx-auto px-6 text-center">
-                <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 24px; display: inline-block;">
-                    ✦ TRABAJO RECIENTE
-                </div>
-                <h2 class="heading-condensed text-4xl md:text-6xl text-white mb-4">PROYECTOS.</h2>
-                <p class="text-white/60 text-lg mb-16 max-w-[500px] mx-auto">Sitios que construimos. Sistemas que automatizan. Negocios que crecen.</p>
-
-                <!-- Bento grid — asymmetric layout inspired by 21st.dev bento patterns -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
-
-                    <!-- BE Boutique: Featured (col-span-2) -->
-                    <a href="/case-study-beboutique.html" class="group bg-[#0a1220] border border-accentsBlue/20 rounded-xl overflow-hidden spotlight-card system-card-hover relative block md:col-span-2">
-                        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accentsBlue/40 to-transparent"></div>
-                        <div class="h-52 bg-gradient-to-br from-[#0d1a2d] to-[#080d14] flex items-center justify-center border-b border-accentsBlue/10 relative overflow-hidden">
-                            <span class="text-accentsBlue/8 heading-condensed text-[10rem] absolute select-none">BE</span>
-                            <div class="relative z-10 flex flex-col items-center gap-3">
-                                <span class="text-[10px] system-font uppercase tracking-[0.2em] text-accentsBlue/60 px-3 py-1 border border-accentsBlue/20 rounded-full">En Progreso</span>
-                                <div class="flex items-center gap-2 text-xs system-font text-white/30">
-                                    <span class="px-2 py-0.5 rounded bg-white/5">Shopify</span>
-                                    <span class="text-white/10">+</span>
-                                    <span class="px-2 py-0.5 rounded bg-accentsBlue/10 text-accentsBlue/60">Claude AI</span>
-                                    <span class="text-white/10">+</span>
-                                    <span class="px-2 py-0.5 rounded bg-white/5">N8N</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Shopify · AI · Fashion</div>
-                            <h3 class="text-white font-bold text-xl mb-2">BE Boutique</h3>
-                            <p class="text-white/50 text-sm leading-relaxed">Tienda Shopify + generador de contenido con IA para boutique de moda en Puerto Rico.</p>
-                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                        </div>
-                    </a>
-
-                    <!-- Team Drita (col-span-1) -->
-                    <a href="/case-study-teamdrita.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden spotlight-card system-card-hover block">
-                        <div class="h-52 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5 relative overflow-hidden">
-                            <span class="text-white/10 heading-condensed text-[7rem] absolute select-none">DT</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Shopify · Wellness</div>
-                            <h3 class="text-white font-bold text-lg mb-2">Team Drita Ymely</h3>
-                            <p class="text-white/50 text-sm leading-relaxed">Tienda Shopify de productos wellness con experiencia de compra optimizada.</p>
-                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                        </div>
-                    </a>
-
-                    <!-- Miguel Cotto Promotions (col-span-1) -->
-                    <a href="/case-study-mcpromo.html" class="group bg-slate-900 border border-white/10 rounded-xl overflow-hidden spotlight-card system-card-hover block">
-                        <div class="h-40 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-white/5 relative overflow-hidden">
-                            <span class="text-white/10 heading-condensed text-6xl absolute select-none">MCP</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-accentsBlue text-xs system-font uppercase tracking-widest mb-2">Custom Dev · Sports</div>
-                            <h3 class="text-white font-bold text-lg mb-2">Miguel Cotto Promotions</h3>
-                            <p class="text-white/50 text-sm leading-relaxed">Sitio para la empresa promotora de boxeo #1 en PR, con panel admin propio.</p>
-                            <div class="mt-4 text-accentsBlue text-xs system-font group-hover:gap-3 flex items-center gap-2 transition-all uppercase tracking-widest">Ver proyecto <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                        </div>
-                    </a>
-
-                    <!-- Automation card (col-span-2) -->
-                    <a href="/automation-content-generator.html" class="group bg-[#0a1220] border border-[#4DA6FF]/20 rounded-xl overflow-hidden spotlight-card system-card-hover relative block md:col-span-2" style="text-decoration:none;">
-                        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4DA6FF]/40 to-transparent"></div>
-                        <div class="p-7 flex flex-col gap-5 h-full">
-                            <div>
-                                <div class="text-[#4DA6FF] text-xs system-font uppercase tracking-widest mb-3">✦ Automatización IA</div>
-                                <h3 class="heading-condensed text-2xl md:text-3xl text-white mb-3">AI Content Generator</h3>
-                                <p class="text-white/50 text-sm leading-relaxed max-w-md">Foto en Drive → descripción Shopify + caption IG generados por Claude AI → publicado → WhatsApp. Todo solo. Cero clics.</p>
-                            </div>
-                            <div class="flex items-center gap-3 flex-wrap">
-                                <div class="flex flex-col items-center gap-1 text-xs system-font">
-                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">📁</div>
-                                    <span class="text-white/20 text-[9px] uppercase">Drive</span>
-                                </div>
-                                <span class="text-[#4DA6FF]/30 text-xs">→</span>
-                                <div class="flex flex-col items-center gap-1 text-xs system-font">
-                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">🤖</div>
-                                    <span class="text-white/20 text-[9px] uppercase">Claude</span>
-                                </div>
-                                <span class="text-[#4DA6FF]/30 text-xs">→</span>
-                                <div class="flex flex-col items-center gap-1 text-xs system-font">
-                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">🛍️</div>
-                                    <span class="text-white/20 text-[9px] uppercase">Shopify</span>
-                                </div>
-                                <span class="text-[#4DA6FF]/30 text-xs">+</span>
-                                <div class="flex flex-col items-center gap-1 text-xs system-font">
-                                    <div class="w-9 h-9 rounded-xl bg-[#4DA6FF]/10 border border-[#4DA6FF]/20 flex items-center justify-center">💬</div>
-                                    <span class="text-white/20 text-[9px] uppercase">WhatsApp</span>
-                                </div>
-                                <div class="ml-auto hidden md:flex items-center gap-2 text-accentsBlue text-xs system-font uppercase tracking-widest group-hover:gap-3 transition-all">Ver detalles <span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">N8N</span>
-                                <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">Claude Vision</span>
-                                <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">Shopify API</span>
-                                <span class="text-xs system-font px-2.5 py-1 rounded-full bg-[#4DA6FF]/10 text-[#4DA6FF]/70 border border-[#4DA6FF]/20">WhatsApp</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 8. Tech Stack Section -->
-        <section class="py-20 border-t border-white/5 overflow-hidden" id="stack">
-            <div class="max-w-[900px] mx-auto px-6 text-center mb-14">
-                <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 24px; display: inline-block;">
-                    ✦ NUESTRO STACK
-                </div>
-                <h2 class="heading-condensed text-4xl md:text-6xl text-white mb-4">LAS HERRAMIENTAS.</h2>
-                <p class="text-white/50 text-lg max-w-lg mx-auto">Trabajamos con las mejores plataformas de diseño, IA y automatización disponibles hoy.</p>
-            </div>
-
-            <!-- Marquee ticker -->
-            <div class="relative mb-14">
-                <!-- Fade edges -->
-                <div class="absolute left-0 top-0 bottom-0 w-20 z-10" style="background: linear-gradient(to right, #080d14, transparent);"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-20 z-10" style="background: linear-gradient(to left, #080d14, transparent);"></div>
-
-                <!-- Row 1 — scrolls left -->
-                <div class="flex gap-3 mb-3" style="width: max-content; animation: marquee-left 30s linear infinite;">
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Shopify</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Claude AI</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">N8N</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Vercel</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">OpenAI</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Tailwind CSS</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Google Gemini</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Drive</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">WhatsApp Business</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Notion</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Vite</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Anthropic API</span>
-                    <!-- Duplicate for seamless loop -->
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Shopify</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Claude AI</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">N8N</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Vercel</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">OpenAI</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Tailwind CSS</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Google Gemini</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Drive</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">WhatsApp Business</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Notion</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Vite</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Anthropic API</span>
-                </div>
-
-                <!-- Row 2 — scrolls right -->
-                <div class="flex gap-3" style="width: max-content; animation: marquee-right 25s linear infinite;">
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Google Workspace</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Shopify API</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">JavaScript</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Anthropic Vision</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Docs</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Webhook Triggers</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">AI Agents</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">REST APIs</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">HTML / CSS</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Prompt Engineering</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Analytics</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">SEO</span>
-                    <!-- Duplicate -->
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Google Workspace</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Shopify API</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">JavaScript</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Anthropic Vision</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Docs</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Webhook Triggers</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">AI Agents</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">REST APIs</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">HTML / CSS</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-[#4DA6FF]/20 bg-[#4DA6FF]/5 text-[#4DA6FF]/70 text-xs system-font uppercase tracking-widest">Prompt Engineering</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">Google Analytics</span>
-                    <span class="whitespace-nowrap px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] text-white/50 text-xs system-font uppercase tracking-widest">SEO</span>
-                </div>
-            </div>
-
-            <!-- Category grid -->
-            <div class="max-w-[900px] mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Web Design -->
-                    <div class="bg-white/[0.02] border border-white/8 rounded-xl p-6">
-                        <div class="text-white/25 text-xs system-font uppercase tracking-widest mb-5">Diseño Web</div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Shopify</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Tailwind CSS</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Vite</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Vercel</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">HTML / CSS / JS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- AI -->
-                    <div class="bg-[#0a1220] border border-[#4DA6FF]/15 rounded-xl p-6">
-                        <div class="text-[#4DA6FF]/60 text-xs system-font uppercase tracking-widest mb-5">Inteligencia Artificial</div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#4DA6FF]/40 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Claude (Anthropic)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#4DA6FF]/40 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">OpenAI</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#4DA6FF]/40 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Google Gemini</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#4DA6FF]/40 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Vision AI</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#4DA6FF]/40 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Prompt Engineering</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Automation -->
-                    <div class="bg-white/[0.02] border border-white/8 rounded-xl p-6">
-                        <div class="text-white/25 text-xs system-font uppercase tracking-widest mb-5">Automatización</div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">N8N</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Google Drive / Docs</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">WhatsApp Business</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">REST APIs</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></span>
-                                <span class="text-white/70 text-sm">Webhook Triggers</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <style>
-                @keyframes marquee-left {
-                    from { transform: translateX(0); }
-                    to { transform: translateX(-50%); }
-                }
-                @keyframes marquee-right {
-                    from { transform: translateX(-50%); }
-                    to { transform: translateX(0); }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                    [style*="marquee-left"], [style*="marquee-right"] {
-                        animation: none !important;
-                    }
-                }
-            </style>
-        </section>
-
-        <!-- 9. Testimonials Section -->
-        <section class="py-20 border-t border-white/5" id="testimonials">
-            <div class="max-w-[900px] mx-auto px-6 text-center">
-                <div style="background: rgba(77,166,255,0.12); color: #4DA6FF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(77,166,255,0.25); margin-bottom: 24px; display: inline-block;">
-                    ✦ LO QUE DICEN
-                </div>
-                <h2 class="heading-condensed text-4xl md:text-5xl text-white mb-16">CLIENTES.</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                    <div class="bg-slate-900 border border-white/10 p-8 rounded-xl spotlight-card system-card-hover">
-                        <p class="text-white/70 text-base leading-relaxed mb-6 italic" data-word-blur>"Miguel entendió exactamente lo que necesitábamos. El resultado fue un sitio profesional que realmente representa nuestra marca."</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-accentsBlue/20 flex items-center justify-center text-accentsBlue text-sm font-bold">DY</div>
-                            <div>
-                                <div class="text-white font-semibold text-sm">Team Drita Ymely</div>
-                                <div class="text-white/40 text-xs">Wellness · Shopify Store</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-slate-900/50 border border-white/5 p-8 rounded-xl flex flex-col items-center justify-center gap-4 text-center">
-                        <div class="text-white/20 text-4xl">+</div>
-                        <p class="text-white/30 text-sm leading-relaxed max-w-[200px]">Tu testimonio podría estar aquí.</p>
-                        <a href="/contacto.html" class="text-accentsBlue text-xs system-font uppercase tracking-widest hover:text-white transition-colors">Trabaja con nosotros →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/5 py-16" data-purpose="site-footer">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-                <!-- Brand -->
-                <div>
-                    <div class="heading-condensed text-2xl text-white tracking-widest mb-2" data-i18n="footer.brand">MC DESIGNS</div>
-                    <div class="text-white/30 text-xs system-font uppercase tracking-wider mb-4" data-i18n="footer.desc">Sistemas Inteligentes en PR</div>
-                    <p class="text-white/40 text-sm leading-relaxed max-w-[220px]">Web design and AI integration studio. Built in Puerto Rico.</p>
-                </div>
-                <!-- Nav Links -->
-                <div class="flex flex-col gap-3">
-                    <div class="text-white/20 text-xs system-font uppercase tracking-widest mb-1">Páginas</div>
-                    <a href="/index.html" class="text-white/50 hover:text-white text-sm transition-colors">Inicio</a>
-                    <a href="/servicios.html" class="text-white/50 hover:text-white text-sm transition-colors">Servicios</a>
-                    <a href="/contacto.html" class="text-white/50 hover:text-white text-sm transition-colors">Contacto</a>
-                </div>
-                <!-- Contact & Social -->
-                <div class="flex flex-col gap-3">
-                    <div class="text-white/20 text-xs system-font uppercase tracking-widest mb-1">Contacto</div>
-                    <a href="mailto:miguel@mcdesignspr.com" class="text-white/50 hover:text-white text-sm transition-colors">miguel@mcdesignspr.com</a>
-                    <a href="https://mcdesignspr.com" class="text-white/50 hover:text-white text-sm transition-colors">mcdesignspr.com</a>
-                    <!-- Social links -->
-                    <div class="flex gap-4 mt-2">
-                        <a href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener" class="text-white/30 hover:text-[#4DA6FF] transition-colors text-sm system-font uppercase tracking-widest">IG</a>
-                        <a href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener" class="text-white/30 hover:text-[#4DA6FF] transition-colors text-sm system-font uppercase tracking-widest">LI</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-                <div class="text-[10px] tracking-widest uppercase opacity-30 system-font" data-i18n="footer.copyright">© 2026 MC DESIGNS. Built in Puerto Rico.</div>
-                <div class="text-[10px] tracking-widest uppercase opacity-20 system-font">Puerto Rico Web Studio</div>
-            </div>
-        </div>
-    </footer>
+</div>
+</div>
+<div class="bg-surface-container-lowest/5 p-12 rounded-2xl backdrop-blur-sm border border-surface/10">
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest opacity-60">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-surface/20 focus:ring-0 focus:border-primary-fixed text-surface px-0 py-3 transition-colors" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest opacity-60">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-surface/20 focus:ring-0 focus:border-primary-fixed text-surface px-0 py-3 transition-colors" placeholder="john@example.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest opacity-60">Project Brief</label>
+<textarea class="w-full bg-transparent border-0 border-b border-surface/20 focus:ring-0 focus:border-primary-fixed text-surface px-0 py-3 transition-colors resize-none" placeholder="Tell us about your vision..." rows="4"></textarea>
+</div>
+<button class="w-full py-5 bg-primary text-on-primary font-label text-sm uppercase tracking-widest font-black rounded-lg active:scale-95 transition-transform">
+                            Send Transmission
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+<div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold tracking-tighter text-slate-900 mb-6">MC Designs</div>
+<p class="body-md leading-relaxed text-slate-600">The Everything Studio. Designing the future, powered by AI.</p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Services</span>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Brand Kits</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Custom Web</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Automation</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Studio</span>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Portfolio</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Tech Stack</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Connect</span>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Twitter</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">LinkedIn</a>
+<a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Instagram</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="body-md text-slate-600">© 2024 MC Designs. The Everything Studio.</p>
+<div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
 
     <!-- Scripts -->
-    <script type="module" src="assets/hero-safe-scroll.js"></script>
-    <script type="module" src="assets/language-toggle.js"></script>
-    <script type="module" src="assets/effects.js"></script>
-</body>
-</html>
+    <script type="module" src="mobile-menu.js"></script>
+    <script type="module" src="visual-embellishments.js"></script>
+
+</body></html>
