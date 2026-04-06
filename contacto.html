@@ -136,21 +136,25 @@
 </head>
 
 <body class="bg-surface text-on-surface font-sans antialiased overflow-x-hidden relative flex flex-col min-h-screen">
-    <!-- TopAppBar Shell -->
-    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl relative z-10">
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
-            <a href="/index.html" class="flex-shrink-0 z-50">
+            <a href="/index.html" class="flex-shrink-0">
                 <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
             </a>
             <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
-                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/">Home</a>
-                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/servicios.html">Services</a>
-                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/portfolio.html">Portfolio</a>
-                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/contacto.html">Contact</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
             </div>
-            <a href="/contacto.html" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150">
-                Get Started
-            </a>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                    <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                    <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+                </div>
+                <a href="/contacto.html" class="hidden sm:inline-block bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+            </div>
         </div>
     </nav>
 
@@ -187,29 +191,32 @@
     <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
         <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
             <div class="col-span-1 md:col-span-1">
-                <div class="text-lg font-bold tracking-tighter text-slate-900 mb-6" data-i18n="footer.brand">MC Designs</div>
-                <p class="body-md leading-relaxed text-slate-600" data-i18n="footer.desc">Web design and AI integration studio serving businesses in Puerto Rico.</p>
+                <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
+                <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
+                <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
             </div>
             <div class="flex flex-col gap-4">
-                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Services</span>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Brand Kits</a>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Custom Web</a>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="#">Automation</a>
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
             </div>
             <div class="flex flex-col gap-4">
-                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Studio</span>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="/#portfolio">Portfolio</a>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="/servicios.html">Tech Stack</a>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" href="/contacto.html">Contact</a>
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
             </div>
             <div class="flex flex-col gap-4">
-                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Connect</span>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" target="_blank" href="https://linkedin.com/company/mcdesignspr">LinkedIn</a>
-                <a class="text-slate-500 hover:text-blue-600 transition-colors duration-200" target="_blank" href="https://instagram.com/mcdesignspr">Instagram</a>
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="body-md text-slate-600" data-i18n="footer.copyright">© 2026 MC DESIGNS. Built in Puerto Rico.</p>
+            <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
             <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>

@@ -1,18 +1,73 @@
 export const translations = {
     es: {
+        lang: "ES",
         nav: {
             home: "Inicio",
             services: "Servicios",
+            portfolio: "Portafolio",
+            ai: "Integración IA",
+            about: "Nosotros",
             contact: "Contacto",
-            cta: "Agenda una llamada"
+            cta: "Comenzar Proyecto"
         },
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
-            prefix: "CRECIMIENTO",
-            highlight: "INTELIGENTE.",
-            subtext: "Diseño web e IA para negocios en Puerto Rico listos para crecer.",
-            cta1: "Obtener Auditoría de Web + IA",
-            cta2: "Ver Cómo Ayudamos",
+            tagline: "El Estudio Todo en Uno",
+            headline: "EL ESTUDIO TODO EN UNO",
+            subtext: "Ayudamos a los negocios a crecer construyendo su presencia digital e integrando IA en sus operaciones, para que puedan competir, vender y trabajar de forma más inteligente.",
+            cta1: "Comenzar Proyecto",
+            cta2: "Ver Portafolio",
+        },
+        mission: {
+            label: "Nuestra Misión",
+            text: "Ayudamos a los negocios a crecer construyendo su presencia digital e integrando <span class=\"bg-white px-4 py-1 rounded-full shadow-sm border border-outline-variant/20 inline-flex items-center gap-2\"><span class=\"material-symbols-outlined text-primary\" data-icon=\"neurology\">neurology</span>IA</span> en sus operaciones, para que puedan <span class=\"text-primary\">competir</span>, vender y trabajar de forma más inteligente."
+        },
+        services: {
+            label: "Servicios",
+            title: "El núcleo del estudio.",
+            cards: [
+                {
+                    title: "Diseño de Marca",
+                    desc: "Identidad visual construida para la era moderna. Desde logos únicos hasta kits de marca y redes sociales.",
+                    items: ["Logos", "Kits de Marca", "Kits de Redes Sociales"]
+                },
+                {
+                    title: "Diseño Web",
+                    desc: "Plataformas digitales de alto rendimiento diseñadas para convertir visitas en clientes.",
+                    items: ["Tiendas Shopify", "Sitios Personalizados", "Optimización de Rendimiento"]
+                },
+                {
+                    title: "Integración IA",
+                    desc: "Automatiza lo rutinario. Construimos flujos de trabajo con IA para liberar tu tiempo y escalar tus operaciones.",
+                    items: ["Flujos de Trabajo LLM", "Automatización de Tareas", "Sistemas de Agentes IA"]
+                }
+            ]
+        },
+        stack: {
+            label: "El Stack",
+            title: "Herramientas que dominamos"
+        },
+        pricing: {
+            label: "Inversión",
+            title: "Precios personalizados para cada proyecto",
+            subtext: "Cada proyecto es diferente. Contáctanos y construimos un paquete alrededor de tus metas.",
+            cta: "Comenzar Proyecto"
+        },
+        cta_section: {
+            title: "¿Listo para <span class=\"text-primary-fixed\">Escalar</span>?",
+            subtext: "Únete a las marcas que se mueven a la velocidad de la inteligencia. Construyamos tu todo.",
+            cta: "Comenzar Proyecto"
+        },
+        portfolio_page: {
+            label: "MC Designs",
+            headline: "El Estudio Todo en Uno",
+            subtext: "Construimos plataformas digitales de alto rendimiento. Combinamos rigor técnico con estética humanista para resolver retos complejos.",
+            case_label: "Caso de Estudio",
+            placeholder: {
+                label: "Tu Proyecto Aquí",
+                title: "Estamos construyendo. ¿Tienes un proyecto en mente? Hablemos.",
+                cta: "Comenzar Proyecto"
+            }
         },
         servicios_page: {
             hero: {
@@ -21,7 +76,7 @@ export const translations = {
                 line2: "RENDIMIENTO.",
                 line3: "CRECIMIENTO.",
                 subtext: "Todo lo que tu negocio necesita, en un solo estudio.",
-                cta1: "Empieza aquí →",
+                cta1: "Comenzar Proyecto",
                 cta2: "Agenda una llamada"
             },
             intro: {
@@ -40,7 +95,7 @@ export const translations = {
                     link: "→ Sitio web de rendimiento"
                 },
                 {
-                    title: "INTELIGENCIA ARTIFICIAL",
+                    title: "INTEGRACIÓN IA",
                     desc: "Tu sitio trabaja mientras duermes. Chat IA, calificación de leads y formularios inteligentes integrados directamente en la experiencia.",
                     link: "→ Chat IA + Calificador"
                 },
@@ -83,76 +138,99 @@ export const translations = {
             bottom_cta: {
                 title: "¿LISTO PARA CRECER?",
                 subtext: "Hablemos 30 minutos. Sin presión. Solo una conversación honesta.",
-                btn: "Agenda una llamada →"
+                btn: "Comenzar Proyecto"
             }
-        },
-        problem: {
-            title: "Tu negocio merece más que una página básica.",
-            subtext: "Si tu sitio es un folleto digital, hoy pierdes clientes ante competidores.",
-            cards: [
-                { title: "Sin captación clara", desc: "Los prospectos entran al sitio y se van sin contactarte fácilmente." },
-                { title: "Procesos manuales", desc: "Contestas preguntas repetitivas y haces todo el seguimiento a mano." },
-                { title: "Mala experiencia móvil", desc: "Tu diseño es viejo y frustra al visitante usando celular móvil." }
-            ]
-        },
-        services: {
-            title: "Tres servicios clave.",
-            subtext: "Construimos plataformas digitales completas enfocadas en facturar más y trabajar menos.",
-            cards: [
-                { title: "Website Design", desc: "Páginas modernas diseñadas para vender rápido tu oferta.", cta: "Explorar" },
-                { title: "AI Integration", desc: "Automatizaciones con IA que atrapan ventas a toda hora.", cta: "Explorar" },
-                { title: "Optimización", desc: "Mejoramos la velocidad de tu web y ajustamos cada proceso.", cta: "Explorar" }
-            ]
-        },
-        "ai-addons": {
-            title: "IA Que Trabaja Sin Ti.",
-            subtext: "Integra herramientas de IA que atienden y aseguran al cliente automáticamente.",
-            cards: [
-                { title: "Soporte y Citas AI", desc: "Chatbot que responde dudas del cliente y agenda reuniones solo." },
-                { title: "Filtro de Leads", desc: "Formularios inteligentes que evalúan al prospecto y descartan la basura inmediatamente." },
-                { title: "Secuencias Mágicas", desc: "Correos generados que nutren tus oportunidades pasadas de forma natural." },
-                { title: "Bases de Datos", desc: "Tus sistemas y apps internas sincronizadas para operar veloz y sin errores." }
-            ],
-            cta: "Crear Mi Sistema AI"
-        },
-        process: {
-            title: "Cómo Trabajamos",
-            subtext: "Nuestra metodología está diseñada para ser ultra eficiente y verdaderamente transparente.",
-            steps: [
-                { num: "01", title: "Auditoría Cero BS", desc: "Analizamos tu empresa a fondo y te decimos verdades claras." },
-                { num: "02", title: "Prototipo", desc: "Mapeamos la web para enfocar el flujo a tus metas reales." },
-                { num: "03", title: "Desarrollo AI", desc: "Programamos una base sólida con integraciones súper potentes para tu equipo." },
-                { num: "04", title: "Lanzamiento", desc: "Publicamos tu oferta velozmente y te brindamos soporte para crecer." }
-            ]
-        },
-        cta: {
-            title: "Inicia Tu Sistema Hoy Mismo",
-            subtext: "Descubre dónde la web frena tus ventas llenando el cuestionario."
         },
         booking: {
             title: "Agenda una llamada.",
             subtext: "Si te urge dialogarlo, separa un espacio de 30 minutos sin compromiso."
         },
         footer: {
-            brand: "MC DESIGNS",
-            desc: "Sistemas Inteligentes en Puerto Rico",
-            copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
+            brand: "MC Designs",
+            tagline: "Diseñando el futuro, hoy.",
+            desc: "El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.",
+            services_label: "Servicios",
+            studio_label: "Estudio",
+            connect_label: "Conectar",
+            s1: "Diseño de Marca",
+            s2: "Diseño Web",
+            s3: "Integración IA",
+            p1: "Portafolio",
+            p2: "Servicios",
+            p3: "Contacto",
+            copyright: "© 2026 MC Designs. Todos los derechos reservados.",
+            email: "miguel@mcdesignspr.com"
         }
     },
     en: {
+        lang: "EN",
         nav: {
             home: "Home",
             services: "Services",
+            portfolio: "Portfolio",
+            ai: "AI Integration",
+            about: "About",
             contact: "Contact",
-            cta: "Book a call"
+            cta: "Start a Project"
         },
         hero: {
             tag: "✦ WEB DESIGN + AI IN PR",
-            prefix: "INTELLIGENT",
-            highlight: "GROWTH.",
-            subtext: "Web design and AI for Puerto Rico businesses ready to grow.",
-            cta1: "Get a Web + AI Audit",
-            cta2: "See How We Help",
+            tagline: "The Everything Studio",
+            headline: "THE EVERYTHING STUDIO",
+            subtext: "We help businesses grow by building their digital presence and integrating AI into their operations, so they can compete, sell, and operate smarter.",
+            cta1: "Start a Project",
+            cta2: "View Portfolio",
+        },
+        mission: {
+            label: "Our Mission",
+            text: "We help businesses <span class=\"text-primary font-bold\">grow</span> by building their <span class=\"italic text-secondary\">digital presence</span> and integrating <span class=\"bg-white px-4 py-1 rounded-full shadow-sm border border-outline-variant/20 inline-flex items-center gap-2\"><span class=\"material-symbols-outlined text-primary\" data-icon=\"neurology\">neurology</span>AI</span> into their operations, so they can <span class=\"text-primary\">compete</span>, sell, and operate smarter."
+        },
+        services: {
+            label: "Services",
+            title: "The studio core.",
+            cards: [
+                {
+                    title: "Brand Design",
+                    desc: "Identity construction for the modern era. From bespoke logos to cohesive brand and social kits.",
+                    items: ["Logos", "Brand Kits", "Social Media Kits"]
+                },
+                {
+                    title: "Web Design",
+                    desc: "High-conversion digital platforms designed to turn visitors into paying customers.",
+                    items: ["Shopify Stores", "Custom Sites", "Performance Optimization"]
+                },
+                {
+                    title: "AI Integration",
+                    desc: "Automate the mundane. We build custom AI workflows to reclaim your time and scale your operations.",
+                    items: ["Custom LLM Workflows", "Task Automation", "AI Agent Systems"]
+                }
+            ]
+        },
+        stack: {
+            label: "The Stack",
+            title: "Tools We Master"
+        },
+        pricing: {
+            label: "Investment",
+            title: "Custom Pricing for Every Project",
+            subtext: "Every project is different. Reach out and we'll put together a package built around your goals.",
+            cta: "Start a Project"
+        },
+        cta_section: {
+            title: "Ready to <span class=\"text-primary-fixed\">Scale</span>?",
+            subtext: "Join the brands moving at the speed of intelligence. Let's build your everything.",
+            cta: "Start a Project"
+        },
+        portfolio_page: {
+            label: "MC Designs",
+            headline: "The Everything Studio",
+            subtext: "We build high-performance digital infrastructure. Combining computational rigor with humanist aesthetics to solve complex challenges.",
+            case_label: "Case Study",
+            placeholder: {
+                label: "Your Project Here",
+                title: "We're building. Got a project in mind? Let's talk.",
+                cta: "Start a Project"
+            }
         },
         servicios_page: {
             hero: {
@@ -161,7 +239,7 @@ export const translations = {
                 line2: "PERFORMANCE.",
                 line3: "GROWTH.",
                 subtext: "Everything your business needs, in one studio.",
-                cta1: "Get started →",
+                cta1: "Start a Project",
                 cta2: "Book a call"
             },
             intro: {
@@ -223,60 +301,28 @@ export const translations = {
             bottom_cta: {
                 title: "READY TO GROW?",
                 subtext: "30 minutes. No pressure. Just an honest conversation.",
-                btn: "Book a call →"
+                btn: "Start a Project"
             }
-        },
-        problem: {
-            title: "Your business deserves more than a basic page.",
-            subtext: "If your site is a digital brochure, you lose clients to competitors today.",
-            cards: [
-                { title: "No clear capture", desc: "Prospects enter your site and leave without easily contacting you." },
-                { title: "Manual workflows", desc: "You answer repetitive questions and do all follow-ups by hand." },
-                { title: "Poor mobile experience", desc: "Your design is old and frustrates mobile visitors immediately." }
-            ]
-        },
-        services: {
-            title: "Three key services.",
-            subtext: "We build complete digital platforms focused on billing more and working less.",
-            cards: [
-                { title: "Website Design", desc: "Modern pages designed to sell your offers fast.", cta: "Explore" },
-                { title: "AI Integration", desc: "AI automations that catch sales around the clock.", cta: "Explore" },
-                { title: "Optimization", desc: "We improve your website's speed and fine-tune every process.", cta: "Explore" }
-            ]
-        },
-        "ai-addons": {
-            title: "AI That Works Without You.",
-            subtext: "Integrate AI tools that automatically attend and secure clients effortlessly.",
-            cards: [
-                { title: "AI Support & Booking", desc: "Chatbot that answers client doubts and schedules meetings alone." },
-                { title: "Lead Filtering", desc: "Smart forms that evaluate prospects and discard unqualified leads immediately." },
-                { title: "Magic Sequences", desc: "Generated emails that nurture your past opportunities completely naturally." },
-                { title: "Databases", desc: "Your systems and internal apps fully synchronized to operate error-free." }
-            ],
-            cta: "Create My AI System"
-        },
-        process: {
-            title: "How We Work",
-            subtext: "Our methodology is designed to be highly efficient and fully transparent.",
-            steps: [
-                { num: "01", title: "Zero BS Audit", desc: "We thoroughly analyze your company and tell you clear truths." },
-                { num: "02", title: "Prototype", desc: "We map the website to precisely focus traffic on your goals." },
-                { num: "03", title: "AI Development", desc: "We program a solid foundation with powerful integrations for your team." },
-                { num: "04", title: "Launch", desc: "We rapidly publish your offering and provide active support to grow." }
-            ]
-        },
-        cta: {
-            title: "Start Your System Today",
-            subtext: "Discover exactly where the web stops your sales by filling out our form."
         },
         booking: {
             title: "Book a call.",
             subtext: "If you want to discuss it, grab a 30-minute slot without commitment."
         },
         footer: {
-            brand: "MC DESIGNS",
-            desc: "Smart Systems in Puerto Rico",
-            copyright: "© 2026 MC DESIGNS. Built in Puerto Rico."
+            brand: "MC Designs",
+            tagline: "Designing the future, today.",
+            desc: "The Everything Studio — Web Design + AI Integration for businesses in Puerto Rico.",
+            services_label: "Services",
+            studio_label: "Studio",
+            connect_label: "Connect",
+            s1: "Brand Design",
+            s2: "Web Design",
+            s3: "AI Integration",
+            p1: "Portfolio",
+            p2: "Services",
+            p3: "Contact",
+            copyright: "© 2026 MC Designs. All rights reserved.",
+            email: "miguel@mcdesignspr.com"
         }
     }
 };
