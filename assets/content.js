@@ -59,14 +59,45 @@ export const translations = {
             cta: "Comenzar Proyecto"
         },
         portfolio_page: {
-            label: "MC Designs",
-            headline: "El Estudio Todo en Uno",
-            subtext: "Construimos plataformas digitales de alto rendimiento. Combinamos rigor técnico con estética humanista para resolver retos complejos.",
+            label: "MC Designs — Portafolio",
+            headline: "Portafolio",
+            subtext: "Proyectos reales. Resultados reales.",
             case_label: "Caso de Estudio",
             placeholder: {
                 label: "Tu Proyecto Aquí",
                 title: "Estamos construyendo. ¿Tienes un proyecto en mente? Hablemos.",
                 cta: "Comenzar Proyecto"
+            },
+            closing_cta: {
+                headline: "¿Listo para ser el próximo?",
+                subtext: "Cuéntanos tu proyecto y construimos algo que funcione.",
+                cta: "Comenzar Proyecto"
+            },
+            mcp: {
+                tag1: "Diseño Web",
+                tag2: "Desarrollo a Medida",
+                oneliner: "Rediseño completo para la empresa de boxeo #1 de Puerto Rico.",
+                card_cta: "Ver Proyecto",
+                challenge_title: "El Reto",
+                challenge: "La empresa de promoción de boxeo #1 de Puerto Rico tenía un sitio web desactualizado que no reflejaba la calidad de sus eventos ni de su talento. Necesitaban un rediseño completo — moderno, rápido y construido para una audiencia deportiva en vivo.",
+                built_title: "Lo que Construimos",
+                built: "Un sitio web completamente personalizado con un panel de administración interno que le da al equipo de MCP control total — publicar noticias, anunciar eventos, actualizar el roster de peleadores y gestionar el contenido del sitio sin tocar código. Diseñado en Google Stitch, producido en Antigravity, desplegado en Vercel.",
+                result_title: "El Resultado",
+                result: "Una plataforma deportiva en modo oscuro que se mueve tan rápido como el deporte. El panel de administración es la verdadera victoria — una sola interfaz que mantiene todo el sitio vivo y actualizado, pelea tras pelea.",
+                visit: "Visitar Sitio"
+            },
+            drita: {
+                tag1: "E-Commerce",
+                tag2: "Shopify",
+                oneliner: "Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.",
+                card_cta: "Ver Proyecto",
+                challenge_title: "El Reto",
+                challenge: "Sandra y Melissa, coaches de bienestar bajo la marca Hibody, vendían productos sin una tienda en línea propia. Necesitaban un storefront limpio que facilitara la compra y mostrara sus bundles y promociones de forma clara.",
+                built_title: "Lo que Construimos",
+                built: "Una tienda Shopify completa construida desde cero — catálogo de productos, bundles con descuento, precios de oferta, contenido bilingüe y un flujo de compra optimizado para su audiencia. Sin elementos innecesarios, todo lo que necesitaban.",
+                result_title: "El Resultado",
+                result: "Un storefront limpio, minimalista y directo donde cada producto es visible y cada página impulsa hacia una venta. 'Tu bienestar es nuestra prioridad' — el sitio transmite exactamente eso.",
+                visit: "Visitar Sitio"
             }
         },
         servicios_page: {
@@ -222,14 +253,45 @@ export const translations = {
             cta: "Start a Project"
         },
         portfolio_page: {
-            label: "MC Designs",
-            headline: "The Everything Studio",
-            subtext: "We build high-performance digital infrastructure. Combining computational rigor with humanist aesthetics to solve complex challenges.",
+            label: "MC Designs — Portfolio",
+            headline: "Portfolio",
+            subtext: "Real projects. Real results.",
             case_label: "Case Study",
             placeholder: {
                 label: "Your Project Here",
                 title: "We're building. Got a project in mind? Let's talk.",
                 cta: "Start a Project"
+            },
+            closing_cta: {
+                headline: "Ready to be next?",
+                subtext: "Tell us about your project and we'll build something that works.",
+                cta: "Start a Project"
+            },
+            mcp: {
+                tag1: "Web Design",
+                tag2: "Custom Development",
+                oneliner: "Full redesign for Puerto Rico's #1 boxing promotional company.",
+                card_cta: "View Project",
+                challenge_title: "The Challenge",
+                challenge: "Puerto Rico's #1 boxing promotional company had an outdated website that didn't match the caliber of their events or talent. They needed a complete redesign — modern, fast, and built for a live sports audience.",
+                built_title: "What We Built",
+                built: "A fully custom website with a built-in admin dashboard that gives the MCP team full control — add news posts, publish events, update fighter rosters, and manage site content without touching code. Designed in Google Stitch, produced in Antigravity, deployed on Vercel.",
+                result_title: "The Result",
+                result: "A dark-mode sports platform that moves as fast as the sport itself. The admin dashboard is the real win — one interface that keeps the entire site alive and current, fight after fight.",
+                visit: "Visit Site"
+            },
+            drita: {
+                tag1: "E-Commerce",
+                tag2: "Shopify",
+                oneliner: "Shopify store built from scratch for a Puerto Rico wellness team.",
+                card_cta: "View Project",
+                challenge_title: "The Challenge",
+                challenge: "Sandra and Melissa, wellness coaches under the Hibody brand, were selling products without a dedicated online storefront. They needed a clean store that made buying easy and showcased their bundles and promotions clearly.",
+                built_title: "What We Built",
+                built: "A full Shopify e-commerce store built from scratch — product catalog, bundle deals, sale pricing, bilingual copy, and a checkout flow optimized for their audience. Nothing unnecessary, everything they needed.",
+                result_title: "The Result",
+                result: "A clean, minimal, direct storefront where every product is visible and every page drives toward a sale. 'Tu bienestar es nuestra prioridad' — the site feels like that.",
+                visit: "Visit Site"
             }
         },
         servicios_page: {

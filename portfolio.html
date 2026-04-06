@@ -2,10 +2,10 @@
 <html class="light" lang="es">
 <head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>MC Designs | Portafolio | El Estudio Todo en Uno</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Portafolio | MC Designs — El Estudio Todo en Uno</title>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -14,15 +14,15 @@
         gtag('config', 'G-H9G7W9K8T9');
     </script>
 
-    <meta name="description" content="Portafolio de MC Designs — Casos de estudio de diseño web e integración IA en Puerto Rico." />
-    <link rel="canonical" href="https://mcdesignspr.com/portfolio" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mcdesignspr.com/portfolio" />
-    <meta property="og:title" content="Portafolio | MC Designs | Puerto Rico" />
-    <meta property="og:description" content="Casos de estudio de diseño web e integración IA para negocios en Puerto Rico." />
+    <meta name="description" content="Portafolio de MC Designs — Proyectos reales, resultados reales. Casos de estudio de diseño web e integración IA en Puerto Rico."/>
+    <link rel="canonical" href="https://mcdesignspr.com/portfolio"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mcdesignspr.com/portfolio"/>
+    <meta property="og:title" content="Portafolio | MC Designs — Puerto Rico"/>
+    <meta property="og:description" content="Proyectos reales. Resultados reales. Casos de estudio de diseño web e integración IA."/>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -35,18 +35,16 @@
                         "surface": "#f9f9f9",
                         "surface-container-low": "#f3f3f3",
                         "surface-container": "#eeeeee",
-                        "on-surface": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
                         "surface-container-lowest": "#ffffff",
-                        "surface-bright": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
                         "on-surface-variant": "#424655",
                         "outline-variant": "#c2c6d8",
-                        "surface-container-high": "#e8e8e8",
                         "primary-fixed": "#d9e2ff",
                         "on-primary-fixed": "#001945",
                         "on-primary": "#ffffff",
                         "primary": "#0056c6",
                         "secondary": "#9e4227",
-                        "on-secondary": "#ffffff",
                         "outline": "#727787",
                         "surface-tint": "#0058cb"
                     },
@@ -66,35 +64,66 @@
         }
     </script>
     <style>
-        .glass-module {
-            backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
-        }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+        .glass-module { backdrop-filter: blur(16px); background: rgba(255,255,255,0.4); }
         .grid-overlay {
-            background-image: linear-gradient(to right, #0056c608 1px, transparent 1px), linear-gradient(to bottom, #0056c608 1px, transparent 1px);
+            background-image: linear-gradient(to right, #0056c608 1px, transparent 1px),
+                              linear-gradient(to bottom, #0056c608 1px, transparent 1px);
             background-size: 40px 40px;
         }
+        .case-detail { display: none; }
+        .case-detail.open { display: block; }
+        .img-placeholder {
+            background: linear-gradient(135deg, #e8edf7 0%, #f0f3fb 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: #9aa3be; font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+        }
+        .cs-img {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+            border-radius: 0.5rem;
+            width: 100%;
+            object-fit: cover;
+        }
+        .pill {
+            display: inline-block;
+            padding: 0.25rem 0.875rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: #f0f3fb;
+            color: #0056c6;
+        }
+        .tech-pill {
+            display: inline-block;
+            padding: 0.25rem 0.875rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: #eeeeee;
+            color: #424655;
+        }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,86,198,0.08); }
     </style>
 </head>
 <body class="bg-surface text-on-surface antialiased font-sans selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
-<!-- Nav -->
+<!-- ─── NAV ─────────────────────────────────────────────────────── -->
 <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
         <a href="/index.html" class="flex-shrink-0">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto"/>
         </a>
         <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
             <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
             <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-primary font-bold transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
             <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
         </div>
         <div class="flex items-center gap-4">
@@ -102,119 +131,339 @@
                 <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
                 <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
             </div>
-            <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+            <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
         </div>
     </div>
 </nav>
 
-<main class="relative z-10 pt-40">
+<main class="relative z-10 pt-32">
 
-<!-- Hero Section -->
-<header class="max-w-7xl mx-auto px-8 mb-40">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-        <div class="md:col-span-8">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary font-bold mb-4 block" data-i18n="portfolio_page.label">MC Designs</span>
-            <h1 class="text-7xl md:text-9xl font-black tracking-tighter leading-tight text-on-surface mb-8" data-i18n="portfolio_page.headline">
-                El Estudio Todo en Uno
-            </h1>
-        </div>
-        <div class="md:col-span-4 pb-4">
-            <p class="text-lg text-on-surface-variant leading-relaxed max-w-sm" data-i18n="portfolio_page.subtext">
-                Construimos plataformas digitales de alto rendimiento. Combinamos rigor técnico con estética humanista para resolver retos complejos.
-            </p>
-        </div>
-    </div>
+<!-- ─── HERO ─────────────────────────────────────────────────────── -->
+<header class="max-w-7xl mx-auto px-8 pt-16 pb-24">
+    <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4 block" data-i18n="portfolio_page.label">MC Designs — Portafolio</span>
+    <h1 class="text-8xl md:text-[10rem] font-black tracking-tighter leading-none text-on-surface mb-6" data-i18n="portfolio_page.headline">Portafolio</h1>
+    <p class="text-xl text-on-surface-variant font-medium" data-i18n="portfolio_page.subtext">Proyectos reales. Resultados reales.</p>
 </header>
 
-<!-- Case Studies -->
-<section class="max-w-7xl mx-auto px-8 mb-32">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        <!-- Case Study 1: BE Boutique -->
-        <div class="md:col-span-8 group">
-            <a href="/case-study-beboutique.html" class="block">
-                <div class="aspect-[16/10] bg-surface-container-lowest rounded-xl overflow-hidden mb-6">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAAb4L3iUy32RNRab4OFQncdgP-CxmgjA1CWskn_tBGK5KokSFQsme8immzt8_LbgeR7olfvSWgPsbTB7aPV1Xlw7sdLOZ63ynn_L0I0GqbevfWO1KTt8k8df3N1H5j4TGz-SFWq1Y2H2eKlA20BVK2-BvBmSGY73rYfWXss8tvMagGCb3BO9uRuX8bmY2_uMv3LsKyLIqoDJ0iQGTvlbx1Qs4g83gqqpfzCHHclvxjO41CVyAc4xqWYa0knW-Dusm1JSuvm99jIM"
-                        alt="BE Boutique Shopify Store" />
-                </div>
-                <div class="flex items-start justify-between">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block" data-i18n="portfolio_page.case_label">Caso de Estudio</span>
-                        <span class="text-xs font-medium uppercase tracking-widest text-on-surface-variant mb-2 block">Diseño Web / Shopify</span>
-                        <h2 class="text-3xl font-bold tracking-tight text-on-surface">BE Boutique</h2>
-                        <p class="text-on-surface-variant mt-2 max-w-md">Shopify e-commerce para una boutique de moda en Puerto Rico. Tienda completa, catálogo de productos y checkout optimizado para móvil.</p>
-                    </div>
-                    <span class="material-symbols-outlined text-primary text-4xl group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                </div>
-            </a>
-        </div>
+<!-- ─── CASE STUDY CARDS GRID ────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-8 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <!-- Case Study 2: MC Designs Studio -->
-        <div class="md:col-span-4 flex flex-col gap-8">
-            <div class="flex-1 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group">
-                <div class="aspect-square bg-surface-container-lowest rounded-lg mb-6 overflow-hidden">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwA0Lga28Jc-TpuNgD7j43uB068nE_ddy8zzhl78e9SZaqjTQ7wV_aR5HPsKWhaJvADG8u6CZ5XOYtqRIvM7FzGhWcVoY6_ccdviCnBPcDzaPz4Qq_KVnoPddkuPQ2c-9kn_jbfMx4eOBs0TiuflzwWgXDsTXaRZ0jKaA3H4oVaLPe8O-y159kPMDMcXHVAhTYjXZAx0Pj2qOTPImQr1QisxYetyXqf5VdNdcGHg8XgLMP0V1BBmyNrX_ebmK48bRO4HkYiNgzVeg"
-                        alt="MC Designs Brand Identity" />
+        <!-- CARD 1 — Miguel Cotto Promotions -->
+        <div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-hover cursor-pointer group" id="card-mcp" onclick="toggleCase('mcp')">
+            <!-- Image -->
+            <div class="aspect-[16/10] overflow-hidden">
+                <!-- DROP IN: assets/mcp-hero.jpg -->
+                <img
+                    src="assets/mcp-hero.jpg"
+                    alt="Miguel Cotto Promotions website"
+                    class="cs-img h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onerror="this.parentElement.innerHTML='<div class=\'img-placeholder w-full h-full\'>Miguel Cotto Promotions — Screenshot próximamente</div>'"
+                />
+            </div>
+            <!-- Meta -->
+            <div class="p-8">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="pill" data-i18n="portfolio_page.mcp.tag1">Diseño Web</span>
+                    <span class="pill" data-i18n="portfolio_page.mcp.tag2">Desarrollo a Medida</span>
                 </div>
-                <div>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1 block" data-i18n="portfolio_page.case_label">Caso de Estudio</span>
-                    <span class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant mb-1 block">Diseño de Marca / Diseño Web</span>
-                    <h3 class="text-xl font-bold tracking-tight">MC Designs Studio</h3>
-                    <p class="text-sm text-on-surface-variant mt-2">Identidad de marca y presencia web para un estudio de diseño en Puerto Rico. Logo, kit de marca y sitio de lanzamiento.</p>
+                <h2 class="text-2xl font-black tracking-tight text-on-surface mb-2">Miguel Cotto Promotions</h2>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-6" data-i18n="portfolio_page.mcp.oneliner">Rediseño completo para la empresa de boxeo #1 de Puerto Rico.</p>
+                <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+                    <span data-i18n="portfolio_page.mcp.card_cta">Ver Proyecto</span>
+                    <span class="transition-transform group-hover:translate-x-1">→</span>
                 </div>
             </div>
+        </div>
+
+        <!-- CARD 2 — Team Drita y Mely -->
+        <div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-hover cursor-pointer group" id="card-drita" onclick="toggleCase('drita')">
+            <!-- Image -->
+            <div class="aspect-[16/10] overflow-hidden">
+                <!-- DROP IN: assets/drita-hero.jpg -->
+                <img
+                    src="assets/drita-hero.jpg"
+                    alt="Team Drita y Mely Shopify store"
+                    class="cs-img h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onerror="this.parentElement.innerHTML='<div class=\'img-placeholder w-full h-full\'>Team Drita y Mely — Screenshot próximamente</div>'"
+                />
+            </div>
+            <!-- Meta -->
+            <div class="p-8">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="pill" data-i18n="portfolio_page.drita.tag1">E-Commerce</span>
+                    <span class="pill" data-i18n="portfolio_page.drita.tag2">Shopify</span>
+                </div>
+                <h2 class="text-2xl font-black tracking-tight text-on-surface mb-2">Team Drita y Mely</h2>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-6" data-i18n="portfolio_page.drita.oneliner">Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.</p>
+                <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+                    <span data-i18n="portfolio_page.drita.card_cta">Ver Proyecto</span>
+                    <span class="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ─── CASE STUDY DETAIL — Miguel Cotto Promotions ──────────────── -->
+<section id="detail-mcp" class="case-detail max-w-7xl mx-auto px-8 mb-4">
+    <div class="bg-surface-container-lowest rounded-3xl overflow-hidden">
+
+        <!-- Detail Header -->
+        <div class="px-8 md:px-16 pt-16 pb-12 border-b border-surface-container">
+            <button onclick="toggleCase('mcp')" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors mb-8">
+                <span>←</span> <span>Cerrar</span>
+            </button>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="pill" data-i18n="portfolio_page.mcp.tag1">Diseño Web</span>
+                <span class="pill" data-i18n="portfolio_page.mcp.tag2">Desarrollo a Medida</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Vercel</span>
+                <span class="tech-pill">Google Stitch</span>
+                <span class="tech-pill">Antigravity</span>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-4">Miguel Cotto<br/>Promotions</h2>
+            <p class="text-lg text-on-surface-variant max-w-xl" data-i18n="portfolio_page.mcp.oneliner">Rediseño completo para la empresa de boxeo #1 de Puerto Rico.</p>
+        </div>
+
+        <!-- Hero Screenshot -->
+        <div class="relative">
+            <!-- DROP IN: assets/mcp-detail-1.jpg (full-width hero shot) -->
+            <img
+                src="assets/mcp-detail-1.jpg"
+                alt="Miguel Cotto Promotions — Homepage"
+                class="w-full max-h-[600px] object-cover"
+                onerror="this.style.display='none'"
+            />
+        </div>
+
+        <!-- Content Sections -->
+        <div class="px-8 md:px-16 py-16 grid grid-cols-1 md:grid-cols-12 gap-16">
+
+            <!-- Challenge -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">01</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.challenge_title">El Reto</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.mcp.challenge">La empresa de promoción de boxeo #1 de Puerto Rico tenía un sitio web desactualizado que no reflejaba la calidad de sus eventos ni de su talento. Necesitaban un rediseño completo — moderno, rápido y construido para una audiencia deportiva en vivo.</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Second Screenshot -->
+            <div class="md:col-span-12">
+                <!-- DROP IN: assets/mcp-detail-2.jpg -->
+                <img
+                    src="assets/mcp-detail-2.jpg"
+                    alt="Miguel Cotto Promotions — Interior"
+                    class="cs-img"
+                    onerror="this.style.display='none'"
+                />
+            </div>
+
+            <!-- What We Built -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">02</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.built_title">Lo que Construimos</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg mb-8" data-i18n="portfolio_page.mcp.built">Un sitio web completamente personalizado con un panel de administración interno que le da al equipo de MCP control total — publicar noticias, anunciar eventos, actualizar el roster de peleadores y gestionar el contenido del sitio sin tocar código.</p>
+                <!-- Tech Stack -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill">Google Stitch</span>
+                    <span class="tech-pill">Antigravity</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">GitHub</span>
+                    <span class="tech-pill">Vercel</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Third Screenshot -->
+            <div class="md:col-span-12">
+                <!-- DROP IN: assets/mcp-detail-3.jpg -->
+                <img
+                    src="assets/mcp-detail-3.jpg"
+                    alt="Miguel Cotto Promotions — Admin Dashboard"
+                    class="cs-img"
+                    onerror="this.style.display='none'"
+                />
+            </div>
+
+            <!-- The Result -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">03</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.result_title">El Resultado</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.mcp.result">Una plataforma deportiva en modo oscuro que se mueve tan rápido como el deporte. El panel de administración es la verdadera victoria — una sola interfaz que mantiene todo el sitio vivo y actualizado, pelea tras pelea.</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Live Site CTA -->
+            <div class="md:col-span-12 flex items-center justify-between flex-wrap gap-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">miguelcottopromotions.com</span>
+                <a href="https://miguelcottopromotions.com" target="_blank" rel="noopener" class="hero-gradient text-on-primary px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" data-i18n="portfolio_page.mcp.visit">Visitar Sitio</a>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- Placeholder CTA Card -->
-<section class="max-w-7xl mx-auto px-8 mb-40 text-center">
-    <div class="bg-surface-container-lowest p-20 rounded-3xl relative overflow-hidden border border-outline-variant/10 shadow-sm">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2"></div>
-        <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block" data-i18n="portfolio_page.placeholder.label">Tu Proyecto Aquí</span>
-        <h2 class="text-5xl font-black tracking-tighter mb-8 max-w-2xl mx-auto" data-i18n="portfolio_page.placeholder.title">
-            Estamos construyendo. ¿Tienes un proyecto en mente? Hablemos.
-        </h2>
-        <a href="/contacto.html" class="inline-block hero-gradient text-on-primary px-12 py-4 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" data-i18n="portfolio_page.placeholder.cta">
-            Comenzar Proyecto
-        </a>
+<!-- ─── CASE STUDY DETAIL — Team Drita y Mely ────────────────────── -->
+<section id="detail-drita" class="case-detail max-w-7xl mx-auto px-8 mb-4">
+    <div class="bg-surface-container-lowest rounded-3xl overflow-hidden">
+
+        <!-- Detail Header -->
+        <div class="px-8 md:px-16 pt-16 pb-12 border-b border-surface-container">
+            <button onclick="toggleCase('drita')" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors mb-8">
+                <span>←</span> <span>Cerrar</span>
+            </button>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="pill" data-i18n="portfolio_page.drita.tag1">E-Commerce</span>
+                <span class="pill" data-i18n="portfolio_page.drita.tag2">Shopify</span>
+                <span class="tech-pill">Hibody</span>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-4">Team Drita<br/>y Mely</h2>
+            <p class="text-lg text-on-surface-variant max-w-xl" data-i18n="portfolio_page.drita.oneliner">Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.</p>
+        </div>
+
+        <!-- Hero Screenshot -->
+        <div class="relative">
+            <!-- DROP IN: assets/drita-detail-1.jpg (full-width hero shot) -->
+            <img
+                src="assets/drita-detail-1.jpg"
+                alt="Team Drita y Mely — Storefront"
+                class="w-full max-h-[600px] object-cover"
+                onerror="this.style.display='none'"
+            />
+        </div>
+
+        <!-- Content Sections -->
+        <div class="px-8 md:px-16 py-16 grid grid-cols-1 md:grid-cols-12 gap-16">
+
+            <!-- Challenge -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">01</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.challenge_title">El Reto</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.drita.challenge">Sandra y Melissa, coaches de bienestar bajo la marca Hibody, vendían productos sin una tienda en línea propia. Necesitaban un storefront limpio que facilitara la compra y mostrara sus bundles y promociones de forma clara.</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Second Screenshot -->
+            <div class="md:col-span-12">
+                <!-- DROP IN: assets/drita-detail-2.jpg -->
+                <img
+                    src="assets/drita-detail-2.jpg"
+                    alt="Team Drita y Mely — Product Page"
+                    class="cs-img"
+                    onerror="this.style.display='none'"
+                />
+            </div>
+
+            <!-- What We Built -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">02</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.built_title">Lo que Construimos</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg mb-8" data-i18n="portfolio_page.drita.built">Una tienda Shopify completa construida desde cero — catálogo de productos, bundles con descuento, precios de oferta, contenido bilingüe y un flujo de compra optimizado para su audiencia. Sin elementos innecesarios, todo lo que necesitaban.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill">Shopify</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Third Screenshot -->
+            <div class="md:col-span-12">
+                <!-- DROP IN: assets/drita-detail-3.jpg -->
+                <img
+                    src="assets/drita-detail-3.jpg"
+                    alt="Team Drita y Mely — Mobile View"
+                    class="cs-img"
+                    onerror="this.style.display='none'"
+                />
+            </div>
+
+            <!-- The Result -->
+            <div class="md:col-span-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">03</span>
+                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.result_title">El Resultado</h3>
+            </div>
+            <div class="md:col-span-8">
+                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.drita.result">Un storefront limpio, minimalista y directo donde cada producto es visible y cada página impulsa hacia una venta. 'Tu bienestar es nuestra prioridad' — el sitio transmite exactamente eso.</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="md:col-span-12 h-px bg-surface-container"></div>
+
+            <!-- Live Site CTA -->
+            <div class="md:col-span-12 flex items-center justify-between flex-wrap gap-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">teamdritaymely.store</span>
+                <a href="https://teamdritaymely.store" target="_blank" rel="noopener" class="hero-gradient text-on-primary px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" data-i18n="portfolio_page.drita.visit">Visitar Sitio</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── CLOSING CTA ───────────────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-8 py-32 mb-0">
+    <div class="bg-surface-container-low rounded-3xl px-8 md:px-20 py-24 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6 block">MC Designs</span>
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-2xl mx-auto" data-i18n="portfolio_page.closing_cta.headline">¿Listo para ser el próximo?</h2>
+        <p class="text-lg text-on-surface-variant mb-12 max-w-md mx-auto" data-i18n="portfolio_page.closing_cta.subtext">Cuéntanos tu proyecto y construimos algo que funcione.</p>
+        <a href="/contacto.html" class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" data-i18n="portfolio_page.closing_cta.cta">Comenzar Proyecto</a>
     </div>
 </section>
 
 </main>
 
-<!-- Footer -->
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
     <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div class="col-span-1 md:col-span-1">
+        <div class="col-span-1">
             <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
             <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
             <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
         </div>
     </div>
     <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
-        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+        <div class="flex gap-8 text-xs uppercase tracking-widest text-slate-400">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
         </div>
@@ -222,4 +471,26 @@
 </footer>
 
 <script type="module" src="assets/language-toggle.js"></script>
-</body></html>
+<script>
+    function toggleCase(id) {
+        const detail = document.getElementById('detail-' + id);
+        const card = document.getElementById('card-' + id);
+        const isOpen = detail.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.case-detail').forEach(el => el.classList.remove('open'));
+
+        if (!isOpen) {
+            detail.classList.add('open');
+            // Smooth scroll to the open detail
+            setTimeout(() => {
+                detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        } else {
+            // Scroll back up to the card
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+</script>
+</body>
+</html>
