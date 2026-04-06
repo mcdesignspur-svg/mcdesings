@@ -115,27 +115,20 @@
     <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
     <!-- TopAppBar Shell -->
-    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-outline-variant/10">
-        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl relative z-10">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
             <a href="/index.html" class="flex-shrink-0 z-50">
                 <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
             </a>
-            <div class="hidden md:flex items-center gap-10 font-sans text-xs font-bold uppercase tracking-widest">
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Home</a>
-                <a class="text-primary font-black border-b-2 border-primary" href="/servicios.html" data-i18n="nav.services">Services</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contact</a>
+            <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/">Home</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/servicios.html">Services</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/portfolio.html">Portfolio</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/contacto.html">Contact</a>
             </div>
-            <div class="flex items-center gap-6">
-                <!-- Lang Toggle Integration -->
-                <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                    <span id="lang-text" class="text-[10px] font-black tracking-tighter text-on-surface">ES</span>
-                </button>
-                <a href="/contacto.html" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-widest active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20" data-i18n="nav.cta">
-                    Get Started
-                </a>
-            </div>
+            <a href="/contacto.html" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150">
+                Get Started
+            </a>
         </div>
     </nav>
 

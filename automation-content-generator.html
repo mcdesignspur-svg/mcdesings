@@ -85,23 +85,23 @@
 </head>
 
 <body class="bg-[#080d14] text-offWhite bg-grid-pattern overflow-x-hidden relative flex flex-col min-h-screen">
-    <!-- Header -->
-    <header class="flex justify-between items-center py-6 mt-4 w-full max-w-7xl mx-auto px-6 sticky top-0 bg-[#080d14]/80 backdrop-blur-md" style="z-index: 9999;">
-        <a href="/index.html" class="flex-shrink-0 z-50">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto mix-blend-difference" />
-        </a>
-        <nav class="hidden md:flex flex-1 justify-center gap-8 items-center text-sm font-medium z-50">
-            <a href="/index.html" class="text-white/60 hover:text-white transition-colors">Inicio</a>
-            <a href="/servicios.html" class="text-white/60 hover:text-white transition-colors">Servicios</a>
-            <a href="/#portfolio" class="text-white/60 hover:text-white transition-colors">Trabajos</a>
-            <a href="/contacto.html" class="text-white/60 hover:text-white transition-colors">Contacto</a>
-        </nav>
-        <div class="flex items-center gap-4 flex-shrink-0 z-50">
-            <a href="/contacto.html" class="hidden sm:inline-block bg-[#4DA6FF] text-[#080d14] font-bold text-[0.8rem] tracking-[0.06em] uppercase px-[22px] py-[10px] rounded-[8px] transition-transform hover:scale-105">
-                Agenda una llamada
+    <!-- TopAppBar Shell -->
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl relative z-10">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+            <a href="/index.html" class="flex-shrink-0 z-50">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/">Home</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/servicios.html">Services</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/portfolio.html">Portfolio</a>
+                <a class="text-slate-600 hover:text-slate-900 transition-colors" href="/contacto.html">Contact</a>
+            </div>
+            <a href="/contacto.html" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150">
+                Get Started
             </a>
         </div>
-    </header>
+    </nav>
 
     <main class="w-full flex-grow">
 

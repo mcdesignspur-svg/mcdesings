@@ -114,17 +114,19 @@
 <body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
 <!-- Subtle Grid Overlay -->
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
-<!-- Navigation Shell -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/60 backdrop-blur-xl">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<!-- TopAppBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl relative z-10">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
 <a href="/index.html" class="flex-shrink-0 z-50"><img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" /></a>
-<div class="hidden md:flex gap-10">
-<a class="text-slate-600 font-medium hover:text-blue-500 transition-colors uppercase text-xs tracking-widest" href="/">Home</a>
-<a class="text-slate-600 font-medium hover:text-blue-500 transition-colors uppercase text-xs tracking-widest" href="/servicios.html">Services</a>
-<a class="text-blue-600 font-semibold border-b-2 border-blue-600 uppercase text-xs tracking-widest" href="/portfolio.html">Portfolio</a>
-<a class="text-slate-600 font-medium hover:text-blue-500 transition-colors uppercase text-xs tracking-widest" href="/contacto.html">Contact</a>
+<div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/">Home</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/servicios.html">Services</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/portfolio.html">Portfolio</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors" href="/contacto.html">Contact</a>
 </div>
-<a href="/contacto.html" class="inline-block bg-primary text-on-primary px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest transition-all hover:scale-95 active:duration-100">Get Started</a>
+<a href="/contacto.html" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150">
+                Get Started
+            </a>
 </div>
 </nav>
 <main class="relative z-10 pt-40">
