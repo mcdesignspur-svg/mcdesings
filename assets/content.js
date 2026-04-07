@@ -13,7 +13,7 @@ export const translations = {
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
             tagline: "El Estudio Todo en Uno",
-            headline: "EL ESTUDIO TODO EN UNO",
+            headline: "EL STUDIO TODO EN UNO",
             subtext: "Ayudamos a los negocios a crecer construyendo su presencia digital e integrando IA en sus operaciones, para que puedan competir, vender y trabajar de forma más inteligente.",
             cta1: "Comenzar Proyecto",
             cta2: "Ver Portafolio",
