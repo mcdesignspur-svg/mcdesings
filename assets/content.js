@@ -173,6 +173,34 @@ export const translations = {
                 btn: "Comenzar Proyecto"
             }
         },
+        about_page: {
+            hero: {
+                tagline: "El Estudio Todo en Uno.",
+                subheadline: "Construyendo para marcas con ambición."
+            },
+            about: {
+                p1: "MC Designs nació de una verdad simple: un buen diseño cambia cómo te ven.",
+                p2: "Todo comenzó en 2017 con una marca de ropa — aprendiendo a crear algo de la nada, convirtiendo ideas en prendas que la gente quería usar. La marca eventualmente terminó, pero la obsesión con el diseño no. Al contrario, creció.",
+                p3: "Durante los últimos cinco años, esa obsesión se expandió hacia el diseño web, la identidad de marca, y algo que se convirtió en una segunda pasión: la inteligencia artificial. La IA despertó un amor por la programación y el desarrollo que siempre había estado ahí — dormido desde la infancia, desde cuando los videojuegos dejaban claro que alguien estaba construyendo mundos. Ahora ese alguien soy yo.",
+                signoff: "— Miguel Cotto, Fundador"
+            },
+            what_we_do: {
+                intro: "MC Designs está construido para los negocios puertorriqueños que están listos para brillar en línea. Ya sea que necesites una identidad de marca, un sitio web que venda, o sistemas de IA que trabajen mientras duermes — aquí lo tienes todo.",
+                col1_title: "Diseño de Marca",
+                col1_desc: "Identidad visual construida para la era moderna.",
+                col2_title: "Diseño Web",
+                col2_desc: "Sitios optimizados para convertir y destacar.",
+                col3_title: "Integración IA",
+                col3_desc: "Automatización para escalar tus operaciones."
+            },
+            pr_section: {
+                text: "Esta es mi tierra. Mi gente. Mi cultura. Ayudar a los negocios de aquí a crecer no es solo trabajo — es personal."
+            },
+            cta: {
+                title: "¿Listo para construir tu presencia en línea?",
+                btn: "Contactar"
+            }
+        },
         booking: {
             title: "Agenda una llamada.",
             subtext: "Si te urge dialogarlo, separa un espacio de 30 minutos sin compromiso."
@@ -366,6 +394,34 @@ export const translations = {
                 title: "READY TO GROW?",
                 subtext: "30 minutes. No pressure. Just an honest conversation.",
                 btn: "Start a Project"
+            }
+        },
+        about_page: {
+            hero: {
+                tagline: "The Everything Studio.",
+                subheadline: "Building for ambitious brands."
+            },
+            about: {
+                p1: "MC Designs was born from a simple truth: good design changes how they see you.",
+                p2: "It all started in 2017 with a clothing brand — learning to create something out of nothing, turning ideas into garments people wanted to wear. The brand eventually ended, but the obsession with design didn't. On the contrary, it grew.",
+                p3: "Over the last five years, that obsession expanded into web design, brand identity, and something that became a second passion: artificial intelligence. AI awakened a love for programming and development that had always been there — dormant since childhood, from when video games made it clear that someone was building worlds. Now that someone is me.",
+                signoff: "— Miguel Cotto, Founder"
+            },
+            what_we_do: {
+                intro: "MC Designs is built for Puerto Rican businesses ready to shine online. Whether you need a brand identity, a website that sells, or AI systems that work while you sleep — you have it all here.",
+                col1_title: "Brand Design",
+                col1_desc: "Visual identity built for the modern era.",
+                col2_title: "Web Design",
+                col2_desc: "Websites optimized to convert and stand out.",
+                col3_title: "AI Integration",
+                col3_desc: "Automation to scale your operations."
+            },
+            pr_section: {
+                text: "This is my land. My people. My culture. Helping businesses here grow isn't just work — it's personal."
+            },
+            cta: {
+                title: "Ready to build your presence online?",
+                btn: "Contact Us"
             }
         },
         booking: {
