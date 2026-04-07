@@ -9,6 +9,7 @@ export default defineConfig({
                 servicios: resolve(__dirname, 'servicios.html'),
                 contacto: resolve(__dirname, 'contacto.html'),
                 portfolio: resolve(__dirname, 'portfolio.html'),
+                about: resolve(__dirname, 'about.html'),
             },
         },
     },

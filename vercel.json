@@ -9,7 +9,9 @@
     { "source": "/contacto", "destination": "/contacto.html" },
     { "source": "/contact", "destination": "/contacto.html" },
     { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/portafolio", "destination": "/portfolio.html" }
+    { "source": "/portafolio", "destination": "/portfolio.html" },
+    { "source": "/nosotros", "destination": "/about.html" },
+    { "source": "/about", "destination": "/about.html" }
   ],
   "headers": [
     {
