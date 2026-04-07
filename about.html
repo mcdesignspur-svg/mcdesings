@@ -94,136 +94,134 @@
         .hero-gradient {
             background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
         }
-        .accent-glow {
-            box-shadow: 0 0 40px rgba(0, 86, 198, 0.4);
-        }
     </style>
 </head>
-<body class="bg-gray-950 text-white font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed relative">
-<div class="fixed inset-0 pointer-events-none z-0 opacity-10" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 60px 60px;"></div>
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
 
 <!-- Nav -->
-<nav class="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800">
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
         <a href="/index.html" class="flex-shrink-0">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto invert brightness-0" style="filter: brightness(0) invert(1);" />
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
         </a>
         <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
-            <a class="text-gray-400 hover:text-white transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
-            <a class="text-gray-400 hover:text-white transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
-            <a class="text-gray-400 hover:text-white transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
-            <a class="text-white font-bold transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
-            <a class="text-gray-400 hover:text-white transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-primary font-bold transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
         </div>
         <div class="flex items-center gap-2 sm:gap-4">
             <!-- Language Toggle Pill -->
-            <div class="flex items-center bg-gray-900 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest border border-gray-800">
+            <div class="flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
                 <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
-                <button id="lang-en" class="px-3 py-1 rounded-full text-gray-500 transition-all duration-200 cursor-pointer hover:text-gray-200">EN</button>
+                <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
             </div>
-            <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+            <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-gray-300 transition-colors focus:outline-none">
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
                 <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
             </button>
         </div>
     </div>
     
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-950 border-b border-gray-800 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
-        <a class="text-gray-400 hover:text-white transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
-        <a class="text-gray-400 hover:text-white transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
-        <a class="text-gray-400 hover:text-white transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
-        <a class="text-white font-bold transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
-        <a class="text-gray-400 hover:text-white transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
-        <a href="/contacto.html" class="hero-gradient text-white px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg mt-4" data-i18n="nav.cta">Comenzar Proyecto</a>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+        <a class="text-primary font-bold transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
+        <a href="/contacto.html" class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4" data-i18n="nav.cta">Comenzar Proyecto</a>
     </div>
 </nav>
 
-<main class="relative z-10 pt-24 overflow-hidden">
+<main class="relative z-10 pt-32">
 
 <!-- 1. Hero Section -->
-<section class="min-h-[60vh] flex flex-col items-center justify-center relative py-20 px-8 text-center">
-    <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-       <div class="w-96 h-96 bg-primary rounded-full blur-[150px] opacity-20"></div>
-    </div>
-    <div class="max-w-4xl mx-auto space-y-6 relative z-10">
-        <span class="inline-block text-primary font-bold tracking-[0.2em] uppercase text-sm" data-i18n="about_page.hero.tagline">El Estudio Todo en Uno.</span>
-        <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none" data-i18n="about_page.hero.subheadline">
-            Construyendo para marcas con ambición.
-        </h1>
-        <div class="w-24 h-1 bg-primary mx-auto mt-12 rounded-full"></div>
-    </div>
-</section>
+<header class="max-w-7xl mx-auto px-8 pt-16 pb-24 text-center">
+    <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-6" data-i18n="about_page.hero.tagline">El Estudio Todo en Uno.</span>
+    <h1 class="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[0.9] text-on-surface mb-6 max-w-5xl mx-auto" data-i18n="about_page.hero.subheadline">
+        Construyendo para marcas con ambición.
+    </h1>
+    <div class="w-16 h-1 bg-primary mx-auto rounded-full mt-10"></div>
+</header>
 
 <!-- 2. About Section -->
-<section class="py-24 relative px-8">
-    <div class="max-w-3xl mx-auto space-y-8 text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
-        <p class="font-medium text-white text-3xl md:text-4xl" data-i18n="about_page.about.p1">
-            MC Designs nació de una verdad simple: un buen diseño cambia cómo te ven.
-        </p>
-        <p data-i18n="about_page.about.p2">
-            Todo comenzó en 2017 con una marca de ropa — aprendiendo a crear algo de la nada, convirtiendo ideas en prendas que la gente quería usar. La marca eventualmente terminó, pero la obsesión con el diseño no. Al contrario, creció.
-        </p>
-        <p data-i18n="about_page.about.p3">
-            Durante los últimos cinco años, esa obsesión se expandió hacia el diseño web, la identidad de marca, y algo que se convirtió en una segunda pasión: la inteligencia artificial. La IA despertó un amor por la programación y el desarrollo que siempre había estado ahí — dormido desde la infancia, desde cuando los videojuegos dejaban claro que alguien estaba construyendo mundos. Ahora ese alguien soy yo.
-        </p>
-        <div class="pt-8">
-            <span class="block text-primary font-bold uppercase tracking-widest text-sm" data-i18n="about_page.about.signoff">— Miguel Cotto, Fundador</span>
-        </div>
+<section class="max-w-4xl mx-auto px-8 mb-32 space-y-8 text-lg md:text-xl text-on-surface-variant font-medium leading-relaxed">
+    <p class="font-bold text-on-surface text-2xl md:text-3xl tracking-tight leading-snug" data-i18n="about_page.about.p1">
+        MC Designs nació de una verdad simple: un buen diseño cambia cómo te ven.
+    </p>
+    <p data-i18n="about_page.about.p2">
+        Todo comenzó en 2017 con una marca de ropa — aprendiendo a crear algo de la nada, convirtiendo ideas en prendas que la gente quería usar. La marca eventualmente terminó, pero la obsesión con el diseño no. Al contrario, creció.
+    </p>
+    <p data-i18n="about_page.about.p3">
+        Durante los últimos cinco años, esa obsesión se expandió hacia el diseño web, la identidad de marca, y algo que se convirtió en una segunda pasión: la inteligencia artificial. La IA despertó un amor por la programación y el desarrollo que siempre había estado ahí — dormido desde la infancia, desde cuando los videojuegos dejaban claro que alguien estaba construyendo mundos. Ahora ese alguien soy yo.
+    </p>
+    <div class="pt-8">
+        <span class="block text-primary font-bold uppercase tracking-widest text-sm" data-i18n="about_page.about.signoff">— Miguel Cotto, Fundador</span>
     </div>
 </section>
 
 <!-- 3. What We Do - 3 Column Summary -->
-<section class="py-24 bg-gray-900 border-y border-gray-800 relative px-8">
-    <div class="max-w-6xl mx-auto">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <p class="text-2xl text-gray-100 font-medium leading-snug" data-i18n="about_page.what_we_do.intro">
+<section class="bg-surface-container-low py-32 relative z-10">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="max-w-3xl mx-auto text-center mb-20">
+            <p class="text-2xl text-on-surface font-medium leading-snug tracking-tight" data-i18n="about_page.what_we_do.intro">
                 MC Designs está construido para los negocios puertorriqueños que están listos para brillar en línea. Ya sea que necesites una identidad de marca, un sitio web que venda, o sistemas de IA que trabajen mientras duermes — aquí lo tienes todo.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-8 border border-gray-800 rounded-2xl bg-gray-950/50 hover:border-primary/50 transition-colors">
-                <span class="material-symbols-outlined text-primary text-4xl mb-6">palette</span>
-                <h3 class="text-2xl font-bold mb-3 text-white" data-i18n="about_page.what_we_do.col1_title">Diseño de Marca</h3>
-                <p class="text-gray-400" data-i18n="about_page.what_we_do.col1_desc">Identidad visual construida para la era moderna.</p>
+            <div class="bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright transition-colors group">
+                <div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-3xl" data-icon="palette">palette</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="about_page.what_we_do.col1_title">Diseño de Marca</h3>
+                <p class="text-on-surface-variant leading-relaxed" data-i18n="about_page.what_we_do.col1_desc">Identidad visual construida para la era moderna.</p>
             </div>
-            <div class="p-8 border border-gray-800 rounded-2xl bg-gray-950/50 hover:border-primary/50 transition-colors">
-                <span class="material-symbols-outlined text-primary text-4xl mb-6">web</span>
-                <h3 class="text-2xl font-bold mb-3 text-white" data-i18n="about_page.what_we_do.col2_title">Diseño Web</h3>
-                <p class="text-gray-400" data-i18n="about_page.what_we_do.col2_desc">Sitios optimizados para convertir y destacar.</p>
+            <div class="bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright transition-colors group">
+                <div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-3xl" data-icon="web">web</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="about_page.what_we_do.col2_title">Diseño Web</h3>
+                <p class="text-on-surface-variant leading-relaxed" data-i18n="about_page.what_we_do.col2_desc">Sitios optimizados para convertir y destacar.</p>
             </div>
-            <div class="p-8 border border-gray-800 rounded-2xl bg-gray-950/50 hover:border-primary/50 transition-colors">
-                <span class="material-symbols-outlined text-primary text-4xl mb-6">smart_toy</span>
-                <h3 class="text-2xl font-bold mb-3 text-white" data-i18n="about_page.what_we_do.col3_title">Integración IA</h3>
-                <p class="text-gray-400" data-i18n="about_page.what_we_do.col3_desc">Automatización para escalar tus operaciones.</p>
+            <div class="bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright transition-colors group">
+                <div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-3xl" data-icon="smart_toy">smart_toy</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="about_page.what_we_do.col3_title">Integración IA</h3>
+                <p class="text-on-surface-variant leading-relaxed" data-i18n="about_page.what_we_do.col3_desc">Automatización para escalar tus operaciones.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- 4. Puerto Rico Section -->
-<section class="py-32 px-8 relative overflow-hidden">
+<section class="max-w-7xl mx-auto px-8 py-32 relative overflow-hidden text-center flex items-center justify-center min-h-[60vh]">
     <!-- Abstract visual anchor -->
-    <div class="absolute inset-0 z-0 flex items-center justify-center opacity-10 pointer-events-none">
+    <div class="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-[800px] h-[800px] fill-primary">
             <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.4,-46.5C91,-33.9,97.2,-18.8,96.3,-4.2C95.4,10.4,87.4,24.5,77.7,36.5C68,48.5,56.6,58.4,43.6,66.8C30.6,75.2,16,82.1,0.7,80.9C-14.6,79.7,-29.2,70.5,-41.8,61.1C-54.4,51.7,-64.9,42.1,-74.6,30.3C-84.3,18.5,-93.2,4.5,-93.8,-9.7C-94.4,-23.9,-86.7,-38.3,-75.7,-49.4C-64.7,-60.5,-50.4,-68.3,-36.5,-75.9C-22.6,-83.5,-9,-90.9,4.1,-97.6C17.2,-104.3,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
         </svg>
     </div>
     
-    <div class="max-w-4xl mx-auto text-center relative z-10 glass-module rounded-3xl p-12 lg:p-20 border border-gray-800 bg-gray-950/40 backdrop-blur-md">
-        <p class="text-3xl lg:text-5xl font-black text-white leading-tight uppercase tracking-tight" data-i18n="about_page.pr_section.text">
-            Esta es mi tierra.<br> Mi gente.<br> Mi cultura.<br><span class="text-primary mt-4 block">Ayudar a los negocios de aquí a crecer no es solo trabajo — es personal.</span>
+    <div class="max-w-4xl mx-auto relative z-10 bg-surface-container-lowest rounded-3xl p-12 lg:p-20 shadow-xl border border-outline-variant/20 hover:border-primary/20 transition-colors">
+        <p class="text-3xl lg:text-5xl font-black text-on-surface leading-tight tracking-tight uppercase" data-i18n="about_page.pr_section.text">
+            Esta es mi tierra.<br> Mi gente.<br> Mi cultura.<br><span class="text-primary mt-6 block tracking-tight">Ayudar a los negocios de aquí a crecer no es solo trabajo — es personal.</span>
         </p>
     </div>
 </section>
 
 <!-- 5. CTA Section -->
-<section class="py-32 bg-primary text-white relative z-10">
-    <div class="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
-        <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight" data-i18n="about_page.cta.title">¿Listo para construir tu presencia en línea?</h2>
-        <a href="/contacto.html" class="inline-block bg-white text-primary hover:bg-gray-100 px-12 py-5 mt-8 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-2xl active:scale-95 transition-all text-center border-none" data-i18n="about_page.cta.btn">
+<section class="max-w-7xl mx-auto px-8 pb-32 mb-0">
+    <div class="bg-on-surface rounded-3xl px-8 md:px-20 py-24 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6 block">MC Designs</span>
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-surface mb-6 max-w-2xl mx-auto" data-i18n="about_page.cta.title">¿Listo para construir tu presencia en línea?</h2>
+        <a href="/contacto.html" class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 mt-6" data-i18n="about_page.cta.btn">
             Contactar
         </a>
     </div>
@@ -232,38 +230,38 @@
 </main>
 
 <!-- Footer -->
-<footer class="w-full border-t border-gray-800 bg-gray-950 relative z-10 text-gray-400">
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
     <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-1">
-            <div class="text-lg font-bold tracking-tighter text-white mb-2" data-i18n="footer.brand">MC Designs</div>
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
             <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
-            <p class="text-sm leading-relaxed" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-white font-bold" data-i18n="footer.services_label">Servicios</span>
-            <a class="hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
-            <a class="hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
-            <a class="hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-white font-bold" data-i18n="footer.studio_label">Estudio</span>
-            <a class="hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
-            <a class="hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
-            <a class="hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-white font-bold" data-i18n="footer.connect_label">Conectar</span>
-            <a class="hover:text-primary transition-colors duration-200" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
-            <a class="hover:text-primary transition-colors duration-200" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
-            <a class="hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
-        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-gray-500">
-            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
         </div>
     </div>
 </footer>
