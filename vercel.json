@@ -16,7 +16,8 @@
     { "source": "/automation-content-generator", "destination": "/automation-content-generator.html" },
     { "source": "/case-study-beboutique", "destination": "/case-study-beboutique.html" },
     { "source": "/case-study-mcpromo", "destination": "/case-study-mcpromo.html" },
-    { "source": "/case-study-teamdrita", "destination": "/case-study-teamdrita.html" }
+    { "source": "/case-study-teamdrita", "destination": "/case-study-teamdrita.html" },
+    { "source": "/guia-prospecting-ai", "destination": "/guia-prospecting-ai.html" }
   ],
   "headers": [
     {

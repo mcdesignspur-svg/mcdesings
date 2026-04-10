@@ -15,6 +15,7 @@ export default defineConfig({
                 csbeboutique: resolve(__dirname, 'case-study-beboutique.html'),
                 csmcpromo: resolve(__dirname, 'case-study-mcpromo.html'),
                 csteamdrita: resolve(__dirname, 'case-study-teamdrita.html'),
+                guiaProspecting: resolve(__dirname, 'guia-prospecting-ai.html'),
             },
         },
     },
