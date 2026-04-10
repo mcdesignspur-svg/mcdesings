@@ -601,9 +601,9 @@
                 btn.disabled = true;
 
                 try {
-                    // Si ya configuraste Supabase, guarda el email en la tabla 'leads'
+                    // Si ya configuraste Supabase, guarda el email en la tabla 'LEADS'
                     if (SUPABASE_URL !== 'TU_SUPABASE_URL') {
-                        const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+                        const response = await fetch(`${SUPABASE_URL}/rest/v1/LEADS`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
