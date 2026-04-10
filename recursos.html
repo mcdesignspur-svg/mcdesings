@@ -199,13 +199,10 @@
                 </h1>
                 <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
                     data-i18n="recursos_page.hero.subtext">
-                    Accede a las guías paso a paso de los sistemas que uso para automatizar mi negocio y el de mis
-                    clientes.
+                    Accede al stack de herramientas y recursos que uso para automatizar mi negocio y el de mis clientes.
                 </p>
                 <div
                     class="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-500 font-label tracking-widest uppercase">
-                    <span data-i18n="recursos_page.hub.tabs.guides">Guías de Flujos</span>
-                    <span class="w-1 h-1 bg-slate-300 rounded-full mx-2"></span>
                     <span data-i18n="recursos_page.hub.tabs.tools">Software Stack</span>
                 </div>
 
@@ -297,24 +294,24 @@
                     <div class="flex items-center justify-center gap-2 pt-8">
                         <div class="bg-slate-100 p-1 rounded-xl inline-flex">
                             <button id="tab-guides"
-                                class="px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-sm text-primary"
+                                class="hidden px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-slate-700"
                                 data-tab="guides" data-i18n="recursos_page.hub.tabs.guides">Guías de Flujos</button>
                             <button id="tab-tools"
-                                class="px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-slate-700"
+                                class="px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-sm text-primary"
                                 data-tab="tools" data-i18n="recursos_page.hub.tabs.tools">Software Stack</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Guides Section -->
-                <div id="guides-section" class="space-y-12">
+                <!-- Guides Section (Hidden for now) -->
+                <div id="guides-section" class="hidden space-y-12">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="guides-grid">
                         <!-- Javascript populates guides -->
                     </div>
                 </div>
 
-                <!-- Tools Section (Hidden by default) -->
-                <div id="tools-section" class="hidden space-y-8">
+                <!-- Tools Section -->
+                <div id="tools-section" class="space-y-8">
                     <!-- Filters -->
                     <div class="flex flex-wrap items-center justify-center gap-2" id="category-filters">
                         <!-- Javascript populates filters -->
@@ -428,7 +425,7 @@
 
         const categories = ["Todos", "IA", "Web", "Diseño", "Automatización", "Productividad"];
         let currentCategory = "Todos";
-        let activeTab = "guides";
+        let activeTab = "tools";
 
         const gateState = document.getElementById('gate-state');
         const hubState = document.getElementById('hub-state');
@@ -546,6 +543,9 @@
 
             btnGuides.addEventListener('click', () => { activeTab = 'guides'; updateUI(); });
             btnTools.addEventListener('click', () => { activeTab = 'tools'; updateUI(); });
+            
+            // Set initial state
+            updateUI();
         }
 
         function showUnlockedState() {
