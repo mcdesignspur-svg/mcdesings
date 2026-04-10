@@ -321,22 +321,53 @@
             <h2>CÓMO LO USO YO</h2>
             <p>Yo uso Claude Code como mi asistente ejecutivo. Desde VS Code manejo mi Content Calendar de Notion, genero ideas de contenido, busco leads, redacto propuestas y automatizo flujos con N8N — todo sin salir del editor.</p>
 
-            <div class="grid sm:grid-cols-2 gap-4 my-10 not-prose">
-                <a href="https://nodejs.org" target="_blank" class="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-md transition-shadow">
-                    <h4 class="font-bold text-slate-900 mb-1">Node.js</h4>
-                    <p class="text-xs text-slate-500">Descargar motor LTS</p>
+            <div class="grid sm:grid-cols-2 gap-6 my-10 not-prose">
+                <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-50 text-green-600 mb-6 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/nodedotjs/339933" class="w-6 h-6">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#339933] transition-colors">Node.js</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed flex-grow">El motor de ejecución necesario para correr Claude Code. Descarga siempre la versión LTS para mayor estabilidad.</p>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 border-t border-slate-100 pt-4 flex items-center justify-between">
+                        <span>Costo: Gratis · nodejs.org</span>
+                        <span class="material-symbols-outlined text-[14px] text-[#339933] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
                 </a>
-                <a href="https://claude.ai" target="_blank" class="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-md transition-shadow">
-                    <h4 class="font-bold text-slate-900 mb-1">Claude.ai</h4>
-                    <p class="text-xs text-slate-500">Crear cuenta gratuita</p>
+
+                <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-50 text-purple-600 mb-6 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/anthropic/7C3AED" class="w-6 h-6">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#7C3AED] transition-colors">Claude.ai</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed flex-grow">La plataforma de Anthropic donde creas tu cuenta y gestionas tus modelos. Es la base para la autenticación del CLI.</p>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 border-t border-slate-100 pt-4 flex items-center justify-between">
+                        <span>Costo: Gratis/Pro · claude.ai</span>
+                        <span class="material-symbols-outlined text-[14px] text-[#7C3AED] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
                 </a>
-                <a href="https://code.visualstudio.com" target="_blank" class="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-md transition-shadow">
-                    <h4 class="font-bold text-slate-900 mb-1">VS Code</h4>
-                    <p class="text-xs text-slate-500">Editor de código</p>
+
+                <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/visualstudiocode/007ACC" class="w-6 h-6">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#007ACC] transition-colors">VS Code</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed flex-grow">El editor de código más usado. Recomendado para usar la extensión oficial de Claude Code en un entorno visual.</p>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 border-t border-slate-100 pt-4 flex items-center justify-between">
+                        <span>Costo: Gratis · code.visualstudio.com</span>
+                        <span class="material-symbols-outlined text-[14px] text-[#007ACC] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
                 </a>
-                <a href="https://docs.anthropic.com/claude-code" target="_blank" class="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-md transition-shadow">
-                    <h4 class="font-bold text-slate-900 mb-1">Documentación</h4>
-                    <p class="text-xs text-slate-500">Docs oficiales</p>
+
+                <a href="https://docs.anthropic.com/claude-code" target="_blank" rel="noopener noreferrer" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-600 mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">description</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-slate-700 transition-colors">Documentación</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed flex-grow">Guías oficiales de Anthropic para dominar todos los comandos y capacidades avanzadas de Claude Code.</p>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 border-t border-slate-100 pt-4 flex items-center justify-between">
+                        <span>Docs Oficiales · Anthropic</span>
+                        <span class="material-symbols-outlined text-[14px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
                 </a>
             </div>
 
