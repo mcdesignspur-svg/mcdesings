@@ -612,7 +612,15 @@
 
                     // Desbloquea la interfaz
                     localStorage.setItem('mc_hub_unlocked', 'true');
-                    showUnlockedState();
+                    
+                    // Manejar redirección si existe el parámetro 'from'
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const fromPath = urlParams.get('from');
+                    if (fromPath) {
+                        window.location.href = fromPath;
+                    } else {
+                        showUnlockedState();
+                    }
                 } catch (error) {
                     console.error('Error de red al conectar con Supabase:', error);
                     // Si falla la conexión, comoquiera damos acceso para no dañar la experiencia
