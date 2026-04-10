@@ -225,7 +225,7 @@ export const translations = {
         recursos_page: {
             hero: {
                 tag: "✦ ACCESO EXCLUSIVO",
-                title: "Aprende a montar flujos inteligentes.",
+                title: "Aprende a crear",
                 subtext: "Accede a las guías paso a paso de los sistemas que uso para automatizar mi negocio y el de mis clientes."
             },
             gate: {
@@ -480,7 +480,7 @@ export const translations = {
         recursos_page: {
             hero: {
                 tag: "✦ EXCLUSIVE ACCESS",
-                title: "Learn to build intelligent flows.",
+                title: "Learn to create",
                 subtext: "Access step-by-step guides for the systems I use to automate my business and those of my clients."
             },
             gate: {
