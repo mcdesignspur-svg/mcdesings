@@ -16,6 +16,7 @@ export default defineConfig({
                 csmcpromo: resolve(__dirname, 'case-study-mcpromo.html'),
                 csteamdrita: resolve(__dirname, 'case-study-teamdrita.html'),
                 guiaProspecting: resolve(__dirname, 'guia-prospecting-ai.html'),
+                guiaConfiguracion: resolve(__dirname, 'guia-configuracion-claude-code.html'),
             },
         },
     },
