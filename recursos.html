@@ -406,18 +406,18 @@
         ];
 
         const tools = [
-            { name: "N8N", category: "Automatización", color: "EA580C", slug: "n8n", desc: "Automatización visual sin código. Conecta apps y crea flujos de trabajo en minutos." },
-            { name: "Anthropic", category: "IA", color: "7C3AED", slug: "anthropic", desc: "Creadores de Claude. La IA que potencia los agentes y flujos inteligentes de MC Designs." },
-            { name: "OpenAI", category: "IA", color: "7C3AED", slug: "openai", desc: "Creadores de ChatGPT y GPT-4. Generación de texto e imágenes con DALL·E." },
-            { name: "Gemini", category: "IA", color: "7C3AED", slug: "googlegemini", desc: "El modelo de IA de Google con acceso a datos en tiempo real y razonamiento avanzado." },
-            { name: "Shopify", category: "Web", color: "2563EB", slug: "shopify", desc: "La plataforma de e-commerce más potente. Tiendas rápidas, escalables y listas para vender." },
-            { name: "Notion", category: "Productividad", color: "16A34A", slug: "notion", desc: "Base de datos, CRM y cerebro operativo de MC Designs. Todo el conocimiento en un lugar." },
-            { name: "Vercel", category: "Web", color: "2563EB", slug: "vercel", desc: "Deploy instantáneo para sitios modernos. Del primer commit a producción en minutos." },
-            { name: "GitHub", category: "Web", color: "2563EB", slug: "github", desc: "Control de versiones para todo el código de MC Designs. Seguro y organizado." },
-            { name: "Supabase", category: "Web", color: "2563EB", slug: "supabase", desc: "Backend open-source con base de datos en tiempo real y autenticación integrada." },
-            { name: "Google Workspace", category: "Productividad", color: "16A34A", slug: "google", desc: "Gmail, Drive, Docs y Calendar. La suite de comunicación diaria de MC Designs." },
-            { name: "Adobe", category: "Diseño", color: "DB2777", slug: "adobe", desc: "Photoshop, Illustrator y más. Para crear todos los activos visuales de MC Designs." },
-            { name: "Figma", category: "Diseño", color: "DB2777", slug: "figma", desc: "Diseño UI/UX en la nube. Wireframes, prototipos y diseño final antes de desarrollar." }
+            { name: "N8N", category: "Automatización", color: "EA580C", slug: "n8n", url: "https://n8n.io", desc: "Automatización visual sin código. Conecta apps y crea flujos de trabajo en minutos." },
+            { name: "Anthropic", category: "IA", color: "7C3AED", slug: "anthropic", url: "https://www.anthropic.com", desc: "Creadores de Claude. La IA que potencia los agentes y flujos inteligentes de MC Designs." },
+            { name: "OpenAI", category: "IA", color: "7C3AED", slug: "openai", url: "https://openai.com", desc: "Creadores de ChatGPT y GPT-4. Generación de texto e imágenes con DALL·E." },
+            { name: "Gemini", category: "IA", color: "7C3AED", slug: "googlegemini", url: "https://gemini.google.com", desc: "El modelo de IA de Google con acceso a datos en tiempo real y razonamiento avanzado." },
+            { name: "Shopify", category: "Web", color: "2563EB", slug: "shopify", url: "https://www.shopify.com", desc: "La plataforma de e-commerce más potente. Tiendas rápidas, escalables y listas para vender." },
+            { name: "Notion", category: "Productividad", color: "16A34A", slug: "notion", url: "https://www.notion.so", desc: "Base de datos, CRM y cerebro operativo de MC Designs. Todo el conocimiento en un lugar." },
+            { name: "Vercel", category: "Web", color: "2563EB", slug: "vercel", url: "https://vercel.com", desc: "Deploy instantáneo para sitios modernos. Del primer commit a producción en minutos." },
+            { name: "GitHub", category: "Web", color: "2563EB", slug: "github", url: "https://github.com", desc: "Control de versiones para todo el código de MC Designs. Seguro y organizado." },
+            { name: "Supabase", category: "Web", color: "2563EB", slug: "supabase", url: "https://supabase.com", desc: "Backend open-source con base de datos en tiempo real y autenticación integrada." },
+            { name: "Google Workspace", category: "Productividad", color: "16A34A", slug: "google", url: "https://workspace.google.com", desc: "Gmail, Drive, Docs y Calendar. La suite de comunicación diaria de MC Designs." },
+            { name: "Adobe", category: "Diseño", color: "DB2777", slug: "adobe", url: "https://www.adobe.com", desc: "Photoshop, Illustrator y más. Para crear todos los activos visuales de MC Designs." },
+            { name: "Figma", category: "Diseño", color: "DB2777", slug: "figma", url: "https://www.figma.com", desc: "Diseño UI/UX en la nube. Wireframes, prototipos y diseño final antes de desarrollar." }
         ];
 
         const categories = ["Todos", "IA", "Web", "Diseño", "Automatización", "Productividad"];
@@ -456,18 +456,18 @@
                 : tools.filter(t => t.category === currentCategory);
 
             toolsGrid.innerHTML = filteredTools.map(t => `
-            <div class="tool-card bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group">
+            <a href="${t.url}" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group cursor-pointer">
                 <div class="flex items-center gap-2 mb-6">
                     <span class="w-2 h-2 rounded-full" style="background-color: #${t.color}"></span>
                     <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #${t.color}">${t.category}</span>
                 </div>
                 <img src="https://cdn.simpleicons.org/${t.slug}/${t.color}" alt="${t.name}" class="h-10 w-10 mb-4 ml-0 object-contain">
-                <h3 class="text-xl font-bold tracking-tight mb-2 text-on-surface">${t.name}</h3>
-                <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed line-clamp-2">${t.desc}</p>
+                <h3 class="text-xl font-bold tracking-tight mb-2 text-on-surface group-hover:text-primary transition-colors">${t.name}</h3>
+                <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed">${t.desc}</p>
                 <div class="mt-auto">
-                    <span class="inline-flex items-center gap-1 font-label text-xs uppercase tracking-widest font-bold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">Ver más <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+                    <span class="inline-flex items-center gap-1 font-label text-xs uppercase tracking-widest font-bold" style="color: #${t.color}">Visitar Sitio <span class="material-symbols-outlined text-[14px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
                 </div>
-            </div>
+            </a>
         `).join('');
         }
 
