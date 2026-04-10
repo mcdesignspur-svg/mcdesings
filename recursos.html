@@ -499,12 +499,56 @@
         initTabs();
     }
 
-    gateForm.addEventListener('submit', (e) => {
+    // Supabase Configuración
+    // IMPORTANTE: Reemplaza estos valores con los de tu proyecto (Settings > API)
+    const SUPABASE_URL = 'TU_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'TU_SUPABASE_ANON_KEY';
+
+    gateForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = document.getElementById('user-email').value;
+        const emailInput = document.getElementById('user-email');
+        const email = emailInput.value;
+        const btn = gateForm.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+
         if(email) {
-            localStorage.setItem('mc_hub_unlocked', 'true');
-            showUnlockedState();
+            // Muestra "Cargando..."
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm" style="animation: spin 1s linear infinite;">progress_activity</span>';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            try {
+                // Si ya configuraste Supabase, guarda el email en la tabla 'leads'
+                if(SUPABASE_URL !== 'TU_SUPABASE_URL') {
+                    const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                            // 'Prefer': 'return=minimal' // Opcional para evitar devolver toda la data
+                        },
+                        body: JSON.stringify({ email: email, source: 'recursos_hub' })
+                    });
+                    
+                    if (!response.ok) {
+                        console.warn("Supabase respondió con error:", await response.text());
+                    }
+                }
+                
+                // Desbloquea la interfaz
+                localStorage.setItem('mc_hub_unlocked', 'true');
+                showUnlockedState();
+            } catch (error) {
+                console.error('Error de red al conectar con Supabase:', error);
+                // Si falla la conexión, comoquiera damos acceso para no dañar la experiencia
+                localStorage.setItem('mc_hub_unlocked', 'true');
+                showUnlockedState();
+            } finally {
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+            }
         }
     });
 
