@@ -8,6 +8,7 @@ export const translations = {
             ai: "Integración IA",
             about: "Nosotros",
             contact: "Contacto",
+            hub: "Hub",
             cta: "Comenzar Proyecto"
         },
         hero: {
@@ -262,6 +263,7 @@ export const translations = {
             ai: "AI Integration",
             about: "About",
             contact: "Contact",
+            hub: "Hub",
             cta: "Start a Project"
         },
         hero: {
