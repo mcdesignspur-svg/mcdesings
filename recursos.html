@@ -416,7 +416,7 @@
             { name: "GitHub", category: "Web", color: "2563EB", slug: "github", url: "https://github.com", desc: "Control de versiones para todo el código de MC Designs. Seguro y organizado." },
             { name: "Supabase", category: "Web", color: "2563EB", slug: "supabase", url: "https://supabase.com", desc: "Backend open-source con base de datos en tiempo real y autenticación integrada." },
             { name: "Google Workspace", category: "Productividad", color: "16A34A", slug: "google", url: "https://workspace.google.com", desc: "Gmail, Drive, Docs y Calendar. La suite de comunicación diaria de MC Designs." },
-            { name: "Adobe", category: "Diseño", color: "DB2777", slug: "adobe", url: "https://www.adobe.com", desc: "Photoshop, Illustrator y más. Para crear todos los activos visuales de MC Designs." },
+            { name: "Adobe CC", category: "Diseño", color: "DB2777", svgIcon: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' class='h-10 w-10 mb-4'><rect width='100' height='100' rx='10' fill='%23DB2777'/><text x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' font-size='64' fill='white'>A</text></svg>`, url: "https://www.adobe.com/creativecloud.html", desc: "Photoshop, Illustrator y más. Para crear todos los activos visuales de MC Designs." },
             { name: "Figma", category: "Diseño", color: "DB2777", slug: "figma", url: "https://www.figma.com", desc: "Diseño UI/UX en la nube. Wireframes, prototipos y diseño final antes de desarrollar." }
         ];
 
@@ -461,7 +461,10 @@
                     <span class="w-2 h-2 rounded-full" style="background-color: #${t.color}"></span>
                     <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #${t.color}">${t.category}</span>
                 </div>
-                <img src="https://cdn.simpleicons.org/${t.slug}/${t.color}" alt="${t.name}" class="h-10 w-10 mb-4 ml-0 object-contain">
+                ${t.svgIcon 
+                    ? t.svgIcon 
+                    : `<img src="https://cdn.simpleicons.org/${t.slug}/${t.color}" alt="${t.name}" class="h-10 w-10 mb-4 ml-0 object-contain">`
+                }
                 <h3 class="text-xl font-bold tracking-tight mb-2 text-on-surface group-hover:text-primary transition-colors">${t.name}</h3>
                 <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed">${t.desc}</p>
                 <div class="mt-auto">

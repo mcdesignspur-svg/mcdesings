@@ -114,6 +114,47 @@
         .tool-card {
             transition: opacity 300ms ease, transform 300ms ease;
         }
+
+        /* Blog prose explicit spacing — Tailwind CDN doesn't auto-generate prose modifier utilities */
+        article.prose p {
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+        article.prose h2 {
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 1.875rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+        }
+        article.prose h3 {
+            margin-top: 2.25rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        article.prose ul, article.prose ol {
+            margin-bottom: 1.75rem;
+        }
+        article.prose li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        article.prose strong {
+            color: #0f172a;
+        }
+        article.prose blockquote {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        article.prose hr {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
     </style>
 </head>
 
