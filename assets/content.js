@@ -239,7 +239,7 @@ export const translations = {
                 title: "Hub de Recursos",
                 subtext: "Todo lo necesario para construir, automatizar y escalar.",
                 tabs: {
-                    guides: "Guías de Flujos",
+                    guides: "GUÍAS",
                     tools: "Software Stack"
                 },
                 guides: {
@@ -494,7 +494,7 @@ export const translations = {
                 title: "Resources Hub",
                 subtext: "Everything needed to build, automate, and scale.",
                 tabs: {
-                    guides: "Flow Guides",
+                    guides: "GUIDES",
                     tools: "Software Stack"
                 },
                 guides: {
