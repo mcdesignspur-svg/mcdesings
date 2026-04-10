@@ -18,7 +18,8 @@
     { "source": "/case-study-mcpromo", "destination": "/case-study-mcpromo.html" },
     { "source": "/case-study-teamdrita", "destination": "/case-study-teamdrita.html" },
     { "source": "/guia-prospecting-ai", "destination": "/guia-prospecting-ai.html" },
-    { "source": "/guia-configuracion-claude-code", "destination": "/guia-configuracion-claude-code.html" }
+    { "source": "/guia-configuracion-claude-code", "destination": "/guia-configuracion-claude-code.html" },
+    { "source": "/guia-migracion-claude", "destination": "/guia-migracion-claude.html" }
   ],
   "headers": [
     {

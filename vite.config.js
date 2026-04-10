@@ -17,6 +17,7 @@ export default defineConfig({
                 csteamdrita: resolve(__dirname, 'case-study-teamdrita.html'),
                 guiaProspecting: resolve(__dirname, 'guia-prospecting-ai.html'),
                 guiaConfiguracion: resolve(__dirname, 'guia-configuracion-claude-code.html'),
+                guiaMigracion: resolve(__dirname, 'guia-migracion-claude.html'),
             },
         },
     },

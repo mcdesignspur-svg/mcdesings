@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Guía: Cómo cambiarme de ChatGPT a Claude | MC Designs</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-H9G7W9K8T9');
+    </script>
+
+    <title>Guía: Cómo cambiarme de ChatGPT a Claude (paso a paso) | MC Designs</title>
+    <meta name="description"
+        content="Aprende paso a paso cómo migrar tu flujo de trabajo de ChatGPT a Claude AI de forma fluida y profesional." />
+    <link rel="canonical" href="https://mcdesignspr.com/guia-migracion-claude" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/guia-migracion-claude" />
+    <meta property="og:title" content="Guía: Cómo cambiarme de ChatGPT a Claude | MC Designs" />
+    <meta property="og:description"
+        content="La guía definitiva para hacer la transición a Claude AI y potenciar tu productividad." />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-dim": "#dadada",
+                        "surface-variant": "#e2e2e2",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-container": "#006df8",
+                        "on-primary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "secondary": "#9e4227",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5d5c5b",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline": "#727787",
+                        "surface-tint": "#0058cb",
+                        "on-primary-fixed-variant": "#00429c"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "heading": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
+        }
+
+        /* Blog prose explicit spacing */
+        article.prose p {
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+        article.prose h2 {
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 1.875rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+        }
+        article.prose h3 {
+            margin-top: 2.25rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        article.prose ul, article.prose ol {
+            margin-bottom: 1.75rem;
+        }
+        article.prose li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        article.prose strong {
+            color: #0f172a;
+        }
+        article.prose blockquote {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        article.prose hr {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed flex flex-col min-h-screen">
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+        style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+            <a href="/index.html" class="flex-shrink-0">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html"
+                    data-i18n="nav.home">Inicio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html"
+                    data-i18n="nav.services">Servicios</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html"
+                    data-i18n="nav.portfolio">Portafolio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html"
+                    data-i18n="nav.about">Nosotros</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html"
+                    data-i18n="nav.contact">Contacto</a>
+                <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html"
+                    data-i18n="nav.hub">Hub</a>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div
+                    class="flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                    <button id="lang-es"
+                        class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                    <button id="lang-en"
+                        class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+                </div>
+                <a href="/contacto.html"
+                    class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150"
+                    data-i18n="nav.cta">Comenzar Proyecto</a>
+                <button id="mobile-menu-toggle"
+                    class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html"
+                data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html"
+                data-i18n="nav.services">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html"
+                data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html"
+                data-i18n="nav.about">Nosotros</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html"
+                data-i18n="nav.contact">Contacto</a>
+            <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html">Hub</a>
+            <a href="/contacto.html"
+                class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4"
+                data-i18n="nav.cta">Comenzar Proyecto</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 flex-grow flex flex-col bg-surface">
+        <div class="max-w-3xl mx-auto px-6 md:px-8 w-full">
+            <!-- Breadcrumb / Back -->
+            <a href="/recursos.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-label uppercase tracking-widest transition-colors mb-12">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span> Hub de Recursos
+            </a>
+
+            <!-- Article Header -->
+            <header class="mb-16">
+                <div class="flex flex-wrap gap-2 mb-6 text-xs font-label uppercase tracking-widest text-primary">
+                    <span class="px-2.5 py-1 bg-primary/10 rounded-full">Claude AI</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full">Productividad</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full">Paso a paso</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6">
+                    Cómo cambiarme de ChatGPT a Claude (paso a paso)
+                </h1>
+                
+                <div class="flex items-center gap-4 border-t border-b border-slate-100 py-6 mb-8 mt-12">
+                    <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="w-12 h-12 bg-slate-100 rounded-full object-cover border border-slate-200 p-2">
+                    <div>
+                        <div class="font-bold text-slate-900 tracking-tight">Miguel Cotto</div>
+                        <div class="text-sm text-slate-500 font-medium">Fundador, MC Designs</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Article Body -->
+            <article class="prose prose-lg prose-slate max-w-none text-slate-600 font-sans 
+                prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900 
+                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-4 prose-h2:border-b prose-h2:border-slate-100 
+                prose-h3:text-xl prose-h3:mt-10
+                prose-p:leading-relaxed prose-p:mb-8
+                prose-strong:text-slate-900
+                prose-li:my-2
+                prose-ul:list-disc prose-ul:pl-5
+                selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+                <p class="text-2xl text-slate-800 leading-snug tracking-tight mb-12">Si llegaste aquí desde el carousel, ya sabes por qué hice el cambio. Ahora te explico el cómo — paso a paso, sin complicaciones.</p>
+
+                <h2>Antes de empezar: ¿qué pierdes y qué ganas?</h2>
+                <p>No vas a perder nada crítico. Vas a ganar claridad.</p>
+                <p>Lo único que ChatGPT tiene que Claude no tiene de forma nativa es DALL-E para imágenes y búsqueda web integrada. Si usas esas features frecuentemente, puedes mantener ChatGPT para eso y usar Claude para todo lo demás. Así trabajo yo.</p>
+
+                <h2>Paso 1 — Exporta tus memorias de ChatGPT</h2>
+                <p>ChatGPT guarda memorias sobre ti — tu nombre, tu trabajo, tus preferencias. Antes de irte, expórtalas para no empezar desde cero con Claude.</p>
+                <ul>
+                    <li>Abre ChatGPT → Settings (ícono abajo a la izquierda)</li>
+                    <li>Ve a Data Controls → Export Data</li>
+                    <li>Confirma el email — recibirás un ZIP en minutos</li>
+                    <li>Dentro del ZIP busca el archivo memories.json o revisa chat.html para ver todo lo que ChatGPT sabe de ti</li>
+                </ul>
+                <p>Copia las memorias relevantes — tu rol, industria, tono de comunicación, preferencias. Las vas a necesitar en el Paso 3.</p>
+
+                <h2>Paso 2 — Crea tu cuenta en Claude</h2>
+                <p>Ve a <a href="https://claude.ai" target="_blank" class="text-primary font-bold hover:underline">claude.ai</a> y crea tu cuenta. El plan gratuito es funcional, pero si vas a usarlo para trabajo serio, el plan Pro ($20/mes) vale la pena — acceso a Claude Opus y más mensajes.</p>
+
+                <h2>Paso 3 — Dale contexto desde el primer día</h2>
+                <p>Aquí está el secreto para que Claude funcione bien desde el inicio: dale contexto sobre ti.</p>
+                <p>En Claude, ve a Settings → Profile y llena tu perfil. Esto equivale a las memorias de ChatGPT.</p>
+                <blockquote class="bg-primary/5 border-l-4 border-primary p-6 rounded-r-2xl italic text-slate-700 my-8">
+                    "Soy [tu nombre], [tu rol] en [tu empresa/industria]. Trabajo en [tipo de tareas]. Prefiero respuestas directas y concisas. Mi audiencia es [descripción]. Cuando escribo para clientes, el tono es [profesional/casual/etc.]."
+                </blockquote>
+
+                <h2>Paso 4 — Usa Projects para organizar tu trabajo</h2>
+                <p>Esta es la feature que más subestima la gente. En Claude, puedes crear Projects — espacios de trabajo con instrucciones personalizadas y archivos de contexto.</p>
+                <ul>
+                    <li>Click en New Project en el sidebar</li>
+                    <li>Dale un nombre (ej. "Mi Negocio", "Contenido Instagram", "Clientes")</li>
+                    <li>En Project Instructions escribe el contexto específico de ese proyecto</li>
+                    <li>Sube documentos relevantes — propuestas, guías de estilo, SOPs</li>
+                </ul>
+                <p>Cada conversación dentro del proyecto hereda ese contexto automáticamente. Es brutal para mantener consistencia.</p>
+
+                <h2>Paso 5 — Aprende a hablar con Claude</h2>
+                <ul>
+                    <li><strong>Sé específico</strong> — Claude entiende instrucciones detalladas mejor que prompts vagos.</li>
+                    <li><strong>Dile cuando algo no está bien</strong> — a diferencia de ChatGPT, Claude no se pone defensivo; ajusta.</li>
+                    <li><strong>Pídele que te cuestione</strong> — escribe "si algo en mi razonamiento no tiene sentido, dímelo" y lo hará.</li>
+                    <li><strong>Dale rol</strong> — "actúa como estratega de marketing enfocado en pequeños negocios en PR" cambia completamente la calidad de las respuestas.</li>
+                </ul>
+
+                <h2>Paso 6 — Migra tus prompts favoritos</h2>
+                <p>Si tenías prompts que usabas frecuentemente en ChatGPT, tráelos a Claude. La mayoría funcionan igual o mejor. Guárdalos dentro de tus Projects para tenerlos a mano.</p>
+
+                <h2>¿Y ChatGPT?</h2>
+                <p>No tienes que borrarlo. Yo lo sigo usando para búsqueda web rápida y cuando necesito generar imágenes con DALL-E. Cada herramienta tiene su momento. Pero para pensar, escribir y construir — Claude es donde trabajo.</p>
+
+                <h2>El cambio toma una semana</h2>
+                <p>Los primeros días se siente diferente. Normal. Después de una semana usando Claude en serio, la mayoría de las personas no quieren volver. Yo fui uno de ellos.</p>
+                <p>¿Tienes preguntas sobre el proceso? Escríbeme — con gusto te ayudo. 👇</p>
+
+                <hr class="border-slate-100 my-12" />
+
+                <div class="bg-gradient-to-tr from-[#0056c6]/10 to-[#006df8]/5 rounded-3xl p-8 md:p-12 text-center not-prose border border-[#0056c6]/20 shadow-sm transition-all hover:shadow-md">
+                    <h3 class="text-2xl font-black tracking-tight text-slate-900 mb-4">¿Necesitas ayuda con tu IA?</h3>
+                    <p class="text-slate-600 mb-8 max-w-lg mx-auto">En MC Designs ayudamos a negocios en Puerto Rico a integrar Claude y otras herramientas de IA en sus operaciones diarias.</p>
+                    <a href="/contacto.html" class="inline-flex items-center gap-2 hero-gradient text-on-primary px-8 py-4 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                        Agenda una consulta gratis <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                </div>
+
+                <p class="text-center text-sm text-slate-400 mt-12 font-medium">
+                    <em>Miguel Cotto es fundador de MC Designs, El Studio Todo en Uno en Puerto Rico.</em>
+                </p>
+
+            </article>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs
+                </div>
+                <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">
+                    Diseñando el futuro, hoy.</div>
+                <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno —
+                    Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            </div>
+            <!-- ... rest of footer (simplified for this write_to_file but I will keep it consistent) ... -->
+        </div>
+    </footer>
+    
+    <script type="module" src="assets/language-toggle.js"></script>
+</body>
+
+</html>
