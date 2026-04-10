@@ -220,6 +220,37 @@ export const translations = {
             p3: "Contacto",
             copyright: "© 2026 MC Designs. Todos los derechos reservados.",
             email: "miguel@mcdesignspr.com"
+        },
+        recursos_page: {
+            hero: {
+                tag: "✦ ACCESO EXCLUSIVO",
+                title: "Aprende a montar flujos inteligentes.",
+                subtext: "Accede a las guías paso a paso de los sistemas que uso para automatizar mi negocio y el de mis clientes."
+            },
+            gate: {
+                title: "Desbloquea los Recursos",
+                subtitle: "Sin spam. Solo guías de valor y nuestro stack de herramientas.",
+                input: "tu@email.com",
+                btn: "Desbloquear acceso",
+                disclaimer: "Al continuar, aceptas recibir emails de MC Designs."
+            },
+            hub: {
+                title: "Hub de Recursos",
+                subtext: "Todo lo necesario para construir, automatizar y escalar.",
+                tabs: {
+                    guides: "Guías de Flujos",
+                    tools: "Software Stack"
+                },
+                guides: {
+                    cta: "Ver guía completa"
+                },
+                tools: {
+                    filter_all: "Todos",
+                    suggest_title: "¿Falta algo en nuestro stack?",
+                    suggest_sub: "Sugiere una herramienta y la evaluamos.",
+                    suggest_btn: "Sugererir herramienta"
+                }
+            }
         }
     },
     en: {
@@ -443,6 +474,37 @@ export const translations = {
             p3: "Contact",
             copyright: "© 2026 MC Designs. All rights reserved.",
             email: "miguel@mcdesignspr.com"
+        },
+        recursos_page: {
+            hero: {
+                tag: "✦ EXCLUSIVE ACCESS",
+                title: "Learn to build intelligent flows.",
+                subtext: "Access step-by-step guides for the systems I use to automate my business and those of my clients."
+            },
+            gate: {
+                title: "Unlock the Resources",
+                subtitle: "No spam. Just high-value guides and our tool stack.",
+                input: "your@email.com",
+                btn: "Unlock Access",
+                disclaimer: "By continuing, you agree to receive emails from MC Designs."
+            },
+            hub: {
+                title: "Resources Hub",
+                subtext: "Everything needed to build, automate, and scale.",
+                tabs: {
+                    guides: "Flow Guides",
+                    tools: "Software Stack"
+                },
+                guides: {
+                    cta: "View Full Guide"
+                },
+                tools: {
+                    filter_all: "All",
+                    suggest_title: "Missing something in our stack?",
+                    suggest_sub: "Suggest a tool and we'll evaluate it.",
+                    suggest_btn: "Suggest Tool"
+                }
+            }
         }
     }
 };

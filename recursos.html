@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hub de Recursos | MC Designs</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-H9G7W9K8T9');
+    </script>
+
+    <title>Recursos y Guías de Automatización | MC Designs</title>
+    <meta name="description" content="Aprende a montar flujos inteligentes con nuestras guías paso a paso y accede a nuestro stack de herramientas de diseño y automatización." />
+    <link rel="canonical" href="https://mcdesignspr.com/recursos.html" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/recursos.html" />
+    <meta property="og:title" content="Hub de Recursos | MC Designs" />
+    <meta property="og:description" content="Accede al stack completo de MC Designs — las mismas herramientas que usamos para construir sitios, automatizar procesos e integrar IA en negocios reales." />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-dim": "#dadada",
+                        "surface-variant": "#e2e2e2",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-container": "#006df8",
+                        "on-primary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "secondary": "#9e4227",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5d5c5b",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline": "#727787",
+                        "surface-tint": "#0058cb",
+                        "on-primary-fixed-variant": "#00429c"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "heading": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
+        }
+        .gate-transition {
+            transition: opacity 400ms ease, transform 400ms ease;
+        }
+        .blurred-bg {
+            filter: blur(6px);
+            opacity: 0.4;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .tool-card {
+            transition: opacity 300ms ease, transform 300ms ease;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed flex flex-col min-h-screen">
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+        <a href="/index.html" class="flex-shrink-0">
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
+            <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html">Hub</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-4">
+            <!-- Language Toggle Pill -->
+            <div class="flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+            </div>
+            <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
+                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
+        <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
+        <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html">Hub</a>
+        <a href="/contacto.html" class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4" data-i18n="nav.cta">Comenzar Proyecto</a>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-32 pb-16 flex-grow flex flex-col">
+    <!-- State 1: Email Gate -->
+    <div id="gate-state" class="gate-transition opacity-100 transform translate-y-0 w-full flex-grow flex flex-col items-center justify-center relative">
+        <div class="max-w-4xl w-full mx-auto px-8 text-center space-y-6 relative z-20 pt-12 md:pt-24">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full" data-i18n="recursos_page.hero.tag">
+                <span class="material-symbols-outlined text-[14px]">lock</span> Acceso Gratuito
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface leading-tight" data-i18n="recursos_page.hero.title">
+                Aprende a montar flujos inteligentes.
+            </h1>
+            <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed" data-i18n="recursos_page.hero.subtext">
+                Accede a las guías paso a paso de los sistemas que uso para automatizar mi negocio y el de mis clientes.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-500 font-label tracking-widest uppercase">
+                <span data-i18n="recursos_page.hub.tabs.guides">Guías de Flujos</span>
+                <span class="w-1 h-1 bg-slate-300 rounded-full mx-2"></span>
+                <span data-i18n="recursos_page.hub.tabs.tools">Software Stack</span>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 pt-2">
+                <a href="https://instagram.com/mcdesignspr" target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-primary transition-colors">
+                    <img src="https://cdn.simpleicons.org/instagram/94a3b8" class="w-4 h-4" alt="Instagram"> Instagram
+                </a>
+                <span class="w-1 h-1 bg-slate-200 rounded-full"></span>
+                <a href="https://linkedin.com/company/mcdesignspr" target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-primary transition-colors">
+                    <img src="https://cdn.simpleicons.org/linkedin/94a3b8" class="w-4 h-4" alt="LinkedIn"> LinkedIn
+                </a>
+            </div>
+
+            <div class="mt-12 bg-white rounded-2xl shadow-xl border border-slate-100 p-8 max-w-[420px] mx-auto text-left relative z-20">
+                <h2 class="text-2xl font-bold tracking-tight mb-1" data-i18n="recursos_page.gate.title">Accede al Hub gratis</h2>
+                <p class="text-slate-500 text-sm mb-6" data-i18n="recursos_page.gate.subtitle">Sin spam. Solo recursos.</p>
+                <form id="gate-form" class="space-y-4">
+                    <input type="email" id="user-email" required placeholder="tu@email.com" data-i18n="recursos_page.gate.input" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+                    <button type="submit" class="w-full hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all flex justify-center items-center gap-2">
+                        <span data-i18n="recursos_page.gate.btn">Desbloquear acceso</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                    <p class="text-center text-[10px] text-slate-400 mt-4 leading-relaxed" data-i18n="recursos_page.gate.disclaimer">
+                        Al continuar, aceptas recibir emails de MC Designs.
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Blurred background preview -->
+        <div class="absolute inset-0 w-full h-[150%] md:h-[200%] overflow-hidden z-10 pt-[400px] md:pt-[500px] px-8 max-w-7xl mx-auto pointer-events-none">
+            <div class="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-surface to-transparent z-10"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 blurred-bg">
+                <!-- Mock Cards for Blur -->
+                <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 rounded-full" style="background-color: #EA580C"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#EA580C]">Automatización</span>
+                    </div>
+                    <img src="https://cdn.simpleicons.org/n8n/EA580C" alt="N8N" class="h-10 w-10 mb-4 ml-0">
+                    <h3 class="text-xl font-bold tracking-tight mb-2">N8N</h3>
+                    <p class="text-sm text-slate-500 mb-6">Automatización visual sin código. Conecta apps y crea flujos de trabajo en minutos.</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hidden md:block">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 rounded-full" style="background-color: #7C3AED"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#7C3AED]">IA</span>
+                    </div>
+                    <img src="https://cdn.simpleicons.org/anthropic/7C3AED" alt="Anthropic" class="h-10 w-10 mb-4 ml-0">
+                    <h3 class="text-xl font-bold tracking-tight mb-2">Anthropic</h3>
+                    <p class="text-sm text-slate-500 mb-6">Creadores de Claude. La IA que potencia los agentes y flujos inteligentes de MC Designs.</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hidden md:block">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 rounded-full" style="background-color: #2563EB"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#2563EB]">Web</span>
+                    </div>
+                    <img src="https://cdn.simpleicons.org/vercel/2563EB" alt="Vercel" class="h-10 w-10 mb-4 ml-0">
+                    <h3 class="text-xl font-bold tracking-tight mb-2">Vercel</h3>
+                    <p class="text-sm text-slate-500 mb-6">Deploy instantáneo para sitios modernos. Del primer commit a producción en minutos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- State 2: Unlocked Hub -->
+    <div id="hub-state" class="hidden gate-transition opacity-0 transform translate-y-4 w-full flex-grow flex-col">
+        <div class="max-w-7xl mx-auto px-8 w-full z-20">
+            <!-- Hub Header -->
+            <div class="text-center space-y-4 py-12 md:py-16">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface" data-i18n="recursos_page.hub.title">Hub de Recursos</h1>
+                <p class="text-lg text-on-surface-variant max-w-2xl mx-auto" data-i18n="recursos_page.hub.subtext">Todo lo necesario para construir, automatizar y escalar.</p>
+                
+                <!-- Main Tabs -->
+                <div class="flex items-center justify-center gap-2 pt-8">
+                    <div class="bg-slate-100 p-1 rounded-xl inline-flex">
+                        <button id="tab-guides" class="px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-sm text-primary" data-tab="guides" data-i18n="recursos_page.hub.tabs.guides">Guías de Flujos</button>
+                        <button id="tab-tools" class="px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-slate-700" data-tab="tools" data-i18n="recursos_page.hub.tabs.tools">Software Stack</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guides Section -->
+            <div id="guides-section" class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="guides-grid">
+                    <!-- Javascript populates guides -->
+                </div>
+            </div>
+
+            <!-- Tools Section (Hidden by default) -->
+            <div id="tools-section" class="hidden space-y-8">
+                <!-- Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2" id="category-filters">
+                    <!-- Javascript populates filters -->
+                </div>
+                <!-- Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="tools-grid">
+                    <!-- Javascript will inject tools here -->
+                </div>
+            </div>
+
+            <!-- Suggestion Footer CTA -->
+            <div class="mt-24 pt-12 text-center pb-8 border-t border-slate-100">
+                <h3 class="font-bold tracking-tight text-on-surface" data-i18n="recursos_page.hub.tools.suggest_title">¿Falta algo en nuestro stack?</h3>
+                <p class="text-sm text-slate-500 mb-6" data-i18n="recursos_page.hub.tools.suggest_sub">Sugiere una herramienta y la evaluamos.</p>
+                <a href="mailto:miguel@mcdesignspr.com?subject=Sugerencia para el Hub de Recursos" class="inline-block px-5 py-2 border-2 border-slate-200 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-colors" data-i18n="recursos_page.hub.tools.suggest_btn">Sugerir herramienta</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-1">
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/recursos.html">Hub de Recursos</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://twitter.com/mcdesignspr" target="_blank" rel="noopener">Twitter</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://linkedin.com/company/mcdesignspr" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Gate & Hub Logic Script -->
+<script>
+    const guides = [
+        {
+            title: "AI Content Generator",
+            desc: "De foto de producto a listing de Shopify y caption de Instagram en segundos. El flujo exacto que montamos para BE Boutique.",
+            tags: ["N8N", "AI Vision", "Shopify"],
+            url: "automation-content-generator.html",
+            icon: "inventory_2",
+            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            title: "Lead Magnet & Onboarding",
+            desc: "Cómo capturar clientes, enviarles un recurso gratuito y moverlos a una llamada agendada sin mover un dedo.",
+            tags: ["Automation", "Marketing", "WhatsApp"],
+            url: "#",
+            icon: "person_add",
+            image: "https://images.unsplash.com/photo-1551288049-bbbda5366392?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            title: "Video to Blog Post",
+            desc: "Extrae el audio de tus Reels o TikToks y conviértelos en artículos optimizados para SEO y posts de LinkedIn.",
+            tags: ["AI Content", "SEO", "LinkedIn"],
+            url: "#",
+            icon: "article",
+            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+        }
+    ];
+
+    const tools = [
+        {name: "N8N", category: "Automatización", color: "EA580C", slug: "n8n", desc: "Automatización visual sin código. Conecta apps y crea flujos de trabajo en minutos."},
+        {name: "Anthropic", category: "IA", color: "7C3AED", slug: "anthropic", desc: "Creadores de Claude. La IA que potencia los agentes y flujos inteligentes de MC Designs."},
+        {name: "OpenAI", category: "IA", color: "7C3AED", slug: "openai", desc: "Creadores de ChatGPT y GPT-4. Generación de texto e imágenes con DALL·E."},
+        {name: "Gemini", category: "IA", color: "7C3AED", slug: "googlegemini", desc: "El modelo de IA de Google con acceso a datos en tiempo real y razonamiento avanzado."},
+        {name: "Shopify", category: "Web", color: "2563EB", slug: "shopify", desc: "La plataforma de e-commerce más potente. Tiendas rápidas, escalables y listas para vender."},
+        {name: "Notion", category: "Productividad", color: "16A34A", slug: "notion", desc: "Base de datos, CRM y cerebro operativo de MC Designs. Todo el conocimiento en un lugar."},
+        {name: "Vercel", category: "Web", color: "2563EB", slug: "vercel", desc: "Deploy instantáneo para sitios modernos. Del primer commit a producción en minutos."},
+        {name: "GitHub", category: "Web", color: "2563EB", slug: "github", desc: "Control de versiones para todo el código de MC Designs. Seguro y organizado."},
+        {name: "Supabase", category: "Web", color: "2563EB", slug: "supabase", desc: "Backend open-source con base de datos en tiempo real y autenticación integrada."},
+        {name: "Google Workspace", category: "Productividad", color: "16A34A", slug: "google", desc: "Gmail, Drive, Docs y Calendar. La suite de comunicación diaria de MC Designs."},
+        {name: "Adobe", category: "Diseño", color: "DB2777", slug: "adobe", desc: "Photoshop, Illustrator y más. Para crear todos los activos visuales de MC Designs."},
+        {name: "Figma", category: "Diseño", color: "DB2777", slug: "figma", desc: "Diseño UI/UX en la nube. Wireframes, prototipos y diseño final antes de desarrollar."}
+    ];
+
+    const categories = ["Todos", "IA", "Web", "Diseño", "Automatización", "Productividad"];
+    let currentCategory = "Todos";
+    let activeTab = "guides";
+
+    const gateState = document.getElementById('gate-state');
+    const hubState = document.getElementById('hub-state');
+    const gateForm = document.getElementById('gate-form');
+    const toolsGrid = document.getElementById('tools-grid');
+    const guidesGrid = document.getElementById('guides-grid');
+    const filtersContainer = document.getElementById('category-filters');
+    const guidesSection = document.getElementById('guides-section');
+    const toolsSection = document.getElementById('tools-section');
+
+    function renderFilters() {
+        filtersContainer.innerHTML = categories.map(cat => {
+            const isActive = cat === currentCategory;
+            const activeClasses = "bg-slate-800 text-white border-slate-800";
+            const inactiveClasses = "bg-white text-slate-600 border-slate-200 hover:border-slate-300";
+            return `<button data-cat="${cat}" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-colors border ${isActive ? activeClasses : inactiveClasses}">${cat}</button>`;
+        }).join('');
+
+        filtersContainer.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                currentCategory = e.target.getAttribute('data-cat');
+                renderFilters();
+                renderTools();
+            });
+        });
+    }
+
+    function renderTools() {
+        const filteredTools = currentCategory === "Todos" 
+            ? tools 
+            : tools.filter(t => t.category === currentCategory);
+        
+        toolsGrid.innerHTML = filteredTools.map(t => `
+            <div class="tool-card bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="w-2 h-2 rounded-full" style="background-color: #${t.color}"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #${t.color}">${t.category}</span>
+                </div>
+                <img src="https://cdn.simpleicons.org/${t.slug}/${t.color}" alt="${t.name}" class="h-10 w-10 mb-4 ml-0 object-contain">
+                <h3 class="text-xl font-bold tracking-tight mb-2 text-on-surface">${t.name}</h3>
+                <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed line-clamp-2">${t.desc}</p>
+                <div class="mt-auto">
+                    <span class="inline-flex items-center gap-1 font-label text-xs uppercase tracking-widest font-bold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">Ver más <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderGuides() {
+        guidesGrid.innerHTML = guides.map(g => `
+            <a href="${g.url}" class="group block overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+                <div class="relative h-56 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <img src="${g.image}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute top-4 left-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur shadow-sm rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 border border-slate-100">
+                            <span class="material-symbols-outlined text-[14px]">${g.icon}</span> Guía de Flujo
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-wrap gap-2">
+                            ${g.tags.map(tag => `<span class="px-2 py-0.5 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded border border-slate-100">${tag}</span>`).join('')}
+                        </div>
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">5 min read</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold tracking-tight text-on-surface mb-2 group-hover:text-primary transition-colors">${g.title}</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed line-clamp-3">${g.desc}</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between border-t border-slate-50">
+                        <div class="flex items-center gap-2">
+                             <div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-[10px] font-bold text-on-primary-fixed">MC</div>
+                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Miguel Cotto</span>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all">Ver guía <span class="material-symbols-outlined text-[16px]">north_east</span></span>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    function initTabs() {
+        const btnGuides = document.getElementById('tab-guides');
+        const btnTools = document.getElementById('tab-tools');
+
+        const updateUI = () => {
+            if (activeTab === 'guides') {
+                btnGuides.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                btnGuides.classList.remove('text-slate-500');
+                btnTools.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                btnTools.classList.add('text-slate-500');
+                
+                guidesSection.classList.remove('hidden');
+                toolsSection.classList.add('hidden');
+            } else {
+                btnTools.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                btnTools.classList.remove('text-slate-500');
+                btnGuides.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                btnGuides.classList.add('text-slate-500');
+                
+                toolsSection.classList.remove('hidden');
+                guidesSection.classList.add('hidden');
+                renderFilters();
+                renderTools();
+            }
+        };
+
+        btnGuides.addEventListener('click', () => { activeTab = 'guides'; updateUI(); });
+        btnTools.addEventListener('click', () => { activeTab = 'tools'; updateUI(); });
+    }
+
+    function showUnlockedState() {
+        gateState.classList.remove('opacity-100', 'translate-y-0');
+        gateState.classList.add('opacity-0', '-translate-y-4');
+        
+        setTimeout(() => {
+            gateState.classList.add('hidden');
+            gateState.classList.remove('flex');
+            
+            hubState.classList.remove('hidden');
+            hubState.classList.add('flex');
+            
+            void hubState.offsetWidth;
+            
+            hubState.classList.remove('opacity-0', 'translate-y-4');
+            hubState.classList.add('opacity-100', 'translate-y-0');
+            
+            renderGuides();
+            initTabs();
+        }, 400);
+    }
+
+    if (localStorage.getItem('mc_hub_unlocked') === 'true') {
+        gateState.classList.add('hidden');
+        gateState.classList.remove('flex');
+        hubState.classList.remove('hidden', 'opacity-0', 'translate-y-4');
+        hubState.classList.add('flex', 'opacity-100', 'translate-y-0');
+        renderGuides();
+        initTabs();
+    }
+
+    gateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('user-email').value;
+        if(email) {
+            localStorage.setItem('mc_hub_unlocked', 'true');
+            showUnlockedState();
+        }
+    });
+
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            menuIcon.textContent = 'close';
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            menuIcon.textContent = 'menu';
+        }
+    });
+</script>
+<script type="module" src="assets/language-toggle.js"></script>
+</body>
+</html>
