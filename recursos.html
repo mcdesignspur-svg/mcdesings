@@ -400,8 +400,7 @@
                 desc: "Cómo construí un agente con Claude Code y Notion que encuentra clientes, escribe pitches personalizados y organiza todo solo.",
                 tags: ["Claude Code", "Notion", "Prospecting"],
                 url: "guia-prospecting-ai.html",
-                icon: "robot",
-                image: "/assets/hero-prospecting-ai.jpg"
+                icon: "robot"
             }
         ];
 
@@ -477,19 +476,13 @@
         function renderGuides() {
             guidesGrid.innerHTML = guides.map(g => `
             <a href="${g.url}" class="group block overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                <div class="relative h-56 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-                    <img src="${g.image}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="absolute top-4 left-4">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur shadow-sm rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 border border-slate-100">
-                            <span class="material-symbols-outlined text-[14px]">${g.icon}</span> Guía de Flujo
-                        </span>
-                    </div>
-                </div>
                 <div class="p-6 space-y-4">
                     <div class="flex items-center justify-between">
                         <div class="flex flex-wrap gap-2">
-                            ${g.tags.map(tag => `<span class="px-2 py-0.5 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded border border-slate-100">${tag}</span>`).join('')}
+                             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/10">
+                                <span class="material-symbols-outlined text-[14px]">${g.icon}</span> Guía
+                            </span>
+                            ${g.tags.map(tag => `<span class="px-2 py-1.5 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded-full border border-slate-100">${tag}</span>`).join('')}
                         </div>
                         <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">5 min read</span>
                     </div>
