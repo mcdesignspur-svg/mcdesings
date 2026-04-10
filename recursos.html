@@ -475,27 +475,36 @@
 
         function renderGuides() {
             guidesGrid.innerHTML = guides.map(g => `
-            <a href="${g.url}" class="group block overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                <div class="p-6 space-y-4">
+            <a href="${g.url}" class="group relative block overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-12px_rgba(0,86,198,0.12)] hover:-translate-y-2 transition-all duration-500">
+                <!-- Top Accent Bar -->
+                <div class="absolute top-0 left-0 w-full h-1.5 hero-gradient opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="p-8 space-y-6">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-wrap gap-2">
-                             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/10">
-                                <span class="material-symbols-outlined text-[14px]">${g.icon}</span> Guía
-                            </span>
-                            ${g.tags.map(tag => `<span class="px-2 py-1.5 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded-full border border-slate-100">${tag}</span>`).join('')}
+                        <div class="flex items-center gap-3">
+                             <div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                                <span class="material-symbols-outlined text-xl">${g.icon}</span>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Recurso Premium</span>
                         </div>
-                        <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">5 min read</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-300">5 min read</span>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold tracking-tight text-on-surface mb-2 group-hover:text-primary transition-colors">${g.title}</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed line-clamp-3">${g.desc}</p>
+
+                    <div class="space-y-3">
+                        <h3 class="text-2xl md:text-3xl font-black tracking-tight text-slate-900 leading-tight group-hover:text-primary transition-colors duration-300">${g.title}</h3>
+                        <p class="text-slate-500 leading-relaxed line-clamp-2 text-sm md:text-base">${g.desc}</p>
                     </div>
-                    <div class="pt-4 flex items-center justify-between border-t border-slate-50">
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        ${g.tags.map(tag => `<span class="px-3 py-1 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded-full border border-slate-100">${tag}</span>`).join('')}
+                    </div>
+
+                    <div class="pt-6 flex items-center justify-between border-t border-slate-50">
                         <div class="flex items-center gap-2">
-                             <div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-[10px] font-bold text-on-primary-fixed">MC</div>
-                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Miguel Cotto</span>
+                             <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">MC</div>
+                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-600 transition-colors">Miguel Cotto</span>
                         </div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all">Ver guía <span class="material-symbols-outlined text-[16px]">north_east</span></span>
+                        <span class="material-symbols-outlined text-primary opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">arrow_forward</span>
                     </div>
                 </div>
             </a>
