@@ -115,11 +115,17 @@
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
-    <div class="flex items-center max-w-7xl mx-auto px-8 py-6">
-        <a href="/" class="flex-shrink-0">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
-        </a>
-        <div class="hidden md:flex flex-1 items-center justify-center gap-10 font-sans text-sm font-medium tracking-tight">
+    <div class="flex items-center w-full px-8 py-5">
+
+        <!-- Left: Logo -->
+        <div class="flex-1 flex items-center">
+            <a href="/">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            </a>
+        </div>
+
+        <!-- Center: Links -->
+        <div class="hidden md:flex items-center gap-10 font-sans text-sm font-medium tracking-tight">
             <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
             <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
             <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
@@ -127,11 +133,12 @@
             <a class="text-slate-600 hover:text-primary transition-colors" href="/demos">Demos IA</a>
             <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto" data-i18n="nav.contact">Contacto</a>
         </div>
-        <div class="flex items-center gap-3 sm:gap-5 ml-auto">
-            <a href="/recursos" class="hidden sm:inline-block bg-white text-primary border border-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold hover:bg-primary/5 active:scale-95 transition-all" data-i18n="nav.hub">Recursos</a>
-            <a href="/contacto" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
-            <!-- Language Toggle Pill -->
-            <div class="hidden sm:flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+
+        <!-- Right: Buttons + Language Toggle -->
+        <div class="flex-1 flex items-center justify-end gap-4">
+            <a href="/recursos" class="hidden md:inline-block bg-white text-primary border border-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold hover:bg-primary/5 active:scale-95 transition-all" data-i18n="nav.hub">Recursos</a>
+            <a href="/contacto" class="hidden md:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+            <div class="hidden md:flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
                 <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
                 <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
             </div>
@@ -140,6 +147,7 @@
                 <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
             </button>
         </div>
+
     </div>
     
     <!-- Mobile Menu Overlay -->
