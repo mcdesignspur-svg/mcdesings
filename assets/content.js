@@ -56,7 +56,7 @@ export const translations = {
         },
         cta_section: {
             title: "¿Listo para <span class=\"text-primary-fixed\">Crecer</span>?",
-            subtext: "La construimos juntos — con IA integrada desde el día uno para que escales sin contratar más gente.",
+            subtext: "Construimos tu web + IA a medida — para que tu negocio crezca sin depender de más gente.",
             cta: "Comenzar Proyecto"
         },
         portfolio_page: {
@@ -311,7 +311,7 @@ export const translations = {
         },
         cta_section: {
             title: "Ready to <span class=\"text-primary-fixed\">Grow</span>?",
-            subtext: "We build it together — with AI integrated from day one so you can scale without hiring more people.",
+            subtext: "We build your web + AI custom — so your business grows without depending on more people.",
             cta: "Start a Project"
         },
         portfolio_page: {
