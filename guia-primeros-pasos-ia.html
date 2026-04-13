@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <!-- Hub Access Check -->
+    <script>
+        if (localStorage.getItem('mc_hub_unlocked') !== 'true') {
+            window.location.href = '/recursos.html?from=' + encodeURIComponent(window.location.pathname);
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>3 Primeros Pasos para Usar IA en Tu Negocio | MC Designs</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9G7W9K8T9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-H9G7W9K8T9');
+    </script>
+
+    <meta name="description"
+        content="Guía práctica para dueños de negocio: identifica tareas, usa Claude/ChatGPT y automatiza procesos reales hoy mismo." />
+    <link rel="canonical" href="https://mcdesignspr.com/guia-primeros-pasos-ia" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/guia-primeros-pasos-ia.html" />
+    <meta property="og:title" content="3 Primeros Pasos para Usar IA en Tu Negocio | MC Designs" />
+    <meta property="og:description"
+        content="La IA no es solo para empresas grandes. Descubre cómo empezar a usarla en tu negocio hoy mismo con estos 3 pasos simples." />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-dim": "#dadada",
+                        "surface-variant": "#e2e2e2",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-container": "#006df8",
+                        "on-primary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "secondary": "#9e4227",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5d5c5b",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline": "#727787",
+                        "surface-tint": "#0058cb",
+                        "on-primary-fixed-variant": "#00429c"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "heading": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
+        }
+
+        /* Blog prose explicit spacing */
+        article.prose p {
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+        article.prose h2 {
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 1.875rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+        }
+        article.prose h3 {
+            margin-top: 2.25rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        article.prose ul, article.prose ol {
+            margin-bottom: 1.75rem;
+        }
+        article.prose li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        article.prose strong {
+            color: #0f172a;
+        }
+        article.prose blockquote {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        article.prose hr {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed flex flex-col min-h-screen">
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+        style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+            <a href="/index.html" class="flex-shrink-0">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html"
+                    data-i18n="nav.home">Inicio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html"
+                    data-i18n="nav.services">Servicios</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html"
+                    data-i18n="nav.portfolio">Portafolio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html"
+                    data-i18n="nav.about">Nosotros</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html"
+                    data-i18n="nav.contact">Contacto</a>
+                <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html"
+                    data-i18n="nav.hub">Hub</a>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div
+                    class="flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                    <button id="lang-es"
+                        class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                    <button id="lang-en"
+                        class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+                </div>
+                <a href="/contacto.html"
+                    class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150"
+                    data-i18n="nav.cta">Comenzar Proyecto</a>
+                <button id="mobile-menu-toggle"
+                    class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html"
+                data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html"
+                data-i18n="nav.services">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html"
+                data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html"
+                data-i18n="nav.about">Nosotros</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html"
+                data-i18n="nav.contact">Contacto</a>
+            <a class="text-primary font-bold hover:text-primary transition-colors" href="/recursos.html">Hub</a>
+            <a href="/contacto.html"
+                class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4"
+                data-i18n="nav.cta">Comenzar Proyecto</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 flex-grow flex flex-col bg-surface">
+        <div class="max-w-3xl mx-auto px-6 md:px-8 w-full">
+            <!-- Breadcrumb -->
+            <a href="/recursos.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-label uppercase tracking-widest transition-colors mb-12">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span> Hub de Recursos
+            </a>
+
+            <!-- Heading -->
+            <header class="mb-16">
+                <div class="flex flex-wrap gap-2 mb-6 text-xs font-label uppercase tracking-widest text-primary">
+                    <span class="px-2.5 py-1 bg-primary/10 rounded-full">Inteligencia Artificial</span>
+                    <span class="px-2.5 py-1 bg-primary/10 rounded-full">Negocios</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full">Guía Principiantes</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6">
+                    3 Primeros Pasos para Usar IA en Tu Negocio
+                </h1>
+                
+                <div class="flex items-center gap-4 border-t border-b border-slate-100 py-6 mb-8 mt-12">
+                    <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="w-12 h-12 bg-slate-100 rounded-full object-cover border border-slate-200 p-2">
+                    <div>
+                        <div class="font-bold text-slate-900 tracking-tight">Miguel Cotto</div>
+                        <div class="text-sm text-slate-500 font-medium">Fundador, MC Designs</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-amber-600">warning</span>
+                        <p class="text-sm text-amber-800 font-medium">
+                            ¿Ya sabes que quieres IA en tu negocio y solo necesitas a alguien que lo construya? 
+                            <a href="https://mcdesignspr.com/contacto" class="underline font-bold hover:text-amber-900 transition-colors">Agenda tu consultoría gratis aquí →</a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Article Body -->
+            <article class="prose prose-lg prose-slate max-w-none text-slate-600 font-sans 
+                prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900 
+                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-4 prose-h2:border-b prose-h2:border-slate-100 
+                prose-h3:text-xl prose-h3:mt-10
+                prose-p:leading-relaxed prose-p:mb-8
+                prose-strong:text-slate-900
+                prose-li:my-2
+                prose-ul:list-disc prose-ul:pl-5">
+
+                <h3>¿Por qué necesitas leer esto?</h3>
+                <p>La mayoría de dueños de negocio en Puerto Rico escuchan “inteligencia artificial” y piensan dos cosas: “eso es para empresas grandes” o “no sé por dónde empezar.” Ninguna de las dos es cierta. La IA ya está disponible para cualquier negocio, a cualquier escala — y los que la estén usando hoy van a tener una ventaja brutal sobre los que la ignoren. Este es el punto de partida real.</p>
+
+                <h2>Paso 1 — Identifica qué tarea te roba más tiempo</h2>
+                <p>Antes de tocar cualquier herramienta, házte esta pregunta: ¿Qué hago todos los días que siento que no debería estar haciendo yo? Escoge una sola tarea. No intentes automatizar todo de golpe — eso es el error más común. Una tarea, bien hecha, ya cambia el juego.</p>
+                <ul>
+                    <li>Responder las mismas preguntas de clientes por WhatsApp o email</li>
+                    <li>Escribir contenido para redes sociales</li>
+                    <li>Hacer seguimientos a prospectos</li>
+                    <li>Redactar presupuestos o propuestas</li>
+                    <li>Organizar información o reportes</li>
+                </ul>
+
+                <h2>Paso 2 — Usa Claude o ChatGPT para resolver esa tarea</h2>
+                <p>No necesitas software especial ni configuraciones complejas para empezar. Solo necesitas una cuenta gratuita en Claude (claude.ai) o ChatGPT (chatgpt.com). La clave está en cómo le hablas a la IA. No es un buscador — es un asistente. Trátalo como si le estuvieras explicando el trabajo a alguien nuevo.</p>
+                
+                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 my-8 not-prose">
+                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">lightbulb</span> Ejemplo práctico
+                    </p>
+                    <p class="text-slate-700 font-medium mb-4">Si tu tarea es responder preguntas frecuentes de clientes, dile a Claude:</p>
+                    <blockquote class="bg-white border border-slate-200 p-4 rounded-xl text-slate-600 italic mb-4">
+                        “Eres el asistente de [nombre de tu negocio]. Un cliente me pregunta: [pregunta]. Responde de forma cordial, en español, en no más de 3 oraciones.”
+                    </blockquote>
+                    <p class="text-sm text-slate-500">Pruébalo con 5 preguntas reales que recibes seguido. Afina la respuesta hasta que suene como tú. Eso es un asistente de IA básico funcionando en menos de 30 minutos.</p>
+                </div>
+
+                <h2>Paso 3 — Mide el tiempo que ahorraste y expande</h2>
+                <p>Después de una semana usando IA en esa tarea, házte esta pregunta: ¿Cuánto tiempo me ahorró esto? Si la respuesta es 30 minutos o más por semana — ya tienes ROI positivo. Ahora puedes:</p>
+                <ul>
+                    <li><strong>Mejorar ese proceso</strong> — darle más contexto a la IA, afinar las respuestas</li>
+                    <li><strong>Añadir una segunda tarea</strong> — y repetir el mismo proceso</li>
+                    <li><strong>Automatizarlo completamente</strong> — conectar la IA a tus herramientas existentes para que trabaje sin que tú estés presente</li>
+                </ul>
+                <p>Ese tercer nivel — donde la IA trabaja sola, integrada en tu negocio — es exactamente lo que construimos en MC Designs.</p>
+
+                <hr class="border-slate-100 my-16" />
+
+                <div class="bg-gradient-to-tr from-[#0056c6]/10 to-[#006df8]/5 rounded-3xl p-8 md:p-12 text-center not-prose border border-[#0056c6]/20 shadow-sm">
+                    <h3 class="text-2xl font-black tracking-tight text-slate-900 mb-4">¿Listo para el siguiente nivel?</h3>
+                    <p class="text-slate-600 mb-8 max-w-xl mx-auto">
+                        Los 3 pasos anteriores te dan un punto de partida sólido. Pero si quieres un sistema de IA que trabaje para tu negocio 24/7 — que responda clientes, genere contenido, y automatice procesos sin que tú intervengas — eso requiere una integración profesional. Eso es lo que hacemos.
+                    </p>
+                    <p class="text-sm font-bold text-slate-900 mb-8">👉 Escríbenos y cuéntanos qué tarea quieres automatizar primero. La primera consultoría es gratis.</p>
+                    <a href="https://mcdesignspr.com/contacto" class="inline-flex items-center gap-2 hero-gradient text-on-primary px-8 py-4 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                        Agenda tu consultoría gratis <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                </div>
+
+                <p class="text-center text-sm text-slate-400 mt-12 font-medium">
+                    MC Designs — Web Design + AI Integration. El Estudio Todo en Uno. 🇵🇷
+                </p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs
+                </div>
+                <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">
+                    Diseñando el futuro, hoy.</div>
+                <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno —
+                    Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            </div>
+            <div class="flex flex-col gap-4">
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold"
+                    data-i18n="footer.services_label">Servicios</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html"
+                    data-i18n="footer.s1">Diseño de Marca</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html"
+                    data-i18n="footer.s2">Diseño Web</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html"
+                    data-i18n="footer.s3">Integración IA</a>
+            </div>
+            <div class="flex flex-col gap-4">
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold"
+                    data-i18n="footer.studio_label">Estudio</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html"
+                    data-i18n="footer.p1">Portafolio</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html"
+                    data-i18n="footer.p2">Servicios</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html"
+                    data-i18n="footer.p3">Contacto</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/recursos.html">Hub de
+                    Recursos</a>
+            </div>
+            <div class="flex flex-col gap-4">
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold"
+                    data-i18n="footer.connect_label">Conectar</span>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200"
+                    href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200"
+                    href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos
+                reservados.</p>
+            <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                menuIcon.textContent = 'close';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.textContent = 'menu';
+            }
+        });
+    </script>
+    <script type="module" src="assets/language-toggle.js"></script>
+</body>
+
+</html>
