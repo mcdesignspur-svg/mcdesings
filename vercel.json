@@ -20,7 +20,8 @@
     { "source": "/guia-prospecting-ai", "destination": "/guia-prospecting-ai.html" },
     { "source": "/guia-configuracion-claude-code", "destination": "/guia-configuracion-claude-code.html" },
     { "source": "/guia-migracion-claude", "destination": "/guia-migracion-claude.html" },
-    { "source": "/guia-primeros-pasos-ia", "destination": "/guia-primeros-pasos-ia.html" }
+    { "source": "/guia-primeros-pasos-ia", "destination": "/guia-primeros-pasos-ia.html" },
+    { "source": "/demos", "destination": "/demos.html" }
   ],
   "headers": [
     {
