@@ -476,6 +476,83 @@
     </div>
 </footer>
 
+<!-- AI Quiz Popup -->
+<div id="quiz-popup" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <!-- Backdrop -->
+    <div id="quiz-popup-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+    <!-- Card -->
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 flex flex-col items-center text-center translate-y-4 transition-transform duration-300" id="quiz-popup-card">
+
+        <!-- Close -->
+        <button id="quiz-popup-close" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors">
+            <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+
+        <!-- Badge -->
+        <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-5">Gratis · 30 segundos</span>
+
+        <!-- Headline -->
+        <h2 class="text-3xl font-black tracking-tighter text-on-surface leading-tight mb-3">
+            ¿Tu negocio está<br/>listo para la IA?
+        </h2>
+
+        <!-- Subtext -->
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-7 max-w-xs">
+            Responde 3 preguntas y descubre exactamente qué herramienta puede ahorrarte tiempo y generar más ventas — personalizado para tu negocio.
+        </p>
+
+        <!-- CTA -->
+        <button id="quiz-popup-cta" class="w-full bg-primary text-white font-bold text-sm py-3.5 rounded-xl hover:bg-primary/90 active:scale-95 transition-all mb-3">
+            Descúbrelo gratis →
+        </button>
+
+        <!-- Dismiss -->
+        <button id="quiz-popup-dismiss" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">
+            Ahora no
+        </button>
+    </div>
+</div>
+
+<script>
+(function () {
+    const STORAGE_KEY = 'mc_quiz_popup_seen';
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+    const popup   = document.getElementById('quiz-popup');
+    const card    = document.getElementById('quiz-popup-card');
+    const backdrop  = document.getElementById('quiz-popup-backdrop');
+    const btnClose  = document.getElementById('quiz-popup-close');
+    const btnCta    = document.getElementById('quiz-popup-cta');
+    const btnDismiss = document.getElementById('quiz-popup-dismiss');
+
+    function openPopup() {
+        popup.classList.remove('opacity-0', 'pointer-events-none');
+        popup.classList.add('opacity-100');
+        card.classList.remove('translate-y-4');
+    }
+
+    function closePopup() {
+        popup.classList.add('opacity-0', 'pointer-events-none');
+        popup.classList.remove('opacity-100');
+        card.classList.add('translate-y-4');
+        sessionStorage.setItem(STORAGE_KEY, '1');
+    }
+
+    setTimeout(openPopup, 2500);
+
+    btnCta.addEventListener('click', function () {
+        closePopup();
+        const quiz = document.getElementById('ai-quiz');
+        if (quiz) quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    btnClose.addEventListener('click', closePopup);
+    btnDismiss.addEventListener('click', closePopup);
+    backdrop.addEventListener('click', closePopup);
+})();
+</script>
+
 <!-- Scripts -->
 <script type="module" src="assets/language-toggle.js"></script>
 <script>

@@ -50,6 +50,16 @@ export default async function handler(req, res) {
 
     if (error) throw error;
 
+    // Fire N8N webhook (non-blocking — don't fail lead save if this errors)
+    const webhookUrl = process.env.N8N_WEBHOOK_URL;
+    if (webhookUrl) {
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, email, telefono, negocio, dolor, meta, resultado, fuente }),
+      }).catch((err) => console.error('[ai-lead-save] N8N webhook error:', err?.message));
+    }
+
     return res.status(200).json({ saved: true });
   } catch (err) {
     console.error('[ai-lead-save] Error:', err?.message);
