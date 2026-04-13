@@ -21,7 +21,7 @@ export const translations = {
         },
         mission: {
             label: "El punto de partida",
-            text: "Tu negocio no está perdiendo clientes porque tu web es fea. La está perdiendo porque nadie la puede encontrar — ni Google, ni ChatGPT, ni los clientes que buscan exactamente lo que ofreces."
+            text: "Tu negocio necesita dos cosas para crecer en 2025: una web que te encuentren, y sistemas de IA que te liberen tiempo. <span class=\"text-primary\">Eso es exactamente lo que construimos</span> — nada más, nada menos."
         },
         services: {
             label: "Servicios",
@@ -276,7 +276,7 @@ export const translations = {
         },
         mission: {
             label: "The starting point",
-            text: "Your business isn't losing clients because your website is ugly. It's losing them because no one can find it — not Google, not ChatGPT, not the clients searching for exactly what you offer."
+            text: "Your business needs two things to grow in 2025: a website people can find, and AI systems that free up your time. <span class=\"text-primary\">That's exactly what we build</span> — nothing more, nothing less."
         },
         services: {
             label: "Services",
