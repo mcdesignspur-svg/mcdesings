@@ -6,22 +6,22 @@ export const translations = {
             services: "Servicios",
             portfolio: "Portafolio",
             ai: "Integración IA",
-            about: "Nosotros",
+            about: "Miguel",
             contact: "Contacto",
-            hub: "Hub",
+            hub: "Recursos",
             cta: "Comenzar Proyecto"
         },
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
-            tagline: "El Estudio Todo en Uno",
-            headline: "EL STUDIO TODO EN UNO",
-            subtext: "Ayudamos a los negocios a crecer construyendo su presencia digital e integrando IA en sus operaciones, para que puedan competir, vender y trabajar de forma más inteligente.",
+            tagline: "Diseño Web + IA · Puerto Rico",
+            headline: "LA WEB QUE VENDE. EL AI QUE TRABAJA.",
+            subtext: "Soy Miguel. Construyo webs que traen clientes e integro IA para automatizar lo rutinario — para negocios en Puerto Rico que quieren crecer de verdad. También diseño la marca si la necesitas.",
             cta1: "Comenzar Proyecto",
             cta2: "Ver Portafolio",
         },
         mission: {
-            label: "Nuestra Misión",
-            text: "Ayudamos a los negocios a crecer construyendo su presencia digital e integrando <span class=\"bg-white px-4 py-1 rounded-full shadow-sm border border-outline-variant/20 inline-flex items-center gap-2\"><span class=\"material-symbols-outlined text-primary\" data-icon=\"neurology\">neurology</span>IA</span> en sus operaciones, para que puedan <span class=\"text-primary\">competir</span>, vender y trabajar de forma más inteligente."
+            label: "El punto de partida",
+            text: "Tu negocio no está perdiendo clientes porque tu web es fea. La está perdiendo porque nadie la puede encontrar — ni Google, ni ChatGPT, ni los clientes que buscan exactamente lo que ofreces."
         },
         services: {
             label: "Servicios",
@@ -55,8 +55,8 @@ export const translations = {
             cta: "Comenzar Proyecto"
         },
         cta_section: {
-            title: "¿Listo para <span class=\"text-primary-fixed\">Escalar</span>?",
-            subtext: "Únete a las marcas que se mueven a la velocidad de la inteligencia. Construyamos tu todo.",
+            title: "¿Tu negocio necesita una web que <span class=\"text-primary-fixed\">trabaje</span>?",
+            subtext: "La construimos juntos — con IA integrada desde el día uno para que escales sin contratar más gente.",
             cta: "Comenzar Proyecto"
         },
         portfolio_page: {
@@ -176,7 +176,7 @@ export const translations = {
         },
         about_page: {
             hero: {
-                tagline: "El Estudio Todo en Uno.",
+                tagline: "Fundador · MC Designs · Puerto Rico",
                 subheadline: "Construyendo para marcas con ambición."
             },
             about: {
@@ -263,20 +263,20 @@ export const translations = {
             ai: "AI Integration",
             about: "About",
             contact: "Contact",
-            hub: "Hub",
+            hub: "Resources",
             cta: "Start a Project"
         },
         hero: {
             tag: "✦ WEB DESIGN + AI IN PR",
-            tagline: "The Everything Studio",
-            headline: "THE EVERYTHING STUDIO",
-            subtext: "We help businesses grow by building their digital presence and integrating AI into their operations, so they can compete, sell, and operate smarter.",
+            tagline: "Web Design + AI · Puerto Rico",
+            headline: "THE WEB THAT SELLS. THE AI THAT WORKS.",
+            subtext: "I'm Miguel. I build websites that bring clients and integrate AI to automate the routine — for businesses in Puerto Rico that want to grow for real. I also design the brand if you need it.",
             cta1: "Start a Project",
             cta2: "View Portfolio",
         },
         mission: {
-            label: "Our Mission",
-            text: "We help businesses <span class=\"text-primary font-bold\">grow</span> by building their <span class=\"italic text-secondary\">digital presence</span> and integrating <span class=\"bg-white px-4 py-1 rounded-full shadow-sm border border-outline-variant/20 inline-flex items-center gap-2\"><span class=\"material-symbols-outlined text-primary\" data-icon=\"neurology\">neurology</span>AI</span> into their operations, so they can <span class=\"text-primary\">compete</span>, sell, and operate smarter."
+            label: "The starting point",
+            text: "Your business isn't losing clients because your website is ugly. It's losing them because no one can find it — not Google, not ChatGPT, not the clients searching for exactly what you offer."
         },
         services: {
             label: "Services",
@@ -310,8 +310,8 @@ export const translations = {
             cta: "Start a Project"
         },
         cta_section: {
-            title: "Ready to <span class=\"text-primary-fixed\">Scale</span>?",
-            subtext: "Join the brands moving at the speed of intelligence. Let's build your everything.",
+            title: "Does your business need a website that <span class=\"text-primary-fixed\">works</span>?",
+            subtext: "We build it together — with AI integrated from day one so you can scale without hiring more people.",
             cta: "Start a Project"
         },
         portfolio_page: {
@@ -431,7 +431,7 @@ export const translations = {
         },
         about_page: {
             hero: {
-                tagline: "The Everything Studio.",
+                tagline: "Founder · MC Designs · Puerto Rico",
                 subheadline: "Building for ambitious brands."
             },
             about: {
