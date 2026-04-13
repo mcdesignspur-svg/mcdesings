@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { logDemo } from './lib/supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -33,11 +34,9 @@ export default async function handler(req, res) {
 
     const html = await response.text();
 
-    // Extract title
     const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
     if (titleMatch) pageTitle = titleMatch[1].trim();
 
-    // Strip scripts, styles, and tags — keep readable text
     pageContent = html
       .replace(/<script[\s\S]*?<\/script>/gi, '')
       .replace(/<style[\s\S]*?<\/style>/gi, '')
@@ -99,7 +98,6 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
 
     const analysis = JSON.parse(jsonMatch[0]);
 
-    // Validate structure
     if (
       typeof analysis.score !== 'number' ||
       !analysis.verdict ||
@@ -109,7 +107,12 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
       throw new Error('Estructura inválida');
     }
 
-    return res.status(200).json({ ...analysis, domain: targetUrl.hostname, title: pageTitle });
+    const result = { ...analysis, domain: targetUrl.hostname, title: pageTitle };
+
+    // Log to Supabase (fire and forget)
+    logDemo('roaster', targetUrl.toString(), result, { domain: targetUrl.hostname });
+
+    return res.status(200).json(result);
   } catch {
     return res.status(500).json({ error: 'Error al analizar. Intenta de nuevo en un momento.' });
   }
