@@ -14,7 +14,7 @@ export const translations = {
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
             tagline: "Diseño Web + IA · Puerto Rico",
-            headline: "LA WEB QUE VENDE. EL AI QUE TRABAJA.",
+            headline: "EL CRECIMIENTO EMPIEZA AQUÍ.",
             subtext: "Soy Miguel. Construyo webs que traen clientes e integro IA para automatizar lo rutinario — para negocios en Puerto Rico que quieren crecer de verdad. También diseño la marca si la necesitas.",
             cta1: "Comenzar Proyecto",
             cta2: "Ver Portafolio",
@@ -269,7 +269,7 @@ export const translations = {
         hero: {
             tag: "✦ WEB DESIGN + AI IN PR",
             tagline: "Web Design + AI · Puerto Rico",
-            headline: "THE WEB THAT SELLS. THE AI THAT WORKS.",
+            headline: "GROWTH STARTS HERE.",
             subtext: "I'm Miguel. I build websites that bring clients and integrate AI to automate the routine — for businesses in Puerto Rico that want to grow for real. I also design the brand if you need it.",
             cta1: "Start a Project",
             cta2: "View Portfolio",
