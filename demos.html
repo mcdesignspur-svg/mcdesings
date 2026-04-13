@@ -541,6 +541,33 @@
         showState('brand', 'idle');
     }
 
+    // Resize + compress image to JPEG, return raw base64 string (no data: prefix)
+    function compressImage(file, maxPx = 1024, quality = 0.85) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onerror = reject;
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onerror = reject;
+                img.onload = () => {
+                    let { width, height } = img;
+                    if (width > maxPx || height > maxPx) {
+                        if (width > height) { height = Math.round(height * maxPx / width); width = maxPx; }
+                        else { width = Math.round(width * maxPx / height); height = maxPx; }
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                    const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                    resolve(dataUrl.split(',')[1]); // return only base64 part
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
     async function runBrandAnalyzer() {
         if (!selectedFile) return;
 
@@ -551,20 +578,15 @@
         document.getElementById('brand-results').classList.add('hidden');
 
         try {
-            // Read as base64
-            const base64 = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = e => resolve(e.target.result.split(',')[1]);
-                reader.onerror = reject;
-                reader.readAsDataURL(selectedFile);
-            });
+            // Compress + resize image via canvas before sending (keeps base64 under 1MB)
+            const base64 = await compressImage(selectedFile, 1024, 0.85);
 
             const res = await fetch('/api/brand-analyzer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     imageBase64: base64,
-                    mediaType: selectedFile.type,
+                    mediaType: 'image/jpeg', // always JPEG after canvas compression
                     fileName: selectedFile.name,
                 }),
             });
