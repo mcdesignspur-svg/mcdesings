@@ -22,10 +22,10 @@
     { "source": "/guia-migracion-claude", "destination": "/guia-migracion-claude.html" },
     { "source": "/guia-primeros-pasos-ia", "destination": "/guia-primeros-pasos-ia.html" },
     { "source": "/demos", "destination": "/demos.html" },
-    { "source": "/demos/website-roaster", "destination": "/demo-roaster.html" },
-    { "source": "/demos/brand-analyzer", "destination": "/demo-brand.html" },
-    { "source": "/demos/caption-machine", "destination": "/demo-captions.html" },
-    { "source": "/demos/chatbot", "destination": "/demo-chatbot.html" }
+    { "source": "/demos/website-roaster", "destination": "/demo-roaster" },
+    { "source": "/demos/brand-analyzer", "destination": "/demo-brand" },
+    { "source": "/demos/caption-machine", "destination": "/demo-captions" },
+    { "source": "/demos/chatbot", "destination": "/demo-chatbot" }
   ],
   "headers": [
     {
