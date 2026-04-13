@@ -1,18 +1,25 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
+let _client = null;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+function getClient() {
+  if (_client) return _client;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+  _client = createClient(url, key);
+  return _client;
+}
 
 /**
  * Log a demo usage to Supabase.
  * Fires and forgets — never throws, so a DB error never breaks a demo.
  */
 export async function logDemo(demoType, inputData, result, metadata = {}) {
-  if (!supabaseUrl || !supabaseKey) return;
+  const client = getClient();
+  if (!client) return; // Supabase env vars not set — skip silently
   try {
-    await supabase.from('demo_logs').insert({
+    await client.from('demo_logs').insert({
       demo_type: demoType,
       input_data: inputData,
       result,
