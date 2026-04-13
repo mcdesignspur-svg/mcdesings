@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brand Analyzer · MC Designs</title>
+    <meta name="description" content="Sube tu logo y descubre qué comunica tu marca, a quién atrae, y qué cambiar para crecer." />
+    <link rel="canonical" href="https://mcdesignspr.com/demos/brand-analyzer" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-container": "#006df8",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "outline": "#727787",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "label": ["Inter"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+        .demo-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; padding: 2rem; }
+        .score-ring { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; letter-spacing: -0.05em; flex-shrink: 0; }
+        .score-low  { background:#fff1f2; color:#ba1a1a; border:2px solid #fca5a5; }
+        .score-mid  { background:#fffbeb; color:#92400e; border:2px solid #fcd34d; }
+        .score-high { background:#f0fdf4; color:#166534; border:2px solid #86efac; }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .loading-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+        .result-item { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid #f0f0f0; font-size:0.875rem; line-height:1.5; color:#424655; }
+        .result-item:last-child { border-bottom:none; }
+        .result-icon { flex-shrink:0; margin-top:1px; }
+        .upload-zone { border: 2px dashed #c2c6d8; border-radius: 0.75rem; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.2s; background: #f9f9f9; }
+        .upload-zone:hover, .upload-zone.drag-over { border-color: #0056c6; background: #eef3ff; }
+        .upload-zone.has-file { border-color: #0056c6; border-style: solid; background: #f0f5ff; }
+        .pill { display: inline-block; padding: 4px 14px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; background: #d9e2ff; color: #001945; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased">
+
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+        <a href="/" class="flex-shrink-0">
+            <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about">Miguel</a>
+            <a class="text-primary font-semibold" href="/demos">Demos IA</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-4">
+            <a href="/contacto" class="hidden sm:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform">Comenzar Proyecto</a>
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
+                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium">
+        <a class="text-slate-600" href="/">Inicio</a>
+        <a class="text-slate-600" href="/servicios">Servicios</a>
+        <a class="text-slate-600" href="/portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about">Miguel</a>
+        <a class="text-primary font-semibold" href="/demos">Demos IA</a>
+        <a class="text-slate-600" href="/contacto">Contacto</a>
+        <a href="/contacto" class="hero-gradient text-white px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold mt-4">Comenzar Proyecto</a>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-28">
+    <!-- Breadcrumb -->
+    <div class="max-w-5xl mx-auto px-8 pt-6 pb-2">
+        <a href="/demos" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary transition-colors font-medium">
+            <span class="material-symbols-outlined text-base">arrow_back</span> Todos los demos
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto px-8 pt-6 pb-10 text-center">
+        <div class="text-4xl mb-3">🎨</div>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-3">Brand Analyzer</h1>
+        <p class="text-on-surface-variant max-w-lg mx-auto leading-relaxed">Sube tu logo. Te digo qué comunica tu marca, a quién atrae, y qué cambiar para crecer.</p>
+    </section>
+
+    <!-- Demo card -->
+    <section class="max-w-5xl mx-auto px-8 pb-32">
+        <div class="demo-card">
+            <!-- Upload zone -->
+            <div id="brand-upload-zone" class="upload-zone mb-2" onclick="document.getElementById('brand-file-input').click()"
+                 ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+                <div id="brand-upload-prompt">
+                    <div class="text-4xl mb-3">📁</div>
+                    <p class="text-sm font-semibold text-on-surface-variant">Arrastra tu logo aquí o <span class="text-primary underline">búscalo en tu dispositivo</span></p>
+                    <p class="text-xs text-slate-400 mt-1">JPG, PNG, WebP · Máx 3MB</p>
+                </div>
+                <div id="brand-upload-preview" class="hidden flex-col items-center gap-3">
+                    <img id="brand-preview-img" src="" alt="Logo preview" class="max-h-32 max-w-full object-contain rounded-lg" />
+                    <p id="brand-preview-name" class="text-xs text-slate-500"></p>
+                    <p class="text-xs text-primary font-semibold">Click para cambiar imagen</p>
+                </div>
+            </div>
+            <input id="brand-file-input" type="file" accept="image/jpeg,image/jpg,image/png,image/webp" class="hidden" onchange="handleFileSelect(event)" />
+            <p class="text-xs text-slate-400 mb-6">Funciona con logos, branding de redes sociales, o cualquier imagen de marca.</p>
+
+            <button id="brand-btn" onclick="runBrandAnalyzer()" disabled
+                class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100">
+                Analizar Marca
+            </button>
+
+            <!-- Idle -->
+            <div id="brand-idle" class="hidden mt-6 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-8 text-center">
+                <div class="text-4xl mb-3">🎨</div>
+                <p class="text-sm text-on-surface-variant font-medium">Sube tu logo para comenzar el análisis.</p>
+                <p class="text-xs text-slate-400 mt-1">Análisis en ~10 segundos</p>
+            </div>
+            <!-- Loading -->
+            <div id="brand-loading" class="hidden mt-6 rounded-xl border border-slate-100 bg-slate-50 p-8 text-center">
+                <div class="flex justify-center gap-2 mb-4">
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                </div>
+                <p class="text-sm font-semibold text-on-surface">Analizando tu marca...</p>
+                <p class="text-xs text-slate-400 mt-1">La IA está leyendo tu identidad visual</p>
+            </div>
+            <!-- Error -->
+            <div id="brand-error" class="hidden mt-6 rounded-xl border border-red-100 bg-red-50 p-6 text-center">
+                <div class="text-2xl mb-2">⚠️</div>
+                <p id="brand-error-msg" class="text-sm font-semibold text-red-700"></p>
+            </div>
+            <!-- Results -->
+            <div id="brand-results" class="hidden mt-6">
+                <!-- Personality -->
+                <div class="mb-5 p-5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Personalidad de marca</div>
+                    <div id="brand-pills" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
+                    <!-- Comunica -->
+                    <div class="p-4 rounded-xl border border-slate-100 bg-white">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-base">👁️</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Qué comunica</span></div>
+                        <p id="brand-comunica" class="text-sm text-on-surface leading-relaxed"></p>
+                    </div>
+                    <!-- Cliente ideal -->
+                    <div class="p-4 rounded-xl border border-slate-100 bg-white">
+                        <div class="flex items-center gap-2 mb-2"><span class="text-base">🎯</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Cliente ideal</span></div>
+                        <p id="brand-cliente" class="text-sm text-on-surface leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
+                    <!-- Fortalezas -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-3"><span class="text-base">✅</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Fortalezas</span></div>
+                        <div id="brand-fortalezas"></div>
+                    </div>
+                    <!-- Gaps -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-3"><span class="text-base">🚨</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Lo que falta</span></div>
+                        <div id="brand-gaps"></div>
+                    </div>
+                </div>
+
+                <!-- Recomendación clave -->
+                <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
+                    <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">💡 Recomendación clave</div>
+                    <p id="brand-recomendacion" class="text-sm font-semibold text-on-primary-fixed leading-relaxed"></p>
+                </div>
+
+                <div class="mt-5 p-4 rounded-xl bg-slate-50 text-center border border-slate-100">
+                    <p class="text-xs font-semibold text-on-surface-variant mb-2">¿Quieres que trabajemos tu marca juntos?</p>
+                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all">Hablemos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-slate-500">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Integración IA</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        menu.classList.toggle('flex', isHidden);
+        icon.textContent = isHidden ? 'close' : 'menu';
+    });
+
+    function showState(prefix, state, errorMsg = '') {
+        ['idle','loading','error','results'].forEach(s => {
+            const el = document.getElementById(`${prefix}-${s}`);
+            if (el) el.classList.add('hidden');
+        });
+        const target = document.getElementById(`${prefix}-${state}`);
+        if (target) target.classList.remove('hidden');
+        if (state === 'error') {
+            const errEl = document.getElementById(`${prefix}-error-msg`);
+            if (errEl) errEl.textContent = errorMsg;
+        }
+    }
+
+    function buildList(containerId, items, iconHtml) {
+        const el = document.getElementById(containerId);
+        el.innerHTML = items.map(item => `
+            <div class="result-item">
+                <span class="result-icon">${iconHtml}</span>
+                <span>${item}</span>
+            </div>`).join('');
+    }
+
+    let selectedFile = null;
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) setFile(file);
+    }
+
+    function handleDragOver(event) {
+        event.preventDefault();
+        document.getElementById('brand-upload-zone').classList.add('drag-over');
+    }
+
+    function handleDragLeave(event) {
+        document.getElementById('brand-upload-zone').classList.remove('drag-over');
+    }
+
+    function handleDrop(event) {
+        event.preventDefault();
+        document.getElementById('brand-upload-zone').classList.remove('drag-over');
+        const file = event.dataTransfer.files[0];
+        if (file) setFile(file);
+    }
+
+    function setFile(file) {
+        if (file.size > 3 * 1024 * 1024) {
+            alert('La imagen es muy grande. Máximo 3MB.');
+            return;
+        }
+
+        selectedFile = file;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.getElementById('brand-preview-img').src = e.target.result;
+            document.getElementById('brand-preview-name').textContent = file.name;
+            document.getElementById('brand-upload-prompt').classList.add('hidden');
+            document.getElementById('brand-upload-preview').classList.remove('hidden');
+            document.getElementById('brand-upload-preview').classList.add('flex');
+            document.getElementById('brand-upload-zone').classList.add('has-file');
+        };
+        reader.readAsDataURL(file);
+
+        document.getElementById('brand-btn').disabled = false;
+
+        showState('brand', 'idle');
+    }
+
+    function compressImage(file, maxPx = 1024, quality = 0.85) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onerror = reject;
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onerror = reject;
+                img.onload = () => {
+                    let { width, height } = img;
+                    if (width > maxPx || height > maxPx) {
+                        if (width > height) { height = Math.round(height * maxPx / width); width = maxPx; }
+                        else { width = Math.round(width * maxPx / height); height = maxPx; }
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                    const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                    resolve(dataUrl.split(',')[1]);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function runBrandAnalyzer() {
+        if (!selectedFile) return;
+
+        const btn = document.getElementById('brand-btn');
+        btn.disabled = true;
+        document.getElementById('brand-loading').classList.remove('hidden');
+        document.getElementById('brand-error').classList.add('hidden');
+        document.getElementById('brand-results').classList.add('hidden');
+        document.getElementById('brand-idle').classList.add('hidden');
+
+        try {
+            const base64 = await compressImage(selectedFile, 1024, 0.85);
+
+            const res = await fetch('/api/brand-analyzer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    imageBase64: base64,
+                    mediaType: 'image/jpeg',
+                    fileName: selectedFile.name,
+                }),
+            });
+
+            const data = await res.json();
+            document.getElementById('brand-loading').classList.add('hidden');
+
+            if (!res.ok) {
+                document.getElementById('brand-error-msg').textContent = data.error || 'Error inesperado.';
+                document.getElementById('brand-error').classList.remove('hidden');
+                return;
+            }
+
+            const pillsEl = document.getElementById('brand-pills');
+            pillsEl.innerHTML = (data.personalidad || []).map(p => `<span class="pill">${p}</span>`).join('');
+
+            document.getElementById('brand-comunica').textContent = data.comunica || '';
+            document.getElementById('brand-cliente').textContent = data.cliente_ideal || '';
+            buildList('brand-fortalezas', data.fortalezas || [], '<span style="color:#22c55e;font-size:1rem">✓</span>');
+            buildList('brand-gaps',       data.gaps       || [], '<span style="color:#ef4444;font-size:1rem">✕</span>');
+            document.getElementById('brand-recomendacion').textContent = data.recomendacion || '';
+
+            document.getElementById('brand-results').classList.remove('hidden');
+        } catch {
+            document.getElementById('brand-loading').classList.add('hidden');
+            document.getElementById('brand-error-msg').textContent = 'No se pudo conectar. Revisa tu conexión.';
+            document.getElementById('brand-error').classList.remove('hidden');
+        } finally {
+            btn.disabled = false;
+        }
+    }
+</script>
+</body>
+</html>

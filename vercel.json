@@ -21,7 +21,11 @@
     { "source": "/guia-configuracion-claude-code", "destination": "/guia-configuracion-claude-code.html" },
     { "source": "/guia-migracion-claude", "destination": "/guia-migracion-claude.html" },
     { "source": "/guia-primeros-pasos-ia", "destination": "/guia-primeros-pasos-ia.html" },
-    { "source": "/demos", "destination": "/demos.html" }
+    { "source": "/demos", "destination": "/demos.html" },
+    { "source": "/demos/website-roaster", "destination": "/demo-roaster.html" },
+    { "source": "/demos/brand-analyzer", "destination": "/demo-brand.html" },
+    { "source": "/demos/caption-machine", "destination": "/demo-captions.html" },
+    { "source": "/demos/chatbot", "destination": "/demo-chatbot.html" }
   ],
   "headers": [
     {
