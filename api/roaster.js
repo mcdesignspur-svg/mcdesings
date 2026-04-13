@@ -109,8 +109,8 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
 
     const result = { ...analysis, domain: targetUrl.hostname, title: pageTitle };
 
-    // Log to Supabase (fire and forget)
-    logDemo('roaster', targetUrl.toString(), result, { domain: targetUrl.hostname });
+    // Log to Supabase before responding
+    await logDemo('roaster', targetUrl.toString(), result, { domain: targetUrl.hostname });
 
     return res.status(200).json(result);
   } catch {

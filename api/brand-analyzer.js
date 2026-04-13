@@ -94,8 +94,8 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
       throw new Error('Estructura inválida');
     }
 
-    // Log to Supabase (fire and forget — don't store image base64)
-    logDemo('brand-analyzer', fileName || 'logo-upload', analysis, { mediaType });
+    // Log to Supabase before responding
+    await logDemo('brand-analyzer', fileName || 'logo-upload', analysis, { mediaType });
 
     return res.status(200).json(analysis);
   } catch {
