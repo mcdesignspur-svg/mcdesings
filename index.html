@@ -303,6 +303,134 @@
 
 
 
+<!-- AI Lead Quiz Section -->
+<section class="py-24 bg-surface-container-low relative z-10" id="ai-quiz">
+    <div class="max-w-2xl mx-auto px-8">
+        <div class="text-center mb-10">
+            <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Gratis · 3 preguntas · 30 segundos</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface leading-tight mb-3">¿Qué IA necesita<br/>tu negocio?</h2>
+            <p class="text-on-surface-variant leading-relaxed">Responde 3 preguntas y recibe una recomendación personalizada — con las herramientas exactas y el impacto real para tu negocio.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-outline-variant shadow-sm p-8">
+
+            <!-- Progress -->
+            <div class="flex items-center gap-2 mb-8" id="lead-progress">
+                <div id="ldot-1" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-primary text-white transition-all">1</div>
+                <div class="flex-1 h-0.5 bg-slate-200 rounded-full"><div id="lprog-1" class="h-full bg-primary rounded-full transition-all duration-500 w-0"></div></div>
+                <div id="ldot-2" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-slate-200 text-slate-400 transition-all">2</div>
+                <div class="flex-1 h-0.5 bg-slate-200 rounded-full"><div id="lprog-2" class="h-full bg-primary rounded-full transition-all duration-500 w-0"></div></div>
+                <div id="ldot-3" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-slate-200 text-slate-400 transition-all">3</div>
+            </div>
+
+            <!-- Step 1 -->
+            <div id="lead-step-1">
+                <p class="text-base font-bold text-on-surface mb-3">¿Qué tipo de negocio tienes?</p>
+                <input id="lead-negocio" type="text" placeholder="Ej: Restaurante, Salón de belleza, Tienda online..."
+                    class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all mb-4" />
+                <button onclick="leadNext(1)" class="hero-gradient text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    Continuar →
+                </button>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="lead-step-2" class="hidden">
+                <p class="text-base font-bold text-on-surface mb-3">¿Cuál es tu mayor dolor de cabeza?</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-dolor-opts">
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Responder mensajes y atender clientes">💬 Responder mensajes y atender clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Crear contenido para redes sociales">📱 Crear contenido para redes sociales</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Conseguir y dar seguimiento a nuevos clientes">🎯 Conseguir y dar seguimiento a clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Tareas repetitivas y administración del negocio">⚙️ Tareas repetitivas y administración</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div id="lead-step-3" class="hidden">
+                <p class="text-base font-bold text-on-surface mb-3">¿Cuál es tu meta principal?</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-meta-opts">
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Vender más y conseguir más clientes">💰 Vender más y conseguir más clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Recuperar tiempo y trabajar menos horas">⏰ Recuperar tiempo y trabajar menos horas</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Mejorar la atención al cliente y la experiencia">⭐ Mejorar la atención al cliente</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Crecer sin tener que contratar más empleados">📈 Crecer sin contratar más empleados</button>
+                </div>
+            </div>
+
+            <!-- Generating -->
+            <div id="lead-generating" class="hidden text-center py-8">
+                <div class="flex justify-center gap-2 mb-4">
+                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out infinite;"></div>
+                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.2s infinite;"></div>
+                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.4s infinite;"></div>
+                </div>
+                <p class="text-sm font-semibold text-on-surface">Analizando tu negocio...</p>
+                <p class="text-xs text-slate-400 mt-1">Generando tu recomendación personalizada</p>
+            </div>
+
+            <!-- Gate -->
+            <div id="lead-gate" class="hidden">
+                <div class="text-center mb-6 p-4 rounded-xl bg-primary-fixed">
+                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Tu recomendación está lista ✓</p>
+                    <p id="lead-solucion-preview" class="text-lg font-black tracking-tighter text-on-primary-fixed"></p>
+                </div>
+                <p class="text-sm font-bold text-on-surface mb-4">¿A dónde te envío los detalles?</p>
+                <div class="space-y-3">
+                    <input id="lead-nombre" type="text" placeholder="Tu nombre"
+                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                    <input id="lead-email" type="email" placeholder="Tu email"
+                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                    <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)"
+                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                    <button id="lead-reveal-btn" onclick="leadReveal()"
+                        class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
+                        Ver mi recomendación →
+                    </button>
+                    <p class="text-xs text-center text-slate-400">Sin spam. Solo te contacto si tiene sentido para tu negocio.</p>
+                </div>
+                <div id="lead-gate-error" class="hidden mt-3 text-sm text-center text-red-600 font-semibold"></div>
+            </div>
+
+            <!-- Results -->
+            <div id="lead-results" class="hidden space-y-4">
+                <div class="p-5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Tu recomendación</div>
+                    <h3 id="lead-res-solucion" class="text-xl font-black tracking-tighter text-on-surface"></h3>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-100 bg-white">
+                    <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Qué es</span></div>
+                    <p id="lead-res-descripcion" class="text-sm text-on-surface leading-relaxed"></p>
+                </div>
+                <div class="p-4 rounded-xl border border-green-100 bg-green-50">
+                    <div class="flex items-center gap-2 mb-2"><span>📈</span><span class="text-xs font-bold uppercase tracking-widest text-green-700">Impacto esperado</span></div>
+                    <p id="lead-res-impacto" class="text-sm font-semibold text-green-900 leading-relaxed"></p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-100 bg-white">
+                    <div class="flex items-center gap-2 mb-3"><span>🛠️</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Herramientas</span></div>
+                    <div id="lead-res-herramientas" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
+                    <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">🚀 Próximo paso</div>
+                    <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
+                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        Quiero implementar esto →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<style>@keyframes pulse-lead { 0%,100%{opacity:1} 50%{opacity:0.3} }</style>
+<script>
+(function(){
+    const a={negocio:'',dolor:'',meta:''};let r=null;
+    window.leadNext=function(s){if(s===1){const v=document.getElementById('lead-negocio').value.trim();if(!v){document.getElementById('lead-negocio').focus();return;}a.negocio=v;ls(2);}};
+    function ls(s){[1,2,3].forEach(i=>{const e=document.getElementById('lead-step-'+i);if(e)e.classList.toggle('hidden',i!==s);const d=document.getElementById('ldot-'+i);if(d)d.className='flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all '+(i<=s?'bg-primary text-white':'bg-slate-200 text-slate-400');if(i<3){const p=document.getElementById('lprog-'+i);if(p)p.style.width=i<s?'100%':'0%';}});if(s===2)lo('lead-dolor-opts','dolor',3);if(s===3)lo('lead-meta-opts','meta',null);}
+    function lo(id,f,n){const c=document.getElementById(id);c.querySelectorAll('.lead-opt').forEach(b=>{b.onclick=()=>{c.querySelectorAll('.lead-opt').forEach(x=>{x.classList.remove('border-primary','bg-blue-50');x.classList.add('border-outline-variant');});b.classList.add('border-primary','bg-blue-50');b.classList.remove('border-outline-variant');a[f]=b.dataset.value;if(n)setTimeout(()=>ls(n),300);else setTimeout(()=>lg(),300);};});}
+    async function lg(){[1,2,3].forEach(i=>{const e=document.getElementById('lead-step-'+i);if(e)e.classList.add('hidden');});document.getElementById('lead-progress').classList.add('hidden');document.getElementById('lead-generating').classList.remove('hidden');try{const res=await fetch('/api/ai-lead-generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(a)});const d=await res.json();if(!res.ok)throw new Error(d.error);r=d;document.getElementById('lead-generating').classList.add('hidden');document.getElementById('lead-solucion-preview').textContent=d.solucion;document.getElementById('lead-gate').classList.remove('hidden');}catch{document.getElementById('lead-generating').classList.add('hidden');document.getElementById('lead-gate-error').textContent='Error generando. Recarga e intenta de nuevo.';document.getElementById('lead-gate-error').classList.remove('hidden');document.getElementById('lead-gate').classList.remove('hidden');}}
+    window.leadReveal=async function(){const n=document.getElementById('lead-nombre').value.trim(),e=document.getElementById('lead-email').value.trim(),t=document.getElementById('lead-telefono').value.trim(),err=document.getElementById('lead-gate-error'),btn=document.getElementById('lead-reveal-btn');err.classList.add('hidden');if(!n){document.getElementById('lead-nombre').focus();return;}if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent='Ingresa un email válido.';err.classList.remove('hidden');return;}btn.disabled=true;btn.textContent='Un momento...';fetch('/api/ai-lead-save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,email:e,telefono:t,negocio:a.negocio,dolor:a.dolor,meta:a.meta,resultado:r,fuente:'homepage'})}).catch(()=>{});document.getElementById('lead-gate').classList.add('hidden');document.getElementById('lead-res-solucion').textContent=r.solucion||'';document.getElementById('lead-res-descripcion').textContent=r.descripcion||'';document.getElementById('lead-res-impacto').textContent=r.impacto||'';document.getElementById('lead-res-siguiente').textContent=r.siguiente_paso||'';document.getElementById('lead-res-herramientas').innerHTML=(r.herramientas||[]).map(t=>`<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#eeeeee;font-size:0.75rem;font-weight:700;">${t}</span>`).join('');document.getElementById('lead-results').classList.remove('hidden');};
+})();
+</script>
+
 <!-- CTA Section -->
 <section class="py-32 bg-on-surface text-surface relative z-10" id="contact">
     <div class="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
