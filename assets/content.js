@@ -21,7 +21,7 @@ export const translations = {
         },
         mission: {
             label: "El punto de partida",
-            text: "Tu negocio necesita dos cosas para crecer en 2025: una web que te encuentren, y sistemas de IA que te liberen tiempo. <span class=\"text-primary\">Eso es exactamente lo que construimos</span> — nada más, nada menos."
+            text: "Tu negocio necesita dos cosas para crecer hoy: una web que te encuentren, y sistemas de IA que te liberen tiempo. <span class=\"text-primary\">Eso es exactamente lo que construimos</span> — nada más, nada menos."
         },
         services: {
             label: "Servicios",
@@ -276,7 +276,7 @@ export const translations = {
         },
         mission: {
             label: "The starting point",
-            text: "Your business needs two things to grow in 2025: a website people can find, and AI systems that free up your time. <span class=\"text-primary\">That's exactly what we build</span> — nothing more, nothing less."
+            text: "Your business needs two things to grow today: a website people can find, and AI systems that free up your time. <span class=\"text-primary\">That's exactly what we build</span> — nothing more, nothing less."
         },
         services: {
             label: "Services",
