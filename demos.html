@@ -175,7 +175,7 @@
             La IA en acción.<br class="hidden md:block"/> Pruébala tú mismo.
         </h1>
         <p class="text-lg text-on-surface-variant max-w-xl mx-auto leading-relaxed">
-            5 herramientas reales de IA. Gratis. Sin registro. Así es lo que construyo para negocios en PR.
+            4 herramientas reales de IA. Gratis. Sin registro. Así es lo que construyo para negocios en PR.
         </p>
     </section>
 
@@ -429,30 +429,73 @@
             </div>
         </div>
 
-        <!-- ===== DEMO 4: ¿QUÉ IA NECESITAS? — Moved to homepage ===== -->
-        <div class="demo-soon flex flex-col gap-4 p-6">
-            <div class="flex items-center gap-2">
-                <span class="text-lg">🧠</span>
-                <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Demo #4</span>
+        <!-- ===== DEMO 4: CHATBOT DEMO ===== -->
+        <div class="demo-live">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="text-2xl">💬</span>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Demo #4 · Live</div>
+                    <h2 class="text-2xl font-black tracking-tighter text-on-surface">Chatbot Demo</h2>
+                    <p class="text-sm text-on-surface-variant mt-1">Escribe tu negocio y conversa con tu chatbot de IA en vivo — así es lo que construimos para tus clientes.</p>
+                </div>
             </div>
-            <h3 class="text-base font-black tracking-tighter text-on-surface">¿Qué IA necesita tu negocio?</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">3 preguntas. Una recomendación personalizada de IA — ahora disponible en la página principal.</p>
-            <a href="/" class="inline-block w-fit px-4 py-2 rounded-full hero-gradient text-white text-[11px] font-bold uppercase tracking-widest">Probarlo en Inicio →</a>
-        </div>
 
+            <!-- Setup -->
+            <div id="chatbot-setup">
+                <textarea id="chatbot-negocio" rows="2" placeholder="Describe tu negocio — ej: Soy una pizzería en Bayamón llamada La Roca, especializada en pizzas artesanales para familias..."
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all resize-none mb-3"></textarea>
+                <button onclick="activateChatbot()"
+                    class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    Activar Chatbot →
+                </button>
+                <p class="text-xs text-slate-400 mt-2 text-center">La IA genera un chatbot personalizado para tu negocio en segundos.</p>
+            </div>
 
-        <!-- ===== COMING SOON — 1 demo ===== -->
-        <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Próximamente</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="demo-soon flex flex-col gap-3">
-                    <div class="flex items-center gap-2">
-                        <span class="text-lg">💬</span>
-                        <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Demo #5</span>
+            <!-- Chat UI -->
+            <div id="chatbot-ui" class="hidden">
+                <!-- Chat header -->
+                <div class="flex items-center justify-between bg-slate-50 rounded-xl px-4 py-3 mb-4 border border-slate-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                            <span class="text-white text-xs font-black">AI</span>
+                        </div>
+                        <div>
+                            <p id="chatbot-business-name" class="text-sm font-bold text-on-surface"></p>
+                            <p class="text-[11px] text-green-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>En línea</p>
+                        </div>
                     </div>
-                    <h3 class="text-base font-black tracking-tighter text-on-surface">Chatbot Demo</h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed">Escribe tu negocio y te muestro tu chatbot de IA en acción.</p>
-                    <span class="inline-block w-fit px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[11px] font-bold uppercase tracking-widest">Coming Soon</span>
+                    <button onclick="resetChatbot()" class="text-xs text-slate-400 hover:text-slate-600 transition-colors font-medium">Cambiar negocio</button>
+                </div>
+
+                <!-- Messages -->
+                <div id="chatbot-messages" class="flex flex-col gap-3 mb-4 max-h-80 overflow-y-auto px-1"></div>
+
+                <!-- Loading bubble -->
+                <div id="chatbot-typing" class="hidden flex gap-2 items-end mb-4">
+                    <div class="w-7 h-7 rounded-full bg-primary flex-shrink-0 flex items-center justify-center">
+                        <span class="text-white text-[10px] font-black">AI</span>
+                    </div>
+                    <div class="bg-slate-100 rounded-2xl rounded-bl-none px-4 py-3 flex gap-1.5 items-center">
+                        <div class="loading-dot w-2 h-2 rounded-full bg-slate-400"></div>
+                        <div class="loading-dot w-2 h-2 rounded-full bg-slate-400"></div>
+                        <div class="loading-dot w-2 h-2 rounded-full bg-slate-400"></div>
+                    </div>
+                </div>
+
+                <!-- Input -->
+                <div class="flex gap-2">
+                    <input id="chatbot-input" type="text" placeholder="Escribe tu mensaje..."
+                        class="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                        onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); sendChatMessage(); }" />
+                    <button onclick="sendChatMessage()"
+                        class="hero-gradient text-white px-5 py-3 rounded-xl font-bold text-sm active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-base leading-none">send</span>
+                    </button>
+                </div>
+
+                <div class="mt-5 p-4 rounded-xl bg-primary-fixed text-center">
+                    <p class="text-xs font-semibold text-on-primary-fixed mb-2">¿Quieres un chatbot así para tu negocio?</p>
+                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all">Hablemos</a>
                 </div>
             </div>
         </div>
@@ -854,6 +897,101 @@
         } finally {
             btn.disabled = false;
         }
+    }
+
+    // ===== CHATBOT DEMO =====
+    let chatHistory = [];
+    let chatNegocio = '';
+
+    function activateChatbot() {
+        const negocio = document.getElementById('chatbot-negocio').value.trim();
+        if (!negocio) {
+            document.getElementById('chatbot-negocio').focus();
+            return;
+        }
+        chatNegocio = negocio;
+        chatHistory = [];
+
+        // Extract short business name for header
+        const shortName = negocio.split(/[,.\-–]/)[0].trim().slice(0, 40);
+        document.getElementById('chatbot-business-name').textContent = shortName;
+
+        document.getElementById('chatbot-setup').classList.add('hidden');
+        document.getElementById('chatbot-ui').classList.remove('hidden');
+        document.getElementById('chatbot-messages').innerHTML = '';
+
+        // Send greeting trigger
+        sendToAPI('Hola, ¿en qué me puedes ayudar?');
+    }
+
+    function resetChatbot() {
+        chatHistory = [];
+        chatNegocio = '';
+        document.getElementById('chatbot-setup').classList.remove('hidden');
+        document.getElementById('chatbot-ui').classList.add('hidden');
+        document.getElementById('chatbot-negocio').value = '';
+    }
+
+    function appendMessage(role, text) {
+        const container = document.getElementById('chatbot-messages');
+        const isUser = role === 'user';
+
+        const wrapper = document.createElement('div');
+        wrapper.className = `flex gap-2 items-end ${isUser ? 'flex-row-reverse' : ''}`;
+
+        if (!isUser) {
+            const avatar = document.createElement('div');
+            avatar.className = 'w-7 h-7 rounded-full bg-primary flex-shrink-0 flex items-center justify-center';
+            avatar.innerHTML = '<span class="text-white text-[10px] font-black">AI</span>';
+            wrapper.appendChild(avatar);
+        }
+
+        const bubble = document.createElement('div');
+        bubble.className = isUser
+            ? 'bg-primary text-white rounded-2xl rounded-br-none px-4 py-2.5 text-sm leading-relaxed max-w-[80%]'
+            : 'bg-slate-100 text-on-surface rounded-2xl rounded-bl-none px-4 py-2.5 text-sm leading-relaxed max-w-[80%]';
+        bubble.textContent = text;
+        wrapper.appendChild(bubble);
+
+        container.appendChild(wrapper);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    async function sendToAPI(userMessage) {
+        chatHistory.push({ role: 'user', content: userMessage });
+
+        document.getElementById('chatbot-typing').classList.remove('hidden');
+        document.getElementById('chatbot-input').disabled = true;
+
+        try {
+            const res = await fetch('/api/chatbot', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ negocio: chatNegocio, messages: chatHistory }),
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error);
+
+            chatHistory.push({ role: 'assistant', content: data.reply });
+            document.getElementById('chatbot-typing').classList.add('hidden');
+            appendMessage('assistant', data.reply);
+        } catch {
+            document.getElementById('chatbot-typing').classList.add('hidden');
+            appendMessage('assistant', 'Lo siento, hubo un error. Intenta de nuevo.');
+        } finally {
+            document.getElementById('chatbot-input').disabled = false;
+            document.getElementById('chatbot-input').focus();
+        }
+    }
+
+    function sendChatMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+        if (!message) return;
+
+        appendMessage('user', message);
+        input.value = '';
+        sendToAPI(message);
     }
 </script>
 </body>
