@@ -55,7 +55,7 @@ export const translations = {
             cta: "Comenzar Proyecto"
         },
         cta_section: {
-            title: "¿Tu negocio necesita una web que <span class=\"text-primary-fixed\">trabaje</span>?",
+            title: "¿Listo para <span class=\"text-primary-fixed\">Crecer</span>?",
             subtext: "La construimos juntos — con IA integrada desde el día uno para que escales sin contratar más gente.",
             cta: "Comenzar Proyecto"
         },
@@ -310,7 +310,7 @@ export const translations = {
             cta: "Start a Project"
         },
         cta_section: {
-            title: "Does your business need a website that <span class=\"text-primary-fixed\">works</span>?",
+            title: "Ready to <span class=\"text-primary-fixed\">Grow</span>?",
             subtext: "We build it together — with AI integrated from day one so you can scale without hiring more people.",
             cta: "Start a Project"
         },
