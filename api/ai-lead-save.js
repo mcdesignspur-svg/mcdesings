@@ -11,12 +11,12 @@ export default async function handler(req, res) {
 
   const { nombre, email, telefono, negocio, dolor, meta, resultado, fuente } = req.body;
 
-  if (!nombre || !email || !negocio || !dolor || !meta || !resultado) {
+  if (!negocio || !dolor || !meta || !resultado) {
     return res.status(400).json({ error: 'Faltan datos requeridos.' });
   }
 
-  // Basic email validation
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  // Only validate email format if provided
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Email inválido.' });
   }
 
@@ -33,8 +33,8 @@ export default async function handler(req, res) {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { error } = await supabase.from('ai_leads').insert({
-      nombre: nombre.trim(),
-      email: email.trim().toLowerCase(),
+      nombre: nombre?.trim() || null,
+      email: email?.trim().toLowerCase() || null,
       telefono: telefono?.trim() || null,
       negocio,
       dolor,

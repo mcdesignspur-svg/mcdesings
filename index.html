@@ -394,50 +394,68 @@
                 <p class="text-xs text-slate-400 mt-1">Generando tu recomendación personalizada</p>
             </div>
 
-            <!-- Gate -->
-            <div id="lead-gate" class="hidden">
-                <div class="text-center mb-6 p-4 rounded-xl bg-primary-fixed">
-                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Tu recomendación está lista ✓</p>
-                    <p id="lead-solucion-preview" class="text-lg font-black tracking-tighter text-on-primary-fixed"></p>
+            <!-- Basic Result (shown immediately after generating) -->
+            <div id="lead-basic" class="hidden">
+                <div class="flex items-center gap-2 mb-5">
+                    <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-green-600">Tu recomendación está lista</span>
                 </div>
-                <p class="text-sm font-bold text-on-surface mb-4">¿A dónde te envío los detalles?</p>
-                <div class="space-y-3">
-                    <input id="lead-nombre" type="text" placeholder="Tu nombre"
-                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
-                    <input id="lead-email" type="email" placeholder="Tu email"
-                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
-                    <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)"
-                        class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
-                    <button id="lead-reveal-btn" onclick="leadReveal()"
-                        class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
-                        Ver mi recomendación →
-                    </button>
-                    <p class="text-xs text-center text-slate-400">Sin spam. Solo te contacto si tiene sentido para tu negocio.</p>
-                </div>
-                <div id="lead-gate-error" class="hidden mt-3 text-sm text-center text-red-600 font-semibold"></div>
-            </div>
 
-            <!-- Results -->
-            <div id="lead-results" class="hidden space-y-4">
-                <div class="p-5 rounded-xl bg-slate-50 border border-slate-100">
-                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Tu recomendación</div>
+                <!-- Solution headline -->
+                <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 mb-3">
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Lo que necesita tu negocio</div>
                     <h3 id="lead-res-solucion" class="text-xl font-black tracking-tighter text-on-surface"></h3>
                 </div>
-                <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                    <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Qué es</span></div>
-                    <p id="lead-res-descripcion" class="text-sm text-on-surface leading-relaxed"></p>
-                </div>
-                <div class="p-4 rounded-xl border border-green-100 bg-green-50">
-                    <div class="flex items-center gap-2 mb-2"><span>📈</span><span class="text-xs font-bold uppercase tracking-widest text-green-700">Impacto esperado</span></div>
+
+                <!-- Impact -->
+                <div class="p-4 rounded-xl border border-green-100 bg-green-50 mb-6">
+                    <div class="flex items-center gap-2 mb-1"><span>📈</span><span class="text-xs font-bold uppercase tracking-widest text-green-700">El impacto</span></div>
                     <p id="lead-res-impacto" class="text-sm font-semibold text-green-900 leading-relaxed"></p>
                 </div>
-                <div id="lead-res-herramientas" class="hidden"></div>
-                <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
-                    <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">🚀 Próximo paso</div>
-                    <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
-                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20">
-                        Quiero implementar esto →
-                    </a>
+
+                <!-- Email gate — optional -->
+                <div id="lead-email-gate">
+                    <div class="border border-outline-variant rounded-xl p-5">
+                        <p class="text-sm font-bold text-on-surface mb-1">¿Quieres el plan completo por email?</p>
+                        <p class="text-xs text-slate-400 mb-4">Te mando el breakdown detallado con herramientas y próximos pasos — gratis.</p>
+                        <div class="space-y-3">
+                            <input id="lead-nombre" type="text" placeholder="Tu nombre"
+                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                            <input id="lead-email" type="email" placeholder="Tu email"
+                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                            <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)"
+                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                            <button id="lead-submit-btn" onclick="leadSubmitEmail()"
+                                class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
+                                Quiero el plan completo →
+                            </button>
+                        </div>
+                        <div id="lead-gate-error" class="hidden mt-3 text-sm text-center text-red-600 font-semibold"></div>
+                        <div class="text-center mt-4">
+                            <button onclick="leadSkip()" class="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors">
+                                No gracias, esto es suficiente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full results (shown after email submitted) -->
+                <div id="lead-full-results" class="hidden space-y-3 mt-3">
+                    <div class="p-4 rounded-xl border border-slate-100 bg-white">
+                        <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Qué es</span></div>
+                        <p id="lead-res-descripcion" class="text-sm text-on-surface leading-relaxed"></p>
+                    </div>
+                    <div id="lead-res-herramientas-wrap" class="flex flex-wrap gap-2"></div>
+                    <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
+                        <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">🚀 Próximo paso</div>
+                        <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
+                        <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20">
+                            Quiero implementar esto →
+                        </a>
+                    </div>
+                    <p class="text-xs text-center text-slate-400 pt-1">Te enviamos los detalles a tu email también.</p>
                 </div>
             </div>
 
@@ -447,12 +465,124 @@
 <style>@keyframes pulse-lead { 0%,100%{opacity:1} 50%{opacity:0.3} }</style>
 <script>
 (function(){
-    const a={negocio:'',dolor:'',meta:''};let r=null;
-    window.leadNext=function(s){if(s===1){const v=document.getElementById('lead-negocio').value.trim();if(!v){document.getElementById('lead-negocio').focus();return;}a.negocio=v;ls(2);}};
-    function ls(s){[1,2,3].forEach(i=>{const e=document.getElementById('lead-step-'+i);if(e)e.classList.toggle('hidden',i!==s);const d=document.getElementById('ldot-'+i);if(d)d.className='flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all '+(i<=s?'bg-primary text-white':'bg-slate-200 text-slate-400');if(i<3){const p=document.getElementById('lprog-'+i);if(p)p.style.width=i<s?'100%':'0%';}});if(s===2)lo('lead-dolor-opts','dolor',3);if(s===3)lo('lead-meta-opts','meta',null);}
-    function lo(id,f,n){const c=document.getElementById(id);c.querySelectorAll('.lead-opt').forEach(b=>{b.onclick=()=>{c.querySelectorAll('.lead-opt').forEach(x=>{x.classList.remove('border-primary','bg-blue-50');x.classList.add('border-outline-variant');});b.classList.add('border-primary','bg-blue-50');b.classList.remove('border-outline-variant');a[f]=b.dataset.value;if(n)setTimeout(()=>ls(n),300);else setTimeout(()=>lg(),300);};});}
-    async function lg(){[1,2,3].forEach(i=>{const e=document.getElementById('lead-step-'+i);if(e)e.classList.add('hidden');});document.getElementById('lead-progress').classList.add('hidden');document.getElementById('lead-generating').classList.remove('hidden');try{const res=await fetch('/api/ai-lead-generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(a)});const d=await res.json();if(!res.ok)throw new Error(d.error);r=d;document.getElementById('lead-generating').classList.add('hidden');document.getElementById('lead-solucion-preview').textContent=d.solucion;document.getElementById('lead-gate').classList.remove('hidden');}catch{document.getElementById('lead-generating').classList.add('hidden');document.getElementById('lead-gate-error').textContent='Error generando. Recarga e intenta de nuevo.';document.getElementById('lead-gate-error').classList.remove('hidden');document.getElementById('lead-gate').classList.remove('hidden');}}
-    window.leadReveal=async function(){const n=document.getElementById('lead-nombre').value.trim(),e=document.getElementById('lead-email').value.trim(),t=document.getElementById('lead-telefono').value.trim(),err=document.getElementById('lead-gate-error'),btn=document.getElementById('lead-reveal-btn');err.classList.add('hidden');if(!n){document.getElementById('lead-nombre').focus();return;}if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent='Ingresa un email válido.';err.classList.remove('hidden');return;}btn.disabled=true;btn.textContent='Un momento...';fetch('/api/ai-lead-save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,email:e,telefono:t,negocio:a.negocio,dolor:a.dolor,meta:a.meta,resultado:r,fuente:'homepage'})}).catch(()=>{});document.getElementById('lead-gate').classList.add('hidden');document.getElementById('lead-res-solucion').textContent=r.solucion||'';document.getElementById('lead-res-descripcion').textContent=r.descripcion||'';document.getElementById('lead-res-impacto').textContent=r.impacto||'';document.getElementById('lead-res-siguiente').textContent=r.siguiente_paso||'';document.getElementById('lead-res-herramientas').innerHTML=(r.herramientas||[]).map(t=>`<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#eeeeee;font-size:0.75rem;font-weight:700;">${t}</span>`).join('');document.getElementById('lead-results').classList.remove('hidden');};
+    const a = { negocio: '', dolor: '', meta: '' };
+    let r = null;
+
+    window.leadNext = function(s) {
+        if (s === 1) {
+            const v = document.getElementById('lead-negocio').value.trim();
+            if (!v) { document.getElementById('lead-negocio').focus(); return; }
+            a.negocio = v;
+            ls(2);
+        }
+    };
+
+    function ls(s) {
+        [1,2,3].forEach(i => {
+            const e = document.getElementById('lead-step-' + i);
+            if (e) e.classList.toggle('hidden', i !== s);
+            const d = document.getElementById('ldot-' + i);
+            if (d) d.className = 'flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all ' + (i <= s ? 'bg-primary text-white' : 'bg-slate-200 text-slate-400');
+            if (i < 3) {
+                const p = document.getElementById('lprog-' + i);
+                if (p) p.style.width = i < s ? '100%' : '0%';
+            }
+        });
+        if (s === 2) lo('lead-dolor-opts', 'dolor', 3);
+        if (s === 3) lo('lead-meta-opts', 'meta', null);
+    }
+
+    function lo(id, f, n) {
+        const c = document.getElementById(id);
+        c.querySelectorAll('.lead-opt').forEach(b => {
+            b.onclick = () => {
+                c.querySelectorAll('.lead-opt').forEach(x => {
+                    x.classList.remove('border-primary', 'bg-blue-50');
+                    x.classList.add('border-outline-variant');
+                });
+                b.classList.add('border-primary', 'bg-blue-50');
+                b.classList.remove('border-outline-variant');
+                a[f] = b.dataset.value;
+                if (n) setTimeout(() => ls(n), 300);
+                else setTimeout(() => lg(), 300);
+            };
+        });
+    }
+
+    async function lg() {
+        [1,2,3].forEach(i => {
+            const e = document.getElementById('lead-step-' + i);
+            if (e) e.classList.add('hidden');
+        });
+        document.getElementById('lead-progress').classList.add('hidden');
+        document.getElementById('lead-generating').classList.remove('hidden');
+
+        try {
+            const res = await fetch('/api/ai-lead-generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(a)
+            });
+            const d = await res.json();
+            if (!res.ok) throw new Error(d.error);
+            r = d;
+
+            // Save anonymous record (no contact info)
+            fetch('/api/ai-lead-save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, fuente: 'homepage-anon' })
+            }).catch(() => {});
+
+            document.getElementById('lead-generating').classList.add('hidden');
+            document.getElementById('lead-res-solucion').textContent = d.solucion;
+            document.getElementById('lead-res-impacto').textContent = d.impacto;
+            document.getElementById('lead-basic').classList.remove('hidden');
+        } catch {
+            document.getElementById('lead-generating').classList.add('hidden');
+            document.getElementById('lead-basic').classList.remove('hidden');
+            document.getElementById('lead-gate-error').textContent = 'Error generando recomendación. Recarga e intenta de nuevo.';
+            document.getElementById('lead-gate-error').classList.remove('hidden');
+        }
+    }
+
+    window.leadSkip = function() {
+        document.getElementById('lead-email-gate').classList.add('hidden');
+    };
+
+    window.leadSubmitEmail = async function() {
+        const n = document.getElementById('lead-nombre').value.trim();
+        const e = document.getElementById('lead-email').value.trim();
+        const t = document.getElementById('lead-telefono').value.trim();
+        const err = document.getElementById('lead-gate-error');
+        const btn = document.getElementById('lead-submit-btn');
+
+        err.classList.add('hidden');
+        if (!n) { document.getElementById('lead-nombre').focus(); return; }
+        if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+            err.textContent = 'Ingresa un email válido.';
+            err.classList.remove('hidden');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Un momento...';
+
+        // Save with contact info — triggers N8N email
+        fetch('/api/ai-lead-save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre: n, email: e, telefono: t, negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, fuente: 'homepage' })
+        }).catch(() => {});
+
+        document.getElementById('lead-email-gate').classList.add('hidden');
+        document.getElementById('lead-res-descripcion').textContent = r.descripcion || '';
+        document.getElementById('lead-res-siguiente').textContent = r.siguiente_paso || '';
+        document.getElementById('lead-res-herramientas-wrap').innerHTML = (r.herramientas || [])
+            .map(h => `<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#eeeeee;font-size:0.75rem;font-weight:700;">${h}</span>`)
+            .join('');
+        document.getElementById('lead-full-results').classList.remove('hidden');
+    };
 })();
 </script>
 
