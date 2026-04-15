@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Intake Form | MC DESIGNS</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "outline": "#727787",
+                        "primary-container": "#006df8",
+                        "on-primary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "error": "#ba1a1a",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px",
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input, textarea, select {
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0056c6;
+            box-shadow: 0 0 0 3px rgba(0, 86, 198, 0.12);
+        }
+        .step-dot.active { background-color: #0056c6; }
+        .step-dot.done { background-color: #0056c6; }
+        .step-dot { background-color: #c2c6d8; }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-sans antialiased overflow-x-hidden">
+
+    <!-- Nav minimal -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+        <div class="flex justify-between items-center max-w-5xl mx-auto px-6 py-4">
+            <a href="/index.html">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-9 w-auto" />
+            </a>
+            <span class="text-xs font-label font-bold uppercase tracking-widest text-slate-400">Intake Form — Privado</span>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24 pb-20 px-4">
+        <div class="max-w-2xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-10 mt-6">
+                <div class="inline-flex items-center gap-2 bg-primary/8 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-5">
+                    <span class="material-symbols-outlined text-base">lock</span>
+                    Formulario Privado
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight mb-3">
+                    Cuéntame sobre tu proyecto
+                </h1>
+                <p class="text-slate-500 text-base leading-relaxed max-w-lg mx-auto">
+                    Esta información me ayuda a preparar una propuesta personalizada para tu negocio. Tarda menos de 5 minutos.
+                </p>
+            </div>
+
+            <!-- Form card -->
+            <div id="form-container" class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
+
+                <form id="intake-form" class="p-8 md:p-10 space-y-8">
+
+                    <!-- Section 1: Contact Info -->
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">person</span>
+                            Datos de Contacto
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="businessName">
+                                    Nombre del negocio <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="businessName" name="businessName" required
+                                    placeholder="ej. BE Boutique"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="contactName">
+                                    Tu nombre <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contactName" name="contactName" required
+                                    placeholder="ej. María Rodríguez"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="phone">
+                                    Teléfono <span class="text-red-500">*</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" required
+                                    placeholder="787-555-0000"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="email">
+                                    Email <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="tu@negocio.com"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100"></div>
+
+                    <!-- Section 2: Service -->
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">build</span>
+                            Servicio de Interés
+                        </h2>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="service">
+                                ¿Qué servicio te interesa? <span class="text-red-500">*</span>
+                            </label>
+                            <select id="service" name="service" required
+                                class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 bg-white appearance-none cursor-pointer">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Design — Logo & Brand Kit">Diseño — Logo & Brand Kit</option>
+                                <option value="Web Design — Foundation">Web Design — Foundation</option>
+                                <option value="Web Design — Growth">Web Design — Growth</option>
+                                <option value="Web Design — Pro">Web Design — Pro</option>
+                                <option value="AI Integration">Integración de IA</option>
+                                <option value="Bundle — Web + AI">Bundle — Web + IA</option>
+                                <option value="No estoy seguro/a">No estoy seguro/a, quiero orientación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100"></div>
+
+                    <!-- Section 3: About the Business -->
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">storefront</span>
+                            Sobre tu Negocio
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="businessDescription">
+                                    ¿Qué hace tu negocio? <span class="text-red-500">*</span>
+                                </label>
+                                <textarea id="businessDescription" name="businessDescription" required rows="3"
+                                    placeholder="Describe brevemente qué ofreces y a quién le vendes..."
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white resize-none"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="targetAudience">
+                                    ¿A quién le vendes? (público objetivo)
+                                </label>
+                                <input type="text" id="targetAudience" name="targetAudience"
+                                    placeholder="ej. Mujeres 25-40, emprendedoras en Puerto Rico"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="mainProblem">
+                                    ¿Cuál es el problema principal que quieres resolver? <span class="text-red-500">*</span>
+                                </label>
+                                <textarea id="mainProblem" name="mainProblem" required rows="3"
+                                    placeholder="ej. No tengo presencia online, mis ventas son solo por Instagram..."
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100"></div>
+
+                    <!-- Section 4: Assets & References -->
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">folder</span>
+                            Assets & Referencias
+                        </h2>
+                        <div class="space-y-5">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-700 mb-3">¿Tienes logo?</p>
+                                    <div class="flex gap-3">
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="hasLogo" value="yes" class="accent-primary w-4 h-4" />
+                                            <span class="text-sm text-slate-700">Sí</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="hasLogo" value="no" class="accent-primary w-4 h-4" />
+                                            <span class="text-sm text-slate-700">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-700 mb-3">¿Tienes fotos?</p>
+                                    <div class="flex gap-3">
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="hasPhotos" value="yes" class="accent-primary w-4 h-4" />
+                                            <span class="text-sm text-slate-700">Sí</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="hasPhotos" value="no" class="accent-primary w-4 h-4" />
+                                            <span class="text-sm text-slate-700">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="referenceLinks">
+                                    Links de referencia / inspiración
+                                </label>
+                                <textarea id="referenceLinks" name="referenceLinks" rows="2"
+                                    placeholder="Pega aquí links de páginas o negocios que te gustan como referencia..."
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100"></div>
+
+                    <!-- Section 5: Timeline & Source -->
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base">calendar_month</span>
+                            Logística
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="timeline">
+                                    Timeline ideal
+                                </label>
+                                <select id="timeline" name="timeline"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option value="Lo antes posible">Lo antes posible</option>
+                                    <option value="1 mes">Dentro de 1 mes</option>
+                                    <option value="1-2 meses">1–2 meses</option>
+                                    <option value="2-3 meses">2–3 meses</option>
+                                    <option value="Sin prisa">Sin prisa, estoy explorando</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="referralSource">
+                                    ¿Cómo nos encontraste?
+                                </label>
+                                <select id="referralSource" name="referralSource"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="Referido de un amigo/cliente">Referido de un amigo / cliente</option>
+                                    <option value="Google">Google</option>
+                                    <option value="LinkedIn">LinkedIn</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error message -->
+                    <div id="error-msg" class="hidden bg-red-50 border border-red-200 rounded-xl px-5 py-4 text-sm text-red-700">
+                        Hubo un problema enviando el formulario. Por favor intenta de nuevo o escríbeme directamente a <a href="mailto:miguel@mcdesignspr.com" class="underline">miguel@mcdesignspr.com</a>.
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="pt-2">
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-primary text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/90 active:scale-[0.98] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed">
+                            <span id="btn-text">Enviar Formulario</span>
+                            <span id="btn-icon" class="material-symbols-outlined text-lg">send</span>
+                            <span id="btn-spinner" class="hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                        </button>
+                        <p class="text-center text-xs text-slate-400 mt-4">
+                            Tu información es privada y solo será utilizada por MC Designs para preparar tu propuesta.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success state -->
+            <div id="success-card" class="hidden bg-white border border-slate-200 rounded-3xl shadow-sm p-10 text-center">
+                <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined text-3xl text-green-600">check_circle</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight mb-3">¡Recibido!</h2>
+                <p class="text-slate-500 text-base leading-relaxed max-w-sm mx-auto mb-8">
+                    Gracias por completar el formulario. Me comunicaré contigo en las próximas 24 horas para coordinar los próximos pasos.
+                </p>
+                <a href="/index.html" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline">
+                    <span class="material-symbols-outlined text-base">arrow_back</span>
+                    Volver al inicio
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('intake-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnSpinner = document.getElementById('btn-spinner');
+        const errorMsg = document.getElementById('error-msg');
+        const formContainer = document.getElementById('form-container');
+        const successCard = document.getElementById('success-card');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.add('hidden');
+
+            // Loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            btnIcon.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+
+            const data = {
+                businessName: form.businessName.value.trim(),
+                contactName: form.contactName.value.trim(),
+                phone: form.phone.value.trim(),
+                email: form.email.value.trim(),
+                service: form.service.value,
+                businessDescription: form.businessDescription.value.trim(),
+                targetAudience: form.targetAudience.value.trim(),
+                mainProblem: form.mainProblem.value.trim(),
+                referenceLinks: form.referenceLinks.value.trim(),
+                hasLogo: form.hasLogo.value || null,
+                hasPhotos: form.hasPhotos.value || null,
+                timeline: form.timeline.value || null,
+                referralSource: form.referralSource.value || null,
+            };
+
+            try {
+                const res = await fetch('/api/intake', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                if (res.ok) {
+                    formContainer.classList.add('hidden');
+                    successCard.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                errorMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+                btnText.textContent = 'Enviar Formulario';
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            }
+        });
+
+        // Radio button styling
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const group = document.querySelectorAll(`input[name="${radio.name}"]`);
+                group.forEach(r => {
+                    const label = r.closest('label');
+                    if (r.checked) {
+                        label.classList.add('text-primary');
+                    } else {
+                        label.classList.remove('text-primary');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
