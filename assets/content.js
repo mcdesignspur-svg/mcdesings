@@ -113,7 +113,7 @@ export const translations = {
             },
             intro: {
                 title: "De invisible a imparable.",
-                subtext: "Seis servicios. Una sola dirección: hacer crecer tu negocio."
+                subtext: "Siete servicios. Una sola dirección: hacer crecer tu negocio."
             },
             cards: [
                 {
@@ -145,6 +145,11 @@ export const translations = {
                     title: "CRECIMIENTO CONTINUO",
                     desc: "El trabajo no termina en el lanzamiento. Optimización mensual, ajuste de IA y revisiones de rendimiento para seguir mejorando.",
                     link: "→ Retainer mensual"
+                },
+                {
+                    title: "DASHBOARDS DE NEGOCIO",
+                    desc: "Un centro de comando para tu operación completa. CRM, pipeline de leads, calendario, portal de clientes y reportes — todo en un solo lugar.",
+                    link: "→ Dashboard personalizado"
                 }
             ],
             how_it_works: {
@@ -216,6 +221,7 @@ export const translations = {
             s1: "Diseño de Marca",
             s2: "Diseño Web",
             s3: "Integración IA",
+            s4: "Dashboards de Negocio",
             p1: "Portafolio",
             p2: "Servicios",
             p3: "Contacto",
@@ -368,7 +374,7 @@ export const translations = {
             },
             intro: {
                 title: "From invisible to unstoppable.",
-                subtext: "Six services. One direction: grow your business."
+                subtext: "Seven services. One direction: grow your business."
             },
             cards: [
                 {
@@ -400,6 +406,11 @@ export const translations = {
                     title: "ONGOING GROWTH",
                     desc: "The work doesn't stop at launch. Monthly optimization, AI tuning, and performance reviews to keep improving.",
                     link: "→ Monthly retainer"
+                },
+                {
+                    title: "BUSINESS DASHBOARDS",
+                    desc: "A command center for your entire operation. CRM, lead pipeline, booking calendar, client portal, and reports — all in one place.",
+                    link: "→ Custom dashboard"
                 }
             ],
             how_it_works: {
@@ -471,6 +482,7 @@ export const translations = {
             s1: "Brand Design",
             s2: "Web Design",
             s3: "AI Integration",
+            s4: "Business Dashboards",
             p1: "Portfolio",
             p2: "Services",
             p3: "Contact",
