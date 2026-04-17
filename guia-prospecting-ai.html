@@ -269,9 +269,9 @@
             prose-ul:list-disc prose-ul:pl-5
             selection:bg-primary-fixed selection:text-on-primary-fixed">
 
-            <p class="text-2xl text-slate-800 leading-snug tracking-tight mb-12">En MC Designs automatizamos nuestro proceso de prospecting con Claude Code y Notion. En esta guía te explico exactamente cómo funciona el sistema, qué herramientas usamos, y cómo puedes construir algo igual.</p>
+            <p class="text-2xl text-slate-800 leading-snug tracking-tight mb-12">En MC Designs automatizamos nuestro proceso de prospecting con Claude Code y Notion. En esta guía te explico exactamente cómo funciona el sistema — para que lo construyas tú mismo, o si prefieres, <strong>nosotros lo montamos por ti</strong>.</p>
 
-            <p>No es un truco de ChatGPT. Es un agente de AI que busca negocios, verifica si tienen website, extrae su información de contacto, escribe un pitch personalizado por cada uno, y guarda todo en Notion — <strong>completamente solo</strong>.</p>
+            <p>No es un truco de ChatGPT. Es un agente de AI que busca negocios, verifica si tienen website, extrae su información de contacto, escribe un pitch personalizado por cada uno, y guarda todo en Notion — <strong>completamente solo</strong>. Puedes aprenderlo aquí o simplemente decirme qué industria quieres atacar y yo te entrego el sistema listo.</p>
 
             <h2>Las Herramientas</h2>
             
@@ -397,30 +397,60 @@
             
             <p>Él detecta el llamado del skill particular y hace toda la magia por debajo del telón. Se pone a trabajar sin pedir nada a cambio.</p>
 
-            <h2>¿Puedes construir esto tú mismo?</h2>
-            
-            <p>Definitivamente. Las piezas que necesitas armar son:</p>
-            
-            <ol>
-                <li>Instalar el Claude Code CLI — descargable desde <a href="https://claude.ai/download" class="text-primary font-bold hover:underline">claude.ai/download</a></li>
-                <li>Pedirle al agente inicial que te construya tu archivo skill basándose en el prompt que dejé arriba, enfocado en tu nicho y voz de marca.</li>
-                <li>Conectar tu API KEY de Notion y darle permisos a tu Database (Workspace integration).</li>
-            </ol>
-            
-            <p>Incluso con experiencia la configuración de la integración te puede tomar como una hora. Pero después de que cruzas ese puente, prospectar se reduce a mandar un chat message.</p>
-            
+            <h2>Elige tu camino</h2>
+
+            <p>Hay dos maneras de tener este sistema funcionando en tu negocio. Ninguna es mejor que la otra — depende de cuánto tiempo tienes y qué tan cómodo te sientes con la tecnología.</p>
+
+            <div class="grid sm:grid-cols-2 gap-6 my-10 not-prose">
+                <!-- Path A: DIY -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-slate-600">terminal</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 tracking-tight">Lo construyo yo</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed flex-grow mb-6">Tienes Claude Code, algo de tiempo libre y ganas de aprender. Las piezas son:</p>
+                    <ol class="text-sm text-slate-600 space-y-3 mb-6 list-none">
+                        <li class="flex gap-3"><span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold flex items-center justify-center">1</span> Instalar Claude Code desde <a href="https://claude.ai/download" target="_blank" class="text-primary font-bold hover:underline">claude.ai/download</a></li>
+                        <li class="flex gap-3"><span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold flex items-center justify-center">2</span> Pedirle al agente que construya el skill con el prompt de arriba</li>
+                        <li class="flex gap-3"><span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold flex items-center justify-center">3</span> Conectar tu API KEY de Notion y dar permisos a tu Database</li>
+                    </ol>
+                    <p class="text-xs text-slate-400 border-t border-slate-100 pt-4">Tiempo estimado: ~1 hora de setup. Después, prospectar toma segundos.</p>
+                </div>
+
+                <!-- Path B: Done for you -->
+                <div class="bg-gradient-to-br from-primary to-[#006df8] rounded-2xl p-6 shadow-lg flex flex-col text-white">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-white">bolt</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 tracking-tight">MC Designs lo hace por mí</h3>
+                    <p class="text-sm text-white/80 leading-relaxed flex-grow mb-6">Dime qué industria quieres atacar y qué área de PR. Yo configuro el agente, lo conecto a Notion, y te lo entrego listo para usar — con el pitch ya afinado a tu voz.</p>
+                    <ul class="text-sm text-white/80 space-y-2 mb-6 list-none">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-white/60">check_circle</span> Agente configurado a tu nicho</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-white/60">check_circle</span> Notion conectado y listo</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-white/60">check_circle</span> Pitch escrito en tu voz</li>
+                    </ul>
+                    <a href="/contacto.html" class="mt-auto inline-flex items-center justify-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-label text-xs uppercase tracking-widest font-bold shadow-md hover:shadow-lg active:scale-95 transition-all">
+                        Quiero que lo hagan por mí <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
             <hr class="border-slate-100 my-12" />
 
-            <div class="bg-gradient-to-tr from-[#0056c6]/10 to-[#006df8]/5 rounded-3xl p-8 md:p-12 text-center not-prose border border-[#0056c6]/20 shadow-sm">
-                <h3 class="text-2xl font-black tracking-tight text-slate-900 mb-4">Ayuda para Implementar</h3>
-                <p class="text-slate-600 mb-8 max-w-xl mx-auto">Si estas implementaciones de AI te abruman y prefieres que nuestro estudio en Puerto Rico construya y conecte tu primer Agente Operativo a tu negocio llave-en-mano...</p>
-                <a href="/contacto.html" class="inline-flex items-center gap-2 hero-gradient text-on-primary px-8 py-4 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
-                    Agenda una llamada gratis <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </a>
+            <div class="bg-slate-50 rounded-3xl p-8 md:p-10 not-prose border border-slate-100">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 flex-shrink-0 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-xl">lightbulb</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 tracking-tight mb-2">¿No sabes por cuál empezar?</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Si tienes el tiempo y las ganas, DIY es brutal para aprender. Si lo que quieres es resultados esta semana sin distracciones, la opción llave-en-mano te ahorra la curva de aprendizaje completa. Ambas te dejan con el mismo sistema funcionando.</p>
+                    </div>
+                </div>
             </div>
 
             <p class="text-center text-sm text-slate-400 mt-12 font-medium">
-                ¿Te fue súper útil esta guía técnica? Compártela con un dueño de negocio que esté ahogado en tareas manuales.
+                ¿Te fue súper útil esta guía? Compártela con un dueño de negocio que esté ahogado en tareas manuales.
             </p>
 
         </article>
