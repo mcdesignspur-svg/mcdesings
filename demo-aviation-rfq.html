@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Aviation RFQ Triage Demo · MC Designs</title>
+    <meta name="description" content="Submitea un RFQ de partes de aviación y mira cómo el AI lo clasifica, lo rutea, y draftea la respuesta — en menos de 60 segundos." />
+    <link rel="canonical" href="https://mcdesignspr.com/demos/aviation-rfq" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-container": "#006df8",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "outline": "#727787",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "label": ["Inter"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+        .demo-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; padding: 2rem; }
+        .aog-bar { background: linear-gradient(90deg, #b91c1c 0%, #dc2626 100%); color: white; }
+        .pill { display: inline-block; padding: 4px 14px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em; }
+        .pill-blue { background: #d9e2ff; color: #001945; }
+        .pill-amber { background: #fffbeb; color: #92400e; border: 1px solid #fcd34d; }
+        .pill-red { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; }
+        .pill-green { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+        .pill-slate { background: #f1f5f9; color: #334155; }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .loading-dot { animation: pulse-dot 1.2s ease-in-out infinite; display: inline-block; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+        .preset-btn { transition: all 0.15s; cursor: pointer; }
+        .preset-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .form-input, .form-select, .form-textarea {
+            width: 100%; padding: 10px 14px; border-radius: 10px;
+            border: 1px solid #c2c6d8; background: #ffffff;
+            font-size: 0.875rem; color: #1a1c1c;
+            transition: all 0.15s;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none; border-color: #0056c6; box-shadow: 0 0 0 3px rgba(0,86,198,0.1);
+        }
+        .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: #424655; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+        .result-section { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .check-line { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 0.875rem; color: #1a1c1c; }
+        .check-line.delayed { opacity: 0; animation: fadeIn 0.4s ease-out forwards; }
+        .quote-email {
+            background: #fafafa; border: 1px solid #e2e2e2; border-radius: 12px;
+            padding: 20px; font-size: 0.875rem; line-height: 1.7; color: #1a1c1c;
+            white-space: pre-wrap; font-family: 'Inter', sans-serif;
+        }
+        .json-toggle { background: #1a1c1c; color: #f0fdf4; border-radius: 12px; padding: 16px; font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; line-height: 1.5; overflow-x: auto; max-height: 400px; overflow-y: auto; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased">
+
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+        <a href="/" class="flex-shrink-0">
+            <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about">Miguel</a>
+            <a class="text-primary font-semibold" href="/demos">Demos IA</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-4">
+            <a href="/recursos" class="hidden sm:inline-block bg-white text-primary border border-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold hover:bg-primary/5 active:scale-95 transition-all">Recursos</a>
+            <a href="/contacto" class="hidden sm:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform">Comenzar Proyecto</a>
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
+                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium">
+        <a class="text-slate-600" href="/">Inicio</a>
+        <a class="text-slate-600" href="/servicios">Servicios</a>
+        <a class="text-slate-600" href="/portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about">Miguel</a>
+        <a class="text-primary font-semibold" href="/demos">Demos IA</a>
+        <a class="text-slate-600" href="/contacto">Contacto</a>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-28">
+    <!-- Breadcrumb -->
+    <div class="max-w-5xl mx-auto px-8 pt-6 pb-2">
+        <a href="/demos" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary transition-colors font-medium">
+            <span class="material-symbols-outlined text-base">arrow_back</span> Todos los demos
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto px-8 pt-6 pb-10 text-center">
+        <div class="text-4xl mb-3">✈️</div>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-3">RFQ Triage para Aviation Parts</h1>
+        <p class="text-on-surface-variant max-w-2xl mx-auto leading-relaxed">Submitea un RFQ y mira cómo el AI lo clasifica, detecta AOG, lo rutea al rep correcto, y draftea la respuesta al cliente — en menos de 60 segundos.</p>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
+            <span class="pill pill-slate">Vertical: Aviation Parts B2B</span>
+            <span class="pill pill-blue">Stack: N8N · Anthropic · Supabase</span>
+        </div>
+    </section>
+
+    <!-- Demo card -->
+    <section class="max-w-5xl mx-auto px-8 pb-32">
+        <div class="demo-card">
+
+            <!-- Presets -->
+            <div class="mb-6">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Cargar un escenario de prueba</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <button onclick="loadPreset('routine')" class="preset-btn text-left p-4 border border-slate-200 rounded-xl bg-white">
+                        <div class="text-xs font-bold text-green-700 mb-1">🟢 RUTINA</div>
+                        <div class="text-sm font-semibold">Hydraulic actuator</div>
+                        <div class="text-xs text-slate-500 mt-1">737-800 · OH · 14 días</div>
+                    </button>
+                    <button onclick="loadPreset('aog')" class="preset-btn text-left p-4 border border-red-200 rounded-xl bg-red-50/30">
+                        <div class="text-xs font-bold text-red-700 mb-1">🔴 AOG EMERGENCY</div>
+                        <div class="text-sm font-semibold">Brake assembly</div>
+                        <div class="text-xs text-slate-500 mt-1">A320 · AR · 6 horas</div>
+                    </button>
+                    <button onclick="loadPreset('bilingual')" class="preset-btn text-left p-4 border border-blue-200 rounded-xl bg-blue-50/30">
+                        <div class="text-xs font-bold text-blue-700 mb-1">🌎 BILINGÜE</div>
+                        <div class="text-sm font-semibold">Cliente en español</div>
+                        <div class="text-xs text-slate-500 mt-1">767 · APU starter · 3 días</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div id="rfq-form" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="form-label">Compañía *</label>
+                        <input id="f-company" type="text" class="form-input" placeholder="ej. Caribbean Air Cargo" />
+                    </div>
+                    <div>
+                        <label class="form-label">Contacto</label>
+                        <input id="f-contact-name" type="text" class="form-input" placeholder="Nombre del contacto" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label">Email del contacto</label>
+                    <input id="f-contact-email" type="email" class="form-input" placeholder="ops@ejemplo.com" />
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="form-label">Aircraft *</label>
+                        <select id="f-aircraft" class="form-select">
+                            <option value="">Selecciona...</option>
+                            <option value="Boeing 737-800">Boeing 737-800</option>
+                            <option value="Boeing 737 MAX">Boeing 737 MAX</option>
+                            <option value="Boeing 757-200">Boeing 757-200</option>
+                            <option value="Boeing 767-300">Boeing 767-300</option>
+                            <option value="Boeing 777-200">Boeing 777-200</option>
+                            <option value="Boeing 747-400">Boeing 747-400</option>
+                            <option value="Airbus A320">Airbus A320</option>
+                            <option value="Airbus A321">Airbus A321</option>
+                            <option value="Airbus A330">Airbus A330</option>
+                            <option value="Airbus A350">Airbus A350</option>
+                            <option value="Embraer E190">Embraer E190</option>
+                            <option value="Bombardier CRJ-700">Bombardier CRJ-700</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">ATA Chapter</label>
+                        <select id="f-ata" class="form-select">
+                            <option value="">Auto-detectar del part #</option>
+                            <option value="21 — Air Conditioning">21 — Air Conditioning</option>
+                            <option value="22 — Auto Flight">22 — Auto Flight</option>
+                            <option value="23 — Communications">23 — Communications</option>
+                            <option value="24 — Electrical Power">24 — Electrical Power</option>
+                            <option value="27 — Flight Controls">27 — Flight Controls</option>
+                            <option value="28 — Fuel">28 — Fuel</option>
+                            <option value="29 — Hydraulic Power">29 — Hydraulic Power</option>
+                            <option value="31 — Indicating/Recording">31 — Indicating/Recording</option>
+                            <option value="32 — Landing Gear">32 — Landing Gear</option>
+                            <option value="34 — Navigation">34 — Navigation</option>
+                            <option value="36 — Pneumatic">36 — Pneumatic</option>
+                            <option value="49 — APU">49 — APU</option>
+                            <option value="71-80 — Engines/Powerplant">71-80 — Engines/Powerplant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="form-label">Part Number *</label>
+                        <input id="f-part-number" type="text" class="form-input" placeholder="ej. 65B45192-1" />
+                    </div>
+                    <div>
+                        <label class="form-label">Descripción de la parte</label>
+                        <input id="f-part-desc" type="text" class="form-input" placeholder="ej. Hydraulic actuator" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="form-label">Condición *</label>
+                        <select id="f-condition" class="form-select">
+                            <option value="">Selecciona...</option>
+                            <option value="NE">NE — New</option>
+                            <option value="OH">OH — Overhauled</option>
+                            <option value="SV">SV — Serviceable</option>
+                            <option value="AR">AR — As Removed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Cantidad</label>
+                        <input id="f-quantity" type="number" min="1" value="1" class="form-input" />
+                    </div>
+                    <div>
+                        <label class="form-label">Required by *</label>
+                        <select id="f-required-by" class="form-select">
+                            <option value="">Selecciona...</option>
+                            <option value="AOG — within 6 hours">AOG — within 6 hours</option>
+                            <option value="AOG — within 24 hours">AOG — within 24 hours</option>
+                            <option value="Rush — within 72 hours">Rush — within 72 hours</option>
+                            <option value="Standard — within 1 week">Standard — within 1 week</option>
+                            <option value="Standard — within 2 weeks">Standard — within 2 weeks</option>
+                            <option value="Planning — within 1 month">Planning — within 1 month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label">Notas adicionales</label>
+                    <textarea id="f-notes" rows="2" class="form-textarea" placeholder="Cualquier contexto adicional — referencias, condiciones especiales, urgencia..."></textarea>
+                </div>
+
+                <div>
+                    <label class="form-label">Idioma de respuesta</label>
+                    <div class="flex gap-3">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="language" value="en" checked class="text-primary" />
+                            <span class="text-sm">English</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="language" value="es" class="text-primary" />
+                            <span class="text-sm">Español</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="submitRFQ()" id="submit-btn"
+                    class="w-full hero-gradient text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    Submit RFQ → Procesar con AI
+                </button>
+                <p class="text-xs text-slate-400 text-center">El AI clasifica, rutea, y draftea la respuesta en &lt;5 segundos.</p>
+            </div>
+
+            <!-- Loading -->
+            <div id="rfq-loading" class="hidden text-center py-12">
+                <div class="text-3xl mb-4">⚙️</div>
+                <p class="text-base font-semibold mb-3">AI procesando RFQ<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span></p>
+                <div class="text-xs text-slate-500 max-w-sm mx-auto space-y-1">
+                    <p>→ Clasificando categoría y urgencia</p>
+                    <p>→ Detectando AOG flag</p>
+                    <p>→ Ruteando al rep correcto</p>
+                    <p>→ Drafteando quote response</p>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="rfq-results" class="hidden space-y-6">
+
+                <!-- AOG banner (only shown if AOG) -->
+                <div id="aog-banner" class="hidden aog-bar rounded-xl px-5 py-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-3xl">warning</span>
+                    <div>
+                        <div class="font-black text-base uppercase tracking-wide">AOG Detected — Routing to On-Call</div>
+                        <div class="text-xs opacity-90">En producción esto también dispara WhatsApp + Slack notification al rep on-call</div>
+                    </div>
+                </div>
+
+                <!-- Classification -->
+                <div class="result-section">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">📊 Clasificación AI</h3>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                        <div id="classification-pills" class="flex flex-wrap gap-2 mb-3"></div>
+                        <div class="text-sm text-slate-700">
+                            <span class="font-semibold">ATA Chapter:</span> <span id="classification-ata"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Routing -->
+                <div class="result-section">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">📍 Routing Decision</h3>
+                    <div class="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <div class="text-base font-bold text-on-surface" id="routing-name"></div>
+                                <div class="text-xs text-slate-500 mt-0.5" id="routing-role"></div>
+                            </div>
+                            <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                        </div>
+                        <div class="mt-3 text-sm text-slate-700" id="routing-reason"></div>
+                    </div>
+                </div>
+
+                <!-- Customer Acknowledgment -->
+                <div class="result-section">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">📤 Auto-acknowledgment al cliente (enviado en &lt;60 seg)</h3>
+                    <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+                        <div class="text-sm text-slate-700 leading-relaxed" id="customer-ack"></div>
+                    </div>
+                </div>
+
+                <!-- Quote Draft -->
+                <div class="result-section">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">💬 Draft de quote (para que el rep revise)</h3>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <div class="bg-slate-100 px-4 py-2 border-b border-slate-200 flex items-center gap-2">
+                            <span class="text-xs font-semibold text-slate-500">Subject:</span>
+                            <span class="text-xs font-medium" id="quote-subject"></span>
+                        </div>
+                        <div class="quote-email" id="quote-body"></div>
+                        <div class="bg-slate-50 px-4 py-3 border-t border-slate-200 flex gap-2">
+                            <button class="text-xs px-3 py-1.5 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors">Aprobar &amp; enviar</button>
+                            <button class="text-xs px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 transition-colors">Editar</button>
+                            <button class="text-xs px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 transition-colors">Reject</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internal Notes -->
+                <div class="result-section">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">📝 Notas internas para el rep</h3>
+                    <div class="bg-amber-50 rounded-xl p-4 border border-amber-200 text-sm text-slate-700" id="internal-notes"></div>
+                </div>
+
+                <!-- JSON toggle -->
+                <div class="result-section">
+                    <button onclick="toggleJSON()" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">code</span>
+                        <span id="json-toggle-label">Ver JSON estructurado (esto es lo que va a Supabase)</span>
+                    </button>
+                    <div id="json-output" class="hidden mt-3">
+                        <pre class="json-toggle"><code id="json-content"></code></pre>
+                    </div>
+                </div>
+
+                <!-- Reset -->
+                <div class="result-section pt-4 border-t border-slate-200">
+                    <button onclick="resetDemo()" class="w-full bg-white border-2 border-primary text-primary py-3 rounded-xl font-bold text-sm uppercase tracking-wide hover:bg-primary/5 transition-all">
+                        ← Submit otro RFQ
+                    </button>
+                </div>
+
+                <div class="mt-5 p-4 rounded-xl bg-primary-fixed text-center">
+                    <p class="text-xs font-semibold text-on-primary-fixed mb-2">¿Quieres un sistema así para tu empresa?</p>
+                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all">Hablemos</a>
+                </div>
+            </div>
+
+            <!-- Error -->
+            <div id="rfq-error" class="hidden text-center py-12">
+                <div class="text-3xl mb-3">⚠️</div>
+                <p class="text-sm font-semibold text-red-700 mb-3" id="error-message">Algo salió mal procesando el RFQ.</p>
+                <button onclick="resetDemo()" class="text-xs px-4 py-2 rounded-lg bg-primary text-white font-bold uppercase tracking-widest">Intentar de nuevo</button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-slate-500">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Integración IA</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        menu.classList.toggle('flex', isHidden);
+        icon.textContent = isHidden ? 'close' : 'menu';
+    });
+
+    const PRESETS = {
+        routine: {
+            company: 'Caribbean Air Cargo',
+            contact_name: 'Mike Reyes',
+            contact_email: 'ops@caribbean-cargo.com',
+            aircraft: 'Boeing 737-800',
+            ata: '29 — Hydraulic Power',
+            part_number: '65B45192-1',
+            part_desc: 'Hydraulic actuator',
+            condition: 'OH',
+            quantity: 1,
+            required_by: 'Standard — within 2 weeks',
+            notes: 'Routine replacement, scheduled maintenance window.',
+            language: 'en',
+        },
+        aog: {
+            company: 'AeroSur Charter',
+            contact_name: 'Jen Walker',
+            contact_email: 'aog@aerosur.com',
+            aircraft: 'Airbus A320',
+            ata: '32 — Landing Gear',
+            part_number: 'C20620100',
+            part_desc: 'Brake assembly',
+            condition: 'AR',
+            quantity: 2,
+            required_by: 'AOG — within 6 hours',
+            notes: 'Aircraft grounded SJU. Need confirmation ASAP. Will fly courier.',
+            language: 'en',
+        },
+        bilingual: {
+            company: 'LATAM Cargo Caribe',
+            contact_name: 'Carlos Vega',
+            contact_email: 'mantenimiento@latam-cargo.com',
+            aircraft: 'Boeing 767-300',
+            ata: '49 — APU',
+            part_number: 'GTCP331-200',
+            part_desc: 'APU starter motor',
+            condition: 'SV',
+            quantity: 1,
+            required_by: 'Rush — within 72 hours',
+            notes: 'APU no arranca, necesitamos despachar ASAP. Aceptamos OH también si SV no disponible.',
+            language: 'es',
+        },
+    };
+
+    function loadPreset(name) {
+        const p = PRESETS[name];
+        if (!p) return;
+        document.getElementById('f-company').value = p.company;
+        document.getElementById('f-contact-name').value = p.contact_name;
+        document.getElementById('f-contact-email').value = p.contact_email;
+        document.getElementById('f-aircraft').value = p.aircraft;
+        document.getElementById('f-ata').value = p.ata;
+        document.getElementById('f-part-number').value = p.part_number;
+        document.getElementById('f-part-desc').value = p.part_desc;
+        document.getElementById('f-condition').value = p.condition;
+        document.getElementById('f-quantity').value = p.quantity;
+        document.getElementById('f-required-by').value = p.required_by;
+        document.getElementById('f-notes').value = p.notes;
+        document.querySelector(`input[name="language"][value="${p.language}"]`).checked = true;
+        // Smooth scroll to submit button
+        document.getElementById('submit-btn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    async function submitRFQ() {
+        const language = document.querySelector('input[name="language"]:checked').value;
+        const payload = {
+            company: document.getElementById('f-company').value.trim(),
+            contact_name: document.getElementById('f-contact-name').value.trim(),
+            contact_email: document.getElementById('f-contact-email').value.trim(),
+            aircraft: document.getElementById('f-aircraft').value,
+            ata_chapter: document.getElementById('f-ata').value,
+            part_number: document.getElementById('f-part-number').value.trim(),
+            part_description: document.getElementById('f-part-desc').value.trim(),
+            condition: document.getElementById('f-condition').value,
+            quantity: parseInt(document.getElementById('f-quantity').value, 10) || 1,
+            required_by: document.getElementById('f-required-by').value,
+            notes: document.getElementById('f-notes').value.trim(),
+            language,
+        };
+
+        // Basic validation
+        if (!payload.company || !payload.aircraft || !payload.part_number || !payload.condition || !payload.required_by) {
+            alert('Por favor completa los campos requeridos: Compañía, Aircraft, Part Number, Condición, Required by.');
+            return;
+        }
+
+        document.getElementById('rfq-form').classList.add('hidden');
+        document.getElementById('rfq-loading').classList.remove('hidden');
+        document.getElementById('rfq-results').classList.add('hidden');
+        document.getElementById('rfq-error').classList.add('hidden');
+
+        try {
+            const res = await fetch('/api/aviation-rfq', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error);
+            renderResults(data);
+        } catch (err) {
+            document.getElementById('rfq-loading').classList.add('hidden');
+            document.getElementById('rfq-error').classList.remove('hidden');
+            document.getElementById('error-message').textContent = err?.message || 'Error procesando el RFQ.';
+        }
+    }
+
+    function renderResults(data) {
+        document.getElementById('rfq-loading').classList.add('hidden');
+        document.getElementById('rfq-results').classList.remove('hidden');
+
+        // AOG banner
+        const aogBanner = document.getElementById('aog-banner');
+        if (data.classification.aog_flag) {
+            aogBanner.classList.remove('hidden');
+        } else {
+            aogBanner.classList.add('hidden');
+        }
+
+        // Classification pills
+        const pills = document.getElementById('classification-pills');
+        pills.innerHTML = '';
+        const urgencyClass = data.classification.urgency === 'AOG' ? 'pill-red'
+            : data.classification.urgency === 'RUSH' ? 'pill-amber'
+            : 'pill-green';
+        pills.innerHTML += `<span class="pill ${urgencyClass}">⚡ ${data.classification.urgency}</span>`;
+        pills.innerHTML += `<span class="pill pill-blue">${data.classification.category}</span>`;
+        pills.innerHTML += `<span class="pill pill-slate">${data.classification.complexity}</span>`;
+        if (data.classification.aog_flag) {
+            pills.innerHTML += `<span class="pill pill-red">🚨 AOG</span>`;
+        }
+
+        document.getElementById('classification-ata').textContent = data.classification.ata_chapter_inferred;
+
+        // Routing
+        document.getElementById('routing-name').textContent = data.routing.rep_name;
+        document.getElementById('routing-role').textContent = data.routing.rep_role;
+        document.getElementById('routing-reason').textContent = data.routing.reason;
+
+        // Customer ack
+        document.getElementById('customer-ack').textContent = data.customer_acknowledgment;
+
+        // Quote
+        document.getElementById('quote-subject').textContent = data.quote_draft.subject;
+        document.getElementById('quote-body').textContent = data.quote_draft.body;
+
+        // Internal notes
+        document.getElementById('internal-notes').textContent = data.internal_notes;
+
+        // JSON
+        document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
+    }
+
+    function toggleJSON() {
+        const panel = document.getElementById('json-output');
+        const label = document.getElementById('json-toggle-label');
+        if (panel.classList.contains('hidden')) {
+            panel.classList.remove('hidden');
+            label.textContent = 'Ocultar JSON estructurado';
+        } else {
+            panel.classList.add('hidden');
+            label.textContent = 'Ver JSON estructurado (esto es lo que va a Supabase)';
+        }
+    }
+
+    function resetDemo() {
+        document.getElementById('rfq-results').classList.add('hidden');
+        document.getElementById('rfq-error').classList.add('hidden');
+        document.getElementById('rfq-form').classList.remove('hidden');
+        document.getElementById('json-output').classList.add('hidden');
+        document.getElementById('json-toggle-label').textContent = 'Ver JSON estructurado (esto es lo que va a Supabase)';
+        document.getElementById('rfq-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+</script>
+</body>
+</html>

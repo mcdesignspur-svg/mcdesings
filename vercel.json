@@ -26,6 +26,7 @@
     { "source": "/demos/brand-analyzer", "destination": "/demo-brand" },
     { "source": "/demos/caption-machine", "destination": "/demo-captions" },
     { "source": "/demos/chatbot", "destination": "/demo-chatbot" },
+    { "source": "/demos/aviation-rfq", "destination": "/demo-aviation-rfq" },
     { "source": "/intake", "destination": "/intake.html" }
   ],
   "headers": [
