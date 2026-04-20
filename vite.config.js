@@ -24,6 +24,7 @@ export default defineConfig({
                 demoBrand: resolve(__dirname, 'demo-brand.html'),
                 demoCaptions: resolve(__dirname, 'demo-captions.html'),
                 demoChatbot: resolve(__dirname, 'demo-chatbot.html'),
+                demoAviationRfq: resolve(__dirname, 'demo-aviation-rfq.html'),
                 intake: resolve(__dirname, 'intake.html'),
             },
         },
