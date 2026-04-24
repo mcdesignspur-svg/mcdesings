@@ -11,6 +11,26 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://mcdesignspr.com/portfolio</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/about</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/demos</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/recursos</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://mcdesignspr.com/contacto</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -34,5 +54,30 @@
         <loc>https://mcdesignspr.com/automation-content-generator</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/diseno-web-puerto-rico</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/automatizacion-ia-puerto-rico</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/shopify-puerto-rico</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/privacy</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://mcdesignspr.com/terms</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 </urlset>

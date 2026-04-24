@@ -13,6 +13,11 @@
     { "source": "/nosotros", "destination": "/about.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/recursos", "destination": "/recursos.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/diseno-web-puerto-rico", "destination": "/diseno-web-puerto-rico.html" },
+    { "source": "/automatizacion-ia-puerto-rico", "destination": "/automatizacion-ia-puerto-rico.html" },
+    { "source": "/shopify-puerto-rico", "destination": "/shopify-puerto-rico.html" },
     { "source": "/automation-content-generator", "destination": "/automation-content-generator.html" },
     { "source": "/case-study-beboutique", "destination": "/case-study-beboutique.html" },
     { "source": "/case-study-mcpromo", "destination": "/case-study-mcpromo.html" },
@@ -29,6 +34,7 @@
     { "source": "/intake", "destination": "/intake.html" }
   ],
   "redirects": [
+    { "source": "/pricing", "destination": "/servicios", "permanent": true },
     { "source": "/demos/aviation-rfq", "destination": "https://demos.mcdesignspr.com/aviation", "permanent": true }
   ],
   "headers": [

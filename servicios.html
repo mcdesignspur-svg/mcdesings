@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="es">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -23,6 +23,11 @@
     <meta property="og:url" content="https://mcdesignspr.com/servicios" />
     <meta property="og:title" content="Servicios | MC DESIGNS — Web Design + IA para PR" />
     <meta property="og:description" content="Diseño web, inteligencia artificial y sistemas digitales para negocios en Puerto Rico." />
+    <meta property="og:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -117,16 +122,16 @@
     <!-- Nav -->
     <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
-            <a href="/index.html" class="flex-shrink-0">
+            <a href="/" class="flex-shrink-0">
                 <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
             </a>
             <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos.html">Hub</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Nosotros</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto" data-i18n="nav.contact">Contacto</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos">Hub</a>
             </div>
             <div class="flex items-center gap-2 sm:gap-4">
                 <!-- Language Toggle Pill -->
@@ -134,7 +139,7 @@
                     <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
                     <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
                 </div>
-                <a href="/contacto.html" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
+                <a href="/contacto" class="hidden sm:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Comenzar Proyecto</a>
                 <!-- Mobile Menu Toggle -->
                 <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
                     <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
@@ -144,13 +149,13 @@
         
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/index.html" data-i18n="nav.home">Inicio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios.html" data-i18n="nav.services">Servicios</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio.html" data-i18n="nav.portfolio">Portafolio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/about.html" data-i18n="nav.about">Nosotros</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto.html" data-i18n="nav.contact">Contacto</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos.html">Hub</a>
-            <a href="/contacto.html" class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4" data-i18n="nav.cta">Comenzar Proyecto</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Nosotros</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto" data-i18n="nav.contact">Contacto</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos">Hub</a>
+            <a href="/contacto" class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4" data-i18n="nav.cta">Comenzar Proyecto</a>
         </div>
     </nav>
 
@@ -159,8 +164,8 @@
         <!-- Intro Section -->
         <section class="max-w-7xl mx-auto px-8 mb-24">
             <div class="border-t border-outline-variant pt-12 flex flex-col md:flex-row justify-between items-start gap-8">
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter max-w-lg" data-i18n="servicios_page.intro.title">From invisible to unstoppable.</h2>
-                <p class="text-on-surface-variant text-lg max-w-md" data-i18n="servicios_page.intro.subtext">Seven services. One direction: grow your business. We don't just build websites; we build high-performance digital assets.</p>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter max-w-lg" data-i18n="servicios_page.intro.title">De invisible a imposible de ignorar.</h2>
+                <p class="text-on-surface-variant text-lg max-w-md" data-i18n="servicios_page.intro.subtext">Siete servicios. Una dirección: hacer crecer tu negocio. No solo construimos páginas; construimos activos digitales que venden, automatizan y ahorran tiempo.</p>
             </div>
         </section>
 
@@ -170,51 +175,51 @@
                 <!-- Service Cards will be injected/hydrated, but kept here for fallback -->
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">01</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.0.title">WEB PRESENCE</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.0.desc">Your business exists online with credibility. Clean, fast, mobile-first — built to be found. The first impression is what closes the deal.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.0.link">→ Presence website</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.0.title">PRESENCIA WEB</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.0.desc">Tu negocio existe online con credibilidad. Limpio, rápido, mobile-first y listo para que te encuentren.</p>
+                    <a href="/diseno-web-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.0.link">→ Web de presencia</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">02</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.1.title">CONVERSION</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.1.desc">A site that doesn't convert is a billboard no one reads. We build pages that turn visitors into calls and WhatsApp messages.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.1.link">→ Performance website</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.1.title">CONVERSIÓN</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.1.desc">Una web que no convierte es un anuncio que nadie lee. Construimos páginas que convierten visitas en llamadas, mensajes y oportunidades.</p>
+                    <a href="/diseno-web-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.1.link">→ Web de conversión</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">03</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.2.title">ARTIFICIAL INTELLIGENCE</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.2.desc">Your site works while you sleep. AI chat, lead qualification, and smart intake that understand your client better than ever.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.2.link">→ AI Chat + Qualifier</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.2.title">INTELIGENCIA ARTIFICIAL</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.2.desc">Tu sitio trabaja mientras duermes: chat con IA, cualificación de leads e intakes inteligentes que entienden mejor a tus clientes.</p>
+                    <a href="/automatizacion-ia-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.2.link">→ Chat IA + cualificador</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">04</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.3.title">AI SYSTEMS</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.3.desc">From first contact to booked appointment — automated. We eliminate repetitive tasks so you can focus on selling.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.3.link">→ AI agent system</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.3.title">SISTEMAS CON IA</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.3.desc">Desde el primer contacto hasta una cita agendada. Automatizamos tareas repetitivas para que puedas enfocarte en vender.</p>
+                    <a href="/automatizacion-ia-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.3.link">→ Sistema de agente IA</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">05</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.4.title">SOCIAL PRESENCE</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.4.desc">Knowing what works on social — and what to post next — shouldn't take hours. We build the system that tells you both.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.4.link">→ Social Manager</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.4.title">PRESENCIA SOCIAL</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.4.desc">Saber qué funciona en redes y qué publicar después no debe tomar horas. Creamos el sistema que te da ambas respuestas.</p>
+                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.4.link">→ Social manager</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">06</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.5.title">ONGOING GROWTH</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.5.desc">Launch isn't the finish line. Monthly optimization, AI tuning, and performance reviews to ensure you continue to lead your industry.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.5.link">→ Monthly retainer</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.5.title">CRECIMIENTO CONTINUO</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.5.desc">Lanzar no es la meta final. Optimizamos cada mes, ajustamos la IA y revisamos desempeño para seguir mejorando.</p>
+                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.5.link">→ Retainer mensual</a>
                 </div>
 
                 <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
                     <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">07</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.6.title">BUSINESS DASHBOARDS</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.6.desc">A command center for your entire operation. CRM, lead pipeline, booking calendar, client portal, and reports — all in one place.</p>
-                    <a href="/contacto.html" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.6.link">→ Custom dashboard</a>
+                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.6.title">DASHBOARDS DE NEGOCIO</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.6.desc">Un centro de mando para tu operación: CRM, pipeline de leads, calendario, portal de clientes y reportes en un solo lugar.</p>
+                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.6.link">→ Dashboard a medida</a>
                 </div>
             </div>
         </section>
@@ -250,14 +255,14 @@
 
         <!-- Industries Strip -->
         <section class="max-w-7xl mx-auto px-8 mb-40 text-center">
-            <span class="label-md uppercase tracking-[0.2em] text-primary font-bold mb-10 block" data-i18n="servicios_page.industries.tag">Industries We Serve</span>
+                <span class="label-md uppercase tracking-[0.2em] text-primary font-bold mb-10 block" data-i18n="servicios_page.industries.tag">Industrias que servimos</span>
             <div class="flex flex-wrap justify-center gap-3">
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.0">Restaurants</span>
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.1">Medical & Dental</span>
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.2">Law Firms</span>
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.3">Accounting</span>
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.4">Real Estate</span>
-                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.5">Retail & Boutiques</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.0">Restaurantes</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.1">Médico y dental</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.2">Firmas legales</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.3">Contabilidad</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.4">Bienes raíces</span>
+                <span class="px-6 py-3 bg-white rounded-full border border-outline-variant text-sm font-bold text-on-surface-variant" data-i18n="servicios_page.industries.names.5">Retail y boutiques</span>
             </div>
         </section>
 
@@ -266,7 +271,7 @@
             <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
             <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-tight" data-i18n="servicios_page.bottom_cta.title">¿LISTO PARA CRECER?</h2>
             <p class="text-xl text-on-surface-variant max-w-xl mx-auto mb-12" data-i18n="servicios_page.bottom_cta.subtext">Hablemos 30 minutos. Sin presión. Solo una conversación honesta.</p>
-            <a href="/contacto.html" class="hero-gradient text-on-primary px-12 py-5 rounded-2xl text-md font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/40 block md:inline-block" data-i18n="servicios_page.bottom_cta.btn">Comenzar Proyecto</a>
+            <a href="/contacto" class="hero-gradient text-on-primary px-12 py-5 rounded-2xl text-md font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/40 block md:inline-block" data-i18n="servicios_page.bottom_cta.btn">Comenzar Proyecto</a>
         </section>
 
     </main>
@@ -281,16 +286,16 @@
             </div>
             <div class="flex flex-col gap-4">
                 <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s1">Diseño de Marca</a>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s2">Diseño Web</a>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s3">Integración IA</a>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.s4">Dashboards de Negocio</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s3">Integración IA</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s4">Dashboards de Negocio</a>
             </div>
             <div class="flex flex-col gap-4">
                 <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio.html" data-i18n="footer.p1">Portafolio</a>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios.html" data-i18n="footer.p2">Servicios</a>
-                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto.html" data-i18n="footer.p3">Contacto</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.p2">Servicios</a>
+                <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto" data-i18n="footer.p3">Contacto</a>
             </div>
             <div class="flex flex-col gap-4">
                 <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
@@ -301,8 +306,8 @@
         <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
             <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
             </div>
         </div>
     </footer>
@@ -313,7 +318,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const currentPath = window.location.pathname;
             document.querySelectorAll('nav a').forEach(link => {
-                if(link.getAttribute('href') === '/servicios.html' || link.getAttribute('href') === currentPath) {
+                if(link.getAttribute('href') === '/servicios' || link.getAttribute('href') === currentPath) {
                     link.classList.add('text-primary', 'font-black');
                 }
             });
