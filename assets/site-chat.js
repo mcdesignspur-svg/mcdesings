@@ -95,6 +95,16 @@
       background: rgba(16,185,129,0.08); padding: 6px 10px; border-radius: 10px;
     }
 
+    .mc-cta {
+      align-self: flex-start; max-width: 85%;
+      background: linear-gradient(135deg, #4DA6FF 0%, #2B7FE6 100%);
+      color: #ffffff !important; text-decoration: none;
+      padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 600;
+      display: inline-block; transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(77,166,255,0.25);
+    }
+    .mc-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(77,166,255,0.4); }
+
     .mc-typing { display: inline-flex; gap: 3px; align-items: center; }
     .mc-typing span {
       width: 6px; height: 6px; background: #8a94a6; border-radius: 50%;
@@ -222,6 +232,17 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
+  function renderCTA(label, url) {
+    const a = document.createElement('a');
+    a.className = 'mc-cta';
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = label + ' →';
+    messagesEl.appendChild(a);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
   function renderTyping() {
     const el = document.createElement('div');
     el.className = 'mc-msg assistant';
@@ -307,6 +328,13 @@
         }),
       });
 
+      if (res.status === 429) {
+        let body = {};
+        try { body = await res.json(); } catch {}
+        typingEl.remove();
+        renderMessage('assistant', body.error || 'Estás escribiendo muy rápido — espera un ratito.');
+        return;
+      }
       if (!res.ok || !res.body) throw new Error('network');
 
       const reader = res.body.getReader();
@@ -344,12 +372,17 @@
             assistantEl.textContent = assistantText;
             messagesEl.scrollTop = messagesEl.scrollHeight;
           } else if (event === 'tool_use') {
-            if (payload.tool === 'save_lead') {
-              renderTool('Guardando tu info...');
-            }
+            if (payload.tool === 'save_lead') renderTool('Guardando tu info...');
+            else if (payload.tool === 'schedule_discovery_call') renderTool('Agendando discovery call...');
           } else if (event === 'tool_result') {
             if (payload.tool === 'save_lead' && payload.result?.ok) {
               renderTool('✓ Miguel recibió tu info');
+            } else if (payload.tool === 'schedule_discovery_call' && payload.result?.ok) {
+              if (payload.result.booking_url) {
+                renderCTA('Reservar slot ahora', payload.result.booking_url);
+              } else {
+                renderTool('✓ Miguel te escribe en las próximas horas');
+              }
             }
           } else if (event === 'error') {
             typingEl.remove();
