@@ -236,6 +236,7 @@
     el.textContent = text;
     messagesEl.appendChild(el);
     messagesEl.scrollTop = messagesEl.scrollHeight;
+    return el;
   }
 
   function renderCTA(label, url) {
@@ -330,6 +331,8 @@
     const typingEl = renderTyping();
     let assistantEl = null;
     let assistantText = '';
+    let pendingCTA = null;        // {label, url} — rendered on 'done'
+    const savingIndicators = [];  // tool indicator elements, may be removed
 
     try {
       const res = await fetch(API_URL, {
@@ -391,16 +394,21 @@
             assistantEl.textContent = assistantText;
             messagesEl.scrollTop = messagesEl.scrollHeight;
           } else if (event === 'tool_use') {
-            if (payload.tool === 'save_lead') renderTool('Guardando tu info...');
-            else if (payload.tool === 'schedule_discovery_call') renderTool('Agendando discovery call...');
+            if (payload.tool === 'save_lead') savingIndicators.push(renderTool('Guardando tu info...'));
+            else if (payload.tool === 'schedule_discovery_call') savingIndicators.push(renderTool('Agendando discovery call...'));
           } else if (event === 'tool_result') {
             if (payload.tool === 'save_lead' && payload.result?.ok) {
-              if (!payload.result.already_saved) {
+              if (payload.result.already_saved) {
+                // Lead was already saved earlier — drop the redundant indicator.
+                const last = savingIndicators.pop();
+                if (last) last.remove();
+              } else {
                 renderTool('✓ Miguel recibió tu info');
               }
             } else if (payload.tool === 'schedule_discovery_call' && payload.result?.ok) {
               if (payload.result.booking_url) {
-                renderCTA('Reservar slot ahora', payload.result.booking_url);
+                // Defer the CTA so it appears AFTER the assistant's closing text.
+                pendingCTA = { label: 'Reservar slot ahora', url: payload.result.booking_url };
               } else {
                 renderTool('✓ Miguel te escribe en las próximas horas');
               }
@@ -411,6 +419,10 @@
             renderMessage('assistant', payload.detail ? `${msg}\n\n[debug: ${payload.detail}]` : msg);
           } else if (event === 'done') {
             if (!assistantEl) typingEl.remove();
+            if (pendingCTA) {
+              renderCTA(pendingCTA.label, pendingCTA.url);
+              pendingCTA = null;
+            }
           }
         }
       }
