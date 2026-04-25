@@ -18,16 +18,17 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { imageBase64, mediaType, fileName } = req.body;
+  const { imageBase64, mediaType, fileName, lang = 'es' } = req.body;
+  const isEnglish = lang === 'en';
 
   if (!imageBase64 || !mediaType) {
-    return res.status(400).json({ error: 'Imagen requerida' });
+    return res.status(400).json({ error: isEnglish ? 'Image required' : 'Imagen requerida' });
   }
 
   // Validate media type
   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
   if (!allowedTypes.includes(mediaType)) {
-    return res.status(400).json({ error: 'Formato no soportado. Usa JPG, PNG, o WebP.' });
+    return res.status(400).json({ error: isEnglish ? 'Unsupported format. Use JPG, PNG, or WebP.' : 'Formato no soportado. Usa JPG, PNG, o WebP.' });
   }
 
   const client = new Anthropic();
@@ -36,7 +37,10 @@ export default async function handler(req, res) {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
-      system: `Eres un experto en branding, identidad visual, y posicionamiento de marca con amplia experiencia en negocios latinoamericanos y puertorriqueños.
+      system: isEnglish ? `You are an expert in branding, visual identity, and brand positioning with deep experience helping local businesses.
+You analyze logos and visual identities with a sharp eye: what they communicate, who they attract, and what is working or not.
+ALWAYS respond in clear, natural English without unnecessary jargon.
+Be specific and useful, not generic.` : `Eres un experto en branding, identidad visual, y posicionamiento de marca con amplia experiencia en negocios latinoamericanos y puertorriqueños.
 Analizas logos e identidades visuales con ojo clínico — ves lo que comunican, a quién atraen, y qué está funcionando o no.
 SIEMPRE responde en español de Puerto Rico — natural, directo, y sin tecnicismos innecesarios.
 Sé específico y útil, no genérico.`,
@@ -54,7 +58,23 @@ Sé específico y útil, no genérico.`,
             },
             {
               type: 'text',
-              text: `Analiza este logo/imagen de marca y dame un diagnóstico honesto de lo que comunica.
+              text: isEnglish ? `Analyze this logo/brand image and give me an honest diagnosis of what it communicates.
+
+Respond ONLY in valid JSON with this exact structure (no markdown, no extra text):
+{
+  "personalidad": ["[adjective 1]", "[adjective 2]", "[adjective 3]"],
+  "comunica": "[What this brand communicates at first glance — 1-2 direct sentences]",
+  "cliente_ideal": "[Description of the customer this brand attracts — be specific]",
+  "fortalezas": [
+    "[Visual or conceptual strength 1]",
+    "[Visual or conceptual strength 2]"
+  ],
+  "gaps": [
+    "[Problem or inconsistency 1 — be concrete]",
+    "[Problem or inconsistency 2]"
+  ],
+  "recomendacion": "[The most important recommendation to strengthen this brand — one concrete, actionable recommendation]"
+}` : `Analiza este logo/imagen de marca y dame un diagnóstico honesto de lo que comunica.
 
 Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin markdown, sin texto extra):
 {
@@ -99,6 +119,6 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
 
     return res.status(200).json(analysis);
   } catch {
-    return res.status(500).json({ error: 'Error al analizar. Intenta de nuevo.' });
+    return res.status(500).json({ error: isEnglish ? 'Error analyzing. Try again.' : 'Error al analizar. Intenta de nuevo.' });
   }
 }

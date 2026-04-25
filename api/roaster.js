@@ -9,15 +9,16 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { url } = req.body;
-  if (!url) return res.status(400).json({ error: 'URL requerida' });
+  const { url, lang = 'es' } = req.body;
+  const isEnglish = lang === 'en';
+  if (!url) return res.status(400).json({ error: isEnglish ? 'URL required' : 'URL requerida' });
 
   // Normalize URL
   let targetUrl;
   try {
     targetUrl = new URL(url.startsWith('http') ? url : `https://${url}`);
   } catch {
-    return res.status(400).json({ error: 'URL inválida. Ejemplo: tutienda.com' });
+    return res.status(400).json({ error: isEnglish ? 'Invalid URL. Example: yourstore.com' : 'URL inválida. Ejemplo: tutienda.com' });
   }
 
   // Fetch webpage content
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
       .trim()
       .slice(0, 4500);
   } catch {
-    return res.status(422).json({ error: 'No se pudo acceder a esa URL. ¿Está activa y pública?' });
+    return res.status(422).json({ error: isEnglish ? 'Could not access that URL. Is it live and public?' : 'No se pudo acceder a esa URL. ¿Está activa y pública?' });
   }
 
   // Claude analysis
@@ -56,14 +57,41 @@ export default async function handler(req, res) {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
-      system: `Eres un experto en diseño web, UX, y conversión digital con años de experiencia en negocios latinoamericanos.
+      system: isEnglish ? `You are an expert in web design, UX, and digital conversion with years of experience helping local businesses.
+Your analysis is direct, honest, and useful. You do not soften problems, but you are not cruel.
+Your goal is to help the business owner understand exactly what is slowing down their online presence.
+ALWAYS respond in clear, natural English without unnecessary jargon.` : `Eres un experto en diseño web, UX, y conversión digital con años de experiencia en negocios latinoamericanos.
 Tu análisis es directo, honesto, y útil — no suavizas los problemas, pero tampoco eres cruel.
 Tu objetivo es ayudar al dueño del negocio a entender exactamente qué está frenando su presencia online.
 SIEMPRE responde en español de Puerto Rico — natural, claro, y sin tecnicismos innecesarios.`,
       messages: [
         {
           role: 'user',
-          content: `Analiza esta página web y dame un diagnóstico honesto.
+          content: isEnglish ? `Analyze this website and give me an honest diagnosis.
+
+URL: ${targetUrl.toString()}
+Title: ${pageTitle}
+
+Extracted page content:
+---
+${pageContent}
+---
+
+Respond ONLY in valid JSON with this exact structure (no markdown, no extra text):
+{
+  "score": [integer from 1 to 10],
+  "verdict": "[One direct, memorable sentence capturing the website's state. Max 15 words.]",
+  "problemas": [
+    "[Specific issue 1 — be concrete, mention what is missing or wrong]",
+    "[Specific issue 2]",
+    "[Specific issue 3]"
+  ],
+  "mejoras": [
+    "[Concrete improvement 1 — specific action they can take]",
+    "[Concrete improvement 2]",
+    "[Concrete improvement 3]"
+  ]
+}` : `Analiza esta página web y dame un diagnóstico honesto.
 
 URL: ${targetUrl.toString()}
 Título: ${pageTitle}
@@ -114,6 +142,6 @@ Responde ÚNICAMENTE en formato JSON válido con esta estructura exacta (sin mar
 
     return res.status(200).json(result);
   } catch {
-    return res.status(500).json({ error: 'Error al analizar. Intenta de nuevo en un momento.' });
+    return res.status(500).json({ error: isEnglish ? 'Error analyzing. Try again in a moment.' : 'Error al analizar. Intenta de nuevo en un momento.' });
   }
 }

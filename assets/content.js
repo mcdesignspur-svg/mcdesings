@@ -180,6 +180,22 @@ export const translations = {
                 title: "No empiezo por herramientas. Empiezo por tu operación.",
                 subtext: "Cada servicio se ajusta a tu negocio: cómo vendes, cómo atiendes, dónde pierdes tiempo y qué necesitas para crecer. Nada de templates. Nada genérico."
             },
+            custom: {
+                cards: [
+                    {
+                        title: "Diagnóstico primero",
+                        desc: "Antes de cotizar, miro tu oferta, tu proceso de leads, tus herramientas y los puntos donde se escapa dinero o tiempo."
+                    },
+                    {
+                        title: "Sistema a medida",
+                        desc: "Puedo construir una web, una tienda, un agente de IA, un dashboard o una combinación exacta para tu operación."
+                    },
+                    {
+                        title: "Trabajo directo conmigo",
+                        desc: "La experiencia es 1:1. Hablamos claro, tomamos decisiones rápido y construyo con contexto real de tu negocio."
+                    }
+                ]
+            },
             cards: [
                 {
                     title: "PRESENCIA WEB",
@@ -275,6 +291,138 @@ export const translations = {
         booking: {
             title: "Agenda una llamada de diagnóstico.",
             subtext: "Esta llamada es para entender tu negocio, no para venderte una plantilla. Hablas directamente conmigo para identificar qué sistema web + IA tendría más impacto."
+        },
+        contact_page: {
+            tag: "Diagnóstico 1:1 con Miguel",
+            review_title: "Qué reviso contigo",
+            cards: [
+                {
+                    title: "Tu presencia actual",
+                    desc: "Web, redes sociales, oferta, confianza visual y claridad del próximo paso."
+                },
+                {
+                    title: "Tus procesos repetitivos",
+                    desc: "Preguntas frecuentes, intake, seguimiento, agenda, cotizaciones y tareas que te consumen tiempo."
+                },
+                {
+                    title: "El primer sistema custom",
+                    desc: "Te digo qué construiría primero según tu negocio, tu etapa y tus oportunidades reales."
+                }
+            ]
+        },
+        demos_page: {
+            badge: "AI Demos · MC Designs",
+            title: "Demos que muestran<br class=\"hidden md:block\"/> cómo pienso sistemas con IA.",
+            subtext: "No son juguetes sueltos. Son prototipos de sistemas que puedo adaptar a tu operación: atraer, responder, analizar, cualificar y ahorrar tiempo.",
+            live: "Live",
+            cards: [
+                {
+                    title: "Website Roaster",
+                    desc: "Audita una página y revela qué puede estar frenando confianza, claridad y conversión.",
+                    solves: "<strong class=\"text-slate-900\">Resuelve:</strong> páginas que se ven bien pero no generan acción.",
+                    adapts: "<strong class=\"text-slate-900\">Se adapta a:</strong> diagnósticos web, SEO local y optimización de landing pages.",
+                    cta: "Probar demo"
+                },
+                {
+                    title: "Brand Analyzer",
+                    desc: "Lee tu logo y te dice qué comunica, a quién atrae y qué ajustes pueden elevar la percepción.",
+                    solves: "<strong class=\"text-slate-900\">Resuelve:</strong> marcas que no proyectan el nivel del negocio.",
+                    adapts: "<strong class=\"text-slate-900\">Se adapta a:</strong> auditorías de marca, propuestas visuales y guías de identidad.",
+                    cta: "Probar demo"
+                },
+                {
+                    title: "Caption Machine PR",
+                    desc: "Convierte una idea simple en captions con tono local, estructura clara y CTA listo para publicar.",
+                    solves: "<strong class=\"text-slate-900\">Resuelve:</strong> quedarse sin ideas o publicar sin dirección.",
+                    adapts: "<strong class=\"text-slate-900\">Se adapta a:</strong> sistemas de contenido, bancos de ideas y flujos para ManyChat.",
+                    cta: "Probar demo"
+                },
+                {
+                    title: "Chatbot Demo",
+                    desc: "Describe tu negocio y prueba un asistente que puede responder, orientar y cualificar visitantes.",
+                    solves: "<strong class=\"text-slate-900\">Resuelve:</strong> leads que llegan con preguntas repetidas o sin contexto.",
+                    adapts: "<strong class=\"text-slate-900\">Se adapta a:</strong> clínicas, servicios profesionales, restaurantes, e-commerce y reservas.",
+                    cta: "Probar demo"
+                }
+            ],
+            custom: {
+                tag: "Sistema custom",
+                title: "¿Quieres un demo adaptado a tu negocio?",
+                desc: "En una llamada puedo identificar qué demo tendría más impacto para ti y convertirla en un flujo real conectado a tu web, CRM, agenda o herramientas actuales.",
+                cta: "Agenda diagnóstico"
+            }
+        },
+        demo_tools: {
+            back: "Todos los demos",
+            analyze: "Analizar",
+            generate: "Generar",
+            talk: "Hablemos",
+            project_cta: "Agenda diagnóstico",
+            roaster: {
+                title: "Website Roaster",
+                desc: "¿Tu página web pasa la prueba? Te digo exactamente qué está frenando tu negocio online.",
+                hint: "Acepta cualquier URL pública — tienda, restaurante, portfolio, lo que sea.",
+                idle_title: "Pega una URL arriba y yo me encargo del resto.",
+                idle_time: "Análisis en ~10 segundos",
+                loading_title: "Analizando tu web...",
+                loading_sub: "Esto toma unos segundos",
+                verdict: "Veredicto",
+                problems: "Lo que falla",
+                improvements: "Lo que necesitas",
+                cta_text: "¿Quieres que lo arreglemos?",
+                connection_error: "No se pudo conectar. Revisa tu conexión."
+            },
+            brand: {
+                title: "Brand Analyzer",
+                desc: "Sube tu logo. Te digo qué comunica tu marca, a quién atrae, y qué cambiar para crecer.",
+                upload: "Arrastra tu logo aquí o <span class=\"text-primary underline\">búscalo en tu dispositivo</span>",
+                file_hint: "JPG, PNG, WebP · Máx 3MB",
+                change: "Click para cambiar imagen",
+                hint: "Funciona con logos, branding de redes sociales, o cualquier imagen de marca.",
+                button: "Analizar marca",
+                idle_title: "Sube tu logo para comenzar el análisis.",
+                idle_time: "Análisis en ~10 segundos",
+                loading_title: "Analizando tu marca...",
+                loading_sub: "La IA está leyendo tu identidad visual",
+                personality: "Personalidad de marca",
+                communicates: "Qué comunica",
+                ideal_customer: "Cliente ideal",
+                strengths: "Fortalezas",
+                gaps: "Lo que falta",
+                recommendation: "Recomendación clave",
+                cta_text: "¿Quieres que trabajemos tu marca juntos?",
+                file_too_large: "La imagen es muy grande. Máximo 3MB.",
+                connection_error: "No se pudo conectar. Revisa tu conexión."
+            },
+            captions: {
+                title: "Caption Machine PR",
+                desc: "Describe tu producto o negocio. Recibe 3 captions de Instagram en español PR — listos para publicar.",
+                desc_placeholder: "Ej: Vendo pasteles artesanales hechos a mano en Ponce. Uso ingredientes locales y sin preservativos...",
+                industry_placeholder: "Industria (opcional) — ej: Repostería, Salud, Tecnología",
+                idle_title: "Describe tu negocio arriba y genera 3 captions al instante.",
+                idle_time: "Listo en ~5 segundos",
+                loading_title: "Escribiendo tus captions...",
+                loading_sub: "En español PR, 3 tonos distintos",
+                professional: "Profesional",
+                fun: "Divertido",
+                emotional: "Emocional",
+                copy: "Copiar",
+                copied: "✓ Copiado",
+                cta_text: "¿Quieres contenido así cada semana, en automático?",
+                connection_error: "No se pudo conectar. Revisa tu conexión."
+            },
+            chatbot: {
+                title: "Chatbot Demo",
+                desc: "Describe tu negocio y conversa con tu chatbot de IA en vivo — así es lo que construyo para tus clientes.",
+                setup_placeholder: "Describe tu negocio — ej: Soy una pizzería en Bayamón llamada La Roca, especializada en pizzas artesanales para familias...",
+                activate: "Activar chatbot →",
+                setup_hint: "La IA genera un chatbot personalizado para tu negocio en segundos.",
+                online: "En línea",
+                change: "Cambiar negocio",
+                input_placeholder: "Escribe tu mensaje...",
+                cta_text: "¿Quieres un chatbot así para tu negocio?",
+                error: "Lo siento, hubo un error. Intenta de nuevo."
+            }
         },
         footer: {
             brand: "MC Designs",
@@ -506,6 +654,22 @@ export const translations = {
                 title: "I do not start with tools. I start with your operation.",
                 subtext: "Every service is shaped around your business: how you sell, how you serve, where time is lost, and what you need to grow. No templates. Nothing generic."
             },
+            custom: {
+                cards: [
+                    {
+                        title: "Diagnosis first",
+                        desc: "Before quoting, I look at your offer, lead process, tools, and where time or money is leaking."
+                    },
+                    {
+                        title: "Custom system",
+                        desc: "I can build a website, store, AI agent, dashboard, or the exact combination your operation needs."
+                    },
+                    {
+                        title: "Direct work with me",
+                        desc: "The experience is 1:1. We speak clearly, make decisions quickly, and build with real business context."
+                    }
+                ]
+            },
             cards: [
                 {
                     title: "WEB PRESENCE",
@@ -601,6 +765,138 @@ export const translations = {
         booking: {
             title: "Book a diagnostic call.",
             subtext: "This call is meant to understand your business, not sell you a template. You speak directly with me to identify which web + AI system would have the most impact."
+        },
+        contact_page: {
+            tag: "1:1 diagnosis with Miguel",
+            review_title: "What I review with you",
+            cards: [
+                {
+                    title: "Your current presence",
+                    desc: "Website, social media, offer, visual trust, and clarity around the next step."
+                },
+                {
+                    title: "Your repetitive processes",
+                    desc: "FAQs, intake, follow-up, booking, quotes, and tasks that consume your time."
+                },
+                {
+                    title: "The first custom system",
+                    desc: "I tell you what I would build first based on your business, stage, and real opportunities."
+                }
+            ]
+        },
+        demos_page: {
+            badge: "AI Demos · MC Designs",
+            title: "Demos that show<br class=\"hidden md:block\"/> how I think through AI systems.",
+            subtext: "These are not loose toys. They are system prototypes I can adapt to your operation: attract, respond, analyze, qualify, and save time.",
+            live: "Live",
+            cards: [
+                {
+                    title: "Website Roaster",
+                    desc: "Audits a page and reveals what may be hurting trust, clarity, and conversion.",
+                    solves: "<strong class=\"text-slate-900\">Solves:</strong> pages that look good but do not drive action.",
+                    adapts: "<strong class=\"text-slate-900\">Adapts to:</strong> website diagnostics, local SEO, and landing page optimization.",
+                    cta: "Try demo"
+                },
+                {
+                    title: "Brand Analyzer",
+                    desc: "Reads your logo and shows what it communicates, who it attracts, and what could elevate perception.",
+                    solves: "<strong class=\"text-slate-900\">Solves:</strong> brands that do not project the level of the business.",
+                    adapts: "<strong class=\"text-slate-900\">Adapts to:</strong> brand audits, visual proposals, and identity guides.",
+                    cta: "Try demo"
+                },
+                {
+                    title: "Caption Machine PR",
+                    desc: "Turns a simple idea into captions with local tone, clear structure, and a ready-to-use CTA.",
+                    solves: "<strong class=\"text-slate-900\">Solves:</strong> running out of ideas or posting without direction.",
+                    adapts: "<strong class=\"text-slate-900\">Adapts to:</strong> content systems, idea banks, and ManyChat flows.",
+                    cta: "Try demo"
+                },
+                {
+                    title: "Chatbot Demo",
+                    desc: "Describe your business and test an assistant that can respond, guide, and qualify visitors.",
+                    solves: "<strong class=\"text-slate-900\">Solves:</strong> leads arriving with repeated questions or no context.",
+                    adapts: "<strong class=\"text-slate-900\">Adapts to:</strong> clinics, professional services, restaurants, e-commerce, and bookings.",
+                    cta: "Try demo"
+                }
+            ],
+            custom: {
+                tag: "Custom system",
+                title: "Want a demo adapted to your business?",
+                desc: "On a call I can identify which demo would have the most impact for you and turn it into a real workflow connected to your website, CRM, calendar, or current tools.",
+                cta: "Book diagnosis"
+            }
+        },
+        demo_tools: {
+            back: "All demos",
+            analyze: "Analyze",
+            generate: "Generate",
+            talk: "Let's talk",
+            project_cta: "Book diagnosis",
+            roaster: {
+                title: "Website Roaster",
+                desc: "Does your website pass the test? I show you exactly what is slowing down your online growth.",
+                hint: "Works with any public URL — store, restaurant, portfolio, anything.",
+                idle_title: "Paste a URL above and I will handle the rest.",
+                idle_time: "Analysis in ~10 seconds",
+                loading_title: "Analyzing your website...",
+                loading_sub: "This takes a few seconds",
+                verdict: "Verdict",
+                problems: "What is failing",
+                improvements: "What you need",
+                cta_text: "Want me to fix it?",
+                connection_error: "Could not connect. Check your connection."
+            },
+            brand: {
+                title: "Brand Analyzer",
+                desc: "Upload your logo. I show what your brand communicates, who it attracts, and what to change to grow.",
+                upload: "Drag your logo here or <span class=\"text-primary underline\">browse your device</span>",
+                file_hint: "JPG, PNG, WebP · Max 3MB",
+                change: "Click to change image",
+                hint: "Works with logos, social branding, or any brand image.",
+                button: "Analyze brand",
+                idle_title: "Upload your logo to start the analysis.",
+                idle_time: "Analysis in ~10 seconds",
+                loading_title: "Analyzing your brand...",
+                loading_sub: "AI is reading your visual identity",
+                personality: "Brand personality",
+                communicates: "What it communicates",
+                ideal_customer: "Ideal customer",
+                strengths: "Strengths",
+                gaps: "What is missing",
+                recommendation: "Key recommendation",
+                cta_text: "Want me to work on your brand with you?",
+                file_too_large: "The image is too large. Max 3MB.",
+                connection_error: "Could not connect. Check your connection."
+            },
+            captions: {
+                title: "Caption Machine PR",
+                desc: "Describe your product or business. Get 3 Instagram captions in Puerto Rican Spanish, ready to publish.",
+                desc_placeholder: "Example: I sell handmade pastries in Ponce using local ingredients and no preservatives...",
+                industry_placeholder: "Industry (optional) — ex: Bakery, Health, Technology",
+                idle_title: "Describe your business above and generate 3 captions instantly.",
+                idle_time: "Ready in ~5 seconds",
+                loading_title: "Writing your captions...",
+                loading_sub: "In Puerto Rican Spanish, 3 different tones",
+                professional: "Professional",
+                fun: "Fun",
+                emotional: "Emotional",
+                copy: "Copy",
+                copied: "✓ Copied",
+                cta_text: "Want content like this every week, automatically?",
+                connection_error: "Could not connect. Check your connection."
+            },
+            chatbot: {
+                title: "Chatbot Demo",
+                desc: "Describe your business and chat with a live AI chatbot — this is what I build for your customers.",
+                setup_placeholder: "Describe your business — ex: I own a pizza shop in Bayamón called La Roca, specializing in artisan pizzas for families...",
+                activate: "Activate chatbot →",
+                setup_hint: "AI generates a custom chatbot for your business in seconds.",
+                online: "Online",
+                change: "Change business",
+                input_placeholder: "Write your message...",
+                cta_text: "Want a chatbot like this for your business?",
+                error: "Sorry, something went wrong. Try again."
+            }
         },
         footer: {
             brand: "MC Designs",

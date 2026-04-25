@@ -70,36 +70,38 @@
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-3">
         <a href="/" class="flex-shrink-0">
-            <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-10 md:h-12 w-auto" />
+            <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 md:h-10 w-auto" />
         </a>
-        <div class="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-tight">
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/">Inicio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios">Servicios</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio">Portafolio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/about">Miguel</a>
+        <div class="hidden md:flex items-center gap-7 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
             <a class="text-primary font-semibold" href="/demos">Demos IA</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/contacto">Contacto</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Miguel</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos" data-i18n="nav.hub">Recursos</a>
         </div>
-        <div class="flex items-center gap-2 sm:gap-4">
-            <a href="/recursos" class="hidden sm:inline-block bg-white text-primary border border-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold hover:bg-primary/5 active:scale-95 transition-all">Recursos</a>
-            <a href="/contacto" class="hidden sm:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform">Comenzar Proyecto</a>
+        <div class="flex items-center gap-3">
+            <div class="hidden lg:flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+            </div>
+            <a href="/contacto" class="hidden md:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform" data-i18n="nav.cta">Agenda diagnóstico</a>
             <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
                 <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
             </button>
         </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium">
-        <a class="text-slate-600" href="/">Inicio</a>
-        <a class="text-slate-600" href="/servicios">Servicios</a>
-        <a class="text-slate-600" href="/portfolio">Portafolio</a>
-        <a class="text-slate-600" href="/about">Miguel</a>
+        <a class="text-slate-600" href="/" data-i18n="nav.home">Inicio</a>
+        <a class="text-slate-600" href="/servicios" data-i18n="nav.services">Servicios</a>
         <a class="text-primary font-semibold" href="/demos">Demos IA</a>
-        <a class="text-slate-600" href="/contacto">Contacto</a>
+        <a class="text-slate-600" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about" data-i18n="nav.about">Miguel</a>
+        <a class="text-slate-600" href="/recursos" data-i18n="nav.hub">Recursos</a>
         <div class="flex flex-col items-center gap-3 mt-4">
-            <a href="/recursos" class="bg-white text-primary border border-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold">Recursos</a>
-            <a href="/contacto" class="hero-gradient text-white px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold">Comenzar Proyecto</a>
+            <a href="/contacto" class="hero-gradient text-white px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold" data-i18n="nav.cta">Agenda diagnóstico</a>
         </div>
     </div>
 </nav>
@@ -108,15 +110,15 @@
     <!-- Breadcrumb -->
     <div class="max-w-5xl mx-auto px-8 pt-6 pb-2">
         <a href="/demos" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary transition-colors font-medium">
-            <span class="material-symbols-outlined text-base">arrow_back</span> Todos los demos
+            <span class="material-symbols-outlined text-base">arrow_back</span> <span data-i18n="demo_tools.back">Todos los demos</span>
         </a>
     </div>
 
     <!-- Hero -->
     <section class="max-w-5xl mx-auto px-8 pt-6 pb-10 text-center">
         <div class="text-4xl mb-3">💬</div>
-        <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-3">Chatbot Demo</h1>
-        <p class="text-on-surface-variant max-w-lg mx-auto leading-relaxed">Describe tu negocio y conversa con tu chatbot de IA en vivo — así es lo que construimos para tus clientes.</p>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-3" data-i18n="demo_tools.chatbot.title">Chatbot Demo</h1>
+        <p class="text-on-surface-variant max-w-lg mx-auto leading-relaxed" data-i18n="demo_tools.chatbot.desc">Describe tu negocio y conversa con tu chatbot de IA en vivo — así es lo que construyo para tus clientes.</p>
     </section>
 
     <!-- Demo card -->
@@ -124,13 +126,13 @@
         <div class="demo-card">
             <!-- Setup -->
             <div id="chatbot-setup">
-                <textarea id="chatbot-negocio" rows="2" placeholder="Describe tu negocio — ej: Soy una pizzería en Bayamón llamada La Roca, especializada en pizzas artesanales para familias..."
+                <textarea id="chatbot-negocio" rows="2" placeholder="Describe tu negocio — ej: Soy una pizzería en Bayamón llamada La Roca, especializada en pizzas artesanales para familias..." data-i18n="demo_tools.chatbot.setup_placeholder"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all resize-none mb-3"></textarea>
                 <button onclick="activateChatbot()"
                     class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
-                    Activar Chatbot →
+                    <span data-i18n="demo_tools.chatbot.activate">Activar Chatbot →</span>
                 </button>
-                <p class="text-xs text-slate-400 mt-2 text-center">La IA genera un chatbot personalizado para tu negocio en segundos.</p>
+                <p class="text-xs text-slate-400 mt-2 text-center" data-i18n="demo_tools.chatbot.setup_hint">La IA genera un chatbot personalizado para tu negocio en segundos.</p>
             </div>
 
             <!-- Chat UI -->
@@ -143,10 +145,10 @@
                         </div>
                         <div>
                             <p id="chatbot-business-name" class="text-sm font-bold text-on-surface"></p>
-                            <p class="text-[11px] text-green-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>En línea</p>
+                            <p class="text-[11px] text-green-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span><span data-i18n="demo_tools.chatbot.online">En línea</span></p>
                         </div>
                     </div>
-                    <button onclick="resetChatbot()" class="text-xs text-slate-400 hover:text-slate-600 transition-colors font-medium">Cambiar negocio</button>
+                    <button onclick="resetChatbot()" class="text-xs text-slate-400 hover:text-slate-600 transition-colors font-medium" data-i18n="demo_tools.chatbot.change">Cambiar negocio</button>
                 </div>
 
                 <!-- Messages -->
@@ -166,7 +168,7 @@
 
                 <!-- Input -->
                 <div class="flex gap-2">
-                    <input id="chatbot-input" type="text" placeholder="Escribe tu mensaje..."
+                    <input id="chatbot-input" type="text" placeholder="Escribe tu mensaje..." data-i18n="demo_tools.chatbot.input_placeholder"
                         class="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
                         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); sendChatMessage(); }" />
                     <button onclick="sendChatMessage()"
@@ -176,8 +178,8 @@
                 </div>
 
                 <div class="mt-5 p-4 rounded-xl bg-primary-fixed text-center">
-                    <p class="text-xs font-semibold text-on-primary-fixed mb-2">¿Quieres un chatbot así para tu negocio?</p>
-                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all">Hablemos</a>
+                    <p class="text-xs font-semibold text-on-primary-fixed mb-2" data-i18n="demo_tools.chatbot.cta_text">¿Quieres un chatbot así para tu negocio?</p>
+                    <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all" data-i18n="demo_tools.talk">Hablemos</a>
                 </div>
             </div>
         </div>
@@ -188,30 +190,30 @@
 <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
     <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2">MC Designs</div>
-            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4">Diseñando el futuro, hoy.</div>
-            <p class="text-sm leading-relaxed text-slate-500">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Servicios</span>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño de Marca</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño Web</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Integración IA</a>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s3">Integración IA</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Estudio</span>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio">Portafolio</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Servicios</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto">Contacto</a>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.p2">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto" data-i18n="footer.p3">Contacto</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Conectar</span>
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
             <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
-            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
         </div>
     </div>
     <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-slate-500">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
         <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Service</a>
@@ -219,7 +221,15 @@
     </div>
 </footer>
 
+<script type="module" src="assets/language-toggle.js"></script>
 <script>
+    function currentLang() {
+        return localStorage.getItem('mcdesigns_lang') || 'es';
+    }
+    const chatbotUiText = {
+        es: { opener: 'Hola, ¿en qué me puedes ayudar?', error: 'Lo siento, hubo un error. Intenta de nuevo.' },
+        en: { opener: 'Hi, how can you help me?', error: 'Sorry, something went wrong. Try again.' }
+    };
     document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
         const menu = document.getElementById('mobile-menu');
         const icon = document.getElementById('menu-icon');
@@ -248,7 +258,7 @@
         document.getElementById('chatbot-ui').classList.remove('hidden');
         document.getElementById('chatbot-messages').innerHTML = '';
 
-        sendToAPI('Hola, ¿en qué me puedes ayudar?');
+        sendToAPI(chatbotUiText[currentLang()].opener);
     }
 
     function resetChatbot() {
@@ -294,7 +304,7 @@
             const res = await fetch('/api/chatbot', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ negocio: chatNegocio, messages: chatHistory }),
+                body: JSON.stringify({ negocio: chatNegocio, messages: chatHistory, lang: currentLang() }),
             });
             const data = await res.json();
             if (data.error) throw new Error(data.error);
@@ -304,7 +314,7 @@
             appendMessage('assistant', data.reply);
         } catch {
             document.getElementById('chatbot-typing').classList.add('hidden');
-            appendMessage('assistant', 'Lo siento, hubo un error. Intenta de nuevo.');
+            appendMessage('assistant', chatbotUiText[currentLang()].error);
         } finally {
             document.getElementById('chatbot-input').disabled = false;
             document.getElementById('chatbot-input').focus();

@@ -9,10 +9,11 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { descripcion, industria } = req.body;
+  const { descripcion, industria, lang = 'es' } = req.body;
+  const isEnglish = lang === 'en';
 
   if (!descripcion || descripcion.trim().length < 5) {
-    return res.status(400).json({ error: 'Describe tu producto o servicio para continuar.' });
+    return res.status(400).json({ error: isEnglish ? 'Describe your product or service to continue.' : 'Describe tu producto o servicio para continuar.' });
   }
 
   const client = new Anthropic();
@@ -21,7 +22,11 @@ export default async function handler(req, res) {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1200,
-      system: `Eres un experto en marketing digital para negocios en Puerto Rico.
+      system: isEnglish ? `You are a digital marketing expert for local businesses.
+You write Instagram captions that sound authentic, clear, and human.
+Do not sound corporate. Do not use generic template phrases.
+Each caption has 3-5 sentences, ends with 4-6 relevant hashtags, and has a clear call-to-action.
+Use emojis moderately: one or two only when they add value.` : `Eres un experto en marketing digital para negocios en Puerto Rico.
 Escribes captions de Instagram que suenan auténticos — en español puertorriqueño con spanglish natural, como habla la gente de verdad.
 No escribes corporativo. No usas frases de template genéricas.
 Cada caption tiene 3-5 oraciones, termina con 4-6 hashtags relevantes, y tiene un call-to-action claro.
@@ -29,7 +34,21 @@ Usas emojis con moderación — uno o dos, solo cuando añaden, no para decorar.
       messages: [
         {
           role: 'user',
-          content: `Genera 3 captions de Instagram para este negocio/producto:
+          content: isEnglish ? `Generate 3 Instagram captions for this business/product:
+
+Description: ${descripcion.trim()}${industria ? `\nIndustry: ${industria}` : ''}
+
+Write 3 versions with distinct tones:
+1. PROFESSIONAL: trustworthy, expert, focused on value and results
+2. FUN: relaxed, personal, relatable without losing the business essence
+3. EMOTIONAL: connects with the customer's aspiration or problem and creates real connection
+
+Respond ONLY in valid JSON (no markdown, no extra text):
+{
+  "profesional": "[full caption with emojis and hashtags]",
+  "divertido": "[full caption with emojis and hashtags]",
+  "emocional": "[full caption with emojis and hashtags]"
+}` : `Genera 3 captions de Instagram para este negocio/producto:
 
 Descripción: ${descripcion.trim()}${industria ? `\nIndustria: ${industria}` : ''}
 
@@ -62,6 +81,6 @@ Responde ÚNICAMENTE en formato JSON válido (sin markdown, sin texto extra):
 
     return res.status(200).json(captions);
   } catch {
-    return res.status(500).json({ error: 'Error al generar. Intenta de nuevo.' });
+    return res.status(500).json({ error: isEnglish ? 'Error generating. Try again.' : 'Error al generar. Intenta de nuevo.' });
   }
 }
