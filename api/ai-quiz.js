@@ -9,10 +9,11 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { negocio, dolor, meta } = req.body;
+  const { negocio, dolor, meta, lang = 'es' } = req.body;
+  const isEnglish = lang === 'en';
 
   if (!negocio || !dolor || !meta) {
-    return res.status(400).json({ error: 'Faltan respuestas del quiz.' });
+    return res.status(400).json({ error: isEnglish ? 'Missing quiz answers.' : 'Faltan respuestas del quiz.' });
   }
 
   const client = new Anthropic();
@@ -21,7 +22,11 @@ export default async function handler(req, res) {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
-      system: `Eres un consultor de integración de IA especializado en negocios en Puerto Rico.
+      system: isEnglish ? `You are an AI integration consultant specialized in Puerto Rico businesses.
+Give concrete, specific, actionable recommendations, never generic ones.
+You know tools like Claude AI, ChatGPT, N8N, Supabase, WhatsApp Business API, Make, Zapier, Shopify AI, and similar.
+Always speak in terms of real business impact: time saved, sales gained, customers served.
+Respond in clear, direct English.` : `Eres un consultor de integración de IA especializado en negocios en Puerto Rico.
 Das recomendaciones concretas, específicas, y accionables — no genéricas.
 Conoces bien las herramientas: Claude AI, ChatGPT, N8N, Supabase, WhatsApp Business API, Make, Zapier, Shopify AI, etc.
 Siempre hablas en términos de impacto real para el negocio: tiempo ahorrado, ventas ganadas, clientes atendidos.
@@ -29,7 +34,22 @@ Responde en español de Puerto Rico — directo y claro.`,
       messages: [
         {
           role: 'user',
-          content: `Un dueño de negocio respondió este quiz:
+          content: isEnglish ? `A business owner answered this quiz:
+
+1. What type of business do you run? → ${negocio}
+2. What takes the most time right now? → ${dolor}
+3. What is your main goal? → ${meta}
+
+Based on this, give a personalized AI integration recommendation.
+
+Respond ONLY in valid JSON format (no markdown, no extra text):
+{
+  "solucion": "[Short solution name — ex: Customer Service Chatbot]",
+  "descripcion": "[2-3 sentences explaining what it is and how it solves their specific problem]",
+  "impacto": "[Main benefit in concrete terms — time, money, or sales. Be specific.]",
+  "herramientas": ["[tool 1]", "[tool 2]", "[tool 3]"],
+  "siguiente_paso": "[The most concrete action they can take this week to start. One sentence.]"
+}` : `Un dueño de negocio respondió este quiz:
 
 1. ¿Qué tipo de negocio tienes? → ${negocio}
 2. ¿Cuál es tu mayor dolor de cabeza? → ${dolor}
@@ -59,10 +79,10 @@ Responde ÚNICAMENTE en formato JSON válido (sin markdown, sin texto extra):
       throw new Error('Estructura inválida');
     }
 
-    await logDemo('ai-quiz', `${negocio} | ${dolor} | ${meta}`, resultado, { negocio, dolor, meta });
+    await logDemo('ai-quiz', `${negocio} | ${dolor} | ${meta}`, resultado, { negocio, dolor, meta, lang });
 
     return res.status(200).json(resultado);
   } catch {
-    return res.status(500).json({ error: 'Error al generar tu recomendación. Intenta de nuevo.' });
+    return res.status(500).json({ error: isEnglish ? 'Error generating your recommendation. Try again.' : 'Error al generar tu recomendación. Intenta de nuevo.' });
   }
 }

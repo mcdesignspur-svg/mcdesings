@@ -265,9 +265,9 @@
 <section class="py-24 bg-surface-container-low relative z-10" id="ai-quiz">
     <div class="max-w-2xl mx-auto px-8">
         <div class="text-center mb-10">
-            <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Diagnóstico gratis · 3 preguntas · 30 segundos</span>
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface leading-tight mb-3">¿Dónde puede la IA<br/>ahorrarte más tiempo?</h2>
-            <p class="text-on-surface-variant leading-relaxed">Responde 3 preguntas y te muestro qué sistema custom tendría más impacto en tu operación.</p>
+            <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-4" data-i18n="ai_quiz.badge">Diagnóstico gratis · 3 preguntas · 30 segundos</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface leading-tight mb-3" data-i18n="ai_quiz.title">¿Dónde puede la IA<br/>ahorrarte más tiempo?</h2>
+            <p class="text-on-surface-variant leading-relaxed" data-i18n="ai_quiz.subtext">Responde 3 preguntas y te muestro qué sistema custom tendría más impacto en tu operación.</p>
         </div>
 
         <div class="reveal bg-white rounded-2xl border border-outline-variant shadow-sm p-8">
@@ -283,33 +283,33 @@
 
             <!-- Step 1 -->
             <div id="lead-step-1">
-                <p class="text-base font-bold text-on-surface mb-3">¿Qué tipo de negocio tienes?</p>
-                <input id="lead-negocio" type="text" placeholder="Ej: Restaurante, Salón de belleza, Tienda online..."
+                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step1_title">¿Qué tipo de negocio tienes?</p>
+                <input id="lead-negocio" type="text" placeholder="Ej: Restaurante, Salón de belleza, Tienda online..." data-i18n="ai_quiz.business_placeholder"
                     class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all mb-4" />
                 <button onclick="leadNext(1)" class="hero-gradient text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
-                    Continuar →
+                    <span data-i18n="ai_quiz.continue">Continuar →</span>
                 </button>
             </div>
 
             <!-- Step 2 -->
             <div id="lead-step-2" class="hidden">
-                <p class="text-base font-bold text-on-surface mb-3">¿Cuál es tu mayor dolor de cabeza?</p>
+                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step2_title">¿Qué te consume más tiempo ahora mismo?</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-dolor-opts">
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Responder mensajes y atender clientes">💬 Responder mensajes y atender clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Crear contenido para redes sociales">📱 Crear contenido para redes sociales</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Conseguir y dar seguimiento a nuevos clientes">🎯 Conseguir y dar seguimiento a clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Tareas repetitivas y administración del negocio">⚙️ Tareas repetitivas y administración</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Responder mensajes y atender clientes" data-value-en="Answering messages and helping customers" data-i18n="ai_quiz.pain_options.0">💬 Responder mensajes y atender clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Crear contenido para redes sociales" data-value-en="Creating social media content" data-i18n="ai_quiz.pain_options.1">📱 Crear contenido para redes sociales</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Conseguir y dar seguimiento a nuevos clientes" data-value-en="Getting and following up with new customers" data-i18n="ai_quiz.pain_options.2">🎯 Conseguir y dar seguimiento a clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Tareas repetitivas y administración del negocio" data-value-en="Repetitive admin and business operations" data-i18n="ai_quiz.pain_options.3">⚙️ Tareas repetitivas y administración</button>
                 </div>
             </div>
 
             <!-- Step 3 -->
             <div id="lead-step-3" class="hidden">
-                <p class="text-base font-bold text-on-surface mb-3">¿Cuál es tu meta principal?</p>
+                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step3_title">¿Cuál es tu meta principal?</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-meta-opts">
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Vender más y conseguir más clientes">💰 Vender más y conseguir más clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Recuperar tiempo y trabajar menos horas">⏰ Recuperar tiempo y trabajar menos horas</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Mejorar la atención al cliente y la experiencia">⭐ Mejorar la atención al cliente</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value="Crecer sin tener que contratar más empleados">📈 Crecer sin contratar más empleados</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Vender más y conseguir más clientes" data-value-en="Sell more and get more customers" data-i18n="ai_quiz.goal_options.0">💰 Vender más y conseguir más clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Recuperar tiempo y trabajar menos horas" data-value-en="Get time back and work fewer hours" data-i18n="ai_quiz.goal_options.1">⏰ Recuperar tiempo y trabajar menos horas</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Mejorar la atención al cliente y la experiencia" data-value-en="Improve customer service and experience" data-i18n="ai_quiz.goal_options.2">⭐ Mejorar la atención al cliente</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Crecer sin tener que contratar más empleados" data-value-en="Grow without hiring more employees" data-i18n="ai_quiz.goal_options.3">📈 Crecer sin contratar más empleados</button>
                 </div>
             </div>
 
@@ -320,8 +320,8 @@
                     <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.2s infinite;"></div>
                     <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.4s infinite;"></div>
                 </div>
-                <p class="text-sm font-semibold text-on-surface">Analizando tu operación...</p>
-                <p class="text-xs text-slate-400 mt-1">Mapeando el sistema con IA que mejor encaja</p>
+                <p class="text-sm font-semibold text-on-surface" data-i18n="ai_quiz.loading_title">Analizando tu operación...</p>
+                <p class="text-xs text-slate-400 mt-1" data-i18n="ai_quiz.loading_subtext">Mapeando el sistema con IA que mejor encaja</p>
             </div>
 
             <!-- Basic Result (shown immediately after generating) -->
@@ -330,58 +330,58 @@
                     <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
                         <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     </div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-green-600">Tu diagnóstico está listo</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-green-600" data-i18n="ai_quiz.ready">Tu diagnóstico está listo</span>
                 </div>
 
                 <!-- Solution headline -->
                 <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 mb-3">
-                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Sistema recomendado para tu negocio</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1" data-i18n="ai_quiz.recommended_label">Sistema recomendado para tu negocio</div>
                     <h3 id="lead-res-solucion" class="text-xl font-black tracking-tighter text-on-surface"></h3>
                 </div>
 
                 <!-- System Map -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                     <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1">Entrada</div>
-                        <p class="text-xs text-slate-500 leading-relaxed">Captura el lead o solicitud con contexto claro.</p>
+                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1" data-i18n="ai_quiz.map_input_title">Entrada</div>
+                        <p class="text-xs text-slate-500 leading-relaxed" data-i18n="ai_quiz.map_input_desc">Captura el lead o solicitud con contexto claro.</p>
                     </div>
                     <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1">IA</div>
-                        <p class="text-xs text-slate-500 leading-relaxed">Organiza, cualifica y resume lo importante.</p>
+                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1" data-i18n="ai_quiz.map_ai_title">IA</div>
+                        <p class="text-xs text-slate-500 leading-relaxed" data-i18n="ai_quiz.map_ai_desc">Organiza, cualifica y resume lo importante.</p>
                     </div>
                     <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1">Acción</div>
-                        <p class="text-xs text-slate-500 leading-relaxed">Activa follow-up, agenda o notificación.</p>
+                        <div class="text-xs font-black uppercase tracking-widest text-primary mb-1" data-i18n="ai_quiz.map_action_title">Acción</div>
+                        <p class="text-xs text-slate-500 leading-relaxed" data-i18n="ai_quiz.map_action_desc">Activa follow-up, agenda o notificación.</p>
                     </div>
                 </div>
 
                 <!-- Impact -->
                 <div class="p-4 rounded-xl border border-green-100 bg-green-50 mb-6">
-                    <div class="flex items-center gap-2 mb-1"><span>📈</span><span class="text-xs font-bold uppercase tracking-widest text-green-700">Impacto esperado</span></div>
+                    <div class="flex items-center gap-2 mb-1"><span>📈</span><span class="text-xs font-bold uppercase tracking-widest text-green-700" data-i18n="ai_quiz.impact_label">Impacto esperado</span></div>
                     <p id="lead-res-impacto" class="text-sm font-semibold text-green-900 leading-relaxed"></p>
                 </div>
 
                 <!-- Email gate — optional -->
                 <div id="lead-email-gate">
                     <div class="border border-outline-variant rounded-xl p-5">
-                        <p class="text-sm font-bold text-on-surface mb-1">¿Quieres que Miguel te envíe el plan completo?</p>
-                        <p class="text-xs text-slate-400 mb-4">Te mando el breakdown detallado con herramientas, próximos pasos y cómo lo adaptaría a tu negocio.</p>
+                        <p class="text-sm font-bold text-on-surface mb-1" data-i18n="ai_quiz.email_title">¿Quieres que Miguel te envíe el plan completo?</p>
+                        <p class="text-xs text-slate-400 mb-4" data-i18n="ai_quiz.email_subtext">Te mando el breakdown detallado con herramientas, próximos pasos y cómo lo adaptaría a tu negocio.</p>
                         <div class="space-y-3">
-                            <input id="lead-nombre" type="text" placeholder="Tu nombre"
+                            <input id="lead-nombre" type="text" placeholder="Tu nombre" data-i18n="ai_quiz.name_placeholder"
                                 class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
-                            <input id="lead-email" type="email" placeholder="Tu email"
+                            <input id="lead-email" type="email" placeholder="Tu email" data-i18n="ai_quiz.email_placeholder"
                                 class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
-                            <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)"
+                            <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)" data-i18n="ai_quiz.phone_placeholder"
                                 class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
                             <button id="lead-submit-btn" onclick="leadSubmitEmail()"
                                 class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
-                                Quiero mi plan personalizado →
+                                <span data-i18n="ai_quiz.plan_cta">Quiero mi plan personalizado →</span>
                             </button>
                         </div>
                         <div id="lead-gate-error" class="hidden mt-3 text-sm text-center text-red-600 font-semibold"></div>
                         <div class="text-center mt-4">
                             <button onclick="leadSkip()" class="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors">
-                                No gracias, esto es suficiente
+                                <span data-i18n="ai_quiz.skip">No gracias, esto es suficiente</span>
                             </button>
                         </div>
                     </div>
@@ -390,18 +390,18 @@
                 <!-- Full results (shown after email submitted) -->
                 <div id="lead-full-results" class="hidden space-y-3 mt-3">
                     <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                        <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500">Qué es</span></div>
+                        <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-bold uppercase tracking-widest text-slate-500" data-i18n="ai_quiz.what_is">Qué es</span></div>
                         <p id="lead-res-descripcion" class="text-sm text-on-surface leading-relaxed"></p>
                     </div>
                     <div id="lead-res-herramientas-wrap" class="flex flex-wrap gap-2"></div>
                     <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
-                        <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2">🚀 Cómo lo llevaríamos a la práctica</div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-primary mb-2" data-i18n="ai_quiz.next_step">🚀 Cómo lo llevaríamos a la práctica</div>
                         <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
-                        <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20" data-i18n="ai_quiz.review_cta">
                             Quiero que Miguel revise mi caso →
                         </a>
                     </div>
-                    <p class="text-xs text-center text-slate-400 pt-1">También te envío los detalles por email.</p>
+                    <p class="text-xs text-center text-slate-400 pt-1" data-i18n="ai_quiz.email_note">También te envío los detalles por email.</p>
                 </div>
             </div>
 
@@ -413,6 +413,26 @@
 (function(){
     const a = { negocio: '', dolor: '', meta: '' };
     let r = null;
+    const leadText = {
+        es: {
+            generateError: 'Error generando recomendación. Recarga e intenta de nuevo.',
+            emailError: 'Ingresa un email válido.',
+            waiting: 'Un momento...'
+        },
+        en: {
+            generateError: 'Error generating recommendation. Refresh and try again.',
+            emailError: 'Enter a valid email.',
+            waiting: 'One moment...'
+        }
+    };
+
+    function currentLang() {
+        return localStorage.getItem('mcdesigns_lang') || 'es';
+    }
+
+    function uiText(key) {
+        return (leadText[currentLang()] || leadText.es)[key];
+    }
 
     window.leadNext = function(s) {
         if (s === 1) {
@@ -448,7 +468,7 @@
                 });
                 b.classList.add('border-primary', 'bg-blue-50');
                 b.classList.remove('border-outline-variant');
-                a[f] = b.dataset.value;
+                a[f] = currentLang() === 'en' ? b.dataset.valueEn : b.dataset.valueEs;
                 if (n) setTimeout(() => ls(n), 300);
                 else setTimeout(() => lg(), 300);
             };
@@ -467,7 +487,7 @@
             const res = await fetch('/api/ai-lead-generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(a)
+                body: JSON.stringify({ ...a, lang: currentLang() })
             });
             const d = await res.json();
             if (!res.ok) throw new Error(d.error);
@@ -477,7 +497,7 @@
             fetch('/api/ai-lead-save', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, fuente: 'homepage-ai-diagnostic-anon' })
+                body: JSON.stringify({ negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, lang: currentLang(), fuente: 'homepage-ai-diagnostic-anon' })
             }).catch(() => {});
 
             document.getElementById('lead-generating').classList.add('hidden');
@@ -487,7 +507,7 @@
         } catch {
             document.getElementById('lead-generating').classList.add('hidden');
             document.getElementById('lead-basic').classList.remove('hidden');
-            document.getElementById('lead-gate-error').textContent = 'Error generando recomendación. Recarga e intenta de nuevo.';
+            document.getElementById('lead-gate-error').textContent = uiText('generateError');
             document.getElementById('lead-gate-error').classList.remove('hidden');
         }
     }
@@ -506,19 +526,19 @@
         err.classList.add('hidden');
         if (!n) { document.getElementById('lead-nombre').focus(); return; }
         if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
-            err.textContent = 'Ingresa un email válido.';
+            err.textContent = uiText('emailError');
             err.classList.remove('hidden');
             return;
         }
 
         btn.disabled = true;
-        btn.textContent = 'Un momento...';
+        btn.textContent = uiText('waiting');
 
         // Save with contact info — triggers N8N email
         fetch('/api/ai-lead-save', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre: n, email: e, telefono: t, negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, fuente: 'homepage-ai-diagnostic' })
+            body: JSON.stringify({ nombre: n, email: e, telefono: t, negocio: a.negocio, dolor: a.dolor, meta: a.meta, resultado: r, lang: currentLang(), fuente: 'homepage-ai-diagnostic' })
         }).catch(() => {});
 
         document.getElementById('lead-email-gate').classList.add('hidden');
@@ -767,25 +787,25 @@
         </button>
 
         <!-- Badge -->
-        <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-5">Gratis · 30 segundos</span>
+        <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-5" data-i18n="ai_quiz.popup_badge">Gratis · 30 segundos</span>
 
         <!-- Headline -->
-        <h2 class="text-3xl font-black tracking-tighter text-on-surface leading-tight mb-3">
+        <h2 class="text-3xl font-black tracking-tighter text-on-surface leading-tight mb-3" data-i18n="ai_quiz.popup_title">
             ¿Tu negocio está<br/>listo para la IA?
         </h2>
 
         <!-- Subtext -->
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-7 max-w-xs">
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-7 max-w-xs" data-i18n="ai_quiz.popup_subtext">
             Responde 3 preguntas y descubre exactamente qué herramienta puede ahorrarte tiempo y generar más ventas — personalizado para tu negocio.
         </p>
 
         <!-- CTA -->
-        <button id="quiz-popup-cta" class="w-full bg-primary text-white font-bold text-sm py-3.5 rounded-xl hover:bg-primary/90 active:scale-95 transition-all mb-3">
+        <button id="quiz-popup-cta" class="w-full bg-primary text-white font-bold text-sm py-3.5 rounded-xl hover:bg-primary/90 active:scale-95 transition-all mb-3" data-i18n="ai_quiz.popup_cta">
             Descúbrelo gratis →
         </button>
 
         <!-- Dismiss -->
-        <button id="quiz-popup-dismiss" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">
+        <button id="quiz-popup-dismiss" class="text-xs text-slate-400 hover:text-slate-600 transition-colors" data-i18n="ai_quiz.popup_dismiss">
             Ahora no
         </button>
     </div>
