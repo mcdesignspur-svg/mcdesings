@@ -286,7 +286,6 @@
 
   function resetConversation() {
     if (streaming) return;
-    if (history.length > 0 && !confirm('¿Empezar una conversación nueva? Se borra el historial actual.')) return;
     history = [];
     sessionId = null;
     try {
