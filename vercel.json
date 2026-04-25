@@ -1,5 +1,8 @@
 {
   "outputDirectory": "dist",
+  "buildCommand": "npm run build",
+  "devCommand": "vite --port $PORT",
+  "framework": "vite",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
