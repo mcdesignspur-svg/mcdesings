@@ -10,7 +10,7 @@ export const CASES = [
     summary:
       'Boutique de ropa en PR. Tienda Shopify, branding y client portal en ops.mcdesignspr.com. 50% deposit, en producción.',
     services: ['shopify', 'branding', 'web design'],
-    url: '/case-study-beboutique',
+    url: '/portfolio',
   },
   {
     id: 'mcpromo',
@@ -25,20 +25,23 @@ export const CASES = [
       'web app',
       'panel',
       'sistema interno',
+      'multi-dominio',
+      'boxeo',
     ],
     summary:
-      'Rediseño de plataforma con dark mode + admin panel. Stack: Google Stitch, Antigravity, PostgreSQL, Vercel.',
+      'Rediseño dark mode + admin panel custom para que el equipo actualice eventos, boletos y comunicados sin depender de un dev. Multi-dominio consolidado en Vercel. Stack: Google Stitch, Antigravity, PostgreSQL, Vercel.',
     services: ['web design', 'web app', 'admin tooling'],
-    url: '/case-study-mcpromo',
+    url: '/portfolio#card-mcp',
   },
   {
     id: 'teamdrita',
-    name: 'Team Drita',
-    industry: 'sports/marketing',
-    keywords: ['team', 'sports', 'branding', 'identity', 'social media'],
-    summary: 'Brand identity y social media kit para equipo de boxeo.',
-    services: ['branding', 'social media kit'],
-    url: '/case-study-teamdrita',
+    name: 'Team Drita y Mely (Hibody)',
+    industry: 'wellness/ecommerce',
+    keywords: ['shopify', 'wellness', 'salud', 'bienestar', 'bundles', 'ecommerce', 'tienda', 'mobile-first', 'hibody'],
+    summary:
+      'Tienda Shopify desde cero para coaches de wellness Sandra y Melissa (marca Hibody). Bundles configurados, mobile-first, contenido bilingüe, analítica nativa. Entregado en 3-4 semanas.',
+    services: ['shopify', 'ecommerce', 'web design'],
+    url: '/portfolio#card-drita',
   },
 ];
 

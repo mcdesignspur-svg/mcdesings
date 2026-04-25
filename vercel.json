@@ -22,9 +22,6 @@
     { "source": "/automatizacion-ia-puerto-rico", "destination": "/automatizacion-ia-puerto-rico.html" },
     { "source": "/shopify-puerto-rico", "destination": "/shopify-puerto-rico.html" },
     { "source": "/automation-content-generator", "destination": "/automation-content-generator.html" },
-    { "source": "/case-study-beboutique", "destination": "/case-study-beboutique.html" },
-    { "source": "/case-study-mcpromo", "destination": "/case-study-mcpromo.html" },
-    { "source": "/case-study-teamdrita", "destination": "/case-study-teamdrita.html" },
     { "source": "/guia-prospecting-ai", "destination": "/guia-prospecting-ai.html" },
     { "source": "/guia-configuracion-claude-code", "destination": "/guia-configuracion-claude-code.html" },
     { "source": "/guia-migracion-claude", "destination": "/guia-migracion-claude.html" },
@@ -38,7 +35,10 @@
   ],
   "redirects": [
     { "source": "/pricing", "destination": "/servicios", "permanent": true },
-    { "source": "/demos/aviation-rfq", "destination": "https://demos.mcdesignspr.com/aviation", "permanent": true }
+    { "source": "/demos/aviation-rfq", "destination": "https://demos.mcdesignspr.com/aviation", "permanent": true },
+    { "source": "/case-study-mcpromo", "destination": "/portfolio#card-mcp", "permanent": true },
+    { "source": "/case-study-teamdrita", "destination": "/portfolio#card-drita", "permanent": true },
+    { "source": "/case-study-beboutique", "destination": "/portfolio", "permanent": true }
   ],
   "headers": [
     {

@@ -145,11 +145,26 @@ export const translations = {
                 oneliner: "Rediseño completo para la empresa de boxeo #1 de Puerto Rico.",
                 card_cta: "Ver Proyecto",
                 challenge_title: "El Reto",
-                challenge: "La empresa de promoción de boxeo #1 de Puerto Rico tenía un sitio web desactualizado que no reflejaba la calidad de sus eventos ni de su talento. Necesitaban un rediseño completo — moderno, rápido y construido para una audiencia deportiva en vivo.",
+                challenge: "La promotora de boxeo #1 de Puerto Rico operaba con un sitio que no aguantaba el ritmo de un evento en vivo. Tres frentes de fricción: cada cambio de evento o boleto pasaba por un tercero técnico, varios dominios históricos resolvían a sitios desincronizados, y la identidad visual no proyectaba el peso de la marca dentro del boxeo profesional.",
+                decisions_title: "Decisiones Clave",
+                decisions: [
+                    {
+                        title: "Dark mode como decisión de marca, no de tendencia",
+                        body: "El boxeo vive en la tensión visual del ring iluminado contra el público en penumbra. El dark mode no es estética — es coherencia con cómo la audiencia ya consume el deporte."
+                    },
+                    {
+                        title: "Admin panel custom, no un CMS genérico",
+                        body: "Evalué un CMS off-the-shelf y lo descarté: el flujo del cliente es repetitivo y específico (próximo evento → boletos → transmisión → comunicados). Un panel a medida expone solo los flujos que el equipo ejecuta cada semana, sin campos que distraigan."
+                    },
+                    {
+                        title: "Consolidación de dominios sin perder SEO",
+                        body: "En vez de migrar a un solo dominio y romper links históricos, configuré todos los dominios de la marca para resolver al mismo deployment. Una sola fuente de verdad, sin pérdida del equity acumulado."
+                    }
+                ],
                 built_title: "Lo que Construí",
-                built: "Un sitio web completamente personalizado con un panel de administración interno que le da al equipo de MCP control total — publicar noticias, anunciar eventos, actualizar el roster de peleadores y gestionar el contenido del sitio sin tocar código. Diseñado en Google Stitch, producido en Antigravity, desplegado en Vercel.",
+                built: "Sitio público dark mode con secciones editables desde el panel: próximo evento (nombre, fecha, link de boletos, link de transmisión), comunicados de prensa, noticias y roster de atletas. Configuración multi-dominio en Vercel para que todos los dominios históricos apunten al mismo build. Diseñado en Google Stitch, producido en Antigravity.",
                 result_title: "El Resultado",
-                result: "Una plataforma deportiva en modo oscuro que se mueve tan rápido como el deporte. El panel de administración es la verdadera victoria — una sola interfaz que mantiene todo el sitio vivo y actualizado, pelea tras pelea.",
+                result: "Autonomía operativa total — el equipo de MCP actualiza eventos, boletos y comunicados en minutos en vez de días. Una identidad digital consolidada bajo múltiples dominios, lista para mover al ritmo de cada cartelera.",
                 visit: "Visitar Sitio"
             },
             drita: {
@@ -158,11 +173,26 @@ export const translations = {
                 oneliner: "Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.",
                 card_cta: "Ver Proyecto",
                 challenge_title: "El Reto",
-                challenge: "Sandra y Melissa, coaches de bienestar bajo la marca Hibody, vendían productos sin una tienda en línea propia. Necesitaban un storefront limpio que facilitara la compra y mostrara sus bundles y promociones de forma clara.",
+                challenge: "Sandra y Melissa, coaches de bienestar bajo la marca Hibody, habían construido audiencia en redes — pero toda la conversión vivía en DMs y procesos manuales. Sin canal propio para vender, sin métricas reales sobre qué funcionaba, y con una oferta plana que no comunicaba la marca como un sistema completo de wellness.",
+                decisions_title: "Decisiones Clave",
+                decisions: [
+                    {
+                        title: "Shopify, no un build custom",
+                        body: "Para una marca de wellness en crecimiento, Shopify gana en tres frentes que un build a medida no justifica todavía: checkout battle-tested con métodos de pago locales, infraestructura de inventario y envíos lista, y un ecosistema de apps para expandir sin sprints de desarrollo."
+                    },
+                    {
+                        title: "Bundles como estrategia, no como add-on",
+                        body: "En vez de listar productos sueltos, configuré bundles que empacan combinaciones que se complementan. Sube el ticket promedio, simplifica la decisión del cliente y posiciona a Hibody como un sistema de wellness — no como una tienda más."
+                    },
+                    {
+                        title: "Mobile-first agresivo",
+                        body: "La audiencia llega mayoritariamente desde Instagram. Cada decisión de jerarquía visual, tamaño de CTAs y flujo de checkout se priorizó pensando en cómo se siente en un teléfono primero. El desktop fue un derivado, no el punto de partida."
+                    }
+                ],
                 built_title: "Lo que Construí",
-                built: "Una tienda Shopify completa construida desde cero — catálogo de productos, bundles con descuento, precios de oferta, contenido bilingüe y un flujo de compra optimizado para su audiencia. Sin elementos innecesarios, todo lo que necesitaban.",
+                built: "Storefront Shopify completo en 3-4 semanas: catálogo, bundles configurados con descuento, páginas de producto con jerarquía clara (beneficio → detalle → CTA), contenido bilingüe, optimización mobile end-to-end, SEO on-page y analítica nativa de Shopify activa desde el día uno.",
                 result_title: "El Resultado",
-                result: "Un storefront limpio, minimalista y directo donde cada producto es visible y cada página impulsa hacia una venta. 'Tu bienestar es nuestra prioridad' — el sitio transmite exactamente eso.",
+                result: "Canal propio de conversión funcionando — la marca dejó de depender de DMs para vender. Visibilidad operativa real sobre qué productos venden y cuándo, y una palanca clara (bundles) para subir el ticket promedio sin agregar productos nuevos al catálogo.",
                 visit: "Visitar Sitio"
             }
         },
@@ -691,11 +721,26 @@ export const translations = {
                 oneliner: "Full redesign for Puerto Rico's #1 boxing promotional company.",
                 card_cta: "View Project",
                 challenge_title: "The Challenge",
-                challenge: "Puerto Rico's #1 boxing promotional company had an outdated website that didn't match the caliber of their events or talent. They needed a complete redesign — modern, fast, and built for a live sports audience.",
+                challenge: "Puerto Rico's #1 boxing promoter was running on a site that couldn't keep up with a live event. Three friction points: every event or ticket update went through an external developer, multiple legacy domains resolved to out-of-sync versions of the site, and the visual identity didn't carry the weight of the brand inside professional boxing.",
+                decisions_title: "Key Decisions",
+                decisions: [
+                    {
+                        title: "Dark mode as a brand decision, not a trend",
+                        body: "Boxing lives in the visual tension between a lit ring and a dim crowd. Dark mode isn't aesthetic — it's coherence with how the audience already consumes the sport."
+                    },
+                    {
+                        title: "Custom admin panel, not a generic CMS",
+                        body: "I evaluated an off-the-shelf CMS and ruled it out: the client's workflow is repetitive and specific (upcoming event → tickets → stream → press). A custom panel surfaces only the 3-4 flows the team runs every week, with no extra fields to wade through."
+                    },
+                    {
+                        title: "Domain consolidation without losing SEO",
+                        body: "Instead of migrating to a single domain and breaking historical links, I configured every legacy domain to resolve to the same deployment. One source of truth, zero loss of accumulated equity."
+                    }
+                ],
                 built_title: "What I Built",
-                built: "A fully custom website with a built-in admin dashboard that gives the MCP team full control — add news posts, publish events, update fighter rosters, and manage site content without touching code. Designed in Google Stitch, produced in Antigravity, deployed on Vercel.",
+                built: "Dark-mode public site with admin-editable sections: upcoming event (name, date, ticket link, stream link), press releases, news, and the athlete roster. Multi-domain setup on Vercel so every legacy domain hits the same build. Designed in Google Stitch, produced in Antigravity.",
                 result_title: "The Result",
-                result: "A dark-mode sports platform that moves as fast as the sport itself. The admin dashboard is the real win — one interface that keeps the entire site alive and current, fight after fight.",
+                result: "Total operational autonomy — the MCP team updates events, tickets and press releases in minutes instead of days. A consolidated digital identity across multiple domains, ready to move at the pace of every fight card.",
                 visit: "Visit Site"
             },
             drita: {
@@ -704,11 +749,26 @@ export const translations = {
                 oneliner: "Shopify store built from scratch for a Puerto Rico wellness team.",
                 card_cta: "View Project",
                 challenge_title: "The Challenge",
-                challenge: "Sandra and Melissa, wellness coaches under the Hibody brand, were selling products without a dedicated online storefront. They needed a clean store that made buying easy and showcased their bundles and promotions clearly.",
+                challenge: "Sandra and Melissa, wellness coaches under the Hibody brand, had built an audience on social — but every conversion lived in DMs and manual back-and-forth. No owned channel to sell on, no real metrics on what was working, and a flat product offer that didn't position the brand as a complete wellness system.",
+                decisions_title: "Key Decisions",
+                decisions: [
+                    {
+                        title: "Shopify, not a custom build",
+                        body: "For a wellness brand at this growth stage, Shopify wins on three fronts a custom build doesn't justify yet: a battle-tested checkout with all local payment methods, inventory and shipping infra ready on day one, and an app ecosystem to expand without dev sprints."
+                    },
+                    {
+                        title: "Bundles as strategy, not an add-on",
+                        body: "Instead of listing standalone products, I set up bundles that pack complementary items together. It lifts AOV, simplifies the customer's decision, and positions Hibody as a wellness system — not as another product list."
+                    },
+                    {
+                        title: "Aggressive mobile-first",
+                        body: "The audience lands mostly from Instagram. Every decision on visual hierarchy, CTA size, and checkout flow was made for how it feels on a phone first. Desktop was a derivative, not the starting point."
+                    }
+                ],
                 built_title: "What I Built",
-                built: "A full Shopify e-commerce store built from scratch — product catalog, bundle deals, sale pricing, bilingual copy, and a checkout flow optimized for their audience. Nothing unnecessary, everything they needed.",
+                built: "Full Shopify storefront in 3-4 weeks: catalog, configured discount bundles, product pages with clear hierarchy (benefit → detail → CTA), bilingual copy, end-to-end mobile optimization, on-page SEO, and Shopify-native analytics live from day one.",
                 result_title: "The Result",
-                result: "A clean, minimal, direct storefront where every product is visible and every page drives toward a sale. 'Tu bienestar es nuestra prioridad' — the site feels like that.",
+                result: "Owned conversion channel running — the brand stopped depending on DMs to sell. Real operational visibility into which products move and when, plus a clear lever (bundles) to lift average order value without adding new SKUs.",
                 visit: "Visit Site"
             }
         },
