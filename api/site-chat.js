@@ -419,24 +419,14 @@ export default async function handler(req, res) {
       });
 
       let turnText = '';
-      const contentBlocks = [];
 
       for await (const event of stream) {
-        if (event.type === 'content_block_start') {
-          contentBlocks[event.index] = event.content_block;
-        } else if (event.type === 'content_block_delta') {
-          if (event.delta.type === 'text_delta') {
-            turnText += event.delta.text;
-            sseWrite(res, 'text', { delta: event.delta.text });
-          } else if (event.delta.type === 'input_json_delta') {
-            const blk = contentBlocks[event.index];
-            blk.partial_json = (blk.partial_json || '') + event.delta.partial_json;
-          }
-        } else if (event.type === 'content_block_stop') {
-          const blk = contentBlocks[event.index];
-          if (blk?.type === 'tool_use' && blk.partial_json) {
-            try { blk.input = JSON.parse(blk.partial_json); } catch {}
-          }
+        if (
+          event.type === 'content_block_delta' &&
+          event.delta.type === 'text_delta'
+        ) {
+          turnText += event.delta.text;
+          sseWrite(res, 'text', { delta: event.delta.text });
         }
       }
 
