@@ -190,59 +190,105 @@
             </div>
         </section>
 
-        <!-- Services Grid -->
+        <!-- Systems with Pricing Floors -->
         <section class="max-w-7xl mx-auto px-8 mb-40">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service Cards will be injected/hydrated, but kept here for fallback -->
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">01</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.0.title">PRESENCIA WEB</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.0.desc">Construyo una presencia clara, rápida y mobile-first para que tu negocio se vea confiable y sea fácil de encontrar.</p>
-                    <a href="/diseno-web-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.0.link">→ Web de presencia</a>
+            <div class="border-t border-outline-variant pt-12 mb-16 flex flex-col md:flex-row justify-between items-start gap-8">
+                <div class="max-w-2xl">
+                    <span class="label-md uppercase tracking-[0.2em] text-primary font-bold mb-4 block" data-i18n="servicios_page.systems.tag">Ejemplos reales</span>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter" data-i18n="servicios_page.systems.title">Desde cuánto arranca cada sistema.</h2>
+                </div>
+                <p class="text-on-surface-variant text-lg max-w-md" data-i18n="servicios_page.systems.subtext">Cada proyecto se cotiza 1:1 porque nunca hay dos negocios iguales. Pero si necesitas un piso antes de escribirme, estos son los sistemas que construyo hoy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Sistemas Web -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary">language</span>
+                        <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface" data-i18n="servicios_page.systems.groups.0.label">Sistemas Web</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.0.items.0.name">La Presencia</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.0.items.0.timeline">2 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.0.items.0.outcome">Tu negocio se ve serio en Google y en el celular.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.0.items.0.price_line">Desde $1,200</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.0.items.0.guarantee">Carga en menos de 2 seg o no pagas la última factura.</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.0.items.1.name">El Impulso</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.0.items.1.timeline">3–4 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.0.items.1.outcome">Tu sitio contesta, cotiza y agenda 24/7 — sin que tengas que vivir pendiente del celular.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.0.items.1.price_line">Desde $2,200 + $800/mes</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.0.items.1.guarantee">La automatización responde en menos de 60 segundos o te devuelvo el setup.</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.0.items.2.name">El Studio</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.0.items.2.timeline">5–6 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.0.items.2.outcome">La operación completa — web, automatización y panel — en una pantalla.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.0.items.2.price_line">Desde $4,500 + $1,100/mes</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.0.items.2.guarantee">Live en la fecha acordada o cada día de retraso descuenta del primer retainer.</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">02</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.1.title">CONVERSIÓN</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.1.desc">Diseño páginas enfocadas en convertir visitas en llamadas, mensajes, reservas o compras con una oferta más clara.</p>
-                    <a href="/diseno-web-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.1.link">→ Web de conversión</a>
-                </div>
-
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">03</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.2.title">INTELIGENCIA ARTIFICIAL</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.2.desc">Integro chat IA, cualificación de leads e intakes inteligentes para que tu sitio responda y organice mejor cada oportunidad.</p>
-                    <a href="/automatizacion-ia-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.2.link">→ Chat IA + cualificador</a>
-                </div>
-
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">04</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.3.title">SISTEMAS CON IA</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.3.desc">Conecto formularios, mensajes, follow-ups y agenda para reducir trabajo manual desde el primer contacto hasta la cita.</p>
-                    <a href="/automatizacion-ia-puerto-rico" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.3.link">→ Sistema de agente IA</a>
-                </div>
-
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">05</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.4.title">PRESENCIA SOCIAL</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.4.desc">Creo sistemas para analizar contenido, convertir ideas en posts y mantener tu presencia activa sin improvisar todos los días.</p>
-                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.4.link">→ Social manager</a>
-                </div>
-
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">06</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.5.title">CRECIMIENTO CONTINUO</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.5.desc">Después del lanzamiento puedo medir, mejorar, ajustar la IA y evolucionar el sistema según lo que el negocio necesite.</p>
-                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.5.link">→ Retainer mensual</a>
-                </div>
-
-                <div class="bg-surface-container-low p-10 rounded-2xl relative group overflow-hidden border border-transparent hover:border-primary/20 transition-all duration-500">
-                    <span class="text-8xl font-black absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 text-on-surface/5 group-hover:text-primary/10 transition-colors">07</span>
-                    <h3 class="text-xl font-bold mb-4 tracking-tight" data-i18n="servicios_page.cards.6.title">DASHBOARDS DE NEGOCIO</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6" data-i18n="servicios_page.cards.6.desc">Diseño un centro de mando para tu operación: CRM, pipeline, calendario, portal de clientes y reportes en un solo lugar.</p>
-                    <a href="/contacto" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" data-i18n="servicios_page.cards.6.link">→ Dashboard a medida</a>
+                <!-- Sistemas IA -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary">smart_toy</span>
+                        <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface" data-i18n="servicios_page.systems.groups.1.label">Sistemas de IA</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.1.items.0.name">WhatsApp 24/7</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.1.items.0.timeline">2 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.1.items.0.outcome">Tu negocio contesta en 30 segundos — a las 11pm, los domingos, siempre.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.1.items.0.price_line">Desde $2,500 + $400/mes</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.1.items.0.guarantee">Responde cualquier mensaje de prueba en menos de 60 segundos o te devuelvo el setup.</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.1.items.1.name">Radar de Leads</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.1.items.1.timeline">3 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.1.items.1.outcome">Cada lead entra clasificado, cotizado y agendado — tú solo abres el panel.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.1.items.1.price_line">Desde $4,500 + $600/mes</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.1.items.1.guarantee">Procesa el primer lead de prueba en menos de 2 minutos o te devuelvo el setup.</span>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-outline-variant/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3 gap-4">
+                                <h4 class="text-2xl font-black tracking-tight" data-i18n="servicios_page.systems.groups.1.items.2.name">Panel de Operaciones</h4>
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary bg-primary-fixed px-3 py-1 rounded-full whitespace-nowrap" data-i18n="servicios_page.systems.groups.1.items.2.timeline">4–5 semanas</span>
+                            </div>
+                            <p class="text-on-surface-variant leading-relaxed mb-4" data-i18n="servicios_page.systems.groups.1.items.2.outcome">Tu negocio entero en una pantalla — CRM, pipeline, automatizaciones, clientes.</p>
+                            <div class="border-t border-outline-variant/50 pt-4 flex flex-col gap-1">
+                                <span class="font-black text-on-surface" data-i18n="servicios_page.systems.groups.1.items.2.price_line">Desde $6,500 + $800/mes</span>
+                                <span class="text-xs text-on-surface-variant italic" data-i18n="servicios_page.systems.groups.1.items.2.guarantee">Live en la fecha acordada o descuento diario del primer retainer.</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <p class="text-center text-on-surface-variant mt-12 text-sm" data-i18n="servicios_page.systems.footnote">Si tu caso no encaja exacto en ninguno, normal. Agenda el diagnóstico y construyo el que necesitas.</p>
         </section>
 
         <!-- Process Section -->
@@ -364,5 +410,6 @@
             });
         }
     </script>
+<script type="module" src="assets/site-chat.js"></script>
 </body>
 </html>

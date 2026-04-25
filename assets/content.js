@@ -196,43 +196,66 @@ export const translations = {
                     }
                 ]
             },
-            cards: [
-                {
-                    title: "PRESENCIA WEB",
-                    desc: "Construyo una presencia clara, rápida y mobile-first para que tu negocio se vea confiable y sea fácil de encontrar.",
-                    link: "→ Sitio web de presencia"
-                },
-                {
-                    title: "CONVERSIÓN",
-                    desc: "Diseño páginas enfocadas en convertir visitas en llamadas, mensajes, reservas o compras con una oferta más clara.",
-                    link: "→ Sitio web de rendimiento"
-                },
-                {
-                    title: "INTEGRACIÓN IA",
-                    desc: "Integro chat IA, cualificación de leads e intakes inteligentes para que tu sitio responda y organice mejor cada oportunidad.",
-                    link: "→ Chat IA + Calificador"
-                },
-                {
-                    title: "SISTEMAS DE IA",
-                    desc: "Conecto formularios, mensajes, follow-ups y agenda para reducir trabajo manual desde el primer contacto hasta la cita.",
-                    link: "→ Sistema de agentes IA"
-                },
-                {
-                    title: "PRESENCIA EN REDES",
-                    desc: "Creo sistemas para analizar contenido, convertir ideas en posts y mantener tu presencia activa sin improvisar todos los días.",
-                    link: "→ Social Manager"
-                },
-                {
-                    title: "CRECIMIENTO CONTINUO",
-                    desc: "Después del lanzamiento puedo medir, mejorar, ajustar la IA y evolucionar el sistema según lo que el negocio necesite.",
-                    link: "→ Retainer mensual"
-                },
-                {
-                    title: "DASHBOARDS DE NEGOCIO",
-                    desc: "Diseño un centro de mando para tu operación: CRM, pipeline, calendario, portal de clientes y reportes en un solo lugar.",
-                    link: "→ Dashboard personalizado"
-                }
-            ],
+            systems: {
+                tag: "EJEMPLOS REALES",
+                title: "Desde cuánto arranca cada sistema.",
+                subtext: "Cada proyecto se cotiza 1:1 porque nunca hay dos negocios iguales. Pero si necesitas un piso antes de escribirme, estos son los sistemas que construyo hoy.",
+                groups: [
+                    {
+                        label: "SISTEMAS WEB",
+                        items: [
+                            {
+                                name: "La Presencia",
+                                timeline: "2 semanas",
+                                outcome: "Tu negocio se ve serio en Google y en el celular.",
+                                price_line: "Desde $1,200",
+                                guarantee: "Carga en menos de 2 seg o no pagas la última factura."
+                            },
+                            {
+                                name: "El Impulso",
+                                timeline: "3–4 semanas",
+                                outcome: "Tu sitio contesta, cotiza y agenda 24/7 — sin que tengas que vivir pendiente del celular.",
+                                price_line: "Desde $2,200 + $800/mes",
+                                guarantee: "La automatización responde en menos de 60 segundos o te devuelvo el setup."
+                            },
+                            {
+                                name: "El Studio",
+                                timeline: "5–6 semanas",
+                                outcome: "La operación completa — web, automatización y panel — en una pantalla.",
+                                price_line: "Desde $4,500 + $1,100/mes",
+                                guarantee: "Live en la fecha acordada o cada día de retraso descuenta del primer retainer."
+                            }
+                        ]
+                    },
+                    {
+                        label: "SISTEMAS DE IA",
+                        items: [
+                            {
+                                name: "WhatsApp 24/7",
+                                timeline: "2 semanas",
+                                outcome: "Tu negocio contesta en 30 segundos — a las 11pm, los domingos, siempre.",
+                                price_line: "Desde $2,500 + $400/mes",
+                                guarantee: "Responde cualquier mensaje de prueba en menos de 60 segundos o te devuelvo el setup."
+                            },
+                            {
+                                name: "Radar de Leads",
+                                timeline: "3 semanas",
+                                outcome: "Cada lead entra clasificado, cotizado y agendado — tú solo abres el panel.",
+                                price_line: "Desde $4,500 + $600/mes",
+                                guarantee: "Procesa el primer lead de prueba en menos de 2 minutos o te devuelvo el setup."
+                            },
+                            {
+                                name: "Panel de Operaciones",
+                                timeline: "4–5 semanas",
+                                outcome: "Tu negocio entero en una pantalla — CRM, pipeline, automatizaciones, clientes.",
+                                price_line: "Desde $6,500 + $800/mes",
+                                guarantee: "Live en la fecha acordada o descuento diario del primer retainer."
+                            }
+                        ]
+                    }
+                ],
+                footnote: "Si tu caso no encaja exacto en ninguno, normal. Agenda el diagnóstico y construyo el que necesitas."
+            },
             how_it_works: {
                 label: "El Proceso",
                 title: "Cómo trabajo contigo.",
@@ -719,43 +742,66 @@ export const translations = {
                     }
                 ]
             },
-            cards: [
-                {
-                    title: "WEB PRESENCE",
-                    desc: "I build a clear, fast, mobile-first presence so your business looks trustworthy and is easy to find.",
-                    link: "→ Presence website"
-                },
-                {
-                    title: "CONVERSION",
-                    desc: "I design pages focused on turning visitors into calls, messages, bookings, or purchases with a clearer offer.",
-                    link: "→ Performance website"
-                },
-                {
-                    title: "AI INTEGRATION",
-                    desc: "I integrate AI chat, lead qualification, and smart intakes so your site responds and organizes every opportunity better.",
-                    link: "→ AI Chat + Qualifier"
-                },
-                {
-                    title: "AI SYSTEMS",
-                    desc: "I connect forms, messages, follow-ups, and booking to reduce manual work from first contact to appointment.",
-                    link: "→ AI agent system"
-                },
-                {
-                    title: "SOCIAL PRESENCE",
-                    desc: "I create systems to analyze content, turn ideas into posts, and keep your presence active without daily improvising.",
-                    link: "→ Social Manager"
-                },
-                {
-                    title: "ONGOING GROWTH",
-                    desc: "After launch, I can measure, improve, tune the AI, and evolve the system around what the business needs.",
-                    link: "→ Monthly retainer"
-                },
-                {
-                    title: "BUSINESS DASHBOARDS",
-                    desc: "I design a command center for your operation: CRM, lead pipeline, booking calendar, client portal, and reports in one place.",
-                    link: "→ Custom dashboard"
-                }
-            ],
+            systems: {
+                tag: "REAL EXAMPLES",
+                title: "What each system starts at.",
+                subtext: "Every project is quoted 1:1 because no two businesses are the same. But if you want a floor before reaching out, these are the systems I build today.",
+                groups: [
+                    {
+                        label: "WEB SYSTEMS",
+                        items: [
+                            {
+                                name: "La Presencia",
+                                timeline: "2 weeks",
+                                outcome: "Your business looks serious on Google and on mobile.",
+                                price_line: "Starting at $1,200",
+                                guarantee: "Loads in under 2 sec or you don't pay the final invoice."
+                            },
+                            {
+                                name: "El Impulso",
+                                timeline: "3–4 weeks",
+                                outcome: "Your site answers, quotes and books 24/7 — without you glued to the phone.",
+                                price_line: "Starting at $2,200 + $800/mo",
+                                guarantee: "The automation replies in under 60 seconds or I refund the setup."
+                            },
+                            {
+                                name: "El Studio",
+                                timeline: "5–6 weeks",
+                                outcome: "The full operation — web, automation and dashboard — on one screen.",
+                                price_line: "Starting at $4,500 + $1,100/mo",
+                                guarantee: "Live on the agreed date or every day late discounts the first retainer."
+                            }
+                        ]
+                    },
+                    {
+                        label: "AI SYSTEMS",
+                        items: [
+                            {
+                                name: "WhatsApp 24/7",
+                                timeline: "2 weeks",
+                                outcome: "Your business replies in 30 seconds — at 11pm, on Sundays, always.",
+                                price_line: "Starting at $2,500 + $400/mo",
+                                guarantee: "Replies to any test message in under 60 seconds or I refund the setup."
+                            },
+                            {
+                                name: "Radar de Leads",
+                                timeline: "3 weeks",
+                                outcome: "Every lead arrives classified, quoted and scheduled — you just open the panel.",
+                                price_line: "Starting at $4,500 + $600/mo",
+                                guarantee: "Processes the first test lead in under 2 minutes or I refund the setup."
+                            },
+                            {
+                                name: "Panel de Operaciones",
+                                timeline: "4–5 weeks",
+                                outcome: "Your entire business on one screen — CRM, pipeline, automations, clients.",
+                                price_line: "Starting at $6,500 + $800/mo",
+                                guarantee: "Live on the agreed date or daily discount from the first retainer."
+                            }
+                        ]
+                    }
+                ],
+                footnote: "If your case doesn't fit any of these exactly, that's fine. Book the diagnosis and I'll build the one you need."
+            },
             how_it_works: {
                 label: "The Process",
                 title: "How I work with you.",
