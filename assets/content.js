@@ -9,19 +9,41 @@ export const translations = {
             about: "Miguel",
             contact: "Contacto",
             hub: "Recursos",
-            cta: "Comenzar Proyecto"
+            cta: "Agenda diagnóstico"
         },
         hero: {
             tag: "✦ DISEÑO WEB + IA EN PR",
             tagline: "Diseño Web + IA · Puerto Rico",
             headline: "EL CRECIMIENTO EMPIEZA AQUÍ.",
-            subtext: "Tu socio para crecer con web + IA en Puerto Rico. Todo a medida. Siempre 1:1. Sin templates, sin agencias.",
-            cta1: "Comenzar Proyecto",
+            subtext: "Tu socio para crecer con web + IA en Puerto Rico. Webs, tiendas y sistemas diseñados alrededor de tu negocio. Siempre 1:1. Sin templates, sin agencias.",
+            cta1: "Agenda una llamada de diagnóstico",
             cta2: "Ver Portafolio",
         },
         mission: {
             label: "El punto de partida",
-            text: "Tu negocio necesita dos cosas para crecer hoy: una web que te encuentren, y sistemas de IA que te liberen tiempo. <span class=\"text-primary\">Eso es exactamente lo que construimos</span> — nada más, nada menos."
+            text: "Tu negocio no necesita otra plantilla bonita. Necesita un sistema digital construido alrededor de cómo vendes, atiendes y operas. <span class=\"text-primary\">Eso es lo que construyo contigo: web + IA ajustada a ti, a tu negocio y a lo que necesitas para crecer.</span>"
+        },
+        custom_build: {
+            label: "Cómo trabajamos",
+            title: "Todo se construye alrededor de tu negocio.",
+            cards: [
+                {
+                    title: "No usamos templates",
+                    desc: "Cada diseño, flujo y sistema se crea desde cero según tu marca, tu oferta y tus metas."
+                },
+                {
+                    title: "Primero entiendo tu operación",
+                    desc: "Antes de diseñar, miro cómo llegan tus clientes, dónde pierdes tiempo y qué procesos se pueden mejorar."
+                },
+                {
+                    title: "Web + IA trabajando juntas",
+                    desc: "No se trata solo de verte bien. Construyo una presencia digital que atrae, responde, organiza y convierte."
+                },
+                {
+                    title: "Escalable desde el día uno",
+                    desc: "Tu sistema queda listo para crecer contigo: nuevas páginas, automatizaciones, productos, formularios o dashboards."
+                }
+            ]
         },
         services: {
             label: "Servicios",
@@ -39,8 +61,51 @@ export const translations = {
                 },
                 {
                     title: "Integración IA",
-                    desc: "Automatiza lo rutinario. Construimos flujos de trabajo con IA para liberar tu tiempo y escalar tus operaciones.",
+                    desc: "Automatiza lo rutinario. Construyo flujos de trabajo con IA para liberar tu tiempo y escalar tus operaciones.",
                     items: ["Flujos de Trabajo LLM", "Automatización de Tareas", "Sistemas de Agentes IA"]
+                }
+            ]
+        },
+        audience: {
+            label: "Para quién es",
+            title: "Esto es para negocios listos para verse y operar mejor.",
+            cards: [
+                {
+                    title: "Dependes demasiado de Instagram",
+                    desc: "Tu negocio se ve activo en redes, pero no tienes una web clara que convierta visitantes en leads."
+                },
+                {
+                    title: "Pierdes tiempo respondiendo lo mismo",
+                    desc: "Mensajes, preguntas, seguimientos y tareas repetitivas te comen horas cada semana."
+                },
+                {
+                    title: "Tienes una oferta buena, pero confusa",
+                    desc: "La gente necesita entender rápido qué vendes, por qué confiar y cuál es el próximo paso."
+                },
+                {
+                    title: "Quieres crecer sin contratar de más",
+                    desc: "Automatizo partes del proceso para que puedas manejar más oportunidades con menos fricción."
+                }
+            ]
+        },
+        proof: {
+            label: "Prueba real",
+            title: "Sistemas construidos alrededor de negocios reales.",
+            cards: [
+                {
+                    tag: "Web + panel admin",
+                    desc: "Sitio deportivo + panel admin para mantener peleas, boxeadores y livestreams actualizados sin depender de procesos lentos.",
+                    cta: "Ver caso"
+                },
+                {
+                    tag: "Shopify + e-commerce",
+                    desc: "Tienda Shopify para productos, bundles y promociones, diseñada para facilitar la compra desde móvil.",
+                    cta: "Ver caso"
+                },
+                {
+                    tag: "Custom desde cero",
+                    desc: "Diagnóstico, diseño, desarrollo e IA bajo un mismo proceso. Nada de templates; todo pensado para tu operación.",
+                    cta: "Agenda diagnóstico"
                 }
             ]
         },
@@ -51,13 +116,13 @@ export const translations = {
         pricing: {
             label: "Inversión",
             title: "Precios personalizados para cada proyecto",
-            subtext: "Cada proyecto es diferente. Contáctanos y construimos un paquete alrededor de tus metas.",
-            cta: "Comenzar Proyecto"
+            subtext: "Cada proyecto es diferente. Contáctame y construyo un paquete alrededor de tus metas.",
+            cta: "Agenda una llamada de diagnóstico"
         },
         cta_section: {
             title: "¿Listo para <span class=\"text-primary-fixed\">Crecer</span>?",
-            subtext: "Construimos tu web + IA a medida — para que tu negocio crezca sin depender de más gente.",
-            cta: "Comenzar Proyecto"
+            subtext: "Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.",
+            cta: "Agenda una llamada de diagnóstico"
         },
         portfolio_page: {
             label: "MC Designs — Portafolio",
@@ -66,13 +131,13 @@ export const translations = {
             case_label: "Caso de Estudio",
             placeholder: {
                 label: "Tu Proyecto Aquí",
-                title: "Estamos construyendo. ¿Tienes un proyecto en mente? Hablemos.",
-                cta: "Comenzar Proyecto"
+                title: "Estoy construyendo. ¿Tienes un proyecto en mente? Hablemos.",
+                cta: "Agenda diagnóstico"
             },
             closing_cta: {
                 headline: "¿Listo para ser el próximo?",
-                subtext: "Cuéntanos tu proyecto y construimos algo que funcione.",
-                cta: "Comenzar Proyecto"
+                subtext: "Cuéntame tu proyecto y construyo algo que funcione.",
+                cta: "Agenda diagnóstico"
             },
             mcp: {
                 tag1: "Diseño Web",
@@ -81,7 +146,7 @@ export const translations = {
                 card_cta: "Ver Proyecto",
                 challenge_title: "El Reto",
                 challenge: "La empresa de promoción de boxeo #1 de Puerto Rico tenía un sitio web desactualizado que no reflejaba la calidad de sus eventos ni de su talento. Necesitaban un rediseño completo — moderno, rápido y construido para una audiencia deportiva en vivo.",
-                built_title: "Lo que Construimos",
+                built_title: "Lo que Construí",
                 built: "Un sitio web completamente personalizado con un panel de administración interno que le da al equipo de MCP control total — publicar noticias, anunciar eventos, actualizar el roster de peleadores y gestionar el contenido del sitio sin tocar código. Diseñado en Google Stitch, producido en Antigravity, desplegado en Vercel.",
                 result_title: "El Resultado",
                 result: "Una plataforma deportiva en modo oscuro que se mueve tan rápido como el deporte. El panel de administración es la verdadera victoria — una sola interfaz que mantiene todo el sitio vivo y actualizado, pelea tras pelea.",
@@ -94,7 +159,7 @@ export const translations = {
                 card_cta: "Ver Proyecto",
                 challenge_title: "El Reto",
                 challenge: "Sandra y Melissa, coaches de bienestar bajo la marca Hibody, vendían productos sin una tienda en línea propia. Necesitaban un storefront limpio que facilitara la compra y mostrara sus bundles y promociones de forma clara.",
-                built_title: "Lo que Construimos",
+                built_title: "Lo que Construí",
                 built: "Una tienda Shopify completa construida desde cero — catálogo de productos, bundles con descuento, precios de oferta, contenido bilingüe y un flujo de compra optimizado para su audiencia. Sin elementos innecesarios, todo lo que necesitaban.",
                 result_title: "El Resultado",
                 result: "Un storefront limpio, minimalista y directo donde cada producto es visible y cada página impulsa hacia una venta. 'Tu bienestar es nuestra prioridad' — el sitio transmite exactamente eso.",
@@ -108,62 +173,62 @@ export const translations = {
                 line2: "RENDIMIENTO.",
                 line3: "CRECIMIENTO.",
                 subtext: "Todo lo que tu negocio necesita, en un solo estudio.",
-                cta1: "Comenzar Proyecto",
+                cta1: "Agenda diagnóstico",
                 cta2: "Agenda una llamada"
             },
             intro: {
-                title: "De invisible a imparable.",
-                subtext: "Siete servicios. Una sola dirección: hacer crecer tu negocio."
+                title: "No empiezo por herramientas. Empiezo por tu operación.",
+                subtext: "Cada servicio se ajusta a tu negocio: cómo vendes, cómo atiendes, dónde pierdes tiempo y qué necesitas para crecer. Nada de templates. Nada genérico."
             },
             cards: [
                 {
                     title: "PRESENCIA WEB",
-                    desc: "Tu negocio existe en línea con credibilidad. Sitio limpio, rápido y optimizado para móvil — construido para ser encontrado.",
+                    desc: "Construyo una presencia clara, rápida y mobile-first para que tu negocio se vea confiable y sea fácil de encontrar.",
                     link: "→ Sitio web de presencia"
                 },
                 {
                     title: "CONVERSIÓN",
-                    desc: "Un sitio que no convierte es un anuncio que nadie lee. Construimos páginas que convierten visitas en llamadas y mensajes.",
+                    desc: "Diseño páginas enfocadas en convertir visitas en llamadas, mensajes, reservas o compras con una oferta más clara.",
                     link: "→ Sitio web de rendimiento"
                 },
                 {
                     title: "INTEGRACIÓN IA",
-                    desc: "Tu sitio trabaja mientras duermes. Chat IA, calificación de leads y formularios inteligentes integrados directamente en la experiencia.",
+                    desc: "Integro chat IA, cualificación de leads e intakes inteligentes para que tu sitio responda y organice mejor cada oportunidad.",
                     link: "→ Chat IA + Calificador"
                 },
                 {
                     title: "SISTEMAS DE IA",
-                    desc: "Desde el primer contacto hasta la cita agendada — automatizado. Sin seguimientos manuales, sin leads perdidos.",
+                    desc: "Conecto formularios, mensajes, follow-ups y agenda para reducir trabajo manual desde el primer contacto hasta la cita.",
                     link: "→ Sistema de agentes IA"
                 },
                 {
                     title: "PRESENCIA EN REDES",
-                    desc: "Saber qué funciona en redes — y qué publicar después — no debería tomar horas. Construimos el sistema que te dice ambas cosas.",
+                    desc: "Creo sistemas para analizar contenido, convertir ideas en posts y mantener tu presencia activa sin improvisar todos los días.",
                     link: "→ Social Manager"
                 },
                 {
                     title: "CRECIMIENTO CONTINUO",
-                    desc: "El trabajo no termina en el lanzamiento. Optimización mensual, ajuste de IA y revisiones de rendimiento para seguir mejorando.",
+                    desc: "Después del lanzamiento puedo medir, mejorar, ajustar la IA y evolucionar el sistema según lo que el negocio necesite.",
                     link: "→ Retainer mensual"
                 },
                 {
                     title: "DASHBOARDS DE NEGOCIO",
-                    desc: "Un centro de comando para tu operación completa. CRM, pipeline de leads, calendario, portal de clientes y reportes — todo en un solo lugar.",
+                    desc: "Diseño un centro de mando para tu operación: CRM, pipeline, calendario, portal de clientes y reportes en un solo lugar.",
                     link: "→ Dashboard personalizado"
                 }
             ],
             how_it_works: {
                 label: "El Proceso",
-                title: "Cómo funciona.",
+                title: "Cómo trabajo contigo.",
                 steps: [
-                    { title: "DIAGNÓSTICO", desc: "Auditamos tu situación actual — sitio, proceso de leads y cuellos de botella." },
-                    { title: "DISEÑO", desc: "Mapeamos la solución ideal y te la presentamos antes de construir nada." },
-                    { title: "CONSTRUCCIÓN", desc: "Construimos con revisiones incluidas. Apruebas antes de que salga en vivo." },
-                    { title: "OPTIMIZACIÓN", desc: "Después del lanzamiento medimos, mejoramos e iteramos cada mes." }
+                    { title: "DIAGNÓSTICO", desc: "Audito tu situación actual — sitio, proceso de leads y cuellos de botella." },
+                    { title: "MAPA", desc: "Mapeo la solución ideal y te presento qué construiría primero, por qué y cómo se conecta." },
+                    { title: "CONSTRUCCIÓN", desc: "Construyo el sistema custom con revisiones incluidas. Apruebas antes de salir en vivo." },
+                    { title: "OPTIMIZACIÓN", desc: "Después del lanzamiento mido, ajusto y mejoro contigo según datos y feedback real." }
                 ]
             },
             industries: {
-                tag: "INDUSTRIAS QUE SERVIMOS",
+                tag: "INDUSTRIAS QUE PUEDO AYUDAR",
                 names: [
                     "Restaurantes",
                     "Clínicas médicas",
@@ -176,7 +241,7 @@ export const translations = {
             bottom_cta: {
                 title: "¿LISTO PARA CRECER?",
                 subtext: "Hablemos 30 minutos. Sin presión. Solo una conversación honesta.",
-                btn: "Comenzar Proyecto"
+                btn: "Agenda diagnóstico"
             }
         },
         about_page: {
@@ -208,8 +273,8 @@ export const translations = {
             }
         },
         booking: {
-            title: "Agenda una llamada.",
-            subtext: "Si te urge dialogarlo, separa un espacio de 30 minutos sin compromiso."
+            title: "Agenda una llamada de diagnóstico.",
+            subtext: "Esta llamada es para entender tu negocio, no para venderte una plantilla. Hablas directamente conmigo para identificar qué sistema web + IA tendría más impacto."
         },
         footer: {
             brand: "MC Designs",
@@ -270,19 +335,41 @@ export const translations = {
             about: "About",
             contact: "Contact",
             hub: "Resources",
-            cta: "Start a Project"
+            cta: "Book Diagnosis"
         },
         hero: {
             tag: "✦ WEB DESIGN + AI IN PR",
             tagline: "Web Design + AI · Puerto Rico",
             headline: "GROWTH STARTS HERE.",
-            subtext: "Your partner for growth through web + AI in Puerto Rico. Everything custom. Always 1:1. No templates, no agencies.",
-            cta1: "Start a Project",
+            subtext: "Your partner for growth through web + AI in Puerto Rico. Websites, stores, and systems designed around your business. Always 1:1. No templates, no agencies.",
+            cta1: "Book a Diagnostic Call",
             cta2: "View Portfolio",
         },
         mission: {
             label: "The starting point",
-            text: "Your business needs two things to grow today: a website people can find, and AI systems that free up your time. <span class=\"text-primary\">That's exactly what we build</span> — nothing more, nothing less."
+            text: "Your business does not need another pretty template. It needs a digital system built around how you sell, serve, and operate. <span class=\"text-primary\">That is what I build with you: web + AI tailored to you, your business, and what you need to grow.</span>"
+        },
+        custom_build: {
+            label: "How I work",
+            title: "Everything is built around your business.",
+            cards: [
+                {
+                    title: "No templates",
+                    desc: "Every design, workflow, and system is created from scratch around your brand, offer, and goals."
+                },
+                {
+                    title: "I understand your operation first",
+                    desc: "Before designing, I look at how customers come in, where time is lost, and which processes can improve."
+                },
+                {
+                    title: "Web + AI working together",
+                    desc: "This is not just about looking good. I build a digital presence that attracts, responds, organizes, and converts."
+                },
+                {
+                    title: "Scalable from day one",
+                    desc: "Your system is ready to grow with you: new pages, automations, products, forms, or dashboards."
+                }
+            ]
         },
         services: {
             label: "Services",
@@ -300,25 +387,68 @@ export const translations = {
                 },
                 {
                     title: "AI Integration",
-                    desc: "Automate the mundane. We build custom AI workflows to reclaim your time and scale your operations.",
+                    desc: "Automate the mundane. I build custom AI workflows to reclaim your time and scale your operations.",
                     items: ["Custom LLM Workflows", "Task Automation", "AI Agent Systems"]
+                }
+            ]
+        },
+        audience: {
+            label: "Who it is for",
+            title: "This is for businesses ready to look and operate better.",
+            cards: [
+                {
+                    title: "You depend too much on Instagram",
+                    desc: "Your business looks active on social, but you do not have a clear website that turns visitors into leads."
+                },
+                {
+                    title: "You spend time answering the same things",
+                    desc: "Messages, questions, follow-ups, and repetitive tasks eat hours every week."
+                },
+                {
+                    title: "You have a good offer, but it feels unclear",
+                    desc: "People need to understand quickly what you sell, why they should trust you, and the next step."
+                },
+                {
+                    title: "You want to grow without overhiring",
+                    desc: "I automate parts of the process so you can handle more opportunities with less friction."
+                }
+            ]
+        },
+        proof: {
+            label: "Real proof",
+            title: "Systems built around real businesses.",
+            cards: [
+                {
+                    tag: "Web + admin panel",
+                    desc: "Sports website + admin panel to keep fights, fighters, and livestreams updated without slow processes.",
+                    cta: "View case"
+                },
+                {
+                    tag: "Shopify + e-commerce",
+                    desc: "Shopify store for products, bundles, and promotions, designed to make mobile purchasing easier.",
+                    cta: "View case"
+                },
+                {
+                    tag: "Custom from scratch",
+                    desc: "Diagnosis, design, development, and AI under one process. No templates; everything built around your operation.",
+                    cta: "Book diagnosis"
                 }
             ]
         },
         stack: {
             label: "The Stack",
-            title: "Tools We Master"
+            title: "Tools I Use"
         },
         pricing: {
             label: "Investment",
             title: "Custom Pricing for Every Project",
-            subtext: "Every project is different. Reach out and we'll put together a package built around your goals.",
-            cta: "Start a Project"
+            subtext: "Every project is different. Reach out and I will put together a package built around your goals.",
+            cta: "Book a Diagnostic Call"
         },
         cta_section: {
             title: "Ready to <span class=\"text-primary-fixed\">Grow</span>?",
-            subtext: "We build your web + AI custom — so your business grows without depending on more people.",
-            cta: "Start a Project"
+            subtext: "I build your web + AI custom — so your business grows without depending on more people.",
+            cta: "Book a Diagnostic Call"
         },
         portfolio_page: {
             label: "MC Designs — Portfolio",
@@ -327,13 +457,13 @@ export const translations = {
             case_label: "Case Study",
             placeholder: {
                 label: "Your Project Here",
-                title: "We're building. Got a project in mind? Let's talk.",
-                cta: "Start a Project"
+                title: "I am building. Got a project in mind? Let's talk.",
+                cta: "Book diagnosis"
             },
             closing_cta: {
                 headline: "Ready to be next?",
-                subtext: "Tell us about your project and we'll build something that works.",
-                cta: "Start a Project"
+                subtext: "Tell me about your project and I will build something that works.",
+                cta: "Book diagnosis"
             },
             mcp: {
                 tag1: "Web Design",
@@ -342,7 +472,7 @@ export const translations = {
                 card_cta: "View Project",
                 challenge_title: "The Challenge",
                 challenge: "Puerto Rico's #1 boxing promotional company had an outdated website that didn't match the caliber of their events or talent. They needed a complete redesign — modern, fast, and built for a live sports audience.",
-                built_title: "What We Built",
+                built_title: "What I Built",
                 built: "A fully custom website with a built-in admin dashboard that gives the MCP team full control — add news posts, publish events, update fighter rosters, and manage site content without touching code. Designed in Google Stitch, produced in Antigravity, deployed on Vercel.",
                 result_title: "The Result",
                 result: "A dark-mode sports platform that moves as fast as the sport itself. The admin dashboard is the real win — one interface that keeps the entire site alive and current, fight after fight.",
@@ -355,7 +485,7 @@ export const translations = {
                 card_cta: "View Project",
                 challenge_title: "The Challenge",
                 challenge: "Sandra and Melissa, wellness coaches under the Hibody brand, were selling products without a dedicated online storefront. They needed a clean store that made buying easy and showcased their bundles and promotions clearly.",
-                built_title: "What We Built",
+                built_title: "What I Built",
                 built: "A full Shopify e-commerce store built from scratch — product catalog, bundle deals, sale pricing, bilingual copy, and a checkout flow optimized for their audience. Nothing unnecessary, everything they needed.",
                 result_title: "The Result",
                 result: "A clean, minimal, direct storefront where every product is visible and every page drives toward a sale. 'Tu bienestar es nuestra prioridad' — the site feels like that.",
@@ -369,62 +499,62 @@ export const translations = {
                 line2: "PERFORMANCE.",
                 line3: "GROWTH.",
                 subtext: "Everything your business needs, in one studio.",
-                cta1: "Start a Project",
+                cta1: "Book diagnosis",
                 cta2: "Book a call"
             },
             intro: {
-                title: "From invisible to unstoppable.",
-                subtext: "Seven services. One direction: grow your business."
+                title: "I do not start with tools. I start with your operation.",
+                subtext: "Every service is shaped around your business: how you sell, how you serve, where time is lost, and what you need to grow. No templates. Nothing generic."
             },
             cards: [
                 {
                     title: "WEB PRESENCE",
-                    desc: "Your business exists online with credibility. Clean, fast, mobile-first — built to be found.",
+                    desc: "I build a clear, fast, mobile-first presence so your business looks trustworthy and is easy to find.",
                     link: "→ Presence website"
                 },
                 {
                     title: "CONVERSION",
-                    desc: "A site that doesn't convert is a billboard no one reads. We build pages that turn visitors into calls and messages.",
+                    desc: "I design pages focused on turning visitors into calls, messages, bookings, or purchases with a clearer offer.",
                     link: "→ Performance website"
                 },
                 {
                     title: "AI INTEGRATION",
-                    desc: "Your site works while you sleep. AI chat, lead qualification, and smart intake built directly into the experience.",
+                    desc: "I integrate AI chat, lead qualification, and smart intakes so your site responds and organizes every opportunity better.",
                     link: "→ AI Chat + Qualifier"
                 },
                 {
                     title: "AI SYSTEMS",
-                    desc: "From first contact to booked appointment — automated. No manual follow-ups, no leads falling through.",
+                    desc: "I connect forms, messages, follow-ups, and booking to reduce manual work from first contact to appointment.",
                     link: "→ AI agent system"
                 },
                 {
                     title: "SOCIAL PRESENCE",
-                    desc: "Knowing what works on social — and what to post next — shouldn't take hours. We build the system that tells you both.",
+                    desc: "I create systems to analyze content, turn ideas into posts, and keep your presence active without daily improvising.",
                     link: "→ Social Manager"
                 },
                 {
                     title: "ONGOING GROWTH",
-                    desc: "The work doesn't stop at launch. Monthly optimization, AI tuning, and performance reviews to keep improving.",
+                    desc: "After launch, I can measure, improve, tune the AI, and evolve the system around what the business needs.",
                     link: "→ Monthly retainer"
                 },
                 {
                     title: "BUSINESS DASHBOARDS",
-                    desc: "A command center for your entire operation. CRM, lead pipeline, booking calendar, client portal, and reports — all in one place.",
+                    desc: "I design a command center for your operation: CRM, lead pipeline, booking calendar, client portal, and reports in one place.",
                     link: "→ Custom dashboard"
                 }
             ],
             how_it_works: {
                 label: "The Process",
-                title: "How it works.",
+                title: "How I work with you.",
                 steps: [
-                    { title: "Diagnose", desc: "We audit your current situation — site, lead process, and bottlenecks." },
-                    { title: "Design", desc: "We map the ideal solution and present it before building anything." },
-                    { title: "Build", desc: "We build with revisions included. You approve before it goes live." },
-                    { title: "Optimize", desc: "After launch we measure, improve, and iterate every month to maximize ROI." }
+                    { title: "Diagnose", desc: "I audit your current situation — site, lead process, and bottlenecks." },
+                    { title: "Map", desc: "I map the ideal solution and show what I would build first, why, and how it connects." },
+                    { title: "Build", desc: "I build the custom system with revisions included. You approve before launch." },
+                    { title: "Optimize", desc: "After launch, I measure, adjust, and improve with you using real data and feedback." }
                 ]
             },
             industries: {
-                tag: "INDUSTRIES WE SERVE",
+                tag: "INDUSTRIES I CAN HELP",
                 names: [
                     "Restaurants",
                     "Medical & Dental",
@@ -437,7 +567,7 @@ export const translations = {
             bottom_cta: {
                 title: "READY TO GROW?",
                 subtext: "30 minutes. No pressure. Just an honest conversation.",
-                btn: "Start a Project"
+                btn: "Book diagnosis"
             }
         },
         about_page: {
@@ -465,12 +595,12 @@ export const translations = {
             },
             cta: {
                 title: "Ready to build your presence online?",
-                btn: "Contact Us"
+                btn: "Contact Miguel"
             }
         },
         booking: {
-            title: "Book a call.",
-            subtext: "If you want to discuss it, grab a 30-minute slot without commitment."
+            title: "Book a diagnostic call.",
+            subtext: "This call is meant to understand your business, not sell you a template. You speak directly with me to identify which web + AI system would have the most impact."
         },
         footer: {
             brand: "MC Designs",
@@ -497,7 +627,7 @@ export const translations = {
             },
             gate: {
                 title: "Unlock the Resources",
-                subtitle: "No spam. Just high-value guides and our tool stack.",
+                subtitle: "No spam. Just high-value guides and the tool stack I use.",
                 input: "your@email.com",
                 btn: "Unlock Access",
                 disclaimer: "By continuing, you agree to receive emails from MC Designs."
@@ -514,8 +644,8 @@ export const translations = {
                 },
                 tools: {
                     filter_all: "All",
-                    suggest_title: "Missing something in our stack?",
-                    suggest_sub: "Suggest a tool and we'll evaluate it.",
+                    suggest_title: "Missing something in the stack?",
+                    suggest_sub: "Suggest a tool and I will evaluate it.",
                     suggest_btn: "Suggest Tool"
                 }
             }
