@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { createClient } from '@supabase/supabase-js';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { CASES, findCases } from './lib/cases.js';
 
 const RATE_LIMIT_HOUR = 30;   // messages per IP per hour
@@ -262,15 +262,36 @@ async function executeTool(name, input, sessionId) {
     return { error: `unknown tool ${name}` };
   }
 
-  // ai_leads has NOT NULL on dolor and meta — always coerce to string.
+  // Split contacto into email vs phone (existing schema uses two columns).
+  const contacto = String(input.contacto || '').trim();
+  const isEmail = contacto.includes('@');
+  const email = isEmail ? contacto : '';
+  const telefono = isEmail ? '' : contacto;
+
+  // Map score (1-10) to existing priority enum.
+  const score = typeof input.score === 'number' ? input.score : null;
+  const priority = score === null ? 'warm' : score >= 8 ? 'hot' : score >= 5 ? 'warm' : 'cold';
+
   const row = {
+    id: randomUUID(),
     nombre: input.nombre,
     negocio: input.negocio,
-    contacto: input.contacto,
+    email,
+    telefono,
     dolor: input.dolor || '',
     meta: input.meta || '',
+    solucion: '',
+    estimated_value: 0,
+    priority,
+    fuente: 'inbound',                  // existing taxonomy
+    stage: 'prospect',
+    next_follow_up: null,
+    siguiente_paso: '',
+    notes: `Capturado por chatbot del sitio (sesión ${sessionId})`,
+    contactado: false,
+    // Chatbot-specific extensions (added by migration 001).
     chat_session_id: sessionId,
-    qualification_score: input.score ?? null,
+    qualification_score: score,
     recommended_tier: input.tier_sugerido ?? null,
     urgency: input.urgencia ?? null,
     source: 'site_chat',
