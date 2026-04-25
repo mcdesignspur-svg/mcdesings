@@ -242,13 +242,15 @@ async function executeTool(name, input, sessionId) {
     const leadId = input.lead_id;
     if (!leadId) return { error: 'lead_id_required' };
     const bookingUrl = process.env.BOOKING_URL || 'https://cal.com/mcdesignspr/30min';
+    // Try to flag the lead, but don't fail the tool if the column doesn't
+    // exist yet (migration 002 may not be applied). Notification + booking
+    // link still go through.
     const { error } = await db
       .from('ai_leads')
       .update({ discovery_call_requested: true })
       .eq('id', leadId);
     if (error) {
-      console.error('[schedule_discovery_call] update error:', error.message);
-      return { error: error.message };
+      console.error('[schedule_discovery_call] update warn:', error.message);
     }
     notifyMiguelDiscoveryCall(leadId, sessionId);
     return {
@@ -481,7 +483,10 @@ export default async function handler(req, res) {
     res.end();
   } catch (err) {
     console.error('[site-chat] error:', err?.message, err?.stack);
-    sseWrite(res, 'error', { message: 'Tuve un problema. Intenta otra vez en un segundo.' });
+    sseWrite(res, 'error', {
+      message: 'Tuve un problema. Intenta otra vez en un segundo.',
+      detail: err?.message || String(err),
+    });
     res.end();
   }
 }

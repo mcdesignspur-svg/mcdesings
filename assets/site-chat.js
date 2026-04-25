@@ -386,7 +386,8 @@
             }
           } else if (event === 'error') {
             typingEl.remove();
-            renderMessage('assistant', payload.message || 'Hubo un error. Intenta otra vez.');
+            const msg = payload.message || 'Hubo un error. Intenta otra vez.';
+            renderMessage('assistant', payload.detail ? `${msg}\n\n[debug: ${payload.detail}]` : msg);
           } else if (event === 'done') {
             if (!assistantEl) typingEl.remove();
           }
