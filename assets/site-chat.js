@@ -64,11 +64,13 @@
     .mc-chat-subtitle::before {
       content: ''; width: 6px; height: 6px; background: #10b981; border-radius: 50%;
     }
-    .mc-chat-close {
-      margin-left: auto; background: transparent; border: none; color: #8a94a6;
+    .mc-chat-reset, .mc-chat-close {
+      background: transparent; border: none; color: #8a94a6;
       cursor: pointer; padding: 6px; border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
     }
-    .mc-chat-close:hover { background: rgba(255,255,255,0.06); color: #F3F4F6; }
+    .mc-chat-reset { margin-left: auto; }
+    .mc-chat-reset:hover, .mc-chat-close:hover { background: rgba(255,255,255,0.06); color: #F3F4F6; }
 
     .mc-chat-messages {
       flex: 1; overflow-y: auto; padding: 16px;
@@ -175,6 +177,9 @@
         <div class="mc-chat-title">Miguel · MC Designs</div>
         <div class="mc-chat-subtitle">Usualmente responde rápido</div>
       </div>
+      <button class="mc-chat-reset" aria-label="Nueva conversación" title="Empezar conversación nueva">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+      </button>
       <button class="mc-chat-close" aria-label="Cerrar">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
@@ -196,6 +201,7 @@
   const inputEl = panel.querySelector('#mc-chat-input');
   const sendEl = panel.querySelector('#mc-chat-send');
   const closeEl = panel.querySelector('.mc-chat-close');
+  const resetEl = panel.querySelector('.mc-chat-reset');
 
   let history = [];
   let sessionId = null;
@@ -278,8 +284,22 @@
     bubble.style.display = 'flex';
   }
 
+  function resetConversation() {
+    if (streaming) return;
+    if (history.length > 0 && !confirm('¿Empezar una conversación nueva? Se borra el historial actual.')) return;
+    history = [];
+    sessionId = null;
+    try {
+      localStorage.removeItem(STORAGE_HISTORY);
+      localStorage.removeItem(STORAGE_SESSION);
+    } catch {}
+    hydrate();
+    inputEl.focus();
+  }
+
   bubble.addEventListener('click', openPanel);
   closeEl.addEventListener('click', closePanel);
+  resetEl.addEventListener('click', resetConversation);
 
   inputEl.addEventListener('input', () => {
     inputEl.style.height = 'auto';
