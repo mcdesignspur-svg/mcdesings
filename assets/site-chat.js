@@ -376,7 +376,9 @@
             else if (payload.tool === 'schedule_discovery_call') renderTool('Agendando discovery call...');
           } else if (event === 'tool_result') {
             if (payload.tool === 'save_lead' && payload.result?.ok) {
-              renderTool('✓ Miguel recibió tu info');
+              if (!payload.result.already_saved) {
+                renderTool('✓ Miguel recibió tu info');
+              }
             } else if (payload.tool === 'schedule_discovery_call' && payload.result?.ok) {
               if (payload.result.booking_url) {
                 renderCTA('Reservar slot ahora', payload.result.booking_url);

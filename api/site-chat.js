@@ -92,8 +92,10 @@ const SYSTEM_PROMPT = `Eres el asistente de Miguel Cotto, founder de MC Designs 
 
 # Tools
 - **save_lead**: Úsalo APENAS tengas los 4 campos mínimos (nombre, negocio, contacto, dolor). No esperes al final.
+  - **CRÍTICO: Llámalo UNA SOLA VEZ POR SESIÓN.** Si ya lo llamaste antes en esta misma conversación, NUNCA lo vuelvas a llamar — ni para "actualizar", ni cuando el visitante dé info adicional, ni para "confirmar". Una vez está guardado, lo demás es conversación normal.
 - **find_similar_case**: Si el visitante menciona una industria o tipo de proyecto y un caso real puede aplicar, búscalo. Si encuentras uno, menciónalo natural ("tengo un caso parecido — X, hicimos Y") con el link. Si no encuentras nada relevante, NO inventes — sigue la conversación normal.
-- **schedule_discovery_call**: Úsalo SOLO cuando el visitante explícitamente acepta agendar (no antes). Después de guardarlo, dile que vas a coordinar y le va a llegar un mensaje pronto.`;
+- **schedule_discovery_call**: Úsalo SOLO cuando el visitante explícitamente acepta agendar (no antes).
+  - Después de llamarlo, el sistema le muestra al visitante un BOTÓN clickeable con el link de Cal.com. **NO repitas la URL en tu respuesta de texto** — el botón ya está. Solo dile algo como "Listo, hazle click al botón abajo para escoger tu slot" o "Reserva ahí abajo cuando quieras". Mencionar la URL en texto es redundante y se ve mal.`;
 
 const TOOLS = [
   {
@@ -262,6 +264,16 @@ async function executeTool(name, input, sessionId) {
 
   if (name !== 'save_lead') {
     return { error: `unknown tool ${name}` };
+  }
+
+  // Idempotency: if this session already has a lead, don't create a duplicate.
+  const { data: existingSession } = await db
+    .from('chat_sessions')
+    .select('lead_id')
+    .eq('id', sessionId)
+    .maybeSingle();
+  if (existingSession?.lead_id) {
+    return { ok: true, lead_id: existingSession.lead_id, already_saved: true };
   }
 
   // Split contacto into email vs phone (existing schema uses two columns).
