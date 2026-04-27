@@ -11,6 +11,7 @@ export default defineConfig({
                 portfolio: resolve(__dirname, 'portfolio.html'),
                 about: resolve(__dirname, 'about.html'),
                 recursos: resolve(__dirname, 'recursos.html'),
+                links: resolve(__dirname, 'links.html'),
                 automation: resolve(__dirname, 'automation-content-generator.html'),
                 guiaProspecting: resolve(__dirname, 'guia-prospecting-ai.html'),
                 guiaConfiguracion: resolve(__dirname, 'guia-configuracion-claude-code.html'),

@@ -16,6 +16,7 @@
     { "source": "/nosotros", "destination": "/about.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/recursos", "destination": "/recursos.html" },
+    { "source": "/links", "destination": "/links.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/diseno-web-puerto-rico", "destination": "/diseno-web-puerto-rico.html" },
