@@ -212,28 +212,48 @@
 
 <section class="min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center relative z-10 px-8 pb-8 md:pb-16 pt-32 md:pt-24">
     <div class="max-w-4xl w-full mx-auto text-center space-y-8">
-        <div class="space-y-4">
-            <span class="reveal inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full" data-i18n="hero.tagline">Diseño Web + IA · Puerto Rico</span>
-            <h1 class="reveal text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-on-surface" style="--delay: 90ms" data-i18n="hero.headline">
-                EL CRECIMIENTO EMPIEZA AQUÍ.
+        <div class="space-y-5">
+            <span class="reveal inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full" data-i18n="hero.tagline">Diagnóstico gratis · 60 segundos</span>
+            <h1 class="reveal text-4xl md:text-7xl font-black tracking-tighter leading-[0.95] text-on-surface" style="--delay: 90ms" data-i18n="hero.headline">
+                DIME QUÉ HACES.<br/>TE DIGO QUÉ AI DEBERÍA HACER POR TI.
             </h1>
         </div>
-        <p class="reveal text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed" style="--delay: 180ms" data-i18n="hero.subtext">
-            Tu socio para crecer con web + IA en Puerto Rico. Webs, tiendas y sistemas diseñados alrededor de tu negocio. Siempre 1:1. Sin templates, sin agencias.
+        <p class="reveal text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed" style="--delay: 180ms" data-i18n="hero.subtext">
+            En 60 segundos te muestro los 3 procesos que más tiempo te están comiendo y cómo los automatizo. Sin pitch.
         </p>
-        <div class="reveal flex items-center justify-center gap-6 pt-4 flex-wrap" style="--delay: 270ms">
-            <a class="inline-block hero-gradient text-on-primary px-10 py-5 rounded-xl font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all" href="/contacto" data-i18n="hero.cta1">
-                Agenda una llamada de diagnóstico
-            </a>
-            <a class="inline-block text-on-surface font-label text-sm uppercase tracking-widest font-bold group" href="/portfolio" data-i18n="hero.cta2">
-                Ver Portafolio
-                <span class="block h-0.5 w-full bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
+
+        <!-- Hero diagnostic input -->
+        <div class="reveal max-w-2xl mx-auto pt-2" style="--delay: 270ms">
+            <form onsubmit="event.preventDefault(); heroSubmit();" class="relative">
+                <input id="hero-input" type="text" autocomplete="off"
+                    placeholder="Ej: Tienda de ropa en Caguas con Shopify y manejo IG manual..."
+                    data-i18n="hero.input_placeholder"
+                    class="w-full pl-5 pr-16 py-4 rounded-xl border border-outline-variant bg-white text-base text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all text-left" />
+                <button type="submit" aria-label="Mostrar diagnóstico"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 hero-gradient text-on-primary rounded-lg flex items-center justify-center shadow-md shadow-primary/30 active:scale-95 hover:shadow-lg hover:shadow-primary/40 transition-all">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </button>
+            </form>
+            <!-- Industry chips -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mr-1" data-i18n="hero.chips_label">O empieza con</span>
+                <button type="button" onclick="heroChip('Tienda de ropa con Shopify, manejo IG y respondo DMs manualmente')" class="hero-chip">Tienda de ropa</button>
+                <button type="button" onclick="heroChip('Gimnasio con membresías recurrentes, manejo prospectos por WhatsApp')" class="hero-chip">Gimnasio</button>
+                <button type="button" onclick="heroChip('Restaurante familiar con take-out, recibo pedidos por teléfono y WhatsApp')" class="hero-chip">Restaurante</button>
+                <button type="button" onclick="heroChip('Servicios profesionales, agendo citas por DM y email')" class="hero-chip">Servicios profesionales</button>
+                <button type="button" onclick="heroChip('E-commerce con Shopify, manejo customer service y descripciones de productos')" class="hero-chip">E-commerce</button>
+            </div>
+            <p class="text-xs text-on-surface-variant/50 mt-4">
+                <a href="/portfolio" class="underline underline-offset-2 hover:text-on-surface-variant transition-colors" data-i18n="hero.see_portfolio">Ver portafolio →</a>
+            </p>
         </div>
 
         <!-- Stack Bar -->
-        <div class="reveal pt-12 mt-4 border-t border-outline-variant/30" style="--delay: 360ms">
-            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/50 mb-5">Trabajamos con</p>
+        <div class="reveal pt-10 mt-2 border-t border-outline-variant/30" style="--delay: 360ms">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/50 mb-5" data-i18n="hero.stack_label">Trabajamos con</p>
             <div class="flex items-center justify-center gap-6 md:gap-10 flex-wrap">
                 <span class="text-sm font-bold tracking-tight text-on-surface-variant/40 hover:text-on-surface-variant/70 transition-colors">Claude AI</span>
                 <span class="text-outline-variant/40">·</span>
@@ -248,6 +268,28 @@
         </div>
     </div>
 </section>
+<style>
+    .hero-chip {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #c2c6d8;
+        font-size: 12px;
+        font-weight: 600;
+        color: #424655;
+        transition: all 150ms ease;
+        cursor: pointer;
+    }
+    .hero-chip:hover {
+        border-color: #0056c6;
+        color: #0056c6;
+        background: #d9e2ff;
+    }
+    .hero-chip:active {
+        transform: scale(0.96);
+    }
+</style>
 
 <!-- Mission Section -->
 <section class="bg-surface-container-low py-32 relative z-10">
@@ -261,16 +303,19 @@
     </div>
 </section>
 
-<!-- AI Lead Quiz Section -->
-<section class="py-24 bg-surface-container-low relative z-10" id="ai-quiz">
-    <div class="max-w-2xl mx-auto px-8">
-        <div class="text-center mb-10">
-            <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-4" data-i18n="ai_quiz.badge">Diagnóstico gratis · 3 preguntas · 30 segundos</span>
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface leading-tight mb-3" data-i18n="ai_quiz.title">¿Dónde puede la IA<br/>ahorrarte más tiempo?</h2>
-            <p class="text-on-surface-variant leading-relaxed" data-i18n="ai_quiz.subtext">Responde 3 preguntas y te muestro qué sistema custom tendría más impacto en tu operación.</p>
-        </div>
-
-        <div class="reveal bg-white rounded-2xl border border-outline-variant shadow-sm p-8">
+<!-- AI Diagnostic Modal -->
+<div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-on-surface/50" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
+    <div class="min-h-full flex items-start md:items-center justify-center p-4 md:p-8">
+        <div class="relative w-full max-w-2xl my-4">
+            <button onclick="closeDiagnostic()" aria-label="Cerrar"
+                class="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-10 h-10 rounded-full bg-white border border-outline-variant shadow-md text-on-surface-variant hover:text-on-surface hover:scale-105 active:scale-95 transition-all flex items-center justify-center z-10">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="mb-5 px-2">
+                <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full" data-i18n="ai_quiz.badge">Diagnóstico · 60 segundos</span>
+                <p class="text-sm text-white/80 mt-3" data-i18n="ai_quiz.modal_intro">Dos preguntas más y te muestro tu plan AI.</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-outline-variant shadow-2xl p-8">
 
             <!-- Progress -->
             <div class="flex items-center gap-2 mb-8" id="lead-progress">
@@ -405,9 +450,10 @@
                 </div>
             </div>
 
+            </div>
         </div>
     </div>
-</section>
+</div>
 <style>@keyframes pulse-lead { 0%,100%{opacity:1} 50%{opacity:0.3} }</style>
 <script>
 (function(){
@@ -442,6 +488,64 @@
             ls(2);
         }
     };
+
+    function resetDiagnosticUI() {
+        document.getElementById('lead-progress').classList.remove('hidden');
+        document.getElementById('lead-generating').classList.add('hidden');
+        document.getElementById('lead-basic').classList.add('hidden');
+        document.getElementById('lead-email-gate').classList.remove('hidden');
+        document.getElementById('lead-full-results').classList.add('hidden');
+        const errEl = document.getElementById('lead-gate-error');
+        if (errEl) errEl.classList.add('hidden');
+        // clear option highlights
+        document.querySelectorAll('.lead-opt').forEach(x => {
+            x.classList.remove('border-primary', 'bg-blue-50');
+            x.classList.add('border-outline-variant');
+        });
+        // clear contact fields
+        ['lead-nombre','lead-email','lead-telefono'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+    }
+
+    window.heroChip = function(text) {
+        const input = document.getElementById('hero-input');
+        if (!input) return;
+        input.value = text;
+        input.focus();
+    };
+
+    window.heroSubmit = function() {
+        const input = document.getElementById('hero-input');
+        const v = input ? input.value.trim() : '';
+        if (!v) { if (input) input.focus(); return; }
+        window.openDiagnostic(v);
+    };
+
+    window.openDiagnostic = function(negocio) {
+        a.negocio = negocio;
+        a.dolor = '';
+        a.meta = '';
+        r = null;
+        resetDiagnosticUI();
+        ls(2);
+        const modal = document.getElementById('diagnostic-modal');
+        if (modal) modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeDiagnostic = function() {
+        const modal = document.getElementById('diagnostic-modal');
+        if (modal) modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        const modal = document.getElementById('diagnostic-modal');
+        if (modal && !modal.classList.contains('hidden')) window.closeDiagnostic();
+    });
 
     function ls(s) {
         [1,2,3].forEach(i => {

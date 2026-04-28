@@ -12,12 +12,14 @@ export const translations = {
             cta: "Agenda diagnóstico"
         },
         hero: {
-            tag: "✦ DISEÑO WEB + IA EN PR",
-            tagline: "Diseño Web + IA · Puerto Rico",
-            headline: "EL CRECIMIENTO EMPIEZA AQUÍ.",
-            subtext: "Tu socio para crecer con web + IA en Puerto Rico. Webs, tiendas y sistemas diseñados alrededor de tu negocio. Siempre 1:1. Sin templates, sin agencias.",
-            cta1: "Agenda una llamada de diagnóstico",
-            cta2: "Ver Portafolio",
+            tagline: "Diagnóstico gratis · 60 segundos",
+            headline: "DIME QUÉ HACES.<br/>TE DIGO QUÉ AI DEBERÍA HACER POR TI.",
+            subtext: "En 60 segundos te muestro los 3 procesos que más tiempo te están comiendo y cómo los automatizo. Sin pitch.",
+            input_placeholder: "Ej: Tienda de ropa en Caguas con Shopify y manejo IG manual...",
+            submit: "Mostrar diagnóstico →",
+            chips_label: "O empieza con",
+            see_portfolio: "Ver portafolio →",
+            stack_label: "Trabajamos con",
         },
         mission: {
             label: "El punto de partida",
@@ -478,7 +480,8 @@ export const translations = {
             }
         },
         ai_quiz: {
-            badge: "Diagnóstico gratis · 3 preguntas · 30 segundos",
+            badge: "Diagnóstico · 60 segundos",
+            modal_intro: "Dos preguntas más y te muestro tu plan AI.",
             title: "¿Dónde puede la IA<br/>ahorrarte más tiempo?",
             subtext: "Responde 3 preguntas y te muestro qué sistema custom tendría más impacto en tu operación.",
             step1_title: "¿Qué tipo de negocio tienes?",
@@ -588,12 +591,14 @@ export const translations = {
             cta: "Book Diagnosis"
         },
         hero: {
-            tag: "✦ WEB DESIGN + AI IN PR",
-            tagline: "Web Design + AI · Puerto Rico",
-            headline: "GROWTH STARTS HERE.",
-            subtext: "Your partner for growth through web + AI in Puerto Rico. Websites, stores, and systems designed around your business. Always 1:1. No templates, no agencies.",
-            cta1: "Book a Diagnostic Call",
-            cta2: "View Portfolio",
+            tagline: "Free diagnosis · 60 seconds",
+            headline: "TELL ME WHAT YOU DO.<br/>I'LL TELL YOU WHAT AI SHOULD DO FOR YOU.",
+            subtext: "In 60 seconds I'll show you the 3 processes eating up most of your time and how I'd automate them. No pitch.",
+            input_placeholder: "Ex: Apparel store in Caguas with Shopify, handling IG manually...",
+            submit: "Show diagnosis →",
+            chips_label: "Or start with",
+            see_portfolio: "View portfolio →",
+            stack_label: "I work with",
         },
         mission: {
             label: "The starting point",
@@ -1054,7 +1059,8 @@ export const translations = {
             }
         },
         ai_quiz: {
-            badge: "Free diagnosis · 3 questions · 30 seconds",
+            badge: "Diagnosis · 60 seconds",
+            modal_intro: "Two more questions and I'll show you your AI plan.",
             title: "Where could AI<br/>save you the most time?",
             subtext: "Answer 3 questions and I will show you which custom system would have the biggest impact on your operation.",
             step1_title: "What type of business do you run?",
