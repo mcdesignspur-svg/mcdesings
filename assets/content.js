@@ -19,18 +19,18 @@ export const translations = {
             submit: "Mostrar diagnóstico →",
             chips_label: "O empieza con",
             see_portfolio: "Ver portafolio →",
-            stack_label: "Trabajamos con",
+            stack_label: "Trabajo con",
         },
         mission: {
             label: "El punto de partida",
             text: "Tu negocio no necesita otra plantilla bonita. Necesita un sistema digital construido alrededor de cómo vendes, atiendes y operas. <span class=\"text-primary\">Eso es lo que construyo contigo: web + IA ajustada a ti, a tu negocio y a lo que necesitas para crecer.</span>"
         },
         custom_build: {
-            label: "Cómo trabajamos",
+            label: "Cómo trabajo",
             title: "Todo se construye alrededor de tu negocio.",
             cards: [
                 {
-                    title: "No usamos templates",
+                    title: "No uso templates",
                     desc: "Cada diseño, flujo y sistema se crea desde cero según tu marca, tu oferta y tus metas."
                 },
                 {
@@ -113,7 +113,7 @@ export const translations = {
         },
         stack: {
             label: "El Stack",
-            title: "Herramientas que dominamos"
+            title: "Herramientas que domino"
         },
         pricing: {
             label: "Inversión",
@@ -224,7 +224,7 @@ export const translations = {
                     },
                     {
                         title: "Trabajo directo conmigo",
-                        desc: "La experiencia es 1:1. Hablamos claro, tomamos decisiones rápido y construyo con contexto real de tu negocio."
+                        desc: "La experiencia es 1:1. Hablo claro, tomo decisiones rápido y construyo con contexto real de tu negocio."
                     }
                 ]
             },
@@ -424,7 +424,7 @@ export const translations = {
                 verdict: "Veredicto",
                 problems: "Lo que falla",
                 improvements: "Lo que necesitas",
-                cta_text: "¿Quieres que lo arreglemos?",
+                cta_text: "¿Quieres que te lo arregle?",
                 connection_error: "No se pudo conectar. Revisa tu conexión."
             },
             brand: {
@@ -445,7 +445,7 @@ export const translations = {
                 strengths: "Fortalezas",
                 gaps: "Lo que falta",
                 recommendation: "Recomendación clave",
-                cta_text: "¿Quieres que trabajemos tu marca juntos?",
+                cta_text: "¿Quieres que trabaje tu marca contigo?",
                 file_too_large: "La imagen es muy grande. Máximo 3MB.",
                 connection_error: "No se pudo conectar. Revisa tu conexión."
             },
@@ -514,7 +514,7 @@ export const translations = {
             plan_cta: "Quiero mi plan personalizado →",
             skip: "No gracias, esto es suficiente",
             what_is: "Qué es",
-            next_step: "🚀 Cómo lo llevaríamos a la práctica",
+            next_step: "🚀 Cómo lo llevaría a la práctica",
             review_cta: "Quiero que Miguel revise mi caso →",
             email_note: "También te envío los detalles por email.",
             popup_badge: "Gratis · 30 segundos",
@@ -548,7 +548,7 @@ export const translations = {
             },
             gate: {
                 title: "Desbloquea los Recursos",
-                subtitle: "Sin spam. Solo guías de valor y nuestro stack de herramientas.",
+                subtitle: "Sin spam. Solo guías de valor y mi stack de herramientas.",
                 input: "tu@email.com",
                 btn: "Desbloquear acceso",
                 disclaimer: "Al continuar, aceptas recibir emails de MC Designs."
@@ -565,8 +565,8 @@ export const translations = {
                 },
                 tools: {
                     filter_all: "Todos",
-                    suggest_title: "¿Falta algo en nuestro stack?",
-                    suggest_sub: "Sugiere una herramienta y la evaluamos.",
+                    suggest_title: "¿Falta algo en mi stack?",
+                    suggest_sub: "Sugiere una herramienta y la evalúo.",
                     suggest_btn: "Sugererir herramienta"
                 }
             }
@@ -797,7 +797,7 @@ export const translations = {
                     },
                     {
                         title: "Direct work with me",
-                        desc: "The experience is 1:1. We speak clearly, make decisions quickly, and build with real business context."
+                        desc: "The experience is 1:1. I speak clearly, make decisions quickly, and build with real business context."
                     }
                 ]
             },
