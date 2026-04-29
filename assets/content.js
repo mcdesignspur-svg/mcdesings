@@ -13,7 +13,7 @@ export const translations = {
         },
         hero: {
             tagline: "Diagnóstico gratis · 60 segundos",
-            headline: "DIME QUÉ HACES.<br/>TE DIGO QUÉ SISTEMA<br/>TE CONVIENE.",
+            headline: "<span class=\"block\">Dime qué haces. </span><span class=\"block\">Te digo qué sistema </span><span class=\"block\">te conviene.</span>",
             subtext: "En 60 segundos te muestro los 3 procesos que más tiempo te están comiendo y cómo los automatizo. Sin pitch.",
             input_placeholder: "Ej: Tienda de ropa en Caguas con Shopify y manejo IG manual...",
             submit: "Mostrar diagnóstico →",
@@ -586,7 +586,7 @@ export const translations = {
         },
         hero: {
             tagline: "Free diagnosis · 60 seconds",
-            headline: "TELL ME WHAT YOU DO.<br/>I'LL TELL YOU WHICH SYSTEM<br/>FITS YOU.",
+            headline: "<span class=\"block\">Tell me what you do. </span><span class=\"block\">I'll tell you which system </span><span class=\"block\">fits you.</span>",
             subtext: "In 60 seconds I'll show you the 3 processes eating up most of your time and how I'd automate them. No pitch.",
             input_placeholder: "Ex: Apparel store in Caguas with Shopify, handling IG manually...",
             submit: "Show diagnosis →",
