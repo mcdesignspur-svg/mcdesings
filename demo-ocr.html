@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>OCR de Facturas · MC Designs</title>
+    <meta name="description" content="Sube una factura o recibo y la IA extrae proveedor, monto, fecha y línea contable en segundos. Demo en vivo de MC Designs." />
+    <link rel="canonical" href="https://mcdesignspr.com/lab/ocr-facturas" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-container": "#006df8",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "outline": "#727787",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+        .demo-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; padding: 2rem; }
+
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .loading-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        .upload-zone {
+            border: 2px dashed #c2c6d8;
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fafbfc;
+        }
+        .upload-zone:hover, .upload-zone.drag-over {
+            border-color: #0056c6;
+            background: #eef3ff;
+        }
+        .upload-zone.has-file {
+            border-color: #0056c6;
+            border-style: solid;
+            background: #f0f5ff;
+        }
+
+        .data-row {
+            display: grid;
+            grid-template-columns: minmax(120px, 30%) 1fr;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: #727787; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 2px; }
+        .data-value { color: #1a1c1c; word-break: break-word; }
+        .data-value.mono { font-family: 'JetBrains Mono', monospace; font-size: 0.825rem; }
+        .data-value.empty { color: #c2c6d8; font-style: italic; }
+
+        .line-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+            padding: 8px 12px;
+            background: #fafbfc;
+            border-radius: 0.5rem;
+            font-size: 0.825rem;
+        }
+        .line-item + .line-item { margin-top: 6px; }
+
+        .conf-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .conf-high { background: #dcfce7; color: #166534; }
+        .conf-medium { background: #fef3c7; color: #854d0e; }
+        .conf-low { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased">
+
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-3">
+        <a href="/" class="flex-shrink-0">
+            <img src="/assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 md:h-10 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-7 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
+            <a class="text-primary font-semibold" href="/lab">El Lab</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Miguel</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos" data-i18n="nav.hub">Recursos</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="hidden lg:flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
+                <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
+                <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
+            </div>
+            <a href="/contacto" class="hidden md:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform" data-i18n="nav.cta">Agenda diagnóstico</a>
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
+                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium">
+        <a class="text-slate-600" href="/" data-i18n="nav.home">Inicio</a>
+        <a class="text-slate-600" href="/servicios" data-i18n="nav.services">Servicios</a>
+        <a class="text-primary font-semibold" href="/lab">El Lab</a>
+        <a class="text-slate-600" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about" data-i18n="nav.about">Miguel</a>
+        <a class="text-slate-600" href="/recursos" data-i18n="nav.hub">Recursos</a>
+        <div class="flex flex-col items-center gap-3 mt-4">
+            <a href="/contacto" class="hero-gradient text-white px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold" data-i18n="nav.cta">Agenda diagnóstico</a>
+        </div>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-28">
+    <!-- Breadcrumb -->
+    <div class="max-w-5xl mx-auto px-8 pt-6 pb-2">
+        <a href="/lab" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary transition-colors font-medium">
+            <span class="material-symbols-outlined text-base">arrow_back</span> <span>Todos los demos</span>
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto px-8 pt-6 pb-10 text-center">
+        <div class="text-4xl mb-3">📄</div>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-3">OCR de Facturas</h1>
+        <p class="text-on-surface-variant max-w-xl mx-auto leading-relaxed">Sube una factura o recibo. La IA te lo lee, extrae los datos, y los entrega listos para tu sistema contable. Sin tipear nada.</p>
+    </section>
+
+    <!-- Demo card -->
+    <section class="max-w-5xl mx-auto px-8 pb-16">
+        <div class="demo-card">
+            <!-- Upload zone -->
+            <div id="upload-state" class="space-y-3">
+                <label id="upload-zone" for="ocr-file" class="upload-zone block">
+                    <input id="ocr-file" type="file" accept="application/pdf,image/jpeg,image/png,image/heic" class="hidden" />
+                    <div id="upload-empty">
+                        <span class="material-symbols-outlined text-5xl text-slate-400 mb-2 block">upload_file</span>
+                        <p class="text-base font-semibold text-on-surface">Arrastra tu factura aquí</p>
+                        <p class="text-sm text-slate-500 mt-1">o haz click para subirla</p>
+                        <p class="text-xs text-slate-400 mt-3">PDF, JPG o PNG · máx 3 MB</p>
+                    </div>
+                    <div id="upload-filled" class="hidden">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-2 block">description</span>
+                        <p id="file-name" class="text-base font-semibold text-on-surface break-all"></p>
+                        <p id="file-size" class="text-xs text-slate-500 mt-1"></p>
+                        <button type="button" id="clear-file" class="mt-3 text-xs text-slate-500 hover:text-error font-bold uppercase tracking-widest">Cambiar archivo</button>
+                    </div>
+                </label>
+                <button id="ocr-btn" disabled
+                    class="w-full hero-gradient text-white px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100">
+                    Extraer datos
+                </button>
+                <p class="text-xs text-slate-400 text-center">El archivo se procesa y se descarta. No guardamos tu factura.</p>
+            </div>
+
+            <!-- Loading -->
+            <div id="ocr-loading" class="hidden rounded-xl border border-slate-100 bg-slate-50 p-8 text-center mt-2">
+                <div class="flex justify-center gap-2 mb-4">
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                    <div class="loading-dot w-3 h-3 rounded-full bg-primary"></div>
+                </div>
+                <p class="text-sm font-semibold text-on-surface">Leyendo tu factura...</p>
+                <p class="text-xs text-slate-400 mt-1">Toma unos segundos</p>
+            </div>
+
+            <!-- Error -->
+            <div id="ocr-error" class="hidden rounded-xl border border-red-100 bg-red-50 p-6 text-center mt-2">
+                <div class="text-2xl mb-2">⚠️</div>
+                <p id="ocr-error-msg" class="text-sm font-semibold text-red-700"></p>
+                <button onclick="resetOcr()" class="mt-4 text-xs text-red-700 hover:text-red-900 font-bold uppercase tracking-widest underline">Intentar de nuevo</button>
+            </div>
+
+            <!-- Results -->
+            <div id="ocr-results" class="hidden space-y-6">
+                <!-- Header -->
+                <div class="flex items-start justify-between gap-4 p-5 rounded-xl bg-primary-fixed">
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-on-primary-fixed/60 mb-1">Resultado</div>
+                        <p id="vendor-headline" class="text-lg md:text-xl font-black text-on-primary-fixed leading-tight"></p>
+                        <p id="amount-headline" class="text-2xl md:text-3xl font-black text-primary mt-1 font-mono"></p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                        <span id="conf-badge" class="conf-badge"></span>
+                        <span id="processing-time" class="text-[10px] text-on-primary-fixed/60 font-mono"></span>
+                    </div>
+                </div>
+
+                <!-- Datos principales -->
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Datos extraídos</div>
+                    <div class="rounded-xl border border-slate-100 bg-white p-4">
+                        <div class="data-row"><span class="data-label">Proveedor</span><span class="data-value" id="dr-vendor">—</span></div>
+                        <div class="data-row"><span class="data-label">Tax ID</span><span class="data-value mono" id="dr-vendor-id">—</span></div>
+                        <div class="data-row"><span class="data-label">Dirección</span><span class="data-value" id="dr-vendor-address">—</span></div>
+                        <div class="data-row"><span class="data-label">Factura #</span><span class="data-value mono" id="dr-invoice">—</span></div>
+                        <div class="data-row"><span class="data-label">Fecha</span><span class="data-value mono" id="dr-date">—</span></div>
+                        <div class="data-row"><span class="data-label">Vencimiento</span><span class="data-value mono" id="dr-due">—</span></div>
+                        <div class="data-row"><span class="data-label">Subtotal</span><span class="data-value mono" id="dr-subtotal">—</span></div>
+                        <div class="data-row"><span class="data-label">Impuesto</span><span class="data-value mono" id="dr-tax">—</span></div>
+                        <div class="data-row"><span class="data-label">Total</span><span class="data-value mono font-bold" id="dr-total">—</span></div>
+                        <div class="data-row"><span class="data-label">Términos</span><span class="data-value" id="dr-terms">—</span></div>
+                        <div class="data-row"><span class="data-label">Categoría</span><span class="data-value" id="dr-category">—</span></div>
+                    </div>
+                </div>
+
+                <!-- Line items -->
+                <div id="lineitems-block" class="hidden">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Partidas</div>
+                    <div id="lineitems-list" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Notes -->
+                <div id="notes-block" class="hidden">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Notas</div>
+                    <p id="notes-text" class="text-sm text-on-surface-variant leading-relaxed bg-slate-50 border border-slate-100 rounded-xl p-4"></p>
+                </div>
+
+                <!-- JSON preview -->
+                <details class="rounded-xl border border-slate-100 bg-slate-50 group">
+                    <summary class="cursor-pointer p-4 text-xs font-bold uppercase tracking-widest text-slate-600 select-none flex items-center justify-between">
+                        <span>Ver JSON crudo (lo que conectarías a QuickBooks/Xero/etc)</span>
+                        <span class="material-symbols-outlined text-base group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <pre id="json-output" class="px-4 pb-4 text-xs font-mono text-slate-700 overflow-x-auto leading-relaxed"></pre>
+                </details>
+
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="copy-json" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-on-surface font-bold text-sm hover:border-primary transition-colors">
+                        <span class="material-symbols-outlined text-base">content_copy</span>
+                        <span id="copy-label">Copiar JSON</span>
+                    </button>
+                    <button onclick="resetOcr()" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-on-surface font-bold text-sm hover:border-primary transition-colors">
+                        <span class="material-symbols-outlined text-base">restart_alt</span>
+                        Otra factura
+                    </button>
+                </div>
+
+                <!-- CTA -->
+                <div class="p-5 rounded-xl bg-[#001945] text-white text-center">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#b0c6ff] mb-2">Esto, todos los meses</p>
+                    <h3 class="text-xl md:text-2xl font-black tracking-tight mb-3">50 facturas leídas en lo que tomas un café.</h3>
+                    <p class="text-white/75 text-sm leading-relaxed mb-5 max-w-md mx-auto">Conecto este flujo a tu QuickBooks, Xero, Google Sheets o el sistema que ya uses. Tú apruebas, yo automatizo el resto.</p>
+                    <a href="/contacto" class="inline-block bg-white text-[#001945] px-7 py-3 rounded-xl text-xs font-black uppercase tracking-widest active:scale-95 transition-transform">Hablemos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample link -->
+        <div id="sample-cta" class="text-center mt-6">
+            <button id="try-sample" class="text-xs text-slate-500 hover:text-primary font-medium underline underline-offset-4 decoration-slate-300 hover:decoration-primary transition-colors">
+                ¿Sin factura a la mano? Prueba con una de muestra →
+            </button>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-slate-500">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Servicios</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño de Marca</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Diseño Web</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Integración IA</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Estudio</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio">Portafolio</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios">Servicios</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <span class="font-label text-xs uppercase tracking-[0.2em] text-slate-900 font-bold">Conectar</span>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs font-label uppercase tracking-widest text-slate-400">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="assets/language-toggle.js"></script>
+<script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        menu.classList.toggle('flex', isHidden);
+        icon.textContent = isHidden ? 'close' : 'menu';
+    });
+
+    const MAX_BYTES = 3 * 1024 * 1024; // 3MB
+    const ACCEPTED = ['application/pdf', 'image/jpeg', 'image/png', 'image/heic'];
+
+    let currentFile = null;
+    let currentResult = null;
+
+    const $ = id => document.getElementById(id);
+    const upload = $('upload-zone');
+    const fileInput = $('ocr-file');
+    const btn = $('ocr-btn');
+
+    function showState(state, errorMsg = '') {
+        ['upload-state', 'ocr-loading', 'ocr-error', 'ocr-results'].forEach(id => $(id).classList.add('hidden'));
+        $(state).classList.remove('hidden');
+        if (state === 'ocr-error' && errorMsg) $('ocr-error-msg').textContent = errorMsg;
+    }
+
+    function resetOcr() {
+        currentFile = null;
+        currentResult = null;
+        fileInput.value = '';
+        upload.classList.remove('has-file');
+        $('upload-empty').classList.remove('hidden');
+        $('upload-filled').classList.add('hidden');
+        btn.disabled = true;
+        showState('upload-state');
+    }
+    window.resetOcr = resetOcr;
+
+    function formatBytes(bytes) {
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function setFile(file) {
+        if (!file) return;
+        if (!ACCEPTED.includes(file.type) && !file.name.match(/\.(pdf|jpe?g|png|heic)$/i)) {
+            showState('ocr-error', 'Formato no soportado. Sube PDF, JPG, PNG o HEIC.');
+            return;
+        }
+        if (file.size > MAX_BYTES) {
+            showState('ocr-error', `Archivo muy grande (${formatBytes(file.size)}). Máx 3 MB.`);
+            return;
+        }
+        currentFile = file;
+        $('file-name').textContent = file.name;
+        $('file-size').textContent = formatBytes(file.size);
+        $('upload-empty').classList.add('hidden');
+        $('upload-filled').classList.remove('hidden');
+        upload.classList.add('has-file');
+        btn.disabled = false;
+        showState('upload-state');
+    }
+
+    fileInput.addEventListener('change', e => setFile(e.target.files[0]));
+
+    $('clear-file').addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        resetOcr();
+    });
+
+    ['dragenter', 'dragover'].forEach(ev => {
+        upload.addEventListener(ev, e => { e.preventDefault(); upload.classList.add('drag-over'); });
+    });
+    ['dragleave', 'drop'].forEach(ev => {
+        upload.addEventListener(ev, e => { e.preventDefault(); upload.classList.remove('drag-over'); });
+    });
+    upload.addEventListener('drop', e => {
+        const file = e.dataTransfer.files[0];
+        if (file) setFile(file);
+    });
+
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const dataUrl = reader.result;
+                const base64 = dataUrl.split(',')[1];
+                resolve(base64);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    btn.addEventListener('click', async () => {
+        if (!currentFile) return;
+        showState('ocr-loading');
+        const startTime = Date.now();
+
+        try {
+            const fileBase64 = await fileToBase64(currentFile);
+            const res = await fetch('/api/ocr-facturas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fileBase64,
+                    mimeType: currentFile.type || 'application/octet-stream',
+                    fileName: currentFile.name,
+                }),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                showState('ocr-error', data.error || 'Error procesando. Intenta de nuevo.');
+                return;
+            }
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            renderResult(data, elapsed);
+        } catch (err) {
+            console.error(err);
+            showState('ocr-error', 'No se pudo conectar. Revisa tu conexión.');
+        }
+    });
+
+    function fmtCurrency(n, currency) {
+        if (n === null || n === undefined) return null;
+        const cur = currency || 'USD';
+        try {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: cur }).format(n);
+        } catch {
+            return `${n} ${cur}`;
+        }
+    }
+
+    function setRow(id, value, opts = {}) {
+        const el = $(id);
+        if (value === null || value === undefined || value === '') {
+            el.textContent = opts.empty || '—';
+            el.classList.add('empty');
+        } else {
+            el.textContent = opts.format ? opts.format(value) : value;
+            el.classList.remove('empty');
+        }
+    }
+
+    function renderResult(data, elapsed) {
+        currentResult = data;
+        const cur = data.currency || 'USD';
+
+        $('vendor-headline').textContent = data.vendor_name || 'Factura sin proveedor identificado';
+        $('amount-headline').textContent = data.total_amount !== null && data.total_amount !== undefined
+            ? fmtCurrency(data.total_amount, cur)
+            : '—';
+
+        const conf = data.confidence || 'medium';
+        const confEl = $('conf-badge');
+        confEl.className = 'conf-badge conf-' + conf;
+        confEl.textContent = ({ high: 'alta confianza', medium: 'confianza media', low: 'baja confianza' })[conf] || conf;
+        $('processing-time').textContent = elapsed + 's';
+
+        setRow('dr-vendor', data.vendor_name);
+        setRow('dr-vendor-id', data.vendor_id);
+        setRow('dr-vendor-address', data.vendor_address);
+        setRow('dr-invoice', data.invoice_number);
+        setRow('dr-date', data.invoice_date);
+        setRow('dr-due', data.due_date);
+        setRow('dr-subtotal', data.subtotal, { format: v => fmtCurrency(v, cur) });
+        setRow('dr-tax', data.tax_amount, { format: v => fmtCurrency(v, cur) });
+        setRow('dr-total', data.total_amount, { format: v => fmtCurrency(v, cur) });
+        setRow('dr-terms', data.payment_terms);
+        setRow('dr-category', data.category_suggestion);
+
+        // Line items
+        const items = Array.isArray(data.line_items) ? data.line_items : [];
+        if (items.length) {
+            $('lineitems-block').classList.remove('hidden');
+            $('lineitems-list').innerHTML = items.map(it => `
+                <div class="line-item">
+                    <span class="text-on-surface">${escapeHtml(it.description || '—')}</span>
+                    <span class="text-slate-500 font-mono">${it.quantity != null ? '×' + it.quantity : ''}</span>
+                    <span class="font-mono font-bold">${it.total != null ? fmtCurrency(it.total, cur) : '—'}</span>
+                </div>`).join('');
+        } else {
+            $('lineitems-block').classList.add('hidden');
+        }
+
+        if (data.notes) {
+            $('notes-block').classList.remove('hidden');
+            $('notes-text').textContent = data.notes;
+        } else {
+            $('notes-block').classList.add('hidden');
+        }
+
+        $('json-output').textContent = JSON.stringify(data, null, 2);
+        showState('ocr-results');
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+    }
+
+    $('copy-json').addEventListener('click', async () => {
+        if (!currentResult) return;
+        try {
+            await navigator.clipboard.writeText(JSON.stringify(currentResult, null, 2));
+            $('copy-label').textContent = 'Copiado ✓';
+            setTimeout(() => { $('copy-label').textContent = 'Copiar JSON'; }, 2000);
+        } catch {}
+    });
+
+    // Sample invoice — generates a clean demo PDF on the fly so the demo is testable without a file
+    $('try-sample').addEventListener('click', async () => {
+        showState('ocr-loading');
+        const startTime = Date.now();
+        try {
+            const res = await fetch('/api/ocr-facturas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sample: true }),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                showState('ocr-error', data.error || 'Error con la muestra. Intenta subir tu propia factura.');
+                return;
+            }
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            renderResult(data, elapsed);
+        } catch {
+            showState('ocr-error', 'No se pudo conectar. Revisa tu conexión.');
+        }
+    });
+</script>
+<script type="module" src="assets/site-chat.js"></script>
+</body>
+</html>
