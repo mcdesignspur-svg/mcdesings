@@ -39,6 +39,7 @@
     { "source": "/lab/panel-operaciones", "destination": "/demo-panel" },
     { "source": "/lab/cotizador", "destination": "/demo-cotizador" },
     { "source": "/lab/impulso-demo", "destination": "/demo-impulso" },
+    { "source": "/lab/speed-test", "destination": "/demo-speedtest" },
     { "source": "/intake", "destination": "/intake.html" }
   ],
   "redirects": [

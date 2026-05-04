@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Speed Test PR · Demo · MC Designs</title>
+    <meta name="description" content="Mide qué tan rápido carga tu sitio actual desde el celular en Puerto Rico. Score de Google PageSpeed + las 3 cosas que más te están frenando. Demo en vivo de MC Designs." />
+    <link rel="canonical" href="https://mcdesignspr.com/lab/speed-test" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/lab/speed-test" />
+    <meta property="og:title" content="Speed Test PR · MC Designs" />
+    <meta property="og:description" content="Mide tu sitio actual contra mi promesa: <2 segundos." />
+    <meta property="og:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "background": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary": "#0056c6",
+                        "outline": "#727787",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+
+        .demo-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; padding: 2rem; }
+        .result-card { background: #ffffff; box-shadow: 0 4px 32px rgba(15,23,42,0.06); border-radius: 1rem; }
+
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .loading-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+
+        /* Score ring */
+        .score-ring-svg { transform: rotate(-90deg); }
+        .score-ring-bg { stroke: #f1f5f9; }
+        .score-ring-fg { transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s; }
+
+        input:focus { outline: 2px solid #0056c6; outline-offset: 2px; }
+
+        @keyframes countup { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+        .score-num { animation: countup 0.5s 0.4s ease-out backwards; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased">
+
+<!-- Grid background -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-3">
+        <a href="/" class="flex-shrink-0">
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 md:h-10 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-7 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios">Servicios</a>
+            <a class="text-primary font-semibold" href="/lab">El Lab</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about">Miguel</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos">Recursos</a>
+        </div>
+        <a href="/contacto" class="hidden md:inline-block hero-gradient text-white px-5 py-2 rounded-lg text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform">Agenda diagnóstico</a>
+        <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
+            <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 text-base font-medium">
+        <a class="text-slate-600" href="/">Inicio</a>
+        <a class="text-slate-600" href="/servicios">Servicios</a>
+        <a class="text-primary font-semibold" href="/lab">El Lab</a>
+        <a class="text-slate-600" href="/portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about">Miguel</a>
+        <a class="text-slate-600" href="/recursos">Recursos</a>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-28">
+
+    <!-- ─── HERO + FORM ─── -->
+    <section class="max-w-3xl mx-auto px-8 pt-12 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
+            <span class="material-symbols-outlined text-sm">speed</span>
+            Demo · Speed Test PR
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-on-surface mb-4">
+            ¿Cuánto carga tu sitio<br/><span class="text-primary">desde el celular?</span>
+        </h1>
+        <p class="text-lg text-on-surface-variant max-w-xl mx-auto leading-relaxed mb-10">
+            Mi promesa con La Presencia: <strong class="text-on-surface">menos de 2 segundos</strong>. Pega tu URL y vemos qué dice Google sobre el tuyo.
+        </p>
+
+        <!-- Form -->
+        <form id="speed-form" class="demo-card text-left">
+            <label for="url-input" class="block text-sm font-bold text-slate-900 mb-2">URL de tu sitio</label>
+            <div class="flex gap-2 flex-col sm:flex-row">
+                <input id="url-input" type="text" required
+                    class="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm bg-white"
+                    placeholder="tunegocio.com" />
+                <button type="submit" id="submit-btn" class="hero-gradient text-white px-6 py-3 rounded-xl text-sm font-black uppercase tracking-widest hover:opacity-95 transition-all active:scale-[0.99] disabled:opacity-50 whitespace-nowrap">
+                    Analizar
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 mt-3">Análisis mobile · datos de Google PageSpeed Insights · 10-25 seg</p>
+        </form>
+    </section>
+
+    <!-- Loading -->
+    <section id="loading-state" class="hidden max-w-3xl mx-auto px-8 pb-12">
+        <div class="demo-card text-center py-12">
+            <div class="flex justify-center gap-2 mb-5">
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+            </div>
+            <p class="text-sm text-slate-700 font-semibold mb-1" id="loading-msg">Cargando tu sitio en un celular virtual...</p>
+            <p class="text-xs text-slate-500 font-mono">Esto toma 10-25 segundos</p>
+        </div>
+    </section>
+
+    <!-- Error -->
+    <section id="error-state" class="hidden max-w-3xl mx-auto px-8 pb-12">
+        <div class="bg-red-50 border border-red-200 rounded-xl px-6 py-5 text-sm text-red-900 flex items-start gap-3">
+            <span class="material-symbols-outlined text-red-600 mt-0.5">error</span>
+            <div class="flex-1">
+                <div class="font-bold mb-1">No pudimos analizar el sitio</div>
+                <p id="error-msg"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RESULT ─── -->
+    <section id="result-state" class="hidden max-w-5xl mx-auto px-8 pb-12 fade-in">
+
+        <!-- Big score + La Presencia comparison -->
+        <div class="result-card overflow-hidden mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+
+                <!-- Score ring -->
+                <div class="p-8 md:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-slate-100">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Performance Score (mobile)</div>
+                    <div class="relative w-44 h-44">
+                        <svg class="score-ring-svg w-full h-full" viewBox="0 0 100 100">
+                            <circle class="score-ring-bg" cx="50" cy="50" r="44" stroke-width="8" fill="none"/>
+                            <circle id="score-ring" class="score-ring-fg" cx="50" cy="50" r="44" stroke-width="8" fill="none" stroke-linecap="round"
+                                stroke-dasharray="276.46" stroke-dashoffset="276.46" stroke="#0056c6" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="score-num text-5xl font-black tracking-tight" id="score-value">0</div>
+                            <div class="text-xs text-slate-400 font-mono mt-1" id="score-label">de 100</div>
+                        </div>
+                    </div>
+                    <p id="score-verdict" class="text-sm font-semibold mt-4 text-center"></p>
+                </div>
+
+                <!-- LCP vs La Presencia -->
+                <div class="p-8 md:p-10 bg-slate-50/60">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Tiempo de carga visible (LCP)</div>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span id="lcp-value" class="text-5xl font-black tracking-tight font-mono">0.0</span>
+                        <span class="text-xl text-slate-400 font-bold">s</span>
+                    </div>
+                    <div class="space-y-2.5 text-sm">
+                        <div class="flex items-center justify-between gap-3 py-2 border-b border-slate-200">
+                            <span class="text-slate-600">Tu sitio actual</span>
+                            <span id="lcp-status" class="font-bold font-mono">—</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 py-2">
+                            <span class="text-on-primary-fixed font-semibold">Mi promesa con La Presencia</span>
+                            <span class="text-primary font-black font-mono">&lt; 2.0s</span>
+                        </div>
+                    </div>
+                    <div id="gap-callout" class="hidden mt-4 px-3 py-2 rounded-lg text-xs font-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core metrics (smaller) -->
+        <div class="result-card p-6 mb-6">
+            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4">Métricas detalladas</div>
+            <div id="metrics-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+        </div>
+
+        <!-- Top opportunities -->
+        <div class="result-card overflow-hidden mb-6" id="opps-card">
+            <header class="px-6 py-4 border-b border-slate-100">
+                <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1">Lo que más te está frenando</div>
+                <h3 class="font-black text-lg tracking-tight text-slate-900">3 cosas que puedo arreglar</h3>
+            </header>
+            <div id="opps-list" class="divide-y divide-slate-100"></div>
+        </div>
+
+        <!-- CTA strip -->
+        <div id="cta-strip" class="hero-gradient text-white rounded-2xl p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div>
+                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-100 mb-2">La Presencia · 2 semanas · desde $1,200</p>
+                <h3 id="cta-title" class="text-xl md:text-2xl font-black tracking-tight mb-1">Hablemos.</h3>
+                <p class="text-white/80 text-sm leading-relaxed">Garantía: si tu sitio nuevo no carga en menos de 2 seg, no pagas la última factura.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+                <a href="/contacto" class="bg-white text-primary px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-center whitespace-nowrap hover:bg-blue-50 transition-colors">Agenda diagnóstico</a>
+                <a href="/servicios" class="border border-white/30 text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-center whitespace-nowrap hover:bg-white/10 transition-colors">Ver La Presencia</a>
+            </div>
+        </div>
+
+        <!-- Reset + meta -->
+        <div class="text-center mt-6 space-y-1">
+            <button id="reset-btn" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary">← Probar otro sitio</button>
+            <div class="text-[10px] text-slate-400 font-mono" id="result-meta"></div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+        <div class="flex items-center gap-2">
+            <span>© 2026</span>
+            <a href="/" class="font-bold text-slate-900 hover:text-primary">MC Designs</a>
+            <span>· Diseño Web + Integración IA · Puerto Rico</span>
+        </div>
+        <div class="flex items-center gap-6 text-xs uppercase tracking-widest text-slate-400">
+            <a href="/lab" class="hover:text-primary">Más demos</a>
+            <a href="/contacto" class="hover:text-primary">Contacto</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+const form = document.getElementById('speed-form');
+const urlInput = document.getElementById('url-input');
+const submitBtn = document.getElementById('submit-btn');
+const loadingState = document.getElementById('loading-state');
+const loadingMsg = document.getElementById('loading-msg');
+const errorState = document.getElementById('error-state');
+const errorMsg = document.getElementById('error-msg');
+const resultState = document.getElementById('result-state');
+const resetBtn = document.getElementById('reset-btn');
+
+const LOADING_MESSAGES = [
+    'Cargando tu sitio en un celular virtual...',
+    'Midiendo tiempo de carga visible...',
+    'Analizando recursos pesados...',
+    'Identificando los principales frenos...',
+    'Casi listo...',
+];
+
+let loadingInterval = null;
+
+function showLoading() {
+    form.parentElement.classList.add('hidden');
+    errorState.classList.add('hidden');
+    resultState.classList.add('hidden');
+    loadingState.classList.remove('hidden');
+    let i = 0;
+    loadingMsg.textContent = LOADING_MESSAGES[0];
+    loadingInterval = setInterval(() => {
+        i = Math.min(i + 1, LOADING_MESSAGES.length - 1);
+        loadingMsg.textContent = LOADING_MESSAGES[i];
+    }, 4000);
+}
+
+function hideLoading() {
+    loadingState.classList.add('hidden');
+    if (loadingInterval) { clearInterval(loadingInterval); loadingInterval = null; }
+}
+
+function showError(msg) {
+    hideLoading();
+    form.parentElement.classList.remove('hidden');
+    errorMsg.textContent = msg;
+    errorState.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Analizar';
+}
+
+// ───── Score + color ─────
+function scoreColor(score) {
+    if (score >= 90) return '#16a34a'; // green
+    if (score >= 50) return '#f59e0b'; // amber
+    return '#dc2626'; // red
+}
+
+function scoreVerdict(score) {
+    if (score >= 90) return { text: 'Brutal — tu sitio carga súper bien.', color: 'text-emerald-700' };
+    if (score >= 50) return { text: 'Mid — hay espacio para apretar.', color: 'text-amber-700' };
+    return { text: 'Tu sitio te está costando leads.', color: 'text-red-700' };
+}
+
+function ctaCopy(score, lcpSec) {
+    if (score >= 90 && lcpSec < 2.0) return { title: '¿Listo para el siguiente paso?', sub: 'Tu sitio carga bien. Hablemos de qué construimos arriba — automatización, AI, dashboards.' };
+    if (lcpSec < 2.0) return { title: 'Cargas rápido pero falta pulir.', sub: 'Hablemos qué arreglar primero. Garantía: tu sitio nuevo carga en menos de 2 seg o no pagas la última factura.' };
+    return { title: `Tu sitio carga en ${lcpSec.toFixed(1)}s. Mi promesa: menos de 2.`, sub: 'En 2 semanas con La Presencia. Garantía: si no carga en menos de 2 seg, no pagas la última factura.' };
+}
+
+function renderMetrics(metrics) {
+    const grid = document.getElementById('metrics-grid');
+    const items = [
+        { key: 'fcp', label: 'First Paint', help: 'Primer pixel visible' },
+        { key: 'lcp', label: 'LCP', help: 'Contenido principal visible' },
+        { key: 'tbt', label: 'TBT', help: 'Tiempo bloqueado para click' },
+        { key: 'cls', label: 'CLS', help: 'Movimiento del layout' },
+    ];
+    grid.innerHTML = items.map(it => {
+        const m = metrics[it.key];
+        const display = m?.display ?? '—';
+        const score = m?.score ?? 0.5;
+        const color = score >= 0.9 ? 'text-emerald-600' : score >= 0.5 ? 'text-amber-600' : 'text-red-600';
+        return `
+            <div class="border border-slate-100 rounded-lg p-3">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">${it.label}</div>
+                <div class="text-xl font-black mt-1 font-mono ${color}">${display}</div>
+                <div class="text-[10px] text-slate-500 mt-1">${it.help}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+function renderOpportunities(opps) {
+    const list = document.getElementById('opps-list');
+    const card = document.getElementById('opps-card');
+    if (!opps || opps.length === 0) {
+        card.classList.add('hidden');
+        return;
+    }
+    card.classList.remove('hidden');
+    list.innerHTML = opps.map(o => {
+        const seconds = (o.savingsMs / 1000).toFixed(1);
+        return `
+            <div class="px-6 py-4 flex items-start gap-4">
+                <div class="shrink-0 w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-lg">bolt</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-baseline justify-between gap-3 mb-1">
+                        <div class="font-bold text-slate-900 text-sm">${o.title}</div>
+                        <div class="text-xs font-mono font-bold text-emerald-600 shrink-0">−${seconds}s</div>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">${o.description}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function showResult(data) {
+    hideLoading();
+    errorState.classList.add('hidden');
+
+    const score = data.perfScore;
+    const lcpMs = data.metrics.lcp.value ?? 0;
+    const lcpSec = lcpMs / 1000;
+
+    // Score ring (animate from 0)
+    const ring = document.getElementById('score-ring');
+    const circumference = 276.46; // 2π * 44
+    ring.setAttribute('stroke-dasharray', circumference);
+    ring.setAttribute('stroke-dashoffset', circumference);
+    ring.setAttribute('stroke', scoreColor(score));
+
+    document.getElementById('score-value').textContent = score;
+    document.getElementById('score-value').style.color = scoreColor(score);
+
+    const verdict = scoreVerdict(score);
+    const verdictEl = document.getElementById('score-verdict');
+    verdictEl.textContent = verdict.text;
+    verdictEl.className = `text-sm font-semibold mt-4 text-center ${verdict.color}`;
+
+    // LCP block
+    document.getElementById('lcp-value').textContent = lcpSec.toFixed(1);
+    const lcpStatus = document.getElementById('lcp-status');
+    if (lcpSec < 2.0) {
+        lcpStatus.innerHTML = `<span class="text-emerald-600">${lcpSec.toFixed(1)}s ✓</span>`;
+    } else if (lcpSec < 4.0) {
+        lcpStatus.innerHTML = `<span class="text-amber-600">${lcpSec.toFixed(1)}s</span>`;
+    } else {
+        lcpStatus.innerHTML = `<span class="text-red-600">${lcpSec.toFixed(1)}s</span>`;
+    }
+
+    // Gap callout
+    const gap = document.getElementById('gap-callout');
+    if (lcpSec >= 2.0) {
+        const diff = (lcpSec - 2.0).toFixed(1);
+        gap.className = 'mt-4 px-3 py-2 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-100';
+        gap.textContent = `Estás ${diff}s por encima de mi promesa.`;
+        gap.classList.remove('hidden');
+    } else {
+        gap.className = 'mt-4 px-3 py-2 rounded-lg text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-100';
+        gap.textContent = '✓ Tu sitio cumple mi promesa de carga.';
+        gap.classList.remove('hidden');
+    }
+
+    renderMetrics(data.metrics);
+    renderOpportunities(data.opportunities);
+
+    // CTA copy
+    const cta = ctaCopy(score, lcpSec);
+    document.getElementById('cta-title').textContent = cta.title;
+    document.querySelector('#cta-strip p').textContent = cta.sub;
+
+    // Meta
+    const fetchedAt = new Date(data.fetchedAt);
+    const metaText = `Analizado: ${fetchedAt.toLocaleString('es-PR', { dateStyle: 'short', timeStyle: 'short' })} · ${data.url}${data._cached ? ' · cached' : ''}`;
+    document.getElementById('result-meta').textContent = metaText;
+
+    resultState.classList.remove('hidden');
+
+    // Animate ring after a tiny delay so the user sees the fill
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            const offset = circumference * (1 - score / 100);
+            ring.setAttribute('stroke-dashoffset', offset);
+        }, 200);
+    });
+
+    setTimeout(() => resultState.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = urlInput.value.trim();
+    if (!url) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Analizando...';
+    showLoading();
+    try {
+        const res = await fetch('/api/speedtest', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            showError(data.error || 'Error analizando el sitio.');
+            return;
+        }
+        showResult(data);
+    } catch {
+        showError('No se pudo conectar. Verifica tu conexión.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Analizar';
+    }
+});
+
+resetBtn.addEventListener('click', () => {
+    resultState.classList.add('hidden');
+    errorState.classList.add('hidden');
+    form.parentElement.classList.remove('hidden');
+    urlInput.value = '';
+    urlInput.focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Mobile menu
+document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', !isHidden);
+    menu.classList.toggle('flex', isHidden);
+    icon.textContent = isHidden ? 'close' : 'menu';
+});
+</script>
+
+<script type="module" src="assets/site-chat.js"></script>
+</body>
+</html>
