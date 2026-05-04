@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cotizador en Vivo · Demo · MC Designs</title>
+    <meta name="description" content="Describe lo que necesita tu negocio y la IA de MC Designs te genera una cotización directional en segundos — anclada a sistemas reales, con precios reales." />
+    <link rel="canonical" href="https://mcdesignspr.com/lab/cotizador" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/lab/cotizador" />
+    <meta property="og:title" content="Cotizador en Vivo · Demo · MC Designs" />
+    <meta property="og:description" content="Estimado en segundos. Sistema recomendado, inversión, timeline." />
+    <meta property="og:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-highest": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "primary-container": "#006df8",
+                        "on-primary": "#ffffff",
+                        "primary": "#0056c6",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "outline": "#727787",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+
+        .demo-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; padding: 2rem; }
+        .result-card { border: 1.5px solid #0056c6; background: #ffffff; box-shadow: 0 4px 32px rgba(0,86,198,0.08); border-radius: 1rem; }
+
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .loading-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+
+        /* Chip selector */
+        .chip-input { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 9999px; font-size: 13px; font-weight: 600; background: #f3f4f6; color: #475569; cursor: pointer; transition: all 0.15s; user-select: none; border: 1.5px solid transparent; }
+        .chip-input:hover { background: #e5e7eb; }
+        .chip-input.active { background: #001945; color: #ffffff; border-color: #001945; }
+
+        /* Bullets */
+        .scope-li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; font-size: 14px; color: #334155; }
+        .scope-li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 9999px; background: #0056c6; margin-top: 8px; }
+
+        .driver-li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; font-size: 13px; color: #475569; font-family: 'JetBrains Mono', monospace; }
+        .driver-li::before { content: '↗'; flex-shrink: 0; color: #0056c6; font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 1px; }
+
+        /* System pill */
+        .system-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 9999px; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; background: #d9e2ff; color: #001945; }
+
+        textarea:focus, input:focus { outline: 2px solid #0056c6; outline-offset: 1px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased">
+
+<!-- Grid background -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-3">
+        <a href="/" class="flex-shrink-0">
+            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 md:h-10 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center gap-7 font-sans text-sm font-medium tracking-tight">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/">Inicio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios">Servicios</a>
+            <a class="text-primary font-semibold" href="/lab">El Lab</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/portfolio">Portafolio</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about">Miguel</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos">Recursos</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="/contacto" class="hidden md:inline-block hero-gradient text-white px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform">Agenda diagnóstico</a>
+            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600">
+                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium">
+        <a class="text-slate-600" href="/">Inicio</a>
+        <a class="text-slate-600" href="/servicios">Servicios</a>
+        <a class="text-primary font-semibold" href="/lab">El Lab</a>
+        <a class="text-slate-600" href="/portfolio">Portafolio</a>
+        <a class="text-slate-600" href="/about">Miguel</a>
+        <a class="text-slate-600" href="/recursos">Recursos</a>
+    </div>
+</nav>
+
+<main class="relative z-10 pt-28">
+
+    <!-- ─── HERO ─── -->
+    <section class="max-w-3xl mx-auto px-8 pt-12 pb-10 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
+            <span class="material-symbols-outlined text-sm">request_quote</span>
+            Demo · Cotizador en Vivo
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-on-surface mb-4">
+            Te cotizo en <span class="text-primary">segundos</span>.
+        </h1>
+        <p class="text-lg text-on-surface-variant max-w-xl mx-auto leading-relaxed">
+            Describe lo que necesita tu negocio. Te recomiendo el sistema, la inversión y el timeline — al instante.
+        </p>
+    </section>
+
+    <!-- ─── FORM ─── -->
+    <section class="max-w-3xl mx-auto px-8 pb-12">
+        <form id="quote-form" class="demo-card space-y-7">
+
+            <!-- Industria -->
+            <div>
+                <label class="block text-sm font-bold text-slate-900 mb-3">¿Qué tipo de negocio tienes?</label>
+                <div id="industry-chips" class="flex flex-wrap gap-2">
+                    <span class="chip-input" data-value="Boutique / E-commerce">Boutique / E-commerce</span>
+                    <span class="chip-input" data-value="Servicios profesionales (bufete, contador, clínica)">Servicios profesionales</span>
+                    <span class="chip-input" data-value="Restaurante / Food">Restaurante / Food</span>
+                    <span class="chip-input" data-value="Fitness / Gym">Fitness / Gym</span>
+                    <span class="chip-input" data-value="Construcción / Servicios de campo">Construcción / Campo</span>
+                    <span class="chip-input" data-value="B2B / Industrial">B2B / Industrial</span>
+                    <span class="chip-input" data-value="Otro">Otro</span>
+                </div>
+            </div>
+
+            <!-- Lo que necesitas -->
+            <div>
+                <label for="request-text" class="block text-sm font-bold text-slate-900 mb-2">
+                    ¿Qué necesita tu negocio?
+                </label>
+                <p class="text-xs text-slate-500 mb-3">Mientras más específico, mejor el estimado. Ejemplos: "necesito un sitio nuevo que cotice automáticamente", "quiero que WhatsApp responda 24/7", "tengo data en 5 sitios y necesito un dashboard único".</p>
+                <textarea id="request-text" name="requestText" rows="5" maxlength="2000" required minlength="20"
+                    class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm leading-relaxed bg-white"
+                    placeholder="Describe lo que necesitas..."></textarea>
+                <div class="text-right text-xs text-slate-400 mt-1 font-mono"><span id="char-count">0</span> / 2000</div>
+            </div>
+
+            <!-- Urgencia -->
+            <div>
+                <label class="block text-sm font-bold text-slate-900 mb-3">¿Cuándo necesitas arrancar?</label>
+                <div id="urgency-chips" class="flex flex-wrap gap-2">
+                    <span class="chip-input" data-value="Esta semana">Esta semana</span>
+                    <span class="chip-input" data-value="Este mes">Este mes</span>
+                    <span class="chip-input" data-value="Próximos 3 meses">Próximos 3 meses</span>
+                    <span class="chip-input" data-value="Solo explorando">Solo explorando</span>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="pt-2">
+                <button type="submit" id="submit-btn" class="w-full hero-gradient text-white px-6 py-4 rounded-xl text-sm font-black uppercase tracking-widest hover:opacity-95 transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="btn-label">Generar cotización</span>
+                </button>
+                <p class="text-xs text-slate-400 text-center mt-3">
+                    Estimado directional generado por IA. Quote firme requiere diagnóstico de 30 min.
+                </p>
+            </div>
+        </form>
+
+        <!-- Loading -->
+        <div id="loading-state" class="hidden mt-8 demo-card text-center py-12">
+            <div class="flex justify-center gap-2 mb-5">
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+                <div class="w-3 h-3 bg-primary rounded-full loading-dot"></div>
+            </div>
+            <p class="text-sm text-slate-700 font-semibold mb-1" id="loading-msg">Analizando tu caso...</p>
+            <p class="text-xs text-slate-500 font-mono">Esto toma 5-10 segundos</p>
+        </div>
+
+        <!-- Error -->
+        <div id="error-state" class="hidden mt-8 bg-red-50 border border-red-200 rounded-xl px-6 py-5 text-sm text-red-900">
+            <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-red-600 mt-0.5">error</span>
+                <div>
+                    <div class="font-bold mb-1">No se pudo generar</div>
+                    <p id="error-msg"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="result-state" class="hidden mt-8 fade-in">
+            <div class="result-card overflow-hidden">
+
+                <!-- Friendly intro -->
+                <div class="px-6 py-6 bg-gradient-to-br from-primary-fixed to-white border-b border-slate-100">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-primary-fixed mb-2">Lo que te recomiendo</div>
+                    <p id="r-summary" class="text-base text-slate-800 leading-relaxed font-medium"></p>
+                </div>
+
+                <!-- Recommended systems -->
+                <div class="px-6 py-5 border-b border-slate-100">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Sistema(s) recomendado(s)</div>
+                    <div id="r-systems" class="space-y-3"></div>
+                </div>
+
+                <!-- Investment -->
+                <div class="px-6 py-5 border-b border-slate-100 bg-slate-50/60">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Inversión estimada</div>
+                    <div class="flex items-baseline gap-6 flex-wrap mb-3">
+                        <div>
+                            <div class="text-xs text-slate-500 font-medium">Setup</div>
+                            <div class="text-3xl font-black text-slate-900 font-mono">$<span id="r-setup">0</span></div>
+                        </div>
+                        <div id="r-monthly-block">
+                            <div class="text-xs text-slate-500 font-medium">+ mensual</div>
+                            <div class="text-3xl font-black text-slate-900 font-mono">$<span id="r-monthly">0</span><span class="text-base text-slate-400">/mes</span></div>
+                        </div>
+                    </div>
+                    <p id="r-breakdown" class="text-xs text-slate-600 leading-relaxed italic"></p>
+                </div>
+
+                <!-- Scope -->
+                <div class="px-6 py-5 border-b border-slate-100">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Lo que incluye</div>
+                    <ul id="r-scope" class="space-y-0"></ul>
+                </div>
+
+                <!-- Timeline -->
+                <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">schedule</span>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Timeline estimado</div>
+                        <div id="r-timeline" class="text-sm font-bold text-slate-900 mt-0.5"></div>
+                    </div>
+                </div>
+
+                <!-- Cost drivers -->
+                <div class="px-6 py-5">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Lo que mueve el precio</div>
+                    <ul id="r-drivers" class="space-y-0"></ul>
+                </div>
+            </div>
+
+            <!-- CTA strip -->
+            <div class="hero-gradient text-white rounded-2xl p-7 mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-100 mb-2">Próximo paso</p>
+                    <h3 class="text-xl font-black tracking-tight mb-1">¿Listo para un quote firme?</h3>
+                    <p class="text-white/80 text-sm leading-relaxed">30 min de diagnóstico — sin compromiso. Salimos con scope confirmado y precio cerrado.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+                    <a href="https://cal.com/mcdesignspr/30min" target="_blank" rel="noopener" class="bg-white text-primary px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-center whitespace-nowrap hover:bg-blue-50 transition-colors">Agendar Zoom</a>
+                    <a href="https://wa.me/17874699280" target="_blank" rel="noopener" class="border border-white/40 text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-center whitespace-nowrap hover:bg-white/10 transition-colors">WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Reset -->
+            <div class="text-center mt-6">
+                <button id="reset-btn" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary">← Cotizar otro caso</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── EXPLAINER STRIP ─── -->
+    <section class="max-w-5xl mx-auto px-8 pb-32">
+        <div class="bg-[#001945] text-white rounded-2xl p-8 md:p-10">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-200 mb-3">Sobre esta demo</p>
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight mb-3">Esto es exactamente lo que <span class="text-blue-300">El Impulso</span> hace en tu sitio.</h2>
+            <p class="text-white/75 leading-relaxed text-sm md:text-base mb-5 max-w-3xl">
+                Tu cliente llena un formulario, la IA analiza su caso y devuelve una cotización al instante — anclada a tu oferta real, en tu voz, con tus precios. Sin esperar a que tú estés disponible.
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a href="/servicios#el-impulso" class="bg-white text-[#001945] px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest hover:bg-blue-50 transition-colors">Ver El Impulso</a>
+                <a href="/lab" class="border border-white/30 text-white px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-colors">Más demos del Lab</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+        <div class="flex items-center gap-2">
+            <span>© 2026</span>
+            <a href="/" class="font-bold text-slate-900 hover:text-primary">MC Designs</a>
+            <span>· Diseño Web + Integración IA · Puerto Rico</span>
+        </div>
+        <div class="flex items-center gap-6 text-xs uppercase tracking-widest text-slate-400">
+            <a href="/lab" class="hover:text-primary">Más demos</a>
+            <a href="/contacto" class="hover:text-primary">Contacto</a>
+            <a href="/privacy" class="hover:text-primary">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ───── Chip selectors ─────
+function setupChips(containerId) {
+    const container = document.getElementById(containerId);
+    const chips = container.querySelectorAll('.chip-input');
+    let selected = null;
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            selected = chip.dataset.value;
+            container.dataset.selected = selected;
+        });
+    });
+    return () => container.dataset.selected || null;
+}
+
+const getIndustry = setupChips('industry-chips');
+const getUrgency = setupChips('urgency-chips');
+
+// ───── Char count ─────
+const textArea = document.getElementById('request-text');
+const charCount = document.getElementById('char-count');
+textArea.addEventListener('input', () => {
+    charCount.textContent = textArea.value.length;
+});
+
+// ───── Mobile menu ─────
+document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', !isHidden);
+    menu.classList.toggle('flex', isHidden);
+    icon.textContent = isHidden ? 'close' : 'menu';
+});
+
+// ───── Submit ─────
+const form = document.getElementById('quote-form');
+const loadingState = document.getElementById('loading-state');
+const loadingMsg = document.getElementById('loading-msg');
+const errorState = document.getElementById('error-state');
+const errorMsg = document.getElementById('error-msg');
+const resultState = document.getElementById('result-state');
+const submitBtn = document.getElementById('submit-btn');
+const btnLabel = document.getElementById('btn-label');
+
+const LOADING_MESSAGES = [
+    'Analizando tu caso...',
+    'Evaluando los sistemas que encajan...',
+    'Calculando inversión y timeline...',
+    'Preparando tu estimado...',
+];
+
+let loadingInterval = null;
+
+function showLoading() {
+    form.classList.add('hidden');
+    errorState.classList.add('hidden');
+    resultState.classList.add('hidden');
+    loadingState.classList.remove('hidden');
+    let i = 0;
+    loadingMsg.textContent = LOADING_MESSAGES[0];
+    loadingInterval = setInterval(() => {
+        i = (i + 1) % LOADING_MESSAGES.length;
+        loadingMsg.textContent = LOADING_MESSAGES[i];
+    }, 2400);
+}
+
+function hideLoading() {
+    loadingState.classList.add('hidden');
+    if (loadingInterval) { clearInterval(loadingInterval); loadingInterval = null; }
+}
+
+function showError(msg) {
+    hideLoading();
+    form.classList.remove('hidden');
+    errorMsg.textContent = msg;
+    errorState.classList.remove('hidden');
+    submitBtn.disabled = false;
+    btnLabel.textContent = 'Generar cotización';
+}
+
+function showResult(data) {
+    hideLoading();
+    errorState.classList.add('hidden');
+
+    // Friendly summary
+    document.getElementById('r-summary').textContent = data.friendly_summary;
+
+    // Systems
+    const systemsEl = document.getElementById('r-systems');
+    systemsEl.innerHTML = data.recommended_systems.map(s => `
+        <div class="flex flex-col gap-1.5">
+            <span class="system-pill self-start">${s.name}</span>
+            <p class="text-sm text-slate-700 leading-relaxed">${s.reason}</p>
+        </div>
+    `).join('');
+
+    // Pricing
+    document.getElementById('r-setup').textContent = data.price_setup.toLocaleString();
+    const monthlyBlock = document.getElementById('r-monthly-block');
+    if (data.price_monthly > 0) {
+        document.getElementById('r-monthly').textContent = data.price_monthly.toLocaleString();
+        monthlyBlock.classList.remove('hidden');
+    } else {
+        monthlyBlock.classList.add('hidden');
+    }
+    document.getElementById('r-breakdown').textContent = data.price_breakdown;
+
+    // Scope
+    document.getElementById('r-scope').innerHTML = data.scope_bullets.map(b => `<li class="scope-li">${b}</li>`).join('');
+
+    // Timeline
+    document.getElementById('r-timeline').textContent = data.timeline_estimate;
+
+    // Drivers
+    document.getElementById('r-drivers').innerHTML = data.cost_drivers.map(d => `<li class="driver-li">${d}</li>`).join('');
+
+    resultState.classList.remove('hidden');
+    setTimeout(() => resultState.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const requestText = textArea.value.trim();
+    if (requestText.length < 20) {
+        showError('Describe lo que necesitas con un poco más de detalle (mínimo 20 caracteres).');
+        return;
+    }
+    const industry = getIndustry();
+    const urgency = getUrgency();
+
+    submitBtn.disabled = true;
+    btnLabel.innerHTML = 'Generando...';
+    showLoading();
+
+    try {
+        const res = await fetch('/api/cotizador', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ industry, urgency, requestText }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            showError(data.error || 'Error generando cotización. Intenta de nuevo.');
+            return;
+        }
+        showResult(data);
+    } catch (err) {
+        showError('No se pudo conectar. Revisa tu conexión e intenta de nuevo.');
+    } finally {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Generar cotización';
+    }
+});
+
+// ───── Reset ─────
+document.getElementById('reset-btn').addEventListener('click', () => {
+    resultState.classList.add('hidden');
+    errorState.classList.add('hidden');
+    form.classList.remove('hidden');
+    form.reset();
+    document.querySelectorAll('.chip-input').forEach(c => c.classList.remove('active'));
+    document.getElementById('industry-chips').dataset.selected = '';
+    document.getElementById('urgency-chips').dataset.selected = '';
+    charCount.textContent = '0';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+<script type="module" src="assets/site-chat.js"></script>
+</body>
+</html>

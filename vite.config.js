@@ -24,6 +24,7 @@ export default defineConfig({
                 demoChatbot: resolve(__dirname, 'demo-chatbot.html'),
                 demoOcr: resolve(__dirname, 'demo-ocr.html'),
                 demoPanel: resolve(__dirname, 'demo-panel.html'),
+                demoCotizador: resolve(__dirname, 'demo-cotizador.html'),
                 intake: resolve(__dirname, 'intake.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
                 terms: resolve(__dirname, 'terms.html'),
