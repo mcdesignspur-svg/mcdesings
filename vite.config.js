@@ -17,7 +17,7 @@ export default defineConfig({
                 guiaConfiguracion: resolve(__dirname, 'guia-configuracion-claude-code.html'),
                 guiaMigracion: resolve(__dirname, 'guia-migracion-claude.html'),
                 guiaPrimerosPasos: resolve(__dirname, 'guia-primeros-pasos-ia.html'),
-                demos: resolve(__dirname, 'demos.html'),
+                lab: resolve(__dirname, 'lab.html'),
                 demoRoaster: resolve(__dirname, 'demo-roaster.html'),
                 demoBrand: resolve(__dirname, 'demo-brand.html'),
                 demoCaptions: resolve(__dirname, 'demo-captions.html'),
