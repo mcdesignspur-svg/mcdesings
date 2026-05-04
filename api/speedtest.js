@@ -85,20 +85,32 @@ export default async function handler(req, res) {
   try {
     const psUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params.toString()}`;
     const r = await fetch(psUrl);
+    const data = await r.json().catch(() => ({}));
 
     if (!r.ok) {
-      const body = await r.text().catch(() => '');
-      console.error('[speedtest] PageSpeed error', r.status, body.slice(0, 200));
-      if (r.status === 400 || r.status === 422) {
-        return res.status(400).json({ error: 'No pudimos analizar ese sitio. Verifica la URL o intenta con otro.' });
+      const errMsg = data?.error?.message || '';
+      const errReason = data?.error?.errors?.[0]?.reason || '';
+      console.error('[speedtest] PageSpeed HTTP error', r.status, errReason, errMsg.slice(0, 300));
+
+      if (r.status === 429) {
+        return res.status(429).json({ error: 'Google rate-limited el demo. Intenta en unos minutos o agenda diagnóstico directo.' });
       }
-      return res.status(502).json({ error: 'PageSpeed no pudo procesar el sitio. Intenta de nuevo en un minuto.' });
+      if (errReason === 'lighthouseError' || /lighthouse/i.test(errMsg)) {
+        return res.status(400).json({ error: 'El sitio cargó pero Lighthouse no pudo medirlo (puede estar bloqueando bots, requiere login, o tomó muy lento). Intenta con otra URL.' });
+      }
+      if (r.status === 400 || r.status === 422) {
+        return res.status(400).json({ error: errMsg || 'No pudimos analizar ese sitio. Verifica la URL o intenta con otro.' });
+      }
+      return res.status(502).json({ error: `PageSpeed devolvió ${r.status}. ${errMsg ? errMsg.slice(0, 120) : 'Intenta en un minuto.'}` });
     }
 
-    const data = await r.json();
     const lhr = data.lighthouseResult;
     if (!lhr) {
-      return res.status(502).json({ error: 'Respuesta inválida de PageSpeed.' });
+      return res.status(502).json({ error: 'Respuesta inválida de PageSpeed (sin lighthouseResult).' });
+    }
+    if (lhr.runtimeError && lhr.runtimeError.code) {
+      console.error('[speedtest] Lighthouse runtimeError', lhr.runtimeError);
+      return res.status(400).json({ error: `El sitio no se pudo medir: ${lhr.runtimeError.message || lhr.runtimeError.code}` });
     }
 
     // Curated payload — only what the demo renders
