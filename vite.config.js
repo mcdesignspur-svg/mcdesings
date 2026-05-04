@@ -26,7 +26,6 @@ export default defineConfig({
                 demoPanel: resolve(__dirname, 'demo-panel.html'),
                 demoCotizador: resolve(__dirname, 'demo-cotizador.html'),
                 demoImpulso: resolve(__dirname, 'demo-impulso.html'),
-                demoSpeedtest: resolve(__dirname, 'demo-speedtest.html'),
                 intake: resolve(__dirname, 'intake.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
                 terms: resolve(__dirname, 'terms.html'),
