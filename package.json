@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
-    "@supabase/supabase-js": "^2.49.4"
+    "@supabase/supabase-js": "^2.49.4",
+    "@vercel/analytics": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
