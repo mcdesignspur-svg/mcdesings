@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Panel de Operaciones · Demo · MC Designs</title>
+    <meta name="description" content="Mock interactivo del Panel de Operaciones MC Designs aplicado a Rivera & Asociados — agenda del día, casos activos, plazos críticos y cuentas por cobrar en una sola pantalla." />
+    <link rel="canonical" href="https://mcdesignspr.com/lab/panel-operaciones" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/lab/panel-operaciones" />
+    <meta property="og:title" content="Panel de Operaciones · Demo · MC Designs" />
+    <meta property="og:description" content="Mira cómo se ve operar un bufete entero desde una sola pantalla." />
+    <meta property="og:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0056c6",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001945",
+                        "navy": "#001945",
+                        "navy-soft": "#e0e7ff",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #f5f6f8; font-family: 'Inter', sans-serif; color: #1a1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
+        .navy-gradient { background: linear-gradient(135deg, #001945 0%, #1e3a8a 100%); }
+
+        /* Dashboard chrome */
+        .dash-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 14px; }
+        .dash-card-shadow { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04); }
+
+        /* Status chips */
+        .chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
+        .chip-green { background: #dcfce7; color: #166534; }
+        .chip-amber { background: #fef3c7; color: #92400e; }
+        .chip-red   { background: #fee2e2; color: #991b1b; }
+        .chip-slate { background: #f1f5f9; color: #334155; }
+        .chip-blue  { background: #dbeafe; color: #1e40af; }
+        .chip-navy  { background: #e0e7ff; color: #3730a3; }
+
+        /* Toggle */
+        .toggle-btn { padding: 6px 14px; font-size: 12px; font-weight: 600; color: #64748b; border-radius: 8px; transition: all 0.15s; }
+        .toggle-btn.active { background: #ffffff; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+
+        /* Pulse */
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.35} }
+        .pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+        /* Modal */
+        .modal-backdrop { background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(4px); }
+
+        /* Filter chips */
+        .fchip { padding: 4px 12px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: all 0.15s; }
+        .fchip-off { background: #f1f5f9; color: #475569; }
+        .fchip-off:hover { background: #e2e8f0; }
+        .fchip-on { background: #0f172a; color: #ffffff; }
+
+        /* Row hover */
+        .row-hover { transition: background-color 0.12s; cursor: pointer; }
+        .row-hover:hover { background-color: #f8fafc; }
+
+        /* Agenda timeline */
+        .timeline-item { position: relative; padding-left: 0; }
+        .timeline-bar { width: 3px; border-radius: 9999px; flex-shrink: 0; align-self: stretch; }
+
+        /* Demo banner */
+        .demo-banner {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            background: #0f172a; color: #cbd5e1;
+            font-size: 12px; padding: 8px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        }
+        .demo-banner a { color: #ffffff; font-weight: 600; }
+        .demo-banner-spacer { height: 36px; }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.25s ease-out; }
+
+        /* AR aging bar */
+        .aging-bar { display: flex; height: 8px; border-radius: 9999px; overflow: hidden; background: #f1f5f9; }
+        .aging-seg-1 { background: #16a34a; }
+        .aging-seg-2 { background: #f59e0b; }
+        .aging-seg-3 { background: #f97316; }
+        .aging-seg-4 { background: #dc2626; }
+    </style>
+</head>
+<body>
+
+<!-- Demo banner (MC Designs framing) -->
+<div class="demo-banner">
+    <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-base text-emerald-400">lab_research</span>
+        <span><strong class="text-white">MC Designs · Demo</strong> · Esto es Panel de Operaciones aplicado a un bufete ficticio. Toda la data es sintética.</span>
+    </div>
+    <div class="flex items-center gap-4">
+        <a href="/lab" class="hover:underline">← Volver al Lab</a>
+        <a href="/contacto" class="bg-white text-slate-900 px-3 py-1 rounded-md font-bold text-[11px] uppercase tracking-wider">Agenda diagnóstico</a>
+    </div>
+</div>
+<div class="demo-banner-spacer"></div>
+
+<!-- ────────────────────────────────────────────────────────── -->
+<!-- DASHBOARD CHROME                                           -->
+<!-- ────────────────────────────────────────────────────────── -->
+
+<header class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <!-- Brand: Rivera & Asociados -->
+        <div class="flex items-center gap-3">
+            <div class="w-9 h-9 navy-gradient rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-xl">gavel</span>
+            </div>
+            <div>
+                <div class="font-black text-base tracking-tight leading-none">Rivera &amp; Asociados</div>
+                <div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mt-0.5">Panel de Operaciones</div>
+            </div>
+        </div>
+
+        <!-- Fake nav -->
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium">
+            <a class="px-3 py-1.5 rounded-md bg-slate-100 text-slate-900 font-semibold">Overview</a>
+            <a class="px-3 py-1.5 rounded-md text-slate-500 hover:bg-slate-50">Casos</a>
+            <a class="px-3 py-1.5 rounded-md text-slate-500 hover:bg-slate-50">Calendario</a>
+            <a class="px-3 py-1.5 rounded-md text-slate-500 hover:bg-slate-50">Clientes</a>
+            <a class="px-3 py-1.5 rounded-md text-slate-500 hover:bg-slate-50">Documentos</a>
+            <a class="px-3 py-1.5 rounded-md text-slate-500 hover:bg-slate-50">Facturación</a>
+        </nav>
+
+        <!-- Right cluster: alert + user -->
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-red-50 border border-red-200 rounded-lg">
+                <span class="material-symbols-outlined text-red-600 text-base">priority_high</span>
+                <div class="text-xs">
+                    <div class="font-bold text-slate-900 leading-none">1 plazo vence</div>
+                    <div class="text-red-700 text-[10px] mt-0.5">mañana 5:00 PM</div>
+                </div>
+            </div>
+            <div class="w-9 h-9 bg-slate-200 rounded-full flex items-center justify-center font-bold text-sm text-slate-700">LR</div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+
+    <!-- ─── HERO: AI Digest + KPIs ─── -->
+    <section class="mb-8">
+        <div class="flex items-start justify-between gap-6 flex-wrap mb-6">
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Resumen del día</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Generado por IA · hace 2 min</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-3">
+                    Buenos días, <span class="text-primary">Lic. Rivera</span>.
+                </h1>
+                <p id="digest-text" class="text-base text-slate-600 leading-relaxed max-w-3xl">
+                    <strong class="text-slate-900">3 audiencias hoy:</strong> Tribunal Supremo 9am (Rivera vs ATH), Corte de Familia 11am (Custodia García), TPI Bayamón 2:30pm (Pérez vs AEE). <strong class="text-red-600">Plazo crítico:</strong> moción de réplica caso Vega vence <strong>mañana 5pm</strong>. <strong class="text-slate-900">AR:</strong> $42,800 pendiente, 3 clientes &gt;60 días.
+                </p>
+            </div>
+
+            <!-- Time toggle -->
+            <div class="flex items-center bg-slate-100 rounded-lg p-1">
+                <button class="toggle-btn active" data-range="today">Hoy</button>
+                <button class="toggle-btn" data-range="week">7 días</button>
+                <button class="toggle-btn" data-range="month">30 días</button>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="dash-card dash-card-shadow p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 bg-navy-soft rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-lg">gavel</span>
+                    </div>
+                    <span id="kpi1-delta" class="chip chip-slate">3 cortes</span>
+                </div>
+                <div class="text-3xl font-black tracking-tight text-slate-900"><span id="kpi1-value">3</span></div>
+                <div class="text-xs text-slate-500 mt-1 font-medium" id="kpi1-label">Audiencias hoy</div>
+            </div>
+
+            <div class="dash-card dash-card-shadow p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-blue-600 text-lg">folder_open</span>
+                    </div>
+                    <span id="kpi2-delta" class="chip chip-green">+3 mes</span>
+                </div>
+                <div class="text-3xl font-black tracking-tight text-slate-900"><span id="kpi2-value">47</span></div>
+                <div class="text-xs text-slate-500 mt-1 font-medium">Casos activos</div>
+            </div>
+
+            <div class="dash-card dash-card-shadow p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 bg-emerald-50 rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-emerald-600 text-lg">schedule</span>
+                    </div>
+                    <span id="kpi3-delta" class="chip chip-green">+8 vs mes pasado</span>
+                </div>
+                <div class="text-3xl font-black tracking-tight text-slate-900"><span id="kpi3-value">142.5</span><span class="text-slate-400 text-xl font-bold">h</span></div>
+                <div class="text-xs text-slate-500 mt-1 font-medium" id="kpi3-label">Horas facturables MTD</div>
+            </div>
+
+            <div class="dash-card dash-card-shadow p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 bg-red-50 rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-red-600 text-lg">request_quote</span>
+                    </div>
+                    <span class="chip chip-red">3 &gt;60 días</span>
+                </div>
+                <div class="text-3xl font-black tracking-tight text-slate-900">$<span id="kpi4-value">42,800</span></div>
+                <div class="text-xs text-slate-500 mt-1 font-medium">Cuentas por cobrar</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── 4 SECCIONES (2x2 con balance) ─── -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- ─── 1. AGENDA DE HOY (col-span 2) ─── -->
+        <section class="dash-card dash-card-shadow lg:col-span-2 overflow-hidden">
+            <header class="px-5 py-4 border-b border-slate-100 flex items-center justify-between flex-wrap gap-3">
+                <div>
+                    <h2 class="font-black tracking-tight text-base text-slate-900">Agenda de Hoy</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">9 eventos · 3 audiencias en corte</p>
+                </div>
+                <div class="flex items-center gap-1.5" id="agenda-filters">
+                    <span class="fchip fchip-on" data-filter="all">Todo</span>
+                    <span class="fchip fchip-off" data-filter="court">Corte</span>
+                    <span class="fchip fchip-off" data-filter="meeting">Reuniones</span>
+                    <span class="fchip fchip-off" data-filter="call">Llamadas</span>
+                    <span class="fchip fchip-off" data-filter="internal">Interno</span>
+                </div>
+            </header>
+            <div id="agenda-list" class="divide-y divide-slate-100"></div>
+        </section>
+
+        <!-- ─── 2. PLAZOS CRÍTICOS (col-span 1, top-right) ─── -->
+        <section class="dash-card dash-card-shadow overflow-hidden">
+            <header class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                    <h2 class="font-black tracking-tight text-base text-slate-900">Plazos Críticos</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">Próximos 45 días</p>
+                </div>
+                <span class="chip chip-red"><span class="w-1.5 h-1.5 bg-red-500 rounded-full pulse-dot"></span> 1 mañana</span>
+            </header>
+            <div id="deadlines-list" class="divide-y divide-slate-100"></div>
+        </section>
+
+        <!-- ─── 3. CASOS ACTIVOS (col-span 2, bottom-left) ─── -->
+        <section class="dash-card dash-card-shadow lg:col-span-2 overflow-hidden">
+            <header class="px-5 py-4 border-b border-slate-100 flex items-center justify-between flex-wrap gap-3">
+                <div>
+                    <h2 class="font-black tracking-tight text-base text-slate-900">Casos Activos</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">47 totales · mostrando 8 con actividad reciente</p>
+                </div>
+                <div class="flex items-center gap-1.5" id="cases-filters">
+                    <span class="fchip fchip-on" data-filter="all">Todos</span>
+                    <span class="fchip fchip-off" data-filter="civil">Civil</span>
+                    <span class="fchip fchip-off" data-filter="familia">Familia</span>
+                    <span class="fchip fchip-off" data-filter="corp">Corporativo</span>
+                    <span class="fchip fchip-off" data-filter="suc">Sucesiones</span>
+                </div>
+            </header>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-slate-50 text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+                        <tr>
+                            <th class="text-left px-5 py-3">Caso</th>
+                            <th class="text-left px-5 py-3 hidden md:table-cell">Tipo</th>
+                            <th class="text-left px-5 py-3">Status</th>
+                            <th class="text-left px-5 py-3 hidden md:table-cell">Última actividad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cases-tbody" class="divide-y divide-slate-100"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ─── 4. CUENTAS POR COBRAR (col-span 1, bottom-right) ─── -->
+        <section class="dash-card dash-card-shadow overflow-hidden">
+            <header class="px-5 py-4 border-b border-slate-100">
+                <h2 class="font-black tracking-tight text-base text-slate-900">Cuentas por Cobrar</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Aging por cliente</p>
+            </header>
+            <!-- Aging bar -->
+            <div class="px-5 py-4 border-b border-slate-100">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Total pendiente</span>
+                    <span class="font-black text-slate-900 font-mono">$42,800</span>
+                </div>
+                <div class="aging-bar mb-2">
+                    <div class="aging-seg-1" style="width: 43%"></div>
+                    <div class="aging-seg-2" style="width: 28%"></div>
+                    <div class="aging-seg-3" style="width: 20%"></div>
+                    <div class="aging-seg-4" style="width: 9%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+                    <span>0-30d $18.4k</span>
+                    <span>30-60 $12.2k</span>
+                    <span>60-90 $8.6k</span>
+                    <span class="text-red-600 font-bold">90+ $3.6k</span>
+                </div>
+            </div>
+            <div id="ar-list" class="divide-y divide-slate-100"></div>
+        </section>
+
+    </div>
+
+</main>
+
+<!-- ────────────────────────────────────────────────────────── -->
+<!-- CTA STRIP                                                  -->
+<!-- ────────────────────────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-6 pb-12 mt-8">
+    <div class="hero-gradient text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-100 mb-3">Esto es Panel de Operaciones</p>
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight mb-3 leading-tight">Tu bufete entero en una pantalla.</h2>
+            <p class="text-white/80 max-w-2xl leading-relaxed text-sm md:text-base">
+                Adaptado a tu operación en 4-5 semanas. Conectado a tu calendario, sistema de facturación, documentos y CRM. Desde $6,500 · $800/mes.
+            </p>
+        </div>
+        <div class="flex flex-col gap-2 shrink-0">
+            <a href="/contacto" class="bg-white text-primary px-7 py-4 rounded-xl text-xs font-black uppercase tracking-widest text-center whitespace-nowrap hover:bg-blue-50 transition-colors">Agenda diagnóstico</a>
+            <a href="/servicios#panel-operaciones" class="text-blue-100 text-xs font-bold uppercase tracking-widest text-center hover:text-white">Ver detalles del sistema →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────── -->
+<!-- MODAL                                                      -->
+<!-- ────────────────────────────────────────────────────────── -->
+<div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-backdrop">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto fade-in">
+        <header class="px-6 py-4 border-b border-slate-100 flex items-start justify-between gap-4">
+            <div>
+                <p id="modal-eyebrow" class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1"></p>
+                <h3 id="modal-title" class="text-xl font-black tracking-tight text-slate-900"></h3>
+            </div>
+            <button onclick="closeModal()" class="text-slate-400 hover:text-slate-900 transition-colors p-1">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </header>
+        <div id="modal-body" class="p-6"></div>
+    </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────────── -->
+<!-- FOOTER                                                     -->
+<!-- ────────────────────────────────────────────────────────── -->
+<footer class="border-t border-slate-200 bg-white py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-2">
+            <span>Demo construido por</span>
+            <a href="/" class="font-bold text-slate-900 hover:text-primary">MC Designs</a>
+            <span>· Diseño Web + Integración IA · Puerto Rico</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="/lab" class="hover:text-primary">Más demos</a>
+            <a href="/servicios" class="hover:text-primary">Servicios</a>
+            <a href="/contacto" class="hover:text-primary">Contacto</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ────────────────────────────────────────────────────────── -->
+<!-- DATA + INTERACTIVITY                                       -->
+<!-- ────────────────────────────────────────────────────────── -->
+<script>
+// ───── SYNTHETIC DATA ─────
+
+const KPI = {
+    today: {
+        k1: { value: 3, label: 'Audiencias hoy', delta: '3 cortes', deltaType: 'slate' },
+        k2: { value: 47, delta: '+3 mes',  deltaType: 'green' },
+        k3: { value: '142.5', label: 'Horas facturables MTD', delta: '+8 vs mes pasado', deltaType: 'green' },
+        k4: { value: '42,800' }
+    },
+    week: {
+        k1: { value: 11, label: 'Audiencias 7 días', delta: 'Sup, TPI, Apel.', deltaType: 'slate' },
+        k2: { value: 47, delta: '+3 mes',  deltaType: 'green' },
+        k3: { value: '142.5', label: 'Horas facturables MTD', delta: '+8 vs mes pasado', deltaType: 'green' },
+        k4: { value: '42,800' }
+    },
+    month: {
+        k1: { value: 38, label: 'Audiencias 30 días', delta: '4 ganadas', deltaType: 'green' },
+        k2: { value: 47, delta: '+3 mes',  deltaType: 'green' },
+        k3: { value: '142.5', label: 'Horas facturables MTD', delta: '+8 vs mes pasado', deltaType: 'green' },
+        k4: { value: '42,800' }
+    }
+};
+
+const DIGEST = {
+    today: '<strong class="text-slate-900">3 audiencias hoy:</strong> Tribunal Supremo 9am (Rivera vs ATH), Corte de Familia 11am (Custodia García), TPI Bayamón 2:30pm (Pérez vs AEE). <strong class="text-red-600">Plazo crítico:</strong> moción de réplica caso Vega vence <strong>mañana 5pm</strong>. <strong class="text-slate-900">AR:</strong> $42,800 pendiente, 3 clientes &gt;60 días.',
+    week: 'Semana cargada: <strong class="text-slate-900">11 audiencias</strong> entre Supremo, TPI y Apelaciones. <strong class="text-slate-900">2 mociones</strong> vencen esta semana (Vega mañana, Pérez en 3 días). <strong class="text-emerald-700">3 casos nuevos</strong> intake completado. AR cobrado esta semana: <strong class="text-slate-900">$8,400</strong>.',
+    month: 'Mes sólido: <strong class="text-slate-900">38 audiencias</strong>, <strong class="text-emerald-700">4 ganadas</strong> (incluyendo Hotel Boutique compliance). <strong class="text-slate-900">8 casos nuevos</strong>, 3 cerrados favorablemente. <strong class="text-amber-700">AR aging:</strong> bucket 60-90 creció 12% — escalar a Sucesión Cruz y Vega.'
+};
+
+// ───── AGENDA DE HOY (cronológico) ─────
+const AGENDA = [
+    { time: '8:00 AM', type: 'meeting', title: 'Conferencia inicial — Carlos Méndez', detail: 'Consulta divorcio. Referido por Lic. Santos.', location: 'Oficina · Sala A', duration: '45 min', client: 'Méndez (prospect)' },
+    { time: '9:00 AM', type: 'court', title: 'Tribunal Supremo PR', detail: 'Caso Rivera vs ATH Móvil — argumentación oral apelación.', location: 'Hato Rey · Sala 3', duration: '1h 30min', client: 'Carmen Rivera', urgent: true },
+    { time: '10:30 AM', type: 'internal', title: 'Reunión semanal del equipo', detail: 'Repaso de casos activos con Lic. Santos y paralegal.', location: 'Conferencia interna', duration: '30 min' },
+    { time: '11:00 AM', type: 'court', title: 'Corte de Familia San Juan', detail: 'Vista — Custodia García. Testigo: Dra. Méndez (psicóloga).', location: 'San Juan · Sala 5', duration: '2h', client: 'José García' },
+    { time: '12:30 PM', type: 'meeting', title: 'Almuerzo — Hotel Boutique San Juan', detail: 'Repaso retainer corporativo Q2 con CEO Roberto Pagán.', location: 'Restaurante La Casona', duration: '1h 30min', client: 'Hotel Boutique' },
+    { time: '1:30 PM', type: 'call', title: 'Llamada counterparty — Caso Vega', detail: 'Negociación settlement con Lic. Ramos (representa Construction Co).', location: 'Conferencia telefónica', duration: '30 min', client: 'Vega Construction' },
+    { time: '2:30 PM', type: 'court', title: 'TPI Bayamón', detail: 'Caso Pérez vs Compañía Eléctrica — moción de evidencia.', location: 'Bayamón · Sala 2', duration: '1h', client: 'Familia Pérez' },
+    { time: '4:00 PM', type: 'internal', title: 'Revisión drafts pendientes', detail: '3 documentos: contrato Tech Solutions, demanda Méndez, respuesta interrogatorios.', location: 'Oficina', duration: '1h' },
+    { time: '5:00 PM', type: 'meeting', title: 'Conferencia inicial — Lead web', detail: 'Prospect llegó por formulario web. Caso laboral. Pre-cualificado por IA.', location: 'Oficina · Sala B', duration: '45 min', client: 'Lead web' },
+];
+
+const TYPE_META = {
+    court:    { color: 'bg-red-500',     icon: 'gavel',         label: 'Corte',    chip: 'chip-red' },
+    meeting:  { color: 'bg-blue-500',    icon: 'groups',        label: 'Reunión',  chip: 'chip-blue' },
+    call:     { color: 'bg-slate-400',   icon: 'call',          label: 'Llamada',  chip: 'chip-slate' },
+    internal: { color: 'bg-indigo-400',  icon: 'edit_document', label: 'Interno',  chip: 'chip-navy' },
+};
+
+// ───── PLAZOS CRÍTICOS (sorted by urgency) ─────
+const DEADLINES = [
+    { case: 'Vega vs Construction Co', type: 'Moción de réplica', due: 'Mañana · 5:00 PM', daysLeft: 1, urgency: 'red',
+      detail: 'Réplica a oposición de moción dispositiva. Borrador 70% completo. Paralegal está terminando exhibits.', action: 'Revisar borrador hoy o noche.' },
+    { case: 'Pérez vs Compañía Eléctrica', type: 'Respuesta interrogatorios', due: 'En 3 días', daysLeft: 3, urgency: 'red',
+      detail: '47 interrogatorios + 12 requerimientos de producción. Pendiente: revisar respuestas con cliente.', action: 'Programar llamada con cliente esta semana.' },
+    { case: 'Méndez Divorcio', type: 'Filing inicial', due: 'En 7 días', daysLeft: 7, urgency: 'amber',
+      detail: 'Demanda de divorcio + petición de pensión. Cliente firmó retainer ayer.', action: 'Asignar a paralegal para draft.' },
+    { case: 'Prospect Santiago', type: 'Statute of limitations', due: 'En 14 días', daysLeft: 14, urgency: 'amber',
+      detail: 'Caso laboral — despido injustificado. Prospect aún no firma retainer. Decidir si tomamos.', action: 'Cerrar decisión esta semana.' },
+    { case: 'Hotel Boutique San Juan', type: 'Renovación contrato anual', due: 'En 30 días', daysLeft: 30, urgency: 'green',
+      detail: 'Retainer corporativo. CEO indicó interés en renovar + agregar compliance laboral.', action: 'Preparar propuesta de renovación.' },
+    { case: 'Custodia García', type: 'Vista preliminar', due: 'En 45 días', daysLeft: 45, urgency: 'green',
+      detail: 'Vista preliminar custodia. Reunir documentación adicional sobre estabilidad económica.', action: 'Solicitar evaluación social.' },
+];
+
+// ───── CASOS ACTIVOS ─────
+const CASES = [
+    { name: 'Rivera vs ATH Móvil',          client: 'Carmen Rivera',     area: 'civil',   areaLabel: 'Civil',        status: 'En apelación',     statusChip: 'chip-blue',  lastActivity: 'Hoy',       daysSince: 0,
+      detail: 'Apelación pendiente decisión Tribunal Supremo (argumentación oral hoy). Contraparte representada por Méndez & Co.', billed: '$28,400', hours: '142h' },
+    { name: 'Custodia García',               client: 'José García',       area: 'familia', areaLabel: 'Familia',      status: 'Vista programada', statusChip: 'chip-amber', lastActivity: 'Ayer',      daysSince: 1,
+      detail: 'Custodia compartida menor de 8 años. Vista preliminar en 45 días. Evidencia psicológica clave.', billed: '$8,200', hours: '41h' },
+    { name: 'Vega vs Construction Co',       client: 'Vega Construction', area: 'civil',   areaLabel: 'Civil',        status: 'Settlement',       statusChip: 'chip-amber', lastActivity: 'Hoy',       daysSince: 0,
+      detail: 'Disputa contractual $180k. Negociación settlement activa. Moción dispositiva resuelta a favor.', billed: '$15,200', hours: '76h', urgent: true },
+    { name: 'Pérez vs AEE',                  client: 'Familia Pérez',     area: 'civil',   areaLabel: 'Civil',        status: 'Discovery',        statusChip: 'chip-blue',  lastActivity: 'Hace 3 días', daysSince: 3,
+      detail: 'Demanda por daños — apagón prolongado dañó equipo médico. Discovery 80% completado.', billed: '$11,400', hours: '57h' },
+    { name: 'Hotel Boutique Compliance',     client: 'Hotel Boutique',    area: 'corp',    areaLabel: 'Corporativo',  status: 'Activo',           statusChip: 'chip-green', lastActivity: 'Hace 5 días', daysSince: 5,
+      detail: 'Retainer corporativo mensual. Compliance laboral + revisión contratos vendors.', billed: '$5,400/mes', hours: '12h/mes' },
+    { name: 'Estado Sucesión Cruz',          client: 'Familia Cruz',      area: 'suc',     areaLabel: 'Sucesiones',   status: 'Inventario',       statusChip: 'chip-slate', lastActivity: 'Hace 12 días', daysSince: 12,
+      detail: '⚠️ Caso estancado. Espera evaluación de propiedades. Heredera principal no responde llamadas.', billed: '$3,800', hours: '19h' },
+    { name: 'Méndez Divorcio',               client: 'Carlos Méndez',     area: 'familia', areaLabel: 'Familia',      status: 'Intake',           statusChip: 'chip-blue',  lastActivity: 'Hoy',       daysSince: 0,
+      detail: 'Intake hoy. Divorcio + pensión + custodia menores. Retainer firmado.', billed: '$1,200', hours: '6h' },
+    { name: 'Tech Solutions Contract',       client: 'Tech Solutions PR', area: 'corp',    areaLabel: 'Corporativo',  status: 'En revisión',      statusChip: 'chip-blue',  lastActivity: 'Hace 2 días', daysSince: 2,
+      detail: 'Revisión MSA con vendor en USA. Cláusulas de IP y arbitraje requieren modificación.', billed: '$6,800', hours: '34h' },
+];
+
+// ───── CUENTAS POR COBRAR ─────
+const AR = [
+    { client: 'Vega Construction',    amount: 15200, days: 45, bucket: 'amber',  invoices: 3,
+      detail: 'Settlement caso activo — pago vinculado a resolución. Esperar 30 días más.' },
+    { client: 'Sucesión Cruz',        amount: 8400,  days: 78, bucket: 'orange', invoices: 2,
+      detail: 'Caso estancado. 2 recordatorios enviados sin respuesta. Sugerencia: escalar a llamada o pausar trabajo.' },
+    { client: 'Tech Solutions PR',    amount: 6800,  days: 22, bucket: 'green',  invoices: 1,
+      detail: 'Cliente confiable. Net 30 — al día.' },
+    { client: 'Hotel Boutique SJ',    amount: 5400,  days: 18, bucket: 'green',  invoices: 1,
+      detail: 'Retainer mensual. CFO procesa entre días 25-30 cada mes.' },
+    { client: 'Familia Pérez',        amount: 3600,  days: 92, bucket: 'red',    invoices: 2,
+      detail: '⚠️ 90+ días. Cliente en dificultad financiera. Considerar plan de pago o write-off parcial.' },
+    { client: 'Constructora ABC',     amount: 3400,  days: 35, bucket: 'amber',  invoices: 1,
+      detail: 'Net 30 vencido. Email de cortesía enviado hace 5 días.' },
+];
+
+// ───── HELPERS ─────
+
+const URGENCY_DOT = {
+    red:   '<span class="w-2.5 h-2.5 bg-red-500 rounded-full shrink-0 pulse-dot"></span>',
+    amber: '<span class="w-2.5 h-2.5 bg-amber-500 rounded-full shrink-0"></span>',
+    green: '<span class="w-2.5 h-2.5 bg-emerald-500 rounded-full shrink-0"></span>',
+};
+
+const URGENCY_CHIP = {
+    red:   'chip chip-red',
+    amber: 'chip chip-amber',
+    green: 'chip chip-green',
+};
+
+const BUCKET_CHIP = {
+    green:  'chip chip-green',
+    amber:  'chip chip-amber',
+    orange: 'chip chip-amber',
+    red:    'chip chip-red',
+};
+
+// ───── RENDER ─────
+
+let currentRange = 'today';
+let currentAgendaFilter = 'all';
+let currentCasesFilter = 'all';
+
+function renderKPIs() {
+    const k = KPI[currentRange];
+    document.getElementById('kpi1-value').textContent = k.k1.value;
+    document.getElementById('kpi1-label').textContent = k.k1.label;
+    document.getElementById('kpi1-delta').textContent = k.k1.delta;
+    document.getElementById('kpi1-delta').className = 'chip chip-' + k.k1.deltaType;
+
+    document.getElementById('kpi2-value').textContent = k.k2.value;
+    document.getElementById('kpi2-delta').textContent = k.k2.delta;
+
+    document.getElementById('kpi3-value').textContent = k.k3.value;
+    document.getElementById('kpi3-label').textContent = k.k3.label;
+    document.getElementById('kpi3-delta').textContent = k.k3.delta;
+
+    document.getElementById('kpi4-value').textContent = k.k4.value;
+
+    document.getElementById('digest-text').innerHTML = DIGEST[currentRange];
+}
+
+function renderAgenda() {
+    const list = document.getElementById('agenda-list');
+    const filtered = AGENDA.filter(a => currentAgendaFilter === 'all' || a.type === currentAgendaFilter);
+    if (filtered.length === 0) {
+        list.innerHTML = '<div class="text-center py-12 text-slate-400 text-sm">Nada en esta categoría hoy.</div>';
+        return;
+    }
+    list.innerHTML = filtered.map((a, i) => {
+        const m = TYPE_META[a.type];
+        const idx = AGENDA.indexOf(a);
+        return `
+        <div class="row-hover fade-in flex items-stretch gap-4 px-5 py-3.5" onclick="openAgendaModal(${idx})">
+            <div class="timeline-bar ${m.color}"></div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span class="font-mono text-xs font-bold text-slate-700 whitespace-nowrap">${a.time}</span>
+                        <span class="${m.chip} chip">${m.label}</span>
+                        ${a.urgent ? '<span class="chip chip-red"><span class="material-symbols-outlined text-[12px]">priority_high</span></span>' : ''}
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono whitespace-nowrap">${a.duration}</span>
+                </div>
+                <div class="font-semibold text-slate-900 text-sm">${a.title}</div>
+                <div class="text-xs text-slate-500 mt-0.5 truncate">${a.detail}</div>
+            </div>
+        </div>
+        `;
+    }).join('');
+}
+
+function renderDeadlines() {
+    const list = document.getElementById('deadlines-list');
+    list.innerHTML = DEADLINES.map((d, i) => `
+        <div class="px-5 py-3.5 row-hover" onclick="openDeadlineModal(${i})">
+            <div class="flex items-start gap-3">
+                ${URGENCY_DOT[d.urgency]}
+                <div class="min-w-0 flex-1">
+                    <div class="font-semibold text-slate-900 text-sm leading-tight">${d.type}</div>
+                    <div class="text-xs text-slate-500 mt-0.5 truncate">${d.case}</div>
+                    <div class="text-[11px] font-mono font-bold mt-1 ${d.urgency === 'red' ? 'text-red-600' : d.urgency === 'amber' ? 'text-amber-700' : 'text-emerald-700'}">${d.due}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderCases() {
+    const tbody = document.getElementById('cases-tbody');
+    const filtered = CASES.filter(c => currentCasesFilter === 'all' || c.area === currentCasesFilter);
+    if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-slate-400 text-sm">No hay casos en esta categoría.</td></tr>';
+        return;
+    }
+    tbody.innerHTML = filtered.map((c, i) => {
+        const idx = CASES.indexOf(c);
+        const staleClass = c.daysSince >= 7 ? 'text-red-600 font-bold' : c.daysSince >= 3 ? 'text-amber-700 font-semibold' : 'text-slate-500';
+        return `
+        <tr class="row-hover fade-in" onclick="openCaseModal(${idx})">
+            <td class="px-5 py-3">
+                <div class="font-semibold text-slate-900 flex items-center gap-2">
+                    ${c.urgent ? '<span class="w-1.5 h-1.5 bg-red-500 rounded-full pulse-dot"></span>' : ''}
+                    ${c.name}
+                </div>
+                <div class="text-xs text-slate-500 mt-0.5">${c.client}</div>
+            </td>
+            <td class="px-5 py-3 hidden md:table-cell text-slate-600 text-xs font-medium">${c.areaLabel}</td>
+            <td class="px-5 py-3"><span class="chip ${c.statusChip}">${c.status}</span></td>
+            <td class="px-5 py-3 hidden md:table-cell text-xs ${staleClass} font-mono">${c.lastActivity}</td>
+        </tr>
+        `;
+    }).join('');
+}
+
+function renderAR() {
+    const list = document.getElementById('ar-list');
+    list.innerHTML = AR.map((a, i) => `
+        <div class="px-5 py-3.5 row-hover" onclick="openARModal(${i})">
+            <div class="flex items-start justify-between gap-3 mb-1">
+                <div class="font-semibold text-slate-900 text-sm">${a.client}</div>
+                <div class="font-mono font-bold text-slate-900 text-sm shrink-0">$${a.amount.toLocaleString()}</div>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] text-slate-400 font-mono">${a.invoices} ${a.invoices === 1 ? 'factura' : 'facturas'}</span>
+                <span class="${BUCKET_CHIP[a.bucket]}">${a.days}d</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ───── MODALS ─────
+
+function openModal(eyebrow, title, bodyHTML) {
+    document.getElementById('modal-eyebrow').textContent = eyebrow;
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-body').innerHTML = bodyHTML;
+    const m = document.getElementById('modal');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const m = document.getElementById('modal');
+    m.classList.add('hidden');
+    m.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal') closeModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+function openAgendaModal(i) {
+    const a = AGENDA[i];
+    const m = TYPE_META[a.type];
+    openModal(m.label + ' · ' + a.duration, a.title, `
+        <div class="space-y-4">
+            <div class="flex items-center gap-2"><span class="chip ${m.chip}">${m.label}</span>${a.urgent ? '<span class="chip chip-red">Urgente</span>' : ''}</div>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Hora</div>
+                    <div class="font-mono font-bold text-slate-900 mt-1">${a.time}</div>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Duración</div>
+                    <div class="font-mono font-bold text-slate-900 mt-1">${a.duration}</div>
+                </div>
+                <div class="col-span-2">
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Lugar</div>
+                    <div class="text-slate-900 mt-1">${a.location}</div>
+                </div>
+                ${a.client ? `
+                <div class="col-span-2">
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Cliente</div>
+                    <div class="text-slate-900 mt-1 font-semibold">${a.client}</div>
+                </div>` : ''}
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Detalle</div>
+                <p class="text-sm text-slate-700 leading-relaxed">${a.detail}</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="flex-1 bg-slate-100 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-200">Reagendar</button>
+                <button class="flex-1 bg-primary text-white px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700">Abrir expediente</button>
+            </div>
+        </div>
+    `);
+}
+
+function openDeadlineModal(i) {
+    const d = DEADLINES[i];
+    openModal('Plazo crítico · ' + d.due, d.type, `
+        <div class="space-y-4">
+            <div class="flex items-center gap-2"><span class="${URGENCY_CHIP[d.urgency]}">${d.urgency === 'red' ? 'Urgente' : d.urgency === 'amber' ? 'Próximo' : 'Tiempo cómodo'}</span></div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Caso</div>
+                <div class="text-slate-900 font-semibold mt-1">${d.case}</div>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Estado del documento</div>
+                <p class="text-sm text-slate-700 leading-relaxed">${d.detail}</p>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+                <div class="text-[10px] uppercase tracking-widest text-blue-700 font-bold mb-2 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">auto_awesome</span> Acción sugerida
+                </div>
+                <p class="text-sm text-blue-900 leading-relaxed">${d.action}</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="flex-1 bg-slate-100 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-200">Asignar a paralegal</button>
+                <button class="flex-1 bg-primary text-white px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700">Abrir borrador</button>
+            </div>
+        </div>
+    `);
+}
+
+function openCaseModal(i) {
+    const c = CASES[i];
+    openModal(c.areaLabel + ' · ' + c.client, c.name, `
+        <div class="space-y-4">
+            <div class="flex items-center gap-2"><span class="chip ${c.statusChip}">${c.status}</span>${c.urgent ? '<span class="chip chip-red">Plazo activo</span>' : ''}</div>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Facturado</div>
+                    <div class="font-mono font-bold text-slate-900 mt-1">${c.billed}</div>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Horas trabajadas</div>
+                    <div class="font-mono font-bold text-slate-900 mt-1">${c.hours}</div>
+                </div>
+                <div class="col-span-2">
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Última actividad</div>
+                    <div class="text-slate-900 mt-1">${c.lastActivity}</div>
+                </div>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Resumen del caso</div>
+                <p class="text-sm text-slate-700 leading-relaxed">${c.detail}</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="flex-1 bg-slate-100 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-200">Ver expediente</button>
+                <button class="flex-1 bg-primary text-white px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700">Registrar tiempo</button>
+            </div>
+        </div>
+    `);
+}
+
+function openARModal(i) {
+    const a = AR[i];
+    openModal('Cuenta por cobrar · ' + a.days + ' días', a.client, `
+        <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3 py-3 border-b border-slate-100">
+                <div>
+                    <div class="text-sm font-semibold text-slate-900">${a.invoices} ${a.invoices === 1 ? 'factura' : 'facturas'} pendientes</div>
+                    <div class="text-xs text-slate-500 mt-1">${a.days} días desde primera factura</div>
+                </div>
+                <div class="text-2xl font-black text-slate-900 font-mono">$${a.amount.toLocaleString()}</div>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Análisis</div>
+                <p class="text-sm text-slate-700 leading-relaxed">${a.detail}</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="flex-1 bg-slate-100 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-200">Ver facturas</button>
+                <button class="flex-1 bg-primary text-white px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700">Enviar recordatorio</button>
+            </div>
+        </div>
+    `);
+}
+
+// ───── EVENT LISTENERS ─────
+
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRange = btn.dataset.range;
+        renderKPIs();
+    });
+});
+
+document.querySelectorAll('#agenda-filters .fchip').forEach(chip => {
+    chip.addEventListener('click', () => {
+        document.querySelectorAll('#agenda-filters .fchip').forEach(c => { c.classList.remove('fchip-on'); c.classList.add('fchip-off'); });
+        chip.classList.remove('fchip-off'); chip.classList.add('fchip-on');
+        currentAgendaFilter = chip.dataset.filter;
+        renderAgenda();
+    });
+});
+
+document.querySelectorAll('#cases-filters .fchip').forEach(chip => {
+    chip.addEventListener('click', () => {
+        document.querySelectorAll('#cases-filters .fchip').forEach(c => { c.classList.remove('fchip-on'); c.classList.add('fchip-off'); });
+        chip.classList.remove('fchip-off'); chip.classList.add('fchip-on');
+        currentCasesFilter = chip.dataset.filter;
+        renderCases();
+    });
+});
+
+// ───── INITIAL RENDER ─────
+renderKPIs();
+renderAgenda();
+renderDeadlines();
+renderCases();
+renderAR();
+</script>
+
+</body>
+</html>

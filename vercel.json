@@ -36,6 +36,7 @@
     { "source": "/lab/personalizacion", "destination": "/demo-personalization" },
     { "source": "/lab/inventario", "destination": "/demo-inventario" },
     { "source": "/lab/voz", "destination": "/demo-voz" },
+    { "source": "/lab/panel-operaciones", "destination": "/demo-panel" },
     { "source": "/intake", "destination": "/intake.html" }
   ],
   "redirects": [
