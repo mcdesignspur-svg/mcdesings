@@ -32,10 +32,10 @@
     { "source": "/lab/brand-analyzer", "destination": "/demo-brand" },
     { "source": "/lab/caption-machine", "destination": "/demo-captions" },
     { "source": "/lab/chatbot", "destination": "/demo-chatbot" },
-    { "source": "/lab/ocr-facturas", "destination": "/demo-ocr.html" },
-    { "source": "/lab/personalizacion", "destination": "/demo-personalization.html" },
-    { "source": "/lab/inventario", "destination": "/demo-inventario.html" },
-    { "source": "/lab/voz", "destination": "/demo-voz.html" },
+    { "source": "/lab/ocr-facturas", "destination": "/demo-ocr" },
+    { "source": "/lab/personalizacion", "destination": "/demo-personalization" },
+    { "source": "/lab/inventario", "destination": "/demo-inventario" },
+    { "source": "/lab/voz", "destination": "/demo-voz" },
     { "source": "/intake", "destination": "/intake.html" }
   ],
   "redirects": [
