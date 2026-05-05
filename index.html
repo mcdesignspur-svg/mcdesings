@@ -547,17 +547,54 @@
         window.openDiagnostic(v);
     };
 
-    // Hero chat finder: hands off to /ask-mc?q=<message>.
+    // Hero chat finder: classify intent first, redirect direct if navigational,
+    // otherwise hand off to /ask-mc for conversation.
+    async function routeIntent(query) {
+        try {
+            const res = await fetch('/api/route-intent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query }),
+            });
+            const data = await res.json();
+            if (data.action === 'navigate' && data.url) {
+                window.location.href = data.url;
+                return;
+            }
+        } catch (err) {
+            // Fall through to chat.
+        }
+        window.location.href = '/ask-mc?q=' + encodeURIComponent(query);
+    }
+
+    function setHeroLoading(on) {
+        const send = document.getElementById('hero-finder-send');
+        const input = document.getElementById('hero-finder-input');
+        if (send) send.disabled = on;
+        if (input) input.disabled = on;
+        if (!send) return;
+        if (on) {
+            send.dataset._html = send.innerHTML;
+            send.innerHTML = '<svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>';
+        } else if (send.dataset._html) {
+            send.innerHTML = send.dataset._html;
+        }
+    }
+
     window.heroFinderChip = function(text) {
         if (!text) return;
-        window.location.href = '/ask-mc?q=' + encodeURIComponent(text);
+        const input = document.getElementById('hero-finder-input');
+        if (input) input.value = text;
+        setHeroLoading(true);
+        routeIntent(text);
     };
 
     window.heroFinderSubmit = function() {
         const input = document.getElementById('hero-finder-input');
         const v = input ? input.value.trim() : '';
         if (!v) { if (input) input.focus(); return; }
-        window.location.href = '/ask-mc?q=' + encodeURIComponent(v);
+        setHeroLoading(true);
+        routeIntent(v);
     };
 
     // Hero infinite grid: track cursor position for reveal mask.
