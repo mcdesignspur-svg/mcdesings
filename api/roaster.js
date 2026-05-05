@@ -1,8 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { logDemo } from './lib/supabase.js';
+import { checkRateLimit } from './lib/rate-limit.js';
+import { validateExternalUrl } from './lib/ssrf.js';
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://mcdesignspr.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -13,13 +15,21 @@ export default async function handler(req, res) {
   const isEnglish = lang === 'en';
   if (!url) return res.status(400).json({ error: isEnglish ? 'URL required' : 'URL requerida' });
 
-  // Normalize URL
-  let targetUrl;
-  try {
-    targetUrl = new URL(url.startsWith('http') ? url : `https://${url}`);
-  } catch {
-    return res.status(400).json({ error: isEnglish ? 'Invalid URL. Example: yourstore.com' : 'URL inválida. Ejemplo: tutienda.com' });
+  // Rate limit (cost-attack vector + amplification toward third parties).
+  const rl = await checkRateLimit(req, 'roaster', { perHour: 10, perDay: 30 });
+  if (!rl.ok) {
+    res.setHeader('Retry-After', String(rl.retryAfter));
+    return res.status(429).json({ error: rl.reason });
   }
+
+  // SSRF guard: block IP literals, private/loopback/link-local IPs, non-https.
+  const validation = await validateExternalUrl(url);
+  if (!validation.ok) {
+    return res.status(400).json({
+      error: isEnglish ? 'Invalid or non-public URL.' : 'URL inválida o no pública.',
+    });
+  }
+  const targetUrl = validation.url;
 
   // Fetch webpage content
   let pageContent;
@@ -31,7 +41,14 @@ export default async function handler(req, res) {
         'Accept': 'text/html',
       },
       signal: AbortSignal.timeout(10000),
+      redirect: 'manual',
     });
+
+    // Block redirects — the SSRF guard already validated the original host;
+    // a redirect can point to a private IP we never checked.
+    if (response.status >= 300 && response.status < 400) {
+      return res.status(422).json({ error: isEnglish ? 'URL redirects are not followed.' : 'No se siguen redirecciones.' });
+    }
 
     const html = await response.text();
 

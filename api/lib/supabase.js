@@ -5,9 +5,11 @@ let _client = null;
 function getClient() {
   if (_client) return _client;
   const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_ANON_KEY;
+  // Prefer service role for server-side writes — required once RLS is enabled
+  // (migration 003). Falls back to anon for local dev where service role isn't set.
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
   if (!url || !key) return null;
-  _client = createClient(url, key);
+  _client = createClient(url, key, { auth: { persistSession: false } });
   return _client;
 }
 
