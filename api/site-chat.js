@@ -63,7 +63,17 @@ function supa() {
 
 const MODEL = 'claude-sonnet-4-5-20250929';
 
-const SYSTEM_PROMPT = `Eres el asistente de Miguel Cotto, founder de MC Designs — Web Studio + AI Integration en Puerto Rico. Hablas EN NOMBRE DE Miguel, primera persona singular ("yo te puedo ayudar", nunca "nosotros/MC Designs te"). MC Designs es solo Miguel.
+const ASK_MODE_ADDENDUM = `
+
+# Modo /ask-mc (página dedicada)
+Estás respondiendo en /ask-mc, una página donde el visitante vino específicamente a preguntar cosas sobre MC Designs y Miguel. Esto cambia ligeramente tus reglas:
+
+- **Profundidad:** Puedes responder 4-5 oraciones si la pregunta lo amerita. Sé sustancioso, no diluido. Si preguntan "¿cómo trabajas?", explícalo de verdad.
+- **Tono exploratorio, no salesy:** El visitante está investigando. Responde la pregunta completa primero. Después ofrece próximo paso opcional, no obligatorio.
+- **Capture lead solo con intención real:** Si la conversación es exploratoria ("¿qué hacen?", "¿cuánto cuesta?"), responde y termina con "si me cuentas brevemente qué tienes en mente, te tiro un rango más específico" — sin pushear.
+- **NO preguntes una cosa a la vez:** Responde completo, después ofrece follow-up. Una respuesta sustanciosa > tres preguntas seguidas.`;
+
+const BASE_SYSTEM_PROMPT = `Eres el asistente de Miguel Cotto, founder de MC Designs — Web Studio + AI Integration en Puerto Rico. Hablas EN NOMBRE DE Miguel, primera persona singular ("yo te puedo ayudar", nunca "nosotros/MC Designs te"). MC Designs es solo Miguel.
 
 # Voz
 - Spanglish PR natural. "Brutal", "súper", "chévere", "tremendo" cuando encaje.
@@ -95,7 +105,16 @@ const SYSTEM_PROMPT = `Eres el asistente de Miguel Cotto, founder de MC Designs 
   - **CRÍTICO: Llámalo UNA SOLA VEZ POR SESIÓN.** Si ya lo llamaste antes en esta misma conversación, NUNCA lo vuelvas a llamar — ni para "actualizar", ni cuando el visitante dé info adicional, ni para "confirmar". Una vez está guardado, lo demás es conversación normal.
 - **find_similar_case**: Si el visitante menciona una industria o tipo de proyecto y un caso real puede aplicar, búscalo. Si encuentras uno, menciónalo natural ("tengo un caso parecido — X, hicimos Y") con el link. Si no encuentras nada relevante, NO inventes — sigue la conversación normal.
 - **schedule_discovery_call**: Úsalo SOLO cuando el visitante explícitamente acepta agendar (no antes).
-  - Después de llamarlo, el sistema le muestra al visitante un BOTÓN clickeable con el link de Cal.com. **NO repitas la URL en tu respuesta de texto** — el botón ya está. Solo dile algo como "Listo, hazle click al botón abajo para escoger tu slot" o "Reserva ahí abajo cuando quieras". Mencionar la URL en texto es redundante y se ve mal.`;
+  - Después de llamarlo, el sistema le muestra al visitante un BOTÓN clickeable con el link de Cal.com. **NO repitas la URL en tu respuesta de texto** — el botón ya está. Solo dile algo como "Listo, hazle click al botón abajo para escoger tu slot" o "Reserva ahí abajo cuando quieras". Mencionar la URL en texto es redundante y se ve mal.
+- **navigate_to**: Cuando el visitante muestre intención CLARA de ver una página o sección específica del sitio (ej. "muéstrame los servicios", "quiero ver portfolio", "ver demos", "form de contacto", "guía de X"), llámalo con el destination apropiado. El sistema renderiza un botón directo de navegación.
+  - **Cuándo SÍ usarlo:** "quiero ver X", "muéstrame X", "dónde está X", "llévame a X", "ver portfolio/servicios/demos/precios".
+  - **Cuándo NO usarlo:** preguntas exploratorias tipo "¿qué hacen?" o "¿cómo trabajas?" — eso se responde con texto, no redirigiendo. Solo redirige cuando el visitante pidió EXPLÍCITAMENTE ver una página.
+  - **Combínalo con texto breve de handoff:** "Dale, te llevo a portfolio." o "Aquí tienes el form de servicios." — luego el botón hace el resto. NO repitas la URL en texto.`;
+
+function getSystemPrompt(mode) {
+  if (mode === 'ask') return BASE_SYSTEM_PROMPT + ASK_MODE_ADDENDUM;
+  return BASE_SYSTEM_PROMPT;
+}
 
 const TOOLS = [
   {
@@ -156,6 +175,46 @@ const TOOLS = [
       required: ['lead_id'],
       properties: {
         lead_id: { type: 'string', description: 'UUID del lead devuelto por save_lead' },
+      },
+    },
+  },
+  {
+    name: 'navigate_to',
+    description:
+      'Cuando el visitante muestra intención CLARA de ver una página o sección específica del sitio (ej. "muéstrame portfolio", "quiero ver los servicios", "ver demos AI"), llama esto con el destination apropiado. El sistema renderiza un botón directo de navegación. NO usar para preguntas exploratorias generales — solo cuando el visitante pidió explícitamente ver una página.',
+    input_schema: {
+      type: 'object',
+      required: ['destination'],
+      properties: {
+        destination: {
+          type: 'string',
+          enum: [
+            'servicios',
+            'portfolio',
+            'lab',
+            'talk',
+            'contacto',
+            'about',
+            'recursos',
+            'intake',
+            'diseno-web-pr',
+            'automatizacion-ia-pr',
+            'shopify-pr',
+            'demo-cotizador',
+            'demo-chatbot',
+            'demo-ocr',
+            'demo-brand',
+            'demo-captions',
+            'demo-panel',
+            'demo-roaster',
+            'demo-impulso',
+          ],
+          description: 'Destino. servicios=tiers+precios, portfolio=proyectos completados, lab=demos AI, talk=form qualifying, contacto=Cal.com agendar, about=sobre Miguel, recursos=guías/blog, intake=form post-discovery, diseno-web-pr/automatizacion-ia-pr/shopify-pr=landing pages verticales PR, demo-*=demos individuales.',
+        },
+        reason: {
+          type: 'string',
+          description: 'Por qué esta página (1 oración). Para logging interno.',
+        },
       },
     },
   },
@@ -223,9 +282,37 @@ async function notifyMiguelDiscoveryCall(leadId, sessionId) {
   }
 }
 
+const NAV_MAP = {
+  'servicios':              { url: '/servicios',                    label: 'Ver servicios',         description: 'Servicios + tiers + precios' },
+  'portfolio':              { url: '/portfolio',                    label: 'Ver portfolio',         description: 'Proyectos y case studies' },
+  'lab':                    { url: '/lab',                          label: 'Ver demos AI',          description: 'Demos de AI funcionando' },
+  'talk':                   { url: '/talk',                         label: 'Cuéntame qué necesitas', description: 'Form qualifying en 60 seg' },
+  'contacto':               { url: '/contacto',                     label: 'Agendar llamada',       description: 'Cal.com con Miguel' },
+  'about':                  { url: '/about',                        label: 'Sobre Miguel',          description: 'Quién es Miguel + MC Designs' },
+  'recursos':               { url: '/recursos',                     label: 'Ver recursos',          description: 'Guías y artículos' },
+  'intake':                 { url: '/intake',                       label: 'Form de intake',        description: 'Form detallado post-discovery' },
+  'diseno-web-pr':          { url: '/diseno-web-puerto-rico',       label: 'Web Design PR',         description: 'Diseño web en Puerto Rico' },
+  'automatizacion-ia-pr':   { url: '/automatizacion-ia-puerto-rico', label: 'Automatización AI PR', description: 'AI integration en Puerto Rico' },
+  'shopify-pr':             { url: '/shopify-puerto-rico',          label: 'Shopify PR',            description: 'Servicios Shopify en PR' },
+  'demo-cotizador':         { url: '/demo-cotizador',               label: 'Demo · Cotizador',      description: 'Cotizador con AI' },
+  'demo-chatbot':           { url: '/demo-chatbot',                 label: 'Demo · Chatbot',        description: 'Chatbot demo' },
+  'demo-ocr':               { url: '/demo-ocr',                     label: 'Demo · OCR Facturas',   description: 'OCR de facturas' },
+  'demo-brand':             { url: '/demo-brand',                   label: 'Demo · Brand Analyzer', description: 'Brand analyzer AI' },
+  'demo-captions':          { url: '/demo-captions',                label: 'Demo · Caption Machine', description: 'Generador de captions' },
+  'demo-panel':             { url: '/demo-panel',                   label: 'Demo · Panel de Operaciones', description: 'Panel ops demo' },
+  'demo-roaster':           { url: '/demo-roaster',                 label: 'Demo · Website Roaster', description: 'Website roaster' },
+  'demo-impulso':           { url: '/demo-impulso',                 label: 'Demo · El Impulso',     description: 'Demo del tier El Impulso' },
+};
+
 async function executeTool(name, input, sessionId) {
   const db = supa();
   if (!db) return { error: 'db_unavailable' };
+
+  if (name === 'navigate_to') {
+    const dest = NAV_MAP[input.destination];
+    if (!dest) return { error: `unknown destination: ${input.destination}` };
+    return { ok: true, ...dest, destination: input.destination };
+  }
 
   if (name === 'find_similar_case') {
     const cases = findCases(input.query, 2);
@@ -387,7 +474,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { session_id, messages, context = {} } = req.body || {};
+  const { session_id, messages, context = {}, mode = 'bubble' } = req.body || {};
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'messages array required' });
   }
@@ -424,8 +511,8 @@ export default async function handler(req, res) {
     for (let turn = 0; turn < 3; turn++) {
       const stream = client.messages.stream({
         model: MODEL,
-        max_tokens: 600,
-        system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
+        max_tokens: mode === 'ask' ? 900 : 600,
+        system: [{ type: 'text', text: getSystemPrompt(mode), cache_control: { type: 'ephemeral' } }],
         tools: TOOLS,
         messages: workingMessages,
       });

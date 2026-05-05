@@ -425,6 +425,7 @@
           } else if (event === 'tool_use') {
             if (payload.tool === 'save_lead') savingIndicators.push(renderTool('Guardando tu info...'));
             else if (payload.tool === 'schedule_discovery_call') savingIndicators.push(renderTool('Agendando discovery call...'));
+            else if (payload.tool === 'navigate_to') savingIndicators.push(renderTool('Buscando la página...'));
           } else if (event === 'tool_result') {
             if (payload.tool === 'save_lead' && payload.result?.ok) {
               if (payload.result.already_saved) {
@@ -441,6 +442,11 @@
               } else {
                 renderTool('✓ Miguel te escribe en las próximas horas');
               }
+            } else if (payload.tool === 'navigate_to' && payload.result?.ok) {
+              // Drop the loading indicator and queue the navigation CTA.
+              const last = savingIndicators.pop();
+              if (last) last.remove();
+              pendingCTA = { label: payload.result.label, url: payload.result.url };
             }
           } else if (event === 'error') {
             typingEl.remove();

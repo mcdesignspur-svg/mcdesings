@@ -41,7 +41,9 @@
     { "source": "/lab/impulso-demo", "destination": "/demo-impulso" },
     { "source": "/intake", "destination": "/intake.html" },
     { "source": "/talk", "destination": "/talk.html" },
-    { "source": "/hablamos", "destination": "/talk.html" }
+    { "source": "/hablamos", "destination": "/talk.html" },
+    { "source": "/ask-mc", "destination": "/ask-mc.html" },
+    { "source": "/preguntame", "destination": "/ask-mc.html" }
   ],
   "redirects": [
     { "source": "/pricing", "destination": "/servicios", "permanent": true },

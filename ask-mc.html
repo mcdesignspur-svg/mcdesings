@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pregúntame · MC Designs</title>
+    <meta name="description" content="Pregúntame lo que sea sobre MC Designs · servicios, precios, proceso, cómo trabajo. Te respondo al momento." />
+    <meta property="og:title" content="Pregúntame · MC Designs" />
+    <meta property="og:description" content="Pregúntame lo que sea sobre MC Designs · respuesta al momento." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/ask-mc" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://mcdesignspr.com/ask-mc" />
+    <link rel="stylesheet" href="./assets/tailwind.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --ease-snappy: cubic-bezier(.2, .8, .2, 1);
+        }
+        body { font-feature-settings: "ss01", "cv11"; }
+        .hero-gradient {
+            background:
+                radial-gradient(70% 60% at 50% 0%, rgba(0, 86, 198, 0.10) 0%, rgba(255, 255, 255, 0) 70%),
+                #ffffff;
+        }
+        em, i { font-family: 'Iowan Old Style', 'Apple Garamond', Georgia, serif; font-style: italic; }
+        textarea {
+            transition: border-color 0.2s var(--ease-snappy), box-shadow 0.2s var(--ease-snappy);
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #0056c6;
+            box-shadow: 0 0 0 3px rgba(0, 86, 198, 0.12);
+        }
+        .chip {
+            transition: border-color 0.2s var(--ease-snappy),
+                        background-color 0.2s var(--ease-snappy),
+                        transform 0.2s var(--ease-snappy);
+        }
+        .chip:hover {
+            border-color: #0056c6;
+            background-color: rgba(0, 86, 198, 0.04);
+            transform: translateY(-1px);
+        }
+        .btn-send { transition: background-color 0.2s var(--ease-snappy), transform 0.1s var(--ease-snappy); }
+        .btn-send:active { transform: scale(0.96); }
+        .btn-send:disabled { opacity: 0.4; cursor: not-allowed; }
+        .fade-in { animation: fadeIn 0.6s var(--ease-snappy) 0.1s both; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .msg-in { animation: msgIn 0.4s var(--ease-snappy) both; }
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .typing-dot {
+            display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+            background: #0056c6; margin: 0 2px; opacity: 0.4;
+            animation: typingPulse 1.2s var(--ease-snappy) infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes typingPulse {
+            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-3px); }
+        }
+        /* Empty state vs conversation state */
+        body[data-state="empty"] .hero-block { display: block; }
+        body[data-state="empty"] .conversation { display: none; }
+        body[data-state="empty"] .chips-block { display: flex; }
+        body[data-state="empty"] .input-wrap { margin-top: 0; }
+        body[data-state="conversation"] .hero-block { display: none; }
+        body[data-state="conversation"] .conversation { display: block; }
+        body[data-state="conversation"] .chips-block { display: none; }
+        body[data-state="conversation"] .input-wrap { position: sticky; bottom: 16px; z-index: 10; }
+    </style>
+</head>
+
+<body class="bg-white text-on-surface font-sans antialiased min-h-screen overflow-x-hidden hero-gradient" data-state="empty">
+
+    <!-- Minimal nav -->
+    <nav class="relative w-full z-30">
+        <div class="flex flex-col items-center w-full px-6 pt-4 pb-2">
+            <a href="/" class="inline-flex items-center min-h-[44px] py-1">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-9 w-auto" />
+            </a>
+
+            <details class="header-menu mt-1 relative">
+                <summary class="cursor-pointer text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 list-none px-3 py-1.5 rounded-full">
+                    Menú
+                    <svg class="header-chevron w-3 h-3 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </summary>
+                <div class="absolute left-1/2 -translate-x-1/2 mt-2 bg-white border border-slate-200 rounded-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] py-2 flex flex-col min-w-[180px] z-10">
+                    <a href="/servicios" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Servicios</a>
+                    <a href="/lab" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Lab</a>
+                    <a href="/portfolio" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Portfolio</a>
+                    <a href="/about" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Miguel</a>
+                    <a href="/recursos" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Recursos</a>
+                    <div class="border-t border-slate-100 my-1"></div>
+                    <a href="/talk" class="px-5 py-2 text-sm font-semibold text-primary hover:bg-primary/8 transition-colors">Hablamos →</a>
+                </div>
+            </details>
+        </div>
+    </nav>
+    <style>
+        details.header-menu[open] .header-chevron { transform: rotate(180deg); }
+        details.header-menu summary::-webkit-details-marker { display: none; }
+        details.header-menu summary:hover { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); }
+    </style>
+
+    <main class="pt-8 pb-12 px-4">
+        <div class="max-w-2xl mx-auto">
+
+            <!-- Hero (empty state) -->
+            <header class="hero-block text-center mb-10 mt-6 fade-in">
+                <h1 class="font-heading uppercase tracking-[0.02em] text-4xl md:text-6xl text-slate-900 leading-[0.95] mb-4">
+                    ¿Qué te trae aquí?
+                </h1>
+                <p class="text-on-surface-variant text-sm md:text-base leading-relaxed max-w-md mx-auto">
+                    Te llevo a lo que buscas <em>en un instante</em>.
+                </p>
+            </header>
+
+            <!-- Conversation (populated when chatting) -->
+            <div class="conversation space-y-5 mb-6" id="conversation"></div>
+
+            <!-- Input area -->
+            <div class="input-wrap">
+                <div class="bg-white border border-slate-200 rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_32px_-8px_rgba(0,0,0,0.06)] focus-within:border-primary/40 focus-within:shadow-[0_0_0_3px_rgba(0,86,198,0.08),0_8px_32px_-8px_rgba(0,86,198,0.12)] transition-all">
+                    <div class="flex items-center gap-2 pl-5 pr-2 py-2">
+                        <textarea
+                            id="input"
+                            rows="1"
+                            placeholder="¿Qué deseas saber?"
+                            class="flex-1 text-base text-slate-900 placeholder-slate-400 bg-transparent resize-none border-0 focus:outline-none focus:ring-0 leading-6 py-1"
+                            style="border:none; min-height: 28px; max-height: 160px;"></textarea>
+                        <button
+                            id="send"
+                            disabled
+                            aria-label="Enviar"
+                            class="btn-send flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all active:scale-[0.94] bg-primary text-on-primary hover:bg-primary-container disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chips (empty state only) -->
+                <div class="chips-block flex flex-wrap gap-2 mt-5 justify-center">
+                    <button class="chip text-xs text-slate-700 bg-white border border-slate-200 rounded-full px-3.5 py-1.5" data-prompt="¿Qué construye MC Designs?">¿Qué construye MC Designs?</button>
+                    <button class="chip text-xs text-slate-700 bg-white border border-slate-200 rounded-full px-3.5 py-1.5" data-prompt="¿Cuánto cuesta un sitio?">¿Cuánto cuesta un sitio?</button>
+                    <button class="chip text-xs text-slate-700 bg-white border border-slate-200 rounded-full px-3.5 py-1.5" data-prompt="¿Cómo es trabajar contigo?">¿Cómo es trabajar contigo?</button>
+                    <button class="chip text-xs text-slate-700 bg-white border border-slate-200 rounded-full px-3.5 py-1.5" data-prompt="¿AI integration es para mi negocio?">¿AI integration es para mi negocio?</button>
+                </div>
+
+                <!-- Footer hint -->
+                <p class="text-center text-xs text-on-surface-variant mt-5">
+                    ¿Prefieres un form o llamada? <a href="/talk" class="underline hover:text-primary transition-colors">Cuéntame en /talk</a>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            const input = document.getElementById('input');
+            const sendBtn = document.getElementById('send');
+            const conversation = document.getElementById('conversation');
+            const chips = document.querySelectorAll('.chip');
+            const API_URL = '/api/site-chat';
+
+            let sessionId = null;
+            let history = [];
+            let streaming = false;
+
+            function refreshSendBtn() {
+                sendBtn.disabled = streaming || input.value.trim().length === 0;
+            }
+
+            function setState(state) {
+                document.body.setAttribute('data-state', state);
+            }
+
+            function escapeHtml(text) {
+                return String(text)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+
+            function formatAssistantText(text) {
+                // Light markdown: **bold**, line breaks
+                let html = escapeHtml(text);
+                html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+                html = html.replace(/\n/g, '<br />');
+                return html;
+            }
+
+            function renderUserMessage(text) {
+                const el = document.createElement('div');
+                el.className = 'msg-in flex justify-end';
+                el.innerHTML = `
+                    <div class="bg-primary text-on-primary rounded-2xl rounded-br-md px-5 py-3 max-w-[85%] text-sm leading-relaxed whitespace-pre-wrap">${escapeHtml(text)}</div>
+                `;
+                conversation.appendChild(el);
+                requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'end' }));
+                return el;
+            }
+
+            function renderAssistantTyping() {
+                const el = document.createElement('div');
+                el.className = 'msg-in flex justify-start';
+                el.innerHTML = `
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl rounded-bl-md px-5 py-4 max-w-[85%]">
+                        <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                    </div>
+                `;
+                conversation.appendChild(el);
+                el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                return el;
+            }
+
+            function renderAssistantBubble() {
+                const el = document.createElement('div');
+                el.className = 'msg-in flex justify-start';
+                el.innerHTML = `
+                    <div class="assistant-content bg-slate-50 border border-slate-100 rounded-2xl rounded-bl-md px-5 py-4 max-w-[90%] text-sm leading-relaxed text-slate-900"></div>
+                `;
+                conversation.appendChild(el);
+                return el.querySelector('.assistant-content');
+            }
+
+            function renderToolIndicator(text) {
+                const el = document.createElement('div');
+                el.className = 'msg-in flex justify-start';
+                el.innerHTML = `
+                    <div class="text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant bg-white border border-slate-100 rounded-full px-4 py-2 inline-flex items-center gap-2">
+                        <svg class="w-3 h-3 text-primary animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
+                        ${escapeHtml(text)}
+                    </div>
+                `;
+                conversation.appendChild(el);
+                return el;
+            }
+
+            function renderCTA(label, url, icon = 'calendar') {
+                const isExternal = /^https?:\/\//.test(url);
+                const target = isExternal ? '_blank' : '_self';
+                const rel = isExternal ? 'noopener' : '';
+                const iconSvg = icon === 'arrow'
+                    ? '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'
+                    : '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+                const el = document.createElement('div');
+                el.className = 'msg-in flex justify-start mt-2';
+                el.innerHTML = `
+                    <a href="${escapeHtml(url)}" target="${target}" rel="${rel}" class="btn-send bg-primary text-on-primary text-xs font-mono uppercase tracking-[0.14em] font-semibold px-5 py-3 rounded-xl inline-flex items-center gap-2 hover:bg-primary-container">
+                        ${iconSvg}
+                        ${escapeHtml(label)}
+                    </a>
+                `;
+                conversation.appendChild(el);
+            }
+
+            async function send(text) {
+                if (streaming) return;
+                const trimmed = text.trim();
+                if (!trimmed) return;
+
+                if (history.length === 0) setState('conversation');
+
+                history.push({ role: 'user', content: trimmed });
+                renderUserMessage(trimmed);
+
+                input.value = '';
+                input.style.height = 'auto';
+                streaming = true;
+                refreshSendBtn();
+
+                const typingEl = renderAssistantTyping();
+                let assistantEl = null;
+                let assistantText = '';
+                let pendingCTA = null;
+                const toolEls = [];
+
+                try {
+                    const res = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            session_id: sessionId,
+                            messages: history,
+                            mode: 'ask',
+                            context: {
+                                referrer: document.referrer || null,
+                                page: '/ask-mc',
+                                utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+                                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
+                            },
+                        }),
+                    });
+
+                    if (res.status === 429) {
+                        let body = {};
+                        try { body = await res.json(); } catch {}
+                        typingEl.remove();
+                        const errEl = renderAssistantBubble();
+                        errEl.textContent = body.error || 'Estás escribiendo muy rápido — espera un ratito.';
+                        return;
+                    }
+                    if (!res.ok || !res.body) throw new Error('network');
+
+                    const reader = res.body.getReader();
+                    const decoder = new TextDecoder();
+                    let buffer = '';
+
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) break;
+                        buffer += decoder.decode(value, { stream: true });
+                        const events = buffer.split('\n\n');
+                        buffer = events.pop() || '';
+
+                        for (const raw of events) {
+                            const lines = raw.split('\n');
+                            let event = 'message';
+                            let data = '';
+                            for (const line of lines) {
+                                if (line.startsWith('event: ')) event = line.slice(7).trim();
+                                else if (line.startsWith('data: ')) data += line.slice(6);
+                            }
+                            if (!data) continue;
+                            let payload;
+                            try { payload = JSON.parse(data); } catch { continue; }
+
+                            if (event === 'session') {
+                                sessionId = payload.session_id;
+                            } else if (event === 'text') {
+                                if (!assistantEl) {
+                                    typingEl.remove();
+                                    assistantEl = renderAssistantBubble();
+                                }
+                                assistantText += payload.delta;
+                                assistantEl.innerHTML = formatAssistantText(assistantText);
+                                assistantEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                            } else if (event === 'tool_use') {
+                                let label = '';
+                                if (payload.tool === 'save_lead') label = 'Guardando tu info...';
+                                else if (payload.tool === 'schedule_discovery_call') label = 'Agendando llamada...';
+                                else if (payload.tool === 'find_similar_case') label = 'Buscando caso similar...';
+                                else if (payload.tool === 'navigate_to') label = 'Buscando la página...';
+                                if (label) toolEls.push(renderToolIndicator(label));
+                            } else if (event === 'tool_result') {
+                                if (payload.tool === 'save_lead' && payload.result?.ok) {
+                                    if (payload.result.already_saved) {
+                                        const last = toolEls.pop();
+                                        if (last) last.remove();
+                                    } else {
+                                        // Replace last tool indicator with success
+                                        const last = toolEls.pop();
+                                        if (last) {
+                                            last.querySelector('div').innerHTML = `
+                                                <svg class="w-3 h-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                                Miguel recibió tu info
+                                            `;
+                                        }
+                                    }
+                                } else if (payload.tool === 'schedule_discovery_call' && payload.result?.ok) {
+                                    const last = toolEls.pop();
+                                    if (last) last.remove();
+                                    if (payload.result.booking_url) {
+                                        pendingCTA = { label: 'Reservar slot ahora', url: payload.result.booking_url, icon: 'calendar' };
+                                    }
+                                } else if (payload.tool === 'find_similar_case') {
+                                    const last = toolEls.pop();
+                                    if (last) last.remove();
+                                } else if (payload.tool === 'navigate_to' && payload.result?.ok) {
+                                    const last = toolEls.pop();
+                                    if (last) last.remove();
+                                    pendingCTA = { label: payload.result.label, url: payload.result.url, icon: 'arrow' };
+                                }
+                            } else if (event === 'error') {
+                                typingEl.remove();
+                                const msg = payload.message || 'Hubo un error. Intenta otra vez.';
+                                const errEl = renderAssistantBubble();
+                                errEl.textContent = msg;
+                            } else if (event === 'done') {
+                                if (!assistantEl) typingEl.remove();
+                                if (pendingCTA) {
+                                    renderCTA(pendingCTA.label, pendingCTA.url, pendingCTA.icon);
+                                    pendingCTA = null;
+                                }
+                            }
+                        }
+                    }
+
+                    if (assistantText) {
+                        history.push({ role: 'assistant', content: assistantText });
+                    }
+                } catch (err) {
+                    console.error(err);
+                    typingEl.remove();
+                    const errEl = renderAssistantBubble();
+                    errEl.textContent = 'Perdí la conexión. Intenta otra vez en un momentito.';
+                } finally {
+                    streaming = false;
+                    refreshSendBtn();
+                    input.focus();
+                }
+            }
+
+            // Auto-resize textarea
+            input.addEventListener('input', () => {
+                input.style.height = 'auto';
+                input.style.height = Math.min(input.scrollHeight, 200) + 'px';
+                refreshSendBtn();
+            });
+
+            // Enter to send (Shift+Enter for newline)
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    if (!sendBtn.disabled) send(input.value);
+                }
+            });
+
+            sendBtn.addEventListener('click', () => send(input.value));
+
+            // Chip click → fill and send
+            chips.forEach((chip) => {
+                chip.addEventListener('click', () => {
+                    const prompt = chip.dataset.prompt;
+                    if (prompt) send(prompt);
+                });
+            });
+
+            // Initial: focus input + auto-send if ?q= provided.
+            const urlQ = new URLSearchParams(window.location.search).get('q');
+            if (urlQ && urlQ.trim()) {
+                // Clean the URL so refresh doesn't replay the question.
+                window.history.replaceState(null, '', window.location.pathname);
+                send(urlQ.trim());
+            } else {
+                input.focus();
+            }
+        })();
+    </script>
+</body>
+</html>

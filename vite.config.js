@@ -28,6 +28,7 @@ export default defineConfig({
                 demoImpulso: resolve(__dirname, 'demo-impulso.html'),
                 intake: resolve(__dirname, 'intake.html'),
                 talk: resolve(__dirname, 'talk.html'),
+                askMc: resolve(__dirname, 'ask-mc.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
                 terms: resolve(__dirname, 'terms.html'),
                 disenoWebPR: resolve(__dirname, 'diseno-web-puerto-rico.html'),
