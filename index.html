@@ -200,6 +200,138 @@
                 transform: none;
             }
         }
+
+        /* ---------- Animated Card Stack (Social Proof) ---------- */
+        .proof-stack-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .proof-stack {
+            position: relative;
+            width: 100%;
+            height: 558px;
+            overflow: hidden;
+        }
+        .proof-card {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: min(100%, 820px);
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            padding: 6px;
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-bottom: 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 30px 80px -30px rgba(15, 23, 42, 0.22), 0 8px 24px -8px rgba(15, 23, 42, 0.10);
+            will-change: transform, opacity;
+            transition: transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 600ms ease, box-shadow 400ms ease;
+        }
+        @media (max-width: 768px) {
+            .proof-stack { height: 420px; }
+            .proof-card { width: min(100%, 360px); height: 360px; }
+        }
+        .proof-card[data-pos="front"]  { transform: translateX(-50%) translateY(16px) scale(1); z-index: 3; }
+        .proof-card[data-pos="back"]   { transform: translateX(-50%) translateY(-40px) scale(0.93); z-index: 2; }
+        .proof-card[data-pos="exit"]   { transform: translateX(-50%) translateY(560px) scale(1); z-index: 4; opacity: 0; }
+        .proof-card[data-pos="enter"]  { transform: translateX(-50%) translateY(-40px) scale(0.93); z-index: 1; opacity: 0; }
+
+        .proof-card__media {
+            flex: 1;
+            min-height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            outline: 1px solid rgba(15, 23, 42, 0.08);
+            outline-offset: -1px;
+            background: #f4f6fb;
+        }
+        .proof-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .proof-card__meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 22px 26px;
+        }
+        .proof-card__text {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex: 1;
+            gap: 2px;
+        }
+        .proof-card__title {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 18px;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .proof-card__desc {
+            color: #64748b;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .proof-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            height: 44px;
+            padding-left: 20px;
+            padding-right: 14px;
+            border-radius: 9999px;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 150ms ease, transform 150ms ease;
+        }
+        .proof-card__cta:hover { background: #0056c6; }
+        .proof-card__cta:active { transform: scale(0.97); }
+
+        .proof-stack__dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+            padding: 16px 0 0;
+        }
+        .proof-stack__dot {
+            width: 24px;
+            height: 4px;
+            border-radius: 9999px;
+            background: rgba(15, 23, 42, 0.15);
+            transition: background 220ms ease, width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+            border: 0;
+            padding: 0;
+        }
+        .proof-stack__dot.is-active {
+            background: #0056c6;
+            width: 36px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .proof-card { transition: none; }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
@@ -331,17 +463,6 @@
     }
 </style>
 
-<!-- Mission Section -->
-<section class="bg-surface-container-low py-12 md:py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-8 flex items-center justify-center">
-        <div class="col-span-12 flex flex-col items-center text-center max-w-4xl mx-auto">
-            <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-8" data-i18n="mission.label">El punto de partida</h2>
-            <p class="text-3xl md:text-5xl font-medium tracking-tight text-on-surface leading-tight" data-i18n="mission.text">
-                Tu negocio no necesita otra plantilla bonita. Necesita un sistema digital construido alrededor de cómo vendes, atiendes y operas. <span class="text-primary">Eso es lo que construyo contigo: web + IA ajustada a ti, a tu negocio y a lo que necesitas para crecer.</span>
-            </p>
-        </div>
-    </div>
-</section>
 
 <!-- AI Diagnostic Modal -->
 <div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-on-surface/50" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
@@ -466,7 +587,7 @@
                     <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
                         <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-2" data-i18n="ai_quiz.next_step">🚀 Cómo lo llevaría a la práctica</div>
                         <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
-                        <a href="/contacto" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-heading uppercase tracking-[0.14em] active:scale-95 transition-all shadow-lg shadow-primary/20" data-i18n="ai_quiz.review_cta">
+                        <a href="/talk" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-heading uppercase tracking-[0.14em] active:scale-95 transition-all shadow-lg shadow-primary/20" data-i18n="ai_quiz.review_cta">
                             Quiero que Miguel revise mi caso →
                         </a>
                     </div>
@@ -774,142 +895,65 @@
 </script>
 
 
-<!-- Custom Systems Section -->
-<section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
-    <div class="mb-8 md:mb-12 max-w-3xl">
-        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="custom_build.label">Cómo trabajo</h2>
-        <h3 class="text-4xl md:text-6xl font-heading uppercase tracking-[0.02em] leading-tight" data-i18n="custom_build.title">Todo se construye alrededor de tu negocio.</h3>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">01</div>
-            <h3 class="text-xl font-black tracking-tight mb-3" data-i18n="custom_build.cards.0.title">No uso templates</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="custom_build.cards.0.desc">Cada diseño, flujo y sistema se crea desde cero según tu marca, tu oferta y tus metas.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">02</div>
-            <h3 class="text-xl font-black tracking-tight mb-3" data-i18n="custom_build.cards.1.title">Primero entiendo tu operación</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="custom_build.cards.1.desc">Antes de diseñar, miro cómo llegan tus clientes, dónde pierdes tiempo y qué procesos se pueden mejorar.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">03</div>
-            <h3 class="text-xl font-black tracking-tight mb-3" data-i18n="custom_build.cards.2.title">Web + IA trabajando juntas</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="custom_build.cards.2.desc">No se trata solo de verte bien. Construyo una presencia digital que atrae, responde, organiza y convierte.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">04</div>
-            <h3 class="text-xl font-black tracking-tight mb-3" data-i18n="custom_build.cards.3.title">Escalable desde el día uno</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="custom_build.cards.3.desc">Tu sistema queda listo para crecer contigo: nuevas páginas, automatizaciones, productos, formularios o dashboards.</p>
-        </div>
-    </div>
-</section>
 
-<!-- Services Section -->
+<!-- Services Section — Named Systems -->
 <section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
     <div class="mb-8 md:mb-14">
-        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="services.label">Servicios</h2>
-        <h3 class="text-4xl font-bold tracking-tighter" data-i18n="services.title">El núcleo del estudio.</h3>
+        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">Sistemas</h2>
+        <h3 class="text-4xl md:text-5xl font-heading uppercase tracking-[0.02em] leading-tight">Tres sistemas. Un solo estudio.</h3>
+        <p class="text-on-surface-variant mt-4 max-w-2xl leading-relaxed">Cada sistema está nombrado y entregado con garantía. Empiezas donde tu negocio lo necesita y subes cuando estés listo.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Web Design Card -->
-        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group">
-            <div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
-                <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="services.cards.1.title">Diseño Web</h3>
-            <p class="text-on-surface-variant mb-8 leading-relaxed" data-i18n="services.cards.1.desc">Plataformas digitales de alto rendimiento diseñadas para convertir visitas en clientes.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Tiendas Shopify</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Sitios Personalizados</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Optimización de Rendimiento</li>
+        <!-- La Presencia -->
+        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group flex flex-col">
+            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">01 · Web</div>
+            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">La Presencia</h3>
+            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu negocio se ve serio en Google y en el celular.</p>
+            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Sitio diseñado a medida</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Optimizado para móvil + Google</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Branding aplicado limpio</li>
             </ul>
+            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Apruebas cada pantalla antes de salir en vivo.</p>
         </div>
-        <!-- AI Integration Card (Glassmorphism) -->
-        <div class="reveal soft-lift glass-module p-10 rounded-xl border border-white/50 hover:border-primary/20 group">
-            <div class="w-12 h-12 mb-8 bg-primary rounded-lg flex items-center justify-center">
-                <svg class="w-7 h-7 text-on-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/></svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="services.cards.2.title">Integración IA</h3>
-            <p class="text-on-surface-variant mb-8 leading-relaxed" data-i18n="services.cards.2.desc">Automatiza lo rutinario. Construyo flujos de trabajo con IA para liberar tu tiempo y escalar tus operaciones.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Flujos de Trabajo LLM</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Automatización de Tareas</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Sistemas de Agentes IA</li>
+        <!-- El Impulso (featured) -->
+        <div class="relative">
+            <div class="absolute -top-4 right-6 z-20 bg-primary text-on-primary px-4 py-2 rounded-full text-[11px] font-heading uppercase tracking-[0.14em] shadow-lg shadow-primary/30 -rotate-3 pointer-events-none">Más popular</div>
+        <div class="reveal soft-lift glass-module p-10 rounded-xl border border-white/50 hover:border-primary/30 group flex flex-col h-full">
+            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">02 · Web + IA</div>
+            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">El Impulso</h3>
+            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu sitio contesta, cotiza y agenda 24/7.</p>
+            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Todo de La Presencia</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>WhatsApp + chat IA 24/7</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Cotización + agenda automática</li>
             </ul>
+            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Respuesta automatizada en menos de 60 segundos.</p>
         </div>
-        <!-- Brand Design Card -->
-        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group">
-            <div class="w-12 h-12 mb-8 bg-surface-container-low rounded-lg flex items-center justify-center">
-                <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".75" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".75" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".75" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".75" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 tracking-tight" data-i18n="services.cards.0.title">Diseño de Marca</h3>
-            <p class="text-on-surface-variant mb-8 leading-relaxed" data-i18n="services.cards.0.desc">Identidad visual construida para la era moderna. Desde logos únicos hasta kits de marca y redes sociales.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Logos</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Kits de Marca</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Kits de Redes Sociales</li>
+        </div>
+        <!-- El Studio -->
+        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group flex flex-col">
+            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">03 · Operación completa</div>
+            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">El Studio</h3>
+            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu operación entera en una pantalla.</p>
+            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Todo de El Impulso</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Panel de Operaciones a medida</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Radar de Leads + reportes</li>
             </ul>
+            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Timeline lock — descuento diario si me atraso.</p>
         </div>
+    </div>
+    <div class="mt-14 max-w-3xl mx-auto bg-surface-container-low rounded-2xl p-8 md:p-10 border border-outline-variant/10 text-center">
+        <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-3">Inversión</div>
+        <p class="text-xl md:text-2xl font-medium tracking-tight text-on-surface leading-snug mb-6">Cada proyecto se presupuesta según el alcance, las integraciones y la complejidad de tu operación. <span class="text-primary">Hablamos, lo dimensionamos juntos, y te paso el número exacto.</span></p>
+        <a href="/talk" class="inline-block hero-gradient text-on-primary px-10 py-4 rounded-xl font-heading text-sm uppercase tracking-[0.14em] shadow-lg shadow-primary/20 active:scale-95 transition-all">
+            Cotizar mi proyecto
+        </a>
     </div>
 </section>
 
-<!-- Audience Section -->
-<section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
-    <div class="mb-8 md:mb-12 max-w-3xl">
-        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="audience.label">Para quién es</h2>
-        <h3 class="text-4xl md:text-6xl font-heading uppercase tracking-[0.02em] leading-tight" data-i18n="audience.title">Esto es para negocios listos para verse y operar mejor.</h3>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <h3 class="text-2xl font-black tracking-tight mb-4" data-i18n="audience.cards.0.title">Dependes demasiado de Instagram</h3>
-            <p class="text-on-surface-variant leading-relaxed" data-i18n="audience.cards.0.desc">Tu negocio se ve activo en redes, pero no tienes una web clara que convierta visitantes en leads.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <h3 class="text-2xl font-black tracking-tight mb-4" data-i18n="audience.cards.1.title">Pierdes tiempo respondiendo lo mismo</h3>
-            <p class="text-on-surface-variant leading-relaxed" data-i18n="audience.cards.1.desc">Mensajes, preguntas, seguimientos y tareas repetitivas te comen horas cada semana.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <h3 class="text-2xl font-black tracking-tight mb-4" data-i18n="audience.cards.2.title">Tienes una oferta buena, pero confusa</h3>
-            <p class="text-on-surface-variant leading-relaxed" data-i18n="audience.cards.2.desc">La gente necesita entender rápido qué vendes, por qué confiar y cuál es el próximo paso.</p>
-        </div>
-        <div class="reveal soft-lift bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:border-primary/20">
-            <h3 class="text-2xl font-black tracking-tight mb-4" data-i18n="audience.cards.3.title">Quieres crecer sin contratar de más</h3>
-            <p class="text-on-surface-variant leading-relaxed" data-i18n="audience.cards.3.desc">Automatizo partes del proceso para que puedas manejar más oportunidades con menos fricción.</p>
-        </div>
-    </div>
-</section>
 
-<!-- How It Works Section -->
-<section class="bg-surface-container-low py-12 md:py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="mb-8 md:mb-12 text-center">
-            <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="servicios_page.how_it_works.label">El Proceso</h2>
-            <h3 class="text-4xl md:text-5xl font-heading uppercase tracking-[0.02em]" data-i18n="servicios_page.how_it_works.title">Cómo funciona.</h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="space-y-6">
-                <span class="text-5xl font-black text-primary/20 block">01</span>
-                <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.0.title">Diagnóstico</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.0.desc">Audito tu situación actual — sitio, proceso de leads y cuellos de botella.</p>
-            </div>
-            <div class="space-y-6">
-                <span class="text-5xl font-black text-primary/20 block">02</span>
-                <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.1.title">Diseño</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.1.desc">Mapeo la solución ideal y te la presento antes de construir nada.</p>
-            </div>
-            <div class="space-y-6">
-                <span class="text-5xl font-black text-primary/20 block">03</span>
-                <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.2.title">Construcción</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.2.desc">Construyo con revisiones incluidas. Tú apruebas antes de que salga en vivo.</p>
-            </div>
-            <div class="space-y-6">
-                <span class="text-5xl font-black text-primary/20 block">04</span>
-                <h3 class="text-xl font-bold tracking-tight uppercase" data-i18n="servicios_page.how_it_works.steps.3.title">Optimización</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed" data-i18n="servicios_page.how_it_works.steps.3.desc">Después del lanzamiento mido, mejoro e itero cada mes contigo.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Social Proof Section -->
 <section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
@@ -917,26 +961,47 @@
         <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="proof.label">Prueba real</h2>
         <h3 class="text-4xl md:text-5xl font-heading uppercase tracking-[0.02em]" data-i18n="proof.title">Sistemas construidos alrededor de negocios reales.</h3>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="reveal soft-lift bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-5" data-i18n="proof.cards.0.tag">Web + panel admin</div>
-            <h3 class="text-2xl font-black tracking-tight mb-4">Miguel Cotto Promotions</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed mb-8" data-i18n="proof.cards.0.desc">Sitio deportivo + panel admin para mantener peleas, boxeadores y livestreams actualizados sin depender de procesos lentos.</p>
-            <a href="/portfolio" class="inline-flex items-center min-h-[44px] py-2 text-primary font-heading text-xs uppercase tracking-[0.14em]" data-i18n="proof.cards.0.cta">Ver caso</a>
+
+    <!-- Animated card stack -->
+    <div id="proof-stack" class="proof-stack-wrapper" aria-roledescription="card carousel" aria-label="Proyectos del portafolio">
+        <div class="proof-stack" id="proof-stack-cards">
+            <article class="proof-card" data-pos="front" aria-current="true">
+                <div class="proof-card__media">
+                    <img src="/MCP/mcp-1.png" alt="Sitio web Miguel Cotto Promotions" loading="lazy" />
+                </div>
+                <div class="proof-card__meta">
+                    <div class="proof-card__text">
+                        <span class="proof-card__title">Miguel Cotto Promotions</span>
+                        <span class="proof-card__desc">Sitio deportivo + panel admin</span>
+                    </div>
+                    <a href="/portfolio#card-mcp" class="proof-card__cta" aria-label="Ver caso Miguel Cotto Promotions">
+                        Ver caso
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M9.5 18L15.5 12L9.5 6" /></svg>
+                    </a>
+                </div>
+            </article>
+            <article class="proof-card" data-pos="back">
+                <div class="proof-card__media">
+                    <img src="/DRITA/drita-1.png" alt="Tienda Shopify Team Drita y Mely" loading="lazy" />
+                </div>
+                <div class="proof-card__meta">
+                    <div class="proof-card__text">
+                        <span class="proof-card__title">Team Drita y Mely</span>
+                        <span class="proof-card__desc">Tienda Shopify · e-commerce móvil</span>
+                    </div>
+                    <a href="/portfolio#card-drita" class="proof-card__cta" aria-label="Ver caso Team Drita y Mely">
+                        Ver caso
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M9.5 18L15.5 12L9.5 6" /></svg>
+                    </a>
+                </div>
+            </article>
         </div>
-        <div class="reveal soft-lift bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/20">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-5" data-i18n="proof.cards.1.tag">Shopify + e-commerce</div>
-            <h3 class="text-2xl font-black tracking-tight mb-4">Team Drita y Mely</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed mb-8" data-i18n="proof.cards.1.desc">Tienda Shopify para productos, bundles y promociones, diseñada para facilitar la compra desde móvil.</p>
-            <a href="/portfolio" class="inline-flex items-center min-h-[44px] py-2 text-primary font-heading text-xs uppercase tracking-[0.14em]" data-i18n="proof.cards.1.cta">Ver caso</a>
-        </div>
-        <div class="reveal soft-lift bg-primary rounded-2xl p-8">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary-fixed mb-5" data-i18n="proof.cards.2.tag">Custom desde cero</div>
-            <h3 class="text-2xl font-black tracking-tight mb-4 text-on-primary">Tu negocio aquí</h3>
-            <p class="text-on-primary/80 text-sm leading-relaxed mb-8" data-i18n="proof.cards.2.desc">Diagnóstico, diseño, desarrollo e IA bajo un mismo proceso. Nada de templates; todo pensado para tu operación.</p>
-            <a href="/contacto" class="inline-flex items-center min-h-[44px] py-2 text-on-primary font-heading text-xs uppercase tracking-[0.14em]" data-i18n="proof.cards.2.cta">Agenda diagnóstico</a>
+        <div class="proof-stack__dots" role="tablist" aria-label="Seleccionar proyecto">
+            <button type="button" class="proof-stack__dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Miguel Cotto Promotions"></button>
+            <button type="button" class="proof-stack__dot" data-index="1" role="tab" aria-selected="false" aria-label="Team Drita y Mely"></button>
         </div>
     </div>
+
     <div class="text-center mt-12">
         <a href="/portfolio" class="inline-flex items-center min-h-[44px] gap-2 text-primary font-heading text-sm uppercase tracking-[0.14em] hover:gap-4 transition-all">
             Ver los proyectos <span class="cta-arrow">→</span>
@@ -951,7 +1016,7 @@
     <div class="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
         <h2 class="text-5xl md:text-7xl font-heading uppercase tracking-[0.02em] leading-tight" data-i18n="cta_section.title">¿Listo para <span class="text-primary-fixed">Crecer</span>?</h2>
         <p class="text-xl text-surface-container mb-6 leading-relaxed" data-i18n="cta_section.subtext">Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.</p>
-        <a href="/contacto" class="inline-block hero-gradient text-on-primary px-12 py-5 mt-4 rounded-xl font-heading text-sm uppercase tracking-[0.14em] shadow-lg shadow-primary/20 active:scale-95 transition-all" data-i18n="cta_section.cta">
+        <a href="/talk" class="inline-block hero-gradient text-on-primary px-12 py-5 mt-4 rounded-xl font-heading text-sm uppercase tracking-[0.14em] shadow-lg shadow-primary/20 active:scale-95 transition-all" data-i18n="cta_section.cta">
             Agenda una llamada de diagnóstico
         </a>
     </div>
@@ -1121,4 +1186,94 @@
     });
 </script>
 <script type="module" src="assets/site-chat.js"></script>
+
+<script>
+    // ---------- Animated Card Stack (Social Proof) ----------
+    (function () {
+        const wrap = document.getElementById('proof-stack');
+        if (!wrap) return;
+        const cards = Array.from(wrap.querySelectorAll('.proof-card'));
+        const dots = Array.from(wrap.querySelectorAll('.proof-stack__dot'));
+        if (cards.length < 2) return;
+
+        const INTERVAL = 4500;
+        const EXIT_MS = 760;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        let frontIdx = 0;
+        let timer = null;
+        let isAnimating = false;
+        let isHover = false;
+        let inView = true;
+
+        function syncDots() {
+            dots.forEach((dot, i) => {
+                const active = i === frontIdx;
+                dot.classList.toggle('is-active', active);
+                dot.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+        }
+
+        function cycle() {
+            if (isAnimating || cards.length < 2) return;
+            isAnimating = true;
+            const exiting = cards[frontIdx];
+            const next = (frontIdx + 1) % cards.length;
+            const incoming = cards[next];
+
+            exiting.setAttribute('data-pos', 'exit');
+            exiting.setAttribute('aria-current', 'false');
+            incoming.setAttribute('data-pos', 'front');
+            incoming.setAttribute('aria-current', 'true');
+            frontIdx = next;
+            syncDots();
+
+            setTimeout(() => {
+                // Snap the exited card behind without transition, then reveal at "back".
+                exiting.style.transition = 'none';
+                exiting.setAttribute('data-pos', 'enter');
+                void exiting.offsetWidth; // force reflow
+                exiting.style.transition = '';
+                exiting.setAttribute('data-pos', 'back');
+                isAnimating = false;
+            }, EXIT_MS);
+        }
+
+        function startTimer() {
+            stopTimer();
+            if (reduceMotion || isHover || !inView) return;
+            timer = setInterval(cycle, INTERVAL);
+        }
+        function stopTimer() {
+            if (timer) { clearInterval(timer); timer = null; }
+        }
+
+        wrap.addEventListener('mouseenter', () => { isHover = true; stopTimer(); });
+        wrap.addEventListener('mouseleave', () => { isHover = false; startTimer(); });
+        wrap.addEventListener('focusin', () => { isHover = true; stopTimer(); });
+        wrap.addEventListener('focusout', () => { isHover = false; startTimer(); });
+
+        dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+                const target = parseInt(dot.dataset.index, 10);
+                if (target === frontIdx || isAnimating) return;
+                stopTimer();
+                cycle();
+                startTimer();
+            });
+        });
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    inView = e.isIntersecting;
+                    if (inView) startTimer(); else stopTimer();
+                });
+            }, { threshold: 0.25 });
+            io.observe(wrap);
+        } else {
+            startTimer();
+        }
+    })();
+</script>
 </body></html>
