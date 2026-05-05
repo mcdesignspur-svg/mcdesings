@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hablemos · Cuéntame qué necesitas | MC Designs</title>
+    <meta name="description" content="Cuatro preguntas, sesenta segundos. Te respondo personalmente en menos de 24 horas." />
+    <meta property="og:title" content="Hablemos · MC Designs" />
+    <meta property="og:description" content="Cuéntame qué necesitas. Te respondo personalmente en menos de 24 horas." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mcdesignspr.com/talk" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://mcdesignspr.com/talk" />
+    <link rel="stylesheet" href="./assets/tailwind.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --ease-snappy: cubic-bezier(.2, .8, .2, 1);
+        }
+        body { font-feature-settings: "ss01", "cv11"; }
+        .hero-gradient {
+            background:
+                radial-gradient(60% 60% at 50% 0%, rgba(0, 86, 198, 0.10) 0%, rgba(255, 255, 255, 0) 70%),
+                #ffffff;
+        }
+        em, i { font-family: 'Iowan Old Style', 'Apple Garamond', Georgia, serif; font-style: italic; }
+        input, textarea {
+            transition: border-color 0.2s var(--ease-snappy), box-shadow 0.2s var(--ease-snappy);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #0056c6;
+            box-shadow: 0 0 0 3px rgba(0, 86, 198, 0.12);
+        }
+        .step { display: none; }
+        .step.active { display: block; animation: stepIn 0.45s var(--ease-snappy) both; }
+        @keyframes stepIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chip-option {
+            transition: border-color 0.2s var(--ease-snappy),
+                        background-color 0.2s var(--ease-snappy),
+                        transform 0.2s var(--ease-snappy);
+        }
+        .chip-option:hover {
+            border-color: #0056c6;
+            transform: translateY(-1px);
+        }
+        .chip-option.selected {
+            border-color: #0056c6;
+            background-color: rgba(0, 86, 198, 0.04);
+        }
+        .chip-option.selected .chip-check { opacity: 1; transform: scale(1); }
+        .chip-check { opacity: 0; transform: scale(0.7); transition: all 0.2s var(--ease-snappy); }
+        .progress-dot { transition: background-color 0.3s var(--ease-snappy), width 0.3s var(--ease-snappy); }
+        .btn-primary { transition: background-color 0.2s var(--ease-snappy), transform 0.1s var(--ease-snappy); }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+        .fade-in { animation: stepIn 0.6s var(--ease-snappy) 0.1s both; }
+    </style>
+</head>
+
+<body class="bg-white text-on-surface font-sans antialiased min-h-screen overflow-x-hidden">
+
+    <!-- Minimal nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+        <div class="flex justify-between items-center max-w-5xl mx-auto px-6 py-4">
+            <a href="/" class="flex items-center gap-2">
+                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-9 w-auto" />
+            </a>
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant">Hablemos</span>
+        </div>
+    </nav>
+
+    <main class="hero-gradient min-h-screen pt-28 pb-20 px-4">
+        <div class="max-w-2xl mx-auto">
+
+            <!-- Header -->
+            <header class="text-center mb-10 mt-4 fade-in">
+                <span class="inline-block text-[11px] font-mono uppercase tracking-[0.18em] text-primary mb-5 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/15">
+                    Hablemos
+                </span>
+                <h1 class="font-heading uppercase tracking-[0.02em] text-5xl md:text-6xl text-slate-900 leading-[0.95] mb-4">
+                    Cuéntame qué necesitas
+                </h1>
+                <p class="text-on-surface-variant text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+                    Cuatro preguntas, sesenta segundos. Te respondo personalmente en menos de 24 horas.
+                </p>
+            </header>
+
+            <!-- Progress -->
+            <div class="flex justify-center gap-2 mb-8" id="progress-bar" aria-hidden="true">
+                <div class="progress-dot h-1 rounded-full bg-primary w-12" data-dot="1"></div>
+                <div class="progress-dot h-1 rounded-full bg-outline-variant w-8" data-dot="2"></div>
+                <div class="progress-dot h-1 rounded-full bg-outline-variant w-8" data-dot="3"></div>
+                <div class="progress-dot h-1 rounded-full bg-outline-variant w-8" data-dot="4"></div>
+            </div>
+
+            <!-- Form card -->
+            <div id="form-container" class="bg-white border border-slate-200 rounded-3xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_32px_-8px_rgba(0,0,0,0.06)]">
+
+                <form id="talk-form" novalidate>
+
+                    <!-- Honeypot (hidden) -->
+                    <div class="hidden" aria-hidden="true">
+                        <label>No llenes esto: <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+                    </div>
+
+                    <!-- Step 1: Service -->
+                    <section class="step active px-7 md:px-10 pt-8 md:pt-10 pb-2" data-step="1">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant">Paso 1 de 4</span>
+                        <h2 class="font-heading uppercase tracking-[0.02em] text-3xl md:text-4xl text-slate-900 mt-2 mb-1 leading-tight">
+                            ¿Qué necesitas?
+                        </h2>
+                        <p class="text-sm text-on-surface-variant mb-6">Escoge lo más cercano. Lo afinamos en la llamada.</p>
+
+                        <div class="space-y-3" role="radiogroup" aria-label="Servicio">
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="service" value="Diseño · Logo & Brand Kit" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Diseño · Logo & Brand Kit</div>
+                                    <div class="text-sm text-on-surface-variant">Identidad visual desde cero o refresh.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="service" value="Web Design · La Presencia / El Impulso / El Studio" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Web Design</div>
+                                    <div class="text-sm text-on-surface-variant">Sitio nuevo, redesign, o e-commerce Shopify.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="service" value="AI Integration · WhatsApp / Radar / Panel" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Integración de AI</div>
+                                    <div class="text-sm text-on-surface-variant">WhatsApp 24/7, Radar de Leads, Panel de Operaciones, automatizaciones a medida.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="service" value="Combo · Web + AI" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Combo · Web + AI</div>
+                                    <div class="text-sm text-on-surface-variant">Sitio nuevo + capa de AI conectada desde día uno.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="service" value="No estoy seguro · quiero orientación" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">No estoy seguro</div>
+                                    <div class="text-sm text-on-surface-variant">Sé que necesito algo, pero quiero orientación primero.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Step 2: Budget -->
+                    <section class="step px-7 md:px-10 pt-8 md:pt-10 pb-2" data-step="2">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant">Paso 2 de 4</span>
+                        <h2 class="font-heading uppercase tracking-[0.02em] text-3xl md:text-4xl text-slate-900 mt-2 mb-1 leading-tight">
+                            ¿Presupuesto aproximado?
+                        </h2>
+                        <p class="text-sm text-on-surface-variant mb-6">Honestidad acelera todo. Si no sabes, también es respuesta válida.</p>
+
+                        <div class="space-y-3" role="radiogroup" aria-label="Presupuesto">
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="budget" value="Explorando · sin presupuesto definido" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Explorando</div>
+                                    <div class="text-sm text-on-surface-variant">No tengo presupuesto definido todavía.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="budget" value="$1K – $3K" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">$1,000 – $3,000</div>
+                                    <div class="text-sm text-on-surface-variant">Diseño · Logo + Brand Kit · proyectos pequeños enfocados.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="budget" value="$3K – $8K" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">$3,000 – $8,000</div>
+                                    <div class="text-sm text-on-surface-variant">Web Design completo · Foundation o Growth · automatización inicial.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="budget" value="$8K – $15K" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">$8,000 – $15,000</div>
+                                    <div class="text-sm text-on-surface-variant">Web Pro · AI Integration estándar · Shopify avanzado.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="budget" value="$15K +" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">$15,000 +</div>
+                                    <div class="text-sm text-on-surface-variant">Studio completo · Panel de Operaciones · sistemas multi-canal.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Step 3: Timeline -->
+                    <section class="step px-7 md:px-10 pt-8 md:pt-10 pb-2" data-step="3">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant">Paso 3 de 4</span>
+                        <h2 class="font-heading uppercase tracking-[0.02em] text-3xl md:text-4xl text-slate-900 mt-2 mb-1 leading-tight">
+                            ¿Cuándo lo necesitas?
+                        </h2>
+                        <p class="text-sm text-on-surface-variant mb-6">Honestidad de nuevo. Esto define cómo armamos el plan.</p>
+
+                        <div class="space-y-3" role="radiogroup" aria-label="Timeline">
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="timeline" value="Lo antes posible · ASAP" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Lo antes posible</div>
+                                    <div class="text-sm text-on-surface-variant">Tengo deadline o pérdida de oportunidad real.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="timeline" value="1 – 3 meses" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">1 – 3 meses</div>
+                                    <div class="text-sm text-on-surface-variant">Quiero arrancar pronto, ventana definida.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="timeline" value="3 – 6 meses" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">3 – 6 meses</div>
+                                    <div class="text-sm text-on-surface-variant">Planificando para el próximo trimestre.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+
+                            <label class="chip-option flex items-start gap-4 border-2 border-slate-200 rounded-2xl px-5 py-4 cursor-pointer">
+                                <input type="radio" name="timeline" value="Flexible · sin prisa" class="sr-only" />
+                                <div class="flex-1">
+                                    <div class="font-semibold text-slate-900">Flexible</div>
+                                    <div class="text-sm text-on-surface-variant">Estoy explorando, sin prisa específica.</div>
+                                </div>
+                                <svg class="chip-check w-5 h-5 text-primary flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Step 4: Contact -->
+                    <section class="step px-7 md:px-10 pt-8 md:pt-10 pb-2" data-step="4">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant">Paso 4 de 4</span>
+                        <h2 class="font-heading uppercase tracking-[0.02em] text-3xl md:text-4xl text-slate-900 mt-2 mb-1 leading-tight">
+                            Cuéntame de ti
+                        </h2>
+                        <p class="text-sm text-on-surface-variant mb-6">Lo último. Te respondo en menos de 24 horas.</p>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="contactName">
+                                    Tu nombre <span class="text-error">*</span>
+                                </label>
+                                <input type="text" id="contactName" name="contactName" required
+                                    placeholder="ej. María Rodríguez"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="businessName">
+                                    Negocio
+                                </label>
+                                <input type="text" id="businessName" name="businessName"
+                                    placeholder="ej. Boutique Alma"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="email">
+                                    Email <span class="text-error">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="tu@negocio.com"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="whatsapp">
+                                    WhatsApp <span class="text-on-surface-variant/70 normal-case tracking-normal font-sans">(opcional)</span>
+                                </label>
+                                <input type="tel" id="whatsapp" name="whatsapp"
+                                    placeholder="787-555-0000"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white" />
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="message">
+                                    Cuéntame qué quieres lograr <span class="text-error">*</span>
+                                </label>
+                                <textarea id="message" name="message" required rows="4"
+                                    placeholder="ej. Quiero un sitio nuevo para mi boutique y conectar WhatsApp para responder preguntas de productos automáticamente..."
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-white resize-none"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-[0.14em] text-on-surface-variant mb-2" for="referralSource">
+                                    ¿Cómo me encontraste?
+                                </label>
+                                <select id="referralSource" name="referralSource"
+                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 bg-white appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="Referido">Referido de un amigo / cliente</option>
+                                    <option value="Google">Google</option>
+                                    <option value="LinkedIn">LinkedIn</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Error msg -->
+                    <div id="error-msg" class="hidden mx-7 md:mx-10 mt-4 bg-red-50 border border-red-200 rounded-xl px-5 py-3 text-sm text-red-700">
+                        Hubo un problema enviando el formulario. Por favor intenta de nuevo o escríbeme a <a href="mailto:miguel@mcdesignspr.com" class="underline font-semibold">miguel@mcdesignspr.com</a>.
+                    </div>
+
+                    <!-- Footer nav -->
+                    <div class="border-t border-slate-100 mt-8 px-7 md:px-10 py-5 flex items-center justify-between gap-4">
+                        <button type="button" id="back-btn" class="text-sm font-semibold text-on-surface-variant hover:text-slate-900 transition-colors invisible flex items-center gap-1">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            Atrás
+                        </button>
+                        <button type="button" id="next-btn" disabled class="btn-primary bg-primary text-on-primary text-xs font-mono uppercase tracking-[0.14em] font-semibold px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-primary-container">
+                            <span>Siguiente</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                        <button type="submit" id="submit-btn" disabled class="btn-primary hidden bg-primary text-on-primary text-xs font-mono uppercase tracking-[0.14em] font-semibold px-6 py-3 rounded-xl items-center gap-2 hover:bg-primary-container">
+                            <span id="submit-label">Enviar</span>
+                            <svg id="submit-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            <svg id="submit-spinner" class="hidden w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success state -->
+            <div id="success-card" class="hidden bg-white border border-slate-200 rounded-3xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_32px_-8px_rgba(0,0,0,0.06)] p-8 md:p-10">
+                <div class="text-center mb-8">
+                    <div class="w-14 h-14 bg-primary/8 rounded-full flex items-center justify-center mx-auto mb-5">
+                        <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h2 class="font-heading uppercase tracking-[0.02em] text-3xl md:text-4xl text-slate-900 mb-2 leading-tight">
+                        Recibido
+                    </h2>
+                    <p class="text-on-surface-variant text-base leading-relaxed max-w-md mx-auto">
+                        Te respondo en menos de 24 horas. Si quieres, agenda una llamada ahora mismo y nos vemos directo.
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-6">
+                    <div class="text-center mb-5">
+                        <span class="inline-block text-[10px] font-mono uppercase tracking-[0.18em] text-primary px-3 py-1.5 rounded-full bg-primary/8 mb-2">
+                            Diagnóstico 1:1 con Miguel
+                        </span>
+                        <p class="text-sm text-on-surface-variant">Llamada de 30 minutos · sin compromiso</p>
+                    </div>
+                    <div style="width:100%;min-height:600px" id="my-cal-inline-30min"></div>
+                </div>
+
+                <div class="text-center mt-6 pt-6 border-t border-slate-100">
+                    <a href="/" class="text-sm font-semibold text-on-surface-variant hover:text-slate-900 transition-colors inline-flex items-center gap-1">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                        Volver al inicio
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center text-xs text-on-surface-variant py-6">
+        <a href="mailto:miguel@mcdesignspr.com" class="hover:text-slate-900 transition-colors">miguel@mcdesignspr.com</a>
+        <span class="mx-2">·</span>
+        <a href="tel:7874699280" class="hover:text-slate-900 transition-colors">787-469-9280</a>
+    </footer>
+
+    <script>
+        (function () {
+            const form = document.getElementById('talk-form');
+            const steps = Array.from(document.querySelectorAll('[data-step]'));
+            const dots = Array.from(document.querySelectorAll('.progress-dot'));
+            const backBtn = document.getElementById('back-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const errorMsg = document.getElementById('error-msg');
+            const formContainer = document.getElementById('form-container');
+            const successCard = document.getElementById('success-card');
+            const progressBar = document.getElementById('progress-bar');
+
+            let currentStep = 1;
+            const TOTAL_STEPS = 4;
+
+            function showStep(n) {
+                steps.forEach((s) => s.classList.toggle('active', Number(s.dataset.step) === n));
+                dots.forEach((d) => {
+                    const i = Number(d.dataset.dot);
+                    d.classList.remove('bg-primary', 'bg-outline-variant', 'w-12', 'w-8');
+                    if (i === n) d.classList.add('bg-primary', 'w-12');
+                    else if (i < n) d.classList.add('bg-primary', 'w-8');
+                    else d.classList.add('bg-outline-variant', 'w-8');
+                });
+                backBtn.classList.toggle('invisible', n === 1);
+                if (n === TOTAL_STEPS) {
+                    nextBtn.classList.add('hidden');
+                    submitBtn.classList.remove('hidden');
+                    submitBtn.classList.add('inline-flex');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    submitBtn.classList.add('hidden');
+                    submitBtn.classList.remove('inline-flex');
+                }
+                refreshNavState();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function isStepValid(n) {
+                if (n === 1) return !!form.elements['service'].value;
+                if (n === 2) return !!form.elements['budget'].value;
+                if (n === 3) return !!form.elements['timeline'].value;
+                if (n === 4) {
+                    const name = form.elements['contactName'].value.trim();
+                    const email = form.elements['email'].value.trim();
+                    const message = form.elements['message'].value.trim();
+                    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                    return name.length > 0 && emailOk && message.length > 0;
+                }
+                return false;
+            }
+
+            function refreshNavState() {
+                const valid = isStepValid(currentStep);
+                if (currentStep === TOTAL_STEPS) {
+                    submitBtn.disabled = !valid;
+                } else {
+                    nextBtn.disabled = !valid;
+                }
+            }
+
+            // Chip options behavior
+            document.querySelectorAll('.chip-option').forEach((label) => {
+                const radio = label.querySelector('input[type="radio"]');
+                if (!radio) return;
+                radio.addEventListener('change', () => {
+                    const name = radio.name;
+                    document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+                        r.closest('.chip-option')?.classList.toggle('selected', r.checked);
+                    });
+                    refreshNavState();
+                });
+            });
+
+            // Text inputs trigger validation
+            ['contactName', 'email', 'message', 'businessName', 'whatsapp', 'referralSource'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', refreshNavState);
+                if (el) el.addEventListener('change', refreshNavState);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (!isStepValid(currentStep)) return;
+                if (currentStep < TOTAL_STEPS) {
+                    currentStep += 1;
+                    showStep(currentStep);
+                }
+            });
+
+            backBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep -= 1;
+                    showStep(currentStep);
+                }
+            });
+
+            // Submit
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!isStepValid(TOTAL_STEPS)) return;
+                errorMsg.classList.add('hidden');
+                submitBtn.disabled = true;
+                document.getElementById('submit-icon').classList.add('hidden');
+                document.getElementById('submit-spinner').classList.remove('hidden');
+                document.getElementById('submit-label').textContent = 'Enviando…';
+
+                const data = Object.fromEntries(new FormData(form).entries());
+
+                try {
+                    const res = await fetch('/api/talk', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+                    if (!res.ok) {
+                        const errBody = await res.json().catch(() => ({}));
+                        throw new Error(errBody.error || 'Network error');
+                    }
+                    // Success
+                    formContainer.classList.add('hidden');
+                    progressBar.classList.add('hidden');
+                    successCard.classList.remove('hidden');
+                    successCard.classList.add('fade-in');
+                    initCalEmbed();
+                    if (window.gtag) window.gtag('event', 'talk_submit', { service: data.service, budget: data.budget });
+                } catch (err) {
+                    console.error(err);
+                    errorMsg.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    document.getElementById('submit-icon').classList.remove('hidden');
+                    document.getElementById('submit-spinner').classList.add('hidden');
+                    document.getElementById('submit-label').textContent = 'Enviar';
+                }
+            });
+
+            function initCalEmbed() {
+                (function (C, A, L) {
+                    let p = function (a, ar) { a.q.push(ar); };
+                    let d = C.document;
+                    C.Cal = C.Cal || function () {
+                        let cal = C.Cal;
+                        let ar = arguments;
+                        if (!cal.loaded) {
+                            cal.ns = {};
+                            cal.q = cal.q || [];
+                            d.head.appendChild(d.createElement("script")).src = A;
+                            cal.loaded = true;
+                        }
+                        if (ar[0] === L) {
+                            const api = function () { p(api, arguments); };
+                            const namespace = ar[1];
+                            api.q = api.q || [];
+                            if (typeof namespace === "string") {
+                                cal.ns[namespace] = cal.ns[namespace] || api;
+                                p(cal.ns[namespace], ar);
+                                p(cal, ["initNamespace", namespace]);
+                            } else p(cal, ar);
+                            return;
+                        }
+                        p(cal, ar);
+                    };
+                })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", "30min", { origin: "https://app.cal.com" });
+                Cal.ns["30min"]("inline", {
+                    elementOrSelector: "#my-cal-inline-30min",
+                    config: { layout: "month_view" },
+                    calLink: "mcdesignspr/30min",
+                });
+                Cal.ns["30min"]("ui", { theme: "light", hideEventTypeDetails: false, layout: "month_view" });
+            }
+
+            // Initial state
+            showStep(1);
+        })();
+    </script>
+</body>
+</html>

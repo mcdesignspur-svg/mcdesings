@@ -27,6 +27,7 @@ export default defineConfig({
                 demoCotizador: resolve(__dirname, 'demo-cotizador.html'),
                 demoImpulso: resolve(__dirname, 'demo-impulso.html'),
                 intake: resolve(__dirname, 'intake.html'),
+                talk: resolve(__dirname, 'talk.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
                 terms: resolve(__dirname, 'terms.html'),
                 disenoWebPR: resolve(__dirname, 'diseno-web-puerto-rico.html'),
