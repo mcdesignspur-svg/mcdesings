@@ -46,17 +46,6 @@
             background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
         }
 
-        .gate-transition {
-            transition: opacity 400ms ease, transform 400ms ease;
-        }
-
-        .blurred-bg {
-            filter: blur(6px);
-            opacity: 0.4;
-            pointer-events: none;
-            user-select: none;
-        }
-
         .tool-card {
             transition: opacity 300ms ease, transform 300ms ease;
         }
@@ -130,106 +119,8 @@
     </nav>
 
     <main class="relative z-10 pt-32 pb-16 flex-grow flex flex-col">
-        <!-- State 1: Email Gate -->
-        <div id="gate-state"
-            class="gate-transition opacity-100 transform translate-y-0 w-full flex-grow flex flex-col items-center justify-center relative">
-            <div class="max-w-4xl w-full mx-auto px-8 text-center space-y-6 relative z-20 pt-12 md:pt-24">
-                <span
-                    class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full"
-                    data-i18n="recursos_page.hero.tag">
-                    <span class="material-symbols-outlined text-[14px]">lock</span> Acceso Gratuito
-                </span>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface leading-tight"
-                    data-i18n="recursos_page.hero.title">
-                    Aprende a crear
-                </h1>
-                <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
-                    data-i18n="recursos_page.hero.subtext">
-                    Accede a las guías paso a paso de los sistemas que uso para automatizar mi negocio y el de mis clientes.
-                </p>
-                <div
-                    class="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-500 font-label tracking-widest uppercase">
-                    <span data-i18n="recursos_page.hub.tabs.guides">GUÍAS</span>
-                    <span class="w-1 h-1 bg-slate-300 rounded-full mx-2"></span>
-                    <span data-i18n="recursos_page.hub.tabs.tools">Software Stack</span>
-                </div>
-
-                <div class="flex items-center justify-center gap-4 pt-2">
-                    <a href="https://instagram.com/mcdesignspr" target="_blank"
-                        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-primary transition-colors">
-                        <img src="https://cdn.simpleicons.org/instagram/94a3b8" class="w-4 h-4" alt="Instagram">
-                        Instagram
-                    </a>
-                </div>
-
-                <div
-                    class="mt-12 bg-white rounded-2xl shadow-xl border border-slate-100 p-8 max-w-[420px] w-full mx-auto text-left relative z-20">
-                    <h2 class="text-2xl font-bold tracking-tight mb-1" data-i18n="recursos_page.gate.title">Accede al
-                        Hub gratis</h2>
-                    <p class="text-slate-500 text-sm mb-6" data-i18n="recursos_page.gate.subtitle">Sin spam. Solo
-                        recursos.</p>
-                    <form id="gate-form" class="space-y-4">
-                        <input type="email" id="user-email" required placeholder="tu@email.com"
-                            data-i18n="recursos_page.gate.input"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
-                        <button type="submit"
-                            class="w-full hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-sm uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all flex justify-center items-center gap-2">
-                            <span data-i18n="recursos_page.gate.btn">Desbloquear acceso</span> <span
-                                class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </button>
-                        <p class="text-center text-[10px] text-slate-400 mt-4 leading-relaxed"
-                            data-i18n="recursos_page.gate.disclaimer">
-                            Al continuar, aceptas recibir emails de MC Designs.
-                        </p>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Blurred background preview -->
-            <div
-                class="absolute inset-0 w-full h-[150%] md:h-[200%] overflow-hidden z-10 pt-[400px] md:pt-[500px] px-8 max-w-7xl mx-auto pointer-events-none">
-                <div class="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-surface to-transparent z-10">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 blurred-bg">
-                    <!-- Mock Cards for Blur -->
-                    <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="w-2 h-2 rounded-full" style="background-color: #EA580C"></span>
-                            <span
-                                class="text-xs font-bold uppercase tracking-widest text-[#EA580C]">Automatización</span>
-                        </div>
-                        <img src="https://cdn.simpleicons.org/n8n/EA580C" alt="N8N" class="h-10 w-10 mb-4 ml-0">
-                        <h3 class="text-xl font-bold tracking-tight mb-2">N8N</h3>
-                        <p class="text-sm text-slate-500 mb-6">Automatización visual sin código. Conecta apps y crea
-                            flujos de trabajo en minutos.</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hidden md:block">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="w-2 h-2 rounded-full" style="background-color: #7C3AED"></span>
-                            <span class="text-xs font-bold uppercase tracking-widest text-[#7C3AED]">IA</span>
-                        </div>
-                        <img src="https://cdn.simpleicons.org/anthropic/7C3AED" alt="Anthropic"
-                            class="h-10 w-10 mb-4 ml-0">
-                        <h3 class="text-xl font-bold tracking-tight mb-2">Anthropic</h3>
-                        <p class="text-sm text-slate-500 mb-6">Creadores de Claude. La IA que potencia los agentes y
-                            flujos inteligentes de MC Designs.</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hidden md:block">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="w-2 h-2 rounded-full" style="background-color: #2563EB"></span>
-                            <span class="text-xs font-bold uppercase tracking-widest text-[#2563EB]">Web</span>
-                        </div>
-                        <img src="https://cdn.simpleicons.org/vercel/2563EB" alt="Vercel" class="h-10 w-10 mb-4 ml-0">
-                        <h3 class="text-xl font-bold tracking-tight mb-2">Vercel</h3>
-                        <p class="text-sm text-slate-500 mb-6">Deploy instantáneo para sitios modernos. Del primer
-                            commit a producción en minutos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- State 2: Unlocked Hub -->
-        <div id="hub-state" class="hidden gate-transition opacity-0 transform translate-y-4 w-full flex-grow flex-col">
+        <!-- Hub -->
+        <div id="hub-state" class="w-full flex-grow flex flex-col">
             <div class="max-w-7xl mx-auto px-8 w-full z-20">
                 <!-- Hub Header -->
                 <div class="text-center space-y-4 py-12 md:py-16">
@@ -270,8 +161,32 @@
                     </div>
                 </div>
 
+                <!-- Newsletter Opt-in -->
+                <div class="mt-24 max-w-3xl mx-auto">
+                    <div class="bg-white border border-slate-200 rounded-3xl shadow-sm p-8 md:p-12 text-center">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-5">
+                            <span class="material-symbols-outlined text-[14px]">mail</span> Newsletter
+                        </span>
+                        <h3 class="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 mb-3">
+                            ¿Te aviso cuando publique algo nuevo?
+                        </h3>
+                        <p class="text-slate-500 text-sm md:text-base mb-6 max-w-md mx-auto leading-relaxed">
+                            Cada vez que saco una guía o un recurso, te mando un email corto con el link y un párrafo de qué cubre. Sin spam. Sin venderte algo.
+                        </p>
+                        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                            <input type="email" id="newsletter-email" required placeholder="tu@email.com"
+                                class="flex-grow px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+                            <button type="submit"
+                                class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all whitespace-nowrap flex justify-center items-center gap-2">
+                                <span class="newsletter-btn-label">Suscribirme</span>
+                            </button>
+                        </form>
+                        <p id="newsletter-feedback" class="text-xs mt-4 hidden"></p>
+                    </div>
+                </div>
+
                 <!-- Suggestion Footer CTA -->
-                <div class="mt-24 pt-12 text-center pb-8 border-t border-slate-100">
+                <div class="mt-16 pt-12 text-center pb-8 border-t border-slate-100">
                     <h3 class="font-bold tracking-tight text-on-surface"
                         data-i18n="recursos_page.hub.tools.suggest_title">¿Falta algo en mi stack?</h3>
                     <p class="text-sm text-slate-500 mb-6" data-i18n="recursos_page.hub.tools.suggest_sub">Sugiere una
@@ -337,9 +252,16 @@
         </div>
     </footer>
 
-    <!-- Gate & Hub Logic Script -->
+    <!-- Hub Logic Script -->
     <script>
         const guides = [
+            {
+                title: "Interfaces Dinámicas: El Futuro del Software",
+                desc: "Por qué las interfaces que se adaptan al usuario son el próximo gran salto del software — y por qué la IA lo hace viable hoy para cualquier negocio.",
+                tags: ["Interfaces Dinámicas", "IA", "Software del Futuro"],
+                url: "guia-interfaces-dinamicas.html",
+                icon: "auto_awesome"
+            },
             {
                 title: "3 Primeros Pasos para Usar IA en Tu Negocio",
                 desc: "La IA no es solo para empresas grandes. Descubre cómo empezar a usarla en tu negocio hoy mismo con estos 3 pasos simples.",
@@ -389,9 +311,6 @@
         let currentCategory = "Todos";
         let activeTab = "guides";
 
-        const gateState = document.getElementById('gate-state');
-        const hubState = document.getElementById('hub-state');
-        const gateForm = document.getElementById('gate-form');
         const toolsGrid = document.getElementById('tools-grid');
         const guidesGrid = document.getElementById('guides-grid');
         const filtersContainer = document.getElementById('category-filters');
@@ -510,94 +429,54 @@
             updateUI();
         }
 
-        function showUnlockedState() {
-            gateState.classList.remove('opacity-100', 'translate-y-0');
-            gateState.classList.add('opacity-0', '-translate-y-4');
+        renderGuides();
+        initTabs();
 
-            setTimeout(() => {
-                gateState.classList.add('hidden');
-                gateState.classList.remove('flex');
-
-                hubState.classList.remove('hidden');
-                hubState.classList.add('flex');
-
-                void hubState.offsetWidth;
-
-                hubState.classList.remove('opacity-0', 'translate-y-4');
-                hubState.classList.add('opacity-100', 'translate-y-0');
-
-                renderGuides();
-                initTabs();
-            }, 400);
-        }
-
-        if (localStorage.getItem('mc_hub_unlocked') === 'true') {
-            gateState.classList.add('hidden');
-            gateState.classList.remove('flex');
-            hubState.classList.remove('hidden', 'opacity-0', 'translate-y-4');
-            hubState.classList.add('flex', 'opacity-100', 'translate-y-0');
-            renderGuides();
-            initTabs();
-        }
-
-        // Supabase Configuración
-        // IMPORTANTE: Reemplaza estos valores con los de tu proyecto (Settings > API)
+        // Newsletter opt-in (voluntario, no bloqueante)
         const SUPABASE_URL = 'https://ibtkjrdvnowbtywohbdb.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_q1fo3QIn_m3DeRFTA6tazQ_T0yTpGk5';
 
-        gateForm.addEventListener('submit', async (e) => {
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterFeedback = document.getElementById('newsletter-feedback');
+
+        newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const emailInput = document.getElementById('user-email');
-            const email = emailInput.value;
-            const btn = gateForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
+            const emailInput = document.getElementById('newsletter-email');
+            const email = emailInput.value.trim();
+            const btn = newsletterForm.querySelector('button[type="submit"]');
+            const label = btn.querySelector('.newsletter-btn-label');
 
-            if (email) {
-                // Muestra "Cargando..."
-                btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span>';
-                btn.style.opacity = '0.7';
-                btn.disabled = true;
+            if (!email) return;
 
-                try {
-                    // Si ya configuraste Supabase, guarda el email en la tabla 'LEADS'
-                    if (SUPABASE_URL !== 'TU_SUPABASE_URL') {
-                        const response = await fetch(`${SUPABASE_URL}/rest/v1/LEADS`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'apikey': SUPABASE_ANON_KEY,
-                                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                                // 'Prefer': 'return=minimal' // Opcional para evitar devolver toda la data
-                            },
-                            body: JSON.stringify({ email: email, source: 'recursos_hub' })
-                        });
+            const originalLabel = label.textContent;
+            label.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span>';
+            btn.disabled = true;
 
-                        if (!response.ok) {
-                            console.warn("Supabase respondió con error:", await response.text());
-                        }
-                    }
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/LEADS`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    },
+                    body: JSON.stringify({ email, source: 'newsletter_optin' })
+                });
 
-                    // Desbloquea la interfaz
-                    localStorage.setItem('mc_hub_unlocked', 'true');
-                    
-                    // Manejar redirección si existe el parámetro 'from'
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const fromPath = urlParams.get('from');
-                    if (fromPath) {
-                        window.location.href = fromPath;
-                    } else {
-                        showUnlockedState();
-                    }
-                } catch (error) {
-                    console.error('Error de red al conectar con Supabase:', error);
-                    // Si falla la conexión, comoquiera damos acceso para no dañar la experiencia
-                    localStorage.setItem('mc_hub_unlocked', 'true');
-                    showUnlockedState();
-                } finally {
-                    btn.innerHTML = originalText;
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
+                if (!response.ok) {
+                    console.warn('Supabase respondió con error:', await response.text());
                 }
+
+                newsletterFeedback.textContent = '¡Suscrito! Te aviso cuando publique algo nuevo.';
+                newsletterFeedback.className = 'text-xs mt-4 text-primary font-medium';
+                newsletterForm.reset();
+            } catch (err) {
+                console.error('Newsletter signup error:', err);
+                newsletterFeedback.textContent = 'Algo falló. Escríbeme a miguel@mcdesignspr.com.';
+                newsletterFeedback.className = 'text-xs mt-4 text-red-500 font-medium';
+            } finally {
+                label.textContent = originalLabel;
+                btn.disabled = false;
             }
         });
 
