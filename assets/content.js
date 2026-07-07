@@ -91,8 +91,8 @@ export const translations = {
             ]
         },
         proof: {
-            label: "Prueba real",
-            title: "Sistemas construidos alrededor de negocios reales.",
+            label: "Casos de estudio",
+            title: "Construido, entregado, <span class=\"display-italic\">funcionando</span>.",
             cards: [
                 {
                     tag: "Web + panel admin",
@@ -122,7 +122,7 @@ export const translations = {
             cta: "Agenda una llamada de diagnóstico"
         },
         cta_section: {
-            title: "¿Listo para <span class=\"text-primary-fixed\">Crecer</span>?",
+            title: "¿Listo para <span class=\"display-italic text-accent-bright\">crecer</span>?",
             subtext: "Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.",
             cta: "Agenda una llamada de diagnóstico"
         },
@@ -664,8 +664,8 @@ export const translations = {
             ]
         },
         proof: {
-            label: "Real proof",
-            title: "Systems built around real businesses.",
+            label: "Case studies",
+            title: "Built, shipped, <span class=\"display-italic\">working</span>.",
             cards: [
                 {
                     tag: "Web + admin panel",
@@ -695,7 +695,7 @@ export const translations = {
             cta: "Book a Diagnostic Call"
         },
         cta_section: {
-            title: "Ready to <span class=\"text-primary-fixed\">Grow</span>?",
+            title: "Ready to <span class=\"display-italic text-accent-bright\">grow</span>?",
             subtext: "I build your web + AI custom — so your business grows without depending on more people.",
             cta: "Book a Diagnostic Call"
         },

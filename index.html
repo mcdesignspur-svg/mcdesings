@@ -89,119 +89,488 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./assets/tailwind.css" />
     <style>
-        .glass-module {
-            backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.4);
-            position: relative;
-            overflow: hidden;
+        /* ============================================================
+           MC DESIGNS — EDITORIAL REVAMP
+           Crema · Tinta · Lima — serif expresiva + grotesk + mono
+           ============================================================ */
+        :root {
+            --cream: #FFFFFF;
+            --cream-deep: #F2F2EF;
+            --ink: #1C1A13;
+            --ink-soft: #57533F;
+            --accent: #3E6BFF;
+            --accent-deep: #2E56E8;
+            --accent-bright: #7D97FF;
+            --accent-wash: #E3EAFF;
         }
-        .glass-module::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100px; height: 100px;
-            background: radial-gradient(circle at top left, rgba(0, 86, 198, 0.1), transparent 70%);
-            pointer-events: none;
+        html { background: var(--cream); }
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Instrument Sans', Inter, system-ui, sans-serif;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0056c6 0%, #006df8 100%);
-        }
-
-        /* Infinite Grid + Cursor Reveal hero bg */
-        .hero-bg-static,
-        .hero-bg-cursor {
-            position: absolute;
+        /* Warm paper grain over everything */
+        .grain-overlay {
+            position: fixed;
             inset: 0;
             pointer-events: none;
-            background-image:
-                linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: heroGridScroll 1.3s linear infinite;
-            will-change: background-position;
+            z-index: 50;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
         }
-        .hero-bg-cursor {
-            background-image:
-                linear-gradient(rgba(0, 86, 198, 0.45) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 86, 198, 0.45) 1px, transparent 1px);
-            -webkit-mask-image: radial-gradient(280px circle at var(--mx, -300px) var(--my, -300px), black 0%, transparent 70%);
-            mask-image: radial-gradient(280px circle at var(--mx, -300px) var(--my, -300px), black 0%, transparent 70%);
+
+        .font-display { font-family: 'Fraunces', Georgia, serif; }
+        .display-italic {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
         }
-        @keyframes heroGridScroll {
-            from { background-position: 0 0; }
-            to { background-position: 40px 40px; }
+        h1, h2, h3 { text-wrap: balance; }
+
+        /* Serif display headline with optical size cranked */
+        .headline-xl {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 144;
+            font-weight: 560;
+            letter-spacing: -0.025em;
+            line-height: 1.02;
         }
-        .hero-orb {
+        .headline-lg {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 100;
+            font-weight: 540;
+            letter-spacing: -0.02em;
+            line-height: 1.08;
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        /* Highlight sweep behind italic words */
+        .accent-mark {
+            position: relative;
+            white-space: nowrap;
+        }
+        .accent-mark::before {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(120px);
+            left: -0.08em; right: -0.08em;
+            bottom: 0.02em;
+            height: 0.42em;
+            background: var(--accent-wash);
+            z-index: -1;
+            transform: skewX(-8deg) rotate(-1deg);
+            border-radius: 2px;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn-punch {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 9999px;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+        }
+        .btn-punch:hover {
+            background: var(--accent-deep);
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+        .btn-punch:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0 0 0 var(--ink);
+        }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid rgba(28, 26, 19, 0.3);
+            border-radius: 9999px;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: border-color 160ms ease, background 160ms ease;
+        }
+        .btn-ghost:hover { border-color: var(--ink); background: rgba(28,26,19,0.03); }
+
+        /* ---------- Nav ---------- */
+        .nav-link {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            padding: 8px 12px;
+            border-radius: 9999px;
+            transition: color 150ms ease, background 150ms ease;
+        }
+        .nav-link:hover { color: var(--ink); background: rgba(28,26,19,0.05); }
+        details.header-menu[open] .header-chevron { transform: rotate(180deg); }
+        details.header-menu summary::-webkit-details-marker { display: none; }
+
+        /* ---------- Hero fan (demos as gallery pieces) ---------- */
+        .fan-stage {
+            position: relative;
+            height: 400px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        .fan-card {
+            position: absolute;
+            left: 50%;
+            bottom: 40px;
+            width: 176px;
+            height: 236px;
+            margin-left: -88px;
+            border: 1.5px solid var(--ink);
+            border-radius: 18px;
+            padding: 18px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transform-origin: 50% 120%;
+            transform: translateX(var(--fx, 0)) rotate(var(--fr, 0deg));
+            z-index: var(--fz, 1);
+            box-shadow: 0 18px 40px -18px rgba(28, 26, 19, 0.35);
+            transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease;
             will-change: transform;
         }
-        .hero-orb-1 {
-            right: -20%; top: -20%;
-            width: 40%; height: 40%;
-            background: rgba(0, 86, 198, 0.18);
+        .fan-card:hover, .fan-card:focus-visible {
+            transform: translateX(var(--fx, 0)) rotate(0deg) translateY(-26px) scale(1.05);
+            z-index: 20;
+            box-shadow: 0 30px 60px -20px rgba(28, 26, 19, 0.45);
         }
-        .hero-orb-2 {
-            right: 8%; top: -10%;
-            width: 22%; height: 22%;
-            background: rgba(0, 109, 248, 0.20);
-            filter: blur(100px);
+        .fan-card:nth-child(1) { --fx: -390px; --fr: -13deg; --fz: 1; }
+        .fan-card:nth-child(2) { --fx: -262px; --fr: -8.5deg; --fz: 2; }
+        .fan-card:nth-child(3) { --fx: -132px; --fr: -4deg;  --fz: 3; }
+        .fan-card:nth-child(4) { --fx: 0px;    --fr: 0deg;   --fz: 4; }
+        .fan-card:nth-child(5) { --fx: 132px;  --fr: 4deg;   --fz: 3; }
+        .fan-card:nth-child(6) { --fx: 262px;  --fr: 8.5deg; --fz: 2; }
+        .fan-card:nth-child(7) { --fx: 390px;  --fr: 13deg;  --fz: 1; }
+
+        .fan-card__num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: rgba(28,26,19,0.55);
         }
-        .hero-orb-3 {
-            left: -10%; bottom: -25%;
-            width: 42%; height: 42%;
-            background: rgba(158, 66, 39, 0.13);
+        .fan-card__title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 60;
+            font-weight: 560;
+            font-size: 21px;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+            margin-top: 10px;
+            color: var(--ink);
         }
-        @media (prefers-reduced-motion: reduce) {
-            .hero-bg-static, .hero-bg-cursor { animation: none; }
+        .fan-card__tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(28,26,19,0.6);
+            margin-top: 6px;
         }
+        .fan-card__go {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .fan-card__go .cta-arrow { transition: transform 200ms ease; }
+        .fan-card:hover .fan-card__go .cta-arrow { transform: translateX(4px); }
+
+        /* Fan → snap-scroll row on small screens */
+        @media (max-width: 767px) {
+            .fan-stage {
+                height: auto;
+                display: flex;
+                gap: 14px;
+                overflow-x: auto;
+                padding: 26px 24px 34px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                max-width: 100%;
+            }
+            .fan-stage::-webkit-scrollbar { display: none; }
+            .fan-card {
+                position: static;
+                margin-left: 0;
+                flex: 0 0 172px;
+                transform: rotate(var(--fr-m, -1.5deg));
+                scroll-snap-align: center;
+            }
+            .fan-card:nth-child(even) { --fr-m: 1.5deg; }
+            .fan-card:hover { transform: rotate(0deg) scale(1.02); }
+        }
+
+        /* ---------- Antes vs Después ---------- */
+        .vs-card {
+            border: 1.5px solid var(--ink);
+            border-radius: 22px;
+            padding: 34px 32px 30px;
+        }
+        .vs-row {
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+            padding: 14px 0;
+        }
+        .vs-row + .vs-row { border-top: 1px solid rgba(28, 26, 19, 0.1); }
+        .vs-card--dark .vs-row + .vs-row { border-top-color: rgba(255, 255, 255, 0.12); }
+        .vs-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            flex-shrink: 0;
+            width: 74px;
+        }
+        .vs-text {
+            font-size: 15px;
+            line-height: 1.55;
+        }
+        .vs-badge {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-6deg);
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            box-shadow: 3px 3px 0 var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 19px;
+            z-index: 5;
+        }
+
+        /* ---------- El Plan — números outline ---------- */
+        .plan-num {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 144;
+            font-weight: 600;
+            font-size: clamp(4.2rem, 7vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--ink);
+        }
+        .plan-step { position: relative; padding-top: 22px; }
+        .plan-step:hover .plan-num { color: var(--accent); -webkit-text-stroke: 1.5px var(--accent); transition: color 250ms ease; }
+
+        /* ---------- Nota de Miguel ---------- */
+        .letter-card {
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 26px;
+            box-shadow: 6px 6px 0 var(--ink);
+            padding: clamp(30px, 5vw, 56px);
+        }
+        .letter-body {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 30;
+            font-weight: 430;
+            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+            line-height: 1.7;
+            color: var(--ink);
+        }
+        .letter-body em { font-style: italic; }
+        .letter-sign {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.9rem;
+            color: var(--ink);
+        }
+        .polaroid {
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            box-shadow: 4px 4px 0 var(--ink);
+            padding: 10px 10px 32px;
+            rotate: -3deg;
+            width: 178px;
+            flex-shrink: 0;
+        }
+        .polaroid-img {
+            aspect-ratio: 1 / 1;
+            background: var(--accent-wash);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .polaroid-img img { width: 100%; height: 100%; object-fit: cover; }
+        .polaroid-caption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* ---------- Reveal on scroll (preserved) ---------- */
         .reveal {
             opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 1200ms cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color 250ms ease,
-                        box-shadow 250ms ease;
+            transform: translateY(10px);
+            transition: opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
             transition-delay: var(--delay, 0ms);
             will-change: opacity, transform;
         }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .cta-arrow { display: inline-block; transition: transform 200ms ease; }
+        a:hover .cta-arrow { transform: translateX(4px); }
+
+        /* ---------- Finder ---------- */
+        .finder-shell {
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 20px;
+            box-shadow: 4px 4px 0 var(--ink);
+            transition: box-shadow 200ms ease, transform 200ms ease;
         }
-        .soft-lift {
-            transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease, background-color 250ms ease;
+        .finder-shell:focus-within {
+            transform: translate(-1px, -1px);
+            box-shadow: 6px 6px 0 var(--ink);
         }
-        .soft-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 50px rgba(0, 86, 198, 0.08);
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 7px 15px;
+            border-radius: 9999px;
+            background: transparent;
+            border: 1.5px solid rgba(28, 26, 19, 0.25);
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            transition: all 150ms ease;
+            cursor: pointer;
         }
-        .cta-arrow {
-            display: inline-block;
-            transition: transform 200ms ease;
+        .hero-chip:hover {
+            border-color: var(--accent);
+            color: #FFFFFF;
+            background: var(--accent);
         }
-        .soft-lift:hover .cta-arrow,
-        a:hover .cta-arrow {
-            transform: translateX(4px);
+        .hero-chip:active { transform: scale(0.96); }
+
+        /* ---------- Sistema cards ---------- */
+        .sys-card {
+            border: 1.5px solid var(--ink);
+            border-radius: 22px;
+            padding: 38px 34px;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            transition: transform 250ms ease, box-shadow 250ms ease;
         }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal,
-            .soft-lift,
-            .cta-arrow {
-                transition: none;
-            }
-            .reveal {
-                opacity: 1;
-                transform: none;
-            }
+        .sys-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 50px -24px rgba(28, 26, 19, 0.4);
+        }
+        .sys-card--ink {
+            background: var(--ink);
+            color: var(--cream);
         }
 
-        /* ---------- Animated Card Stack (Social Proof) ---------- */
+        /* ---------- Casos de estudio ---------- */
+        .case-card {
+            border: 1.5px solid var(--ink);
+            border-radius: 26px;
+            overflow: hidden;
+            background: #FFFFFF;
+            transition: transform 280ms ease, box-shadow 280ms ease;
+        }
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -28px rgba(28, 26, 19, 0.4);
+        }
+        .case-media {
+            background: var(--cream-deep);
+            min-height: 260px;
+            position: relative;
+        }
+        .case-media img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        @media (max-width: 767px) {
+            .case-media { min-height: 220px; position: relative; }
+        }
+        .case-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border: 1px solid rgba(28, 26, 19, 0.25);
+            border-radius: 9999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        /* ---------- Bento stats ---------- */
+        .bento-cell {
+            border: 1.5px solid var(--ink);
+            border-radius: 20px;
+            padding: 26px 26px 22px;
+            background: #FFFFFF;
+        }
+        .bento-num {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 90;
+            font-weight: 600;
+            font-size: clamp(2.1rem, 4vw, 3rem);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        /* ---------- Diagnostic option state ---------- */
+        .lead-opt-on {
+            border-color: var(--ink) !important;
+            background: #EEF2FF !important;
+        }
+
+        /* ---------- Animated Card Stack (Social Proof) — preserved, recolored ---------- */
         .proof-stack-wrapper {
             max-width: 960px;
             margin: 0 auto;
@@ -224,12 +593,12 @@
             display: flex;
             flex-direction: column;
             padding: 6px;
-            background: #ffffff;
-            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
             border-bottom: 0;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            box-shadow: 0 30px 80px -30px rgba(15, 23, 42, 0.22), 0 8px 24px -8px rgba(15, 23, 42, 0.10);
+            border-top-left-radius: 22px;
+            border-top-right-radius: 22px;
+            box-shadow: 0 30px 80px -30px rgba(28, 26, 19, 0.3), 0 8px 24px -8px rgba(28, 26, 19, 0.12);
             will-change: transform, opacity;
             transition: transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 600ms ease, box-shadow 400ms ease;
         }
@@ -247,9 +616,9 @@
             min-height: 0;
             border-radius: 16px;
             overflow: hidden;
-            outline: 1px solid rgba(15, 23, 42, 0.08);
+            outline: 1px solid rgba(28, 26, 19, 0.12);
             outline-offset: -1px;
-            background: #f4f6fb;
+            background: var(--cream-deep);
         }
         .proof-card__media img {
             width: 100%;
@@ -274,16 +643,17 @@
             gap: 2px;
         }
         .proof-card__title {
-            font-weight: 700;
-            color: #0f172a;
-            font-size: 18px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 19px;
             letter-spacing: -0.01em;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .proof-card__desc {
-            color: #64748b;
+            color: var(--ink-soft);
             font-size: 14px;
             white-space: nowrap;
             overflow: hidden;
@@ -297,15 +667,15 @@
             padding-left: 20px;
             padding-right: 14px;
             border-radius: 9999px;
-            background: #0f172a;
-            color: #ffffff;
+            background: var(--ink);
+            color: var(--cream);
             font-size: 14px;
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            transition: background 150ms ease, transform 150ms ease;
+            transition: background 150ms ease, color 150ms ease, transform 150ms ease;
         }
-        .proof-card__cta:hover { background: #0056c6; }
+        .proof-card__cta:hover { background: var(--accent); color: #FFFFFF; }
         .proof-card__cta:active { transform: scale(0.97); }
 
         .proof-stack__dots {
@@ -318,259 +688,268 @@
             width: 24px;
             height: 4px;
             border-radius: 9999px;
-            background: rgba(15, 23, 42, 0.15);
+            background: rgba(28, 26, 19, 0.18);
             transition: background 220ms ease, width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
             border: 0;
             padding: 0;
         }
         .proof-stack__dot.is-active {
-            background: #0056c6;
+            background: var(--ink);
             width: 36px;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .proof-card { transition: none; }
+            .proof-card, .reveal, .cta-arrow, .fan-card, .btn-punch { transition: none; animation: none; }
+            .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
-<div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" style="background-image: linear-gradient(#0056c6 1px, transparent 1px), linear-gradient(90deg, #0056c6 1px, transparent 1px); background-size: 40px 40px;"></div>
-
-<!-- Nav -->
-<style>
-    details.header-menu[open] .header-chevron { transform: rotate(180deg); }
-    details.header-menu summary::-webkit-details-marker { display: none; }
-    details.header-menu summary:hover { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); }
-</style>
+<body class="antialiased selection:bg-accent selection:text-white">
+<div class="grain-overlay" aria-hidden="true"></div>
 
 <main class="relative z-10">
 
-<section id="hero-finder-section" class="min-h-[88vh] md:min-h-screen flex flex-col relative z-10 overflow-hidden">
-    <!-- Infinite Grid + Cursor Reveal background -->
-    <div class="hero-bg-static" aria-hidden="true"></div>
-    <div class="hero-bg-cursor" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+<!-- ============ NAV ============ -->
+<nav class="relative z-30 max-w-7xl mx-auto px-6 md:px-8 pt-5 flex items-center justify-between">
+    <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1">
+        <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 w-auto" />
+    </a>
 
-    <!-- Nav inside hero so the grid bg shows through transparency -->
-    <nav class="relative w-full z-20 flex-shrink-0">
-        <div class="flex flex-col items-center w-full px-6 pt-4 pb-2">
-            <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1">
-                <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-9 w-auto" />
-            </a>
+    <div class="hidden md:flex items-center gap-1">
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/lab" class="nav-link">Lab</a>
+        <a href="/portfolio" class="nav-link">Portfolio</a>
+        <a href="/about" class="nav-link">Miguel</a>
+        <a href="/recursos" class="nav-link">Recursos</a>
+    </div>
 
-            <details class="header-menu mt-1 relative">
-                <summary class="cursor-pointer text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 list-none px-3 py-1.5 rounded-full">
-                    Menú
-                    <svg class="header-chevron w-3 h-3 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </summary>
-                <div class="absolute left-1/2 -translate-x-1/2 mt-2 bg-white border border-slate-200 rounded-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] py-2 flex flex-col min-w-[180px] z-10">
-                    <a href="/servicios" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Servicios</a>
-                    <a href="/lab" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Lab</a>
-                    <a href="/portfolio" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Portfolio</a>
-                    <a href="/about" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Miguel</a>
-                    <a href="/recursos" class="px-5 py-2 text-sm text-on-surface hover:bg-slate-50 hover:text-primary transition-colors">Recursos</a>
-                    <div class="border-t border-slate-100 my-1"></div>
-                    <a href="/talk" class="px-5 py-2 text-sm font-semibold text-primary hover:bg-primary/8 transition-colors">Hablamos →</a>
-                </div>
-            </details>
-        </div>
-    </nav>
+    <div class="flex items-center gap-3">
+        <a href="/talk" class="btn-punch !py-2.5 !px-5 !text-[13.5px]">Hablamos <span class="cta-arrow">→</span></a>
+        <details class="header-menu relative md:hidden">
+            <summary class="cursor-pointer list-none inline-flex items-center justify-center w-11 h-11 rounded-full border-[1.5px] border-ink/25 text-ink">
+                <svg class="header-chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="absolute right-0 mt-2 bg-[#FFFFFF] border-[1.5px] border-ink rounded-2xl shadow-[3px_3px_0_#1C1A13] py-2 flex flex-col min-w-[190px] z-40">
+                <a href="/servicios" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Servicios</a>
+                <a href="/lab" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Lab</a>
+                <a href="/portfolio" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Portfolio</a>
+                <a href="/about" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Miguel</a>
+                <a href="/recursos" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Recursos</a>
+            </div>
+        </details>
+    </div>
+</nav>
 
-    <div class="flex-1 flex items-center justify-center px-6 pb-16 pt-12 md:pt-0 relative z-10">
-        <div class="max-w-2xl w-full mx-auto text-center">
+<!-- ============ HERO — headline + demos en abanico ============ -->
+<section class="relative z-10 pt-14 md:pt-24 pb-4 overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="reveal eyebrow mb-6">MC Designs · Web + IA · Puerto Rico</p>
 
-        <h1 class="reveal font-heading uppercase tracking-[0.02em] text-4xl md:text-7xl text-on-surface leading-[0.95] mb-5">
-            ¿Qué te trae aquí?
+        <h1 class="reveal headline-xl text-[2.9rem] md:text-[5.2rem] text-ink" style="--delay: 80ms">
+            Tu negocio, en piloto<br/><span class="display-italic accent-mark">automático</span>.
         </h1>
 
-        <p class="reveal text-sm md:text-base text-on-surface-variant max-w-md mx-auto leading-relaxed mb-6" style="--delay: 90ms">
-            Te llevo a lo que buscas <em>en un instante</em>.
+        <p class="reveal text-base md:text-lg text-ink-soft max-w-xl mx-auto leading-relaxed mt-7" style="--delay: 160ms">
+            Diseño tu web y le integro IA que contesta, cotiza y agenda por ti — 24/7.
+            El estudio todo en uno para negocios en Puerto Rico.
         </p>
 
-        <!-- Hero chat finder -->
-        <div class="reveal" style="--delay: 270ms">
-            <form id="hero-finder-form" onsubmit="event.preventDefault(); heroFinderSubmit();" class="bg-white border border-slate-200 rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_32px_-8px_rgba(0,0,0,0.06)] focus-within:border-primary/40 focus-within:shadow-[0_0_0_3px_rgba(0,86,198,0.08),0_8px_32px_-8px_rgba(0,86,198,0.12)] transition-all text-left">
-                <div class="flex items-center gap-2 pl-5 pr-2 py-2">
-                    <textarea
-                        id="hero-finder-input"
-                        rows="1"
-                        placeholder="¿Qué deseas saber?"
-                        autocomplete="off"
-                        class="flex-1 text-base text-on-surface placeholder-slate-400 bg-transparent resize-none border-0 focus:outline-none focus:ring-0 leading-6 py-1"
-                        style="border:none; min-height: 28px; max-height: 160px;"></textarea>
-                    <button type="submit" id="hero-finder-send" disabled aria-label="Enviar"
-                        class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all active:scale-[0.94] bg-primary text-on-primary hover:bg-primary-container disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                    </button>
-                </div>
-            </form>
-
-            <!-- Quick chips -->
-            <div class="flex flex-wrap justify-center gap-2 mt-5">
-                <button type="button" onclick="heroFinderChip('¿Qué construye MC Designs?')" class="hero-chip">¿Qué construyes?</button>
-                <button type="button" onclick="heroFinderChip('Muéstrame el portfolio')" class="hero-chip">Portfolio</button>
-                <button type="button" onclick="heroFinderChip('Quiero ver los servicios y precios')" class="hero-chip">Servicios + precios</button>
-                <button type="button" onclick="heroFinderChip('Muéstrame los demos de AI')" class="hero-chip">Demos AI</button>
-                <button type="button" onclick="heroFinderChip('¿Cómo es trabajar contigo?')" class="hero-chip">Cómo trabajas</button>
-                <button type="button" onclick="heroFinderChip('Quiero agendar una llamada')" class="hero-chip">Agendar llamada</button>
-            </div>
-        </div>
-
-        <!-- Stack Bar -->
-        <div class="reveal pt-12 mt-12 border-t border-outline-variant/30" style="--delay: 360ms">
-            <p class="text-[10px] font-mono uppercase tracking-[0.18em] text-on-surface-variant/50 mb-5">Trabajo con</p>
-            <div class="flex items-center justify-center gap-6 md:gap-10 flex-wrap">
-                <span class="text-sm font-mono font-medium text-on-surface-variant/60">Claude AI</span>
-                <span class="text-outline-variant/40">·</span>
-                <span class="text-sm font-mono font-medium text-on-surface-variant/60">N8N</span>
-                <span class="text-outline-variant/40">·</span>
-                <span class="text-sm font-mono font-medium text-on-surface-variant/60">Shopify</span>
-                <span class="text-outline-variant/40">·</span>
-                <span class="text-sm font-mono font-medium text-on-surface-variant/60">Supabase</span>
-                <span class="text-outline-variant/40">·</span>
-                <span class="text-sm font-mono font-medium text-on-surface-variant/60">Vercel</span>
-            </div>
+        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mt-9" style="--delay: 240ms">
+            <a href="/talk" class="btn-punch">Cotizar mi proyecto <span class="cta-arrow">→</span></a>
+            <a href="#casos" class="btn-ghost">Ver casos reales</a>
         </div>
     </div>
+
+    <!-- Stack bar -->
+    <div class="max-w-4xl mx-auto px-6 mt-14 md:mt-20">
+        <div class="reveal border-t border-ink/15 pt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <span class="eyebrow !text-[10px] w-full text-center mb-1 sm:w-auto sm:mb-0">Trabajo con</span>
+            <span class="text-sm font-mono font-medium text-ink-soft/80">Claude AI</span>
+            <span class="text-ink/25">·</span>
+            <span class="text-sm font-mono font-medium text-ink-soft/80">N8N</span>
+            <span class="text-ink/25">·</span>
+            <span class="text-sm font-mono font-medium text-ink-soft/80">Shopify</span>
+            <span class="text-ink/25">·</span>
+            <span class="text-sm font-mono font-medium text-ink-soft/80">Supabase</span>
+            <span class="text-ink/25">·</span>
+            <span class="text-sm font-mono font-medium text-ink-soft/80">Vercel</span>
+        </div>
     </div>
 </section>
-<style>
-    .hero-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 32px;
-        padding: 6px 14px;
-        border-radius: 9999px;
-        background: #ffffff;
-        border: 1px solid #c2c6d8;
-        font-size: 12px;
-        font-weight: 500;
-        color: #424655;
-        transition: all 150ms ease;
-        cursor: pointer;
-    }
-    .hero-chip:hover {
-        border-color: #0056c6;
-        color: #0056c6;
-        background: #d9e2ff;
-    }
-    .hero-chip:active {
-        transform: scale(0.96);
-    }
-</style>
 
+<!-- ============ ANTES VS DESPUÉS — un martes cualquiera ============ -->
+<section class="relative z-10 py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <p class="reveal eyebrow mb-5">Un martes cualquiera</p>
+            <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">
+                El mismo día, <span class="display-italic">dos realidades</span>.
+            </h2>
+        </div>
 
-<!-- AI Diagnostic Modal -->
-<div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-on-surface/50" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <span class="vs-badge hidden md:flex" aria-hidden="true">vs</span>
+
+            <!-- SIN sistema -->
+            <div class="reveal vs-card bg-white">
+                <p class="eyebrow !text-[10px] mb-4">✕ &nbsp;Sin sistema</p>
+                <div class="vs-row">
+                    <span class="vs-time text-ink/40">9:47 PM</span>
+                    <p class="vs-text text-ink-soft">Cerraste hace tres horas. Sigues contestando DMs con la cena en la otra mano.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-ink/40">6:12 AM</span>
+                    <p class="vs-text text-ink-soft">Alguien pidió precio de madrugada. Nadie le contestó.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-ink/40">2:30 PM</span>
+                    <p class="vs-text text-ink-soft">La misma pregunta por quinta vez. Copiar, pegar, repetir.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-ink/40">11:58 PM</span>
+                    <p class="vs-text text-ink font-semibold">Resultado: cero horas libres. Y mañana, lo mismo.</p>
+                </div>
+            </div>
+
+            <!-- CON sistema -->
+            <div class="reveal vs-card vs-card--dark bg-ink" style="--delay: 140ms">
+                <p class="eyebrow !text-[10px] !text-accent-bright mb-4">✓ &nbsp;Con sistema</p>
+                <div class="vs-row">
+                    <span class="vs-time text-accent-bright">9:47 PM</span>
+                    <p class="vs-text text-cream/85">Tu chatbot cerró una cita mientras cenabas tranquilo.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-accent-bright">6:12 AM</span>
+                    <p class="vs-text text-cream/85">El cotizador le dio precio al instante. Cliente capturado.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-accent-bright">2:30 PM</span>
+                    <p class="vs-text text-cream/85">La respuesta salió sola. Tú ni te enteraste.</p>
+                </div>
+                <div class="vs-row">
+                    <span class="vs-time text-accent-bright">11:58 PM</span>
+                    <p class="vs-text text-cream font-semibold">Resultado: el negocio avanzó — sin robarte el día.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal text-center mt-14 md:mt-16" style="--delay: 160ms">
+            <p class="headline-lg text-3xl md:text-5xl text-ink">La diferencia es <span class="display-italic accent-mark">el sistema</span>.</p>
+            <a href="#sistemas" class="inline-flex items-center gap-2 mt-7 text-accent font-semibold text-[15px] hover:gap-3.5 transition-all">
+                Conócelos <span class="cta-arrow">↓</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- AI Diagnostic Modal (funcionalidad intacta) -->
+<div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-ink/60" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
     <div class="min-h-full flex items-start md:items-center justify-center p-4 md:p-8">
         <div class="relative w-full max-w-2xl my-4">
             <button onclick="closeDiagnostic()" aria-label="Cerrar"
-                class="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-10 h-10 rounded-full bg-white border border-outline-variant shadow-md text-on-surface-variant hover:text-on-surface hover:scale-105 active:scale-95 transition-all flex items-center justify-center z-10">
+                class="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-10 h-10 rounded-full bg-cream border-[1.5px] border-ink shadow-md text-ink hover:scale-105 active:scale-95 transition-all flex items-center justify-center z-10">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             <div class="mb-5 px-2">
-                <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-heading uppercase tracking-[0.14em] rounded-full" data-i18n="ai_quiz.badge">Diagnóstico · 60 segundos</span>
-                <p class="text-sm text-white/80 mt-3" data-i18n="ai_quiz.modal_intro">Dos preguntas más y te muestro tu plan AI.</p>
+                <span class="inline-block px-3 py-1.5 bg-accent text-white text-[10px] font-mono uppercase tracking-[0.14em] rounded-full border border-ink" data-i18n="ai_quiz.badge">Diagnóstico · 60 segundos</span>
+                <p class="text-sm text-white/85 mt-3" data-i18n="ai_quiz.modal_intro">Dos preguntas más y te muestro tu plan AI.</p>
             </div>
-            <div class="bg-white rounded-2xl border border-outline-variant shadow-2xl p-8">
+            <div class="bg-[#FFFFFF] rounded-2xl border-[1.5px] border-ink shadow-2xl p-8">
 
             <!-- Progress -->
             <div class="flex items-center gap-2 mb-8" id="lead-progress">
-                <div id="ldot-1" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-primary text-white transition-all">1</div>
-                <div class="flex-1 h-0.5 bg-slate-200 rounded-full"><div id="lprog-1" class="h-full bg-primary rounded-full transition-all duration-500 w-0"></div></div>
-                <div id="ldot-2" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-slate-200 text-slate-400 transition-all">2</div>
-                <div class="flex-1 h-0.5 bg-slate-200 rounded-full"><div id="lprog-2" class="h-full bg-primary rounded-full transition-all duration-500 w-0"></div></div>
-                <div id="ldot-3" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-slate-200 text-slate-400 transition-all">3</div>
+                <div id="ldot-1" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-ink text-cream transition-all">1</div>
+                <div class="flex-1 h-0.5 bg-ink/10 rounded-full"><div id="lprog-1" class="h-full bg-ink rounded-full transition-all duration-500 w-0"></div></div>
+                <div id="ldot-2" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-ink/10 text-ink/40 transition-all">2</div>
+                <div class="flex-1 h-0.5 bg-ink/10 rounded-full"><div id="lprog-2" class="h-full bg-ink rounded-full transition-all duration-500 w-0"></div></div>
+                <div id="ldot-3" class="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black bg-ink/10 text-ink/40 transition-all">3</div>
             </div>
 
             <!-- Step 1 -->
             <div id="lead-step-1">
-                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step1_title">¿Qué tipo de negocio tienes?</p>
+                <p class="text-base font-bold text-ink mb-3" data-i18n="ai_quiz.step1_title">¿Qué tipo de negocio tienes?</p>
                 <input id="lead-negocio" type="text" placeholder="Ej: Restaurante, Salón de belleza, Tienda online..." data-i18n="ai_quiz.business_placeholder"
-                    class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm text-on-surface placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all mb-4" />
-                <button onclick="leadNext(1)" class="hero-gradient text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm text-ink placeholder-ink/35 focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all mb-4" />
+                <button onclick="leadNext(1)" class="btn-punch !py-3 !px-8 !text-sm">
                     <span data-i18n="ai_quiz.continue">Continuar →</span>
                 </button>
             </div>
 
             <!-- Step 2 -->
             <div id="lead-step-2" class="hidden">
-                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step2_title">¿Qué te consume más tiempo ahora mismo?</p>
+                <p class="text-base font-bold text-ink mb-3" data-i18n="ai_quiz.step2_title">¿Qué te consume más tiempo ahora mismo?</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-dolor-opts">
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Responder mensajes y atender clientes" data-value-en="Answering messages and helping customers" data-i18n="ai_quiz.pain_options.0">💬 Responder mensajes y atender clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Crear contenido para redes sociales" data-value-en="Creating social media content" data-i18n="ai_quiz.pain_options.1">📱 Crear contenido para redes sociales</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Conseguir y dar seguimiento a nuevos clientes" data-value-en="Getting and following up with new customers" data-i18n="ai_quiz.pain_options.2">🎯 Conseguir y dar seguimiento a clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Tareas repetitivas y administración del negocio" data-value-en="Repetitive admin and business operations" data-i18n="ai_quiz.pain_options.3">⚙️ Tareas repetitivas y administración</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Responder mensajes y atender clientes" data-value-en="Answering messages and helping customers" data-i18n="ai_quiz.pain_options.0">💬 Responder mensajes y atender clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Crear contenido para redes sociales" data-value-en="Creating social media content" data-i18n="ai_quiz.pain_options.1">📱 Crear contenido para redes sociales</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Conseguir y dar seguimiento a nuevos clientes" data-value-en="Getting and following up with new customers" data-i18n="ai_quiz.pain_options.2">🎯 Conseguir y dar seguimiento a clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Tareas repetitivas y administración del negocio" data-value-en="Repetitive admin and business operations" data-i18n="ai_quiz.pain_options.3">⚙️ Tareas repetitivas y administración</button>
                 </div>
             </div>
 
             <!-- Step 3 -->
             <div id="lead-step-3" class="hidden">
-                <p class="text-base font-bold text-on-surface mb-3" data-i18n="ai_quiz.step3_title">¿Cuál es tu meta principal?</p>
+                <p class="text-base font-bold text-ink mb-3" data-i18n="ai_quiz.step3_title">¿Cuál es tu meta principal?</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lead-meta-opts">
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Vender más y conseguir más clientes" data-value-en="Sell more and get more customers" data-i18n="ai_quiz.goal_options.0">💰 Vender más y conseguir más clientes</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Recuperar tiempo y trabajar menos horas" data-value-en="Get time back and work fewer hours" data-i18n="ai_quiz.goal_options.1">⏰ Recuperar tiempo y trabajar menos horas</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Mejorar la atención al cliente y la experiencia" data-value-en="Improve customer service and experience" data-i18n="ai_quiz.goal_options.2">⭐ Mejorar la atención al cliente</button>
-                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-primary hover:bg-blue-50 transition-all" data-value-es="Crecer sin tener que contratar más empleados" data-value-en="Grow without hiring more employees" data-i18n="ai_quiz.goal_options.3">📈 Crecer sin contratar más empleados</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Vender más y conseguir más clientes" data-value-en="Sell more and get more customers" data-i18n="ai_quiz.goal_options.0">💰 Vender más y conseguir más clientes</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Recuperar tiempo y trabajar menos horas" data-value-en="Get time back and work fewer hours" data-i18n="ai_quiz.goal_options.1">⏰ Recuperar tiempo y trabajar menos horas</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Mejorar la atención al cliente y la experiencia" data-value-en="Improve customer service and experience" data-i18n="ai_quiz.goal_options.2">⭐ Mejorar la atención al cliente</button>
+                    <button class="lead-opt text-left px-4 py-3 rounded-xl border-2 border-ink/15 text-sm font-medium hover:border-ink transition-all" data-value-es="Crecer sin tener que contratar más empleados" data-value-en="Grow without hiring more employees" data-i18n="ai_quiz.goal_options.3">📈 Crecer sin contratar más empleados</button>
                 </div>
             </div>
 
             <!-- Generating -->
             <div id="lead-generating" class="hidden text-center py-8">
                 <div class="flex justify-center gap-2 mb-4">
-                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out infinite;"></div>
-                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.2s infinite;"></div>
-                    <div class="w-3 h-3 rounded-full bg-primary" style="animation:pulse-lead 1.2s ease-in-out 0.4s infinite;"></div>
+                    <div class="w-3 h-3 rounded-full bg-ink" style="animation:pulse-lead 1.2s ease-in-out infinite;"></div>
+                    <div class="w-3 h-3 rounded-full bg-ink" style="animation:pulse-lead 1.2s ease-in-out 0.2s infinite;"></div>
+                    <div class="w-3 h-3 rounded-full bg-ink" style="animation:pulse-lead 1.2s ease-in-out 0.4s infinite;"></div>
                 </div>
-                <p class="text-sm font-semibold text-on-surface" data-i18n="ai_quiz.loading_title">Analizando tu operación...</p>
-                <p class="text-xs text-on-surface-variant mt-1" data-i18n="ai_quiz.loading_subtext">Mapeando el sistema con IA que mejor encaja</p>
+                <p class="text-sm font-semibold text-ink" data-i18n="ai_quiz.loading_title">Analizando tu operación...</p>
+                <p class="text-xs text-ink-soft mt-1" data-i18n="ai_quiz.loading_subtext">Mapeando el sistema con IA que mejor encaja</p>
             </div>
 
             <!-- Basic Result (shown immediately after generating) -->
             <div id="lead-basic" class="hidden">
                 <div class="flex items-center gap-2 mb-5">
-                    <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
+                    <div class="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                         <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     </div>
-                    <span class="text-xs font-heading uppercase tracking-[0.14em] text-green-700" data-i18n="ai_quiz.ready">Tu diagnóstico está listo</span>
+                    <span class="text-xs font-mono uppercase tracking-[0.14em] text-ink" data-i18n="ai_quiz.ready">Tu diagnóstico está listo</span>
                 </div>
 
                 <!-- Solution headline -->
-                <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 mb-3">
-                    <div class="text-xs font-heading uppercase tracking-[0.14em] text-on-surface-variant mb-1" data-i18n="ai_quiz.recommended_label">Sistema recomendado para tu negocio</div>
-                    <h3 id="lead-res-solucion" class="text-xl font-heading uppercase tracking-[0.02em] text-on-surface"></h3>
+                <div class="p-5 rounded-xl bg-cream border border-ink/10 mb-3">
+                    <div class="text-xs font-mono uppercase tracking-[0.14em] text-ink-soft mb-1" data-i18n="ai_quiz.recommended_label">Sistema recomendado para tu negocio</div>
+                    <h3 id="lead-res-solucion" class="text-xl font-display font-semibold tracking-tight text-ink"></h3>
                 </div>
 
                 <!-- Impact -->
-                <div class="p-4 rounded-xl border border-green-100 bg-green-50 mb-6">
-                    <div class="flex items-center gap-2 mb-1"><span>📈</span><span class="text-xs font-heading uppercase tracking-[0.14em] text-green-700" data-i18n="ai_quiz.impact_label">Impacto esperado</span></div>
-                    <p id="lead-res-impacto" class="text-sm font-semibold text-green-900 leading-relaxed"></p>
+                <div class="p-4 rounded-xl border border-accent/30 bg-accent-wash/50 mb-6">
+                    <div class="flex items-center gap-2 mb-1"><span>📈</span><span class="text-xs font-mono uppercase tracking-[0.14em] text-ink" data-i18n="ai_quiz.impact_label">Impacto esperado</span></div>
+                    <p id="lead-res-impacto" class="text-sm font-semibold text-ink leading-relaxed"></p>
                 </div>
 
                 <!-- Email gate — optional -->
                 <div id="lead-email-gate">
-                    <div class="border border-outline-variant rounded-xl p-5">
-                        <p class="text-sm font-bold text-on-surface mb-1" data-i18n="ai_quiz.email_title">¿Quieres que Miguel te envíe el plan completo?</p>
-                        <p class="text-xs text-on-surface-variant mb-4" data-i18n="ai_quiz.email_subtext">Te mando el breakdown detallado con herramientas, próximos pasos y cómo lo adaptaría a tu negocio.</p>
+                    <div class="border border-ink/20 rounded-xl p-5">
+                        <p class="text-sm font-bold text-ink mb-1" data-i18n="ai_quiz.email_title">¿Quieres que Miguel te envíe el plan completo?</p>
+                        <p class="text-xs text-ink-soft mb-4" data-i18n="ai_quiz.email_subtext">Te mando el breakdown detallado con herramientas, próximos pasos y cómo lo adaptaría a tu negocio.</p>
                         <div class="space-y-3">
                             <input id="lead-nombre" type="text" placeholder="Tu nombre" data-i18n="ai_quiz.name_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <input id="lead-email" type="email" placeholder="Tu email" data-i18n="ai_quiz.email_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)" data-i18n="ai_quiz.phone_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <button id="lead-submit-btn" onclick="leadSubmitEmail()"
-                                class="w-full hero-gradient text-white py-3 rounded-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50">
+                                class="btn-punch w-full !py-3 !text-sm disabled:opacity-50">
                                 <span data-i18n="ai_quiz.plan_cta">Quiero mi plan personalizado →</span>
                             </button>
                         </div>
                         <div id="lead-gate-error" class="hidden mt-3 text-sm text-center text-red-600 font-semibold"></div>
                         <div class="text-center mt-4">
-                            <button onclick="leadSkip()" class="text-xs text-on-surface-variant hover:text-on-surface underline underline-offset-2 transition-colors">
+                            <button onclick="leadSkip()" class="text-xs text-ink-soft hover:text-ink underline underline-offset-2 transition-colors">
                                 <span data-i18n="ai_quiz.skip">No gracias, esto es suficiente</span>
                             </button>
                         </div>
@@ -579,19 +958,19 @@
 
                 <!-- Full results (shown after email submitted) -->
                 <div id="lead-full-results" class="hidden space-y-3 mt-3">
-                    <div class="p-4 rounded-xl border border-slate-100 bg-white">
-                        <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-heading uppercase tracking-[0.14em] text-slate-500" data-i18n="ai_quiz.what_is">Qué es</span></div>
-                        <p id="lead-res-descripcion" class="text-sm text-on-surface leading-relaxed"></p>
+                    <div class="p-4 rounded-xl border border-ink/10 bg-white">
+                        <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-mono uppercase tracking-[0.14em] text-ink-soft" data-i18n="ai_quiz.what_is">Qué es</span></div>
+                        <p id="lead-res-descripcion" class="text-sm text-ink leading-relaxed"></p>
                     </div>
                     <div id="lead-res-herramientas-wrap" class="flex flex-wrap gap-2"></div>
-                    <div class="p-5 rounded-xl bg-primary-fixed border border-primary/20">
-                        <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-2" data-i18n="ai_quiz.next_step">🚀 Cómo lo llevaría a la práctica</div>
-                        <p id="lead-res-siguiente" class="text-sm font-semibold text-on-primary-fixed leading-relaxed mb-4"></p>
-                        <a href="/talk" class="inline-block hero-gradient text-white px-6 py-3 rounded-lg text-sm font-heading uppercase tracking-[0.14em] active:scale-95 transition-all shadow-lg shadow-primary/20" data-i18n="ai_quiz.review_cta">
+                    <div class="p-5 rounded-xl bg-ink border border-ink">
+                        <div class="text-xs font-mono uppercase tracking-[0.14em] text-accent-bright mb-2" data-i18n="ai_quiz.next_step">🚀 Cómo lo llevaría a la práctica</div>
+                        <p id="lead-res-siguiente" class="text-sm font-semibold text-cream leading-relaxed mb-4"></p>
+                        <a href="/talk" class="btn-punch !py-3 !px-6 !text-[13px]" data-i18n="ai_quiz.review_cta">
                             Quiero que Miguel revise mi caso →
                         </a>
                     </div>
-                    <p class="text-xs text-center text-on-surface-variant pt-1" data-i18n="ai_quiz.email_note">También te envío los detalles por email.</p>
+                    <p class="text-xs text-center text-ink-soft pt-1" data-i18n="ai_quiz.email_note">También te envío los detalles por email.</p>
                 </div>
             </div>
 
@@ -644,8 +1023,7 @@
         if (errEl) errEl.classList.add('hidden');
         // clear option highlights
         document.querySelectorAll('.lead-opt').forEach(x => {
-            x.classList.remove('border-primary', 'bg-blue-50');
-            x.classList.add('border-outline-variant');
+            x.classList.remove('lead-opt-on');
         });
         // clear contact fields
         ['lead-nombre','lead-email','lead-telefono'].forEach(id => {
@@ -718,31 +1096,6 @@
         routeIntent(v);
     };
 
-    // Hero infinite grid: track cursor position for reveal mask.
-    (function () {
-        const hero = document.getElementById('hero-finder-section');
-        if (!hero) return;
-        // Skip on touch-only devices to avoid extra paint cost.
-        if (window.matchMedia('(pointer: coarse)').matches) return;
-        let raf = 0;
-        let pendingX = 0, pendingY = 0;
-        function flush() {
-            hero.style.setProperty('--mx', pendingX + 'px');
-            hero.style.setProperty('--my', pendingY + 'px');
-            raf = 0;
-        }
-        hero.addEventListener('mousemove', (e) => {
-            const rect = hero.getBoundingClientRect();
-            pendingX = e.clientX - rect.left;
-            pendingY = e.clientY - rect.top;
-            if (!raf) raf = requestAnimationFrame(flush);
-        });
-        hero.addEventListener('mouseleave', () => {
-            hero.style.setProperty('--mx', '-300px');
-            hero.style.setProperty('--my', '-300px');
-        });
-    })();
-
     // Wire input behavior on load.
     (function () {
         const input = document.getElementById('hero-finder-input');
@@ -790,7 +1143,7 @@
             const e = document.getElementById('lead-step-' + i);
             if (e) e.classList.toggle('hidden', i !== s);
             const d = document.getElementById('ldot-' + i);
-            if (d) d.className = 'flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all ' + (i <= s ? 'bg-primary text-white' : 'bg-slate-200 text-slate-400');
+            if (d) d.className = 'flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all ' + (i <= s ? 'bg-ink text-cream' : 'bg-ink/10 text-ink/40');
             if (i < 3) {
                 const p = document.getElementById('lprog-' + i);
                 if (p) p.style.width = i < s ? '100%' : '0%';
@@ -805,11 +1158,9 @@
         c.querySelectorAll('.lead-opt').forEach(b => {
             b.onclick = () => {
                 c.querySelectorAll('.lead-opt').forEach(x => {
-                    x.classList.remove('border-primary', 'bg-blue-50');
-                    x.classList.add('border-outline-variant');
+                    x.classList.remove('lead-opt-on');
                 });
-                b.classList.add('border-primary', 'bg-blue-50');
-                b.classList.remove('border-outline-variant');
+                b.classList.add('lead-opt-on');
                 a[f] = currentLang() === 'en' ? b.dataset.valueEn : b.dataset.valueEs;
                 if (n) setTimeout(() => ls(n), 300);
                 else setTimeout(() => lg(), 300);
@@ -887,174 +1238,365 @@
         document.getElementById('lead-res-descripcion').textContent = r.descripcion || '';
         document.getElementById('lead-res-siguiente').textContent = r.siguiente_paso || '';
         document.getElementById('lead-res-herramientas-wrap').innerHTML = (r.herramientas || [])
-            .map(h => `<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#eeeeee;font-size:0.75rem;font-weight:700;">${h}</span>`)
+            .map(h => `<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#F2F2EF;font-size:0.75rem;font-weight:700;">${h}</span>`)
             .join('');
         document.getElementById('lead-full-results').classList.remove('hidden');
     };
 })();
 </script>
 
-
-
-<!-- Services Section — Named Systems -->
-<section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
-    <div class="mb-8 md:mb-14">
-        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">Sistemas</h2>
-        <h3 class="text-4xl md:text-5xl font-heading uppercase tracking-[0.02em] leading-tight">Tres sistemas. Un solo estudio.</h3>
-        <p class="text-on-surface-variant mt-4 max-w-2xl leading-relaxed">Cada sistema está nombrado y entregado con garantía. Empiezas donde tu negocio lo necesita y subes cuando estés listo.</p>
+<!-- ============ SISTEMAS ============ -->
+<section id="sistemas" class="py-16 md:py-24 max-w-7xl mx-auto px-6 md:px-8 relative z-10 scroll-mt-8">
+    <div class="mb-10 md:mb-16 text-center">
+        <p class="reveal eyebrow mb-5">Sistemas</p>
+        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">Tres sistemas. <span class="display-italic">Un solo estudio.</span></h2>
+        <p class="reveal text-ink-soft mt-5 max-w-2xl mx-auto leading-relaxed" style="--delay: 160ms">Cada sistema está nombrado y entregado con garantía. Empiezas donde tu negocio lo necesita y subes cuando estés listo.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 items-stretch">
         <!-- La Presencia -->
-        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group flex flex-col">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">01 · Web</div>
-            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">La Presencia</h3>
-            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu negocio se ve serio en Google y en el celular.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Sitio diseñado a medida</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Optimizado para móvil + Google</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Branding aplicado limpio</li>
+        <div class="reveal sys-card">
+            <div class="eyebrow !text-[10px] mb-5">01 · Web</div>
+            <h3 class="font-display font-semibold text-3xl tracking-tight mb-3">La Presencia</h3>
+            <p class="text-ink-soft mb-8 leading-relaxed font-medium">Tu negocio se ve serio en Google y en el celular.</p>
+            <ul class="space-y-3 text-[13px] text-ink-soft mb-8">
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Sitio diseñado a medida</li>
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Optimizado para móvil + Google</li>
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Branding aplicado limpio</li>
             </ul>
-            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Apruebas cada pantalla antes de salir en vivo.</p>
+            <p class="text-xs text-ink-soft/80 mt-auto leading-relaxed border-t border-ink/10 pt-4"><span class="font-mono uppercase tracking-[0.14em] text-ink text-[10px]">Garantía</span><br>Apruebas cada pantalla antes de salir en vivo.</p>
         </div>
-        <!-- El Impulso (featured) -->
-        <div class="relative">
-            <div class="absolute -top-4 right-6 z-20 bg-primary text-on-primary px-4 py-2 rounded-full text-[11px] font-heading uppercase tracking-[0.14em] shadow-lg shadow-primary/30 -rotate-3 pointer-events-none">Más popular</div>
-        <div class="reveal soft-lift glass-module p-10 rounded-xl border border-white/50 hover:border-primary/30 group flex flex-col h-full">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">02 · Web + IA</div>
-            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">El Impulso</h3>
-            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu sitio contesta, cotiza y agenda 24/7.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Todo de La Presencia</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>WhatsApp + chat IA 24/7</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Cotización + agenda automática</li>
-            </ul>
-            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Respuesta automatizada en menos de 60 segundos.</p>
-        </div>
+        <!-- El Impulso (featured, ink) -->
+        <div class="relative reveal" style="--delay: 100ms">
+            <div class="absolute -top-4 right-6 z-20 bg-accent text-white border-[1.5px] border-ink px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.14em] shadow-[2px_2px_0_#1C1A13] -rotate-3 pointer-events-none">Más popular</div>
+            <div class="sys-card sys-card--ink h-full">
+                <div class="eyebrow !text-[10px] !text-accent-bright mb-5">02 · Web + IA</div>
+                <h3 class="font-display font-semibold text-3xl tracking-tight mb-3 text-cream">El Impulso</h3>
+                <p class="text-cream/75 mb-8 leading-relaxed font-medium">Tu sitio contesta, cotiza y agenda 24/7.</p>
+                <ul class="space-y-3 text-[13px] text-cream/70 mb-8">
+                    <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-accent-bright rounded-full flex-shrink-0"></span>Todo de La Presencia</li>
+                    <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-accent-bright rounded-full flex-shrink-0"></span>WhatsApp + chat IA 24/7</li>
+                    <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-accent-bright rounded-full flex-shrink-0"></span>Cotización + agenda automática</li>
+                </ul>
+                <p class="text-xs text-cream/60 mt-auto leading-relaxed border-t border-cream/15 pt-4"><span class="font-mono uppercase tracking-[0.14em] text-accent-bright text-[10px]">Garantía</span><br>Respuesta automatizada en menos de 60 segundos.</p>
+            </div>
         </div>
         <!-- El Studio -->
-        <div class="reveal soft-lift bg-surface-container-lowest p-10 rounded-xl hover:bg-surface-bright border border-transparent hover:border-primary/20 group flex flex-col">
-            <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4">03 · Operación completa</div>
-            <h3 class="text-3xl font-heading uppercase tracking-[0.02em] mb-3">El Studio</h3>
-            <p class="text-on-surface mb-8 leading-relaxed font-medium">Tu operación entera en una pantalla.</p>
-            <ul class="space-y-3 font-label text-xs uppercase tracking-widest text-on-surface-variant/80 mb-8">
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Todo de El Impulso</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Panel de Operaciones a medida</li>
-                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Radar de Leads + reportes</li>
+        <div class="reveal sys-card" style="--delay: 200ms">
+            <div class="eyebrow !text-[10px] mb-5">03 · Operación completa</div>
+            <h3 class="font-display font-semibold text-3xl tracking-tight mb-3">El Studio</h3>
+            <p class="text-ink-soft mb-8 leading-relaxed font-medium">Tu operación entera en una pantalla.</p>
+            <ul class="space-y-3 text-[13px] text-ink-soft mb-8">
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Todo de El Impulso</li>
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Panel de Operaciones a medida</li>
+                <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 bg-ink rounded-full flex-shrink-0"></span>Radar de Leads + reportes</li>
             </ul>
-            <p class="text-xs text-on-surface-variant/70 mt-auto leading-relaxed border-t border-outline-variant/20 pt-4"><span class="font-heading uppercase tracking-[0.14em] text-primary text-[10px]">Garantía</span><br>Timeline lock — descuento diario si me atraso.</p>
+            <p class="text-xs text-ink-soft/80 mt-auto leading-relaxed border-t border-ink/10 pt-4"><span class="font-mono uppercase tracking-[0.14em] text-ink text-[10px]">Garantía</span><br>Timeline lock — descuento diario si me atraso.</p>
         </div>
     </div>
-    <div class="mt-14 max-w-3xl mx-auto bg-surface-container-low rounded-2xl p-8 md:p-10 border border-outline-variant/10 text-center">
-        <div class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-3">Inversión</div>
-        <p class="text-xl md:text-2xl font-medium tracking-tight text-on-surface leading-snug mb-6">Cada proyecto se presupuesta según el alcance, las integraciones y la complejidad de tu operación. <span class="text-primary">Hablamos, lo dimensionamos juntos, y te paso el número exacto.</span></p>
-        <a href="/talk" class="inline-block hero-gradient text-on-primary px-10 py-4 rounded-xl font-heading text-sm uppercase tracking-[0.14em] shadow-lg shadow-primary/20 active:scale-95 transition-all">
-            Cotizar mi proyecto
-        </a>
+    <div class="reveal mt-12 max-w-3xl mx-auto bg-cream-deep rounded-3xl p-8 md:p-12 border-[1.5px] border-ink/15 text-center">
+        <p class="eyebrow !text-[10px] mb-4">Inversión</p>
+        <p class="font-display text-xl md:text-2xl font-medium tracking-tight text-ink leading-snug mb-7">Cada proyecto se presupuesta según el alcance, las integraciones y la complejidad de tu operación. <span class="display-italic">Hablamos, lo dimensionamos juntos, y te paso el número exacto.</span></p>
+        <a href="/talk" class="btn-punch">Cotizar mi proyecto <span class="cta-arrow">→</span></a>
     </div>
 </section>
 
-
-
-<!-- Social Proof Section -->
-<section class="py-12 md:py-20 max-w-7xl mx-auto px-8 relative z-10">
-    <div class="text-center mb-8 md:mb-12">
-        <h2 class="text-xs font-heading uppercase tracking-[0.14em] text-primary mb-4" data-i18n="proof.label">Prueba real</h2>
-        <h3 class="text-4xl md:text-5xl font-heading uppercase tracking-[0.02em]" data-i18n="proof.title">Sistemas construidos alrededor de negocios reales.</h3>
+<!-- ============ EL PLAN — tres pasos ============ -->
+<section class="py-16 md:py-24 max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+    <div class="text-center mb-12 md:mb-16">
+        <p class="reveal eyebrow mb-5">El plan</p>
+        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">Sin misterio. <span class="display-italic">Tres pasos.</span></h2>
     </div>
 
-    <!-- Animated card stack -->
-    <div id="proof-stack" class="proof-stack-wrapper" aria-roledescription="card carousel" aria-label="Proyectos del portafolio">
-        <div class="proof-stack" id="proof-stack-cards">
-            <article class="proof-card" data-pos="front" aria-current="true">
-                <div class="proof-card__media">
-                    <img src="/MCP/mcp-1.png" alt="Sitio web Miguel Cotto Promotions" loading="lazy" />
-                </div>
-                <div class="proof-card__meta">
-                    <div class="proof-card__text">
-                        <span class="proof-card__title">Miguel Cotto Promotions</span>
-                        <span class="proof-card__desc">Sitio deportivo + panel admin</span>
-                    </div>
-                    <a href="/portfolio#card-mcp" class="proof-card__cta" aria-label="Ver caso Miguel Cotto Promotions">
-                        Ver caso
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M9.5 18L15.5 12L9.5 6" /></svg>
-                    </a>
-                </div>
-            </article>
-            <article class="proof-card" data-pos="back">
-                <div class="proof-card__media">
-                    <img src="/DRITA/drita-1.png" alt="Tienda Shopify Team Drita y Mely" loading="lazy" />
-                </div>
-                <div class="proof-card__meta">
-                    <div class="proof-card__text">
-                        <span class="proof-card__title">Team Drita y Mely</span>
-                        <span class="proof-card__desc">Tienda Shopify · e-commerce móvil</span>
-                    </div>
-                    <a href="/portfolio#card-drita" class="proof-card__cta" aria-label="Ver caso Team Drita y Mely">
-                        Ver caso
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M9.5 18L15.5 12L9.5 6" /></svg>
-                    </a>
-                </div>
-            </article>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div class="reveal plan-step">
+            <div class="plan-num">01</div>
+            <h3 class="font-display font-semibold text-2xl tracking-tight mt-5 mb-3">Hablamos</h3>
+            <p class="text-ink-soft leading-relaxed text-[15px]">Una llamada de 30 minutos. Me cuentas cómo opera tu negocio; yo te digo exactamente qué construiría, en cuánto tiempo, y cuánto cuesta. <em class="font-display italic">Sin compromiso.</em></p>
         </div>
-        <div class="proof-stack__dots" role="tablist" aria-label="Seleccionar proyecto">
-            <button type="button" class="proof-stack__dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Miguel Cotto Promotions"></button>
-            <button type="button" class="proof-stack__dot" data-index="1" role="tab" aria-selected="false" aria-label="Team Drita y Mely"></button>
+        <div class="reveal plan-step" style="--delay: 120ms">
+            <div class="plan-num">02</div>
+            <h3 class="font-display font-semibold text-2xl tracking-tight mt-5 mb-3">Lo construyo</h3>
+            <p class="text-ink-soft leading-relaxed text-[15px]">Diseño, desarrollo e IA — todo bajo un mismo techo, sin intermediarios. Apruebas cada pantalla antes de que nada salga en vivo.</p>
+        </div>
+        <div class="reveal plan-step" style="--delay: 240ms">
+            <div class="plan-num">03</div>
+            <h3 class="font-display font-semibold text-2xl tracking-tight mt-5 mb-3">Despegas</h3>
+            <p class="text-ink-soft leading-relaxed text-[15px]">Tu sitio contesta, cotiza y agenda solo — de día y de madrugada. Y yo me quedo cerca para ajustar lo que tu negocio pida.</p>
+        </div>
+    </div>
+
+    <div class="reveal text-center mt-12 md:mt-16">
+        <a href="/talk" class="btn-ghost">Empezar con la llamada <span class="cta-arrow">→</span></a>
+    </div>
+</section>
+
+<!-- ============ NOTA DE MIGUEL ============ -->
+<section class="py-16 md:py-24 max-w-4xl mx-auto px-6 md:px-8 relative z-10">
+    <p class="reveal eyebrow text-center mb-10">Quién está detrás</p>
+    <div class="reveal letter-card" style="--delay: 100ms">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
+            <div class="letter-body flex-1 order-2 md:order-1">
+                <p class="mb-5">Soy Miguel. Llevo años construyendo webs y sistemas de IA — pero mi trabajo real es otro: <em>devolverle las horas</em> al que lleva su negocio solo.</p>
+                <p class="mb-5">No soy una agencia con diez intermediarios. Cuando me escribes, te contesto yo. Cuando algo se rompe, lo arreglo yo. Y cuando tu negocio crece, lo celebro yo — porque probablemente te lo dije en la primera llamada.</p>
+                <p class="mb-8">Si tienes un negocio en Puerto Rico y sientes que la tecnología te queda grande, escríbeme. <em>Te la hago pequeña.</em></p>
+                <p class="letter-sign">— Miguel</p>
+                <p class="font-mono text-[11px] tracking-[0.12em] text-ink-soft mt-6 uppercase">P.D. — Los casos de abajo no son mockups. Están en producción ahora mismo.</p>
+            </div>
+            <div class="polaroid order-1 md:order-2 mx-auto md:mx-0">
+                <div class="polaroid-img">
+                    <img src="/assets/miguel.jpg" alt="Miguel Cotto — MC Designs" loading="lazy" />
+                </div>
+                <p class="polaroid-caption">San Juan · PR</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ EL LAB — demos en abanico ============ -->
+<!-- OCULTO por ahora — quitar la clase "hidden" para reactivar el abanico de demos -->
+<section id="demos" class="hidden relative z-10 py-16 md:py-24 overflow-hidden scroll-mt-8" aria-hidden="true">
+    <div class="max-w-3xl mx-auto px-6 text-center mb-4 md:mb-6">
+        <p class="reveal eyebrow mb-5">El Lab</p>
+        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">Siete herramientas <span class="display-italic">en vivo</span>.</h2>
+        <p class="reveal text-ink-soft mt-5 max-w-xl mx-auto leading-relaxed" style="--delay: 160ms">Nada de maquetas — cada una está conectada a IA real. Lo que ves aquí es lo que tu negocio puede tener.</p>
+    </div>
+
+    <!-- Demos reales, en abanico -->
+    <div class="reveal relative" style="--delay: 240ms">
+        <div class="fan-stage">
+            <a href="/demo-roaster" class="fan-card bg-pastel-rose">
+                <span class="fan-card__num">01 / LAB</span>
+                <span class="fan-card__title">Website Roaster</span>
+                <span class="fan-card__tag">Crítica brutal · IA</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-captions" class="fan-card bg-pastel-peach">
+                <span class="fan-card__num">02 / LAB</span>
+                <span class="fan-card__title">Caption Machine</span>
+                <span class="fan-card__tag">Contenido boricua</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-chatbot" class="fan-card bg-pastel-sky">
+                <span class="fan-card__num">03 / LAB</span>
+                <span class="fan-card__title">Chatbot 24/7</span>
+                <span class="fan-card__tag">Contesta solo</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-cotizador" class="fan-card bg-pastel-butter">
+                <span class="fan-card__num">04 / LAB</span>
+                <span class="fan-card__title">Cotizador en Vivo</span>
+                <span class="fan-card__tag">Precio al instante</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-ocr" class="fan-card bg-pastel-lila">
+                <span class="fan-card__num">05 / LAB</span>
+                <span class="fan-card__title">OCR de Facturas</span>
+                <span class="fan-card__tag">Foto → datos</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-panel" class="fan-card bg-pastel-mint">
+                <span class="fan-card__num">06 / LAB</span>
+                <span class="fan-card__title">Panel de Operaciones</span>
+                <span class="fan-card__tag">Todo en una pantalla</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+            <a href="/demo-brand" class="fan-card bg-cream-deep">
+                <span class="fan-card__num">07 / LAB</span>
+                <span class="fan-card__title">Brand Analyzer</span>
+                <span class="fan-card__tag">Tu marca, al desnudo</span>
+                <span class="fan-card__go">Probar <span class="cta-arrow">→</span></span>
+            </a>
+        </div>
+        <p class="text-center mt-2 md:mt-4 px-6">
+            <a href="/lab" class="inline-flex items-center min-h-[44px] gap-2 text-ink font-semibold text-sm border-b-2 border-accent hover:border-ink transition-colors pb-0.5">
+                Ver el Lab completo <span class="cta-arrow">→</span>
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- ============ CASOS DE ESTUDIO ============ -->
+<section id="casos" class="py-16 md:py-24 max-w-6xl mx-auto px-6 md:px-8 relative z-10 scroll-mt-8">
+    <div class="text-center mb-12 md:mb-16">
+        <p class="reveal eyebrow mb-5" data-i18n="proof.label">Casos de estudio</p>
+        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms" data-i18n="proof.title">Construido, entregado, <span class="display-italic">funcionando</span>.</h2>
+    </div>
+
+    <div class="space-y-10 md:space-y-14">
+        <!-- Caso 01 — Miguel Cotto Promotions -->
+        <a href="/portfolio#card-mcp" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
+            <div class="case-media">
+                <img src="/MCP/mcp-1.png" alt="Sitio web Miguel Cotto Promotions" loading="lazy" />
+            </div>
+            <div class="p-8 md:p-12 flex flex-col">
+                <p class="eyebrow !text-[10px] mb-4">Caso 01 · Web + Panel Admin</p>
+                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">Miguel Cotto Promotions</h3>
+                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Rediseño completo para la promotora de boxeo #1 de Puerto Rico — con panel admin para actualizar peleas, boxeadores y livestreams en minutos, sin depender de terceros.</p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-chip">Diseño web</span>
+                    <span class="case-chip">Desarrollo a medida</span>
+                    <span class="case-chip">Panel admin</span>
+                </div>
+                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
+                    Ver el caso <span class="cta-arrow">→</span>
+                </span>
+            </div>
+        </a>
+
+        <!-- Caso 02 — Team Drita y Mely -->
+        <a href="/portfolio#card-drita" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
+            <div class="case-media md:order-2">
+                <img src="/DRITA/drita-1.png" alt="Tienda Shopify Team Drita y Mely" loading="lazy" />
+            </div>
+            <div class="p-8 md:p-12 flex flex-col md:order-1">
+                <p class="eyebrow !text-[10px] mb-4">Caso 02 · Shopify + E-commerce</p>
+                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">Team Drita y Mely</h3>
+                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Tienda Shopify para productos, bundles y promociones — diseñada para que comprar desde el celular tome segundos, no pasos.</p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-chip">Shopify</span>
+                    <span class="case-chip">E-commerce móvil</span>
+                    <span class="case-chip">Branding aplicado</span>
+                </div>
+                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
+                    Ver el caso <span class="cta-arrow">→</span>
+                </span>
+            </div>
+        </a>
+
+        <!-- Caso 03 — De La Mata (concepto propio) -->
+        <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
+            <div class="case-media">
+                <img src="/DELAMATA/delamata-hero.webp" alt="De La Mata — marketplace agrícola de Puerto Rico" loading="lazy" />
+            </div>
+            <div class="p-8 md:p-12 flex flex-col">
+                <p class="eyebrow !text-[10px] mb-4">Caso 03 · Proyecto Concepto</p>
+                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">De La Mata</h3>
+                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Marketplace agrícola que conecta el surco con la mesa, sin intermediarios. Concepto propio — sin cliente ni encargo — construido para demostrar producto completo: tres perfiles de usuario, suscripción Cajita Local y recogido comunitario. <em class="font-display italic">Navegable en vivo.</em></p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-chip">React + TypeScript</span>
+                    <span class="case-chip">Marketplace</span>
+                    <span class="case-chip">Concepto propio</span>
+                </div>
+                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
+                    Ver el prototipo <span class="cta-arrow">↗</span>
+                </span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Bento stats de respaldo -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto mt-14 md:mt-20">
+        <div class="reveal bento-cell">
+            <div class="bento-num">2</div>
+            <p class="text-[13px] text-ink-soft mt-2 leading-snug">Negocios reales corriendo mis sistemas en producción</p>
+        </div>
+        <div class="reveal bento-cell !bg-accent" style="--delay: 80ms">
+            <div class="bento-num !text-white">24/7</div>
+            <p class="text-[13px] text-white/80 mt-2 leading-snug">Tu sitio contesta, cotiza y agenda sin ti</p>
+        </div>
+        <div class="reveal bento-cell" style="--delay: 160ms">
+            <div class="bento-num">&lt;60s</div>
+            <p class="text-[13px] text-ink-soft mt-2 leading-snug">Respuesta automatizada garantizada</p>
+        </div>
+        <div class="reveal bento-cell !bg-ink !text-cream" style="--delay: 240ms">
+            <div class="bento-num !text-accent-bright">100%</div>
+            <p class="text-[13px] text-cream/70 mt-2 leading-snug">Apruebas cada pantalla antes de salir en vivo</p>
         </div>
     </div>
 
     <div class="text-center mt-12">
-        <a href="/portfolio" class="inline-flex items-center min-h-[44px] gap-2 text-primary font-heading text-sm uppercase tracking-[0.14em] hover:gap-4 transition-all">
-            Ver los proyectos <span class="cta-arrow">→</span>
+        <a href="/portfolio" class="inline-flex items-center min-h-[44px] gap-2 text-ink font-semibold text-sm border-b-2 border-accent hover:border-ink transition-colors pb-0.5">
+            Ver el portfolio completo <span class="cta-arrow">→</span>
         </a>
     </div>
 </section>
 
+<!-- ============ FINDER — ¿buscas algo en específico? ============ -->
+<section id="hero-finder-section" class="relative z-10 py-16 md:py-24 bg-cream-deep/60 border-y border-ink/10">
+    <div class="max-w-2xl w-full mx-auto text-center px-6">
+        <h2 class="reveal headline-lg text-3xl md:text-5xl text-ink mb-4">
+            ¿Buscas algo <span class="display-italic">en específico</span>?
+        </h2>
+        <p class="reveal text-sm md:text-base text-ink-soft max-w-md mx-auto leading-relaxed mb-8" style="--delay: 90ms">
+            Pregúntame y te llevo directo — o abre una conversación con mi asistente.
+        </p>
 
+        <!-- Hero chat finder (funcionalidad intacta) -->
+        <div class="reveal" style="--delay: 180ms">
+            <form id="hero-finder-form" onsubmit="event.preventDefault(); heroFinderSubmit();" class="finder-shell text-left">
+                <div class="flex items-center gap-2 pl-5 pr-2 py-2.5">
+                    <textarea
+                        id="hero-finder-input"
+                        rows="1"
+                        placeholder="¿Qué deseas saber?"
+                        autocomplete="off"
+                        class="flex-1 text-base text-ink placeholder-ink/35 bg-transparent resize-none border-0 focus:outline-none focus:ring-0 leading-6 py-1"
+                        style="border:none; min-height: 28px; max-height: 160px;"></textarea>
+                    <button type="submit" id="hero-finder-send" disabled aria-label="Enviar"
+                        class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-[0.94] bg-ink text-cream hover:bg-accent hover:text-white disabled:bg-ink/10 disabled:text-ink/30 disabled:cursor-not-allowed">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    </button>
+                </div>
+            </form>
 
-<!-- CTA Section -->
-<section class="py-12 md:py-20 bg-on-surface text-surface relative z-10" id="contact">
-    <div class="max-w-4xl mx-auto px-8 text-center flex flex-col items-center gap-6">
-        <h2 class="text-5xl md:text-7xl font-heading uppercase tracking-[0.02em] leading-tight" data-i18n="cta_section.title">¿Listo para <span class="text-primary-fixed">Crecer</span>?</h2>
-        <p class="text-xl text-surface-container mb-6 leading-relaxed" data-i18n="cta_section.subtext">Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.</p>
-        <a href="/talk" class="inline-block hero-gradient text-on-primary px-12 py-5 mt-4 rounded-xl font-heading text-sm uppercase tracking-[0.14em] shadow-lg shadow-primary/20 active:scale-95 transition-all" data-i18n="cta_section.cta">
-            Agenda una llamada de diagnóstico
+            <!-- Quick chips -->
+            <div class="flex flex-wrap justify-center gap-2 mt-6">
+                <button type="button" onclick="heroFinderChip('¿Qué construye MC Designs?')" class="hero-chip">¿Qué construyes?</button>
+                <button type="button" onclick="heroFinderChip('Muéstrame el portfolio')" class="hero-chip">Portfolio</button>
+                <button type="button" onclick="heroFinderChip('Quiero ver los servicios y precios')" class="hero-chip">Servicios + precios</button>
+                <button type="button" onclick="heroFinderChip('Muéstrame los demos de AI')" class="hero-chip">Demos AI</button>
+                <button type="button" onclick="heroFinderChip('¿Cómo es trabajar contigo?')" class="hero-chip">Cómo trabajas</button>
+                <button type="button" onclick="heroFinderChip('Quiero agendar una llamada')" class="hero-chip">Agendar llamada</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="py-20 md:py-32 bg-ink text-cream relative z-10 overflow-hidden" id="contact">
+    <div class="max-w-4xl mx-auto px-6 md:px-8 text-center flex flex-col items-center gap-7 relative">
+        <p class="reveal eyebrow !text-cream/50">El siguiente paso</p>
+        <h2 class="reveal headline-xl text-5xl md:text-7xl text-cream" style="--delay: 80ms" data-i18n="cta_section.title">¿Listo para <span class="display-italic text-accent-bright">crecer</span>?</h2>
+        <p class="reveal text-lg md:text-xl text-cream/70 leading-relaxed max-w-xl" style="--delay: 160ms" data-i18n="cta_section.subtext">Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.</p>
+        <a href="/talk" class="reveal btn-punch !text-base mt-2" style="--delay: 240ms" data-i18n="cta_section.cta">
+            Agenda una llamada de diagnóstico <span class="cta-arrow">→</span>
         </a>
     </div>
 </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
-    <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+<!-- ============ FOOTER ============ -->
+<footer class="w-full border-t-[1.5px] border-ink/15 bg-cream-deep relative z-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-1">
-            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
-            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
-            <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            <div class="font-display font-semibold text-xl tracking-tight text-ink mb-2" data-i18n="footer.brand">MC Designs</div>
+            <div class="eyebrow !text-[10px] mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-ink-soft" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
         </div>
-        <div class="flex flex-col gap-4">
-            <span class="font-heading text-xs uppercase tracking-[0.14em] text-slate-900" data-i18n="footer.services_label">Servicios</span>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.s3">Integración IA</a>
+        <div class="flex flex-col gap-1">
+            <span class="eyebrow !text-[10px] mb-3" data-i18n="footer.services_label">Servicios</span>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/servicios" data-i18n="footer.s3">Integración IA</a>
         </div>
-        <div class="flex flex-col gap-4">
-            <span class="font-heading text-xs uppercase tracking-[0.14em] text-slate-900" data-i18n="footer.studio_label">Estudio</span>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/servicios" data-i18n="footer.p2">Servicios</a>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="/contacto" data-i18n="footer.p3">Contacto</a>
+        <div class="flex flex-col gap-1">
+            <span class="eyebrow !text-[10px] mb-3" data-i18n="footer.studio_label">Estudio</span>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/servicios" data-i18n="footer.p2">Servicios</a>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="/contacto" data-i18n="footer.p3">Contacto</a>
         </div>
-        <div class="flex flex-col gap-4">
-            <span class="font-heading text-xs uppercase tracking-[0.14em] text-slate-900" data-i18n="footer.connect_label">Conectar</span>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
-            <a class="inline-flex items-center min-h-[44px] text-slate-500 hover:text-primary transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+        <div class="flex flex-col gap-1">
+            <span class="eyebrow !text-[10px] mb-3" data-i18n="footer.connect_label">Conectar</span>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="inline-flex items-center min-h-[40px] text-sm text-ink-soft hover:text-ink transition-colors duration-200" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
-        <div class="flex gap-6 sm:gap-8 text-xs font-label uppercase tracking-widest text-on-surface-variant">
-            <a href="/privacy" class="inline-flex items-center min-h-[44px] py-2 hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="/terms" class="inline-flex items-center min-h-[44px] py-2 hover:text-primary transition-colors">Terms of Service</a>
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-8 border-t border-ink/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-ink-soft" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-6 sm:gap-8 text-xs font-mono uppercase tracking-widest text-ink-soft">
+            <a href="/privacy" class="inline-flex items-center min-h-[44px] py-2 hover:text-ink transition-colors">Privacy Policy</a>
+            <a href="/terms" class="inline-flex items-center min-h-[44px] py-2 hover:text-ink transition-colors">Terms of Service</a>
         </div>
     </div>
 </footer>
@@ -1062,36 +1604,36 @@
 <!-- AI Quiz Popup -->
 <div id="quiz-popup" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
     <!-- Backdrop -->
-    <div id="quiz-popup-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div id="quiz-popup-backdrop" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
 
     <!-- Card -->
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 flex flex-col items-center text-center translate-y-4 transition-transform duration-300" id="quiz-popup-card">
+    <div class="relative bg-[#FFFFFF] rounded-2xl border-[1.5px] border-ink shadow-2xl max-w-md w-full p-8 flex flex-col items-center text-center translate-y-4 transition-transform duration-300" id="quiz-popup-card">
 
         <!-- Close -->
-        <button id="quiz-popup-close" aria-label="Cerrar" class="absolute top-2 right-2 inline-flex items-center justify-center w-11 h-11 text-slate-400 hover:text-slate-700 transition-colors rounded-lg focus-visible:ring-2 focus-visible:ring-primary">
+        <button id="quiz-popup-close" aria-label="Cerrar" class="absolute top-2 right-2 inline-flex items-center justify-center w-11 h-11 text-ink/40 hover:text-ink transition-colors rounded-lg focus-visible:ring-2 focus-visible:ring-ink">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
 
         <!-- Badge -->
-        <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-heading uppercase tracking-[0.14em] rounded-full mb-5" data-i18n="ai_quiz.popup_badge">Gratis · 30 segundos</span>
+        <span class="inline-block px-3 py-1.5 bg-accent text-white border border-ink text-[10px] font-mono uppercase tracking-[0.14em] rounded-full mb-5" data-i18n="ai_quiz.popup_badge">Gratis · 30 segundos</span>
 
         <!-- Headline -->
-        <h2 class="text-3xl font-heading uppercase tracking-[0.02em] text-on-surface leading-tight mb-3" data-i18n="ai_quiz.popup_title">
+        <h2 class="font-display font-semibold text-3xl tracking-tight text-ink leading-tight mb-3" data-i18n="ai_quiz.popup_title">
             ¿Tu negocio está<br/>listo para la IA?
         </h2>
 
         <!-- Subtext -->
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-7 max-w-xs" data-i18n="ai_quiz.popup_subtext">
+        <p class="text-ink-soft text-sm leading-relaxed mb-7 max-w-xs" data-i18n="ai_quiz.popup_subtext">
             Responde 3 preguntas y descubre exactamente qué herramienta puede ahorrarte tiempo y generar más ventas — personalizado para tu negocio.
         </p>
 
         <!-- CTA -->
-        <button id="quiz-popup-cta" class="w-full bg-primary text-white font-bold text-sm py-3.5 rounded-xl hover:bg-primary/90 active:scale-95 transition-all mb-3" data-i18n="ai_quiz.popup_cta">
+        <button id="quiz-popup-cta" class="btn-punch w-full !py-3.5 !text-sm mb-3" data-i18n="ai_quiz.popup_cta">
             Descúbrelo gratis →
         </button>
 
         <!-- Dismiss -->
-        <button id="quiz-popup-dismiss" class="inline-flex items-center justify-center min-h-[44px] px-4 text-xs text-slate-500 hover:text-slate-700 transition-colors" data-i18n="ai_quiz.popup_dismiss">
+        <button id="quiz-popup-dismiss" class="inline-flex items-center justify-center min-h-[44px] px-4 text-xs text-ink-soft hover:text-ink transition-colors" data-i18n="ai_quiz.popup_dismiss">
             Ahora no
         </button>
     </div>
@@ -1165,24 +1707,6 @@
         });
 
         revealItems.forEach(item => observer.observe(item));
-    });
-</script>
-<script>
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-
-    mobileMenuToggle.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        if (isHidden) {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-            menuIcon.textContent = 'close';
-        } else {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            menuIcon.textContent = 'menu';
-        }
     });
 </script>
 <script type="module" src="assets/site-chat.js"></script>
@@ -1276,4 +1800,5 @@
         }
     })();
 </script>
-</body></html>
+</body>
+</html>
