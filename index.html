@@ -294,6 +294,8 @@
             border-radius: 12px;
         }
         .desk-label {
+            position: relative;
+            z-index: 6;
             font-family: 'JetBrains Mono', ui-monospace, monospace;
             font-size: 11.5px;
             font-weight: 500;
@@ -301,7 +303,7 @@
             color: var(--ink);
             padding: 3px 9px;
             border-radius: 6px;
-            background: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.85);
             transition: background 140ms ease, color 140ms ease;
         }
         .desk-icon:hover .desk-label,
@@ -494,6 +496,122 @@
         @keyframes desk-bob {
             0%, 100% { transform: rotate(var(--dr, 0deg)) translateY(0); }
             50%      { transform: rotate(var(--dr, 0deg)) translateY(-6px); }
+        }
+
+        /* ---------- Mini portafolio (reflejo de /portfolio) ---------- */
+        .select-mark {
+            position: relative;
+            background: rgba(62, 107, 255, 0.22);
+            padding: 0 0.05em;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+        .select-mark::before,
+        .select-mark::after {
+            content: '';
+            position: absolute;
+            top: -0.04em;
+            bottom: -0.04em;
+            width: 3.5px;
+            border-radius: 2px;
+            background: var(--accent);
+        }
+        .select-mark::before { left: -2px; }
+        .select-mark::after { right: -2px; }
+
+        .shot-frame {
+            display: block;
+            width: var(--w, 300px);
+            max-width: 78vw;
+            padding: 6px;
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 10px;
+            box-shadow: 4px 6px 0 rgba(28, 26, 19, 0.85);
+            transition: transform 220ms ease, box-shadow 220ms ease;
+        }
+        .shot-frame img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 4px;
+            background: var(--accent-wash);
+        }
+        a.desk-icon:hover .shot-stack > .shot-frame:last-child,
+        a.desk-icon:focus-visible .shot-stack > .shot-frame:last-child,
+        a.desk-icon:hover > .shot-frame,
+        a.desk-icon:focus-visible > .shot-frame {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 6px 10px 0 rgba(28, 26, 19, 0.85);
+        }
+        .shot-stack { position: relative; display: block; }
+        .shot-stack > .shot-frame:last-child { position: relative; z-index: 3; }
+        .shot-stack .shot-under {
+            position: absolute;
+            inset: 0;
+            transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .shot-stack .shot-under:nth-child(1) { z-index: 1; transform: rotate(-4deg) translate(-8px, 9px); }
+        .shot-stack .shot-under:nth-child(2) { z-index: 2; transform: rotate(3.5deg) translate(8px, 5px); }
+        a.desk-icon:hover .shot-under:nth-child(1),
+        a.desk-icon:focus-visible .shot-under:nth-child(1) { transform: rotate(-8deg) translate(-22px, 12px); }
+        a.desk-icon:hover .shot-under:nth-child(2),
+        a.desk-icon:focus-visible .shot-under:nth-child(2) { transform: rotate(7deg) translate(22px, 7px); }
+
+        /* Mobile: carrusel horizontal */
+        .mini-board {
+            display: flex;
+            gap: 26px;
+            margin: 0 -24px;
+            padding: 14px 32px 18px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .mini-board::-webkit-scrollbar { display: none; }
+        .mini-board .desk-icon {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+        }
+        .mini-board-cta {
+            flex: 0 0 auto;
+            align-self: center;
+            scroll-snap-align: center;
+            display: flex;
+            justify-content: center;
+            padding-right: 8px;
+        }
+        /* Desktop: mini escritorio regado con el CTA al centro */
+        @media (min-width: 1024px) {
+            .mini-board {
+                display: block;
+                position: relative;
+                height: 600px;
+                margin: 0;
+                padding: 0;
+                overflow: visible;
+            }
+            .mini-board .desk-icon {
+                position: absolute;
+                left: var(--dx, 50%);
+                top: var(--dy, 50%);
+                transform: rotate(var(--dr, 0deg));
+                animation: desk-bob 7s ease-in-out infinite;
+                animation-delay: var(--bob, 0s);
+            }
+            .mini-board .desk-icon:hover { animation-play-state: paused; }
+            .mini-board-cta {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0;
+                z-index: 5;
+            }
+            .mini-board .desk-cursor { display: block; }
         }
 
         /* ---------- Hero fan (demos as gallery pieces) ---------- */
@@ -720,47 +838,6 @@
         .sys-card--ink {
             background: var(--ink);
             color: var(--cream);
-        }
-
-        /* ---------- Casos de estudio ---------- */
-        .case-card {
-            border: 1.5px solid var(--ink);
-            border-radius: 26px;
-            overflow: hidden;
-            background: #FFFFFF;
-            transition: transform 280ms ease, box-shadow 280ms ease;
-        }
-        .case-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px -28px rgba(28, 26, 19, 0.4);
-        }
-        .case-media {
-            background: var(--cream-deep);
-            min-height: 260px;
-            position: relative;
-        }
-        .case-media img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-        }
-        @media (max-width: 767px) {
-            .case-media { min-height: 220px; position: relative; }
-        }
-        .case-chip {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 12px;
-            border: 1px solid rgba(28, 26, 19, 0.25);
-            border-radius: 9999px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10.5px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
         }
 
         /* ---------- Bento stats ---------- */
@@ -1698,71 +1775,64 @@
 
 <!-- ============ CASOS DE ESTUDIO ============ -->
 <section id="casos" class="py-16 md:py-24 max-w-6xl mx-auto px-6 md:px-8 relative z-10 scroll-mt-8">
-    <div class="text-center mb-12 md:mb-16">
-        <p class="reveal eyebrow mb-5" data-i18n="proof.label">Casos de estudio</p>
-        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms" data-i18n="proof.title">Construido, entregado, <span class="display-italic">funcionando</span>.</h2>
+    <div class="text-center mb-10 md:mb-6">
+        <p class="reveal eyebrow mb-5">Portafolio</p>
+        <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">
+            Proyectos <span class="display-italic select-mark">reales</span><span class="display-italic">.</span>
+        </h2>
     </div>
 
-    <div class="space-y-10 md:space-y-14">
-        <!-- Caso 01 — Miguel Cotto Promotions -->
-        <a href="/portfolio#card-mcp" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
-            <div class="case-media">
-                <img src="/MCP/mcp-1.png" alt="Sitio web Miguel Cotto Promotions" loading="lazy" />
-            </div>
-            <div class="p-8 md:p-12 flex flex-col">
-                <p class="eyebrow !text-[10px] mb-4">Caso 01 · Web + Panel Admin</p>
-                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">Miguel Cotto Promotions</h3>
-                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Rediseño completo para la promotora de boxeo #1 de Puerto Rico — con panel admin para actualizar peleas, boxeadores y livestreams en minutos, sin depender de terceros.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="case-chip">Diseño web</span>
-                    <span class="case-chip">Desarrollo a medida</span>
-                    <span class="case-chip">Panel admin</span>
-                </div>
-                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
-                    Ver el caso <span class="cta-arrow">→</span>
-                </span>
-            </div>
+    <!-- Mini vision board — reflejo de /portfolio -->
+    <div class="reveal mini-board" style="--delay: 160ms">
+
+        <!-- MCP — booklet -->
+        <a href="/portfolio#card-mcp" class="desk-icon" style="--dx: 2%; --dy: 4%; --dr: -5deg; --bob: 0s; --w: 330px" aria-label="Ver caso Miguel Cotto Promotions">
+            <span class="shot-stack">
+                <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" loading="lazy"/></span>
+                <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" loading="lazy"/></span>
+                <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" loading="lazy"/></span>
+            </span>
+            <span class="desk-label">miguel_cotto_promotions</span>
         </a>
 
-        <!-- Caso 02 — Team Drita y Mely -->
-        <a href="/portfolio#card-drita" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
-            <div class="case-media md:order-2">
-                <img src="/DRITA/drita-1.png" alt="Tienda Shopify Team Drita y Mely" loading="lazy" />
-            </div>
-            <div class="p-8 md:p-12 flex flex-col md:order-1">
-                <p class="eyebrow !text-[10px] mb-4">Caso 02 · Shopify + E-commerce</p>
-                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">Team Drita y Mely</h3>
-                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Tienda Shopify para productos, bundles y promociones — diseñada para que comprar desde el celular tome segundos, no pasos.</p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="case-chip">Shopify</span>
-                    <span class="case-chip">E-commerce móvil</span>
-                    <span class="case-chip">Branding aplicado</span>
-                </div>
-                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
-                    Ver el caso <span class="cta-arrow">→</span>
-                </span>
-            </div>
+        <!-- DRITA — booklet -->
+        <a href="/portfolio#card-drita" class="desk-icon" style="--dx: 71%; --dy: 8%; --dr: 4deg; --bob: 1.4s; --w: 310px" aria-label="Ver caso Team Drita y Mely">
+            <span class="shot-stack">
+                <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" loading="lazy"/></span>
+                <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" loading="lazy"/></span>
+            </span>
+            <span class="desk-label">team_drita_y_mely</span>
         </a>
 
-        <!-- Caso 03 — De La Mata (concepto propio) -->
-        <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="reveal case-card grid grid-cols-1 md:grid-cols-2 group">
-            <div class="case-media">
-                <img src="/DELAMATA/delamata-hero.webp" alt="De La Mata — marketplace agrícola de Puerto Rico" loading="lazy" />
-            </div>
-            <div class="p-8 md:p-12 flex flex-col">
-                <p class="eyebrow !text-[10px] mb-4">Caso 03 · Proyecto Concepto</p>
-                <h3 class="font-display font-semibold text-3xl md:text-4xl tracking-tight mb-4">De La Mata</h3>
-                <p class="text-ink-soft leading-relaxed text-[15px] mb-6">Marketplace agrícola que conecta el surco con la mesa, sin intermediarios. Concepto propio — sin cliente ni encargo — construido para demostrar producto completo: tres perfiles de usuario, suscripción Cajita Local y recogido comunitario. <em class="font-display italic">Navegable en vivo.</em></p>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="case-chip">React + TypeScript</span>
-                    <span class="case-chip">Marketplace</span>
-                    <span class="case-chip">Concepto propio</span>
-                </div>
-                <span class="mt-auto inline-flex items-center gap-2 text-ink font-semibold text-sm border-b-2 border-accent group-hover:border-ink transition-colors pb-0.5 self-start">
-                    Ver el prototipo <span class="cta-arrow">↗</span>
-                </span>
-            </div>
+        <!-- DE LA MATA — en vivo -->
+        <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="desk-icon" style="--dx: 12%; --dy: 56%; --dr: 3deg; --bob: 2.6s; --w: 300px" aria-label="Ver De La Mata en vivo (abre en pestaña nueva)">
+            <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" loading="lazy"/></span>
+            <span class="desk-label">de_la_mata.webp</span>
         </a>
+
+        <!-- Folder al portafolio completo -->
+        <a href="/portfolio" class="desk-icon" style="--dx: 76%; --dy: 60%; --dr: -4deg; --bob: 1.9s" aria-label="Abrir el portafolio completo">
+            <span class="f3d" aria-hidden="true">
+                <span class="f3d-back"></span>
+                <span class="f3d-papers">
+                    <span class="f3d-paper"></span>
+                    <span class="f3d-paper"></span>
+                    <span class="f3d-paper"></span>
+                </span>
+                <span class="f3d-front"></span>
+            </span>
+            <span class="desk-label">portafolio_completo</span>
+        </a>
+
+        <!-- Cursor decorativo -->
+        <svg class="desk-cursor" style="left: 82%; top: 82%" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- CTA al centro del board -->
+        <div class="mini-board-cta">
+            <a href="/portfolio" class="btn-punch !py-3 !px-7">Abrir el portafolio <span class="cta-arrow">→</span></a>
+        </div>
     </div>
 
     <!-- Bento stats de respaldo -->

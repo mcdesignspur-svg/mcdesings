@@ -28,8 +28,321 @@
     <meta name="twitter:image" content="https://mcdesignspr.com/assets/MC-Designs-Logo.svg"/>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>    <link rel="stylesheet" href="./assets/tailwind.css" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/><style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/><style>
+        /* ============ Sistema editorial (igual que el homepage) ============ */
+        :root {
+            --cream: #FFFFFF;
+            --cream-deep: #F2F2EF;
+            --ink: #1C1A13;
+            --ink-soft: #57533F;
+            --accent: #3E6BFF;
+            --accent-deep: #2E56E8;
+            --accent-bright: #7D97FF;
+            --accent-wash: #E3EAFF;
+        }
+        html { background: var(--cream); }
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Instrument Sans', Inter, system-ui, sans-serif;
+        }
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+        }
+        .eyebrow {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+        .headline-xl {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 144;
+            font-weight: 560;
+            letter-spacing: -0.025em;
+            line-height: 1.04;
+        }
+        .display-italic {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+        .btn-punch {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 9999px;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 13.5px;
+            letter-spacing: -0.01em;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+        }
+        .btn-punch:hover {
+            background: var(--accent-deep);
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+        .cta-arrow { display: inline-block; transition: transform 200ms ease; }
+        a:hover .cta-arrow { transform: translateX(4px); }
+
+        /* ---------- Título con selección de texto + caret ---------- */
+        .select-mark {
+            position: relative;
+            background: rgba(62, 107, 255, 0.22);
+            padding: 0 0.05em;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+        .select-mark::before,
+        .select-mark::after {
+            content: '';
+            position: absolute;
+            top: -0.04em;
+            bottom: -0.04em;
+            width: 3.5px;
+            border-radius: 2px;
+            background: var(--accent);
+        }
+        .select-mark::before { left: -2px; }
+        .select-mark::after { right: -2px; }
+
+        /* ---------- Desktop moodboard (archivos + folders) ---------- */
+        .desktop-stage { position: relative; }
+        .desk-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .desk-icon:focus-visible {
+            outline: 2px dashed var(--accent);
+            outline-offset: 6px;
+            border-radius: 12px;
+        }
+        .desk-label {
+            position: relative;
+            z-index: 6;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.25;
+            color: var(--ink);
+            padding: 3px 9px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.85);
+            transition: background 140ms ease, color 140ms ease;
+            white-space: nowrap;
+        }
+        a.desk-icon:hover .desk-label,
+        a.desk-icon:focus-visible .desk-label {
+            background: var(--accent);
+            color: #FFFFFF;
+        }
+
+        /* Screenshot como archivo grande (vision board) */
+        .shot-frame {
+            display: block;
+            width: var(--w, 340px);
+            max-width: 82vw;
+            padding: 7px;
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 10px;
+            box-shadow: 4px 6px 0 rgba(28, 26, 19, 0.85);
+            transition: transform 220ms ease, box-shadow 220ms ease;
+        }
+        .shot-frame img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 4px;
+            background: var(--accent-wash);
+        }
+        a.desk-icon:hover .shot-stack > .shot-frame:last-child,
+        a.desk-icon:focus-visible .shot-stack > .shot-frame:last-child,
+        a.desk-icon:hover > .shot-frame,
+        a.desk-icon:focus-visible > .shot-frame {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 6px 10px 0 rgba(28, 26, 19, 0.85);
+        }
+
+        /* Booklet: proyectos con varias fotos, apiladas */
+        .shot-stack {
+            position: relative;
+            display: block;
+        }
+        .shot-stack > .shot-frame:last-child { position: relative; z-index: 3; }
+        .shot-stack .shot-under {
+            position: absolute;
+            inset: 0;
+            transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .shot-stack .shot-under:nth-child(1) { z-index: 1; transform: rotate(-4deg) translate(-8px, 9px); }
+        .shot-stack .shot-under:nth-child(2) { z-index: 2; transform: rotate(3.5deg) translate(8px, 5px); }
+        a.desk-icon:hover .shot-under:nth-child(1),
+        a.desk-icon:focus-visible .shot-under:nth-child(1) { transform: rotate(-8deg) translate(-22px, 12px); }
+        a.desk-icon:hover .shot-under:nth-child(2),
+        a.desk-icon:focus-visible .shot-under:nth-child(2) { transform: rotate(7deg) translate(22px, 7px); }
+
+        /* Folder 3D (idéntico al homepage) */
+        .f3d {
+            position: relative;
+            display: block;
+            width: 94px;
+            height: 80px;
+            perspective: 640px;
+        }
+        .f3d-back, .f3d-front {
+            position: absolute;
+            left: 0; right: 0;
+            border: 1.5px solid var(--ink);
+            border-radius: 9px;
+            transform-origin: bottom center;
+            transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            backface-visibility: hidden;
+        }
+        .f3d-back {
+            top: 12px; bottom: 0;
+            z-index: 1;
+            background: var(--accent-deep);
+            box-shadow: 0 6px 14px -8px rgba(28, 26, 19, 0.5);
+        }
+        .f3d-back::before {
+            content: '';
+            position: absolute;
+            top: -12px; left: 7px;
+            width: 36px; height: 13px;
+            background: var(--accent-deep);
+            border: 1.5px solid var(--ink);
+            border-bottom: none;
+            border-radius: 7px 7px 0 0;
+        }
+        .desk-icon:hover .f3d-back,
+        .desk-icon:focus-visible .f3d-back { transform: rotateX(-16deg); }
+        .f3d-paper {
+            position: absolute;
+            z-index: 2;
+            height: 46px;
+            background:
+                repeating-linear-gradient(180deg,
+                    transparent 0px, transparent 7px,
+                    var(--accent-wash) 7px, var(--accent-wash) 9.5px) content-box,
+                #FFFFFF;
+            padding: 9px 6px 0;
+            border: 1px solid var(--ink);
+            border-radius: 4px 4px 0 0;
+            box-shadow: 0 -2px 6px -3px rgba(28, 26, 19, 0.25);
+            transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .f3d-paper:nth-child(1) { left: 10px;  width: 40px; top: 15px; transform: rotate(-5deg); }
+        .f3d-paper:nth-child(2) { right: 12px; width: 36px; top: 17px; transform: rotate(4deg); }
+        .f3d-paper:nth-child(3) { left: 50%;   width: 44px; top: 13px; margin-left: -22px; transform: rotate(-1deg); }
+        .desk-icon:hover .f3d-paper:nth-child(1),
+        .desk-icon:focus-visible .f3d-paper:nth-child(1) { transform: rotate(-7deg) translateY(-9px); }
+        .desk-icon:hover .f3d-paper:nth-child(2),
+        .desk-icon:focus-visible .f3d-paper:nth-child(2) { transform: rotate(6deg) translateY(-7px); }
+        .desk-icon:hover .f3d-paper:nth-child(3),
+        .desk-icon:focus-visible .f3d-paper:nth-child(3) { transform: rotate(-1deg) translateY(-11px); }
+        .f3d-front {
+            top: 26px; bottom: 0;
+            z-index: 3;
+            background: linear-gradient(180deg, #7D97FF 0%, #3E6BFF 100%);
+            box-shadow: 0 10px 22px -10px rgba(28, 26, 19, 0.55);
+        }
+        .f3d-front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 55%);
+            pointer-events: none;
+        }
+        .desk-icon:hover .f3d-front,
+        .desk-icon:focus-visible .f3d-front { transform: rotateX(30deg) translateY(5px); }
+
+        .desk-cursor {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Mobile / tablet: collage vertical — el board completo en columna */
+        .desk-field {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin: 36px 0 24px;
+        }
+        .desk-field .desk-icon:nth-child(odd)  { transform: rotate(-3deg) translateX(-8px); }
+        .desk-field .desk-icon:nth-child(even) { transform: rotate(3deg) translateX(10px); }
+        @media (max-width: 1023px) {
+            .f3d { width: 84px; height: 72px; }
+            .f3d-back::before { width: 32px; }
+            .f3d-front { top: 23px; }
+        }
+        /* Desktop grande: vision board regado */
+        @media (min-width: 1024px) {
+            .desktop-stage { height: 1180px; }
+            .board-title {
+                position: absolute;
+                left: 50%;
+                top: 380px;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                max-width: 680px;
+                z-index: 5;
+            }
+            .desk-field {
+                position: absolute;
+                inset: 0;
+                margin: 0;
+                padding: 0;
+                display: block;
+                pointer-events: none;
+                z-index: 20;
+            }
+            .desk-field .desk-icon {
+                pointer-events: auto;
+                position: absolute;
+                left: var(--dx, 50%);
+                top: var(--dy, 50%);
+                transform: rotate(var(--dr, 0deg));
+                animation: desk-bob 7s ease-in-out infinite;
+                animation-delay: var(--bob, 0s);
+            }
+            .desk-field .desk-icon:hover { animation-play-state: paused; }
+            .desk-cursor { display: block; }
+        }
+        @keyframes desk-bob {
+            0%, 100% { transform: rotate(var(--dr, 0deg)) translateY(0); }
+            50%      { transform: rotate(var(--dr, 0deg)) translateY(-6px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .desk-field .desk-icon, .f3d-back, .f3d-front, .f3d-paper, .shot-frame, .desk-label, .cta-arrow, .btn-punch { transition: none; animation: none; }
+            .select-mark::after { animation: none; }
+        }
+
         .hero-gradient { background: linear-gradient(135deg, #0056c6 0%, #006df8 100%); }
         .glass-module { backdrop-filter: blur(16px); background: rgba(255,255,255,0.4); }
         .grid-overlay {
@@ -39,168 +352,231 @@
         }
         .case-detail { display: none; }
         .case-detail.open { display: block; }
-        .img-placeholder {
-            background: linear-gradient(135deg, #e8edf7 0%, #f0f3fb 100%);
-            display: flex; align-items: center; justify-content: center;
-            color: #9aa3be; font-size: 0.75rem; font-weight: 700;
-            letter-spacing: 0.15em; text-transform: uppercase;
+
+        /* ---------- Modal de casos ---------- */
+        #case-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            background: rgba(28, 26, 19, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: 64px 8px 48px;
+        }
+        #case-modal[hidden] { display: none; }
+        #case-modal .case-detail.open {
+            animation: modal-pop 340ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes modal-pop {
+            from { opacity: 0; transform: translateY(26px) scale(0.985); }
+        }
+        .case-modal__close {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 70;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: var(--ink);
+            border: 1.5px solid var(--ink);
+            box-shadow: 3px 3px 0 var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+        .case-modal__close:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+        .case-modal__close:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0 0 0 var(--ink);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #case-modal .case-detail.open { animation: none; }
         }
         .cs-img {
-            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
-            border-radius: 0.5rem;
             width: 100%;
             object-fit: cover;
+            border: 1.5px solid var(--ink);
+            border-radius: 10px;
+            box-shadow: 4px 5px 0 rgba(28, 26, 19, 0.12);
         }
         .pill {
             display: inline-block;
-            padding: 0.25rem 0.875rem;
+            padding: 4px 13px;
             border-radius: 9999px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            background: #f0f3fb;
-            color: #0056c6;
+            background: var(--accent-wash);
+            color: var(--accent-deep);
+            border: 1px solid rgba(62, 107, 255, 0.35);
         }
         .tech-pill {
             display: inline-block;
-            padding: 0.25rem 0.875rem;
-            border-radius: 0.25rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            padding: 4px 11px;
+            border-radius: 7px;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            background: #eeeeee;
-            color: #424655;
+            background: var(--cream-deep);
+            color: var(--ink-soft);
+            border: 1px solid rgba(28, 26, 19, 0.15);
         }
-        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,86,198,0.08); }
+        .case-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: 'opsz' 100;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+        }
+        .case-eyebrow {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .case-h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 560;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
     </style>
 </head>
-<body class="bg-surface text-on-surface antialiased font-sans selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
-<div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
+<body class="antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+<div class="grain-overlay" aria-hidden="true"></div>
 
-<!-- ─── NAV ─────────────────────────────────────────────────────── -->
-<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl border-b border-slate-100/60">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-3">
-        <a href="/" class="flex-shrink-0">
-            <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 md:h-10 w-auto" />
-        </a>
-        <div class="hidden md:flex items-center gap-7 font-sans text-sm font-medium tracking-tight">
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/lab">El Lab</a>
-            <a class="text-primary font-bold transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Miguel</a>
-            <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos" data-i18n="nav.hub">Recursos</a>
-        </div>
-        <div class="flex items-center gap-3">
-            <!-- Language Toggle Pill -->
-            <div class="hidden lg:flex items-center bg-slate-100 rounded-full p-1 gap-1 text-xs font-bold uppercase tracking-widest">
-                <button id="lang-es" class="px-3 py-1 rounded-full bg-primary text-white transition-all duration-200 cursor-pointer">ES</button>
-                <button id="lang-en" class="px-3 py-1 rounded-full text-slate-500 transition-all duration-200 cursor-pointer hover:text-slate-800">EN</button>
-            </div>
-            <a href="/contacto" class="hidden md:inline-block hero-gradient text-on-primary px-5 py-2 rounded-lg font-label text-xs uppercase tracking-widest font-bold active:scale-95 transition-transform duration-150" data-i18n="nav.cta">Agenda diagnóstico</a>
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-slate-600 transition-colors focus:outline-none">
-                <span class="material-symbols-outlined text-2xl select-none" id="menu-icon">menu</span>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100/60 shadow-xl flex-col items-center py-8 gap-6 font-sans text-base font-medium tracking-tight">
-        <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-i18n="nav.home">Inicio</a>
-        <a class="text-slate-600 hover:text-primary transition-colors" href="/servicios" data-i18n="nav.services">Servicios</a>
-        <a class="text-slate-600 hover:text-primary transition-colors" href="/lab">El Lab</a>
-        <a class="text-primary font-bold transition-colors" href="/portfolio" data-i18n="nav.portfolio">Portafolio</a>
-        <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-i18n="nav.about">Miguel</a>
-        <a class="text-slate-600 hover:text-primary transition-colors" href="/recursos" data-i18n="nav.hub">Recursos</a>
-        <a href="/contacto" class="hero-gradient text-on-primary px-6 py-3 rounded-lg font-label text-xs uppercase tracking-widest font-bold shadow-lg shadow-primary/20 mt-4" data-i18n="nav.cta">Agenda diagnóstico</a>
-    </div>
+<!-- ─── NAV — menu bar estilo macOS (igual que el homepage) ─────── -->
+<nav class="relative z-30 max-w-7xl mx-auto px-6 md:px-8 pt-5 flex items-center justify-between">
+    <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1 md:absolute md:left-1/2 md:-translate-x-1/2">
+        <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 w-auto" />
+    </a>
+
+    <a href="/talk" class="btn-punch ml-auto">Hablamos <span class="cta-arrow">→</span></a>
 </nav>
 
-<main class="relative z-10 pt-32">
+<main class="relative z-10">
 
-<!-- ─── HERO ─────────────────────────────────────────────────────── -->
-<header class="max-w-7xl mx-auto px-8 pt-16 pb-24">
-    <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4 block" data-i18n="portfolio_page.label">MC Designs — Portafolio</span>
-    <h1 class="text-6xl md:text-[10rem] font-black tracking-tighter leading-none text-on-surface mb-6" data-i18n="portfolio_page.headline">Portafolio</h1>
-    <p class="text-xl text-on-surface-variant font-medium" data-i18n="portfolio_page.subtext">Proyectos reales. Resultados reales.</p>
+<!-- ─── VISION BOARD — la página ES el escritorio ─────────────────── -->
+<header class="relative z-10 pt-6 md:pt-8 pb-8 overflow-hidden">
+    <div class="desktop-stage max-w-[1400px] mx-auto px-6">
+
+        <div class="board-title relative z-10 max-w-3xl mx-auto text-center">
+            <p class="eyebrow mb-6">MC Designs · Portafolio</p>
+            <h1 class="headline-xl text-[2.9rem] md:text-[5.6rem] text-ink">
+                Proyectos<br/><span class="display-italic select-mark">reales</span><span class="display-italic">.</span>
+            </h1>
+            <p class="text-base md:text-lg text-ink-soft max-w-md mx-auto leading-relaxed mt-7">
+                Nada de mockups — todo lo que ves aquí está en producción ahora mismo.
+                Toca cualquier archivo para abrir el caso.
+            </p>
+        </div>
+
+        <!-- El board: un item por proyecto -->
+        <nav class="desk-field" aria-label="Proyectos">
+
+            <!-- MCP — booklet (3 fotos) -->
+            <a href="#card-mcp" onclick="event.preventDefault(); toggleCase('mcp')" class="desk-icon" style="--dx: 2%; --dy: 2%; --dr: -5deg; --bob: 0s; --w: 400px" aria-label="Ver caso Miguel Cotto Promotions">
+                <span class="shot-stack">
+                    <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" loading="eager"/></span>
+                    <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" loading="eager"/></span>
+                    <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" loading="eager"/></span>
+                </span>
+                <span class="desk-label">miguel_cotto_promotions</span>
+            </a>
+
+            <!-- DRITA — booklet (2 fotos) -->
+            <a href="#card-drita" onclick="event.preventDefault(); toggleCase('drita')" class="desk-icon" style="--dx: 66%; --dy: 4%; --dr: 4deg; --bob: 1.4s; --w: 380px" aria-label="Ver caso Team Drita y Mely">
+                <span class="shot-stack">
+                    <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" loading="eager"/></span>
+                    <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" loading="eager"/></span>
+                </span>
+                <span class="desk-label">team_drita_y_mely</span>
+            </a>
+
+            <!-- DE LA MATA — proyecto concepto, navegable en vivo -->
+            <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="desk-icon" style="--dx: 8%; --dy: 48%; --dr: 3deg; --bob: 2.6s; --w: 380px" aria-label="Ver De La Mata en vivo (abre en pestaña nueva)">
+                <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" loading="lazy"/></span>
+                <span class="desk-label">de_la_mata.webp</span>
+            </a>
+
+            <a href="/lab" class="desk-icon" style="--dx: 87%; --dy: 44%; --dr: -4deg; --bob: 3s" aria-label="Ir al Lab">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">el_lab</span>
+            </a>
+
+            <a href="/talk" class="desk-icon" style="--dx: 47%; --dy: 70%; --dr: 3deg; --bob: 1.9s" aria-label="Empezar tu proyecto">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">tu_proyecto</span>
+            </a>
+
+            <!-- Cursor decorativo apuntando a tu_proyecto -->
+            <svg class="desk-cursor" style="left: 53.5%; top: 79%" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+        </nav>
+    </div>
 </header>
 
-<!-- ─── CASE STUDY CARDS GRID ────────────────────────────────────── -->
-<section class="max-w-7xl mx-auto px-8 mb-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <!-- CARD 1 — Miguel Cotto Promotions -->
-        <div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-hover cursor-pointer group" id="card-mcp" onclick="toggleCase('mcp')">
-            <!-- Image -->
-            <div class="aspect-[16/10] overflow-hidden">
-                <img
-                    src="/MCP/mcp-1.png"
-                    alt="Miguel Cotto Promotions website"
-                    class="cs-img h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-            </div>
-            <!-- Meta -->
-            <div class="p-8">
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="pill" data-i18n="portfolio_page.mcp.tag1">Diseño Web</span>
-                    <span class="pill" data-i18n="portfolio_page.mcp.tag2">Desarrollo a Medida</span>
-                </div>
-                <h2 class="text-2xl font-black tracking-tight text-on-surface mb-2">Miguel Cotto Promotions</h2>
-                <p class="text-on-surface-variant text-sm leading-relaxed mb-6" data-i18n="portfolio_page.mcp.oneliner">Rediseño completo para la empresa de boxeo #1 de Puerto Rico.</p>
-                <div class="grid grid-cols-2 gap-3 mb-6 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-                    <span class="bg-surface-container-low rounded-lg px-3 py-2">Sitio público</span>
-                    <span class="bg-surface-container-low rounded-lg px-3 py-2">Panel admin</span>
-                </div>
-                <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
-                    <span data-i18n="portfolio_page.mcp.card_cta">Ver Proyecto</span>
-                    <span class="transition-transform group-hover:translate-x-1">→</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- CARD 2 — Team Drita y Mely -->
-        <div class="bg-surface-container-lowest rounded-2xl overflow-hidden card-hover cursor-pointer group" id="card-drita" onclick="toggleCase('drita')">
-            <!-- Image -->
-            <div class="aspect-[16/10] overflow-hidden">
-                <img
-                    src="/DRITA/drita-1.png"
-                    alt="Team Drita y Mely Shopify store"
-                    class="cs-img h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-            </div>
-            <!-- Meta -->
-            <div class="p-8">
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="pill" data-i18n="portfolio_page.drita.tag1">E-Commerce</span>
-                    <span class="pill" data-i18n="portfolio_page.drita.tag2">Shopify</span>
-                </div>
-                <h2 class="text-2xl font-black tracking-tight text-on-surface mb-2">Team Drita y Mely</h2>
-                <p class="text-on-surface-variant text-sm leading-relaxed mb-6" data-i18n="portfolio_page.drita.oneliner">Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.</p>
-                <div class="grid grid-cols-2 gap-3 mb-6 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-                    <span class="bg-surface-container-low rounded-lg px-3 py-2">Shopify</span>
-                    <span class="bg-surface-container-low rounded-lg px-3 py-2">Bundles</span>
-                </div>
-                <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
-                    <span data-i18n="portfolio_page.drita.card_cta">Ver Proyecto</span>
-                    <span class="transition-transform group-hover:translate-x-1">→</span>
-                </div>
-            </div>
-        </div>
-
+<!-- ─── CLOSING CTA ───────────────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-8 py-32 mb-0">
+    <div class="bg-surface-container-low rounded-3xl px-8 md:px-20 py-24 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <span class="case-eyebrow mb-6 block">MC Designs</span>
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-2xl mx-auto" data-i18n="portfolio_page.closing_cta.headline">¿Listo para ser el próximo?</h2>
+        <p class="text-lg text-on-surface-variant mb-12 max-w-md mx-auto" data-i18n="portfolio_page.closing_cta.subtext">Cuéntame tu proyecto y construyo algo que funcione.</p>
+        <a href="/contacto" class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" data-i18n="portfolio_page.closing_cta.cta">Agenda diagnóstico</a>
     </div>
 </section>
 
+</main>
+
+<!-- ─── MODAL DE CASOS — los detalles salen en popup ─────────────── -->
+<div id="case-modal" hidden onclick="if (event.target === this) closeCase()">
+    <button class="case-modal__close" onclick="closeCase()" aria-label="Cerrar caso">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
 <!-- ─── CASE STUDY DETAIL — Miguel Cotto Promotions ──────────────── -->
 <section id="detail-mcp" class="case-detail max-w-7xl mx-auto px-8 mb-4">
-    <div class="bg-surface-container-lowest rounded-3xl overflow-hidden">
+    <div class="bg-white rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[6px_8px_0_rgba(28,26,19,0.45)]">
 
         <!-- Detail Header -->
-        <div class="px-8 md:px-16 pt-16 pb-12 border-b border-surface-container">
-            <button onclick="toggleCase('mcp')" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors mb-8">
+        <div class="px-8 md:px-16 pt-14 pb-12 border-b border-ink/10">
+            <button onclick="toggleCase('mcp')" class="eyebrow flex items-center gap-2 hover:!text-accent transition-colors mb-8">
                 <span>←</span> <span>Cerrar</span>
             </button>
             <div class="flex flex-wrap gap-2 mb-6">
@@ -211,8 +587,8 @@
                 <span class="tech-pill">Google Stitch</span>
                 <span class="tech-pill">Antigravity</span>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-4">Miguel Cotto<br/>Promotions</h2>
-            <p class="text-lg text-on-surface-variant max-w-xl" data-i18n="portfolio_page.mcp.oneliner">Rediseño completo para la empresa de boxeo #1 de Puerto Rico.</p>
+            <h2 class="case-title text-5xl md:text-6xl text-ink mb-5">Miguel Cotto<br/>Promotions</h2>
+            <p class="text-lg text-ink-soft max-w-xl" data-i18n="portfolio_page.mcp.oneliner">Rediseño completo para la empresa de boxeo #1 de Puerto Rico.</p>
         </div>
 
         <div class="relative">
@@ -228,42 +604,42 @@
 
             <!-- Challenge -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">01</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.challenge_title">El Reto</h3>
+                <span class="case-eyebrow mb-3 block">01</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.mcp.challenge_title">El Reto</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.mcp.challenge">La promotora de boxeo #1 de Puerto Rico operaba con un sitio que no aguantaba el ritmo de un evento en vivo. Tres frentes de fricción: cada cambio de evento o boleto pasaba por un tercero técnico, varios dominios históricos resolvían a sitios desincronizados, y la identidad visual no proyectaba el peso de la marca dentro del boxeo profesional.</p>
+                <p class="text-ink-soft leading-relaxed text-lg" data-i18n="portfolio_page.mcp.challenge">La promotora de boxeo #1 de Puerto Rico operaba con un sitio que no aguantaba el ritmo de un evento en vivo. Tres frentes de fricción: cada cambio de evento o boleto pasaba por un tercero técnico, varios dominios históricos resolvían a sitios desincronizados, y la identidad visual no proyectaba el peso de la marca dentro del boxeo profesional.</p>
             </div>
 
 
             <!-- Key Decisions -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">02</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.decisions_title">Decisiones Clave</h3>
+                <span class="case-eyebrow mb-3 block">02</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.mcp.decisions_title">Decisiones Clave</h3>
             </div>
             <div class="md:col-span-8 space-y-6">
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.mcp.decisions.0.title">Dark mode como decisión de marca, no de tendencia</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.mcp.decisions.0.body">El boxeo vive en la tensión visual del ring iluminado contra el público en penumbra. El dark mode no es estética — es coherencia con cómo la audiencia ya consume el deporte.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.mcp.decisions.0.title">Dark mode como decisión de marca, no de tendencia</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.mcp.decisions.0.body">El boxeo vive en la tensión visual del ring iluminado contra el público en penumbra. El dark mode no es estética — es coherencia con cómo la audiencia ya consume el deporte.</p>
                 </div>
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.mcp.decisions.1.title">Admin panel custom, no un CMS genérico</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.mcp.decisions.1.body">Evalué un CMS off-the-shelf y lo descarté: el flujo del cliente es repetitivo y específico (próximo evento → boletos → transmisión → comunicados). Un panel a medida expone solo los flujos que el equipo ejecuta cada semana, sin campos que distraigan.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.mcp.decisions.1.title">Admin panel custom, no un CMS genérico</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.mcp.decisions.1.body">Evalué un CMS off-the-shelf y lo descarté: el flujo del cliente es repetitivo y específico (próximo evento → boletos → transmisión → comunicados). Un panel a medida expone solo los flujos que el equipo ejecuta cada semana, sin campos que distraigan.</p>
                 </div>
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.mcp.decisions.2.title">Consolidación de dominios sin perder SEO</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.mcp.decisions.2.body">En vez de migrar a un solo dominio y romper links históricos, configuré todos los dominios de la marca para resolver al mismo deployment. Una sola fuente de verdad, sin pérdida del equity acumulado.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.mcp.decisions.2.title">Consolidación de dominios sin perder SEO</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.mcp.decisions.2.body">En vez de migrar a un solo dominio y romper links históricos, configuré todos los dominios de la marca para resolver al mismo deployment. Una sola fuente de verdad, sin pérdida del equity acumulado.</p>
                 </div>
             </div>
 
 
             <!-- What We Built -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">03</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.built_title">Lo que Construí</h3>
+                <span class="case-eyebrow mb-3 block">03</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.mcp.built_title">Lo que Construí</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg mb-8" data-i18n="portfolio_page.mcp.built">Sitio público dark mode con secciones editables desde el panel: próximo evento (nombre, fecha, link de boletos, link de transmisión), comunicados de prensa, noticias y roster de atletas. Configuración multi-dominio en Vercel para que todos los dominios históricos apunten al mismo build. Diseñado en Google Stitch, producido en Antigravity.</p>
+                <p class="text-ink-soft leading-relaxed text-lg mb-8" data-i18n="portfolio_page.mcp.built">Sitio público dark mode con secciones editables desde el panel: próximo evento (nombre, fecha, link de boletos, link de transmisión), comunicados de prensa, noticias y roster de atletas. Configuración multi-dominio en Vercel para que todos los dominios históricos apunten al mismo build. Diseñado en Google Stitch, producido en Antigravity.</p>
                 <!-- Tech Stack -->
                 <div class="flex flex-wrap gap-2">
                     <span class="tech-pill">Google Stitch</span>
@@ -277,28 +653,28 @@
 
             <!-- The Result -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">04</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.mcp.result_title">El Resultado</h3>
+                <span class="case-eyebrow mb-3 block">04</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.mcp.result_title">El Resultado</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.mcp.result">Autonomía operativa total — el equipo de MCP actualiza eventos, boletos y comunicados en minutos en vez de días. Una identidad digital consolidada bajo múltiples dominios, lista para mover al ritmo de cada cartelera.</p>
+                <p class="text-ink-soft leading-relaxed text-lg" data-i18n="portfolio_page.mcp.result">Autonomía operativa total — el equipo de MCP actualiza eventos, boletos y comunicados en minutos en vez de días. Una identidad digital consolidada bajo múltiples dominios, lista para mover al ritmo de cada cartelera.</p>
             </div>
 
             <!-- Divider -->
-            <div class="md:col-span-12 h-px bg-surface-container"></div>
+            <div class="md:col-span-12 h-px bg-ink/10"></div>
 
             <!-- Live Site CTA -->
             <div class="md:col-span-12 flex items-center justify-between flex-wrap gap-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">miguelcottopromotions.com</span>
-                <a href="https://miguelcottopromotions.com" target="_blank" rel="noopener" class="hero-gradient text-on-primary px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" data-i18n="portfolio_page.mcp.visit">Visitar Sitio</a>
+                <span class="eyebrow !text-[10px]">miguelcottopromotions.com</span>
+                <a href="https://miguelcottopromotions.com" target="_blank" rel="noopener" class="btn-punch" data-i18n="portfolio_page.mcp.visit">Visitar Sitio</a>
             </div>
 
             <!-- Divider -->
-            <div class="md:col-span-12 h-px bg-surface-container"></div>
+            <div class="md:col-span-12 h-px bg-ink/10"></div>
 
             <!-- Screenshot Gallery -->
             <div class="md:col-span-12">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6 block">Galería del Proyecto</span>
+                <span class="case-eyebrow mb-6 block">Galería del Proyecto</span>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <img src="/MCP/mcp-5.png" alt="MCP — Upcoming Events" class="cs-img" />
                     <img src="/MCP/mcp-3.png" alt="MCP — Boxer Roster" class="cs-img" />
@@ -314,11 +690,11 @@
 
 <!-- ─── CASE STUDY DETAIL — Team Drita y Mely ────────────────────── -->
 <section id="detail-drita" class="case-detail max-w-7xl mx-auto px-8 mb-4">
-    <div class="bg-surface-container-lowest rounded-3xl overflow-hidden">
+    <div class="bg-white rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[6px_8px_0_rgba(28,26,19,0.45)]">
 
         <!-- Detail Header -->
-        <div class="px-8 md:px-16 pt-16 pb-12 border-b border-surface-container">
-            <button onclick="toggleCase('drita')" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors mb-8">
+        <div class="px-8 md:px-16 pt-14 pb-12 border-b border-ink/10">
+            <button onclick="toggleCase('drita')" class="eyebrow flex items-center gap-2 hover:!text-accent transition-colors mb-8">
                 <span>←</span> <span>Cerrar</span>
             </button>
             <div class="flex flex-wrap gap-2 mb-6">
@@ -326,8 +702,8 @@
                 <span class="pill" data-i18n="portfolio_page.drita.tag2">Shopify</span>
                 <span class="tech-pill">Hibody</span>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-4">Team Drita<br/>y Mely</h2>
-            <p class="text-lg text-on-surface-variant max-w-xl" data-i18n="portfolio_page.drita.oneliner">Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.</p>
+            <h2 class="case-title text-5xl md:text-6xl text-ink mb-5">Team Drita<br/>y Mely</h2>
+            <p class="text-lg text-ink-soft max-w-xl" data-i18n="portfolio_page.drita.oneliner">Tienda Shopify desde cero para un equipo de bienestar en Puerto Rico.</p>
         </div>
 
         <div class="relative">
@@ -343,42 +719,42 @@
 
             <!-- Challenge -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">01</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.challenge_title">El Reto</h3>
+                <span class="case-eyebrow mb-3 block">01</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.drita.challenge_title">El Reto</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.drita.challenge">Sandra y Melissa, coaches de bienestar bajo la marca Hibody, habían construido audiencia en redes — pero toda la conversión vivía en DMs y procesos manuales. Sin canal propio para vender, sin métricas reales sobre qué funcionaba, y con una oferta plana que no comunicaba la marca como un sistema completo de wellness.</p>
+                <p class="text-ink-soft leading-relaxed text-lg" data-i18n="portfolio_page.drita.challenge">Sandra y Melissa, coaches de bienestar bajo la marca Hibody, habían construido audiencia en redes — pero toda la conversión vivía en DMs y procesos manuales. Sin canal propio para vender, sin métricas reales sobre qué funcionaba, y con una oferta plana que no comunicaba la marca como un sistema completo de wellness.</p>
             </div>
 
 
             <!-- Key Decisions -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">02</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.decisions_title">Decisiones Clave</h3>
+                <span class="case-eyebrow mb-3 block">02</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.drita.decisions_title">Decisiones Clave</h3>
             </div>
             <div class="md:col-span-8 space-y-6">
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.drita.decisions.0.title">Shopify, no un build custom</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.drita.decisions.0.body">Para una marca de wellness en crecimiento, Shopify gana en tres frentes que un build a medida no justifica todavía: checkout battle-tested con métodos de pago locales, infraestructura de inventario y envíos lista, y un ecosistema de apps para expandir sin sprints de desarrollo.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.drita.decisions.0.title">Shopify, no un build custom</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.drita.decisions.0.body">Para una marca de wellness en crecimiento, Shopify gana en tres frentes que un build a medida no justifica todavía: checkout battle-tested con métodos de pago locales, infraestructura de inventario y envíos lista, y un ecosistema de apps para expandir sin sprints de desarrollo.</p>
                 </div>
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.drita.decisions.1.title">Bundles como estrategia, no como add-on</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.drita.decisions.1.body">En vez de listar productos sueltos, configuré bundles que empacan combinaciones que se complementan. Sube el ticket promedio, simplifica la decisión del cliente y posiciona a Hibody como un sistema de wellness — no como una tienda más.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.drita.decisions.1.title">Bundles como estrategia, no como add-on</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.drita.decisions.1.body">En vez de listar productos sueltos, configuré bundles que empacan combinaciones que se complementan. Sube el ticket promedio, simplifica la decisión del cliente y posiciona a Hibody como un sistema de wellness — no como una tienda más.</p>
                 </div>
-                <div class="border-l-2 border-primary/30 pl-5">
-                    <h4 class="text-base font-bold text-on-surface mb-2" data-i18n="portfolio_page.drita.decisions.2.title">Mobile-first agresivo</h4>
-                    <p class="text-on-surface-variant leading-relaxed" data-i18n="portfolio_page.drita.decisions.2.body">La audiencia llega mayoritariamente desde Instagram. Cada decisión de jerarquía visual, tamaño de CTAs y flujo de checkout se priorizó pensando en cómo se siente en un teléfono primero. El desktop fue un derivado, no el punto de partida.</p>
+                <div class="border-l-2 border-accent/40 pl-5">
+                    <h4 class="text-[15px] font-semibold text-ink mb-2" data-i18n="portfolio_page.drita.decisions.2.title">Mobile-first agresivo</h4>
+                    <p class="text-ink-soft leading-relaxed" data-i18n="portfolio_page.drita.decisions.2.body">La audiencia llega mayoritariamente desde Instagram. Cada decisión de jerarquía visual, tamaño de CTAs y flujo de checkout se priorizó pensando en cómo se siente en un teléfono primero. El desktop fue un derivado, no el punto de partida.</p>
                 </div>
             </div>
 
 
             <!-- What We Built -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">03</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.built_title">Lo que Construí</h3>
+                <span class="case-eyebrow mb-3 block">03</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.drita.built_title">Lo que Construí</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg mb-8" data-i18n="portfolio_page.drita.built">Storefront Shopify completo en 3-4 semanas: catálogo, bundles configurados con descuento, páginas de producto con jerarquía clara (beneficio → detalle → CTA), contenido bilingüe, optimización mobile end-to-end, SEO on-page y analítica nativa de Shopify activa desde el día uno.</p>
+                <p class="text-ink-soft leading-relaxed text-lg mb-8" data-i18n="portfolio_page.drita.built">Storefront Shopify completo en 3-4 semanas: catálogo, bundles configurados con descuento, páginas de producto con jerarquía clara (beneficio → detalle → CTA), contenido bilingüe, optimización mobile end-to-end, SEO on-page y analítica nativa de Shopify activa desde el día uno.</p>
                 <div class="flex flex-wrap gap-2">
                     <span class="tech-pill">Shopify</span>
                 </div>
@@ -387,28 +763,28 @@
 
             <!-- The Result -->
             <div class="md:col-span-4">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 block">04</span>
-                <h3 class="text-xl font-black tracking-tight mb-4" data-i18n="portfolio_page.drita.result_title">El Resultado</h3>
+                <span class="case-eyebrow mb-3 block">04</span>
+                <h3 class="case-h3 mb-4" data-i18n="portfolio_page.drita.result_title">El Resultado</h3>
             </div>
             <div class="md:col-span-8">
-                <p class="text-on-surface-variant leading-relaxed text-lg" data-i18n="portfolio_page.drita.result">Canal propio de conversión funcionando — la marca dejó de depender de DMs para vender. Visibilidad operativa real sobre qué productos venden y cuándo, y una palanca clara (bundles) para subir el ticket promedio sin agregar productos nuevos al catálogo.</p>
+                <p class="text-ink-soft leading-relaxed text-lg" data-i18n="portfolio_page.drita.result">Canal propio de conversión funcionando — la marca dejó de depender de DMs para vender. Visibilidad operativa real sobre qué productos venden y cuándo, y una palanca clara (bundles) para subir el ticket promedio sin agregar productos nuevos al catálogo.</p>
             </div>
 
             <!-- Divider -->
-            <div class="md:col-span-12 h-px bg-surface-container"></div>
+            <div class="md:col-span-12 h-px bg-ink/10"></div>
 
             <!-- Live Site CTA -->
             <div class="md:col-span-12 flex items-center justify-between flex-wrap gap-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">teamdritaymely.store</span>
-                <a href="https://teamdritaymely.store" target="_blank" rel="noopener" class="hero-gradient text-on-primary px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" data-i18n="portfolio_page.drita.visit">Visitar Sitio</a>
+                <span class="eyebrow !text-[10px]">teamdritaymely.store</span>
+                <a href="https://teamdritaymely.store" target="_blank" rel="noopener" class="btn-punch" data-i18n="portfolio_page.drita.visit">Visitar Sitio</a>
             </div>
 
             <!-- Divider -->
-            <div class="md:col-span-12 h-px bg-surface-container"></div>
+            <div class="md:col-span-12 h-px bg-ink/10"></div>
 
             <!-- Screenshot Gallery -->
             <div class="md:col-span-12">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6 block">Galería del Proyecto</span>
+                <span class="case-eyebrow mb-6 block">Galería del Proyecto</span>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <img src="/DRITA/drita-2.png" alt="Drita y Mely — Bundles" class="cs-img md:col-span-2" />
                     <img src="/DRITA/drita-3.png" alt="Drita y Mely — About" class="cs-img" />
@@ -420,18 +796,7 @@
     </div>
 </section>
 
-<!-- ─── CLOSING CTA ───────────────────────────────────────────────── -->
-<section class="max-w-7xl mx-auto px-8 py-32 mb-0">
-    <div class="bg-surface-container-low rounded-3xl px-8 md:px-20 py-24 text-center relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-        <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-6 block">MC Designs</span>
-        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-2xl mx-auto" data-i18n="portfolio_page.closing_cta.headline">¿Listo para ser el próximo?</h2>
-        <p class="text-lg text-on-surface-variant mb-12 max-w-md mx-auto" data-i18n="portfolio_page.closing_cta.subtext">Cuéntame tu proyecto y construyo algo que funcione.</p>
-        <a href="/contacto" class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" data-i18n="portfolio_page.closing_cta.cta">Agenda diagnóstico</a>
-    </div>
-</section>
-
-</main>
+</div><!-- /case-modal -->
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
@@ -470,25 +835,32 @@
 
 <script type="module" src="assets/language-toggle.js"></script>
 <script>
+    const caseModal = document.getElementById('case-modal');
+
     function toggleCase(id) {
         const detail = document.getElementById('detail-' + id);
-        const card = document.getElementById('card-' + id);
-        const isOpen = detail.classList.contains('open');
+        if (!detail) return;
+        const isOpen = detail.classList.contains('open') && !caseModal.hidden;
 
-        // Close all
         document.querySelectorAll('.case-detail').forEach(el => el.classList.remove('open'));
 
-        if (!isOpen) {
-            detail.classList.add('open');
-            // Smooth scroll to the open detail
-            setTimeout(() => {
-                detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
-        } else {
-            // Scroll back up to the card
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        if (isOpen) { closeCase(); return; }
+
+        detail.classList.add('open');
+        caseModal.hidden = false;
+        caseModal.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
     }
+
+    function closeCase() {
+        caseModal.hidden = true;
+        document.querySelectorAll('.case-detail').forEach(el => el.classList.remove('open'));
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !caseModal.hidden) closeCase();
+    });
 
     // Auto-open case study if URL hash matches a card (e.g. /portfolio#card-mcp)
     function openFromHash() {
@@ -497,26 +869,6 @@
     }
     window.addEventListener('DOMContentLoaded', openFromHash);
     window.addEventListener('hashchange', openFromHash);
-</script>
-<script>
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
-                menuIcon.textContent = 'close';
-            } else {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                menuIcon.textContent = 'menu';
-            }
-        });
-    }
 </script>
 </body>
 </html>
