@@ -228,6 +228,250 @@
         details.header-menu[open] .header-chevron { transform: rotate(180deg); }
         details.header-menu summary::-webkit-details-marker { display: none; }
 
+        /* ---------- Mac desktop hero (folders = nav) ---------- */
+        .desktop-stage { position: relative; }
+
+        /* Heading rotativo del hero */
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .hero-rotator {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+        }
+        .rotator-word {
+            grid-area: 1 / 1;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            padding: 0 0.08em;
+            background: linear-gradient(180deg, transparent 64%, var(--accent-wash) 64%, var(--accent-wash) 94%, transparent 94%);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            opacity: 0;
+            transform: translateY(0.35em);
+            transition: opacity 480ms ease, transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .rotator-word.is-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .rotator-word.is-leaving {
+            opacity: 0;
+            transform: translateY(-0.35em);
+        }
+
+        /* Bandera PR sobrepuesta al final del eyebrow, como sticker */
+        .eyebrow-flag {
+            display: inline-block;
+            font-size: 19px;
+            line-height: 1;
+            letter-spacing: 0;
+            margin-left: -2px;
+            transform: rotate(10deg) translateY(-5px);
+            text-shadow: 0 1px 3px rgba(28, 26, 19, 0.2);
+        }
+
+        .desk-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 106px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .desk-icon:focus-visible {
+            outline: 2px dashed var(--accent);
+            outline-offset: 6px;
+            border-radius: 12px;
+        }
+        .desk-label {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 11.5px;
+            font-weight: 500;
+            line-height: 1.25;
+            color: var(--ink);
+            padding: 3px 9px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.65);
+            transition: background 140ms ease, color 140ms ease;
+        }
+        .desk-icon:hover .desk-label,
+        .desk-icon:focus-visible .desk-label {
+            background: var(--accent);
+            color: #FFFFFF;
+        }
+
+        /* Folder 3D — capas back/tab/front con rotateX + cards que brotan */
+        .f3d {
+            position: relative;
+            display: block;
+            width: 94px;
+            height: 80px;
+            perspective: 640px;
+        }
+        .f3d-back, .f3d-front {
+            position: absolute;
+            left: 0; right: 0;
+            border: 1.5px solid var(--ink);
+            border-radius: 9px;
+            transform-origin: bottom center;
+            transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            backface-visibility: hidden;
+        }
+        .f3d-back {
+            top: 12px; bottom: 0;
+            z-index: 1;
+            background: var(--accent-deep);
+            box-shadow: 0 6px 14px -8px rgba(28, 26, 19, 0.5);
+        }
+        .f3d-back::before {
+            content: '';
+            position: absolute;
+            top: -12px; left: 7px;
+            width: 36px; height: 13px;
+            background: var(--accent-deep);
+            border: 1.5px solid var(--ink);
+            border-bottom: none;
+            border-radius: 7px 7px 0 0;
+        }
+        .desk-icon:hover .f3d-back,
+        .desk-icon:focus-visible .f3d-back { transform: rotateX(-16deg); }
+
+        /* Papeles adentro del folder (entre back y front) */
+        .f3d-paper {
+            position: absolute;
+            z-index: 2;
+            height: 46px;
+            background:
+                repeating-linear-gradient(180deg,
+                    transparent 0px, transparent 7px,
+                    var(--accent-wash) 7px, var(--accent-wash) 9.5px) content-box,
+                #FFFFFF;
+            padding: 9px 6px 0;
+            border: 1px solid var(--ink);
+            border-radius: 4px 4px 0 0;
+            box-shadow: 0 -2px 6px -3px rgba(28, 26, 19, 0.25);
+            transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .f3d-paper:nth-child(1) { left: 10px;  width: 40px; top: 15px; transform: rotate(-5deg); }
+        .f3d-paper:nth-child(2) { right: 12px; width: 36px; top: 17px; transform: rotate(4deg); }
+        .f3d-paper:nth-child(3) { left: 50%;   width: 44px; top: 13px; margin-left: -22px; transform: rotate(-1deg); }
+        .desk-icon:hover .f3d-paper:nth-child(1),
+        .desk-icon:focus-visible .f3d-paper:nth-child(1) { transform: rotate(-7deg) translateY(-9px); }
+        .desk-icon:hover .f3d-paper:nth-child(2),
+        .desk-icon:focus-visible .f3d-paper:nth-child(2) { transform: rotate(6deg) translateY(-7px); }
+        .desk-icon:hover .f3d-paper:nth-child(3),
+        .desk-icon:focus-visible .f3d-paper:nth-child(3) { transform: rotate(-1deg) translateY(-11px); }
+
+        .f3d-front {
+            top: 26px; bottom: 0;
+            z-index: 3;
+            background: linear-gradient(180deg, #7D97FF 0%, #3E6BFF 100%);
+            box-shadow: 0 10px 22px -10px rgba(28, 26, 19, 0.55);
+        }
+        .f3d-front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 55%);
+            pointer-events: none;
+        }
+        .desk-icon:hover .f3d-front,
+        .desk-icon:focus-visible .f3d-front { transform: rotateX(30deg) translateY(5px); }
+
+        .file-photo {
+            display: block;
+            width: 82px;
+            padding: 5px 5px 16px;
+            background: #FFFFFF;
+            border: 1.5px solid var(--ink);
+            border-radius: 6px;
+            box-shadow: 3px 4px 0 rgba(28,26,19,0.85);
+            transition: transform 200ms ease;
+        }
+        .file-photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 2px;
+            background: var(--accent-wash);
+        }
+        .desk-icon:hover .file-photo,
+        .desk-icon:focus-visible .file-photo {
+            transform: translateY(-4px) rotate(-2.5deg) scale(1.05);
+        }
+
+        .doc-svg {
+            width: 58px;
+            height: auto;
+            filter: drop-shadow(3px 4px 0 rgba(28,26,19,0.85));
+            transition: transform 200ms ease;
+        }
+        .desk-icon:hover .doc-svg,
+        .desk-icon:focus-visible .doc-svg {
+            transform: translateY(-4px) rotate(2.5deg) scale(1.05);
+        }
+
+        .desk-cursor {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Mobile / tablet: grid tipo Launchpad */
+        .desk-field {
+            margin: 48px auto 0;
+            max-width: 420px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 32px 8px;
+            justify-items: center;
+        }
+        /* Desktop grande: iconos regados como escritorio */
+        @media (min-width: 1024px) {
+            .desk-field {
+                position: absolute;
+                inset: 0;
+                margin: 0;
+                max-width: none;
+                display: block;
+                pointer-events: none;
+                z-index: 20;
+            }
+            .desk-field .desk-icon {
+                pointer-events: auto;
+                position: absolute;
+                left: var(--dx, 50%);
+                top: var(--dy, 50%);
+                transform: rotate(var(--dr, 0deg));
+                animation: desk-bob 7s ease-in-out infinite;
+                animation-delay: var(--bob, 0s);
+            }
+            /* Quieto mientras está abierto — evita que "tiemble" bajo el mouse */
+            .desk-field .desk-icon:hover {
+                animation-play-state: paused;
+            }
+            .desk-cursor { display: block; }
+        }
+        @keyframes desk-bob {
+            0%, 100% { transform: rotate(var(--dr, 0deg)) translateY(0); }
+            50%      { transform: rotate(var(--dr, 0deg)) translateY(-6px); }
+        }
+
         /* ---------- Hero fan (demos as gallery pieces) ---------- */
         .fan-stage {
             position: relative;
@@ -328,51 +572,50 @@
             .fan-card:hover { transform: rotate(0deg) scale(1.02); }
         }
 
-        /* ---------- Antes vs Después ---------- */
-        .vs-card {
+        /* ---------- Servicios — cards inclinadas ---------- */
+        .svc-card {
             border: 1.5px solid var(--ink);
-            border-radius: 22px;
-            padding: 34px 32px 30px;
+            border-radius: 28px;
+            padding: 36px 32px 40px;
+            box-shadow: 5px 7px 0 rgba(28, 26, 19, 0.14);
         }
-        .vs-row {
-            display: flex;
-            gap: 16px;
-            align-items: baseline;
-            padding: 14px 0;
+        /* Especificidad alta: .reveal.is-visible pisa transform/transition */
+        .svc-card, .reveal.svc-card.is-visible {
+            transform: rotate(calc(var(--tilt, 0deg) * 0.45));
+            transition: opacity 480ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease;
         }
-        .vs-row + .vs-row { border-top: 1px solid rgba(28, 26, 19, 0.1); }
-        .vs-card--dark .vs-row + .vs-row { border-top-color: rgba(255, 255, 255, 0.12); }
-        .vs-time {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11.5px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            flex-shrink: 0;
-            width: 74px;
+        @media (min-width: 768px) {
+            .svc-card, .reveal.svc-card.is-visible {
+                transform: translateY(var(--lift, 0px)) rotate(var(--tilt, 0deg));
+            }
         }
-        .vs-text {
-            font-size: 15px;
-            line-height: 1.55;
+        .svc-card:hover, .reveal.svc-card.is-visible:hover {
+            transform: translateY(calc(var(--lift, 0px) - 8px)) rotate(0deg);
+            box-shadow: 7px 11px 0 rgba(28, 26, 19, 0.18);
         }
-        .vs-badge {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) rotate(-6deg);
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
-            box-shadow: 3px 3px 0 var(--ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .svc-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 22px;
+        }
+        .svc-title {
             font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-weight: 600;
-            font-size: 19px;
-            z-index: 5;
+            font-variation-settings: 'opsz' 100;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            line-height: 1.08;
+            font-size: clamp(27px, 2.3vw, 33px);
+        }
+        .svc-list {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .svc-list li {
+            font-size: 14.5px;
+            line-height: 1.45;
+            font-weight: 500;
         }
 
         /* ---------- El Plan — números outline ---------- */
@@ -388,58 +631,6 @@
         }
         .plan-step { position: relative; padding-top: 22px; }
         .plan-step:hover .plan-num { color: var(--accent); -webkit-text-stroke: 1.5px var(--accent); transition: color 250ms ease; }
-
-        /* ---------- Nota de Miguel ---------- */
-        .letter-card {
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
-            border-radius: 26px;
-            box-shadow: 6px 6px 0 var(--ink);
-            padding: clamp(30px, 5vw, 56px);
-        }
-        .letter-body {
-            font-family: 'Fraunces', Georgia, serif;
-            font-variation-settings: 'opsz' 30;
-            font-weight: 430;
-            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-            line-height: 1.7;
-            color: var(--ink);
-        }
-        .letter-body em { font-style: italic; }
-        .letter-sign {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-weight: 500;
-            font-size: 1.9rem;
-            color: var(--ink);
-        }
-        .polaroid {
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
-            box-shadow: 4px 4px 0 var(--ink);
-            padding: 10px 10px 32px;
-            rotate: -3deg;
-            width: 178px;
-            flex-shrink: 0;
-        }
-        .polaroid-img {
-            aspect-ratio: 1 / 1;
-            background: var(--accent-wash);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .polaroid-img img { width: 100%; height: 100%; object-fit: cover; }
-        .polaroid-caption {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            text-align: center;
-            margin-top: 12px;
-        }
 
         /* ---------- Reveal on scroll (preserved) ---------- */
         .reveal {
@@ -701,6 +892,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             .proof-card, .reveal, .cta-arrow, .fan-card, .btn-punch { transition: none; animation: none; }
+            .desk-field .desk-icon, .f3d-back, .f3d-front, .f3d-paper, .file-photo, .doc-svg, .desk-label, .rotator-word { transition: none; animation: none; }
             .reveal { opacity: 1; transform: none; }
         }
     </style>
@@ -710,55 +902,120 @@
 
 <main class="relative z-10">
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV — menu bar estilo macOS (los folders del hero son la navegación) ============ -->
 <nav class="relative z-30 max-w-7xl mx-auto px-6 md:px-8 pt-5 flex items-center justify-between">
-    <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1">
+    <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1 md:absolute md:left-1/2 md:-translate-x-1/2">
         <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 w-auto" />
     </a>
 
-    <div class="hidden md:flex items-center gap-1">
-        <a href="/servicios" class="nav-link">Servicios</a>
-        <a href="/lab" class="nav-link">Lab</a>
-        <a href="/portfolio" class="nav-link">Portfolio</a>
-        <a href="/about" class="nav-link">Miguel</a>
-        <a href="/recursos" class="nav-link">Recursos</a>
-    </div>
-
-    <div class="flex items-center gap-3">
-        <a href="/talk" class="btn-punch !py-2.5 !px-5 !text-[13.5px]">Hablamos <span class="cta-arrow">→</span></a>
-        <details class="header-menu relative md:hidden">
-            <summary class="cursor-pointer list-none inline-flex items-center justify-center w-11 h-11 rounded-full border-[1.5px] border-ink/25 text-ink">
-                <svg class="header-chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="absolute right-0 mt-2 bg-[#FFFFFF] border-[1.5px] border-ink rounded-2xl shadow-[3px_3px_0_#1C1A13] py-2 flex flex-col min-w-[190px] z-40">
-                <a href="/servicios" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Servicios</a>
-                <a href="/lab" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Lab</a>
-                <a href="/portfolio" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Portfolio</a>
-                <a href="/about" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Miguel</a>
-                <a href="/recursos" class="px-5 py-2.5 text-sm text-ink hover:bg-cream-deep transition-colors">Recursos</a>
-            </div>
-        </details>
-    </div>
+    <a href="/talk" class="btn-punch !py-2.5 !px-5 !text-[13.5px] ml-auto">Hablamos <span class="cta-arrow">→</span></a>
 </nav>
 
-<!-- ============ HERO — headline + demos en abanico ============ -->
-<section class="relative z-10 pt-14 md:pt-24 pb-4 overflow-hidden">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <p class="reveal eyebrow mb-6">MC Designs · Web + IA · Puerto Rico</p>
+<!-- ============ HERO — desktop de Mac: los folders son el nav ============ -->
+<section class="relative z-10 pt-4 md:pt-6 pb-4 overflow-hidden">
 
-        <h1 class="reveal headline-xl text-[2.9rem] md:text-[5.2rem] text-ink" style="--delay: 80ms">
-            Tu negocio, en piloto<br/><span class="display-italic accent-mark">automático</span>.
-        </h1>
+    <div class="desktop-stage max-w-7xl mx-auto px-6 lg:min-h-[max(520px,calc(100svh-330px))] flex flex-col justify-center">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+            <p class="reveal eyebrow mb-6">MC Designs · Puerto Rico<span class="eyebrow-flag" aria-hidden="true">🇵🇷</span></p>
 
-        <p class="reveal text-base md:text-lg text-ink-soft max-w-xl mx-auto leading-relaxed mt-7" style="--delay: 160ms">
-            Diseño tu web y le integro IA que contesta, cotiza y agenda por ti — 24/7.
-            El estudio todo en uno para negocios en Puerto Rico.
-        </p>
+            <h1 class="reveal headline-xl text-[2.9rem] md:text-[5.2rem] text-ink" style="--delay: 80ms">
+                <span class="sr-only">Tu negocio necesita Inteligencia Artificial, Diseño, Sistemas y Páginas Web.</span>
+                <span aria-hidden="true">
+                    Tu negocio necesita
+                    <span class="hero-rotator">
+                        <span class="rotator-word is-active">Inteligencia Artificial.</span>
+                        <span class="rotator-word">Diseño.</span>
+                        <span class="rotator-word">Sistemas.</span>
+                        <span class="rotator-word">Páginas Web.</span>
+                    </span>
+                </span>
+            </h1>
 
-        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mt-9" style="--delay: 240ms">
-            <a href="/talk" class="btn-punch">Cotizar mi proyecto <span class="cta-arrow">→</span></a>
-            <a href="#casos" class="btn-ghost">Ver casos reales</a>
+            <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mt-9" style="--delay: 240ms">
+                <a href="/talk" class="btn-punch">Cotizar mi proyecto <span class="cta-arrow">→</span></a>
+                <a href="#casos" class="btn-ghost">Ver casos reales</a>
+            </div>
         </div>
+
+        <!-- El "escritorio": folders = navegación -->
+        <nav class="desk-field reveal" style="--delay: 320ms" aria-label="Explorar el estudio">
+
+            <a href="/servicios" class="desk-icon" style="--dx: 5%; --dy: 10%; --dr: -6deg; --bob: 0s" aria-label="Servicios">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">servicios</span>
+            </a>
+
+            <a href="/lab" class="desk-icon" style="--dx: 84%; --dy: 7%; --dr: 5deg; --bob: 1.1s" aria-label="Lab">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">lab</span>
+            </a>
+
+            <a href="/portfolio" class="desk-icon" style="--dx: 9%; --dy: 60%; --dr: 4deg; --bob: 2.3s" aria-label="Portfolio">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">portfolio</span>
+            </a>
+
+            <a href="/recursos" class="desk-icon" style="--dx: 82%; --dy: 57%; --dr: -5deg; --bob: 3.4s" aria-label="Recursos">
+                <span class="f3d" aria-hidden="true">
+                    <span class="f3d-back"></span>
+                    <span class="f3d-papers">
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                        <span class="f3d-paper"></span>
+                    </span>
+                    <span class="f3d-front"></span>
+                </span>
+                <span class="desk-label">recursos</span>
+            </a>
+
+            <a href="/about" class="desk-icon" style="--dx: 87%; --dy: 30%; --dr: 3deg; --bob: 1.8s" aria-label="Conoce a Miguel">
+                <span class="file-photo">
+                    <img src="assets/miguel-foto.png" alt="" loading="lazy" width="480" height="640"/>
+                </span>
+                <span class="desk-label">miguel.png</span>
+            </a>
+
+            <a href="#casos" class="desk-icon" style="--dx: 3%; --dy: 33%; --dr: -3deg; --bob: 2.9s" aria-label="Ver casos reales">
+                <svg class="doc-svg" viewBox="0 0 64 78" fill="none" aria-hidden="true">
+                    <path d="M8 10a6 6 0 0 1 6-6h25l17 17v47a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6Z" fill="#FFFFFF" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M39 4.5V15a6 6 0 0 0 6 6h10.5" fill="none" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
+                    <line x1="17" y1="32" x2="47" y2="32" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="40" x2="47" y2="40" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="48" x2="38" y2="48" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="56" x2="30" y2="56" stroke="#3E6BFF" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <span class="desk-label">casos_reales.txt</span>
+            </a>
+
+            <!-- Cursor decorativo -->
+            <svg class="desk-cursor" style="left: 15.5%; top: 76%" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+        </nav>
     </div>
 
     <!-- Stack bar -->
@@ -778,66 +1035,88 @@
     </div>
 </section>
 
-<!-- ============ ANTES VS DESPUÉS — un martes cualquiera ============ -->
+<!-- ============ PROPÓSITO ============ -->
+<section class="relative z-10 py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="reveal eyebrow mb-6">El propósito</p>
+        <h2 class="reveal headline-lg text-3xl md:text-5xl text-ink" style="--delay: 80ms">
+            Un solo estudio que diseña tu web, conecta tus <span class="display-italic accent-mark">sistemas</span> y entrena tu <span class="display-italic accent-mark">IA</span> — todo bajo el mismo techo.
+        </h2>
+        <p class="reveal display-italic text-xl md:text-[1.7rem] leading-snug text-ink-soft max-w-2xl mx-auto mt-8 md:mt-10" style="--delay: 160ms">
+            Las herramientas de los grandes, al alcance del negocio de la esquina.
+            Compites de tú a tú, sin pagar lo que pagan ellos.
+        </p>
+    </div>
+</section>
+
+<!-- ============ SERVICIOS — cards inclinadas ============ -->
 <section class="relative z-10 py-16 md:py-24">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="text-center mb-12 md:mb-16">
-            <p class="reveal eyebrow mb-5">Un martes cualquiera</p>
+        <div class="text-center mb-14 md:mb-20">
+            <p class="reveal eyebrow mb-5">Servicios</p>
             <h2 class="reveal headline-lg text-4xl md:text-6xl text-ink" style="--delay: 80ms">
-                El mismo día, <span class="display-italic">dos realidades</span>.
+                Todo lo que tu negocio <span class="display-italic accent-mark">necesita</span>.
             </h2>
         </div>
 
-        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-            <span class="vs-badge hidden md:flex" aria-hidden="true">vs</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-start">
 
-            <!-- SIN sistema -->
-            <div class="reveal vs-card bg-white">
-                <p class="eyebrow !text-[10px] mb-4">✕ &nbsp;Sin sistema</p>
-                <div class="vs-row">
-                    <span class="vs-time text-ink/40">9:47 PM</span>
-                    <p class="vs-text text-ink-soft">Cerraste hace tres horas. Sigues contestando DMs con la cena en la otra mano.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-ink/40">6:12 AM</span>
-                    <p class="vs-text text-ink-soft">Alguien pidió precio de madrugada. Nadie le contestó.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-ink/40">2:30 PM</span>
-                    <p class="vs-text text-ink-soft">La misma pregunta por quinta vez. Copiar, pegar, repetir.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-ink/40">11:58 PM</span>
-                    <p class="vs-text text-ink font-semibold">Resultado: cero horas libres. Y mañana, lo mismo.</p>
-                </div>
+            <!-- Páginas Web -->
+            <div class="reveal svc-card bg-accent-wash" style="--tilt: -5deg">
+                <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                    <rect x="4" y="8" width="36" height="29" rx="5" stroke="#1C1A13" stroke-width="2.2"/>
+                    <line x1="4" y1="16.5" x2="40" y2="16.5" stroke="#1C1A13" stroke-width="2.2"/>
+                    <circle cx="10" cy="12.4" r="1.5" fill="#1C1A13"/>
+                    <circle cx="15.5" cy="12.4" r="1.5" fill="#1C1A13"/>
+                    <path d="M20 23.5l9.5 3.6-4.2 1.7-1.8 4.1z" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="svc-title text-ink">Páginas Web</h3>
+                <ul class="svc-list text-ink-soft">
+                    <li>Diseño web a la medida</li>
+                    <li>E-commerce con Shopify</li>
+                    <li>Landing pages que convierten</li>
+                    <li>SEO local</li>
+                    <li>Hosting y mantenimiento</li>
+                </ul>
             </div>
 
-            <!-- CON sistema -->
-            <div class="reveal vs-card vs-card--dark bg-ink" style="--delay: 140ms">
-                <p class="eyebrow !text-[10px] !text-accent-bright mb-4">✓ &nbsp;Con sistema</p>
-                <div class="vs-row">
-                    <span class="vs-time text-accent-bright">9:47 PM</span>
-                    <p class="vs-text text-cream/85">Tu chatbot cerró una cita mientras cenabas tranquilo.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-accent-bright">6:12 AM</span>
-                    <p class="vs-text text-cream/85">El cotizador le dio precio al instante. Cliente capturado.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-accent-bright">2:30 PM</span>
-                    <p class="vs-text text-cream/85">La respuesta salió sola. Tú ni te enteraste.</p>
-                </div>
-                <div class="vs-row">
-                    <span class="vs-time text-accent-bright">11:58 PM</span>
-                    <p class="vs-text text-cream font-semibold">Resultado: el negocio avanzó — sin robarte el día.</p>
-                </div>
+            <!-- Inteligencia Artificial -->
+            <div class="reveal svc-card bg-white" style="--tilt: -1.5deg; --lift: -14px; --delay: 100ms">
+                <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                    <path d="M20 5c1.4 8.4 5.2 12.2 13 13.4-7.8 1.4-11.6 5.2-13 13.6-1.4-8.4-5.2-12.2-13-13.6C14.8 17.2 18.6 13.4 20 5Z" stroke="#1C1A13" stroke-width="2.2" stroke-linejoin="round"/>
+                    <path d="M34.5 28c.7 4 2.5 5.8 6.5 6.4-4 .7-5.8 2.5-6.5 6.6-.7-4.1-2.5-5.9-6.5-6.6 4-.6 5.8-2.4 6.5-6.4Z" fill="#1C1A13"/>
+                </svg>
+                <h3 class="svc-title text-ink">Inteligencia Artificial</h3>
+                <ul class="svc-list text-ink-soft">
+                    <li>Chatbots que atienden 24/7</li>
+                    <li>Cotizadores instantáneos</li>
+                    <li>Agendado automático</li>
+                    <li>OCR de documentos</li>
+                    <li>Entrenada con tu negocio</li>
+                </ul>
+            </div>
+
+            <!-- Automatización -->
+            <div class="reveal svc-card bg-ink" style="--tilt: 4deg; --lift: 10px; --delay: 180ms">
+                <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                    <path d="M36.5 22a14.5 14.5 0 1 1-5.4-11.3" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M30 4.5l1.3 6.8 6.8-1.3" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="22" cy="22" r="3" fill="#7D97FF"/>
+                </svg>
+                <h3 class="svc-title text-cream">Automatización</h3>
+                <ul class="svc-list text-cream/80">
+                    <li>Flujos con N8N</li>
+                    <li>Captura de leads + CRM</li>
+                    <li>Follow-ups que salen solos</li>
+                    <li>Facturas y recordatorios</li>
+                    <li>Dashboards en vivo</li>
+                </ul>
             </div>
         </div>
 
         <div class="reveal text-center mt-14 md:mt-16" style="--delay: 160ms">
-            <p class="headline-lg text-3xl md:text-5xl text-ink">La diferencia es <span class="display-italic accent-mark">el sistema</span>.</p>
-            <a href="#sistemas" class="inline-flex items-center gap-2 mt-7 text-accent font-semibold text-[15px] hover:gap-3.5 transition-all">
-                Conócelos <span class="cta-arrow">↓</span>
+            <a href="/servicios" class="inline-flex items-center gap-2 text-accent font-semibold text-[15px] hover:gap-3.5 transition-all">
+                Ver todos los servicios <span class="cta-arrow">→</span>
             </a>
         </div>
     </div>
@@ -1330,28 +1609,6 @@
     </div>
 </section>
 
-<!-- ============ NOTA DE MIGUEL ============ -->
-<section class="py-16 md:py-24 max-w-4xl mx-auto px-6 md:px-8 relative z-10">
-    <p class="reveal eyebrow text-center mb-10">Quién está detrás</p>
-    <div class="reveal letter-card" style="--delay: 100ms">
-        <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
-            <div class="letter-body flex-1 order-2 md:order-1">
-                <p class="mb-5">Soy Miguel. Llevo años construyendo webs y sistemas de IA — pero mi trabajo real es otro: <em>devolverle las horas</em> al que lleva su negocio solo.</p>
-                <p class="mb-5">No soy una agencia con diez intermediarios. Cuando me escribes, te contesto yo. Cuando algo se rompe, lo arreglo yo. Y cuando tu negocio crece, lo celebro yo — porque probablemente te lo dije en la primera llamada.</p>
-                <p class="mb-8">Si tienes un negocio en Puerto Rico y sientes que la tecnología te queda grande, escríbeme. <em>Te la hago pequeña.</em></p>
-                <p class="letter-sign">— Miguel</p>
-                <p class="font-mono text-[11px] tracking-[0.12em] text-ink-soft mt-6 uppercase">P.D. — Los casos de abajo no son mockups. Están en producción ahora mismo.</p>
-            </div>
-            <div class="polaroid order-1 md:order-2 mx-auto md:mx-0">
-                <div class="polaroid-img">
-                    <img src="/assets/miguel.jpg" alt="Miguel Cotto — MC Designs" loading="lazy" />
-                </div>
-                <p class="polaroid-caption">San Juan · PR</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ============ EL LAB — demos en abanico ============ -->
 <!-- OCULTO por ahora — quitar la clase "hidden" para reactivar el abanico de demos -->
 <section id="demos" class="hidden relative z-10 py-16 md:py-24 overflow-hidden scroll-mt-8" aria-hidden="true">
@@ -1709,6 +1966,27 @@
         revealItems.forEach(item => observer.observe(item));
     });
 </script>
+
+<script>
+    // ---------- Heading rotativo del hero ----------
+    (function () {
+        const words = document.querySelectorAll('.hero-rotator .rotator-word');
+        if (words.length < 2) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        let i = 0;
+        setInterval(() => {
+            const current = words[i];
+            i = (i + 1) % words.length;
+            const next = words[i];
+            current.classList.remove('is-active');
+            current.classList.add('is-leaving');
+            setTimeout(() => current.classList.remove('is-leaving'), 620);
+            next.classList.add('is-active');
+        }, 2700);
+    })();
+</script>
+
 
 <script>
     // ---------- Animated Card Stack (Social Proof) ----------
