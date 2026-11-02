@@ -30,30 +30,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>    <link rel="stylesheet" href="./assets/tailwind.css" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/><style>
         /* ============ Sistema editorial (igual que el homepage) ============ */
-        :root {
-            --cream: #FFFFFF;
-            --cream-deep: #F2F2EF;
-            --ink: #1C1A13;
-            --ink-soft: #57533F;
-            --accent: #3E6BFF;
-            --accent-deep: #2E56E8;
-            --accent-bright: #7D97FF;
-            --accent-wash: #E3EAFF;
-        }
         html { background: var(--cream); }
         body {
             background: var(--cream);
             color: var(--ink);
             font-family: 'Instrument Sans', Inter, system-ui, sans-serif;
-        }
-        .grain-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.35;
-            mix-blend-mode: multiply;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
         }
         .eyebrow {
             font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -75,34 +56,13 @@
             font-style: italic;
             font-weight: 500;
         }
-        .btn-punch {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--accent);
-            color: #FFFFFF;
-            border: 1.5px solid var(--ink);
-            border-radius: 9999px;
-            padding: 10px 20px;
-            font-weight: 600;
-            font-size: 13.5px;
-            letter-spacing: -0.01em;
-            box-shadow: 3px 3px 0 var(--ink);
-            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-        }
-        .btn-punch:hover {
-            background: var(--accent-deep);
-            transform: translate(-1px, -1px);
-            box-shadow: 5px 5px 0 var(--ink);
-        }
         .cta-arrow { display: inline-block; transition: transform 200ms ease; }
         a:hover .cta-arrow { transform: translateX(4px); }
 
         /* ---------- Título con selección de texto + caret ---------- */
         .select-mark {
             position: relative;
-            background: rgba(62, 107, 255, 0.22);
+            background: rgb(var(--accent-rgb) / 0.22);
             padding: 0 0.05em;
             -webkit-box-decoration-break: clone;
             box-decoration-break: clone;
@@ -145,14 +105,14 @@
             color: var(--ink);
             padding: 3px 9px;
             border-radius: 6px;
-            background: rgba(255,255,255,0.85);
+            background: rgb(var(--cream-rgb) / 0.85);
             transition: background 140ms ease, color 140ms ease;
             white-space: nowrap;
         }
         a.desk-icon:hover .desk-label,
         a.desk-icon:focus-visible .desk-label {
             background: var(--accent);
-            color: #FFFFFF;
+            color: var(--on-accent);
         }
 
         /* Screenshot como archivo grande (vision board) */
@@ -161,10 +121,10 @@
             width: var(--w, 340px);
             max-width: 82vw;
             padding: 7px;
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line-strong);
             border-radius: 10px;
-            box-shadow: 4px 6px 0 rgba(28, 26, 19, 0.85);
+            box-shadow: var(--shadow);
             transition: transform 220ms ease, box-shadow 220ms ease;
         }
         .shot-frame img {
@@ -181,7 +141,7 @@
         a.desk-icon:hover > .shot-frame,
         a.desk-icon:focus-visible > .shot-frame {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 6px 10px 0 rgba(28, 26, 19, 0.85);
+            box-shadow: var(--shadow);
         }
 
         /* Booklet: proyectos con varias fotos, apiladas */
@@ -213,7 +173,7 @@
         .f3d-back, .f3d-front {
             position: absolute;
             left: 0; right: 0;
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 9px;
             transform-origin: bottom center;
             transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -223,7 +183,7 @@
             top: 12px; bottom: 0;
             z-index: 1;
             background: var(--accent-deep);
-            box-shadow: 0 6px 14px -8px rgba(28, 26, 19, 0.5);
+            box-shadow: 0 6px 14px -8px rgb(0 0 0 / 0.90);
         }
         .f3d-back::before {
             content: '';
@@ -231,7 +191,7 @@
             top: -12px; left: 7px;
             width: 36px; height: 13px;
             background: var(--accent-deep);
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-bottom: none;
             border-radius: 7px 7px 0 0;
         }
@@ -245,11 +205,11 @@
                 repeating-linear-gradient(180deg,
                     transparent 0px, transparent 7px,
                     var(--accent-wash) 7px, var(--accent-wash) 9.5px) content-box,
-                #FFFFFF;
+                var(--paper);
             padding: 9px 6px 0;
             border: 1px solid var(--ink);
             border-radius: 4px 4px 0 0;
-            box-shadow: 0 -2px 6px -3px rgba(28, 26, 19, 0.25);
+            box-shadow: 0 -2px 6px -3px rgb(0 0 0 / 0.70);
             transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .f3d-paper:nth-child(1) { left: 10px;  width: 40px; top: 15px; transform: rotate(-5deg); }
@@ -265,7 +225,7 @@
             top: 26px; bottom: 0;
             z-index: 3;
             background: linear-gradient(180deg, #7D97FF 0%, #3E6BFF 100%);
-            box-shadow: 0 10px 22px -10px rgba(28, 26, 19, 0.55);
+            box-shadow: 0 10px 22px -10px rgb(0 0 0 / 0.90);
         }
         .f3d-front::after {
             content: '';
@@ -358,7 +318,7 @@
             position: fixed;
             inset: 0;
             z-index: 60;
-            background: rgba(28, 26, 19, 0.55);
+            background: rgb(0 0 0 / 0.78);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             overflow-y: auto;
@@ -380,10 +340,10 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: #FFFFFF;
+            background: var(--paper);
             color: var(--ink);
-            border: 1.5px solid var(--ink);
-            box-shadow: 3px 3px 0 var(--ink);
+            border: 1px solid var(--line-strong);
+            box-shadow: var(--shadow);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -392,7 +352,7 @@
         }
         .case-modal__close:hover {
             transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0 var(--ink);
+            box-shadow: var(--shadow);
         }
         .case-modal__close:active {
             transform: translate(2px, 2px);
@@ -404,9 +364,9 @@
         .cs-img {
             width: 100%;
             object-fit: cover;
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 10px;
-            box-shadow: 4px 5px 0 rgba(28, 26, 19, 0.12);
+            box-shadow: var(--shadow);
         }
         .pill {
             display: inline-block;
@@ -432,7 +392,7 @@
             text-transform: uppercase;
             background: var(--cream-deep);
             color: var(--ink-soft);
-            border: 1px solid rgba(28, 26, 19, 0.15);
+            border: 1px solid rgb(var(--ink-rgb) / 0.15);
         }
         .case-title {
             font-family: 'Fraunces', Georgia, serif;
@@ -457,14 +417,15 @@
             color: var(--ink);
         }
     </style>
+    <link rel="stylesheet" href="./assets/dither.css" />
 </head>
-<body class="antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+<body class="antialiased selection:bg-accent selection:text-on-accent overflow-x-hidden">
 <div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- ─── NAV — menu bar estilo macOS (igual que el homepage) ─────── -->
 <nav class="relative z-30 max-w-7xl mx-auto px-6 md:px-8 pt-5 flex items-center justify-between">
     <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1 md:absolute md:left-1/2 md:-translate-x-1/2">
-        <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 w-auto" />
+        <img src="/MC-Designs-Logo-white.svg" alt="MC Designs" class="h-8 w-auto" />
     </a>
 
     <a href="/talk" class="btn-punch ml-auto">Hablamos <span class="cta-arrow">→</span></a>
@@ -493,9 +454,9 @@
             <!-- MCP — booklet (3 fotos) -->
             <a href="#card-mcp" onclick="event.preventDefault(); toggleCase('mcp')" class="desk-icon" style="--dx: 2%; --dy: 2%; --dr: -5deg; --bob: 0s; --w: 400px" aria-label="Ver caso Miguel Cotto Promotions">
                 <span class="shot-stack">
-                    <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" loading="eager"/></span>
-                    <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" loading="eager"/></span>
-                    <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" loading="eager"/></span>
+                    <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" data-dither loading="eager"/></span>
+                    <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" data-dither loading="eager"/></span>
+                    <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" data-dither loading="eager"/></span>
                 </span>
                 <span class="desk-label">miguel_cotto_promotions</span>
             </a>
@@ -503,15 +464,15 @@
             <!-- DRITA — booklet (2 fotos) -->
             <a href="#card-drita" onclick="event.preventDefault(); toggleCase('drita')" class="desk-icon" style="--dx: 66%; --dy: 4%; --dr: 4deg; --bob: 1.4s; --w: 380px" aria-label="Ver caso Team Drita y Mely">
                 <span class="shot-stack">
-                    <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" loading="eager"/></span>
-                    <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" loading="eager"/></span>
+                    <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" data-dither loading="eager"/></span>
+                    <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" data-dither loading="eager"/></span>
                 </span>
                 <span class="desk-label">team_drita_y_mely</span>
             </a>
 
             <!-- DE LA MATA — proyecto concepto, navegable en vivo -->
             <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="desk-icon" style="--dx: 8%; --dy: 48%; --dr: 3deg; --bob: 2.6s; --w: 380px" aria-label="Ver De La Mata en vivo (abre en pestaña nueva)">
-                <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" loading="lazy"/></span>
+                <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" data-dither loading="lazy"/></span>
                 <span class="desk-label">de_la_mata.webp</span>
             </a>
 
@@ -543,7 +504,7 @@
 
             <!-- Cursor decorativo apuntando a tu_proyecto -->
             <svg class="desk-cursor" style="left: 53.5%; top: 79%" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="currentColor" stroke="#0B0B0A" stroke-width="1.4" stroke-linejoin="round"/>
             </svg>
         </nav>
     </div>
@@ -552,13 +513,15 @@
 
 
 <!-- ─── CLOSING CTA ───────────────────────────────────────────────── -->
-<section class="max-w-7xl mx-auto px-8 py-32 mb-0">
-    <div class="bg-surface-container-low rounded-3xl px-8 md:px-20 py-24 text-center relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-        <span class="case-eyebrow mb-6 block">MC Designs</span>
-        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-2xl mx-auto" data-i18n="portfolio_page.closing_cta.headline">¿Listo para ser el próximo?</h2>
-        <p class="text-lg text-on-surface-variant mb-12 max-w-md mx-auto" data-i18n="portfolio_page.closing_cta.subtext">Cuéntame tu proyecto y construyo algo que funcione.</p>
-        <a href="/contacto" class="inline-block hero-gradient text-on-primary px-12 py-5 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" data-i18n="portfolio_page.closing_cta.cta">Agenda diagnóstico</a>
+<section class="dither-cta relative overflow-hidden py-28 md:py-40 mt-16">
+    <div class="dither-field-wrap" aria-hidden="true">
+        <canvas class="dither-field" data-dither-field data-px="3" data-r="1.15" data-intensity="0.75"></canvas>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-8 text-center flex flex-col items-center gap-6">
+        <span class="eyebrow">MC Designs</span>
+        <h2 class="headline-xl text-5xl md:text-7xl text-ink" data-i18n="portfolio_page.closing_cta.headline">¿Listo para ser el próximo?</h2>
+        <p class="text-lg text-ink/75 max-w-md" data-i18n="portfolio_page.closing_cta.subtext">Cuéntame tu proyecto y construyo algo que funcione.</p>
+        <a href="/contacto" class="btn-punch mt-4" data-i18n="portfolio_page.closing_cta.cta">Agenda diagnóstico</a>
     </div>
 </section>
 
@@ -572,7 +535,7 @@
 
 <!-- ─── CASE STUDY DETAIL — Miguel Cotto Promotions ──────────────── -->
 <section id="detail-mcp" class="case-detail max-w-7xl mx-auto px-8 mb-4">
-    <div class="bg-white rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[6px_8px_0_rgba(28,26,19,0.45)]">
+    <div class="bg-paper rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]">
 
         <!-- Detail Header -->
         <div class="px-8 md:px-16 pt-14 pb-12 border-b border-ink/10">
@@ -690,7 +653,7 @@
 
 <!-- ─── CASE STUDY DETAIL — Team Drita y Mely ────────────────────── -->
 <section id="detail-drita" class="case-detail max-w-7xl mx-auto px-8 mb-4">
-    <div class="bg-white rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[6px_8px_0_rgba(28,26,19,0.45)]">
+    <div class="bg-paper rounded-3xl overflow-hidden border-[1.5px] border-ink shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]">
 
         <!-- Detail Header -->
         <div class="px-8 md:px-16 pt-14 pb-12 border-b border-ink/10">
@@ -799,34 +762,34 @@
 </div><!-- /case-modal -->
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
-<footer class="w-full border-t border-slate-200 bg-slate-50 relative z-10">
+<footer class="w-full border-t border-ink/15 bg-cream-deep relative z-10">
     <div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1">
-            <div class="text-lg font-bold tracking-tighter text-slate-900 mb-2" data-i18n="footer.brand">MC Designs</div>
-            <div class="text-xs font-medium uppercase tracking-widest text-primary mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
-            <p class="text-sm leading-relaxed text-slate-500" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
+            <div class="text-lg font-bold tracking-tighter text-ink mb-2" data-i18n="footer.brand">MC Designs</div>
+            <div class="text-xs font-medium uppercase tracking-widest text-accent mb-4" data-i18n="footer.tagline">Diseñando el futuro, hoy.</div>
+            <p class="text-sm leading-relaxed text-ink-soft" data-i18n="footer.desc">El Estudio Todo en Uno — Diseño Web + Integración IA para negocios en Puerto Rico.</p>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.services_label">Servicios</span>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios" data-i18n="footer.s3">Integración IA</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-ink font-bold" data-i18n="footer.services_label">Servicios</span>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/servicios" data-i18n="footer.s1">Diseño de Marca</a>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/servicios" data-i18n="footer.s2">Diseño Web</a>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/servicios" data-i18n="footer.s3">Integración IA</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.studio_label">Estudio</span>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/servicios" data-i18n="footer.p2">Servicios</a>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="/contacto" data-i18n="footer.p3">Contacto</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-ink font-bold" data-i18n="footer.studio_label">Estudio</span>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/portfolio" data-i18n="footer.p1">Portafolio</a>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/servicios" data-i18n="footer.p2">Servicios</a>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="/contacto" data-i18n="footer.p3">Contacto</a>
         </div>
         <div class="flex flex-col gap-4">
-            <span class="text-xs uppercase tracking-[0.2em] text-slate-900 font-bold" data-i18n="footer.connect_label">Conectar</span>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
-            <a class="text-slate-500 hover:text-primary transition-colors" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
+            <span class="text-xs uppercase tracking-[0.2em] text-ink font-bold" data-i18n="footer.connect_label">Conectar</span>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="https://instagram.com/mcdesignspr" target="_blank" rel="noopener">Instagram</a>
+            <a class="text-ink-soft hover:text-ink transition-colors" href="mailto:miguel@mcdesignspr.com" data-i18n="footer.email">miguel@mcdesignspr.com</a>
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-slate-500" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
-        <div class="flex gap-8 text-xs uppercase tracking-widest text-slate-400">
+    <div class="max-w-7xl mx-auto px-8 py-8 border-t border-ink/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-ink-soft" data-i18n="footer.copyright">© 2026 MC Designs. Todos los derechos reservados.</p>
+        <div class="flex gap-8 text-xs uppercase tracking-widest text-ink-soft">
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Service</a>
         </div>
@@ -870,5 +833,6 @@
     window.addEventListener('DOMContentLoaded', openFromHash);
     window.addEventListener('hashchange', openFromHash);
 </script>
+<script type="module" src="assets/dither.js"></script>
 </body>
 </html>

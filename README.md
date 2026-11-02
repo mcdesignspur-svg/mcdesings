@@ -95,3 +95,11 @@ MIT
 ---
 
 **MC DESIGNS** - Web Design Studio | Puerto Rico
+
+## Sistema dither (home + portfolio)
+
+Capa visual "tinta negra + hueso" con texturas 1-bit:
+
+- `assets/dither.css` — tokens de color (variables `--*-rgb`, que también lee `tailwind.config.js`), botones, folders grafito, velos tramados y utilidades (`.dither-band`, `.dither-rule`, `.dither-tone-*`).
+- `assets/dither.js` — `<canvas data-dither-field>` dibuja el eclipse animado (Bayer 8x8, 24 fps, se pausa fuera de pantalla y respeta `prefers-reduced-motion`); `<img data-dither>` muestra la imagen en 1-bit y la revela a color con hover/foco.
+- `scripts/generate-dither-assets.mjs` — regenera las máscaras PNG de `public/dither/` (`node scripts/generate-dither-assets.mjs`).

@@ -68,15 +68,19 @@ export default {
                 'on-error-container': '#93000a',
                 'navy': '#001945',
                 'navy-soft': '#e0e7ff',
-                /* Editorial revamp tokens (homepage) */
-                'cream': '#FFFFFF',
-                'cream-deep': '#F2F2EF',
-                'ink': '#1C1A13',
-                'ink-soft': '#57533F',
-                'accent': '#3E6BFF',
-                'accent-deep': '#2E56E8',
-                'accent-bright': '#7D97FF',
-                'accent-wash': '#E3EAFF',
+                /* Tokens del sistema "dither" (home + portfolio).
+                   Leen variables CSS de assets/dither.css; el valor después
+                   de la coma es el respaldo (tema claro anterior). */
+                'cream': 'rgb(var(--cream-rgb, 255 255 255) / <alpha-value>)',
+                'cream-deep': 'rgb(var(--cream-deep-rgb, 242 242 239) / <alpha-value>)',
+                'paper': 'rgb(var(--paper-rgb, 255 255 255) / <alpha-value>)',
+                'ink': 'rgb(var(--ink-rgb, 28 26 19) / <alpha-value>)',
+                'ink-soft': 'rgb(var(--ink-soft-rgb, 87 83 63) / <alpha-value>)',
+                'accent': 'rgb(var(--accent-rgb, 62 107 255) / <alpha-value>)',
+                'accent-deep': 'rgb(var(--accent-deep-rgb, 46 86 232) / <alpha-value>)',
+                'accent-bright': 'rgb(var(--accent-bright-rgb, 125 151 255) / <alpha-value>)',
+                'accent-wash': 'rgb(var(--accent-wash-rgb, 227 234 255) / <alpha-value>)',
+                'on-accent': 'rgb(var(--on-accent-rgb, 255 255 255) / <alpha-value>)',
                 'pastel-lila': '#E7DFF6',
                 'pastel-peach': '#FBE2CE',
                 'pastel-mint': '#DCF1DA',
