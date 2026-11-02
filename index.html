@@ -96,32 +96,13 @@
            MC DESIGNS — EDITORIAL REVAMP
            Crema · Tinta · Lima — serif expresiva + grotesk + mono
            ============================================================ */
-        :root {
-            --cream: #FFFFFF;
-            --cream-deep: #F2F2EF;
-            --ink: #1C1A13;
-            --ink-soft: #57533F;
-            --accent: #3E6BFF;
-            --accent-deep: #2E56E8;
-            --accent-bright: #7D97FF;
-            --accent-wash: #E3EAFF;
-        }
         html { background: var(--cream); }
         body {
             background: var(--cream);
             color: var(--ink);
             font-family: 'Instrument Sans', Inter, system-ui, sans-serif;
         }
-        /* Warm paper grain over everything */
-        .grain-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.35;
-            mix-blend-mode: multiply;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-        }
+        
 
         .font-display { font-family: 'Fraunces', Georgia, serif; }
         .display-italic {
@@ -174,46 +155,6 @@
         }
 
         /* ---------- Buttons ---------- */
-        .btn-punch {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--accent);
-            color: #FFFFFF;
-            border: 1.5px solid var(--ink);
-            border-radius: 9999px;
-            padding: 16px 32px;
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: -0.01em;
-            box-shadow: 3px 3px 0 var(--ink);
-            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-        }
-        .btn-punch:hover {
-            background: var(--accent-deep);
-            transform: translate(-1px, -1px);
-            box-shadow: 5px 5px 0 var(--ink);
-        }
-        .btn-punch:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0 0 0 var(--ink);
-        }
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--ink);
-            border: 1.5px solid rgba(28, 26, 19, 0.3);
-            border-radius: 9999px;
-            padding: 16px 32px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: border-color 160ms ease, background 160ms ease;
-        }
-        .btn-ghost:hover { border-color: var(--ink); background: rgba(28,26,19,0.03); }
 
         /* ---------- Nav ---------- */
         .nav-link {
@@ -224,7 +165,7 @@
             border-radius: 9999px;
             transition: color 150ms ease, background 150ms ease;
         }
-        .nav-link:hover { color: var(--ink); background: rgba(28,26,19,0.05); }
+        .nav-link:hover { color: var(--ink); background: rgb(var(--ink-rgb) / 0.05); }
         details.header-menu[open] .header-chevron { transform: rotate(180deg); }
         details.header-menu summary::-webkit-details-marker { display: none; }
 
@@ -276,7 +217,7 @@
             letter-spacing: 0;
             margin-left: -2px;
             transform: rotate(10deg) translateY(-5px);
-            text-shadow: 0 1px 3px rgba(28, 26, 19, 0.2);
+            text-shadow: 0 1px 3px rgb(0 0 0 / 0.60);
         }
 
         .desk-icon {
@@ -303,13 +244,13 @@
             color: var(--ink);
             padding: 3px 9px;
             border-radius: 6px;
-            background: rgba(255,255,255,0.85);
+            background: rgb(var(--cream-rgb) / 0.85);
             transition: background 140ms ease, color 140ms ease;
         }
         .desk-icon:hover .desk-label,
         .desk-icon:focus-visible .desk-label {
             background: var(--accent);
-            color: #FFFFFF;
+            color: var(--on-accent);
         }
 
         /* Folder 3D — capas back/tab/front con rotateX + cards que brotan */
@@ -323,7 +264,7 @@
         .f3d-back, .f3d-front {
             position: absolute;
             left: 0; right: 0;
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 9px;
             transform-origin: bottom center;
             transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -333,7 +274,7 @@
             top: 12px; bottom: 0;
             z-index: 1;
             background: var(--accent-deep);
-            box-shadow: 0 6px 14px -8px rgba(28, 26, 19, 0.5);
+            box-shadow: 0 6px 14px -8px rgb(0 0 0 / 0.90);
         }
         .f3d-back::before {
             content: '';
@@ -341,7 +282,7 @@
             top: -12px; left: 7px;
             width: 36px; height: 13px;
             background: var(--accent-deep);
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-bottom: none;
             border-radius: 7px 7px 0 0;
         }
@@ -357,11 +298,11 @@
                 repeating-linear-gradient(180deg,
                     transparent 0px, transparent 7px,
                     var(--accent-wash) 7px, var(--accent-wash) 9.5px) content-box,
-                #FFFFFF;
+                var(--paper);
             padding: 9px 6px 0;
             border: 1px solid var(--ink);
             border-radius: 4px 4px 0 0;
-            box-shadow: 0 -2px 6px -3px rgba(28, 26, 19, 0.25);
+            box-shadow: 0 -2px 6px -3px rgb(0 0 0 / 0.70);
             transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .f3d-paper:nth-child(1) { left: 10px;  width: 40px; top: 15px; transform: rotate(-5deg); }
@@ -378,7 +319,7 @@
             top: 26px; bottom: 0;
             z-index: 3;
             background: linear-gradient(180deg, #7D97FF 0%, #3E6BFF 100%);
-            box-shadow: 0 10px 22px -10px rgba(28, 26, 19, 0.55);
+            box-shadow: 0 10px 22px -10px rgb(0 0 0 / 0.90);
         }
         .f3d-front::after {
             content: '';
@@ -395,10 +336,10 @@
             display: block;
             width: 82px;
             padding: 5px 5px 16px;
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line-strong);
             border-radius: 6px;
-            box-shadow: 3px 4px 0 rgba(28,26,19,0.85);
+            box-shadow: var(--shadow);
             transition: transform 200ms ease;
         }
         .file-photo img {
@@ -418,7 +359,7 @@
         .doc-svg {
             width: 58px;
             height: auto;
-            filter: drop-shadow(3px 4px 0 rgba(28,26,19,0.85));
+            filter: drop-shadow(0 10px 14px rgb(0 0 0 / 0.6));
             transition: transform 200ms ease;
         }
         .desk-icon:hover .doc-svg,
@@ -501,7 +442,7 @@
         /* ---------- Mini portafolio (reflejo de /portfolio) ---------- */
         .select-mark {
             position: relative;
-            background: rgba(62, 107, 255, 0.22);
+            background: rgb(var(--accent-rgb) / 0.22);
             padding: 0 0.05em;
             -webkit-box-decoration-break: clone;
             box-decoration-break: clone;
@@ -524,10 +465,10 @@
             width: var(--w, 300px);
             max-width: 78vw;
             padding: 6px;
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line-strong);
             border-radius: 10px;
-            box-shadow: 4px 6px 0 rgba(28, 26, 19, 0.85);
+            box-shadow: var(--shadow);
             transition: transform 220ms ease, box-shadow 220ms ease;
         }
         .shot-frame img {
@@ -544,7 +485,7 @@
         a.desk-icon:hover > .shot-frame,
         a.desk-icon:focus-visible > .shot-frame {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 6px 10px 0 rgba(28, 26, 19, 0.85);
+            box-shadow: var(--shadow);
         }
         .shot-stack { position: relative; display: block; }
         .shot-stack > .shot-frame:last-child { position: relative; z-index: 3; }
@@ -628,7 +569,7 @@
             width: 176px;
             height: 236px;
             margin-left: -88px;
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 18px;
             padding: 18px 16px 16px;
             display: flex;
@@ -637,14 +578,14 @@
             transform-origin: 50% 120%;
             transform: translateX(var(--fx, 0)) rotate(var(--fr, 0deg));
             z-index: var(--fz, 1);
-            box-shadow: 0 18px 40px -18px rgba(28, 26, 19, 0.35);
+            box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.90);
             transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease;
             will-change: transform;
         }
         .fan-card:hover, .fan-card:focus-visible {
             transform: translateX(var(--fx, 0)) rotate(0deg) translateY(-26px) scale(1.05);
             z-index: 20;
-            box-shadow: 0 30px 60px -20px rgba(28, 26, 19, 0.45);
+            box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.90);
         }
         .fan-card:nth-child(1) { --fx: -390px; --fr: -13deg; --fz: 1; }
         .fan-card:nth-child(2) { --fx: -262px; --fr: -8.5deg; --fz: 2; }
@@ -658,7 +599,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
             letter-spacing: 0.18em;
-            color: rgba(28,26,19,0.55);
+            color: rgb(var(--ink-rgb) / 0.55);
         }
         .fan-card__title {
             font-family: 'Fraunces', Georgia, serif;
@@ -675,7 +616,7 @@
             font-size: 9.5px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(28,26,19,0.6);
+            color: rgb(var(--ink-rgb) / 0.6);
             margin-top: 6px;
         }
         .fan-card__go {
@@ -716,10 +657,10 @@
 
         /* ---------- Servicios — cards inclinadas ---------- */
         .svc-card {
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 28px;
             padding: 36px 32px 40px;
-            box-shadow: 5px 7px 0 rgba(28, 26, 19, 0.14);
+            box-shadow: var(--shadow);
         }
         /* Especificidad alta: .reveal.is-visible pisa transform/transition */
         .svc-card, .reveal.svc-card.is-visible {
@@ -733,7 +674,7 @@
         }
         .svc-card:hover, .reveal.svc-card.is-visible:hover {
             transform: translateY(calc(var(--lift, 0px) - 8px)) rotate(0deg);
-            box-shadow: 7px 11px 0 rgba(28, 26, 19, 0.18);
+            box-shadow: var(--shadow);
         }
         .svc-icon {
             width: 44px;
@@ -789,15 +730,15 @@
 
         /* ---------- Finder ---------- */
         .finder-shell {
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line-strong);
             border-radius: 20px;
-            box-shadow: 4px 4px 0 var(--ink);
+            box-shadow: var(--shadow);
             transition: box-shadow 200ms ease, transform 200ms ease;
         }
         .finder-shell:focus-within {
             transform: translate(-1px, -1px);
-            box-shadow: 6px 6px 0 var(--ink);
+            box-shadow: var(--shadow);
         }
         .hero-chip {
             display: inline-flex;
@@ -807,7 +748,7 @@
             padding: 7px 15px;
             border-radius: 9999px;
             background: transparent;
-            border: 1.5px solid rgba(28, 26, 19, 0.25);
+            border: 1.5px solid rgb(var(--ink-rgb) / 0.25);
             font-size: 12.5px;
             font-weight: 500;
             color: var(--ink-soft);
@@ -816,24 +757,24 @@
         }
         .hero-chip:hover {
             border-color: var(--accent);
-            color: #FFFFFF;
+            color: var(--on-accent);
             background: var(--accent);
         }
         .hero-chip:active { transform: scale(0.96); }
 
         /* ---------- Sistema cards ---------- */
         .sys-card {
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 22px;
             padding: 38px 34px;
             display: flex;
             flex-direction: column;
-            background: #FFFFFF;
+            background: var(--paper);
             transition: transform 250ms ease, box-shadow 250ms ease;
         }
         .sys-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 24px 50px -24px rgba(28, 26, 19, 0.4);
+            box-shadow: 0 24px 50px -24px rgb(0 0 0 / 0.90);
         }
         .sys-card--ink {
             background: var(--ink);
@@ -842,10 +783,10 @@
 
         /* ---------- Bento stats ---------- */
         .bento-cell {
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line-strong);
             border-radius: 20px;
             padding: 26px 26px 22px;
-            background: #FFFFFF;
+            background: var(--paper);
         }
         .bento-num {
             font-family: 'Fraunces', Georgia, serif;
@@ -859,7 +800,7 @@
         /* ---------- Diagnostic option state ---------- */
         .lead-opt-on {
             border-color: var(--ink) !important;
-            background: #EEF2FF !important;
+            background: var(--accent-wash) !important;
         }
 
         /* ---------- Animated Card Stack (Social Proof) — preserved, recolored ---------- */
@@ -885,12 +826,12 @@
             display: flex;
             flex-direction: column;
             padding: 6px;
-            background: #FFFFFF;
-            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line-strong);
             border-bottom: 0;
             border-top-left-radius: 22px;
             border-top-right-radius: 22px;
-            box-shadow: 0 30px 80px -30px rgba(28, 26, 19, 0.3), 0 8px 24px -8px rgba(28, 26, 19, 0.12);
+            box-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.80), 0 8px 24px -8px rgb(0 0 0 / 0.44);
             will-change: transform, opacity;
             transition: transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 600ms ease, box-shadow 400ms ease;
         }
@@ -908,7 +849,7 @@
             min-height: 0;
             border-radius: 16px;
             overflow: hidden;
-            outline: 1px solid rgba(28, 26, 19, 0.12);
+            outline: 1px solid rgb(var(--ink-rgb) / 0.12);
             outline-offset: -1px;
             background: var(--cream-deep);
         }
@@ -967,7 +908,7 @@
             flex-shrink: 0;
             transition: background 150ms ease, color 150ms ease, transform 150ms ease;
         }
-        .proof-card__cta:hover { background: var(--accent); color: #FFFFFF; }
+        .proof-card__cta:hover { background: var(--accent); color: var(--on-accent); }
         .proof-card__cta:active { transform: scale(0.97); }
 
         .proof-stack__dots {
@@ -980,7 +921,7 @@
             width: 24px;
             height: 4px;
             border-radius: 9999px;
-            background: rgba(28, 26, 19, 0.18);
+            background: rgb(var(--ink-rgb) / 0.18);
             transition: background 220ms ease, width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
             border: 0;
@@ -997,8 +938,9 @@
             .reveal { opacity: 1; transform: none; }
         }
     </style>
+    <link rel="stylesheet" href="./assets/dither.css" />
 </head>
-<body class="antialiased selection:bg-accent selection:text-white">
+<body class="antialiased selection:bg-accent selection:text-on-accent">
 <div class="grain-overlay" aria-hidden="true"></div>
 
 <main class="relative z-10">
@@ -1006,7 +948,7 @@
 <!-- ============ NAV — menu bar estilo macOS (los folders del hero son la navegación) ============ -->
 <nav class="relative z-30 max-w-7xl mx-auto px-6 md:px-8 pt-5 flex items-center justify-between">
     <a href="/" aria-label="MC Designs - Inicio" class="inline-flex items-center min-h-[44px] py-1 md:absolute md:left-1/2 md:-translate-x-1/2">
-        <img src="assets/MC-Designs-Logo.svg" alt="MC Designs" class="h-8 w-auto" />
+        <img src="/MC-Designs-Logo-white.svg" alt="MC Designs" class="h-8 w-auto" />
     </a>
 
     <a href="/talk" class="btn-punch !py-2.5 !px-5 !text-[13.5px] ml-auto">Hablamos <span class="cta-arrow">→</span></a>
@@ -1016,6 +958,10 @@
 <section class="relative z-10 pt-4 md:pt-6 pb-4 overflow-hidden">
 
     <div class="desktop-stage max-w-7xl mx-auto px-6 lg:min-h-[max(520px,calc(100svh-330px))] flex flex-col justify-center">
+        <!-- Eclipse tramado (assets/dither.js) — decorativo -->
+        <div class="dither-field-wrap" aria-hidden="true">
+            <canvas class="dither-field" data-dither-field data-px="3"></canvas>
+        </div>
         <div class="relative z-10 max-w-3xl mx-auto text-center">
             <p class="reveal eyebrow mb-6">MC Designs · Puerto Rico<span class="eyebrow-flag" aria-hidden="true">🇵🇷</span></p>
 
@@ -1095,26 +1041,26 @@
 
             <a href="/about" class="desk-icon" style="--dx: 87%; --dy: 30%; --dr: 3deg; --bob: 1.8s" aria-label="Conoce a Miguel">
                 <span class="file-photo">
-                    <img src="assets/miguel-foto.png" alt="" loading="lazy" width="480" height="640"/>
+                    <img src="assets/miguel-foto.png" alt="" data-dither data-dither-px="1" loading="lazy" width="480" height="640"/>
                 </span>
                 <span class="desk-label">miguel.png</span>
             </a>
 
             <a href="#casos" class="desk-icon" style="--dx: 3%; --dy: 33%; --dr: -3deg; --bob: 2.9s" aria-label="Ver casos reales">
                 <svg class="doc-svg" viewBox="0 0 64 78" fill="none" aria-hidden="true">
-                    <path d="M8 10a6 6 0 0 1 6-6h25l17 17v47a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6Z" fill="#FFFFFF" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M39 4.5V15a6 6 0 0 0 6 6h10.5" fill="none" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
-                    <line x1="17" y1="32" x2="47" y2="32" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
-                    <line x1="17" y1="40" x2="47" y2="40" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
-                    <line x1="17" y1="48" x2="38" y2="48" stroke="#C9D4FF" stroke-width="2.5" stroke-linecap="round"/>
-                    <line x1="17" y1="56" x2="30" y2="56" stroke="#3E6BFF" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M8 10a6 6 0 0 1 6-6h25l17 17v47a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6Z" style="fill: var(--paper)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M39 4.5V15a6 6 0 0 0 6 6h10.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <line x1="17" y1="32" x2="47" y2="32" stroke="currentColor" stroke-opacity="0.3" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="40" x2="47" y2="40" stroke="currentColor" stroke-opacity="0.3" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="48" x2="38" y2="48" stroke="currentColor" stroke-opacity="0.3" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="17" y1="56" x2="30" y2="56" style="stroke: var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
                 </svg>
                 <span class="desk-label">casos_reales.txt</span>
             </a>
 
             <!-- Cursor decorativo -->
             <svg class="desk-cursor" style="left: 15.5%; top: 76%" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="currentColor" stroke="#0B0B0A" stroke-width="1.4" stroke-linejoin="round"/>
             </svg>
         </nav>
     </div>
@@ -1163,13 +1109,13 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-start">
 
             <!-- Páginas Web -->
-            <div class="reveal svc-card bg-accent-wash" style="--tilt: -5deg">
+            <div class="reveal svc-card bg-paper" style="--tilt: -5deg">
                 <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-                    <rect x="4" y="8" width="36" height="29" rx="5" stroke="#1C1A13" stroke-width="2.2"/>
-                    <line x1="4" y1="16.5" x2="40" y2="16.5" stroke="#1C1A13" stroke-width="2.2"/>
-                    <circle cx="10" cy="12.4" r="1.5" fill="#1C1A13"/>
-                    <circle cx="15.5" cy="12.4" r="1.5" fill="#1C1A13"/>
-                    <path d="M20 23.5l9.5 3.6-4.2 1.7-1.8 4.1z" stroke="#1C1A13" stroke-width="2" stroke-linejoin="round"/>
+                    <rect x="4" y="8" width="36" height="29" rx="5" stroke="currentColor" stroke-width="2.2"/>
+                    <line x1="4" y1="16.5" x2="40" y2="16.5" stroke="currentColor" stroke-width="2.2"/>
+                    <circle cx="10" cy="12.4" r="1.5" fill="currentColor"/>
+                    <circle cx="15.5" cy="12.4" r="1.5" fill="currentColor"/>
+                    <path d="M20 23.5l9.5 3.6-4.2 1.7-1.8 4.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
                 <h3 class="svc-title text-ink">Páginas Web</h3>
                 <ul class="svc-list text-ink-soft">
@@ -1182,10 +1128,10 @@
             </div>
 
             <!-- Inteligencia Artificial -->
-            <div class="reveal svc-card bg-white" style="--tilt: -1.5deg; --lift: -14px; --delay: 100ms">
+            <div class="reveal svc-card bg-paper" style="--tilt: -1.5deg; --lift: -14px; --delay: 100ms">
                 <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-                    <path d="M20 5c1.4 8.4 5.2 12.2 13 13.4-7.8 1.4-11.6 5.2-13 13.6-1.4-8.4-5.2-12.2-13-13.6C14.8 17.2 18.6 13.4 20 5Z" stroke="#1C1A13" stroke-width="2.2" stroke-linejoin="round"/>
-                    <path d="M34.5 28c.7 4 2.5 5.8 6.5 6.4-4 .7-5.8 2.5-6.5 6.6-.7-4.1-2.5-5.9-6.5-6.6 4-.6 5.8-2.4 6.5-6.4Z" fill="#1C1A13"/>
+                    <path d="M20 5c1.4 8.4 5.2 12.2 13 13.4-7.8 1.4-11.6 5.2-13 13.6-1.4-8.4-5.2-12.2-13-13.6C14.8 17.2 18.6 13.4 20 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                    <path d="M34.5 28c.7 4 2.5 5.8 6.5 6.4-4 .7-5.8 2.5-6.5 6.6-.7-4.1-2.5-5.9-6.5-6.6 4-.6 5.8-2.4 6.5-6.4Z" fill="currentColor"/>
                 </svg>
                 <h3 class="svc-title text-ink">Inteligencia Artificial</h3>
                 <ul class="svc-list text-ink-soft">
@@ -1199,10 +1145,10 @@
 
             <!-- Automatización -->
             <div class="reveal svc-card bg-ink" style="--tilt: 4deg; --lift: 10px; --delay: 180ms">
-                <svg class="svc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-                    <path d="M36.5 22a14.5 14.5 0 1 1-5.4-11.3" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
-                    <path d="M30 4.5l1.3 6.8 6.8-1.3" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="22" cy="22" r="3" fill="#7D97FF"/>
+                <svg class="svc-icon text-cream" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                    <path d="M36.5 22a14.5 14.5 0 1 1-5.4-11.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M30 4.5l1.3 6.8 6.8-1.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="22" cy="22" r="3" style="fill: var(--accent-wash)"/>
                 </svg>
                 <h3 class="svc-title text-cream">Automatización</h3>
                 <ul class="svc-list text-cream/80">
@@ -1224,7 +1170,7 @@
 </section>
 
 <!-- AI Diagnostic Modal (funcionalidad intacta) -->
-<div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-ink/60" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
+<div id="diagnostic-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto bg-black/75" style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);" onclick="if(event.target===this)closeDiagnostic()">
     <div class="min-h-full flex items-start md:items-center justify-center p-4 md:p-8">
         <div class="relative w-full max-w-2xl my-4">
             <button onclick="closeDiagnostic()" aria-label="Cerrar"
@@ -1232,10 +1178,10 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             <div class="mb-5 px-2">
-                <span class="inline-block px-3 py-1.5 bg-accent text-white text-[10px] font-mono uppercase tracking-[0.14em] rounded-full border border-ink" data-i18n="ai_quiz.badge">Diagnóstico · 60 segundos</span>
+                <span class="inline-block px-3 py-1.5 bg-accent text-on-accent text-[10px] font-mono uppercase tracking-[0.14em] rounded-full border border-ink" data-i18n="ai_quiz.badge">Diagnóstico · 60 segundos</span>
                 <p class="text-sm text-white/85 mt-3" data-i18n="ai_quiz.modal_intro">Dos preguntas más y te muestro tu plan AI.</p>
             </div>
-            <div class="bg-[#FFFFFF] rounded-2xl border-[1.5px] border-ink shadow-2xl p-8">
+            <div class="bg-paper rounded-2xl border-[1.5px] border-ink shadow-2xl p-8">
 
             <!-- Progress -->
             <div class="flex items-center gap-2 mb-8" id="lead-progress">
@@ -1250,7 +1196,7 @@
             <div id="lead-step-1">
                 <p class="text-base font-bold text-ink mb-3" data-i18n="ai_quiz.step1_title">¿Qué tipo de negocio tienes?</p>
                 <input id="lead-negocio" type="text" placeholder="Ej: Restaurante, Salón de belleza, Tienda online..." data-i18n="ai_quiz.business_placeholder"
-                    class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm text-ink placeholder-ink/35 focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all mb-4" />
+                    class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-paper text-sm text-ink placeholder-ink/35 focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all mb-4" />
                 <button onclick="leadNext(1)" class="btn-punch !py-3 !px-8 !text-sm">
                     <span data-i18n="ai_quiz.continue">Continuar →</span>
                 </button>
@@ -1317,11 +1263,11 @@
                         <p class="text-xs text-ink-soft mb-4" data-i18n="ai_quiz.email_subtext">Te mando el breakdown detallado con herramientas, próximos pasos y cómo lo adaptaría a tu negocio.</p>
                         <div class="space-y-3">
                             <input id="lead-nombre" type="text" placeholder="Tu nombre" data-i18n="ai_quiz.name_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-paper text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <input id="lead-email" type="email" placeholder="Tu email" data-i18n="ai_quiz.email_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-paper text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <input id="lead-telefono" type="tel" placeholder="WhatsApp (opcional)" data-i18n="ai_quiz.phone_placeholder"
-                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-white text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
+                                class="w-full px-4 py-3 rounded-xl border border-ink/20 bg-paper text-sm focus:outline-none focus:border-ink focus:ring-2 focus:ring-accent/25 transition-all" />
                             <button id="lead-submit-btn" onclick="leadSubmitEmail()"
                                 class="btn-punch w-full !py-3 !text-sm disabled:opacity-50">
                                 <span data-i18n="ai_quiz.plan_cta">Quiero mi plan personalizado →</span>
@@ -1338,7 +1284,7 @@
 
                 <!-- Full results (shown after email submitted) -->
                 <div id="lead-full-results" class="hidden space-y-3 mt-3">
-                    <div class="p-4 rounded-xl border border-ink/10 bg-white">
+                    <div class="p-4 rounded-xl border border-ink/10 bg-paper">
                         <div class="flex items-center gap-2 mb-2"><span>💡</span><span class="text-xs font-mono uppercase tracking-[0.14em] text-ink-soft" data-i18n="ai_quiz.what_is">Qué es</span></div>
                         <p id="lead-res-descripcion" class="text-sm text-ink leading-relaxed"></p>
                     </div>
@@ -1618,7 +1564,7 @@
         document.getElementById('lead-res-descripcion').textContent = r.descripcion || '';
         document.getElementById('lead-res-siguiente').textContent = r.siguiente_paso || '';
         document.getElementById('lead-res-herramientas-wrap').innerHTML = (r.herramientas || [])
-            .map(h => `<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:#F2F2EF;font-size:0.75rem;font-weight:700;">${h}</span>`)
+            .map(h => `<span style="display:inline-block;padding:4px 12px;border-radius:9999px;background:var(--cream-deep);font-size:0.75rem;font-weight:700;">${h}</span>`)
             .join('');
         document.getElementById('lead-full-results').classList.remove('hidden');
     };
@@ -1647,7 +1593,7 @@
         </div>
         <!-- El Impulso (featured, ink) -->
         <div class="relative reveal" style="--delay: 100ms">
-            <div class="absolute -top-4 right-6 z-20 bg-accent text-white border-[1.5px] border-ink px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.14em] shadow-[2px_2px_0_#1C1A13] -rotate-3 pointer-events-none">Más popular</div>
+            <div class="absolute -top-4 right-6 z-20 bg-accent text-on-accent border-[1.5px] border-ink px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.14em] -rotate-3 pointer-events-none">Más popular</div>
             <div class="sys-card sys-card--ink h-full">
                 <div class="eyebrow !text-[10px] !text-accent-bright mb-5">02 · Web + IA</div>
                 <h3 class="font-display font-semibold text-3xl tracking-tight mb-3 text-cream">El Impulso</h3>
@@ -1788,9 +1734,9 @@
         <!-- MCP — booklet -->
         <a href="/portfolio#card-mcp" class="desk-icon" style="--dx: 2%; --dy: 4%; --dr: -5deg; --bob: 0s; --w: 330px" aria-label="Ver caso Miguel Cotto Promotions">
             <span class="shot-stack">
-                <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" loading="lazy"/></span>
-                <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" loading="lazy"/></span>
-                <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" loading="lazy"/></span>
+                <span class="shot-frame shot-under"><img src="/MCP/mcp-4.png" alt="" data-dither loading="lazy"/></span>
+                <span class="shot-frame shot-under"><img src="/MCP/mcp-2.png" alt="" data-dither loading="lazy"/></span>
+                <span class="shot-frame"><img src="/MCP/mcp-1.png" alt="" data-dither loading="lazy"/></span>
             </span>
             <span class="desk-label">miguel_cotto_promotions</span>
         </a>
@@ -1798,15 +1744,15 @@
         <!-- DRITA — booklet -->
         <a href="/portfolio#card-drita" class="desk-icon" style="--dx: 71%; --dy: 8%; --dr: 4deg; --bob: 1.4s; --w: 310px" aria-label="Ver caso Team Drita y Mely">
             <span class="shot-stack">
-                <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" loading="lazy"/></span>
-                <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" loading="lazy"/></span>
+                <span class="shot-frame shot-under"><img src="/DRITA/drita-2.png" alt="" data-dither loading="lazy"/></span>
+                <span class="shot-frame"><img src="/DRITA/drita-1.png" alt="" data-dither loading="lazy"/></span>
             </span>
             <span class="desk-label">team_drita_y_mely</span>
         </a>
 
         <!-- DE LA MATA — en vivo -->
         <a href="https://de-la-mata.vercel.app/" target="_blank" rel="noopener" class="desk-icon" style="--dx: 12%; --dy: 56%; --dr: 3deg; --bob: 2.6s; --w: 300px" aria-label="Ver De La Mata en vivo (abre en pestaña nueva)">
-            <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" loading="lazy"/></span>
+            <span class="shot-frame"><img src="/DELAMATA/delamata-hero.webp" alt="" data-dither loading="lazy"/></span>
             <span class="desk-label">de_la_mata.webp</span>
         </a>
 
@@ -1826,7 +1772,7 @@
 
         <!-- Cursor decorativo -->
         <svg class="desk-cursor" style="left: 82%; top: 82%" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="#1C1A13" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M6 3v16l4.2-3.9L12.8 21l3-1.3-2.6-5.8 5.6-.6z" fill="currentColor" stroke="#0B0B0A" stroke-width="1.4" stroke-linejoin="round"/>
         </svg>
 
         <!-- CTA al centro del board -->
@@ -1842,8 +1788,8 @@
             <p class="text-[13px] text-ink-soft mt-2 leading-snug">Negocios reales corriendo mis sistemas en producción</p>
         </div>
         <div class="reveal bento-cell !bg-accent" style="--delay: 80ms">
-            <div class="bento-num !text-white">24/7</div>
-            <p class="text-[13px] text-white/80 mt-2 leading-snug">Tu sitio contesta, cotiza y agenda sin ti</p>
+            <div class="bento-num !text-on-accent">24/7</div>
+            <p class="text-[13px] text-on-accent/80 mt-2 leading-snug">Tu sitio contesta, cotiza y agenda sin ti</p>
         </div>
         <div class="reveal bento-cell" style="--delay: 160ms">
             <div class="bento-num">&lt;60s</div>
@@ -1884,7 +1830,7 @@
                         class="flex-1 text-base text-ink placeholder-ink/35 bg-transparent resize-none border-0 focus:outline-none focus:ring-0 leading-6 py-1"
                         style="border:none; min-height: 28px; max-height: 160px;"></textarea>
                     <button type="submit" id="hero-finder-send" disabled aria-label="Enviar"
-                        class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-[0.94] bg-ink text-cream hover:bg-accent hover:text-white disabled:bg-ink/10 disabled:text-ink/30 disabled:cursor-not-allowed">
+                        class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-[0.94] bg-ink text-cream hover:bg-accent hover:text-on-accent disabled:bg-ink/10 disabled:text-ink/30 disabled:cursor-not-allowed">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
                     </button>
                 </div>
@@ -1904,11 +1850,14 @@
 </section>
 
 <!-- ============ CTA FINAL ============ -->
-<section class="py-20 md:py-32 bg-ink text-cream relative z-10 overflow-hidden" id="contact">
+<section class="dither-cta py-24 md:py-40 relative z-10 overflow-hidden" id="contact">
+    <div class="dither-field-wrap" aria-hidden="true">
+        <canvas class="dither-field" data-dither-field data-px="3" data-r="1.15" data-intensity="0.75"></canvas>
+    </div>
     <div class="max-w-4xl mx-auto px-6 md:px-8 text-center flex flex-col items-center gap-7 relative">
-        <p class="reveal eyebrow !text-cream/50">El siguiente paso</p>
-        <h2 class="reveal headline-xl text-5xl md:text-7xl text-cream" style="--delay: 80ms" data-i18n="cta_section.title">¿Listo para <span class="display-italic text-accent-bright">crecer</span>?</h2>
-        <p class="reveal text-lg md:text-xl text-cream/70 leading-relaxed max-w-xl" style="--delay: 160ms" data-i18n="cta_section.subtext">Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.</p>
+        <p class="reveal eyebrow">El siguiente paso</p>
+        <h2 class="reveal headline-xl text-5xl md:text-7xl text-ink" style="--delay: 80ms" data-i18n="cta_section.title">¿Listo para <span class="display-italic text-accent-bright">crecer</span>?</h2>
+        <p class="reveal text-lg md:text-xl text-ink/75 leading-relaxed max-w-xl" style="--delay: 160ms" data-i18n="cta_section.subtext">Construyo tu web + IA a medida — para que tu negocio crezca sin depender de más gente.</p>
         <a href="/talk" class="reveal btn-punch !text-base mt-2" style="--delay: 240ms" data-i18n="cta_section.cta">
             Agenda una llamada de diagnóstico <span class="cta-arrow">→</span>
         </a>
@@ -1955,10 +1904,10 @@
 <!-- AI Quiz Popup -->
 <div id="quiz-popup" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
     <!-- Backdrop -->
-    <div id="quiz-popup-backdrop" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
+    <div id="quiz-popup-backdrop" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
 
     <!-- Card -->
-    <div class="relative bg-[#FFFFFF] rounded-2xl border-[1.5px] border-ink shadow-2xl max-w-md w-full p-8 flex flex-col items-center text-center translate-y-4 transition-transform duration-300" id="quiz-popup-card">
+    <div class="relative bg-paper rounded-2xl border-[1.5px] border-ink shadow-2xl max-w-md w-full p-8 flex flex-col items-center text-center translate-y-4 transition-transform duration-300" id="quiz-popup-card">
 
         <!-- Close -->
         <button id="quiz-popup-close" aria-label="Cerrar" class="absolute top-2 right-2 inline-flex items-center justify-center w-11 h-11 text-ink/40 hover:text-ink transition-colors rounded-lg focus-visible:ring-2 focus-visible:ring-ink">
@@ -1966,7 +1915,7 @@
         </button>
 
         <!-- Badge -->
-        <span class="inline-block px-3 py-1.5 bg-accent text-white border border-ink text-[10px] font-mono uppercase tracking-[0.14em] rounded-full mb-5" data-i18n="ai_quiz.popup_badge">Gratis · 30 segundos</span>
+        <span class="inline-block px-3 py-1.5 bg-accent text-on-accent border border-ink text-[10px] font-mono uppercase tracking-[0.14em] rounded-full mb-5" data-i18n="ai_quiz.popup_badge">Gratis · 30 segundos</span>
 
         <!-- Headline -->
         <h2 class="font-display font-semibold text-3xl tracking-tight text-ink leading-tight mb-3" data-i18n="ai_quiz.popup_title">
@@ -2171,5 +2120,6 @@
         }
     })();
 </script>
+<script type="module" src="assets/dither.js"></script>
 </body>
 </html>

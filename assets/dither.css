@@ -1,0 +1,326 @@
+/* ============================================================
+   MC DESIGNS — SISTEMA DITHER
+   Tinta negra + hueso, azul solo como señal. Texturas 1-bit
+   (Bayer 8x8, pixel de 2px) generadas por
+   scripts/generate-dither-assets.mjs → public/dither/*.png.
+   Las máscaras son blancas/transparente: el color lo pone
+   `background-color`, así siguen los tokens.
+   ============================================================ */
+
+:root {
+    color-scheme: dark;
+
+    --cream-rgb: 11 11 10;         /* fondo */
+    --cream-deep-rgb: 21 21 19;    /* fondo elevado / secciones alternas */
+    --paper-rgb: 17 17 16;         /* superficie de tarjetas */
+    --ink-rgb: 237 234 226;        /* texto principal (hueso) */
+    --ink-soft-rgb: 163 159 149;   /* texto secundario — 7.4:1 sobre el fondo */
+    --accent-rgb: 124 147 255;     /* azul señal — 7:1 sobre el fondo */
+    --accent-deep-rgb: 158 175 255;
+    --accent-bright-rgb: 170 186 255;
+    --accent-wash-rgb: 30 36 66;
+    --on-accent-rgb: 11 11 10;
+
+    --cream: rgb(var(--cream-rgb));
+    --cream-deep: rgb(var(--cream-deep-rgb));
+    --paper: rgb(var(--paper-rgb));
+    --ink: rgb(var(--ink-rgb));
+    --ink-soft: rgb(var(--ink-soft-rgb));
+    --accent: rgb(var(--accent-rgb));
+    --accent-deep: rgb(var(--accent-deep-rgb));
+    --accent-bright: rgb(var(--accent-bright-rgb));
+    --accent-wash: rgb(var(--accent-wash-rgb));
+    --on-accent: rgb(var(--on-accent-rgb));
+
+    --line: rgb(var(--ink-rgb) / 0.14);
+    --line-strong: rgb(var(--ink-rgb) / 0.32);
+    --shadow: 0 30px 60px -30px rgb(0 0 0 / 0.8);
+
+    --dither-fade: url('/dither/fade.png');
+    --dither-12: url('/dither/tone-12.png');
+    --dither-25: url('/dither/tone-25.png');
+    --dither-50: url('/dither/tone-50.png');
+    --dither-noise: url('/dither/noise.png');
+}
+
+html { background: var(--cream); }
+::selection { background: var(--accent); color: var(--on-accent); }
+
+/* ---------- Grano 1-bit sobre toda la página ---------- */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.05;
+    mix-blend-mode: normal;
+    background: var(--ink);
+    -webkit-mask: var(--dither-noise) repeat;
+            mask: var(--dither-noise) repeat;
+}
+
+/* ---------- Utilidades de textura ---------- */
+.dither-tone,
+.dither-tone-12,
+.dither-tone-25,
+.dither-tone-50 {
+    background-color: currentColor;
+    -webkit-mask-repeat: repeat;
+            mask-repeat: repeat;
+}
+.dither-tone-12 { -webkit-mask-image: var(--dither-12); mask-image: var(--dither-12); }
+.dither-tone-25 { -webkit-mask-image: var(--dither-25); mask-image: var(--dither-25); }
+.dither-tone-50, .dither-tone { -webkit-mask-image: var(--dither-50); mask-image: var(--dither-50); }
+
+/* Banda de transición tramada (denso arriba → vacío abajo). Va dentro
+   de un contenedor `relative`; con .is-flipped crece hacia arriba. */
+.dither-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 160px;
+    pointer-events: none;
+    color: var(--ink);
+    background-color: currentColor;
+    opacity: 0.08;
+    -webkit-mask: var(--dither-fade) repeat-x 0 0 / 16px 320px;
+            mask: var(--dither-fade) repeat-x 0 0 / 16px 320px;
+}
+.dither-band.is-flipped { transform: scaleY(-1); }
+
+/* Línea divisoria de puntos */
+.dither-rule {
+    height: 2px;
+    border: 0;
+    background-color: var(--ink);
+    opacity: 0.4;
+    -webkit-mask: var(--dither-50) repeat;
+            mask: var(--dither-50) repeat;
+}
+
+/* ---------- Campo dither animado (hero / cierre) ---------- */
+.dither-field {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+.dither-field-wrap {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* ---------- Imágenes tramadas (img[data-dither]) ----------
+   dither.js inserta un <canvas class="dither-img"> encima de la imagen.
+   Al pasar el mouse / foco se revela la foto original. */
+.dither-host { position: relative; display: block; overflow: hidden; }
+.dither-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    pointer-events: none;
+    transition: opacity 420ms ease;
+    border-radius: inherit;
+}
+a:hover .dither-img,
+a:focus-visible .dither-img,
+.dither-host:hover .dither-img { opacity: 0; }
+
+/* ---------- Componentes compartidos ---------- */
+.btn-punch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1px solid var(--ink);
+    border-radius: 9999px;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+    box-shadow: none;
+    transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+}
+/* Barrido tramado al hover */
+.btn-punch::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent);
+    -webkit-mask: var(--dither-fade) repeat-x 0 100% / 16px 320px;
+            mask: var(--dither-fade) repeat-x 0 100% / 16px 320px;
+    transform: translateY(100%);
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-punch:hover {
+    background: rgb(var(--ink-rgb) / 0.92);
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+.btn-punch:hover::before { transform: translateY(0); }
+.btn-punch:active { transform: translateY(1px); box-shadow: none; }
+.btn-punch:focus-visible,
+.btn-ghost:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: 9999px;
+    padding: 15px 30px;
+    font-weight: 500;
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+    transition: border-color 200ms ease, background 200ms ease;
+}
+.btn-ghost:hover { border-color: var(--ink); background: rgb(var(--ink-rgb) / 0.04); }
+
+/* Subrayado tramado para palabras en itálica */
+.accent-mark::before {
+    background: var(--accent);
+    opacity: 0.55;
+    -webkit-mask: var(--dither-50) repeat;
+            mask: var(--dither-50) repeat;
+    transform: none;
+    border-radius: 0;
+    height: 0.28em;
+    bottom: 0.04em;
+}
+
+.eyebrow { color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-punch::before, .dither-img { transition: none; }
+}
+
+/* ============================================================
+   Escritorio (folders, fotos, capturas) — versión grafito
+   ============================================================ */
+.f3d-back,
+.f3d-back::before {
+    background: #1B1B19;
+    border-color: var(--line-strong);
+}
+.f3d-paper {
+    background:
+        repeating-linear-gradient(180deg,
+            transparent 0px, transparent 7px,
+            rgb(var(--ink-rgb) / 0.18) 7px, rgb(var(--ink-rgb) / 0.18) 8.5px) content-box,
+        #2A2A27;
+    border-color: rgb(var(--ink-rgb) / 0.25);
+}
+/* Frente del folder: grafito con brillo tramado que baja desde arriba */
+.f3d-front {
+    background: #232321;
+    border-color: rgb(var(--ink-rgb) / 0.38);
+    overflow: hidden;
+}
+.f3d-front::after {
+    background: var(--ink);
+    opacity: 0.22;
+    border-radius: 0;
+    -webkit-mask: var(--dither-fade) repeat-x 0 0 / 16px 160px;
+            mask: var(--dither-fade) repeat-x 0 0 / 16px 160px;
+}
+.desk-icon:hover .f3d-front::after,
+.desk-icon:focus-visible .f3d-front::after {
+    background: var(--accent);
+    opacity: 0.6;
+}
+.desk-label {
+    background: rgb(var(--cream-rgb) / 0.7);
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+}
+.desk-icon:hover .desk-label,
+.desk-icon:focus-visible .desk-label {
+    background: var(--ink);
+    color: var(--cream);
+}
+.desk-icon:focus-visible { outline-color: var(--accent); }
+.desk-cursor { color: var(--ink); }
+
+.file-photo,
+.shot-frame {
+    background: #1B1B19;
+    border-color: var(--line-strong);
+}
+
+/* ============================================================
+   Tarjetas: rectas, línea fina, sin sombra dura
+   ============================================================ */
+.svc-card,
+.reveal.svc-card.is-visible { --tilt: 0deg; }
+.svc-card { position: relative; overflow: hidden; box-shadow: none; }
+.svc-card:hover,
+.reveal.svc-card.is-visible:hover { box-shadow: var(--shadow); border-color: rgb(var(--ink-rgb) / 0.5); }
+/* Velo tramado en la esquina superior de cada tarjeta */
+.svc-card::after,
+.sys-card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 160px;
+    pointer-events: none;
+    background: var(--ink);
+    opacity: 0.07;
+    -webkit-mask: var(--dither-fade) repeat-x 0 0 / 16px 160px;
+            mask: var(--dither-fade) repeat-x 0 0 / 16px 160px;
+    transition: opacity 300ms ease;
+}
+.svc-card:hover::after,
+.sys-card:hover::after { opacity: 0.14; }
+.svc-card.bg-ink::after,
+.sys-card--ink::after { background: var(--cream); opacity: 0.1; }
+
+.sys-card { position: relative; overflow: hidden; }
+.sys-card:hover { box-shadow: var(--shadow); }
+
+.plan-num { -webkit-text-stroke-color: rgb(var(--ink-rgb) / 0.7); }
+
+/* Modales y popups: superficie oscura con línea fina */
+#diagnostic-modal input,
+#quiz-popup input { color: var(--ink); }
+
+/* Cierre (CTA final) con su propio eclipse */
+.dither-cta { background: #050505; color: var(--ink); }
+
+/* Palabra rotativa del hero: itálica en azul señal, sin bloque de color */
+.rotator-word { background: none; color: var(--accent-bright); }
+
+/* Tarjetas de servicio rectas (el inline --tilt queda sin efecto) */
+.svc-card, .reveal.svc-card.is-visible { transform: none; }
+@media (min-width: 768px) {
+    .svc-card, .reveal.svc-card.is-visible { transform: translateY(var(--lift, 0px)); }
+}
+.svc-card:hover, .reveal.svc-card.is-visible:hover { transform: translateY(calc(var(--lift, 0px) - 6px)); }
+
+/* Dentro de bloques invertidos (fondo hueso) el azul se oscurece
+   para mantener contraste AA */
+.bg-ink, .sys-card--ink, .\!bg-ink {
+    --accent-rgb: 44 66 196;
+    --accent-bright-rgb: 44 66 196;
+    --accent-wash-rgb: 208 214 245;
+}
