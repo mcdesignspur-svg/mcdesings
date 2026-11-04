@@ -196,7 +196,13 @@ export default async function handler(req, res) {
   if (!EMAIL_RE.test(fields.email)) return res.status(400).json({ error: 'Email inválido.' });
 
   const key = process.env.NOTION_API_KEY;
-  if (!key) return res.status(500).json({ error: 'Notion API key not configured.' });
+  if (!key) {
+    // Sin Notion configurado, el correo es el único destino.
+    console.warn('[descubrimiento] NOTION_API_KEY no configurada; solo se envía correo.');
+    const mailed = await notify(form, fields, sections, null);
+    if (mailed) return res.status(200).json({ success: true, stored: 'email' });
+    return res.status(500).json({ error: 'Error enviando las respuestas.' });
+  }
 
   const blocks = buildBlocks(form, fields, sections);
 
