@@ -28,6 +28,7 @@ export default defineConfig({
                 demoCotizador: resolve(__dirname, 'demo-cotizador.html'),
                 demoImpulso: resolve(__dirname, 'demo-impulso.html'),
                 intake: resolve(__dirname, 'intake.html'),
+                siovera: resolve(__dirname, 'siovera.html'),
                 talk: resolve(__dirname, 'talk.html'),
                 askMc: resolve(__dirname, 'ask-mc.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
