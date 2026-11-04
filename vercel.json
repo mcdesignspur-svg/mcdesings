@@ -41,6 +41,7 @@
     { "source": "/lab/cotizador", "destination": "/demo-cotizador" },
     { "source": "/lab/impulso-demo", "destination": "/demo-impulso" },
     { "source": "/intake", "destination": "/intake.html" },
+    { "source": "/siovera", "destination": "/siovera.html" },
     { "source": "/talk", "destination": "/talk.html" },
     { "source": "/hablamos", "destination": "/talk.html" },
     { "source": "/ask-mc", "destination": "/ask-mc.html" },

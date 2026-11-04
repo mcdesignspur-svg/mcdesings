@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siovera Distributors · Cuestionario de requisitos | MC Designs</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Cuestionario para preparar la propuesta del sistema de pedidos e inventario de Siovera Distributors." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0056c6;
+            --primary-soft: rgba(0, 86, 198, 0.06);
+            --primary-ring: rgba(0, 86, 198, 0.14);
+            --ink: #0b0d12;
+            --text: #1a1c1c;
+            --muted: #5b6070;
+            --line: #e2e5ec;
+            --bg: #ffffff;
+            --card: #ffffff;
+            --error: #b42318;
+            --ok: #067647;
+            --ease: cubic-bezier(.2, .8, .2, 1);
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(60% 40% at 50% 0%, rgba(0, 86, 198, 0.09) 0%, rgba(255, 255, 255, 0) 70%),
+                var(--bg);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        a { color: var(--primary); }
+        .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+        nav {
+            position: sticky; top: 0; z-index: 20;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid #eef0f4;
+        }
+        .nav-inner {
+            max-width: 760px; margin: 0 auto; padding: 14px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .nav-inner img { height: 34px; width: auto; display: block; }
+        .nav-tag {
+            font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+            display: flex; align-items: center; gap: 6px;
+        }
+        .progress-wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 12px; }
+        .progress-meta {
+            display: flex; justify-content: space-between; font-size: 11px; color: var(--muted);
+            letter-spacing: .08em; margin-bottom: 6px; gap: 8px;
+        }
+        .progress-meta span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .progress-bar { height: 4px; border-radius: 99px; background: #eceff4; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0; background: var(--primary); transition: width .35s var(--ease); }
+
+        main { max-width: 760px; margin: 0 auto; padding: 28px 16px 60px; }
+
+        .hero { text-align: center; margin: 12px 0 28px; }
+        .pill {
+            display: inline-block; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+            color: var(--primary); padding: 6px 12px; border-radius: 99px;
+            background: var(--primary-soft); border: 1px solid rgba(0, 86, 198, .15); margin-bottom: 16px;
+        }
+        h1 {
+            font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase;
+            letter-spacing: .01em; color: var(--ink); line-height: .98;
+            font-size: clamp(38px, 8vw, 60px); margin: 0 0 14px;
+        }
+        .hero p { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+
+        .card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 32px -8px rgba(0, 0, 0, .07);
+            padding: 26px 20px;
+        }
+        @media (min-width: 640px) { .card { padding: 36px 40px; } }
+
+        .step { display: none; animation: fadeIn .45s var(--ease) both; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+        .step-kicker { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+        .step h2 {
+            font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase;
+            font-size: clamp(28px, 5vw, 36px); line-height: 1.02; color: var(--ink); margin: 0 0 8px;
+        }
+        .step-intro { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0 0 24px; }
+
+        .q { margin-bottom: 24px; }
+        .q-label { display: block; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
+        .q-label .req { color: var(--error); }
+        .q-help { font-size: 13px; color: var(--muted); margin: 0 0 10px; line-height: 1.5; }
+        .q-label + .field, .q-label + .chips { margin-top: 10px; }
+
+        input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+            width: 100%; font: inherit; font-size: 15px; color: var(--ink);
+            border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: #fff;
+            transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+        }
+        textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-ring); }
+        .invalid input, .invalid textarea { border-color: var(--error); }
+        .q-error { display: none; color: var(--error); font-size: 13px; margin-top: 6px; }
+        .invalid .q-error { display: block; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+        @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { position: relative; }
+        .chip input { position: absolute; opacity: 0; pointer-events: none; }
+        .chip span {
+            display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;
+            border: 1px solid var(--line); border-radius: 99px; padding: 9px 14px; font-size: 14px;
+            background: #fff; color: var(--text); line-height: 1.25;
+            transition: border-color .15s var(--ease), background-color .15s var(--ease), color .15s var(--ease);
+        }
+        .chip span:hover { border-color: var(--primary); }
+        .chip input:checked + span { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); font-weight: 600; }
+        .chip input:focus-visible + span { box-shadow: 0 0 0 3px var(--primary-ring); }
+        .other-input { margin-top: 10px; display: none; }
+        .other-input.show { display: block; }
+
+        .matrix { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+        .matrix-row { padding: 14px 14px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+        .matrix-row:first-child { border-top: 0; }
+        @media (min-width: 640px) { .matrix-row { grid-template-columns: 1fr auto; align-items: center; } }
+        .matrix-row .m-label { font-size: 14px; font-weight: 600; color: var(--ink); }
+        .matrix-row .m-help { font-size: 12.5px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+        .matrix .chips { gap: 6px; }
+        .matrix .chip span { padding: 7px 11px; font-size: 13px; }
+
+        .nav-buttons { display: flex; gap: 10px; justify-content: space-between; margin-top: 30px; flex-wrap: wrap; }
+        button {
+            font: inherit; cursor: pointer; border-radius: 12px; padding: 14px 22px; font-size: 13px;
+            letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            transition: background-color .2s var(--ease), transform .1s var(--ease), border-color .2s var(--ease);
+        }
+        button:active { transform: scale(.98); }
+        button:disabled { opacity: .55; cursor: not-allowed; }
+        .btn-primary { background: var(--primary); color: #fff; border: 1px solid var(--primary); flex: 1 1 200px; }
+        .btn-primary:hover { background: #006df8; }
+        .btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+        .btn-ghost:hover { border-color: var(--ink); }
+
+        .saved-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 14px; min-height: 18px; }
+        .alert { border-radius: 12px; padding: 14px 16px; font-size: 14px; line-height: 1.5; margin-top: 18px; }
+        .alert-error { background: #fef3f2; border: 1px solid #fecdca; color: var(--error); }
+        .hidden { display: none !important; }
+
+        .welcome-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; }
+        .welcome-list li { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; color: var(--text); }
+        .welcome-list li::before { content: ''; flex: 0 0 8px; height: 8px; margin-top: 8px; border-radius: 99px; background: var(--primary); }
+
+        .success { text-align: center; padding: 10px 0; }
+        .success .tick {
+            width: 58px; height: 58px; border-radius: 99px; background: var(--primary-soft); color: var(--primary);
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+        }
+
+        footer { text-align: center; font-size: 12px; color: var(--muted); padding: 0 16px 28px; }
+        footer a { color: var(--muted); text-decoration: none; }
+        footer a:hover { color: var(--ink); }
+        .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" aria-label="MC Designs"><img src="assets/MC-Designs-Logo.svg" alt="MC Designs" /></a>
+            <span class="nav-tag mono">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Privado · Siovera
+            </span>
+        </div>
+        <div class="progress-wrap">
+            <div class="progress-meta mono"><span id="progress-label">Bienvenida</span><span id="progress-count"></span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero" id="hero">
+            <span class="pill mono">Siovera Distributors</span>
+            <h1>Tu sistema de pedidos e inventario</h1>
+            <p>Este cuestionario me ayuda a entender cómo funciona Siovera hoy para prepararte una propuesta a la medida. No hay respuestas incorrectas.</p>
+        </header>
+
+        <div class="card" id="form-card">
+            <form id="discovery-form" novalidate>
+                <div class="hp" aria-hidden="true">
+                    <label>No llenes esto <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+                </div>
+                <div id="steps"></div>
+                <div id="error-msg" class="alert alert-error hidden">
+                    No se pudo enviar. Tus respuestas siguen guardadas en este equipo. Intenta otra vez en un momento o escríbeme a <a href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>.
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-ghost" id="btn-back">Atrás</button>
+                    <button type="button" class="btn-primary" id="btn-next">Comenzar</button>
+                </div>
+                <p class="saved-note" id="saved-note"></p>
+            </form>
+        </div>
+
+        <div class="card hidden" id="success-card">
+            <div class="success">
+                <div class="tick">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2 style="font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:34px;margin:0 0 10px;color:var(--ink);">¡Gracias!</h2>
+                <p style="color:var(--muted);font-size:15px;line-height:1.6;max-width:460px;margin:0 auto 6px;">
+                    Recibí tus respuestas. Las reviso y te contacto con la propuesta y los próximos pasos.
+                </p>
+                <p style="color:var(--muted);font-size:14px;line-height:1.6;max-width:460px;margin:12px auto 0;">
+                    Si tienes tu lista de productos o de precios en Excel, envíamela por correo o WhatsApp. Me ayuda mucho a estimar.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="mailto:miguel@mcdesignspr.com">miguel@mcdesignspr.com</a>
+        <span style="margin:0 8px;">·</span>
+        <a href="tel:7874699280">787-469-9280</a>
+        <div style="margin-top:6px;">Tu información es privada y solo la usa MC Designs para preparar tu propuesta.</div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var STORAGE_KEY = 'mc-siovera-discovery-v1';
+        var FORM_ID = 'siovera';
+
+        // ---------- Preguntas ----------
+        // type: text | email | tel | textarea | radio | checkbox | matrix
+        // "other: true" agrega un campo "Otro" con texto.
+        var PRIORITY_OPTS = ['Imprescindible', 'Deseable', 'No por ahora'];
+
+        var STEPS = [
+            {
+                id: 'contacto', title: 'Tus datos',
+                intro: 'Para saber con quién hablo y cómo comunicarme contigo.',
+                grid: true,
+                questions: [
+                    { id: 'contactName', label: 'Tu nombre', type: 'text', required: true },
+                    { id: 'role', label: 'Tu puesto', type: 'text', placeholder: 'ej. Dueño, Gerente general' },
+                    { id: 'businessName', label: 'Compañía', type: 'text', required: true, value: 'Siovera Distributors' },
+                    { id: 'phone', label: 'Teléfono / WhatsApp', type: 'tel', required: true },
+                    { id: 'email', label: 'Correo electrónico', type: 'email', required: true },
+                    { id: 'contactPref', label: '¿Cómo prefieres que te contacte?', type: 'radio', options: ['WhatsApp', 'Llamada', 'Correo'] }
+                ]
+            },
+            {
+                id: 'negocio', title: 'Tu negocio',
+                intro: 'Una foto general de Siovera hoy.',
+                questions: [
+                    { id: 'categories', label: '¿Qué tipo de productos distribuyen?', type: 'checkbox', other: true,
+                      options: ['Alimentos secos', 'Refrigerados / congelados', 'Bebidas', 'Productos de limpieza', 'Papel y desechables', 'Cuidado personal / belleza', 'Productos médicos / farmacia', 'Ferretería / construcción'] },
+                    { id: 'years', label: '¿Cuántos años lleva operando la compañía?', type: 'radio', options: ['Menos de 2', '2 a 5', '6 a 10', 'Más de 10'] },
+                    { id: 'employees', label: '¿Cuántas personas trabajan en Siovera?', type: 'radio', options: ['1 a 5', '6 a 15', '16 a 40', 'Más de 40'] },
+                    { id: 'coverage', label: '¿Qué pueblos o zonas de Puerto Rico cubren?', type: 'text', placeholder: 'ej. Toda la isla, área metro, zona este…' },
+                    { id: 'locations', label: '¿Cuántos almacenes u oficinas tienen y dónde?', type: 'text', placeholder: 'ej. 1 almacén en Bayamón' },
+                    { id: 'why', label: '¿Qué te hizo buscar un sistema como este? ¿Qué problema quieres resolver primero?', type: 'textarea', required: true,
+                      help: 'Con tus propias palabras. Ejemplo: "pierdo mucho tiempo tomando pedidos por teléfono" o "no sé exactamente qué tengo en el almacén".' }
+                ]
+            },
+            {
+                id: 'clientes', title: 'Tus clientes',
+                intro: 'Quiénes te compran y cuánto, para dimensionar el portal.',
+                questions: [
+                    { id: 'customerTypes', label: '¿Qué tipo de clientes tienes?', type: 'checkbox', other: true,
+                      options: ['Colmados / minimarkets', 'Supermercados', 'Restaurantes / cafeterías', 'Hoteles', 'Farmacias', 'Escuelas / gobierno', 'Oficinas / empresas', 'Otros distribuidores', 'Consumidor final'] },
+                    { id: 'activeCustomers', label: '¿Cuántos clientes activos tienes (que compran al menos una vez al mes)?', type: 'radio', options: ['Menos de 25', '25 a 100', '101 a 300', '301 a 1,000', 'Más de 1,000'] },
+                    { id: 'ordersPerWeek', label: '¿Cuántos pedidos reciben en una semana normal?', type: 'radio', options: ['Menos de 25', '25 a 100', '101 a 300', 'Más de 300'] },
+                    { id: 'orderSize', label: '¿Cuánto es un pedido típico?', type: 'radio', options: ['Menos de $250', '$250 a $1,000', '$1,000 a $5,000', 'Más de $5,000'] },
+                    { id: 'orderLines', label: '¿Cuántos productos distintos lleva un pedido típico?', type: 'radio', options: ['1 a 5', '6 a 20', '21 a 50', 'Más de 50'] },
+                    { id: 'multiLocation', label: '¿Algunos clientes tienen varias sucursales o direcciones de entrega?', type: 'radio', options: ['Sí, varios', 'Pocos', 'No'] },
+                    { id: 'customerTech', label: '¿Tus clientes pedirían más desde el celular o desde una computadora?', type: 'radio', options: ['Celular', 'Computadora', 'Ambos', 'No sé'] },
+                    { id: 'customerAdoption', label: '¿Crees que tus clientes usarían un portal para pedir solos? ¿Alguno te lo ha pedido?', type: 'textarea' }
+                ]
+            },
+            {
+                id: 'pedidos', title: 'Cómo llegan los pedidos hoy',
+                intro: 'Lo que pasa desde que un cliente pide hasta que el pedido sale del almacén.',
+                questions: [
+                    { id: 'orderChannels', label: '¿Por dónde te hacen pedidos hoy?', type: 'checkbox', other: true,
+                      options: ['Llamada', 'WhatsApp', 'Correo', 'Vendedor en la calle', 'En persona', 'Fax', 'Website / formulario'] },
+                    { id: 'orderEntry', label: '¿Quién anota el pedido y dónde lo anota?', type: 'text', placeholder: 'ej. La secretaria lo pasa a QuickBooks, el vendedor lo escribe en papel…' },
+                    { id: 'salesReps', label: '¿Tienes vendedores que visitan clientes?', type: 'radio', options: ['No', '1 a 3', '4 a 10', 'Más de 10'] },
+                    { id: 'repsUseSystem', label: '¿Quieres que tus vendedores también tomen pedidos desde el sistema (en su celular o tablet)?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
+                    { id: 'cutoff', label: '¿Tienen una hora límite para pedidos que salen al día siguiente?', type: 'text', placeholder: 'ej. Antes de las 3:00 pm' },
+                    { id: 'orderPains', label: '¿Qué problemas tienen hoy con los pedidos?', type: 'checkbox', other: true,
+                      options: ['Errores al anotar', 'Toma mucho tiempo', 'Se venden cosas que no hay', 'Pedidos perdidos u olvidados', 'Clientes llaman a preguntar por su pedido', 'Difícil saber precios o crédito del cliente'] }
+                ]
+            },
+            {
+                id: 'catalogo', title: 'Productos y precios',
+                intro: 'Lo que se va a ver en el catálogo y cómo se cobra.',
+                questions: [
+                    { id: 'skuCount', label: '¿Cuántos productos distintos manejan?', type: 'radio', options: ['Menos de 100', '100 a 500', '501 a 2,000', '2,001 a 10,000', 'Más de 10,000'] },
+                    { id: 'productList', label: '¿Dónde tienes hoy la lista de productos?', type: 'checkbox', other: true,
+                      options: ['Excel / Google Sheets', 'QuickBooks', 'Otro sistema', 'En papel', 'No tengo una lista completa'] },
+                    { id: 'productCodes', label: '¿Los productos tienen código propio o código de barras?', type: 'radio', options: ['Código propio', 'Código de barras (UPC)', 'Ambos', 'Ninguno'] },
+                    { id: 'photos', label: '¿Tienes fotos de los productos?', type: 'radio', options: ['Sí, de casi todos', 'De algunos', 'No'] },
+                    { id: 'units', label: '¿En qué unidades venden?', type: 'checkbox', other: true,
+                      options: ['Unidad', 'Caja / fardo', 'Paquete', 'Pallet', 'Por peso (libra)'] },
+                    { id: 'pricing', label: '¿Todos los clientes pagan el mismo precio?', type: 'radio',
+                      options: ['Sí, un solo precio', 'Hay varias listas de precio (ej. colmado vs. supermercado)', 'Cada cliente tiene precios especiales', 'Depende, se negocia'] },
+                    { id: 'discounts', label: '¿Dan descuentos u ofertas?', type: 'checkbox', other: true,
+                      options: ['Por volumen', 'Ofertas temporeras', 'Por pronto pago', 'Producto gratis (ej. 10 + 1)', 'No damos descuentos'] },
+                    { id: 'minOrder', label: '¿Hay un pedido mínimo o cargo por entrega?', type: 'text', placeholder: 'ej. Mínimo $150, o cargo de $15 si es menos' },
+                    { id: 'priceVisibility', label: '¿Quién debe poder ver los precios en el portal?', type: 'radio',
+                      options: ['Solo clientes que inicien sesión', 'Cualquier persona', 'Nadie, solo pedimos cotización'] }
+                ]
+            },
+            {
+                id: 'inventario', title: 'Inventario',
+                intro: 'Cómo controlan lo que hay en el almacén y cómo reponen.',
+                questions: [
+                    { id: 'invTracking', label: '¿Cómo llevan el inventario hoy?', type: 'radio', other: true,
+                      options: ['En un sistema', 'En Excel', 'Contando a mano / en papel', 'No lo llevamos de forma formal'] },
+                    { id: 'invAccuracy', label: '¿Qué tan seguido el inventario en papel o sistema no cuadra con lo que hay?', type: 'radio', options: ['Casi nunca', 'A veces', 'Muy seguido', 'No sé'] },
+                    { id: 'lots', label: '¿Necesitan controlar fechas de expiración o lotes?', type: 'radio', options: ['Sí, es importante', 'Solo en algunos productos', 'No'] },
+                    { id: 'specialStorage', label: '¿Manejan productos refrigerados, congelados o con manejo especial?', type: 'radio', options: ['Sí', 'No'] },
+                    { id: 'outOfStock', label: 'Si un cliente pide algo que no hay, ¿qué prefieres que pase?', type: 'radio',
+                      options: ['No dejarle pedirlo', 'Dejarle pedirlo y avisar que está pendiente', 'Sugerir un producto parecido', 'Que la oficina decida'] },
+                    { id: 'suppliers', label: '¿Cuántos suplidores tienes? ¿Importas mercancía?', type: 'text', placeholder: 'ej. 20 suplidores, 3 de ellos de EE.UU.' },
+                    { id: 'reorder', label: '¿Cómo deciden cuándo y cuánto comprar?', type: 'textarea', placeholder: 'ej. El dueño revisa el almacén cada viernes…' },
+                    { id: 'purchaseOrders', label: '¿Te gustaría que el sistema avise cuando algo está bajo y prepare la orden de compra?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
+                    { id: 'warehouseTools', label: '¿Usan o les gustaría usar escáner de código de barras en el almacén?', type: 'radio', options: ['Ya usamos', 'Nos gustaría', 'No'] }
+                ]
+            },
+            {
+                id: 'cobros', title: 'Facturación, pagos y crédito',
+                intro: 'Cómo se factura y cómo te pagan, incluyendo el IVU.',
+                questions: [
+                    { id: 'accounting', label: '¿Qué usan para la contabilidad y las facturas?', type: 'radio', other: true,
+                      options: ['QuickBooks Online', 'QuickBooks Desktop', 'Sage / Peachtree', 'Excel', 'Un contador externo lo maneja'] },
+                    { id: 'terms', label: '¿Cómo pagan tus clientes?', type: 'checkbox', other: true,
+                      options: ['Al momento (contado)', 'Al recibir (COD)', 'A crédito (15 / 30 días)'] },
+                    { id: 'paymentMethods', label: '¿Qué formas de pago aceptan?', type: 'checkbox', other: true,
+                      options: ['Efectivo', 'Cheque', 'ATH Móvil', 'Tarjeta', 'Transferencia / ACH'] },
+                    { id: 'onlinePayment', label: '¿Quieres que los clientes puedan pagar en línea desde el portal?', type: 'radio', options: ['Sí', 'No', 'Tal vez más adelante'] },
+                    { id: 'credit', label: '¿Manejan límites de crédito o bloquean clientes con balance atrasado?', type: 'radio', options: ['Sí', 'Lo hacemos de memoria', 'No'] },
+                    { id: 'ivu', label: '¿Cómo manejan el IVU?', type: 'checkbox', other: true,
+                      options: ['Cobramos IVU en todas las ventas', 'Muchos clientes son revendedores con certificado de exención', 'Algunos productos están exentos', 'No estoy seguro'] },
+                    { id: 'statements', label: '¿Te gustaría que cada cliente vea sus facturas y balance en el portal?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] }
+                ]
+            },
+            {
+                id: 'entregas', title: 'Entregas',
+                intro: 'Cómo llega la mercancía a tus clientes.',
+                questions: [
+                    { id: 'delivery', label: '¿Cómo entregan?', type: 'checkbox', other: true,
+                      options: ['Camiones propios', 'Compañía de transporte', 'El cliente recoge', 'Envío por correo / paquetería'] },
+                    { id: 'trucks', label: '¿Cuántos camiones o rutas tienen?', type: 'text', placeholder: 'ej. 3 camiones, rutas lunes/miércoles/viernes' },
+                    { id: 'deliveryProof', label: '¿Les interesa que el chofer confirme la entrega con firma o foto?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
+                    { id: 'returns', label: '¿Son comunes las devoluciones o créditos por mercancía dañada o vencida?', type: 'radio', options: ['Muy comunes', 'A veces', 'Casi nunca'] }
+                ]
+            },
+            {
+                id: 'equipo', title: 'Sistemas y equipo',
+                intro: 'Lo que ya tienes y quién usaría el sistema por dentro.',
+                questions: [
+                    { id: 'currentSystems', label: '¿Qué programas o sistemas usan hoy en la operación?', type: 'textarea',
+                      help: 'Nombra todo lo que se te ocurra: sistema de facturación, punto de venta, Excel, WhatsApp Business, website, etc.' },
+                    { id: 'website', label: '¿Tienen website o dominio (ej. siovera.com)?', type: 'text' },
+                    { id: 'internalUsers', label: '¿Quiénes en Siovera usarían el sistema?', type: 'checkbox', other: true,
+                      options: ['Dueño / gerencia', 'Oficina / servicio al cliente', 'Almacén', 'Vendedores', 'Choferes', 'Contabilidad'] },
+                    { id: 'userCount', label: '¿Cuántas personas en total lo usarían por dentro?', type: 'radio', options: ['1 a 3', '4 a 10', '11 a 25', 'Más de 25'] },
+                    { id: 'devices', label: '¿Qué equipo tienen disponible?', type: 'checkbox', other: true,
+                      options: ['Computadoras en la oficina', 'Tablets', 'Celulares de la compañía', 'Impresora de facturas', 'Escáner de código de barras'] },
+                    { id: 'reports', label: '¿Qué números te gustaría ver todos los días?', type: 'textarea', placeholder: 'ej. Ventas del día, productos más vendidos, clientes que no han comprado este mes…' }
+                ]
+            },
+            {
+                id: 'prioridades', title: 'Prioridades',
+                intro: 'Marca qué tan importante es cada parte. Así la propuesta empieza por lo que más te ayuda y lo demás puede venir en fases.',
+                questions: [
+                    { id: 'features', label: 'Funciones del sistema', type: 'matrix', options: PRIORITY_OPTS,
+                      rows: [
+                          { id: 'portal', label: 'Portal donde los clientes hacen pedidos', help: 'Como una tienda en línea, solo para tus clientes' },
+                          { id: 'catalog', label: 'Catálogo con fotos y búsqueda' },
+                          { id: 'customPrices', label: 'Precios y ofertas por cliente' },
+                          { id: 'liveStock', label: 'Inventario al día', help: 'Se rebaja solo con cada pedido' },
+                          { id: 'reorder', label: 'Alertas de inventario bajo y órdenes de compra' },
+                          { id: 'repsApp', label: 'Pedidos desde el celular de los vendedores' },
+                          { id: 'picking', label: 'Lista de preparación para el almacén' },
+                          { id: 'routes', label: 'Rutas y confirmación de entregas' },
+                          { id: 'invoices', label: 'Facturas y balance del cliente en el portal' },
+                          { id: 'payments', label: 'Pagos en línea' },
+                          { id: 'accountingSync', label: 'Conexión con la contabilidad (ej. QuickBooks)' },
+                          { id: 'notifications', label: 'Avisos por WhatsApp o correo', help: 'Pedido recibido, en camino, entregado' },
+                          { id: 'reportsDash', label: 'Reportes y panel de ventas' }
+                      ] },
+                    { id: 'firstThing', label: 'Si el sistema pudiera hacer UNA sola cosa en el primer mes, ¿cuál sería?', type: 'textarea', required: true },
+                    { id: 'references', label: '¿Has visto algún sistema o app que te guste como referencia?', type: 'text', placeholder: 'ej. Amazon Business, la app de un suplidor tuyo…' }
+                ]
+            },
+            {
+                id: 'presupuesto', title: 'Presupuesto y tiempo',
+                intro: 'Me ayuda a proponerte algo realista. Si no lo tienes claro, marca "No sé" y lo hablamos.',
+                questions: [
+                    { id: 'budget', label: '¿Qué inversión inicial tienes en mente para el sistema?', type: 'radio',
+                      options: ['Menos de $5,000', '$5,000 a $10,000', '$10,000 a $20,000', '$20,000 a $40,000', 'Más de $40,000', 'No sé todavía'] },
+                    { id: 'monthly', label: '¿Y un costo mensual cómodo (hosting, mantenimiento y soporte)?', type: 'radio',
+                      options: ['Menos de $200', '$200 a $500', '$500 a $1,000', 'Más de $1,000', 'No sé todavía'] },
+                    { id: 'timeline', label: '¿Para cuándo te gustaría tenerlo funcionando?', type: 'radio',
+                      options: ['Lo antes posible', 'En 1 a 2 meses', 'En 3 a 6 meses', 'No hay prisa'] },
+                    { id: 'decisionMaker', label: '¿Quién más participa en la decisión?', type: 'text', placeholder: 'ej. Mi socio, mi contador…' },
+                    { id: 'alternatives', label: '¿Has cotizado o probado otras opciones? ¿Qué te gustó o no te gustó?', type: 'textarea' },
+                    { id: 'anythingElse', label: '¿Algo más que deba saber?', type: 'textarea' }
+                ]
+            }
+        ];
+
+        // ---------- Render ----------
+        var stepsEl = document.getElementById('steps');
+        var WELCOME = '<div class="step active" data-step="0">' +
+            '<div class="step-kicker mono">Antes de empezar</div>' +
+            '<h2>Unos 15 minutos</h2>' +
+            '<p class="step-intro">Son ' + STEPS.length + ' secciones cortas. La mayoría de las preguntas son de escoger.</p>' +
+            '<ul class="welcome-list">' +
+                '<li><span>Solo las preguntas con <strong style="color:var(--error)">*</strong> son obligatorias. Si no sabes algo, déjalo en blanco.</span></li>' +
+                '<li><span>Tus respuestas se guardan en este equipo mientras llenas. Puedes cerrar y seguir luego desde el mismo celular o computadora.</span></li>' +
+                '<li><span>Si prefieres, podemos llenarlo juntos en una llamada.</span></li>' +
+            '</ul></div>';
+
+        function esc(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function chipsHtml(name, type, options, other) {
+            var html = '<div class="chips">';
+            options.forEach(function (opt) {
+                html += '<label class="chip"><input type="' + type + '" name="' + esc(name) + '" value="' + esc(opt) + '"><span>' + esc(opt) + '</span></label>';
+            });
+            if (other) {
+                html += '<label class="chip"><input type="' + type + '" name="' + esc(name) + '" value="__other" data-other-toggle="' + esc(name) + '"><span>Otro</span></label>';
+            }
+            html += '</div>';
+            if (other) {
+                html += '<input type="text" class="other-input" name="' + esc(name) + '__other" data-other-for="' + esc(name) + '" placeholder="Especifica">';
+            }
+            return html;
+        }
+
+        function questionHtml(q) {
+            var req = q.required ? ' <span class="req">*</span>' : '';
+            var html = '<div class="q" data-q="' + esc(q.id) + '">';
+            if (q.type === 'text' || q.type === 'email' || q.type === 'tel') {
+                html += '<label class="q-label" for="f-' + esc(q.id) + '">' + esc(q.label) + req + '</label>';
+                if (q.help) html += '<p class="q-help">' + esc(q.help) + '</p>';
+                html += '<input class="field" id="f-' + esc(q.id) + '" type="' + q.type + '" name="' + esc(q.id) + '"' +
+                    (q.placeholder ? ' placeholder="' + esc(q.placeholder) + '"' : '') +
+                    (q.value ? ' value="' + esc(q.value) + '"' : '') +
+                    (q.type === 'email' ? ' autocomplete="email"' : '') +
+                    (q.type === 'tel' ? ' autocomplete="tel" inputmode="tel"' : '') + '>';
+            } else if (q.type === 'textarea') {
+                html += '<label class="q-label" for="f-' + esc(q.id) + '">' + esc(q.label) + req + '</label>';
+                if (q.help) html += '<p class="q-help">' + esc(q.help) + '</p>';
+                html += '<textarea class="field" id="f-' + esc(q.id) + '" name="' + esc(q.id) + '"' +
+                    (q.placeholder ? ' placeholder="' + esc(q.placeholder) + '"' : '') + '></textarea>';
+            } else if (q.type === 'radio' || q.type === 'checkbox') {
+                html += '<span class="q-label">' + esc(q.label) + req + '</span>';
+                html += '<p class="q-help">' + (q.help ? esc(q.help) + ' ' : '') + (q.type === 'checkbox' ? 'Puedes marcar varias.' : '') + '</p>';
+                html += chipsHtml(q.id, q.type, q.options, q.other);
+            } else if (q.type === 'matrix') {
+                html += '<span class="q-label">' + esc(q.label) + '</span><div class="matrix" style="margin-top:10px">';
+                q.rows.forEach(function (row) {
+                    html += '<div class="matrix-row"><div><div class="m-label">' + esc(row.label) + '</div>' +
+                        (row.help ? '<div class="m-help">' + esc(row.help) + '</div>' : '') + '</div>' +
+                        chipsHtml(q.id + '.' + row.id, 'radio', q.options, false) + '</div>';
+                });
+                html += '</div>';
+            }
+            html += '<div class="q-error">Esta pregunta es necesaria.</div></div>';
+            return html;
+        }
+
+        var html = WELCOME;
+        STEPS.forEach(function (step, i) {
+            html += '<div class="step" data-step="' + (i + 1) + '">' +
+                '<div class="step-kicker mono">Sección ' + (i + 1) + ' de ' + STEPS.length + '</div>' +
+                '<h2>' + esc(step.title) + '</h2>' +
+                '<p class="step-intro">' + esc(step.intro) + '</p>' +
+                (step.grid ? '<div class="grid-2">' : '');
+            step.questions.forEach(function (q) { html += questionHtml(q); });
+            html += (step.grid ? '</div>' : '') + '</div>';
+        });
+        stepsEl.innerHTML = html;
+
+        // ---------- State ----------
+        var form = document.getElementById('discovery-form');
+        var stepEls = Array.prototype.slice.call(stepsEl.querySelectorAll('.step'));
+        var btnNext = document.getElementById('btn-next');
+        var btnBack = document.getElementById('btn-back');
+        var savedNote = document.getElementById('saved-note');
+        var errorMsg = document.getElementById('error-msg');
+        var current = 0;
+        var TOTAL = stepEls.length; // welcome + sections
+
+        function storageGet() {
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return null; }
+        }
+        function storageSet(v) {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); return true; } catch (e) { return false; }
+        }
+        function storageClear() {
+            try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* noop */ }
+        }
+
+        function snapshot() {
+            var values = {};
+            Array.prototype.forEach.call(form.elements, function (el) {
+                if (!el.name || el.name === 'website') return;
+                if (el.type === 'radio' || el.type === 'checkbox') {
+                    if (!el.checked) return;
+                    if (el.type === 'checkbox') {
+                        (values[el.name] = values[el.name] || []).push(el.value);
+                    } else {
+                        values[el.name] = el.value;
+                    }
+                } else if (el.value) {
+                    values[el.name] = el.value;
+                }
+            });
+            return values;
+        }
+
+        function restore(values) {
+            if (!values) return;
+            Array.prototype.forEach.call(form.elements, function (el) {
+                if (!el.name || !(el.name in values)) return;
+                var v = values[el.name];
+                if (el.type === 'radio') el.checked = (v === el.value);
+                else if (el.type === 'checkbox') el.checked = Array.isArray(v) && v.indexOf(el.value) !== -1;
+                else el.value = v;
+            });
+            syncOther();
+        }
+
+        function syncOther() {
+            form.querySelectorAll('[data-other-for]').forEach(function (input) {
+                var name = input.getAttribute('data-other-for');
+                var toggle = form.querySelector('[data-other-toggle="' + name + '"]');
+                input.classList.toggle('show', !!(toggle && toggle.checked));
+            });
+        }
+
+        var saveTimer = null;
+        function save() {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(function () {
+                if (storageSet({ values: snapshot(), step: current, at: Date.now() })) {
+                    savedNote.textContent = 'Guardado en este equipo';
+                }
+            }, 300);
+        }
+
+        form.addEventListener('input', save);
+        form.addEventListener('change', function (e) {
+            if (e.target && (e.target.type === 'radio' || e.target.type === 'checkbox')) syncOther();
+            var q = e.target.closest && e.target.closest('.q');
+            if (q) q.classList.remove('invalid');
+            save();
+        });
+
+        // ---------- Navigation ----------
+        function updateUi() {
+            stepEls.forEach(function (el, i) { el.classList.toggle('active', i === current); });
+            btnBack.classList.toggle('hidden', current === 0);
+            var last = current === TOTAL - 1;
+            btnNext.textContent = current === 0 ? 'Comenzar' : (last ? 'Enviar respuestas' : 'Siguiente');
+            document.getElementById('hero').classList.toggle('hidden', current !== 0);
+            var pct = Math.round((current / (TOTAL - 1)) * 100);
+            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-label').textContent = current === 0 ? 'Bienvenida' : STEPS[current - 1].title;
+            document.getElementById('progress-count').textContent = current === 0 ? '' : current + ' / ' + STEPS.length;
+        }
+
+        function isEmpty(q, values) {
+            var v = values[q.id];
+            if (!v || (Array.isArray(v) && !v.length)) return true;
+            return false;
+        }
+
+        function validateStep(idx) {
+            if (idx === 0) return true;
+            var step = STEPS[idx - 1];
+            var values = snapshot();
+            var firstBad = null;
+            step.questions.forEach(function (q) {
+                var el = form.querySelector('[data-q="' + q.id + '"]');
+                var bad = false;
+                if (q.required && isEmpty(q, values)) bad = true;
+                if (!bad && q.type === 'email' && values[q.id] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values[q.id])) bad = true;
+                el.classList.toggle('invalid', bad);
+                if (bad) {
+                    el.querySelector('.q-error').textContent = q.type === 'email' && values[q.id] ? 'Revisa el correo.' : 'Esta pregunta es necesaria.';
+                    if (!firstBad) firstBad = el;
+                }
+            });
+            if (firstBad) {
+                firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                var focusable = firstBad.querySelector('input, textarea');
+                if (focusable) focusable.focus({ preventScroll: true });
+                return false;
+            }
+            return true;
+        }
+
+        function go(to) {
+            current = Math.max(0, Math.min(TOTAL - 1, to));
+            updateUi();
+            save();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        btnBack.addEventListener('click', function () { go(current - 1); });
+        btnNext.addEventListener('click', function () {
+            if (!validateStep(current)) return;
+            if (current < TOTAL - 1) return go(current + 1);
+            submit();
+        });
+
+        // ---------- Submit ----------
+        function answerFor(q, values) {
+            var v = values[q.id];
+            if (q.type === 'checkbox' || q.type === 'radio') {
+                var list = Array.isArray(v) ? v.slice() : (v ? [v] : []);
+                var otherText = (values[q.id + '__other'] || '').trim();
+                list = list.map(function (x) { return x === '__other' ? ('Otro: ' + (otherText || '(sin especificar)')) : x; });
+                return list.join(', ');
+            }
+            return (v || '').trim();
+        }
+
+        function buildPayload() {
+            var values = snapshot();
+            var sections = STEPS.map(function (step) {
+                var items = [];
+                step.questions.forEach(function (q) {
+                    if (q.type === 'matrix') {
+                        q.rows.forEach(function (row) {
+                            items.push({ q: row.label, a: values[q.id + '.' + row.id] || '' });
+                        });
+                    } else {
+                        items.push({ q: q.label, a: answerFor(q, values) });
+                    }
+                });
+                return { title: step.title, items: items };
+            });
+            return {
+                formId: FORM_ID,
+                website: form.querySelector('input[name="website"]').value,
+                contact: {
+                    contactName: values.contactName || '',
+                    businessName: values.businessName || '',
+                    phone: values.phone || '',
+                    email: values.email || '',
+                    budget: values.budget || '',
+                    timeline: values.timeline || ''
+                },
+                sections: sections
+            };
+        }
+
+        function submit() {
+            errorMsg.classList.add('hidden');
+            btnNext.disabled = true;
+            btnBack.disabled = true;
+            btnNext.textContent = 'Enviando…';
+            fetch('/api/descubrimiento', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(buildPayload())
+            }).then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                storageClear();
+                document.getElementById('form-card').classList.add('hidden');
+                document.getElementById('hero').classList.add('hidden');
+                document.getElementById('success-card').classList.remove('hidden');
+                document.getElementById('progress-fill').style.width = '100%';
+                document.getElementById('progress-label').textContent = 'Enviado';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }).catch(function () {
+                errorMsg.classList.remove('hidden');
+                btnNext.disabled = false;
+                btnBack.disabled = false;
+                btnNext.textContent = 'Enviar respuestas';
+            });
+        }
+
+        // ---------- Init ----------
+        var saved = storageGet();
+        if (saved && saved.values) {
+            restore(saved.values);
+            current = Math.min(saved.step || 0, TOTAL - 1);
+            savedNote.textContent = 'Seguimos donde lo dejaste.';
+        }
+        syncOther();
+        updateUi();
+    })();
+    </script>
+</body>
+</html>
