@@ -244,7 +244,7 @@
     (function () {
         'use strict';
 
-        var STORAGE_KEY = 'mc-siovera-discovery-v1';
+        var STORAGE_KEY = 'mc-siovera-discovery-v2';
         var FORM_ID = 'siovera';
 
         // ---------- Preguntas ----------
@@ -259,7 +259,6 @@
                 grid: true,
                 questions: [
                     { id: 'contactName', label: 'Tu nombre', type: 'text', required: true },
-                    { id: 'role', label: 'Tu puesto', type: 'text', placeholder: 'ej. Dueño, Gerente general' },
                     { id: 'businessName', label: 'Compañía', type: 'text', required: true, value: 'Siovera Distributors' },
                     { id: 'phone', label: 'Teléfono / WhatsApp', type: 'tel', required: true },
                     { id: 'email', label: 'Correo electrónico', type: 'email', required: true },
@@ -267,164 +266,95 @@
                 ]
             },
             {
-                id: 'negocio', title: 'Tu negocio',
-                intro: 'Una foto general de Siovera hoy.',
+                id: 'negocio', title: 'Tu negocio y tus clientes',
+                intro: 'Una foto general de Siovera y de quién le compra.',
                 questions: [
+                    { id: 'why', label: '¿Qué te hizo buscar un sistema como este? ¿Qué problema quieres resolver primero?', type: 'textarea', required: true,
+                      help: 'Con tus propias palabras. Ejemplo: "pierdo mucho tiempo tomando pedidos por teléfono" o "no sé exactamente qué tengo en el almacén".' },
                     { id: 'categories', label: '¿Qué tipo de productos distribuyen?', type: 'checkbox', other: true,
                       options: ['Alimentos secos', 'Refrigerados / congelados', 'Bebidas', 'Productos de limpieza', 'Papel y desechables', 'Cuidado personal / belleza', 'Productos médicos / farmacia', 'Ferretería / construcción'] },
-                    { id: 'years', label: '¿Cuántos años lleva operando la compañía?', type: 'radio', options: ['Menos de 2', '2 a 5', '6 a 10', 'Más de 10'] },
-                    { id: 'employees', label: '¿Cuántas personas trabajan en Siovera?', type: 'radio', options: ['1 a 5', '6 a 15', '16 a 40', 'Más de 40'] },
-                    { id: 'coverage', label: '¿Qué pueblos o zonas de Puerto Rico cubren?', type: 'text', placeholder: 'ej. Toda la isla, área metro, zona este…' },
-                    { id: 'locations', label: '¿Cuántos almacenes u oficinas tienen y dónde?', type: 'text', placeholder: 'ej. 1 almacén en Bayamón' },
-                    { id: 'why', label: '¿Qué te hizo buscar un sistema como este? ¿Qué problema quieres resolver primero?', type: 'textarea', required: true,
-                      help: 'Con tus propias palabras. Ejemplo: "pierdo mucho tiempo tomando pedidos por teléfono" o "no sé exactamente qué tengo en el almacén".' }
-                ]
-            },
-            {
-                id: 'clientes', title: 'Tus clientes',
-                intro: 'Quiénes te compran y cuánto, para dimensionar el portal.',
-                questions: [
                     { id: 'customerTypes', label: '¿Qué tipo de clientes tienes?', type: 'checkbox', other: true,
-                      options: ['Colmados / minimarkets', 'Supermercados', 'Restaurantes / cafeterías', 'Hoteles', 'Farmacias', 'Escuelas / gobierno', 'Oficinas / empresas', 'Otros distribuidores', 'Consumidor final'] },
-                    { id: 'activeCustomers', label: '¿Cuántos clientes activos tienes (que compran al menos una vez al mes)?', type: 'radio', options: ['Menos de 25', '25 a 100', '101 a 300', '301 a 1,000', 'Más de 1,000'] },
+                      options: ['Colmados / minimarkets', 'Supermercados', 'Restaurantes / cafeterías', 'Hoteles', 'Farmacias', 'Escuelas / gobierno', 'Oficinas / empresas', 'Otros distribuidores'] },
+                    { id: 'activeCustomers', label: '¿Cuántos clientes activos tienes?', type: 'radio', options: ['Menos de 25', '25 a 100', '101 a 300', '301 a 1,000', 'Más de 1,000'] },
                     { id: 'ordersPerWeek', label: '¿Cuántos pedidos reciben en una semana normal?', type: 'radio', options: ['Menos de 25', '25 a 100', '101 a 300', 'Más de 300'] },
-                    { id: 'orderSize', label: '¿Cuánto es un pedido típico?', type: 'radio', options: ['Menos de $250', '$250 a $1,000', '$1,000 a $5,000', 'Más de $5,000'] },
-                    { id: 'orderLines', label: '¿Cuántos productos distintos lleva un pedido típico?', type: 'radio', options: ['1 a 5', '6 a 20', '21 a 50', 'Más de 50'] },
-                    { id: 'multiLocation', label: '¿Algunos clientes tienen varias sucursales o direcciones de entrega?', type: 'radio', options: ['Sí, varios', 'Pocos', 'No'] },
-                    { id: 'customerTech', label: '¿Tus clientes pedirían más desde el celular o desde una computadora?', type: 'radio', options: ['Celular', 'Computadora', 'Ambos', 'No sé'] },
-                    { id: 'customerAdoption', label: '¿Crees que tus clientes usarían un portal para pedir solos? ¿Alguno te lo ha pedido?', type: 'textarea' }
+                    { id: 'coverage', label: '¿Qué zonas de Puerto Rico cubren?', type: 'text', placeholder: 'ej. Toda la isla, área metro, zona este…' }
                 ]
             },
             {
                 id: 'pedidos', title: 'Cómo llegan los pedidos hoy',
-                intro: 'Lo que pasa desde que un cliente pide hasta que el pedido sale del almacén.',
+                intro: 'Lo que pasa desde que un cliente pide hasta que el pedido sale.',
                 questions: [
                     { id: 'orderChannels', label: '¿Por dónde te hacen pedidos hoy?', type: 'checkbox', other: true,
-                      options: ['Llamada', 'WhatsApp', 'Correo', 'Vendedor en la calle', 'En persona', 'Fax', 'Website / formulario'] },
-                    { id: 'orderEntry', label: '¿Quién anota el pedido y dónde lo anota?', type: 'text', placeholder: 'ej. La secretaria lo pasa a QuickBooks, el vendedor lo escribe en papel…' },
-                    { id: 'salesReps', label: '¿Tienes vendedores que visitan clientes?', type: 'radio', options: ['No', '1 a 3', '4 a 10', 'Más de 10'] },
-                    { id: 'repsUseSystem', label: '¿Quieres que tus vendedores también tomen pedidos desde el sistema (en su celular o tablet)?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
-                    { id: 'cutoff', label: '¿Tienen una hora límite para pedidos que salen al día siguiente?', type: 'text', placeholder: 'ej. Antes de las 3:00 pm' },
+                      options: ['Llamada', 'WhatsApp', 'Correo', 'Vendedor en la calle', 'En persona', 'Website / formulario'] },
                     { id: 'orderPains', label: '¿Qué problemas tienen hoy con los pedidos?', type: 'checkbox', other: true,
-                      options: ['Errores al anotar', 'Toma mucho tiempo', 'Se venden cosas que no hay', 'Pedidos perdidos u olvidados', 'Clientes llaman a preguntar por su pedido', 'Difícil saber precios o crédito del cliente'] }
+                      options: ['Errores al anotar', 'Toma mucho tiempo', 'Se venden cosas que no hay', 'Pedidos perdidos u olvidados', 'Clientes llaman a preguntar por su pedido'] },
+                    { id: 'salesReps', label: '¿Tienes vendedores que visitan clientes?', type: 'radio', options: ['No', '1 a 3', '4 a 10', 'Más de 10'] },
+                    { id: 'repsUseSystem', label: '¿Quieres que tus vendedores también tomen pedidos desde el sistema?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] }
                 ]
             },
             {
                 id: 'catalogo', title: 'Productos y precios',
                 intro: 'Lo que se va a ver en el catálogo y cómo se cobra.',
                 questions: [
-                    { id: 'skuCount', label: '¿Cuántos productos distintos manejan?', type: 'radio', options: ['Menos de 100', '100 a 500', '501 a 2,000', '2,001 a 10,000', 'Más de 10,000'] },
+                    { id: 'skuCount', label: '¿Cuántos productos distintos manejan?', type: 'radio', options: ['Menos de 100', '100 a 500', '501 a 2,000', 'Más de 2,000'] },
                     { id: 'productList', label: '¿Dónde tienes hoy la lista de productos?', type: 'checkbox', other: true,
                       options: ['Excel / Google Sheets', 'QuickBooks', 'Otro sistema', 'En papel', 'No tengo una lista completa'] },
-                    { id: 'productCodes', label: '¿Los productos tienen código propio o código de barras?', type: 'radio', options: ['Código propio', 'Código de barras (UPC)', 'Ambos', 'Ninguno'] },
                     { id: 'photos', label: '¿Tienes fotos de los productos?', type: 'radio', options: ['Sí, de casi todos', 'De algunos', 'No'] },
-                    { id: 'units', label: '¿En qué unidades venden?', type: 'checkbox', other: true,
-                      options: ['Unidad', 'Caja / fardo', 'Paquete', 'Pallet', 'Por peso (libra)'] },
                     { id: 'pricing', label: '¿Todos los clientes pagan el mismo precio?', type: 'radio',
-                      options: ['Sí, un solo precio', 'Hay varias listas de precio (ej. colmado vs. supermercado)', 'Cada cliente tiene precios especiales', 'Depende, se negocia'] },
-                    { id: 'discounts', label: '¿Dan descuentos u ofertas?', type: 'checkbox', other: true,
-                      options: ['Por volumen', 'Ofertas temporeras', 'Por pronto pago', 'Producto gratis (ej. 10 + 1)', 'No damos descuentos'] },
-                    { id: 'minOrder', label: '¿Hay un pedido mínimo o cargo por entrega?', type: 'text', placeholder: 'ej. Mínimo $150, o cargo de $15 si es menos' },
-                    { id: 'priceVisibility', label: '¿Quién debe poder ver los precios en el portal?', type: 'radio',
-                      options: ['Solo clientes que inicien sesión', 'Cualquier persona', 'Nadie, solo pedimos cotización'] }
+                      options: ['Sí, un solo precio', 'Hay varias listas de precio', 'Cada cliente tiene precios especiales', 'Depende, se negocia'] }
                 ]
             },
             {
-                id: 'inventario', title: 'Inventario',
-                intro: 'Cómo controlan lo que hay en el almacén y cómo reponen.',
+                id: 'inventario', title: 'Inventario y entregas',
+                intro: 'Cómo controlan lo que hay en el almacén y cómo llega al cliente.',
                 questions: [
                     { id: 'invTracking', label: '¿Cómo llevan el inventario hoy?', type: 'radio', other: true,
                       options: ['En un sistema', 'En Excel', 'Contando a mano / en papel', 'No lo llevamos de forma formal'] },
-                    { id: 'invAccuracy', label: '¿Qué tan seguido el inventario en papel o sistema no cuadra con lo que hay?', type: 'radio', options: ['Casi nunca', 'A veces', 'Muy seguido', 'No sé'] },
                     { id: 'lots', label: '¿Necesitan controlar fechas de expiración o lotes?', type: 'radio', options: ['Sí, es importante', 'Solo en algunos productos', 'No'] },
-                    { id: 'specialStorage', label: '¿Manejan productos refrigerados, congelados o con manejo especial?', type: 'radio', options: ['Sí', 'No'] },
                     { id: 'outOfStock', label: 'Si un cliente pide algo que no hay, ¿qué prefieres que pase?', type: 'radio',
-                      options: ['No dejarle pedirlo', 'Dejarle pedirlo y avisar que está pendiente', 'Sugerir un producto parecido', 'Que la oficina decida'] },
-                    { id: 'suppliers', label: '¿Cuántos suplidores tienes? ¿Importas mercancía?', type: 'text', placeholder: 'ej. 20 suplidores, 3 de ellos de EE.UU.' },
-                    { id: 'reorder', label: '¿Cómo deciden cuándo y cuánto comprar?', type: 'textarea', placeholder: 'ej. El dueño revisa el almacén cada viernes…' },
-                    { id: 'purchaseOrders', label: '¿Te gustaría que el sistema avise cuando algo está bajo y prepare la orden de compra?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
-                    { id: 'warehouseTools', label: '¿Usan o les gustaría usar escáner de código de barras en el almacén?', type: 'radio', options: ['Ya usamos', 'Nos gustaría', 'No'] }
+                      options: ['No dejarle pedirlo', 'Dejarle pedirlo y avisar que está pendiente', 'Que la oficina decida'] },
+                    { id: 'delivery', label: '¿Cómo entregan?', type: 'checkbox', other: true,
+                      options: ['Camiones propios', 'Compañía de transporte', 'El cliente recoge'] }
                 ]
             },
             {
-                id: 'cobros', title: 'Facturación, pagos y crédito',
-                intro: 'Cómo se factura y cómo te pagan, incluyendo el IVU.',
+                id: 'cobros', title: 'Cobros y sistemas',
+                intro: 'Cómo se factura, cómo te pagan y qué programas usan.',
                 questions: [
                     { id: 'accounting', label: '¿Qué usan para la contabilidad y las facturas?', type: 'radio', other: true,
-                      options: ['QuickBooks Online', 'QuickBooks Desktop', 'Sage / Peachtree', 'Excel', 'Un contador externo lo maneja'] },
+                      options: ['QuickBooks', 'Sage / Peachtree', 'Excel', 'Un contador externo lo maneja'] },
                     { id: 'terms', label: '¿Cómo pagan tus clientes?', type: 'checkbox', other: true,
                       options: ['Al momento (contado)', 'Al recibir (COD)', 'A crédito (15 / 30 días)'] },
-                    { id: 'paymentMethods', label: '¿Qué formas de pago aceptan?', type: 'checkbox', other: true,
-                      options: ['Efectivo', 'Cheque', 'ATH Móvil', 'Tarjeta', 'Transferencia / ACH'] },
-                    { id: 'onlinePayment', label: '¿Quieres que los clientes puedan pagar en línea desde el portal?', type: 'radio', options: ['Sí', 'No', 'Tal vez más adelante'] },
-                    { id: 'credit', label: '¿Manejan límites de crédito o bloquean clientes con balance atrasado?', type: 'radio', options: ['Sí', 'Lo hacemos de memoria', 'No'] },
                     { id: 'ivu', label: '¿Cómo manejan el IVU?', type: 'checkbox', other: true,
-                      options: ['Cobramos IVU en todas las ventas', 'Muchos clientes son revendedores con certificado de exención', 'Algunos productos están exentos', 'No estoy seguro'] },
-                    { id: 'statements', label: '¿Te gustaría que cada cliente vea sus facturas y balance en el portal?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] }
-                ]
-            },
-            {
-                id: 'entregas', title: 'Entregas',
-                intro: 'Cómo llega la mercancía a tus clientes.',
-                questions: [
-                    { id: 'delivery', label: '¿Cómo entregan?', type: 'checkbox', other: true,
-                      options: ['Camiones propios', 'Compañía de transporte', 'El cliente recoge', 'Envío por correo / paquetería'] },
-                    { id: 'trucks', label: '¿Cuántos camiones o rutas tienen?', type: 'text', placeholder: 'ej. 3 camiones, rutas lunes/miércoles/viernes' },
-                    { id: 'deliveryProof', label: '¿Les interesa que el chofer confirme la entrega con firma o foto?', type: 'radio', options: ['Sí', 'No', 'Tal vez'] },
-                    { id: 'returns', label: '¿Son comunes las devoluciones o créditos por mercancía dañada o vencida?', type: 'radio', options: ['Muy comunes', 'A veces', 'Casi nunca'] }
-                ]
-            },
-            {
-                id: 'equipo', title: 'Sistemas y equipo',
-                intro: 'Lo que ya tienes y quién usaría el sistema por dentro.',
-                questions: [
-                    { id: 'currentSystems', label: '¿Qué programas o sistemas usan hoy en la operación?', type: 'textarea',
-                      help: 'Nombra todo lo que se te ocurra: sistema de facturación, punto de venta, Excel, WhatsApp Business, website, etc.' },
-                    { id: 'website', label: '¿Tienen website o dominio (ej. siovera.com)?', type: 'text' },
-                    { id: 'internalUsers', label: '¿Quiénes en Siovera usarían el sistema?', type: 'checkbox', other: true,
-                      options: ['Dueño / gerencia', 'Oficina / servicio al cliente', 'Almacén', 'Vendedores', 'Choferes', 'Contabilidad'] },
-                    { id: 'userCount', label: '¿Cuántas personas en total lo usarían por dentro?', type: 'radio', options: ['1 a 3', '4 a 10', '11 a 25', 'Más de 25'] },
-                    { id: 'devices', label: '¿Qué equipo tienen disponible?', type: 'checkbox', other: true,
-                      options: ['Computadoras en la oficina', 'Tablets', 'Celulares de la compañía', 'Impresora de facturas', 'Escáner de código de barras'] },
-                    { id: 'reports', label: '¿Qué números te gustaría ver todos los días?', type: 'textarea', placeholder: 'ej. Ventas del día, productos más vendidos, clientes que no han comprado este mes…' }
+                      options: ['Cobramos IVU en todas las ventas', 'Muchos clientes son revendedores con certificado de exención', 'No estoy seguro'] },
+                    { id: 'currentSystems', label: '¿Qué otros programas usan en la operación?', type: 'text', placeholder: 'ej. Punto de venta, WhatsApp Business, website…' }
                 ]
             },
             {
                 id: 'prioridades', title: 'Prioridades',
-                intro: 'Marca qué tan importante es cada parte. Así la propuesta empieza por lo que más te ayuda y lo demás puede venir en fases.',
+                intro: 'Marca qué tan importante es cada parte. Lo demás puede venir en fases.',
                 questions: [
                     { id: 'features', label: 'Funciones del sistema', type: 'matrix', options: PRIORITY_OPTS,
                       rows: [
                           { id: 'portal', label: 'Portal donde los clientes hacen pedidos', help: 'Como una tienda en línea, solo para tus clientes' },
-                          { id: 'catalog', label: 'Catálogo con fotos y búsqueda' },
                           { id: 'customPrices', label: 'Precios y ofertas por cliente' },
                           { id: 'liveStock', label: 'Inventario al día', help: 'Se rebaja solo con cada pedido' },
                           { id: 'reorder', label: 'Alertas de inventario bajo y órdenes de compra' },
                           { id: 'repsApp', label: 'Pedidos desde el celular de los vendedores' },
-                          { id: 'picking', label: 'Lista de preparación para el almacén' },
                           { id: 'routes', label: 'Rutas y confirmación de entregas' },
-                          { id: 'invoices', label: 'Facturas y balance del cliente en el portal' },
-                          { id: 'payments', label: 'Pagos en línea' },
-                          { id: 'accountingSync', label: 'Conexión con la contabilidad (ej. QuickBooks)' },
-                          { id: 'notifications', label: 'Avisos por WhatsApp o correo', help: 'Pedido recibido, en camino, entregado' },
-                          { id: 'reportsDash', label: 'Reportes y panel de ventas' }
-                      ] },
-                    { id: 'firstThing', label: 'Si el sistema pudiera hacer UNA sola cosa en el primer mes, ¿cuál sería?', type: 'textarea', required: true },
-                    { id: 'references', label: '¿Has visto algún sistema o app que te guste como referencia?', type: 'text', placeholder: 'ej. Amazon Business, la app de un suplidor tuyo…' }
+                          { id: 'payments', label: 'Facturas, balance y pagos en línea para el cliente' },
+                          { id: 'accountingSync', label: 'Conexión con la contabilidad (ej. QuickBooks)' }
+                      ] }
                 ]
             },
             {
                 id: 'presupuesto', title: 'Presupuesto y tiempo',
                 intro: 'Me ayuda a proponerte algo realista. Si no lo tienes claro, marca "No sé" y lo hablamos.',
                 questions: [
-                    { id: 'budget', label: '¿Qué inversión inicial tienes en mente para el sistema?', type: 'radio',
-                      options: ['Menos de $5,000', '$5,000 a $10,000', '$10,000 a $20,000', '$20,000 a $40,000', 'Más de $40,000', 'No sé todavía'] },
-                    { id: 'monthly', label: '¿Y un costo mensual cómodo (hosting, mantenimiento y soporte)?', type: 'radio',
-                      options: ['Menos de $200', '$200 a $500', '$500 a $1,000', 'Más de $1,000', 'No sé todavía'] },
+                    { id: 'budget', label: '¿Qué inversión inicial tienes en mente?', type: 'radio',
+                      options: ['Menos de $5,000', '$5,000 a $10,000', '$10,000 a $20,000', 'Más de $20,000', 'No sé todavía'] },
                     { id: 'timeline', label: '¿Para cuándo te gustaría tenerlo funcionando?', type: 'radio',
                       options: ['Lo antes posible', 'En 1 a 2 meses', 'En 3 a 6 meses', 'No hay prisa'] },
-                    { id: 'decisionMaker', label: '¿Quién más participa en la decisión?', type: 'text', placeholder: 'ej. Mi socio, mi contador…' },
-                    { id: 'alternatives', label: '¿Has cotizado o probado otras opciones? ¿Qué te gustó o no te gustó?', type: 'textarea' },
                     { id: 'anythingElse', label: '¿Algo más que deba saber?', type: 'textarea' }
                 ]
             }
@@ -434,7 +364,7 @@
         var stepsEl = document.getElementById('steps');
         var WELCOME = '<div class="step active" data-step="0">' +
             '<div class="step-kicker mono">Antes de empezar</div>' +
-            '<h2>Unos 15 minutos</h2>' +
+            '<h2>Unos 10 minutos</h2>' +
             '<p class="step-intro">Son ' + STEPS.length + ' secciones cortas. La mayoría de las preguntas son de escoger.</p>' +
             '<ul class="welcome-list">' +
                 '<li><span>Solo las preguntas con <strong style="color:var(--error)">*</strong> son obligatorias. Si no sabes algo, déjalo en blanco.</span></li>' +
